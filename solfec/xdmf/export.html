@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>XDMF_EXPORT command &mdash; PARMES  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="PARMES  documentation" href="../../index.html" />
+    <link rel="up" title="Solfec XDMF export" href="../xdmf.html" />
+    <link rel="next" title="Export domino example" href="example.html" />
+    <link rel="prev" title="Solfec XDMF export" href="../xdmf.html" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="xdmf-export-command">
+<span id="solfec-xdmf-export"></span><h1>XDMF_EXPORT command<a class="headerlink" href="#xdmf-export-command" title="Permalink to this headline">¶</a></h1>
+<p>Python syntax for XDMF export reads:</p>
+<div class="topic">
+<p class="topic-title first">XDMF_EXPORT (solfec, time, path | subset, attributes)</p>
+<p>Export results in XDMF format. In &#8216;WRITE&#8217; mode only the geometry at time <span class="math">\(t=0\)</span> is saved,
+while arguments <em>time</em> and <em>attributes</em> are ignored.</p>
+<ul class="simple">
+<li>solfec &#8211; SOLFEC object;</li>
+<li>time &#8211; time instant, e.g. t0, a collection of time instants,
+e.g. [t0, t1, t2, ..., tN], or a time interval, e.g. (t0, t1);</li>
+<li>path &#8211; output path to the directory that will contain the XDMF markup file(s) and a HDF5 data file;
+e.g. &#8216;/tmp/sim0&#8217; will possibly result in a /tmp/sim0/sim0_grids.xmf, /tmp/sim0/sim0_constraints.xmf,
+/tmp/sim0/sim0_spheres.xmf markup files and a /tmp/sim0/sim0.h5 data file output;</li>
+<li>subset &#8211; specification of a subset of exported bodies; a string can be used to define a POSIX regular
+expression <a class="footnote-reference" href="#id2" id="id1">[1]</a> that will be matched against body labels; a list of body objects or integer body identifiers
+can be used [body1, body2, id3, id4, body5, ...] mixed up in an arbitrary manner; or a tuple specifying
+extents of a bounding box can be used (xlow, ylow, zlow, xhigh, yhigh, zhigh), which the bounding boxes of
+exported bodies overlapped at time t=0; also a list of an arbitrary combination of those can be used,
+e.g. [&#8216;BOD*A&#8217;, 123, body1, body2, 256, (0, 0, 0, 1, 1, 1), &#8216;KEY??7&#8217;, (3, 3, 3, 4, 4, 4)] defines two labels,
+two integer body ids, two body objects, and two bounding boxes, that together define a subset of bodies
+that will be used during export;</li>
+<li>attributes &#8211; list of export attributes; default [&#8216;DISP&#8217;, &#8216;VELO&#8217;, &#8216;REAC&#8217;, &#8216;GAP&#8217;];
+available attributes are &#8216;DISP&#8217; (body displacement), &#8216;VELO&#8217; (body velocity), &#8216;STRESS&#8217; (body stress),
+&#8216;REAC&#8217; (constraint reactions), &#8216;RELV&#8217; (relative constraint velocities), &#8216;GAP&#8217; (contact gaps);</li>
+</ul>
+</div>
+<p>Currently implemented features:</p>
+<ul class="simple">
+<li>Export of MESH and CONVEX shape based bodies into a &lt;path&gt;_grids.xmf file.</li>
+<li>Export of constraints into a &lt;path&gt;_constraints.xmf file.</li>
+<li>Expot of SPHERE shape based bodies into a &lt;path&gt;_spheres.xmf file.</li>
+</ul>
+<p>Currently missing features:</p>
+<ul class="simple">
+<li>Export of ELLIP shape based bodies.</li>
+</ul>
+<p>In the <a class="reference internal" href="example.html#solfec-xdmf-example"><span class="std std-ref">following section</span></a> we give an example of an application of the above command.</p>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.boost.org/doc/libs/1_61_0/libs/regex/doc/html/boost_regex/syntax/basic_syntax.html">POSIX regular expressions</a></td></tr>
+</tbody>
+</table>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../about.html">SOLFEC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theory.html">Theory Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../abaqus.html">ABAQUS import</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../xdmf.html">XDMF export</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">XDMF_EXPORT command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="example.html">Export domino example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="paraview.html">Paraview session example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynlb/about.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parmec/about.html">PARMEC</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../about.html">SOLFEC</a><ul>
+  <li><a href="../xdmf.html">Solfec XDMF export</a><ul>
+      <li>Previous: <a href="../xdmf.html" title="previous chapter">Solfec XDMF export</a></li>
+      <li>Next: <a href="example.html" title="next chapter">Export domino example</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../blog/about.html">Jun 13 - About PARMES</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/parmes.html">parmes</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../../_sources/solfec/xdmf/export.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
