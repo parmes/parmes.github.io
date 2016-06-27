@@ -56,7 +56,222 @@
             
   <div class="section" id="solfec-installation">
 <span id="id1"></span><h1>Solfec Installation<a class="headerlink" href="#solfec-installation" title="Permalink to this headline">¶</a></h1>
-<p>Solfec installation ...</p>
+<p>Solfec is hosted on <a class="reference external" href="https://github.com/tkoziara/solfec">GitHub</a> and you will need the <em>git</em> command
+installed in order to download its source code. Have a look at <a class="reference external" href="https://git-scm.com">https://git-scm.com</a> for instructions.
+Once the git command is available in your command line, type</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tkoziara</span><span class="o">/</span><span class="n">solfec</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>This will create the directory solfec in your current directory. The next thing you need is a Make/C/C++/Fortran/Python
+development environment at your command line. Users of Unix type systems (e.g. Linux, FreeBSD, Mac OS X) may use a package
+manager to install those tools. Windows users can install <a class="reference external" href="http://www.cygwin.com/">Cygwin</a> or <a class="reference external" href="http://mingw-w64.org">Mingw</a> instead.
+Solfec is written in C and it uses a simple makefile to get compiled.
+The file <em>solfec/Config.mak</em> needs to be modified to set up library paths and compilation flags. Here is an example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># Operating System (WIN32, SOLARIS, LINUX, AIX, IRIX, OSX, FREEBSD)</span>
+<span class="c1">#</span>
+
+<span class="n">OS</span> <span class="o">=</span> <span class="n">OSX</span>
+
+<span class="c1">#</span>
+<span class="c1"># Specify C compiler</span>
+<span class="c1">#</span>
+
+<span class="n">CC</span> <span class="o">=</span> <span class="n">cc</span>
+
+<span class="c1">#</span>
+<span class="c1"># Specify C++ compiler</span>
+<span class="c1">#</span>
+
+<span class="n">CXX</span> <span class="o">=</span> <span class="n">g</span><span class="o">++</span>
+
+<span class="c1">#</span>
+<span class="c1"># Specify FORTRAN95 compiler and FORTRAN runtime library</span>
+<span class="c1">#</span>
+
+<span class="n">FC</span> <span class="o">=</span> <span class="n">gfortran</span>
+<span class="n">FCLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">lgfortran</span>
+
+<span class="c1">#</span>
+<span class="c1"># Local body storage (yes/no)</span>
+<span class="c1">#</span>
+<span class="c1"># If &#39;no&#39; all bodies all stored on all processors;</span>
+<span class="c1"># this implies less communication during parallel balancing;</span>
+<span class="c1"># When &#39;yes&#39; bodies are only stored locally in parallel;</span>
+<span class="c1"># this is more suitable for larger simulations;</span>
+<span class="c1">#</span>
+<span class="n">LOCAL_BODIES</span> <span class="o">=</span> <span class="n">yes</span>
+
+<span class="c1"># </span>
+<span class="c1"># Debug or optimized version switch (yes/no)</span>
+<span class="c1">#</span>
+
+<span class="c1"># general debug tests</span>
+<span class="n">DEBUG</span> <span class="o">=</span> <span class="n">yes</span>
+<span class="c1"># gprof profiling data</span>
+<span class="n">PROFILE</span> <span class="o">=</span> <span class="n">no</span>
+<span class="c1"># switch off memory pools</span>
+<span class="n">MEMDEBUG</span> <span class="o">=</span> <span class="n">no</span>
+<span class="c1"># geometrical debug tests</span>
+<span class="n">GEOMDEBUG</span> <span class="o">=</span> <span class="n">no</span>
+<span class="c1"># light parallel consitency tests</span>
+<span class="n">PARDEBUG</span> <span class="o">=</span> <span class="n">yes</span>
+<span class="c1"># heavy parallel self-consitency tests</span>
+<span class="n">PSCTEST</span> <span class="o">=</span> <span class="n">no</span>
+<span class="c1"># disable TRY/CATCH</span>
+<span class="n">NOTHROW</span> <span class="o">=</span> <span class="n">no</span>
+
+<span class="c1">#</span>
+<span class="c1"># TIMERS (enable/disable detailed solver timings)</span>
+<span class="c1">#</span>
+
+<span class="n">TIMERS</span> <span class="o">=</span> <span class="n">yes</span>
+
+<span class="c1">#</span>
+<span class="c1"># POSIX</span>
+<span class="c1">#</span>
+
+<span class="n">POSIX</span> <span class="o">=</span> <span class="n">yes</span>
+
+<span class="c1">#</span>
+<span class="c1"># HDF5</span>
+<span class="c1">#</span>
+
+<span class="n">HDF5</span> <span class="o">=</span> <span class="n">yes</span>
+
+<span class="n">HDF5INC</span> <span class="o">=</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="n">include</span>
+<span class="n">HDF5LIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lhdf5</span> <span class="o">-</span><span class="n">lhdf5_hl</span>
+
+<span class="c1">#</span>
+<span class="c1"># XDR (must be set when HDF5 = no)</span>
+<span class="c1">#</span>
+
+<span class="n">XDR</span> <span class="o">=</span> <span class="n">no</span>
+
+<span class="n">XDRINC</span> <span class="o">=</span> 
+<span class="n">XDRLIB</span> <span class="o">=</span> 
+
+<span class="c1">#</span>
+<span class="c1"># BLAS</span>
+<span class="c1">#</span>
+
+<span class="n">BLAS</span> <span class="o">=</span> <span class="o">-</span><span class="n">lblas</span>
+
+<span class="c1">#</span>
+<span class="c1"># LAPACK</span>
+<span class="c1">#</span>
+
+<span class="n">LAPACK</span> <span class="o">=</span> <span class="o">-</span><span class="n">llapack</span>
+
+<span class="c1">#</span>
+<span class="c1"># Python</span>
+<span class="c1">#</span>
+
+<span class="n">PYTHON</span> <span class="o">=</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">python2</span><span class="o">.</span><span class="mi">7</span>
+<span class="n">PYTHONLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lpython2</span><span class="o">.</span><span class="mi">7</span>
+
+<span class="c1">#</span>
+<span class="c1"># OpenGL (yes/no)</span>
+<span class="c1">#</span>
+
+<span class="n">OPENGL</span> <span class="o">=</span> <span class="n">yes</span>
+<span class="n">GLINC</span> <span class="o">=</span> <span class="o">-</span><span class="n">Wno</span><span class="o">-</span><span class="n">deprecated</span><span class="o">-</span><span class="n">declarations</span>
+<span class="n">GLLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">framework</span> <span class="n">GLUT</span> <span class="o">-</span><span class="n">framework</span> <span class="n">OpenGL</span>
+
+<span class="c1">#</span>
+<span class="c1"># VBO  (OPENGL = yes)</span>
+<span class="c1">#</span>
+
+<span class="n">VBO</span> <span class="o">=</span> <span class="n">yes</span>
+
+<span class="c1">#</span>
+<span class="c1"># MPI (yes/no)</span>
+<span class="c1">#</span>
+
+<span class="n">MPI</span> <span class="o">=</span> <span class="n">yes</span>
+<span class="n">MPICC</span> <span class="o">=</span> <span class="n">mpicc</span> <span class="o">-</span><span class="n">Wno</span><span class="o">-</span><span class="n">unused</span><span class="o">-</span><span class="n">but</span><span class="o">-</span><span class="nb">set</span><span class="o">-</span><span class="n">variable</span> <span class="o">-</span><span class="n">fopenmp</span>
+
+<span class="c1">#</span>
+<span class="c1"># Zoltan load balancer (MPI = yes); optional</span>
+<span class="c1">#</span>
+
+<span class="n">ZOLTAN</span> <span class="o">=</span> <span class="n">no</span>
+<span class="n">ZOLTANINC</span> <span class="o">=</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">include</span>
+<span class="n">ZOLTANLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lzoltan</span>
+
+<span class="c1">#</span>
+<span class="c1"># Dynlb load balancer (MPI = yes) available at:</span>
+<span class="c1"># https://github.com/tkoziara/dynlb</span>
+<span class="c1"># This option is used when ZOLTAN = no above;</span>
+<span class="c1"># Use path to dynlb directory below;</span>
+<span class="c1"># Use -fopenmp flag with MPICC when compiling with dynlb;</span>
+<span class="c1">#</span>
+
+<span class="n">DYNLB</span> <span class="o">=</span> <span class="o">../</span><span class="n">dynlb</span>
+
+<span class="c1">#</span>
+<span class="c1"># Siconos (yes/no)</span>
+<span class="c1">#</span>
+
+<span class="n">SICONOS</span> <span class="o">=</span> <span class="n">no</span>
+<span class="n">SICONOSINC</span> <span class="o">=</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">Siconos</span><span class="o">/</span><span class="n">Numerics</span>
+<span class="n">SICONOSLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">l</span> <span class="n">SiconosNumerics</span>
+</pre></div>
+</div>
+<p>The above configuration works on Mac OS X. To recap, what you need is:</p>
+<ul class="simple">
+<li>C, C++, FORTRAN 95 compilers</li>
+<li><a class="reference external" href="http://www.hdfgroup.org">HDF5 library</a></li>
+<li>(optional, deprecated) XDR (standard part of RPC on all Unix type systems)</li>
+<li><a class="reference external" href="http://www.netlib.org/lapack/">BLAS and LAPACK</a> libraries (standard on most systems)</li>
+<li>Python together with development files and libraries (versions 2.x have been tested)</li>
+<li>OpenGL libraries and developments files (this enables Solfec&#8217;s viewer)</li>
+<li>(optional) VBO (Vertex Buffer Object extension of OpenGL for faster rendering)</li>
+<li>MPI libraries and development files</li>
+<li>either <a class="reference external" href="http://www.cs.sandia.gov/Zoltan/">Zoltan</a> load balancing library or <a class="reference external" href="https://github.com/tkoziara/dynlb">dynlb</a> load balancing library</li>
+<li>(optional) <a class="reference external" href="http://siconos.gforge.inria.fr">Siconos</a> contact solvers library</li>
+</ul>
+<p>To compile Solfec, after editing the Config.mak file, the first compilation should look like this</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">solfec</span>
+<span class="n">make</span> <span class="nb">all</span>
+</pre></div>
+</div>
+<p>This will create files solfec/solfec and solec/solfec-mpi, that is the serial and the parallel versions of the code.
+For every subsequent update and compilation you will like to do the following</p>
+<ul class="simple">
+<li>Back up your Config.mak file. For example</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">solfec</span>
+<span class="n">cp</span> <span class="n">Config</span><span class="o">.</span><span class="n">mak</span> <span class="o">..</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Now update the sources</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Recover your Config.mak file</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">../</span><span class="n">Congig</span><span class="o">.</span><span class="n">mak</span> <span class="o">./</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>And finally compile again</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span>
+<span class="n">make</span> <span class="nb">all</span>
+</pre></div>
+</div>
+<p>Use “DEBUG = no” most of the time: this will make Solfec about 40% faster.
+Nonetheless, when you experience trouble with running the code, recompile it with “DEBUG = yes”
+(this is slower but outputs more information in case you would encounter a bug) and run it again.
+The solfec/inp directory contains example input files. If you haven&#8217;t used the “POSIX = yes” flag,
+you will need to create output directories yourself before running calculations (on systems where “POSIX = yes” works,
+this is done automatically). It may be convenient to modify the PATH variable to point to the solfec directory,
+making it easier to run Solfec form any location in your filesystem.
+You can ask for help, using the <a class="reference external" href="http://groups.google.com/group/solfec">Solfec mailing list</a>.</p>
 </div>
 
   <div class="section">
