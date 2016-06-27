@@ -62,11 +62,11 @@ Once the git command is available in your command line, type</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tkoziara</span><span class="o">/</span><span class="n">solfec</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
-<p>This will create the directory solfec in your current directory. The next thing you need is a Make/C/C++/Fortran/Python
+<p>This will create a <em>solfec</em> directory in your current directory. The next thing you need is a Make/C/C++/Fortran/Python
 development environment at your command line. Users of Unix type systems (e.g. Linux, FreeBSD, Mac OS X) may use a package
 manager to install those tools. Windows users can install <a class="reference external" href="http://www.cygwin.com/">Cygwin</a> or <a class="reference external" href="http://mingw-w64.org">Mingw</a> instead.
 Solfec is written in C and it uses a simple makefile to get compiled.
-The file <em>solfec/Config.mak</em> needs to be modified to set up library paths and compilation flags. Here is an example:</p>
+The file <em>solfec/Config.mak</em> needs to be modified in order to set up library paths and compilation flags. Here is an example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1">#</span>
 <span class="c1"># Operating System (WIN32, SOLARIS, LINUX, AIX, IRIX, OSX, FREEBSD)</span>
 <span class="c1">#</span>
@@ -228,16 +228,16 @@ The file <em>solfec/Config.mak</em> needs to be modified to set up library paths
 <li>OpenGL libraries and developments files (this enables Solfec&#8217;s viewer)</li>
 <li>(optional) VBO (Vertex Buffer Object extension of OpenGL for faster rendering)</li>
 <li>MPI libraries and development files</li>
-<li>either <a class="reference external" href="http://www.cs.sandia.gov/Zoltan/">Zoltan</a> load balancing library or <a class="reference external" href="https://github.com/tkoziara/dynlb">dynlb</a> load balancing library</li>
+<li>either <a class="reference external" href="http://www.cs.sandia.gov/Zoltan/">Zoltan</a> or <a class="reference external" href="https://github.com/tkoziara/dynlb">dynlb</a> load balancing library</li>
 <li>(optional) <a class="reference external" href="http://siconos.gforge.inria.fr">Siconos</a> contact solvers library</li>
 </ul>
-<p>To compile Solfec, after editing the Config.mak file, the first compilation should look like this</p>
+<p>To compile Solfec, after editing the Config.mak file, the first compilation may look like this</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">solfec</span>
 <span class="n">make</span> <span class="nb">all</span>
 </pre></div>
 </div>
-<p>This will create files solfec/solfec and solec/solfec-mpi, that is the serial and the parallel versions of the code.
-For every subsequent update and compilation you will like to do the following</p>
+<p>This will create files <em>solfec/solfec</em> and <em>solec/solfec-mpi</em>, that is, the serial and the parallel versions of the code.
+For every subsequent update and compilation you may like to do the following</p>
 <ul class="simple">
 <li>Back up your Config.mak file. For example</li>
 </ul>
@@ -266,11 +266,11 @@ For every subsequent update and compilation you will like to do the following</p
 </div>
 <p>Use “DEBUG = no” most of the time: this will make Solfec about 40% faster.
 Nonetheless, when you experience trouble with running the code, recompile it with “DEBUG = yes”
-(this is slower but outputs more information in case you would encounter a bug) and run it again.
+(this is slower but outputs more information) and run it again.
 The solfec/inp directory contains example input files. If you haven&#8217;t used the “POSIX = yes” flag,
-you will need to create output directories yourself before running calculations (on systems where “POSIX = yes” works,
-this is done automatically). It may be convenient to modify the PATH variable to point to the solfec directory,
-making it easier to run Solfec form any location in your filesystem.
+you will need to create output directories yourself, before running calculations (on systems where “POSIX = yes” works,
+this is done automatically). It may be convenient to modify the PATH variable to point to the <em>solfec</em> directory,
+making it easier to run Solfec form any location within your filesystem.
 You can ask for help, using the <a class="reference external" href="http://groups.google.com/group/solfec">Solfec mailing list</a>.</p>
 </div>
 
