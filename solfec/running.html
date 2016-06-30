@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Running Solfec &mdash; PARMES  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="PARMES  documentation" href="../index.html" />
+    <link rel="up" title="SOLFEC" href="about.html" />
+    <link rel="next" title="Solfec User Manual" href="user.html" />
+    <link rel="prev" title="Solfec Installation" href="installation.html" />
+  
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="running-solfec">
+<span id="solfec-running"></span><h1>Running Solfec<a class="headerlink" href="#running-solfec" title="Permalink to this headline">¶</a></h1>
+<p>Solfec is a command line program. It can be run sequentially (command: solfec) or in parallel
+using an MPI runtime environment (command: solfec&#8211;mpi). Running it without parameters</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">solfec</span>
+</pre></div>
+</div>
+<p>results in the hint</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">SYNOPSIS</span><span class="p">:</span> <span class="n">solfec</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">w</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">g</span> <span class="n">WIDTHxHEIGHT</span><span class="p">]</span>
+                 <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="n">sub</span><span class="o">-</span><span class="n">directory</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">verbosity</span> <span class="n">interval</span><span class="p">]</span> <span class="n">path</span>
+</pre></div>
+</div>
+<p><strong>The &#8211;v switch</strong> opens the interactive graphical viewer (cf. <a class="reference internal" href="#viewer-1"><span class="std std-numref">Fig. 1</span></a>). In this mode the user
+can view the geometrical model, run or step through analysis, and view results.
+The right mouse click on the viewer window expands the menu.</p>
+<div class="figure align-center" id="id5">
+<span id="viewer-1"></span><a class="reference internal image-reference" href="../_images/viewer-1.png"><img alt="../_images/viewer-1.png" src="../_images/viewer-1.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Solfec viewer window.</span></p>
+</div>
+<p><strong>The &#8211;w switch</strong> forces the computation (write) mode. If some results are present, Solfec will ask:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>WARNING: Valid output files exist at path: &lt;path&gt;
+Would you like to overwrite them? y/[n]:
+</pre></div>
+</div>
+<p>and terminate in case you answered &#8216;n&#8217;.</p>
+<p><strong>The &#8211;c switch</strong> forces the continued computation (write) mode: if some results are present,
+the analysis will be continued from where it was stopped.  <em>NOTE1:</em> this option works correctly only
+if RUN is used once per input file; With &#8211;c Solfec terminates in case RUN is used multiple times;
+<em>NOTE2:</em> this option works only with the HDF5 output; in case of the XDR  output it is the same as &#8211;w;
+<em>NOTE3:</em> in parallel, continuation must be done using the same number of MPI ranks
+(e.g. N in “mpirun &#8211;np N ...” must not change).</p>
+<p><strong>The &#8211;f switch</strong>, together with &#8211;v, opens the viewer in the wireframe mode,
+which requires substantially less memory and can be used to visualize large models.
+You can then use render <span class="math">\(\to\)</span> 2D/3D wireframe selection option in order to
+selectively switch on volumetric rendering of selected areas of the model.</p>
+<p><strong>The &#8211;g switch</strong> allows to specify the initial width and height of the viewer window (512 by default).
+This option may be useful in case you would like to generate videos with a specific resolution.</p>
+<p><strong>The &#8211;s switch</strong> allows to output or read the results from a sub&#8211;directory. This option is useful when one
+wishes to output results of similar analysis to different sub&#8211;directories of a common root directory
+specified when creating a SOLFEC object. For example, the bellow commands would run a parallel example
+and output the results into different sub-directories denoted by the number of processors involved in the analysis:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">4</span> <span class="n">solfec</span><span class="o">-</span><span class="n">mpi</span> <span class="o">-</span><span class="n">s</span> <span class="mi">4</span> <span class="n">inp</span><span class="o">/</span><span class="n">cubes</span><span class="o">.</span><span class="n">py</span>
+<span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">16</span> <span class="n">solfec</span><span class="o">-</span><span class="n">mpi</span> <span class="o">-</span><span class="n">s</span> <span class="mi">16</span> <span class="n">inp</span><span class="o">/</span><span class="n">cubes</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Because the directory out/cubes is specified when creating the SOLFEC object in the inp/cubes.py
+input file, the above commands result in creation of two output directories:
+out/cubes/4 and out/cubes/16. One can then view a specific set of results by running</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">solfec</span> <span class="o">-</span><span class="n">v</span> <span class="o">-</span><span class="n">s</span> <span class="mi">16</span> <span class="n">inp</span><span class="o">/</span><span class="n">cubes</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>During a parallel run Solfec updates a file named STATE, placed in the output directory of a simulation.
+It contains statistics relevant to the run, including an estimated time until the end of the simulation.
+The output directory contains as well a copy of the input file, which makes reading results more self-contained
+(it is harder to mismatch input and output files this way). An analysis (both serial and parallel) can be
+stopped at any time by placing a file named STOP in the output directory of a simulation.</p>
+<p><strong>The -i switch</strong> allows to adjust the time interval of verbose output of runtime statistics (default is 1s).</p>
+<div class="section" id="read-write-mode">
+<h2>Read/write mode<a class="headerlink" href="#read-write-mode" title="Permalink to this headline">¶</a></h2>
+<p>Solfec&#8217;s read/write mode behavior may need some explanation.
+Let&#8217;s say that you created an input file called &#8216;test.py&#8217;
+inside of a directory called &#8216;inp&#8217; and wrote in there the following code:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="o">=</span> <span class="n">SOLFEC</span> <span class="p">(</span><span class="s1">&#39;DYNAMIC&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;out/test&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">solfec</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;WRITE&#39;</span><span class="p">:</span> <span class="nb">print</span> <span class="s1">&#39;WRITE MODE!&#39;</span>
+<span class="k">elif</span> <span class="n">solfec</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;READ&#39;</span><span class="p">:</span> <span class="nb">print</span> <span class="s1">&#39;READ MODE!&#39;</span>
+</pre></div>
+</div>
+<p>Hence, the results will be placed in the directory &#8216;out/test&#8217;.  An analysis
+has not yet been run for this input file and there are no results. If you run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">solfec</span> <span class="n">inp</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">4</span> <span class="o">./</span><span class="n">solfec</span><span class="o">-</span><span class="n">mpi</span> <span class="n">inp</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>the results will be written into &#8216;out/test&#8217;.  Since during this first run no
+results were found at the &#8216;out/test&#8217; path, Solfec will print:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;WRITE MODE!&#39;</span>
+</pre></div>
+</div>
+<p>and attempt to perform calculations upon a first encounter of the RUN command.
+Upon completion you will be able to access results by again invoking <a class="footnote-reference" href="#id3" id="id1">[1]</a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">solfec</span> <span class="n">inp</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>Since in this case some results will be found at the &#8216;out/test&#8217; path,
+this time Solfec will print:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;READ MODE!&#39;</span>
+</pre></div>
+</div>
+<p>followed by setting up your model and ignoring all occurrences of the RUN command <a class="footnote-reference" href="#id4" id="id2">[2]</a>.</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><em>solfec&#8211;mpi</em> always runs in the write mode.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>When viewer is used (&#8211;v switch), the execution of the input file stops at the first occurrence of the RUN command.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="about.html">SOLFEC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Running</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#read-write-mode">Read/write mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory.html">Theory Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="abaqus.html">ABAQUS import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xdmf.html">XDMF export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dynlb/about.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parmec/about.html">PARMEC</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="about.html">SOLFEC</a><ul>
+      <li>Previous: <a href="installation.html" title="previous chapter">Solfec Installation</a></li>
+      <li>Next: <a href="user.html" title="next chapter">Solfec User Manual</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../blog/about.html">Jun 13 - About PARMES</a></li>
+    
+  </ul>
+
+  <h3><a href="../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../blog/tag/parmes.html">parmes</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../_sources/solfec/running.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

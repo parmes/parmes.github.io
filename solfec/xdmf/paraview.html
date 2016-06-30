@@ -66,42 +66,42 @@ expand on the minimalist exposition provided here.</p>
 mode <a class="footnote-reference" href="#id2" id="id1">[1]</a> prior to any calculations. Consequently, <em>out/xmftest0</em> only stores the initial geometry
 of the problem. Let&#8217;s open the <em>*.xmf</em> files found inside of this directory by using File <span class="math">\(\to\)</span> Open and
 selecting <em>xmftest0_grids.xmf</em> and <em>xmftest0_spheres.xmf</em> files. When opening a first of those files you will
-be prompted to sellect an XDMF reader. Use any of the <em>Xdmf3</em> options, cf. <a class="reference internal" href="#paraview-0"><span class="std std-numref">Fig. 1</span></a>.</p>
+be prompted to sellect an XDMF reader. Use any of the <em>Xdmf3</em> options, cf. <a class="reference internal" href="#paraview-0"><span class="std std-numref">Fig. 2</span></a>.</p>
 <div class="figure align-center" id="id3">
 <span id="paraview-0"></span><a class="reference internal image-reference" href="../../_images/paraview-0.png"><img alt="../../_images/paraview-0.png" src="../../_images/paraview-0.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">XDMF reader selection in Paraview (use any of the <em>Xdmf3</em> options).</span></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">XDMF reader selection in Paraview (use any of the <em>Xdmf3</em> options).</span></p>
 </div>
-<p>After opening both the <em>grids</em> and the <em>spheres</em> files, your application window may look like <a class="reference internal" href="#paraview-1"><span class="std std-numref">Fig. 2</span></a>.
+<p>After opening both the <em>grids</em> and the <em>spheres</em> files, your application window may look like <a class="reference internal" href="#paraview-1"><span class="std std-numref">Fig. 3</span></a>.
 Let&#8217;s select the <em>Render View</em> in the &#8220;Layout #1&#8221; window and click onto the little eye to the left of <strong>xmftest0_grids.xmf</strong> item
 in the <em>Pipeline Browser</em>. We should now be able to manipulate (rotate by left clicking and moving around) the graphical
-representation of the domino model, cf. <a class="reference internal" href="#paraview-2"><span class="std std-numref">Fig. 3</span></a>.</p>
+representation of the domino model, cf. <a class="reference internal" href="#paraview-2"><span class="std std-numref">Fig. 4</span></a>.</p>
 <div class="figure align-center" id="id4">
 <span id="paraview-1"></span><a class="reference internal image-reference" href="../../_images/paraview-1.png"><img alt="../../_images/paraview-1.png" src="../../_images/paraview-1.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Paraview application window after opening <em>xmftest0_grids.xmf</em> and <em>xmftest0_spheres.xmf</em> files found in the <em>out/xmftest0</em> directory.</span></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Paraview application window after opening <em>xmftest0_grids.xmf</em> and <em>xmftest0_spheres.xmf</em> files found in the <em>out/xmftest0</em> directory.</span></p>
 </div>
 <div class="figure align-center" id="id5">
 <span id="paraview-2"></span><a class="reference internal image-reference" href="../../_images/paraview-2.png"><img alt="../../_images/paraview-2.png" src="../../_images/paraview-2.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Render view with item <em>xmftest0_grids.xmf</em> enabled in the Pipeline Browser.</span></p>
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Render view with item <em>xmftest0_grids.xmf</em> enabled in the Pipeline Browser.</span></p>
 </div>
 <p>To complete presentation of the initial geometry we would like to enable rendering of the sphere. To do this we need to
 select the <em>xmftest0_spheres.xmf</em> item in the Pipeline Browser, followed by clicking <em>Apply</em> in the properties window underneath.
 This will cause the glyph icon, <a class="reference internal" href="../../_images/paraview-glyph.png"><img alt="glyph" src="../../_images/paraview-glyph.png" style="width: 16px;" /></a>, to become active allowing us to use a sphere based representation
 of the <em>xmftest0_spheres.xmf</em>  dataset. We can change the default <em>Glyph1</em> label that appeared in the Pipeline Browser
-by left clicking on it once (or selecting <em>Glyph1</em> and pressing enter). Let it be called <em>spheres</em> instead, cf. <a class="reference internal" href="#paraview-3"><span class="std std-numref">Fig. 4</span></a>.
+by left clicking on it once (or selecting <em>Glyph1</em> and pressing enter). Let it be called <em>spheres</em> instead, cf. <a class="reference internal" href="#paraview-3"><span class="std std-numref">Fig. 5</span></a>.
 Finally, using the <em>Properties</em> dialog box underneath the Pipeline Browser, we set up the <em>Glyph Type</em> as <em>Sphere</em>, and set the
 <em>Scale Mode</em> to use the <em>scalar</em> field which has been automatically picked up as RADI just above. This means that the unit glyph
 size will be scaled by the scalar RADI value read from the xmf file. In our case the glyph size is the sphere diameter and since
 RADI represents the sphere radius, we need additionally set the <em>Scale Factor</em> to be equal 2. By pressing <em>Apply</em> we make
-the sphere visible, as seen in <a class="reference internal" href="#paraview-3"><span class="std std-numref">Fig. 4</span></a>.</p>
+the sphere visible, as seen in <a class="reference internal" href="#paraview-3"><span class="std std-numref">Fig. 5</span></a>.</p>
 <div class="figure align-center" id="id6">
 <span id="paraview-3"></span><a class="reference internal image-reference" href="../../_images/paraview-3.png"><img alt="../../_images/paraview-3.png" src="../../_images/paraview-3.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">The properties for the <em>spheres</em> glyph and rendering of the <em>out/xmftest0</em> results set.</span></p>
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">The properties for the <em>spheres</em> glyph and rendering of the <em>out/xmftest0</em> results set.</span></p>
 </div>
 <div class="admonition tip">
 <p class="first admonition-title">Tip</p>
 <p class="last">When initially viewing results by pressing the eye symbol in the Pipeline Browser,
 Paraview often automatically selects an attribute to be viewed (e.g. displacement). You can use
-the attribute drop&#8211;down menu circled in <a class="reference internal" href="#paraview-4"><span class="std std-numref">Fig. 5</span></a>, and select &#8220;Solid Color&#8221; in order
+the attribute drop&#8211;down menu circled in <a class="reference internal" href="#paraview-4"><span class="std std-numref">Fig. 6</span></a>, and select &#8220;Solid Color&#8221; in order
 to draw plain geometry.</p>
 </div>
 </div>
@@ -119,35 +119,35 @@ the spheres and use a constant scaling factor of 0.02 for the constraints. Const
 located in between of solid mesh surfaces, and hence they are often not visible. Select the grids results in the Pipeline
 Browser and find the <em>Opacity</em> sliding bar in the Properties window. Turn it down to about 0.2 and repeat the same procedure
 for the spheres glyph. Now all solid geometry is slightly transparent allowing us to view it together with the spheres
-representing contact points between the base block and the domino pieces, cf. <a class="reference internal" href="#paraview-4"><span class="std std-numref">Fig. 5</span></a>.</p>
+representing contact points between the base block and the domino pieces, cf. <a class="reference internal" href="#paraview-4"><span class="std std-numref">Fig. 6</span></a>.</p>
 <div class="figure align-center" id="id7">
 <span id="paraview-4"></span><a class="reference internal image-reference" href="../../_images/paraview-4.png"><img alt="../../_images/paraview-4.png" src="../../_images/paraview-4.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">The initial geometry for the <em>out/xmftest3</em> results set. Opacity of grids and the sphere has been decreased in order to facilitate viewing of constraints glyphs.</span></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">The initial geometry for the <em>out/xmftest3</em> results set. Opacity of grids and the sphere has been decreased in order to facilitate viewing of constraints glyphs.</span></p>
 </div>
 <p>Let&#8217;s now select the <em>grids</em> results set in the Pipeline Browser and use the drop&#8211;down menu circled in
-<a class="reference internal" href="#paraview-4"><span class="std std-numref">Fig. 5</span></a> in order to view the velocity field magnitude of domino pieces. Paraview automatically
+<a class="reference internal" href="#paraview-4"><span class="std std-numref">Fig. 6</span></a> in order to view the velocity field magnitude of domino pieces. Paraview automatically
 inserts a legend called &#8220;VELO Magnitude&#8221; into the render view in order to index the colors that are drawn
 on domino surfaces. You can double click onto the legend and move it around if the default placement is not
 appropriate. Now, highlight the <em>constraints</em> results set in the Pipeline Browser and select the
 &#8220;GAP&#8221; attribute from the drop&#8211;down menu. A legend labeled &#8220;GAP&#8221; is additionally inserted into the render
-view. We can now use the <em>step</em> edit box, highlighted in the top&#8211;right area of <a class="reference internal" href="#paraview-5"><span class="std std-numref">Fig. 6</span></a>, and
+view. We can now use the <em>step</em> edit box, highlighted in the top&#8211;right area of <a class="reference internal" href="#paraview-5"><span class="std std-numref">Fig. 7</span></a>, and
 select a time step at which we wish to view the results.  In our case, out of the 101 steps available, we
 have selected step 51.</p>
 <div class="figure align-center" id="id8">
 <span id="paraview-5"></span><a class="reference internal image-reference" href="../../_images/paraview-5.png"><img alt="../../_images/paraview-5.png" src="../../_images/paraview-5.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Rendering of attributes, simultaneously for grids and constraints, using the <em>out/xmftest3</em> results, at step 51.</span></p>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Rendering of attributes, simultaneously for grids and constraints, using the <em>out/xmftest3</em> results, at step 51.</span></p>
 </div>
 <div class="admonition note" id="paraview-reactions">
 <p class="first admonition-title">Note</p>
 <p class="last">Contact reactions are conveniently rendered using the arrow glyphs. Select the <em>constraints</em> glyph in the
 Pipeline Browser and set the Glyph Type to <em>Arrow</em>. In the <em>Vectors</em> drop&#8211;down menu in the <em>Active Attributes</em>
 area select the REAC vector field. Change the scale factor of the glyph to about 0.15 and press <em>Apply</em>.
-Then use the attribute drop&#8211;down menu, circled in <a class="reference internal" href="#paraview-4"><span class="std std-numref">Fig. 5</span></a>, and select REAC.</p>
+Then use the attribute drop&#8211;down menu, circled in <a class="reference internal" href="#paraview-4"><span class="std std-numref">Fig. 6</span></a>, and select REAC.</p>
 </div>
 </div>
 <div class="section" id="exporting-a-video-clip">
 <h2>Exporting a video clip<a class="headerlink" href="#exporting-a-video-clip" title="Permalink to this headline">¶</a></h2>
-<p>In <a class="reference internal" href="#paraview-5"><span class="std std-numref">Fig. 6</span></a> to the left of the time step selection box, we can see a set of buttons looking like
+<p>In <a class="reference internal" href="#paraview-5"><span class="std std-numref">Fig. 7</span></a> to the left of the time step selection box, we can see a set of buttons looking like
 a video playback control panel. This is what they essentially are. You can press the first frame button, <a class="reference internal" href="../../_images/paraview-first-frame.png"><img alt="first" src="../../_images/paraview-first-frame.png" style="width: 16px;" /></a>,
 in order to rewind the simulation back to its initial frame. To close our tutorial we are going create and a video clip,
 animating the reaction forces, rendered as explained in the <a class="reference internal" href="#paraview-reactions"><span class="std std-ref">note above</span></a>. First,
@@ -196,6 +196,7 @@ same animation as a video clip use <em>File</em> <span class="math">\(\to\)</spa
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../about.html">SOLFEC</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../theory.html">Theory Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../algorithms.html">Algorithms Manual</a></li>
