@@ -10,6 +10,7 @@
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -26,7 +27,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="PARMES  documentation" href="../index.html" />
     <link rel="up" title="SOLFEC" href="about.html" />
-    <link rel="next" title="Solfec Theory Manual" href="theory.html" />
+    <link rel="next" title="SOLFEC object" href="user/solfec.html" />
     <link rel="prev" title="Running Solfec" href="running.html" />
   
    
@@ -56,7 +57,33 @@
             
   <div class="section" id="solfec-user-manual">
 <span id="solfec-user"></span><h1>Solfec User Manual<a class="headerlink" href="#solfec-user-manual" title="Permalink to this headline">¶</a></h1>
-<p>Solfec user ...</p>
+<p>Solfec input file is a Python source code. Python interpreter is embedded in Solfec.
+At the same time Solfec extends Python by adding a number of objects and routines.
+There are few general principles to remember:</p>
+<ul class="simple">
+<li>Zero based indexing is observed in routine arguments.</li>
+<li>Parameters after the bar | are optional. For example FUNCTION (a, b | c, d) has two optional parameters c, d.</li>
+<li>Passing Solfec objects to some routines empties them. This means that a variable,
+that was passed as an argument, no longer stores data. For example: let x = CREATE1 () create an object x,
+and let y = CREATE2 (x) create an object y, using x. If CREATE2 (x) empties x, then after the call x
+becomes an empty placeholder. One can use it to assign value, x = CREATE1 (), but using it as an argument,
+z = CREATE2 (x), will cause an abnormal termination. One can create a copy of an object by calling
+z = COPY (x), hence using y = CREATE2 (COPY (x)) leaves x intact.</li>
+</ul>
+<p>Sections below document Solfec objects and routines used for their manipulation:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user/solfec.html">SOLFEC object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/body.html">BODY object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/geometry.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/materials.html">Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/loads.html">Loads</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/constraints.html">Constraints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/simulation.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/results.html">Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/utilities.html">Utilities</a></li>
+</ul>
+</div>
 </div>
 
   <div class="section">
@@ -92,7 +119,18 @@
 <li class="toctree-l1 current"><a class="reference internal" href="about.html">SOLFEC</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html">Running</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">User Manual</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">User Manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="user/solfec.html">SOLFEC object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/body.html">BODY object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/geometry.html">Geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/materials.html">Materials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/loads.html">Loads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/constraints.html">Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/simulation.html">Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/results.html">Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user/utilities.html">Utilities</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="theory.html">Theory Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="algorithms.html">Algorithms Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="abaqus.html">ABAQUS import</a></li>
@@ -110,7 +148,7 @@
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="about.html">SOLFEC</a><ul>
       <li>Previous: <a href="running.html" title="previous chapter">Running Solfec</a></li>
-      <li>Next: <a href="theory.html" title="next chapter">Solfec Theory Manual</a></li>
+      <li>Next: <a href="user/solfec.html" title="next chapter">SOLFEC object</a></li>
   </ul></li>
   </ul></li>
 </ul>
