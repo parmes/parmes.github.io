@@ -57,6 +57,264 @@
             
   <div class="section" id="geometry">
 <span id="solfec-user-geometry"></span><h1>Geometry<a class="headerlink" href="#geometry" title="Permalink to this headline">¶</a></h1>
+<p>Shapes of bodies can be defined by means of the routines defined below.
+Note, that for rigid and pseudo-rigid body types, cf. <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY</span></a>,
+a shape can comprise a list combining all possible geometry types.
+For finite element type bodies, a single MESH object is used to define shape,
+or a list of CONVEX objects can be used in combination with a background MESH.</p>
+<div class="section" id="convex">
+<h2>CONVEX<a class="headerlink" href="#convex" title="Permalink to this headline">¶</a></h2>
+<p>An object of type CONVEX is either an arbitrary convex polyhedron, or it is a collection of such polyhedrons.</p>
+<div class="topic">
+<p class="topic-title first">obj = CONVEX (vertices, faces, volid | convex)</p>
+<p>This routine creates a CONVEX object from a detailed input data.</p>
+<ul class="simple">
+<li>obj &#8211; created CONVEX object</li>
+<li>vertices &#8211; list of vertices: [x0, y0, z0, x1, y1, z1, ...]</li>
+<li>faces &#8211; list of faces: [n1, v1, v2, ..., vn1, s1, n2, v1, v2, ..., vn2, s2, ...],
+where n1 is the number of vertices of the first face, v1, v2, ...,
+vn1 enumerate the vertices in the CCW order when looking from the outside,
+and s1 is the surface identifier of the face. Similarly for the second face and so on.</li>
+<li>volid &#8211; volume identifier</li>
+<li>convex (emptied) &#8211; collection of CONVEX objects appending obj</li>
+</ul>
+</div>
+<p>Some parameters can also be accessed as members and methods of a CONVEX object, cf. <a class="reference internal" href="#convex-params"><span class="std std-numref">Table 8</span></a>.</p>
+<table border="1" class="docutils" id="id1">
+<span id="convex-params"></span><caption><span class="caption-number">Table 8 </span><span class="caption-text">CONVEX object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Read only members and methods:</strong></td>
+</tr>
+<tr class="row-even"><td><strong>obj.nver</strong> &#8211; number of convex vertices</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.vertex (n)</strong> &#8211; returns a (x, y, z) tuple storing coordinates of nth vertex</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="hull">
+<h2>HULL<a class="headerlink" href="#hull" title="Permalink to this headline">¶</a></h2>
+<p>This routine creates a CONVEX object as a convex hull of a point set.</p>
+<div class="topic">
+<p class="topic-title first">obj = HULL (points, volid, surfid | convex)</p>
+<ul class="simple">
+<li>obj &#8211; created CONVEX object</li>
+<li>points &#8211; list of points: [x0, y0, z0, x1, y1, z1, ...]</li>
+<li>volid &#8211; volume identifier</li>
+<li>surfid &#8211; surface identifier common to all faces</li>
+<li>convex (emptied) &#8211; collection of CONVEX objects appending obj</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mesh2convex">
+<h2>MESH2CONVEX<a class="headerlink" href="#mesh2convex" title="Permalink to this headline">¶</a></h2>
+<p>This routine converts a MESH object into a list of CONVEX objects.
+It can be useful for containing one MESH defining a body shape inside of
+another background mesh defining deformability
+(see the background mesh parameters of the <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a>).</p>
+<div class="topic">
+<p class="topic-title first">obj = MESH2CONVEX (mesh)</p>
+<ul class="simple">
+<li>obj &#8211; created CONVEX object</li>
+<li>mesh &#8211; input mesh</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mesh">
+<h2>MESH<a class="headerlink" href="#mesh" title="Permalink to this headline">¶</a></h2>
+<p>An object of type MESH describes an arbitrary volumetric mesh, comprising tetrahedrons,
+pyramids, wedges, and hexahedrons (<a class="reference internal" href="#mesh-elems"><span class="std std-numref">Fig. 2</span></a>). First order elements are currently supported.</p>
+<div class="figure align-center" id="id2">
+<span id="mesh-elems"></span><a class="reference internal image-reference" href="../../_images/elements.png"><img alt="../../_images/elements.png" src="../../_images/elements.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Element types in Solfec.</span></p>
+</div>
+<div class="topic">
+<p class="topic-title first">obj = MESH (nodes, elements, surfids)</p>
+<p>This routine creates a MESH object from a detailed input data.</p>
+<ul class="simple">
+<li>obj &#8211; created MESH object</li>
+<li>nodes &#8211; list of nodes: [x0, y0, z0, x1, y1, z1, ...]</li>
+<li>elements &#8211; list of elements: [e1, n1, n2, ..., ne1, v1, e2, n1, n2, ..., ne2, v2, ...],
+where e1 is the number of nodes of the first element, n1, n2, ..., ne1 enumerate the element nodes,
+and v1 is the volume identifier of the element. Similarly for the second element and so on.</li>
+<li>surfids &#8211; list of surface identifiers: [gid, f1, n1, n2, ..., nf1, s1, f2, n1, n2, ..., nf2, s2, ...],
+where gid is the global surface identifier for all not specified faces, f1 is the number of nodes in
+the first specified face, n1, n2, ..., nf1 enumerate the face nodes, and s1 is the surface identifier
+of the face. Similarly for other specified faces. If only the gid is given, this can be done either
+as [gid] or as gid alone.</li>
+</ul>
+</div>
+<p>Some parameters can also be accessed as members and methods of a MESH object, cf. <a class="reference internal" href="#mesh-params"><span class="std std-numref">Table 9</span></a>.</p>
+<table border="1" class="docutils" id="id3">
+<span id="mesh-params"></span><caption><span class="caption-number">Table 9 </span><span class="caption-text">MESH object parameters.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Read only members and methods:</strong></td>
+</tr>
+<tr class="row-even"><td><strong>obj.nnod</strong> &#8211; number of mesh nodes</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.get_data()</strong> &#8211; return a tuple (nodes, elements, surfids), in the same format as for MESH().
+Note these are read-only - changing the returned lists does not affect the mesh.</td>
+</tr>
+<tr class="row-even"><td><strong>Read-write members and methods:</strong></td>
+</tr>
+<tr class="row-odd"><td><strong>obj.node (n | x, y, z)</strong> &#8211; returns a (x, y, z) tuple storing coordinates of nth node;
+if x, y or z are given the current coordinates are overwritten</td>
+</tr>
+<tr class="row-even"><td><strong>obj.nodes_on_surface (surfid)</strong> &#8211; returns a list of node numbers belonging to the given surface;
+<em>None</em> object is returned if the list is empty.</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.set_volid(volid)</strong> &#8211; set all elements to have the given volume ID. Returns the volid set.
+This is mostly useful for being able to distinguish bodies in the Viewer, using
+menu <span class="math">\(\to\)</span> kinds of <span class="math">\(\to\)</span> volumes. Note that materials are also assigned by volume id.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="hex">
+<h2>HEX<a class="headerlink" href="#hex" title="Permalink to this headline">¶</a></h2>
+<p>This routine creates a MESH object corresponding to a hexahedral shape (hexahedral elements are used).</p>
+<div class="topic">
+<p class="topic-title first">obj = HEX (nodes, i, j, k, volid, surfids | dx, dy, dz)</p>
+<ul class="simple">
+<li>obj &#8211; created MESH object</li>
+<li>nodes &#8211; list of 8 nodes: [x0, y0, z0, x1, y1, z1, ..., x7, y7, z7].
+The hexahedral shape will be stretched between those nodes using a linear interpolation.</li>
+<li>i, j, k &#8211; numbers of subdivisions along the local x, y, z directions</li>
+<li>volid &#8211; volume identifier</li>
+<li>surfids &#8211; list of six surface identifiers: [s1, s2, ..., s6], corresponding to the faces of the hexahedral shape</li>
+<li>dx, dy, dz &#8211; lists of subdivision schemes along local x, y, z directions. By default a subdivision is uniform.
+When dx = [1, 1, 5, 5, 1, 1] is present, then this scheme will be normalised (actual numbers do not matter,
+but their ratios) and applied to the local x direction of the generated shape.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="rough-hex">
+<h2>ROUGH_HEX<a class="headerlink" href="#rough-hex" title="Permalink to this headline">¶</a></h2>
+<p>This routine creates a hexahedral MESH object corresponding to a given shape.
+The resultant mesh properly contains the input shape and with its orientation (which is based on the inertia properties of the shape).</p>
+<div class="topic">
+<p class="topic-title first">obj = ROUGH_HEX (shape, i, j, k | dx, dy, dz)</p>
+<ul class="simple">
+<li>obj &#8211; created MESH object</li>
+<li>shape &#8211; an input shape defined by a collection of CONVEX objects;
+a list of CONVEX objects (or their collections) [cvx1, cvx2, cvx3, ....] is as well accepted.</li>
+<li>i, j, k &#8211; numbers of subdivisions along the local x, y, z directions of the principal inertia axes</li>
+<li>dx, dy, dz &#8211; lists of subdivision schemes along local x, y, z directions. By default a subdivision is uniform.
+When dx = [1, 1, 5, 5, 1, 1] is present, then this scheme will be normalised (actual numbers do not matter,
+but their ratios) and applied to the local x direction of the generated shape.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="pipe">
+<h2>PIPE<a class="headerlink" href="#pipe" title="Permalink to this headline">¶</a></h2>
+<p>This routine creates a MESH object corresponding to a pipe (hexahedral elements are used).</p>
+<div class="topic">
+<p class="topic-title first">obj = PIPE (pnt, dir, rin, thi, ndir, nrad, nthi, volid, surfids)</p>
+<ul class="simple">
+<li>obj &#8211; created MESH object</li>
+<li>pnt &#8211; base point tuple (x, y, z)</li>
+<li>dir &#8211; direction tuple (dx, dy, dz); length of the pipe equals to the length of the direction</li>
+<li>rin &#8211; inner radius</li>
+<li>thi &#8211; thickness</li>
+<li>ndir, nrad, nthi &#8211; number of subdivisions along the direction, radius and thickness</li>
+<li>volid &#8211; volume identifier</li>
+<li>surfids &#8211; list of four surface identifiers [s1, s2, s3, s4] corresponding to the faces of the pipe</li>
+</ul>
+</div>
+</div>
+<div class="section" id="tetrahedralize">
+<h2>TETRAHEDRALIZE<a class="headerlink" href="#tetrahedralize" title="Permalink to this headline">¶</a></h2>
+<p>This routine creates a tetrahedral mesh. <a class="reference external" href="http://wias-berlin.de/software/tetgen/">Tetgen</a> is invoked internally.</p>
+<div class="topic">
+<p class="topic-title first">obj = TETRAHEDRALIZE (shape, path | volume, quality, volid, surfid)</p>
+<ul>
+<li><p class="first">obj &#8211; created MESH object</p>
+</li>
+<li><p class="first">shape &#8211; an input shape can be:</p>
+<p>– another MESH object</p>
+<p>– a path (e.g. &#8216;path/to/file.stl&#8217;) to an input <a class="reference external" href="http://wias-berlin.de/software/tetgen/1.5/doc/manual/manual006.html">file supported by Tetgen</a></p>
+</li>
+<li><p class="first">path &#8211; path to the output file that will store the mesh;
+when called again and this file is found the mesh will be red from the file rather than generated</p>
+</li>
+<li><p class="first">volume &#8211; maximum element volume (default: not enforced)</p>
+</li>
+<li><p class="first">quality &#8211; value &gt; 1.0 indicating element quality (default: not enforced);
+values close to 1.0 result in better mesh quality (mesh generation may fail for small values)</p>
+</li>
+<li><p class="first">volid &#8211; volume identifier (default: 0); if only possible it is inherited from the input</p>
+</li>
+<li><p class="first">surfid &#8211; surface identifier (default: 0); if only possible it is inherited from the input</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="sphere">
+<h2>SPHERE<a class="headerlink" href="#sphere" title="Permalink to this headline">¶</a></h2>
+<p>An object of type SPHERE represents a single sphere.</p>
+<div class="topic">
+<p class="topic-title first">obj = SPHERE (center, radius, volid, surfid)</p>
+<p>This routine creates a SPHERE object.</p>
+<ul class="simple">
+<li>obj &#8211; created SPHERE object</li>
+<li>center &#8211; tuple (x, y, z) defining the center</li>
+<li>radius &#8211; sphere radius</li>
+<li>volid &#8211; volume identifier</li>
+<li>surfid &#8211; surface identifier</li>
+</ul>
+</div>
+<p>Some parameters can also be accessed as members of a SPHERE objec, cf. <a class="reference internal" href="#sphere-params"><span class="std std-numref">Table 10</span></a>.</p>
+<table border="1" class="docutils" id="id4">
+<span id="sphere-params"></span><caption><span class="caption-number">Table 10 </span><span class="caption-text">SPHERE object parameters.</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Read only members:</strong></td>
+</tr>
+<tr class="row-even"><td><em>obj.center, obj.radius</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="ellip">
+<h2>ELLIP<a class="headerlink" href="#ellip" title="Permalink to this headline">¶</a></h2>
+<p>An object of type ELLIP represents a single ellipsoid.</p>
+<div class="topic">
+<p class="topic-title first">obj = ELLIP (center, radii, volid, surfid)</p>
+<p>This routine creates an ELLIP object.</p>
+<ul class="simple">
+<li>obj &#8211; created ELLIP object</li>
+<li>center &#8211; tuple (x, y, z) defining the center</li>
+<li>radii &#8211; tuple (rx, ry, rz) of ellipsoid radii</li>
+<li>volid &#8211; volume identifier</li>
+<li>surfid &#8211; surface identifier</li>
+</ul>
+</div>
+<p>Some parameters can also be accessed as members of a ELLIP object, cf. <a class="reference internal" href="#ellip-params"><span class="std std-numref">Table 11</span></a>.</p>
+<table border="1" class="docutils" id="id5">
+<span id="ellip-params"></span><caption><span class="caption-number">Table 11 </span><span class="caption-text">ELLIP object parameters.</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Read only members:</strong></td>
+</tr>
+<tr class="row-even"><td><em>obj.center, obj.radii</em></td>
+</tr>
+<tr class="row-odd"><td><strong>obj.rot</strong> &#8211; tuple <span class="math">\(\left(v_{1x},v_{1y},v_{1z},v_{2x},v_{2y},v_{2z},v_{3x},v_{3y},v_{3z}\right)\)</span>
+representing a rotation operator from the ellipsoid natural coordinaet (aligned with principal axes)
+system to the global cooridinate system</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
   <div class="section">
@@ -95,7 +353,19 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../user.html">User Manual</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="solfec.html">SOLFEC object</a></li>
 <li class="toctree-l3"><a class="reference internal" href="body.html">BODY object</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Geometry</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Geometry</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#convex">CONVEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hull">HULL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mesh2convex">MESH2CONVEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mesh">MESH</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hex">HEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rough-hex">ROUGH_HEX</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pipe">PIPE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tetrahedralize">TETRAHEDRALIZE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sphere">SPHERE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ellip">ELLIP</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="materials.html">Materials</a></li>
 <li class="toctree-l3"><a class="reference internal" href="loads.html">Loads</a></li>
 <li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
