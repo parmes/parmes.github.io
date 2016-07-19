@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Utilities &mdash; PARMES  documentation</title>
+    <title>Time series &mdash; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="PARMES  documentation" href="../../index.html" />
     <link rel="up" title="Solfec User Manual" href="../user.html" />
-    <link rel="next" title="Solfec Theory Manual" href="../theory.html" />
-    <link rel="prev" title="Results" href="results.html" />
+    <link rel="next" title="Loads" href="loads.html" />
+    <link rel="prev" title="Materials" href="materials.html" />
   
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -55,8 +55,49 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="utilities">
-<span id="solfec-user-utilities"></span><h1>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h1>
+  <span class="target" id="solfec-user-times"></span><div class="section" id="time-series">
+<h1>Time series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h1>
+<p>An object of type TIME_SERIES is a linear spline based on a series of 2-points.</p>
+<div class="topic">
+<p class="topic-title first">obj = TIME_SERIES (points | label)</p>
+<p>This routine creates a TIME_SERIES object.</p>
+<ul class="simple">
+<li>obj &#8211; created TIME_SERIES object</li>
+<li>points &#8211; either a list [t0, v0, t1, v1, ....] or a list of lists [[t0,v0], [t1,v1], ...]
+of points (where ti &lt; tj, when i &lt; j), or a path to a file storing times and values pairs in format:</li>
+</ul>
+<p># comment 1 ... <br />
+# comment 2 ... <br />
+t0 v0 <br />
+t1 v1 <br />
+# comment 3 ... <br />
+t2 v2 <br />
+... <br /></p>
+<ul class="simple">
+<li>label &#8211; optional label string; if a label is provided than the TIME_SERIES object is stored in
+memory just once; this facilitates more optimal memory usage in cases where many identical
+TIME_SERIES objects are used in multiple constraints (for example); the label should be unique</li>
+</ul>
+</div>
+<p>Some parameters can also be accessed as members of a TIME_SERIES object, cf. <a class="reference internal" href="#times-params"><span class="std std-numref">Table 17</span></a>.</p>
+<table border="1" class="docutils" id="id1">
+<span id="times-params"></span><caption><span class="caption-number">Table 17 </span><span class="caption-text">TIME_SERIES object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Read only members:</strong></td>
+</tr>
+<tr class="row-even"><td><strong>obj.times</strong> - list [t0, t1, ...] storing times</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.values</strong> - list [v0, v1, ...] storing values</td>
+</tr>
+<tr class="row-even"><td><strong>obj.derivative</strong> - returns a TIME_SERIES object representing a derivative of the current object</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.integral</strong> - returns a TIME_SERIES object representing an integral of the current object</td>
+</tr>
+</tbody>
+</table>
 </div>
 
   <div class="section">
@@ -97,13 +138,13 @@
 <li class="toctree-l3"><a class="reference internal" href="body.html">BODY object</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geometry.html">Geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="materials.html">Materials</a></li>
-<li class="toctree-l3"><a class="reference internal" href="times.html">Time series</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Time series</a></li>
 <li class="toctree-l3"><a class="reference internal" href="loads.html">Loads</a></li>
 <li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="solvers.html">Solvers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="simulation.html">Simulation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="results.html">Results</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utilities.html">Utilities</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../theory.html">Theory Manual</a></li>
@@ -123,8 +164,8 @@
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../about.html">SOLFEC</a><ul>
   <li><a href="../user.html">Solfec User Manual</a><ul>
-      <li>Previous: <a href="results.html" title="previous chapter">Results</a></li>
-      <li>Next: <a href="../theory.html" title="next chapter">Solfec Theory Manual</a></li>
+      <li>Previous: <a href="materials.html" title="previous chapter">Materials</a></li>
+      <li>Next: <a href="loads.html" title="next chapter">Loads</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -189,7 +230,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/solfec/user/utilities.txt"
+      <a href="../../_sources/solfec/user/times.txt"
           rel="nofollow">Page source</a>
     </div>
 

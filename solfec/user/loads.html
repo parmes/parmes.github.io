@@ -28,7 +28,7 @@
     <link rel="top" title="PARMES  documentation" href="../../index.html" />
     <link rel="up" title="Solfec User Manual" href="../user.html" />
     <link rel="next" title="Constraints" href="constraints.html" />
-    <link rel="prev" title="Materials" href="materials.html" />
+    <link rel="prev" title="Time series" href="times.html" />
   
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -57,6 +57,69 @@
             
   <div class="section" id="loads">
 <span id="solfec-user-loads"></span><h1>Loads<a class="headerlink" href="#loads" title="Permalink to this headline">¶</a></h1>
+<p>Routines listed in this section apply loads.</p>
+<div class="section" id="gravity">
+<h2>GRAVITY<a class="headerlink" href="#gravity" title="Permalink to this headline">¶</a></h2>
+<p>This routine sets up the gravitational acceleration.</p>
+<div class="topic">
+<p class="topic-title first">GRAVITY (solfec, vector)</p>
+<ul class="simple">
+<li>solfec &#8211; SOLFEC object for which the acceleration is set up</li>
+<li>vector &#8211; (vx, vy, vz) tuple defining the gravity acceleration.
+Each entry is a number or a TIME_SERIES object defining the value of the acceleration component.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="force">
+<h2>FORCE<a class="headerlink" href="#force" title="Permalink to this headline">¶</a></h2>
+<p>This routine applies a point force to a body.</p>
+<div class="topic">
+<p class="topic-title first">FORCE (body, kind, point, direction, value | data)</p>
+<ul class="simple">
+<li>body &#8211; BODY object to which the force is applied</li>
+<li>kind &#8211; either &#8216;SPATIAL&#8217; or &#8216;CONVECTED&#8217;; the spatial direction remains fixed, while the convected one follows deformation</li>
+<li>point &#8211; (x, y, z) tuple with the referential point where the force is applied</li>
+<li>direction &#8211; (vx, vy, vz) tuple defining the direction of force</li>
+<li>value &#8211; a number, a TIME_SERIES object or a callback routine defining the value of
+the applied force. In case of a callback routine, the following format is assumed:</li>
+</ul>
+<p><strong>force = value_callback (data, q, u, time, step)</strong></p>
+<p>where data is the optional user data passed to FORCE routine (if data is a tuple it will expand
+the list of parameters to the callback), q is the configuration of the body passed to the callback,
+u is the velocity of the body passed to the callback, time is the current time passed to the callback
+and step is the current time step passed to the callback. The callback returns a force tuple.
+For rigid body the force reads (spatial force, spatial torque, referential torque), while for other
+kinds of bodies this is a generalized force of the same dimension as the velocity u (power conjugate to it).</p>
+<ul class="simple">
+<li>data &#8211; callback routine user data</li>
+</ul>
+</div>
+</div>
+<div class="section" id="torque">
+<h2>TORQUE<a class="headerlink" href="#torque" title="Permalink to this headline">¶</a></h2>
+<p>This routine applies a torque to a rigid body.</p>
+<div class="topic">
+<p class="topic-title first">TORQUE (body, kind, direction, value)</p>
+<ul class="simple">
+<li>body &#8211; BODY object of kind &#8216;RIGID&#8217; to which the torque is applied</li>
+<li>kind &#8211; either &#8216;SPATIAL&#8217; or &#8216;CONVECTED&#8217;; the spatial direction remains fixed, while the convected one follows deformation</li>
+<li>direction &#8211; (vx, vy, vz) tuple defining the direction of torque</li>
+<li>value &#8211; a number or a TIME_SERIES object defining the value of the applied torque</li>
+</ul>
+</div>
+</div>
+<div class="section" id="pressure">
+<h2>PRESSURE<a class="headerlink" href="#pressure" title="Permalink to this headline">¶</a></h2>
+<p>This routine applies a constant surface pressure to MESH based bodies.</p>
+<div class="topic">
+<p class="topic-title first">PRESSURE (body, surfid, value)</p>
+<ul class="simple">
+<li>body &#8211; BODY object to which the pressure is applied (the shape has to be composed of a single MESH)</li>
+<li>surfid &#8211; the integer surface identifier</li>
+<li>value &#8211; a number or a TIME_SERIES object defining the value of the applied load</li>
+</ul>
+</div>
+</div>
 </div>
 
   <div class="section">
@@ -97,8 +160,16 @@
 <li class="toctree-l3"><a class="reference internal" href="body.html">BODY object</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geometry.html">Geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="materials.html">Materials</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Loads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="times.html">Time series</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Loads</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gravity">GRAVITY</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#force">FORCE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#torque">TORQUE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pressure">PRESSURE</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solvers.html">Solvers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="simulation.html">Simulation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="results.html">Results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="utilities.html">Utilities</a></li>
@@ -121,7 +192,7 @@
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../about.html">SOLFEC</a><ul>
   <li><a href="../user.html">Solfec User Manual</a><ul>
-      <li>Previous: <a href="materials.html" title="previous chapter">Materials</a></li>
+      <li>Previous: <a href="times.html" title="previous chapter">Time series</a></li>
       <li>Next: <a href="constraints.html" title="next chapter">Constraints</a></li>
   </ul></li>
   </ul></li>
