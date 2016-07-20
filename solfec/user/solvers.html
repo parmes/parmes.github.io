@@ -57,6 +57,222 @@
             
   <div class="section" id="solvers">
 <span id="solfec-user-solvers"></span><h1>Solvers<a class="headerlink" href="#solvers" title="Permalink to this headline">¶</a></h1>
+<p>Solver objects represent a constraint solution scheme applied at every time step
+of a simulation in order to resolve the equality and inequality constraints. User defined
+constraints and contact constraints are handled together as one nonlinear root finding problem.</p>
+<div class="section" id="gauss-seidel">
+<h2>Gauss&#8211;Seidel<a class="headerlink" href="#gauss-seidel" title="Permalink to this headline">¶</a></h2>
+<p>An object of type GAUSS_SEIDEL_SOLVER represents a nonlinear block Gauss&#8211;Seidel solver,
+employed for the calculation of constraint reactions.</p>
+<div class="topic">
+<p class="topic-title first">obj = GAUSS_SEIDEL_SOLVER (epsilon, maxiter | meritval, failure, diagepsilon, diagmaxiter, diagsolver, data, callback)</p>
+<p>This routine creates a GAUSS_SEIDEL_SOLVER object.</p>
+<ul class="simple">
+<li>obj &#8211; created GAUSS_SEIDEL_SOLVER object</li>
+<li>epsilon &#8211; relative accuracy of constraint reactions sufficient for termination</li>
+<li>maxiter &#8211; maximal number of iterations before termination</li>
+<li>meritval &#8211; constraints satisfaction merit function value sufficient for termination (default: 1, unused)</li>
+<li>failure &#8211; failure (lack of convergence) action (default: &#8216;CONTINUE&#8217;). Available failure actions are:
+&#8216;CONTINUE&#8217; (simulation is continued), &#8216;EXIT&#8217; (simulation is stopped and Solfec exits),
+&#8216;CALLBACK&#8217; (a callback function is called if it was set or otherwise the &#8216;EXIT&#8217; scenario is executed).
+In all cases <em>obj.error</em> variable is set up, cf. <a class="reference internal" href="#gauss-seidel-error"><span class="std std-numref">Table 20</span></a>.</li>
+<li>diagepsilon &#8211; diagonal block solver relative accuracy of constraint reactions (default: min (epsilon, meritval, 1E-4) / 100)</li>
+<li>diagmaxiter &#8211; diagonal block solver maximal number of iterations (default: max (100, maxiter / 100))</li>
+<li>diagsolver &#8211; diagonal block solver kind (default: &#8216;SEMISMOOTH_NEWTON&#8217;). Available diagonal solvers are:
+&#8216;SEMISMOOTH_NEWTON&#8217;, &#8216;PROJECTED_GRADIENT&#8217;, &#8216;DE_SAXCE_FENG&#8217;, &#8216;PROJECTED_NEWTON&#8217;.</li>
+<li>data &#8211; data passed to the failure callback function (if this is a tuple it will
+accordingly expand the parameter list of the callback routine)</li>
+<li>callback &#8211; failure callback function of form: <strong>value = callback (obj, data)</strong>,
+where for the returned value equal zero Solfec run is stopped</li>
+</ul>
+</div>
+<p>Some parameters can also be accessed as members of a GAUSS_SEIDEL_SOLVER object, cf. <a class="reference internal" href="#gauss-seidel-params"><span class="std std-numref">Table 19</span></a>.</p>
+<table border="1" class="docutils" id="id1">
+<span id="gauss-seidel-params"></span><caption><span class="caption-number">Table 19 </span><span class="caption-text">GAUSS_SEIDEL_SOLVER object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Read only members:</strong></td>
+</tr>
+<tr class="row-even"><td><em>obj.failure</em></td>
+</tr>
+<tr class="row-odd"><td><strong>obj.error</strong> &#8211; current error code, cf. <a class="reference internal" href="#gauss-seidel-error"><span class="std std-numref">Table 20</span></a></td>
+</tr>
+<tr class="row-even"><td><strong>obj.iters</strong> &#8211; number of iterations during a last run of solver</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.rerhist</strong> &#8211; a list of relative error values for each iteration of the last run</td>
+</tr>
+<tr class="row-even"><td><strong>obj.merhist</strong> &#8211; a list of merit function values for each iteration of the last run</td>
+</tr>
+<tr class="row-odd"><td><strong>Read/write members:</strong></td>
+</tr>
+<tr class="row-even"><td><em>obj.epsilon, obj.maxiter, obj.meritval, obj.diagepsilon, obj.diagmaxiter, obj.diagsolver</em></td>
+</tr>
+<tr class="row-odd"><td><strong>obj.reverse</strong> &#8211; &#8216;ON&#8217; or &#8216;OFF&#8217; flag switching iteration reversion modes (whether to alternate
+backward and forward or not, default is &#8216;OFF&#8217;)</td>
+</tr>
+<tr class="row-even"><td><strong>obj.variant</strong> &#8211; variant of parallel Gauss&#8211;Seidel update (default: &#8216;FULL&#8217;),
+cf. <a class="reference internal" href="#gauss-seidel-variant"><span class="std std-numref">Table 21</span></a>. Ignored in sequential mode.</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.innerloops</strong> &#8211; number of inner Gauss&#8211;Seidel loops per one global step during a parallel run
+(default: 1). Ignored in sequential mode.</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table border="1" class="docutils" id="id2">
+<span id="gauss-seidel-error"></span><caption><span class="caption-number">Table 20 </span><span class="caption-text">Error codes of GAUSS_SEIDEL_SOLVER object.</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>&#8216;OK&#8217;</td>
+<td>No error has occurred</td>
+</tr>
+<tr class="row-even"><td>&#8216;DIVERGED&#8217;</td>
+<td>Global iteration loop divergence</td>
+</tr>
+<tr class="row-odd"><td>&#8216;DIAGONAL_DIVERGED&#8217;</td>
+<td>Diagonal solver iteration loop divergence</td>
+</tr>
+<tr class="row-even"><td>&#8216;DIAGONAL_FAILED&#8217;</td>
+<td>Failure of a diagonal solver (e.g. singularity)</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table border="1" class="docutils" id="id3">
+<span id="gauss-seidel-variant"></span><caption><span class="caption-number">Table 21 </span><span class="caption-text">Variants of parallel Gauss&#8211;Seidel update.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>&#8216;FULL&#8217;</td>
+<td>Full Gauss&#8211;Seidel update as in sequential case. Although the slowest, it
+works in all cases. It should be noted, that all of the below variants will
+usually fail for all&#8211;rigid&#8211;body models.</td>
+</tr>
+<tr class="row-even"><td>&#8216;MIDDLE_JACOBI&#8217;</td>
+<td>Jacobi update for off&#8211;processor data of <span class="math">\(\mathbf{W}\)</span> matrix blocks
+communicating with processors of higher and lower colors. Of use for
+deformable kinematics, where off&#8211;diagonal interactions are weaker. The
+Gauss&#8211;Seidel runtime should be halved for large numbers of processors.</td>
+</tr>
+<tr class="row-odd"><td>&#8216;BOUNDARY_JACOBI&#8217;</td>
+<td>Use Jacobi update for all off&#8211;processor data. This approach will fail in
+most cases. It servers as illustration.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="projected-newton">
+<h2>Projected Newton<a class="headerlink" href="#projected-newton" title="Permalink to this headline">¶</a></h2>
+<p>Object of type NEWTON_SOLVER represents a projected quasi&#8211;Newton constraints solver.
+If local dynamics is enabled (locdyn = &#8216;ON&#8217;) and iterations fail to converge,
+the Gauss&#8211;Seidel solver will be invoked, starting from the previous time step solution.
+<em>WARNING:</em> NEWTON_SOLVER may not work well for friction &gt; 1.0.</p>
+<div class="topic">
+<p class="topic-title first">obj = NEWTON_SOLVER (| meritval, maxiter, locdyn, linver, linmaxiter, maxmatvec, epsilon, delta, theta, omega, gsflag)</p>
+<p>This routine creates a NEWTON_SOLVER object.</p>
+<ul class="simple">
+<li>obj &#8211; created NEWTON_SOLVER object</li>
+<li>meritval &#8211; value of merit function sufficient for termination (default: 1E-8)</li>
+<li>maxiter &#8211; iterations bound (default: 1000)</li>
+<li>locdyn &#8211; &#8216;ON&#8217; or &#8216;OFF&#8217; deciding whether to fully assemble local dynamics (default: &#8216;ON&#8217;);
+using the &#8216;OFF&#8217; value may be more efficient for implicitly integrated FEM bodies with large meshes</li>
+<li>linver &#8211; &#8216;GMRES&#8217; or &#8216;DIAG&#8217; being the linear solver kind (default: &#8216;GMRES&#8217;)</li>
+<li>limaxiter &#8211; GMRES iterations bound (ignored for linver = &#8216;DIAG&#8217;, default: 10)</li>
+<li>maxmatvec &#8211; GMRES matrix-vector products bound (default: linmaxiter * maxiter)</li>
+<li>epsilon &#8211; relative GMRES accuracy (default: 0.25)</li>
+<li>delta &#8211; non&#8211;negative amount of diagonal regularization (used only for linver = &#8216;GMRES&#8217;, default: 0.0);
+this parameter has a decisive influence on global convergence; for well&#8211;conditioned problems it can be
+very small or zero; for ill&#8211;conditioned problems one should pick a value that delivers an overall best
+convergence behavior; large values will slow down convergence, but stabilize it; small values may destabilize
+convergence for ill&#8211;conditioned problems; delta (typically <span class="math">\(\ll\)</span> 1) should be tuned together with epsilon
+and linmaxiter, so that the linear sub-problems are solved only roughly; since rigorous analysis is still missing
+for these parameters, please experiment before settling on specific values for a specific problem;</li>
+<li>theta &#8211; relaxation parameter greater than 0 and not greater than 1 (used only for linver = &#8216;DIAG&#8217;,
+default: 0.25); smaller initial theta may improve overall convergence behavior</li>
+<li>omega &#8211; positive equation smoothing omega (default: mbox{textbf{meritval}}cdot0.01)</li>
+<li>gsflag &#8211; &#8216;ON&#8217; or &#8216;OFF&#8217; deciding whether to us Gauss-Seidel iterations in case of failure (default: &#8216;ON&#8217;)</li>
+</ul>
+</div>
+<p>Some parameters can also be accessed as members of a NEWTON_SOLVER object, cf. <a class="reference internal" href="#newton-params"><span class="std std-numref">Table 22</span></a>.</p>
+<table border="1" class="docutils" id="id4">
+<span id="newton-params"></span><caption><span class="caption-number">Table 22 </span><span class="caption-text">NEWTON_SOLVER object parameters.</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Read only members:</strong></td>
+</tr>
+<tr class="row-even"><td><em>obj.failure</em></td>
+</tr>
+<tr class="row-odd"><td><strong>obj.iters</strong> &#8211; number of iterations during a last run of solver</td>
+</tr>
+<tr class="row-even"><td><strong>obj.merhist</strong> &#8211; a list of merit function values for each iteration of the last run</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.mvhist</strong> &#8211; a list of matrix&#8211;vector products for each iteration of the last run</td>
+</tr>
+<tr class="row-even"><td><strong>Read/write members:</strong></td>
+</tr>
+<tr class="row-odd"><td><em>obj.meritval, obj.maxiter, obj.locdyn, obj.linver, obj.linmaxiter, obj.maxmatvec, obj.epsilon,</em>
+<em>obj.delta, obj.theta, obj.omega, obj.gsflag</em></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="penalty-based">
+<h2>Penalty based<a class="headerlink" href="#penalty-based" title="Permalink to this headline">¶</a></h2>
+<p>An object of type PENALTY_SOLVER represents a penalty based constraint solver.
+When in use, all &#8216;SIGNORONI_COULOMB&#8217; type contact interfaces are regarded as &#8216;SPRING_DASHPOT&#8217; ones.
+One should then remember about specifying the spring value for those constraints.</p>
+<div class="topic">
+<p class="topic-title first">obj = PENALTY_SOLVER ( | variant)</p>
+<p>This routine creates a PENALTY_SOLVER object.</p>
+<ul class="simple">
+<li>obj &#8211; created PENALTY_SOLVER object</li>
+<li>variant &#8211; &#8216;IMPLICIT&#8217; or &#8216;EXPLICIT&#8217; normal force computation variant (default: &#8216;IMPLICIT&#8217;)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="siconos-solver">
+<h2>Siconos solver<a class="headerlink" href="#siconos-solver" title="Permalink to this headline">¶</a></h2>
+<p>Object of type SICONOS_SOLVER represents an interface to <a class="reference external" href="http://siconos.gforge.inria.fr">Siconos</a> contact solvers library.
+Currently only the the nonlinear Gauss&#8211;Seidel solver is enabled, making the SICONOS_SOLVER equivalent to the GAUSS_SEIDEL_SOLVER.
+<em>WARNING1:</em> only contact constraints are supported at this stage. <em>WARNING2:</em> velocity restitution is ignored at the moment.
+<em>WARNING3:</em> only the serial version is available. <em>WARNING4:</em> Solfec needs to be compiled with Sicons support for this solver to work.</p>
+<div class="topic">
+<p class="topic-title first">obj = SICONOS_SOLVER (| epsilon, maxiter, verbose)</p>
+<p>This routine creates a SICONOS_SOLVER object.</p>
+<ul class="simple">
+<li>obj &#8211; created SICONOS_SOLVER object</li>
+<li>epsilon &#8211; relative accuracy of constraint reactions sufficient for termination (default: 1E-4)</li>
+<li>maxiter &#8211; iterations bound (default: 1000)</li>
+<li>verbose &#8211; verbosity flag: &#8216;ON&#8217; or &#8216;OFF&#8217; (default: &#8216;OFF&#8217;)</li>
+</ul>
+</div>
+<p>Some parameters can also be accessed as members of a SICONOS_SOLVER object, cf. <a class="reference internal" href="#siconos-params"><span class="std std-numref">Table 23</span></a>.</p>
+<table border="1" class="docutils" id="id5">
+<span id="siconos-params"></span><caption><span class="caption-number">Table 23 </span><span class="caption-text">SICONOS_SOLVER object parameters.</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Read/write members:</strong></td>
+</tr>
+<tr class="row-even"><td><em>obj.epsilon, obj.maxiter</em></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
   <div class="section">
@@ -100,7 +316,13 @@
 <li class="toctree-l3"><a class="reference internal" href="times.html">Time series</a></li>
 <li class="toctree-l3"><a class="reference internal" href="loads.html">Loads</a></li>
 <li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Solvers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gauss-seidel">Gauss&#8211;Seidel</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#projected-newton">Projected Newton</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#penalty-based">Penalty based</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#siconos-solver">Siconos solver</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="simulation.html">Simulation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="results.html">Results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="utilities.html">Utilities</a></li>

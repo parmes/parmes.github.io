@@ -64,17 +64,21 @@
 <div class="topic">
 <p class="topic-title first">obj = FIELD (solfec, field_callback | label, data)</p>
 <p>This routine creates a FIELD object.</p>
-<ul class="simple">
-<li>obj &#8211; created FIELD object</li>
-<li>solfec &#8211; obj is created for this SOLFEC object</li>
-<li>field_callback &#8211; the Python function defining the scalar field:</li>
-</ul>
+<ul>
+<li><p class="first">obj &#8211; created FIELD object</p>
+</li>
+<li><p class="first">solfec &#8211; obj is created for this SOLFEC object</p>
+</li>
+<li><p class="first">field_callback &#8211; the Python function defining the scalar field:</p>
 <p><strong>value = field_callback (data, x, y, z, t)</strong></p>
-<p>where <em>data</em> is the optional user data passed to FIELD routine (if data is a tuple it will expand the list of parameters to the callback),
-<em>x, y, z</em> are the point coordinates, and <em>t</em> is time. The function should return a numeric value of the scalar field at given point and instant of time.</p>
-<ul class="simple">
-<li>label &#8211; label string (default: &#8216;FIELD_i&#8217;, where i is incremented for each call)</li>
-<li>data &#8211; callback routine user data</li>
+<p>where <em>data</em> is the optional user data passed to FIELD routine (if data is a tuple it will expand
+the list of parameters to the callback), <em>x, y, z</em> are the point coordinates, and <em>t</em> is time.
+The function should return a numeric value of the scalar field at given point and instant of time.</p>
+</li>
+<li><p class="first">label &#8211; label string (default: &#8216;FIELD_i&#8217;, where i is incremented for each call)</p>
+</li>
+<li><p class="first">data &#8211; callback routine user data</p>
+</li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a FIELD object, cf. <a class="reference internal" href="#field-params"><span class="std std-numref">Table 12</span></a>.</p>

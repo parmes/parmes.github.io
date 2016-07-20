@@ -75,14 +75,17 @@ Each entry is a number or a TIME_SERIES object defining the value of the acceler
 <p>This routine applies a point force to a body.</p>
 <div class="topic">
 <p class="topic-title first">FORCE (body, kind, point, direction, value | data)</p>
-<ul class="simple">
-<li>body &#8211; BODY object to which the force is applied</li>
-<li>kind &#8211; either &#8216;SPATIAL&#8217; or &#8216;CONVECTED&#8217;; the spatial direction remains fixed, while the convected one follows deformation</li>
-<li>point &#8211; (x, y, z) tuple with the referential point where the force is applied</li>
-<li>direction &#8211; (vx, vy, vz) tuple defining the direction of force</li>
-<li>value &#8211; a number, a TIME_SERIES object or a callback routine defining the value of
-the applied force. In case of a callback routine, the following format is assumed:</li>
-</ul>
+<ul>
+<li><p class="first">body &#8211; BODY object to which the force is applied</p>
+</li>
+<li><p class="first">kind &#8211; either &#8216;SPATIAL&#8217; or &#8216;CONVECTED&#8217;; the spatial direction remains fixed, while the convected one follows deformation</p>
+</li>
+<li><p class="first">point &#8211; (x, y, z) tuple with the referential point where the force is applied</p>
+</li>
+<li><p class="first">direction &#8211; (vx, vy, vz) tuple defining the direction of force</p>
+</li>
+<li><p class="first">value &#8211; a number, a TIME_SERIES object or a callback routine defining the value of
+the applied force. In case of a callback routine, the following format is assumed:</p>
 <p><strong>force = value_callback (data, q, u, time, step)</strong></p>
 <p>where data is the optional user data passed to FORCE routine (if data is a tuple it will expand
 the list of parameters to the callback), q is the configuration of the body passed to the callback,
@@ -90,8 +93,9 @@ u is the velocity of the body passed to the callback, time is the current time p
 and step is the current time step passed to the callback. The callback returns a force tuple.
 For rigid body the force reads (spatial force, spatial torque, referential torque), while for other
 kinds of bodies this is a generalized force of the same dimension as the velocity u (power conjugate to it).</p>
-<ul class="simple">
-<li>data &#8211; callback routine user data</li>
+</li>
+<li><p class="first">data &#8211; callback routine user data</p>
+</li>
 </ul>
 </div>
 </div>

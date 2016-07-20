@@ -233,25 +233,20 @@ but their ratios) and applied to the local x direction of the generated shape.</
 <p>This routine creates a tetrahedral mesh. <a class="reference external" href="http://wias-berlin.de/software/tetgen/">Tetgen</a> is invoked internally.</p>
 <div class="topic">
 <p class="topic-title first">obj = TETRAHEDRALIZE (shape, path | volume, quality, volid, surfid)</p>
-<ul>
-<li><p class="first">obj &#8211; created MESH object</p>
+<ul class="simple">
+<li>obj &#8211; created MESH object</li>
+<li>shape &#8211; an input shape can be:<ul>
+<li>another MESH object</li>
+<li>a path (e.g. &#8216;path/to/file.stl&#8217;) to an input <a class="reference external" href="http://wias-berlin.de/software/tetgen/1.5/doc/manual/manual006.html">file supported by Tetgen</a></li>
+</ul>
 </li>
-<li><p class="first">shape &#8211; an input shape can be:</p>
-<p>– another MESH object</p>
-<p>– a path (e.g. &#8216;path/to/file.stl&#8217;) to an input <a class="reference external" href="http://wias-berlin.de/software/tetgen/1.5/doc/manual/manual006.html">file supported by Tetgen</a></p>
-</li>
-<li><p class="first">path &#8211; path to the output file that will store the mesh;
-when called again and this file is found the mesh will be red from the file rather than generated</p>
-</li>
-<li><p class="first">volume &#8211; maximum element volume (default: not enforced)</p>
-</li>
-<li><p class="first">quality &#8211; value &gt; 1.0 indicating element quality (default: not enforced);
-values close to 1.0 result in better mesh quality (mesh generation may fail for small values)</p>
-</li>
-<li><p class="first">volid &#8211; volume identifier (default: 0); if only possible it is inherited from the input</p>
-</li>
-<li><p class="first">surfid &#8211; surface identifier (default: 0); if only possible it is inherited from the input</p>
-</li>
+<li>path &#8211; path to the output file that will store the mesh;
+when called again and this file is found the mesh will be red from the file rather than generated</li>
+<li>volume &#8211; maximum element volume (default: not enforced)</li>
+<li>quality &#8211; value &gt; 1.0 indicating element quality (default: not enforced);
+values close to 1.0 result in better mesh quality (mesh generation may fail for small values)</li>
+<li>volid &#8211; volume identifier (default: 0); if only possible it is inherited from the input</li>
+<li>surfid &#8211; surface identifier (default: 0); if only possible it is inherited from the input</li>
 </ul>
 </div>
 </div>

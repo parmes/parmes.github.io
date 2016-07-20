@@ -61,11 +61,11 @@
 <div class="topic">
 <p class="topic-title first">obj = TIME_SERIES (points | label)</p>
 <p>This routine creates a TIME_SERIES object.</p>
-<ul class="simple">
-<li>obj &#8211; created TIME_SERIES object</li>
-<li>points &#8211; either a list [t0, v0, t1, v1, ....] or a list of lists [[t0,v0], [t1,v1], ...]
-of points (where ti &lt; tj, when i &lt; j), or a path to a file storing times and values pairs in format:</li>
-</ul>
+<ul>
+<li><p class="first">obj &#8211; created TIME_SERIES object</p>
+</li>
+<li><p class="first">points &#8211; either a list [t0, v0, t1, v1, ....] or a list of lists [[t0,v0], [t1,v1], ...]
+of points (where ti &lt; tj, when i &lt; j), or a path to a file storing times and values pairs in format:</p>
 <p># comment 1 ... <br />
 # comment 2 ... <br />
 t0 v0 <br />
@@ -73,10 +73,11 @@ t1 v1 <br />
 # comment 3 ... <br />
 t2 v2 <br />
 ... <br /></p>
-<ul class="simple">
-<li>label &#8211; optional label string; if a label is provided than the TIME_SERIES object is stored in
+</li>
+<li><p class="first">label &#8211; optional label string; if a label is provided than the TIME_SERIES object is stored in
 memory just once; this facilitates more optimal memory usage in cases where many identical
-TIME_SERIES objects are used in multiple constraints (for example); the label should be unique</li>
+TIME_SERIES objects are used in multiple constraints (for example); the label should be unique</p>
+</li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a TIME_SERIES object, cf. <a class="reference internal" href="#times-params"><span class="std std-numref">Table 17</span></a>.</p>
