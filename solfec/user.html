@@ -69,6 +69,7 @@ and let y = CREATE2 (x) create an object y, using x. If CREATE2 (x) empties x, t
 becomes an empty placeholder. One can use it to assign value, x = CREATE1 (), but using it as an argument,
 z = CREATE2 (x), will cause an abnormal termination. One can create a copy of an object by calling
 z = COPY (x), hence using y = CREATE2 (COPY (x)) leaves x intact.</li>
+<li>Routines marked as <span class="red">(Under development)</span> are functional, although they may be unstable.</li>
 </ul>
 <p>Sections below document Solfec objects and routines used for their manipulation:</p>
 <div class="toctree-wrapper compound">
@@ -120,9 +121,50 @@ z = COPY (x), hence using y = CREATE2 (COPY (x)) leaves x intact.</li>
 <li class="toctree-l2"><a class="reference internal" href="user/solvers.html#siconos-solver">Siconos solver</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="user/simulation.html">Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="user/results.html">Results</a></li>
-<li class="toctree-l1"><a class="reference internal" href="user/utilities.html">Utilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user/simulation.html">Simulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user/simulation.html#initialization">Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/simulation.html#runtime-utilities">Runtime utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/simulation.html#contact-handling">Contact handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/simulation.html#parallel-runtime">Parallel runtime</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user/results.html">Results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user/results.html#duration">DURATION</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/results.html#forward">FORWARD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/results.html#backward">BACKWARD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/results.html#seek">SEEK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/results.html#displacement">DISPLACEMENT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/results.html#velocity">VELOCITY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/results.html#stress">STRESS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/results.html#energy">ENERGY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/results.html#timing">TIMING</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/results.html#history">HISTORY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/results.html#xdmf-export">XDMF_EXPORT</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user/utilities.html">Utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#viewer">VIEWER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#body-chars">BODY_CHARS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#delete">DELETE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#scale">SCALE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#translate">TRANSLATE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#rotate">ROTATE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#split">SPLIT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#mesh-split">MESH_SPLIT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#copy">COPY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#bend">BEND</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#bylabel">BYLABEL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#mass-center">MASS_CENTER</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#locdyn-dump">LOCDYN_DUMP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#overlapping">OVERLAPPING</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#mbfcp-export">MBFCP_EXPORT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#non-solfec-argv">NON_SOLFEC_ARGV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#modal-analysis">MODAL_ANALYSIS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#body-mm-export">BODY_MM_EXPORT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#display-point">DISPLAY_POINT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user/utilities.html#render">RENDER</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>

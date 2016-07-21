@@ -57,6 +57,212 @@
             
   <div class="section" id="simulation">
 <span id="solfec-user-simulation"></span><h1>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h1>
+<p>Routines listed in this section control the solution process.
+A simulation can be run be invoking the RUN command, documented below.</p>
+<div class="topic">
+<p class="topic-title first">RUN (solfec, solver, duration)</p>
+<p>This routine runs a simulation.</p>
+<ul class="simple">
+<li>solfec &#8211; SOLFEC object</li>
+<li>solver &#8211; constraint solver object (e.g. GAUSS_SEIDEL_SOLVER, NEWTON_SOLVER, PENALTY_SOLVER)</li>
+<li>duration &#8211; duration of analysis. <em>Note:</em> this parameter is ignored when an analysis is run in the viewer mode (with &#8211;v switch).</li>
+</ul>
+</div>
+<div class="section" id="initialization">
+<h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
+<p>Prior to running, a simulation may also require initialization.
+Below we list subroutines providing per&#8211;body or per&#8211;simulation initialization functionality.</p>
+<div class="topic">
+<p class="topic-title first">INITIAL_VELOCITY (body, linear, angular)</p>
+<p>This routine applies initial (at time zero) linear and angular (in the sense of rigid motion) velocity to a body.</p>
+<ul class="simple">
+<li>body &#8211; BODY object</li>
+<li>linear &#8211; linear velocity <span class="math">\((v_{x},v_{y},v_{z})\)</span></li>
+<li>angular &#8211; angular velocity <span class="math">\((\omega_{x},\omega_{y},\omega_{z} )\)</span></li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">INITIALIZE_STATE (solfec, path, time)</p>
+<p>This routine initializes the state of a Solfec object with the state red from an output
+directory at a given time. It is ignored in the &#8216;READ&#8217; mode. <em>Note</em>: constraint reactions
+are initialized with zeros and recalculated at the next time step.</p>
+<ul class="simple">
+<li>solfec &#8211; Solfec object in the &#8216;WRITE&#8217; mode</li>
+<li>path &#8211; path to the output directory containing matching analysis results (note: this cannot be the same output directory as for the solfec object)</li>
+<li>time &#8211; time at which the state should be red from the output files</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">RIGID_TO_FEM (path, time, solfec)</p>
+<p>This routine initializes the state of FEM bodies within the Solfec object with the state of rigid bodies
+red from an output directory at a given time. It is ignored in the &#8216;READ&#8217; mode. <em>Note:</em> rigid displacements
+are applied to the finite element bodies; this implies that when you add boundary conditions to finite element
+bodies, after their state was updated with RIGID_TO_FEM, you still use the original referential point coordinates
+as the locations of the constraints (e.g. when using SET_DISPLACEMENT or SET_VELOCITY).</p>
+<ul class="simple">
+<li>path &#8211; path to the output directory containing matching rigid body analysis results;
+the number of rigid bodies in this analysis must match the number of FEM bodies in the Solfec object;
+the identifiers of rigid bodies must match the identifiers of FEM bodies;
+this is guaranteed if the input files for both analyses differ only by the prescribed body kinds;</li>
+<li>time &#8211; time at which the state should be red from the output files</li>
+<li>solfec &#8211; Solfec object in the &#8216;WRITE&#8217; mode</li>
+</ul>
+</div>
+</div>
+<div class="section" id="runtime-utilities">
+<h2>Runtime utilities<a class="headerlink" href="#runtime-utilities" title="Permalink to this headline">¶</a></h2>
+<p>Routines below help control runtime behaviour.</p>
+<div class="topic">
+<p class="topic-title first">OUTPUT (solfec, interval | compression)</p>
+<p>This routine specifies the frequency of writing to the output file.</p>
+<ul class="simple">
+<li>solfec &#8211; SOLFEC object</li>
+<li>interval &#8211; length of the time interval elapsing before consecutive output file writes</li>
+<li>compression &#8211; output compression mode: &#8216;OFF&#8217; (default) or &#8216;ON&#8217;.
+Compressed output files are smaller, although they might not be portable between hardware platforms.</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">EXTENTS (solfec, extents)</p>
+<p>This routine bounds the simulation space. Bodies falling outside of the extents are deleted from the simulation.</p>
+<ul class="simple">
+<li>solfec &#8211; SOLFEC object</li>
+<li>extents &#8211; (xmin, ymin, zmin, xmax, ymax, zmax) tuple</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">CALLBACK (solfec, interval, data, callback)</p>
+<p>This routine defines a callback function, invoked during a run of Solfec every interval of time.
+A callback routine can interrupt the course of RUN command by returning 0.</p>
+<ul class="simple">
+<li>solfec &#8211; SOLFEC object</li>
+<li>interval &#8211; length of the time interval elapsing before consecutive callback calls</li>
+<li>data &#8211; data passed to the callback function</li>
+<li>callback &#8211; callback function of form: value = callback (data), where for the returned value equal zero Solfec run is stopped</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">WARNINGS (state)</p>
+<p>This routine disables or enables Solfec warnings. It is a good practice to have the
+warnings enabled and only switch them off after making sure, that they can be ignored.</p>
+<ul class="simple">
+<li>state &#8211; &#8216;ON&#8217; or &#8216;OFF&#8217; (default: &#8216;ON&#8217;)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="contact-handling">
+<h2>Contact handling<a class="headerlink" href="#contact-handling" title="Permalink to this headline">¶</a></h2>
+<p>Routines listed below affect contact detection and contact handling.</p>
+<div class="topic">
+<p class="topic-title first">GEOMETRIC_EPSILON (epsilon)</p>
+<p>This routine sets a numerical tolerance for geometric tests performed within Solfec.
+The tolerance is a characteristic distance between two distinct points below which they can be regarded as one.</p>
+<ul class="simple">
+<li>epsilon &#8211; geometrical tolerance (default: 1E-6)</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">UNPHYSICAL_PENETRATION (solfec, depth)</p>
+<p>This routine sets a depth of allowed an unphysical interpenetration.
+Once it is exceeded, the simulation is stopped and a suitable error message printed out.</p>
+<ul class="simple">
+<li>solfec &#8211; SOLFEC object</li>
+<li>depth &#8211; interpenetration depth bound (default: <span class="math">\(\infty\)</span>)</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">CONTACT_EXCLUDE_BODIES (body1, body2)</p>
+<p>This routine disables contact detection for a specific pair of bodies. By default contact detection
+is enabled for all possible body pairs. <em>Note:</em> must be invoked on all processors during a parallel
+run (do not use from within a callback).</p>
+<ul class="simple">
+<li>body1 &#8211; first BODY object</li>
+<li>body2 &#8211; second BODY object</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">CONTACT_EXCLUDE_SURFACES (solfec, surf1, surf2)</p>
+<p>This routine disables contact detection for a specific pair of surfaces. By default contact detection
+is enabled for all possible surface pairs. <em>Note:</em> must be invoked on all processors during a parallel
+run (do not use from within a callback).</p>
+<ul class="simple">
+<li>solfec &#8211; SOLFEC object</li>
+<li>surf1 &#8211; first BODY object</li>
+<li>surf2 &#8211; second BODY object</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">CONTACT_SPARSIFY (solfec, threshold | minarea, mindist)</p>
+<p>This routine modifies contact filtering (sparsification) behaviour. Generally speaking, some contact points
+are filtered out in order to avoid unnecessary dense contact point clusters. If a pair of bodies is connected
+by two or more contact points, one of the points generated by topologically adjacent entities (elements,
+convices) will be removed (sparsified) if the ratio of contact areas of is smaller than the prescribed threshold.</p>
+<ul class="simple">
+<li>solfec &#8211; SOLFEC object</li>
+<li>threshold &#8211; sparsification threshold (default: 0.01) from within the interval [0, 1]. Zero corresponds to the lack of sparsification.</li>
+<li>minarea &#8211; minimal contact area (default: 0.0). Contact points with area smaller then minarea are dropped.</li>
+<li>mindist &#8211; minimal distance between distinct contact points (default: GEOMETRIC_EPSILON).</li>
+</ul>
+</div>
+</div>
+<div class="section" id="parallel-runtime">
+<h2>Parallel runtime<a class="headerlink" href="#parallel-runtime" title="Permalink to this headline">¶</a></h2>
+<p>Routines listed below are related to prallel runtime and performance.</p>
+<div class="topic">
+<p class="topic-title first">IMBALANCE_TOLERANCE (solfec, tolerance | weightfactor, updatefreq)</p>
+<p>This routine sets the imbalance tolerance for parallel balancing of Solfec data. A ratio of maximal to minimal
+per processor count of objects used. Hence, 1.0 indicates perfect balance, while any ratio &gt; 1.0 indicates an
+imbalance. Initially imbalance tolerances are all set to 1.3. This routine is ignored during sequential runs.</p>
+<ul class="simple">
+<li>solfec &#8211; SOLFEC object</li>
+<li>tolerance &#8211; data imbalance tolerance (default: 1.3)</li>
+</ul>
+<ul class="simple">
+<li>weightfactor &#8211; a local dynamics weight factor between 0.0 and 1.0 (default: 1.0). Computational load of
+local dynamics assembling is best balanced when weightfactor equals 1.0. This however can sometimes result
+in a poor load balance for contact detection or time integration. Making it smaller than 1.0 can improve
+the overall balance in such cases.
+<em>Note:</em> This parameter is ignored if DYNLB load balancer is used; in this case, on a per-rank basis, body
+centroids are used to guide load balancing if there is more bodies than constrains on a given rank at
+given time; otherwise contact/constraint points are used to guide load balancing.</li>
+</ul>
+<ul class="simple">
+<li>updatefreq &#8211; geometrical domain partitioning is updated every updatefreq time steps (default: 10)</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">num = RANK ()</p>
+<p>This routine returns the rank of the CPU that runs the current copy of Solfec.</p>
+<ul class="simple">
+<li>num &#8211; the CPU rank</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">BARRIER ()</p>
+<p>This routine sets up a parallel barrier in the MPI mode (all processes need to
+meet at it before they can continue). It is ignored in the serial mode.</p>
+</div>
+<div class="topic">
+<p class="topic-title first">num = NCPU (solfec)</p>
+<p>This routine returns the number CPUs used in the analysis.</p>
+<ul class="simple">
+<li>num &#8211; the number of CPUs</li>
+<li>solfec &#8211; SOLFEC object</li>
+</ul>
+</div>
+<div class="topic">
+<p class="topic-title first">ret = HERE (solfec, object)</p>
+<p>This routine tests whether an object is located on the current processor. During parallel runs
+objects migrate between processors. When calling a function (or a member) for an object not present
+on the current processor, the call will usually return None or be ignored. Hence, it is convenient
+to check whether an object resides on the current processor.</p>
+<ul class="simple">
+<li>ret &#8211; True or False</li>
+<li>solfec &#8211; SOLFEC object</li>
+<li>object &#8211; BODY or CONSTRAINT object</li>
+</ul>
+</div>
+</div>
 </div>
 
   <div class="section">
@@ -101,7 +307,13 @@
 <li class="toctree-l3"><a class="reference internal" href="loads.html">Loads</a></li>
 <li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="solvers.html">Solvers</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Simulation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Simulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#initialization">Initialization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#runtime-utilities">Runtime utilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contact-handling">Contact handling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parallel-runtime">Parallel runtime</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="results.html">Results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="utilities.html">Utilities</a></li>
 </ul>
