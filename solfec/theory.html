@@ -27,7 +27,7 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="PARMES  documentation" href="../index.html" />
     <link rel="up" title="SOLFEC" href="about.html" />
-    <link rel="next" title="Solfec ABAQUS import" href="abaqus.html" />
+    <link rel="next" title="Basics" href="theory/basics.html" />
     <link rel="prev" title="Utilities" href="user/utilities.html" />
   
    
@@ -57,7 +57,50 @@
             
   <div class="section" id="solfec-theory-manual">
 <span id="solfec-theory"></span><h1>Solfec Theory Manual<a class="headerlink" href="#solfec-theory-manual" title="Permalink to this headline">¶</a></h1>
-<p>Solfec theory ...</p>
+<p>Solfec implements the Non&#8211;Smooth <a class="reference external" href="https://en.wikipedia.org/wiki/Contact_dynamics">Contact Dynamics</a> Method <a class="footnote-reference" href="#id6" id="id1">[1]</a>, <a class="footnote-reference" href="#id7" id="id2">[2]</a>
+and the <a class="reference external" href="https://en.wikipedia.org/wiki/Discrete_element_method">Discrete Element Method</a>.  The software originated from
+the PhD research <a class="footnote-reference" href="#id8" id="id3">[3]</a> and its further development <a class="footnote-reference" href="#id9" id="id4">[4]</a>. Thesis <a class="footnote-reference" href="#id8" id="id5">[3]</a> can be used as an auxiliary &#8220;theory manual&#8221;. The intention
+behind this document is to provide a minimalist exposition of core computational methods and algorithms implemented in Solfec
+and facilitate cross&#8211;referencing with the functionalities described in the <a class="reference internal" href="user.html#solfec-user"><span class="std std-ref">User Manual</span></a>. The theory manual
+comprises the following sections:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="theory/basics.html">Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/kinematics.html">Kinematics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/dynamics.html">Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/timeint.html">Time integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/locdyn.html">Local dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/joints.html">Joints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/conpnt.html">Contact points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/conform.html">Contact formulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/solvers.html">Constraint solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theory/materials.html">Material models</a></li>
+</ul>
+</div>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0045782598003879">CMAME, 177(3&#8211;4):329&#8211;349, 1999.</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0045782598003831">CMAME, 177(3&#8211;4):235&#8211;257, 1999.</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> <a class="reference external" href="http://theses.gla.ac.uk/429/">Koziara, PhD thesis, 2008.</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.3158/full">IJNME, 87(1&#8211;5):437&#8211;456, 2011.</a></td></tr>
+</tbody>
+</table>
 </div>
 
   <div class="section">
@@ -94,7 +137,19 @@
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html">Running</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user.html">User Manual</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Theory Manual</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Theory Manual</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="theory/basics.html">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory/kinematics.html">Kinematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory/dynamics.html">Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory/timeint.html">Time integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory/locdyn.html">Local dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory/joints.html">Joints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory/conpnt.html">Contact points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory/conform.html">Contact formulations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory/solvers.html">Constraint solvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory/materials.html">Material models</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="abaqus.html">ABAQUS import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="xdmf.html">XDMF export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
@@ -110,7 +165,7 @@
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="about.html">SOLFEC</a><ul>
       <li>Previous: <a href="user/utilities.html" title="previous chapter">Utilities</a></li>
-      <li>Next: <a href="abaqus.html" title="next chapter">Solfec ABAQUS import</a></li>
+      <li>Next: <a href="theory/basics.html" title="next chapter">Basics</a></li>
   </ul></li>
   </ul></li>
 </ul>
