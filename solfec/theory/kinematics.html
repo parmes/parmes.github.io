@@ -57,6 +57,66 @@
             
   <div class="section" id="kinematics">
 <span id="solfec-theory-kinematics"></span><h1>Kinematics<a class="headerlink" href="#kinematics" title="Permalink to this headline">¶</a></h1>
+<p>A kinematic model defines an allowed type of deformation for an individual body. Solfec includes three kinematic models:</p>
+<ul class="simple">
+<li>rigid body</li>
+<li>pseudo&#8211;rigid body</li>
+<li>finite&#8211;element body</li>
+</ul>
+<p>A kinematic model is selected by specifying the <em>kind</em> paramter of the <a class="reference internal" href="../user/body.html#solfec-user-body"><span class="std std-ref">BODY command</span></a>.</p>
+<div class="section" id="rigid-body">
+<h2>Rigid body<a class="headerlink" href="#rigid-body" title="Permalink to this headline">¶</a></h2>
+<p>The motion of a rigid body reads</p>
+<div class="math" id="equation-rigmot">
+<span class="eqno">(1)</span>\[\mathbf{x}\left(\mathbf{X},t\right)=\mathbf{\Lambda}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\bar{\mathbf{x}}\left(t\right)\]</div>
+<p>where <span class="math">\(\mathbf{\Lambda}\left(t\right)\)</span> is a <span class="math">\(3\times3\)</span> rotation matrix, <span class="math">\(\bar{\mathbf{X}}\)</span> is a selected referential point,
+and <span class="math">\(\bar{\mathbf{x}}\left(t\right)\)</span> is a spatial point. Hence <span class="math">\(\bar{\mathbf{x}}\left(t\right)=\mathbf{x}\left(\bar{\mathbf{X}},t\right)\)</span>
+is the motion of the selected point <span class="math">\(\bar{\mathbf{X}}\)</span>. The term <span class="math">\(\mathbf{\Lambda}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)\)</span>
+represents the rotation of <span class="math">\(\mathbf{X}\)</span> about the point <span class="math">\(\bar{\mathbf{X}}\)</span>. Representing rotations, <span class="math">\(\mathbf{\Lambda}\)</span>
+must be orthogonal: <span class="math">\(\mathbf{\Lambda}^{T}\mathbf{\Lambda}=\mathbf{I}\)</span>, where <span class="math">\(\mathbf{I}\)</span> is the <span class="math">\(3\times3\)</span> identity matrix.
+Thus, the rigidity condition follows <span class="math">\(\left\Vert \mathbf{x}-\bar{\mathbf{x}}\right\Vert =\left\Vert \mathbf{X}-\bar{\mathbf{X}}\right\Vert\)</span>,
+that is the length of a line segment before and after rotation is preserved.</p>
+<p><span class="red">TODO</span>: talk about velocity and present vector notation.</p>
+</div>
+<div class="section" id="pseudo-rigid-body">
+<h2>Pseudo&#8211;rigid body<a class="headerlink" href="#pseudo-rigid-body" title="Permalink to this headline">¶</a></h2>
+<p>The motion of a pseudo&#8211;rigid body reads</p>
+<div class="math" id="equation-prbmot">
+<span class="eqno">(2)</span>\[\mathbf{x}\left(t\right)=\mathbf{F}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\bar{\mathbf{x}}\left(t\right)\]</div>
+<p>where <span class="math">\(\mathbf{x}\)</span> is the current image of a referential point <span class="math">\(\mathbf{X}\)</span>, <span class="math">\(\mathbf{F}\)</span> is a spatially homogeneous
+deformation gradient <span class="math">\(\left(\mathbf{F}=\partial\mathbf{x}/\partial\mathbf{X}\right), \bar{\mathbf{X}}\)</span> is a selected referential point
+and <span class="math">\(\bar{\mathbf{x}}=\bar{\mathbf{x}}\left(t\right)\)</span> is the current image of <span class="math">\(\bar{\mathbf{X}}\)</span>. Deformation gradient
+<span class="math">\(\mathbf{F}\)</span> is an invertible and orientation preserving <span class="math">\(\left(\det\left(\mathbf{F}\right)&gt;0\right)\)</span> <span class="math">\(3\times3\)</span> matrix.</p>
+<p><span class="red">TODO</span>: talk about velocity and present vector notation.</p>
+</div>
+<div class="section" id="finite-element-body">
+<h2>Finite&#8211;element body<a class="headerlink" href="#finite-element-body" title="Permalink to this headline">¶</a></h2>
+<p>The finite&#8211;element motion reads</p>
+<div class="math" id="equation-femmot">
+<span class="eqno">(3)</span>\[\mathbf{x}\left(\mathbf{X},t\right)=\mathbf{X}+\mathbf{N}\left(\mathbf{X}\right)\mathbf{q}\left(t\right)\]</div>
+<p>where <span class="math">\(\mathbf{x}\)</span> is the current image of the referential point <span class="math">\(\mathbf{X}\)</span>, <span class="math">\(\mathbf{N}\left(\mathbf{X}\right)\)</span>
+is a matrix of shape functions, and <span class="math">\(\mathbf{q}\left(t\right)\)</span> is a vector of nodal displacements.</p>
+<p><span class="red">TODO</span>: talk about velocity and present vector notation.</p>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>Kinematic models are implement in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo&#8211;rigid)
+and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite&#8211;element) files. Configuration and velocity
+vectors are declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L153">bod.h</a> as follows:</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>139
+140</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">general_body</span>
+<span class="p">{</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>153
+154</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">double</span> <span class="o">*</span><span class="n">conf</span><span class="p">,</span>    <span class="o">/*</span> <span class="n">configuration</span> <span class="o">*/</span>
+         <span class="o">*</span><span class="n">velo</span><span class="p">;</span>    <span class="o">/*</span> <span class="n">velocity</span> <span class="o">*/</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>214</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+</div>
 </div>
 
   <div class="section">
@@ -95,7 +155,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../theory.html">Theory Manual</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="basics.html">Basics</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Kinematics</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Kinematics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rigid-body">Rigid body</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pseudo-rigid-body">Pseudo&#8211;rigid body</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#finite-element-body">Finite&#8211;element body</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="dynamics.html">Dynamics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeint.html">Time integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="locdyn.html">Local dynamics</a></li>
