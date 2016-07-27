@@ -57,6 +57,30 @@
             
   <div class="section" id="dynamics">
 <span id="solfec-theory-dynamics"></span><h1>Dynamics<a class="headerlink" href="#dynamics" title="Permalink to this headline">¶</a></h1>
+<p>For a body <span class="math">\(\mathcal{B}\)</span>, the conservation of linear and angular momentum respectively read</p>
+<div class="math">
+\[\frac{d}{dt}\int_{\mathcal{B}}\rho\dot{\mathbf{x}}dv=\int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv\]</div>
+<div class="math">
+\[\frac{d}{dt}\int_{\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\rho\dot{\mathbf{x}}dv=
+\int_{\partial\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\mathbf{t}da+
+\int_{\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\rho\mathbf{b}dv\]</div>
+<p>where <span class="math">\(t\)</span> is time, <span class="math">\(\rho\)</span> is the mass density, <span class="math">\(\dot{\mathbf{x}}\)</span> is the point velocity,
+<span class="math">\(\mathbf{t}\)</span> is the surface traction, <span class="math">\(\mathbf{b}\)</span> is the body force, and <span class="math">\(\bar{\mathbf{x}}\)</span>
+is a selected point. All of the mentioned quantities are spatial and so is the integration domain
+<span class="math">\(\mathcal{B}\)</span>, being the current configuration of the body. Sections below rephrase these balance
+principles, as required, for each of the kinematic models available in Solfec.</p>
+<div class="section" id="rigid-dynamics">
+<h2>Rigid dynamics<a class="headerlink" href="#rigid-dynamics" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="pseudo-rigid-dynamics">
+<h2>Pseudo&#8211;rigid dynamics<a class="headerlink" href="#pseudo-rigid-dynamics" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="finite-element-dynamics">
+<h2>Finite&#8211;element dynamics<a class="headerlink" href="#finite-element-dynamics" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
   <div class="section">
@@ -96,7 +120,13 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../theory.html">Theory Manual</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="basics.html">Basics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="kinematics.html">Kinematics</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Dynamics</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Dynamics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rigid-dynamics">Rigid dynamics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pseudo-rigid-dynamics">Pseudo&#8211;rigid dynamics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#finite-element-dynamics">Finite&#8211;element dynamics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="timeint.html">Time integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="locdyn.html">Local dynamics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="joints.html">Joints</a></li>

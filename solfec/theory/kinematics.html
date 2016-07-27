@@ -179,17 +179,18 @@ N_{1} &amp;  &amp;  &amp; ... &amp; N_{n}\\
 <p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Element types in Solfec: tetrahedron, pyramid, wedge, hexahedron.</span></p>
 </div>
 <p>Finite&#8211;element types available in Solfec are depicted in <a class="reference internal" href="#element-types"><span class="std std-numref">Fig. 4</span></a>. Shape functions for those
-elements are summarised in <a class="reference internal" href="#element-shapes"><span class="std std-numref">Table 24</span></a>. Isoparametric mapping is used to go back and forth between
-the natural element coordinates <span class="math">\(\xi_{1}\)</span>, <span class="math">\(\xi_{2}\)</span>, <span class="math">\(\xi_{3}\)</span> and the mesh nodes <span class="math">\(\mathbf{Y}_{i}\)</span></p>
+elements are summarised in <a class="reference internal" href="#element-shapes"><span class="std std-numref">Table 24</span></a>.</p>
+<p>Isoparametric mapping is used to go back and forth between the natural element coordinates <span class="math">\(\xi_{1}\)</span>,
+<span class="math">\(\xi_{2}\)</span>, <span class="math">\(\xi_{3}\)</span>, local to individual element domains, and the referential mesh coordinates
+<span class="math">\(\mathbf{Y}\)</span></p>
 <div class="math">
 \[\begin{split}\mathbf{Y}\left(\xi_{1},\xi_{2},\xi_{3}\right)=\mathbf{N}\left(\xi_{1},\xi_{2},\xi_{3}\right)\left[\begin{array}{c}
 \mathbf{Y}_{1}\\
 ...\\
 \mathbf{Y}_{n}
 \end{array}\right]\end{split}\]</div>
-<p>where <span class="math">\(\mathbf{Y}\)</span> is a referential point expressed as a function of the natural coordinates,
-local to individual element domains. The function <span class="math">\(\mathbf{N}\left(\mathbf{X}\right)\)</span> in
-<a href="#equation-femmot">(5)</a> and <a href="#equation-femvel">(6)</a> has the following form</p>
+<p>where <span class="math">\(\mathbf{Y}_{i}\)</span> are referential coordinates of mesh nodes. The function <span class="math">\(\mathbf{N}\left(\mathbf{X}\right)\)</span>
+in <a href="#equation-femmot">(5)</a> and <a href="#equation-femvel">(6)</a> has the following form</p>
 <div class="math">
 \[\mathbf{N}\left(\mathbf{X}\right)=\mathbf{N}\left(\mathbf{Y}^{-1}\left(\mathbf{X}\right)\right)\]</div>
 <p>Newton iterations are required to solve <span class="math">\(\mathbf{X}=\mathbf{Y}\left(\xi_{1},\xi_{2},\xi_{3}\right)\)</span>
