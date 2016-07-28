@@ -83,14 +83,17 @@ that is the length of a line segment before and after rotation is preserved.</p>
 \mathbf{\Lambda}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\dot{\bar{\mathbf{x}}}\left(t\right)\]</div>
 <p>where <span class="math">\(\mathbf{\omega}\)</span> is the spatial angular velocity vector, <span class="math">\(\mathbf{\Omega}\)</span> is the referential
 angular velocity vector, and <span class="math">\(\dot{\bar{\mathbf{x}}}\)</span> is the velocity of the spatial image of <span class="math">\(\bar{\mathbf{X}}\)</span>.
-The hat operator <span class="math">\(\hat{\mathbf{y}}\)</span> creates an anti&#8211;symmetric <span class="math">\(3\times3\)</span> matrix out of a 3&#8211;vector as follows</p>
+W note that</p>
+<div class="math">
+\[\mathbf{\omega}=\mathbf{\Lambda}\mathbf{\Omega}\]</div>
+<p>The hat operator <span class="math">\(\hat{\mathbf{y}}\)</span> creates an anti&#8211;symmetric <span class="math">\(3\times3\)</span> matrix out of a 3&#8211;vector as follows</p>
 <div class="math">
 \[\begin{split}\hat{\mathbf{y}}=\left[\begin{array}{ccc}
 0 &amp; -y_{3} &amp; y_{2}\\
 y_{3} &amp; 0 &amp; -y_{1}\\
 -y_{2} &amp; y_{1} &amp; 0
 \end{array}\right]\end{split}\]</div>
-<p>In vector notation the configuration mathbf{q} and the velocity mathbf{u} can be expressed as</p>
+<p>In vector notation the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity <span class="math">\(\mathbf{u}\)</span> can be expressed as</p>
 <div class="math">
 \[\begin{split}\mathbf{q}=\left[\begin{array}{c}
 \Lambda_{11}\\
@@ -122,7 +125,8 @@ and <span class="math">\(\bar{\mathbf{x}}=\bar{\mathbf{x}}\left(t\right)\)</span
 <div class="math" id="equation-prbvel">
 <span class="eqno">(4)</span>\[\dot{\mathbf{x}}\left(t\right)=\dot{\mathbf{F}}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\dot{\bar{\mathbf{x}}}\left(t\right)\]</div>
 <p>where <span class="math">\(\dot{\mathbf{F}}\)</span> is the velocity of the deformation gradient and <span class="math">\(\dot{\bar{\mathbf{x}}}\)</span> is the velocity of the spatial
-image of <span class="math">\(\bar{\mathbf{X}}\)</span>. In vector notation the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity <span class="math">\(\mathbf{u}\)</span> can be expressed as</p>
+image of <span class="math">\(\bar{\mathbf{X}}\)</span>.</p>
+<p id="pseudo-rigid-vectors">In vector notation the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity <span class="math">\(\mathbf{u}\)</span> can be expressed as</p>
 <div class="math">
 \[\begin{split}\mathbf{q}=\left[\begin{array}{c}
 F_{11}\\
@@ -151,8 +155,8 @@ is a matrix of shape functions, and <span class="math">\(\mathbf{q}\left(t\right
 <p>The velocity of the spatial point reads</p>
 <div class="math" id="equation-femvel">
 <span class="eqno">(6)</span>\[\dot{\mathbf{x}}\left(\mathbf{X},t\right)=\mathbf{N}\left(\mathbf{X}\right)\dot{\mathbf{q}}\left(t\right)\]</div>
-<p>where <span class="math">\(\dot{\mathbf{q}}\)</span> is the vector of nodal <span class="math">\(x,y,z\)</span> velocities. In vector notation,
-the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity mathbf{u} can be expressed as</p>
+<p>where <span class="math">\(\dot{\mathbf{q}}\)</span> is the vector of nodal <span class="math">\(x,y,z\)</span> velocities.</p>
+<p>In vector notation, the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity <span class="math">\(\mathbf{u}\)</span> can be expressed as</p>
 <div class="math">
 \[\begin{split}\mathbf{q}=\left[\begin{array}{c}
 q_{1x}\\

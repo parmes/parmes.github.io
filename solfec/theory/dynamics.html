@@ -71,9 +71,86 @@ is a selected point. All of the mentioned quantities are spatial and so is the i
 principles, as required, for each of the kinematic models available in Solfec.</p>
 <div class="section" id="rigid-dynamics">
 <h2>Rigid dynamics<a class="headerlink" href="#rigid-dynamics" title="Permalink to this headline">¶</a></h2>
+<p>Linear momentum balance reads</p>
+<div class="math">
+\[m\ddot{\bar{\mathbf{x}}}=\int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv\]</div>
+<p>The spatial angular momentum balance reads</p>
+<div class="math">
+\[\frac{d}{dt}\left(\mathbf{j}\mathbf{\omega}\right)=\mathbf{j}\dot{\mathbf{\omega}}+\mathbf{\omega}\times\mathbf{j}\mathbf{\omega}=\mathbf{m}\]</div>
+<p>The referential angular momentum balance reads</p>
+<div class="math">
+\[\mathbf{J}\dot{\mathbf{\Omega}}+\mathbf{\Omega}\times\mathbf{J}\mathbf{\Omega}=\mathbf{\Lambda}^{T}\mathbf{m}\]</div>
+<p>where mathbf{m} is the torque</p>
+<div class="math">
+\[\mathbf{m}=\int_{\partial\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\mathbf{t}da+\int_{\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\rho\mathbf{b}dv\]</div>
+<p>and <span class="math">\(\mathbf{j}\)</span> and <span class="math">\(\mathbf{J}\)</span> are</p>
+<div class="math">
+\[\mathbf{j}=\mathbf{\Lambda}\mathbf{J}\mathbf{\Lambda}^{T},\,\,\,\mathbf{J}=\mbox{tr}\left(\mathbf{E}_{0}\right)\mathbf{I}-\mathbf{E}_{0}\]</div>
+<p>the spatial and the referential inertia tensors, respectively. <span class="math">\(\mathbf{I}\)</span> is the <span class="math">\(3\times3\)</span> identity matrix. <span class="math">\(\mathbf{E}_{0}\)</span> is the referential Euler tensor</p>
+<div class="math" id="equation-E0">
+<span class="eqno">(1)</span>\[\mathbf{E}_{0}=\int_{\mathcal{B}_{0}}\left(\mathbf{X}-\bar{\mathbf{X}}\right)\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)\rho_{0}dV\]</div>
+<p>where <span class="math">\(\mathcal{B}_{0}\)</span> is the reference configuration, <span class="math">\(\rho_{0}\)</span> is the referential mass density,
+and the tensor product operator <span class="math">\(\otimes\)</span> makes a <span class="math">\(3\times3\)</span> matrix out of two 3-vectors, e.g.
+<span class="math">\(\mathbf{a}=\mathbf{b}\otimes\mathbf{c}\)</span> means <span class="math">\(a_{ij}=b_{i}c_{j}\)</span>.</p>
+<p>In matrix notation these balance principles read</p>
+<div class="math">
+\[\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}\]</div>
+<p>where</p>
+<div class="math">
+\[\begin{split}\mathbf{M}=\left[\begin{array}{cc}
+\mathbf{J}\\
+ &amp; m\mathbf{I}
+ \end{array}\right]\end{split}\]</div>
+<p>and</p>
+<div class="math">
+\[\begin{split}\mathbf{f}=\left[\begin{array}{c}
+\mathbf{\Lambda}^{T}\int_{\partial\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\mathbf{t}da+
+\mathbf{\Lambda}^{T}\int_{\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\rho\mathbf{b}dv-\mathbf{\Omega}\times\mathbf{J}\mathbf{\Omega}\\
+\int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv
+\end{array}\right]\end{split}\]</div>
 </div>
 <div class="section" id="pseudo-rigid-dynamics">
 <h2>Pseudo&#8211;rigid dynamics<a class="headerlink" href="#pseudo-rigid-dynamics" title="Permalink to this headline">¶</a></h2>
+<p>Linear momentum balance reads</p>
+<div class="math">
+\[m\ddot{\bar{\mathbf{x}}}=\int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv\]</div>
+<p>The referential angular momentum balance reads</p>
+<div class="math">
+\[\ddot{\mathbf{F}}\mathbf{E}_{0}+V\bar{\mathbf{P}}=\int_{\partial\mathcal{B}_{0}}\mathbf{t}\otimes
+\left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(
+\mathbf{X}-\bar{\mathbf{X}}\right)dV\]</div>
+<p>where <span class="math">\(\mathbf{E}_{0}\)</span> is defined in <a href="#equation-E0">(1)</a>, <span class="math">\(V\)</span> is the volume of the domain, and <span class="math">\(\bar{\mathbf{P}}\)</span> is the average referential stress, defined as</p>
+<div class="math">
+\[\bar{\mathbf{P}}=\partial_{\mathbf{F}}\Psi\left(\mathbf{F}\right)\]</div>
+<div class="math">
+\[\Psi=\frac{1}{4}\left[\mathbf{F}^{T}\mathbf{F}-\mathbf{I}\right]:\mathbf{C}:\left[\mathbf{F}^{T}\mathbf{F}-\mathbf{I}\right]\]</div>
+<div class="math">
+\[C_{ijkl}=\lambda\delta_{ij}\delta_{kl}+\mu\left[\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk}\right]\]</div>
+<p>where the hyperelastic Saint Venant &#8211; Kirchhoff material is adopted. In the above <span class="math">\(\lambda\)</span> and <span class="math">\(\mu\)</span> are Lam&#8217;e constants, while <span class="math">\(\delta_{ij}\)</span> is the Kronecker delta.
+The Lam&#8217;e constants can be expressed in terms of the Young modulus <span class="math">\(E\)</span> and the Poisson ratio <span class="math">\(\nu\)</span> as</p>
+<div class="math">
+\[\lambda=\frac{E\nu}{\left(1+\nu\right)\left(1-2\nu\right)}\]</div>
+<div class="math">
+\[\mu=\frac{E}{2+2\nu}\]</div>
+<p>In matrix notation these balance principles read</p>
+<div class="math">
+\[\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}\]</div>
+<p>where</p>
+<div class="math">
+\[\begin{split}\mathbf{M}=\left[\begin{array}{cccc}
+\mathbf{E}_{0}\\
+&amp; \mathbf{E}_{0}\\
+&amp;  &amp; \mathbf{E}_{0}\\
+&amp;  &amp;  &amp; m\mathbf{I}
+\end{array}\right]\end{split}\]</div>
+<p>and</p>
+<div class="math">
+\[\begin{split}\mathbf{f}=\left[\begin{array}{c}
+\int_{\partial\mathcal{B}_{0}}\mathbf{t}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dV-V\bar{\mathbf{P}}\\
+\int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv
+\end{array}\right]\end{split}\]</div>
+<p>It should be noted, that it is the row&#8211;wise composition of <span class="math">\(\dot{\mathbf{F}}\)</span> in <span class="math">\(\mathbf{u}\)</span> (cf. <a class="reference internal" href="kinematics.html#pseudo-rigid-vectors"><span class="std std-ref">Kinematics</span></a>),
+which allows us to use the computationally convenient block&#8211;diagonal form of <span class="math">\(\mathbf{M}\)</span> for pseudo&#8211;rigid bodies.</p>
 </div>
 <div class="section" id="finite-element-dynamics">
 <h2>Finite&#8211;element dynamics<a class="headerlink" href="#finite-element-dynamics" title="Permalink to this headline">¶</a></h2>
