@@ -57,6 +57,112 @@
             
   <div class="section" id="time-integration">
 <span id="solfec-theory-timeint"></span><h1>Time integration<a class="headerlink" href="#time-integration" title="Permalink to this headline">¶</a></h1>
+<p>Solfec implements three variants of time integration of rigid body kinematics:</p>
+<ul class="simple">
+<li>RIG_POS &#8211; a semi&#8211;explicit scheme with a positive energy drift, cf. NEW1 in <a class="footnote-reference" href="#id7" id="id1">[1]</a></li>
+<li>RIG_NEG &#8211; a semi&#8211;explicit scheme with a negative energy drift, cf. NEW2 in <a class="footnote-reference" href="#id7" id="id2">[1]</a></li>
+<li>RIG_IMP &#8211; a semi&#8211;implicit without energy drift (but rather, oscillation), cf. NEW3 in <a class="footnote-reference" href="#id7" id="id3">[1]</a></li>
+</ul>
+<p>And two variants of time integration for pseudo–rigid and finite–element kinematics:</p>
+<ul class="simple">
+<li>DEF_EXP &#8211; an explicit leap&#8211;frog scheme, cf. Section 5.1 in <a class="footnote-reference" href="#id8" id="id4">[2]</a></li>
+<li>DEF_LIM &#8211; a linearly implicit leap&#8211;frog scheme, <a class="footnote-reference" href="#id9" id="id5">[3]</a></li>
+</ul>
+<p>A time integration scheme is selected by modifying the <em>scheme</em> parameter of the <a class="reference internal" href="../user/body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a>.</p>
+<div class="section" id="rigid-integration">
+<h2>Rigid integration<a class="headerlink" href="#rigid-integration" title="Permalink to this headline">¶</a></h2>
+<p>Linear motion is integrated like <a class="reference internal" href="#deformable-integration"><span class="std std-ref">deformable motion</span></a>. Rigid rotations are integrated as follows</p>
+<div class="math" id="equation-R(t+h/2)">
+<span class="eqno">(1)</span>\[\mathbf{\Lambda}^{t+\frac{h}{2}}=\mathbf{\Lambda}^{t}\exp\left[\frac{h}{2}\mathbf{\Omega}^{t}\right]\]</div>
+<div class="math" id="equation-T(t+h/2)">
+<span class="eqno">(2)</span>\[\mathbf{T}^{t+\frac{h}{2}}=\left(\mathbf{\Lambda}^{t+\frac{h}{2}}\right)^{T}\mathbf{t}^{t+\frac{h}{2}}\]</div>
+<div class="math" id="equation-W(t+h/2)">
+<span class="eqno">(3)</span>\[\mathbf{\Omega}^{t+\frac{h}{2}}=\mathbf{J}^{-1}\left[\exp\left[-\frac{h}{2}\mathbf{\Omega}^{t}\right]\mathbf{J}\mathbf{\Omega}^{t}+\frac{h}{2}\mathbf{T}^{t+\frac{h}{2}}\right]\]</div>
+<div class="math" id="equation-W1(t+h)">
+<span class="eqno">(4)</span>\[\mathbf{\Omega}_{1}^{t+h}=\mathbf{\Omega}^{t}+\mathbf{J}^{-1}h\left[\mathbf{T}^{t+\frac{h}{2}}-\mathbf{\Omega}^{t+\frac{h}{2}}\times\mathbf{J}\mathbf{\Omega}^{t+\frac{h}{2}}\right]\]</div>
+<p>If explicit</p>
+<div class="math" id="equation-R1(t+h)">
+<span class="eqno">(5)</span>\[\mathbf{\Lambda}^{t+h}=\mathbf{\Lambda}^{t+\frac{h}{2}}\exp\left[\frac{h}{2}\mathbf{\Omega}_{1}^{t+h}\right]\]</div>
+<div class="math" id="equation-W2(t+h)">
+<span class="eqno">(6)</span>\[\mathbf{\Omega}_{2}^{t+h}=\mathbf{J}^{-1}\exp\left[-\frac{h}{2}\mathbf{\Omega}_{1}^{t+h}\right]\left[\exp\left
+[-\frac{h}{2}\mathbf{\Omega}^{t}\right]\mathbf{J}\mathbf{\Omega}^{t}+h\mathbf{T}^{t+\frac{h}{2}}\right]\]</div>
+<p>otherwise</p>
+<div class="math" id="equation-W3(t+h)">
+<span class="eqno">(7)</span>\[\mbox{\textbf{solve} }\left(\exp\left[\frac{h}{2}\mathbf{\Omega}_{3}^{t+h}\right]\mathbf{J}\mathbf{\Omega}_{3}^{t+h}=
+\exp\left[-\frac{h}{2}\mathbf{\Omega}^{t}\right]\mathbf{J}\mathbf{\Omega}^{t}+h\mathbf{T}^{t+\frac{h}{2}}\right)\]</div>
+<div class="math" id="equation-R2(t+h)">
+<span class="eqno">(8)</span>\[\mathbf{\Lambda}^{t+h}=\mathbf{\Lambda}^{t+\frac{h}{2}}\exp\left[\frac{h}{2}\mathbf{\Omega}_{3}^{t+h}\right]\]</div>
+<p>The scheme ending at <a href="#equation-R1(t+h)">(5)</a> is DEF_POS, ending at <a href="#equation-W2(t+h)">(6)</a> is DEF_NEG, and using instead <a href="#equation-W3(t+h)">(7)</a> and <a href="#equation-R2(t+h)">(8)</a> is DEF_IMP.
+Above, <span class="math">\(\exp\left[\cdot\right]\)</span> is the exponential map defined by the Rodrigues formula</p>
+<div class="math">
+\[\exp\left[\mathbf{\Psi}\right]=\mathbf{I}+\frac{\sin\left\Vert \mathbf{\Psi}\right\Vert }{\left\Vert \mathbf{\Psi}\right\Vert }
+\hat{\mathbf{\Psi}}+\frac{1-\cos\left\Vert \mathbf{\Psi}\right\Vert }{\left\Vert \mathbf{\Psi}\right\Vert ^{2}}\hat{\mathbf{\Psi}}^{2}\]</div>
+<p>where <span class="math">\(\mathbf{I}\)</span> is the <span class="math">\(3\times3\)</span> identity operator, <span class="math">\(\hat{\mathbf{\Psi}}\)</span> creates the skew symmetric matrix
+out of a 3-vector <span class="math">\(\mathbf{\Psi}\)</span>, and <span class="math">\(\left\Vert \cdot\right\Vert\)</span> stands for the Euclidean norm. The time step is denoted as <span class="math">\(h\)</span>.</p>
+</div>
+<div class="section" id="deformable-integration">
+<span id="id6"></span><h2>Deformable integration<a class="headerlink" href="#deformable-integration" title="Permalink to this headline">¶</a></h2>
+<p>Deformable time integrator reads</p>
+<div class="math" id="equation-q(t+h/2)">
+<span class="eqno">(9)</span>\[\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\]</div>
+<div class="math" id="equation-u(t+h)">
+<span class="eqno">(10)</span>\[\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\left(\mathbf{q}^{t+\frac{h}{2}},\mathbf{u}^{t}\right)\]</div>
+<div class="math" id="equation-q(t+h)">
+<span class="eqno">(11)</span>\[\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\]</div>
+<p>where in the explicit case</p>
+<div class="math" id="equation-Aexp">
+<span class="eqno">(12)</span>\[\mathbf{A}=\mathbf{M}\text{ for DEF_EXP}\]</div>
+<p>and in the linearly implicit case</p>
+<div class="math" id="equation-Aimp">
+<span class="eqno">(13)</span>\[\mathbf{A}=\mathbf{M}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\mathbf{K}\left(\mathbf{q}^{t+h/2}\right)\text{ for DEF_LIM}\]</div>
+<p>The time step is denoted as <span class="math">\(h\)</span>.</p>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>Time integration is implement in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo&#8211;rigid)
+and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite&#8211;element) files. Inverse generalized
+inertia matrix <span class="math">\(\mathbf{A}^{-1}\)</span> is declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L176">bod.h</a> as follows:</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>139
+140</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">general_body</span>
+<span class="p">{</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>176</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">MX</span> <span class="o">*</span><span class="n">inverse</span><span class="p">;</span>      <span class="o">/*</span> <span class="n">generalized</span> <span class="n">inverse</span> <span class="n">inertia</span> <span class="n">oprator</span> <span class="o">*/</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>214</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<p>Rigid integration formulae <a href="#equation-R(t+h/2)">(1)</a>-<a href="#equation-W1(t+h)">(4)</a> are in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1296">bod.c:BODY_Dynamic_Step_Begin</a>. <br />
+Rigid integration formulae <a href="#equation-R1(t+h)">(5)</a>-<a href="#equation-R2(t+h)">(8)</a> are in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1403">bod.c:BODY_Dynamic_Step_End</a>. <br />
+Pseudo&#8211;rigid integration is included in the same routines:
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1353">first half&#8211;step</a> and
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1467">second half&#8211;step</a>. <br />
+Finite&#8211;element, total Lagrangian formulation based, integration formulae <a href="#equation-q(t+h/2)">(9)</a> and <a href="#equation-u(t+h)">(10)</a>
+are in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1879">fem.c:TL_dynamic_step_begin</a>. <br />
+Finite&#8211;element, total Lagrangian formulation based, integration formula <a href="#equation-q(t+h)">(11)</a>
+is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1930">fem.c:TL_dynamic_step_end</a>. <br /></p>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.2711/full">IJNME, 81(9):1073&#8211;1092, 2010.</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[2]</a></td><td><a class="reference external" href="http://theses.gla.ac.uk/429/">Koziara, PhD thesis, 2008.</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0168927497000664">ANM, 25(2&#8211;3): 297&#8211;302, 1997.</a></td></tr>
+</tbody>
+</table>
+</div>
 </div>
 
   <div class="section">
@@ -97,7 +203,12 @@
 <li class="toctree-l3"><a class="reference internal" href="basics.html">Basics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="kinematics.html">Kinematics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dynamics.html">Dynamics</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Time integration</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Time integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rigid-integration">Rigid integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deformable-integration">Deformable integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="locdyn.html">Local dynamics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="joints.html">Joints</a></li>
