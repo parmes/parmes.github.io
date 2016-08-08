@@ -87,15 +87,15 @@ W note that</p>
 <div class="math">
 \[\mathbf{\omega}=\mathbf{\Lambda}\mathbf{\Omega}\]</div>
 <p>The hat operator <span class="math">\(\hat{\mathbf{y}}\)</span> creates an anti&#8211;symmetric <span class="math">\(3\times3\)</span> matrix out of a 3&#8211;vector as follows</p>
-<div class="math">
+<div class="math" id="hat">
 \[\begin{split}\hat{\mathbf{y}}=\left[\begin{array}{ccc}
 0 &amp; -y_{3} &amp; y_{2}\\
 y_{3} &amp; 0 &amp; -y_{1}\\
 -y_{2} &amp; y_{1} &amp; 0
 \end{array}\right]\end{split}\]</div>
 <p>In vector notation the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity <span class="math">\(\mathbf{u}\)</span> can be expressed as</p>
-<div class="math">
-\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
+<div class="math" id="equation-qurig">
+<span id="qurig"></span><span class="eqno">(3)</span>\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
 \Lambda_{11}\\
 \Lambda_{21}\\
 ...\\
@@ -116,19 +116,19 @@ y_{3} &amp; 0 &amp; -y_{1}\\
 <h2>Pseudo&#8211;rigid body<a class="headerlink" href="#pseudo-rigid-body" title="Permalink to this headline">¶</a></h2>
 <p>The motion of a pseudo&#8211;rigid body reads</p>
 <div class="math" id="equation-prbmot">
-<span class="eqno">(3)</span>\[\mathbf{x}\left(t\right)=\mathbf{F}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\bar{\mathbf{x}}\left(t\right)\]</div>
+<span class="eqno">(4)</span>\[\mathbf{x}\left(t\right)=\mathbf{F}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\bar{\mathbf{x}}\left(t\right)\]</div>
 <p>where <span class="math">\(\mathbf{x}\)</span> is the current image of a referential point <span class="math">\(\mathbf{X}\)</span>, <span class="math">\(\mathbf{F}\)</span> is a spatially homogeneous
 deformation gradient <span class="math">\(\left(\mathbf{F}=\partial\mathbf{x}/\partial\mathbf{X}\right), \bar{\mathbf{X}}\)</span> is a selected referential point
 and <span class="math">\(\bar{\mathbf{x}}=\bar{\mathbf{x}}\left(t\right)\)</span> is the current image of <span class="math">\(\bar{\mathbf{X}}\)</span>. Deformation gradient
 <span class="math">\(\mathbf{F}\)</span> is an invertible and orientation preserving <span class="math">\(\left(\det\left(\mathbf{F}\right)&gt;0\right)\)</span> <span class="math">\(3\times3\)</span> matrix.</p>
 <p>The velocity of the spatial point reads</p>
 <div class="math" id="equation-prbvel">
-<span class="eqno">(4)</span>\[\dot{\mathbf{x}}\left(t\right)=\dot{\mathbf{F}}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\dot{\bar{\mathbf{x}}}\left(t\right)\]</div>
+<span class="eqno">(5)</span>\[\dot{\mathbf{x}}\left(t\right)=\dot{\mathbf{F}}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\dot{\bar{\mathbf{x}}}\left(t\right)\]</div>
 <p>where <span class="math">\(\dot{\mathbf{F}}\)</span> is the velocity of the deformation gradient and <span class="math">\(\dot{\bar{\mathbf{x}}}\)</span> is the velocity of the spatial
 image of <span class="math">\(\bar{\mathbf{X}}\)</span>.</p>
 <p id="pseudo-rigid-vectors">In vector notation the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity <span class="math">\(\mathbf{u}\)</span> can be expressed as</p>
-<div class="math">
-\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
+<div class="math" id="equation-quprb">
+<span id="quprb"></span><span class="eqno">(6)</span>\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
 F_{11}\\
 F_{12}\\
 ...\\
@@ -149,16 +149,16 @@ F_{12}\\
 <h2>Finite&#8211;element body<a class="headerlink" href="#finite-element-body" title="Permalink to this headline">¶</a></h2>
 <p>The finite&#8211;element motion reads</p>
 <div class="math" id="equation-femmot">
-<span class="eqno">(5)</span>\[\mathbf{x}\left(\mathbf{X},t\right)=\mathbf{X}+\mathbf{N}\left(\mathbf{X}\right)\mathbf{q}\left(t\right)\]</div>
+<span class="eqno">(7)</span>\[\mathbf{x}\left(\mathbf{X},t\right)=\mathbf{X}+\mathbf{N}\left(\mathbf{X}\right)\mathbf{q}\left(t\right)\]</div>
 <p>where <span class="math">\(\mathbf{x}\)</span> is the current image of the referential point <span class="math">\(\mathbf{X}\)</span>, <span class="math">\(\mathbf{N}\left(\mathbf{X}\right)\)</span>
 is a matrix of shape functions, and <span class="math">\(\mathbf{q}\left(t\right)\)</span> is a vector of nodal displacements.</p>
 <p>The velocity of the spatial point reads</p>
 <div class="math" id="equation-femvel">
-<span class="eqno">(6)</span>\[\dot{\mathbf{x}}\left(\mathbf{X},t\right)=\mathbf{N}\left(\mathbf{X}\right)\dot{\mathbf{q}}\left(t\right)\]</div>
+<span class="eqno">(8)</span>\[\dot{\mathbf{x}}\left(\mathbf{X},t\right)=\mathbf{N}\left(\mathbf{X}\right)\dot{\mathbf{q}}\left(t\right)\]</div>
 <p>where <span class="math">\(\dot{\mathbf{q}}\)</span> is the vector of nodal <span class="math">\(x,y,z\)</span> velocities.</p>
 <p>In vector notation, the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity <span class="math">\(\mathbf{u}\)</span> can be expressed as</p>
-<div class="math">
-\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
+<div class="math" id="equation-qufem">
+<span id="qufem"></span><span class="eqno">(9)</span>\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
 q_{1x}\\
 q_{1y}\\
 q_{1z}\\
@@ -168,7 +168,7 @@ q_{ny}\\
 q_{nz}
 \end{array}\right],\,\,\,\mathbf{u}=\dot{\mathbf{q}}\end{split}\]</div>
 <p>Both, the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity <span class="math">\(\mathbf{u}\)</span> have size <span class="math">\(3\times n\)</span>, where <span class="math">\(n\)</span> is the number of nodes in a finite&#8211;element mesh.</p>
-<p>The matrix <span class="math">\(\mathbf{N}\)</span> in <a href="#equation-femmot">(5)</a> and <a href="#equation-femvel">(6)</a> has the following form</p>
+<p>The matrix <span class="math">\(\mathbf{N}\)</span> in <a href="#equation-femmot">(7)</a> and <a href="#equation-femvel">(8)</a> has the following form</p>
 <div class="math">
 \[\begin{split}\mathbf{N}=\left[\begin{array}{ccccccc}
 N_{1} &amp;  &amp;  &amp; ... &amp; N_{n}\\
@@ -194,7 +194,7 @@ elements are summarised in <a class="reference internal" href="#element-shapes">
 \mathbf{Y}_{n}
 \end{array}\right]\end{split}\]</div>
 <p>where <span class="math">\(\mathbf{Y}_{i}\)</span> are referential coordinates of mesh nodes. The function <span class="math">\(\mathbf{N}\left(\mathbf{X}\right)\)</span>
-in <a href="#equation-femmot">(5)</a> and <a href="#equation-femvel">(6)</a> has the following form</p>
+in <a href="#equation-femmot">(7)</a> and <a href="#equation-femvel">(8)</a> has the following form</p>
 <div class="math">
 \[\mathbf{N}\left(\mathbf{X}\right)=\mathbf{N}\left(\mathbf{Y}^{-1}\left(\mathbf{X}\right)\right)\]</div>
 <p>Newton iterations are required to solve <span class="math">\(\mathbf{X}=\mathbf{Y}\left(\xi_{1},\xi_{2},\xi_{3}\right)\)</span>
