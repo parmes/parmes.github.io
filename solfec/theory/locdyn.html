@@ -57,6 +57,167 @@
             
   <div class="section" id="local-dynamics">
 <span id="solfec-theory-locdyn"></span><h1>Local dynamics<a class="headerlink" href="#local-dynamics" title="Permalink to this headline">¶</a></h1>
+<p>Let us start by restating the constrained time stepping
+scheme from the <a class="reference internal" href="constraints.html#timestepping1"><span class="std std-ref">previous section</span></a></p>
+<div class="math" id="equation-q1">
+<span class="eqno">(1)</span>\[\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\]</div>
+<div class="math" id="equation-u2">
+<span class="eqno">(2)</span>\[\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\left(\mathbf{q}^{t+\frac{h}{2}},\mathbf{u}^{t}\right)+
+\mathbf{A}^{-1}h\mathbf{H}^{T}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{R}\]</div>
+<div class="math" id="equation-UHu2">
+<span class="eqno">(3)</span>\[\mathbf{U}=\mathbf{H}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{u}\]</div>
+<div class="math" id="equation-CUR2">
+<span class="eqno">(4)</span>\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\]</div>
+<div class="math" id="equation-q2">
+<span class="eqno">(5)</span>\[\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\]</div>
+<p>We said, that the equations <a href="#equation-u2">(2)</a>, <a href="#equation-UHu2">(3)</a>, <a href="#equation-CUR2">(4)</a>
+are solved together, implicitly. In practice, since a solution process
+may take many iterations, it is often more efficient to produce an
+assembled form of the relationship between <span class="math">\(\mathbf{U}\)</span> and <span class="math">\(\mathbf{R}\)</span>,
+and use it together with <span class="math">\(\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)\)</span>,
+to find reaction forces <span class="math">\(\mathbf{R}\)</span>. By substituting <a href="#equation-u2">(2)</a>
+into <a href="#equation-UHu2">(3)</a> we obtain</p>
+<div class="math">
+\[\mathbf{U}=\mathbf{H}\left(\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\right)+\mathbf{H}\mathbf{A}^{-1}h\mathbf{H}^{T}\mathbf{R}\]</div>
+<p>and rewrite it as</p>
+<div class="math" id="equation-UWRB">
+<span class="eqno">(6)</span>\[\mathbf{U}=\mathbf{B}+\mathbf{W}\mathbf{R}\]</div>
+<p>where</p>
+<div class="math" id="equation-B0">
+<span class="eqno">(7)</span>\[\mathbf{B}=\mathbf{H}\left(\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\right)\]</div>
+<div class="math" id="equation-W0">
+<span class="eqno">(8)</span>\[\mathbf{W}=h\mathbf{H}\mathbf{A}^{-1}\mathbf{H}^{T}\label{eq:W0}\]</div>
+<p>Relation <a href="#equation-UWRB">(6)</a> can be called <em>local dynamics</em>, since
+it relates point forces and (relative) point velocities. <span class="math">\(\mathbf{B}\)</span>
+can be called local free velocity, since it is a relative local velocity
+of constraints when no reaction forces are applied. <span class="math">\(\mathbf{W}\)</span>
+can be called a generalized inverse inertia matrix.</p>
+<div class="section" id="detailed-multi-body-derivation">
+<h2>Detailed multi&#8211;body derivation<a class="headerlink" href="#detailed-multi-body-derivation" title="Permalink to this headline">¶</a></h2>
+<p>So far we have presented formulas at certain level of generality.
+Let us now present detailed multi&#8211;body formulas. Let <span class="math">\(\left\{ \mathcal{B}_{i}\right\}\)</span>
+be a set of bodies and <span class="math">\(\left\{ \mathcal{C}_{\alpha}\right\}\)</span> be
+a set of local frames. To each local frame <span class="math">\(\mathcal{C}_{\alpha}\)</span>
+there corresponds a pair of bodies <span class="math">\(\mathcal{B}_{i}\)</span> and <span class="math">\(\mathcal{B}_{j}\)</span>.
+Let <span class="math">\(\mathcal{B}_{j}\)</span> be the body, to which the local frame is attached.
+<span class="math">\(\mathcal{B}_{j}\)</span> will be called the <em>master</em> in <span class="math">\(\mathcal{C}_{\alpha}\)</span>
+and denoted by <span class="math">\(\mathcal{M}_{\alpha}\)</span>. Consequently, <span class="math">\(\mathcal{B}_{i}\)</span>
+will be called the <em>slave</em> in <span class="math">\(\mathcal{C}_{\alpha}\)</span> and denoted
+by <span class="math">\(\mathcal{S}_{\alpha}\)</span>. Of course, the choice is arbitrary. Considering
+evolution of a multi&#8211;body system over an interval <span class="math">\(\left[t,t+h\right]\)</span>,
+an analogue of equation <a href="#equation-UWRB">(6)</a> can be written down for each of the local frames</p>
+<div class="math" id="equation-dynloc">
+<span class="eqno">(9)</span>\[\mathbf{U_{\alpha}}=\mathbf{B_{\alpha}}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}\]</div>
+<p>where</p>
+<div class="math" id="equation-U">
+<span class="eqno">(10)</span>\[\mathbf{U}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{u}_{i}-\mathbf{H}_{j\alpha}\mathbf{u}_{j}\]</div>
+<div class="math" id="equation-B">
+<span class="eqno">(11)</span>\[\mathbf{B}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{b}_{i}-\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{b}_{j}\]</div>
+<div class="math" id="equation-Walbe">
+<span class="eqno">(12)</span>\[\left.\mathbf{W}_{\alpha\beta}\right|_{\alpha\ne\beta}=s_{\alpha\beta}\mathbf{H}_{k_{\beta}\alpha}\mathbf{A}_{k_{\beta}}^{-1}\mathbf{H}_{k_{\beta}\beta}^{T}\]</div>
+<div class="math" id="equation-Walal">
+<span class="eqno">(13)</span>\[\mathbf{W}_{\alpha\alpha}=\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{H}_{i\alpha}^{T}+\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{H}_{j\alpha}^{T}\]</div>
+<div class="math">
+\[\begin{split}k_{\beta}=\left\{ \begin{array}{cc}
+i &amp; \textrm{if }\mathcal{B}_{i}\in\mathcal{C}_{\beta}\\
+j &amp; \textrm{if }\mathcal{B}_{j}\in\mathbf{\mathcal{C}_{\beta}}
+\end{array}\right.\end{split}\]</div>
+<div class="math" id="equation-sdef">
+<span class="eqno">(14)</span>\[\begin{split}s_{\alpha\beta}=\left\{ \begin{array}{rl}
+-1 &amp; \textrm{if }\mathcal{B}_{k_{\beta}}\textrm{ is }\left(\mathcal{M}_{\alpha}\wedge\mathcal{S}_{\beta}\right)\vee\left(\mathcal{S}_{\alpha}\wedge\mathcal{M}_{\beta}\right)\\
+1 &amp; \textrm{otherwise}
+\end{array}\right.\end{split}\]</div>
+<p>The above formulae can be conveniently applied in a computer implementation.
+They stem from the following algebra of the multi&#8211;body dynamics.
+Let <span class="math">\(\mathbf{q}\)</span>, <span class="math">\(\mathbf{u}\)</span>, <span class="math">\(\mathbf{f}\)</span>, <span class="math">\(\mathbf{A}\)</span>
+gather the suitable vectors and matrices as</p>
+<div class="math" id="equation-qufM">
+<span class="eqno">(15)</span>\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
+\mathbf{q}_{1}\\
+\mathbf{q}_{2}\\
+...\\
+\mathbf{q}_{n}
+\end{array}\right],\mathbf{u}=\left[\begin{array}{c}
+\mathbf{u}_{1}\\
+\mathbf{u}_{2}\\
+...\\
+\mathbf{u}_{n}
+\end{array}\right],\mathbf{f}=\left[\begin{array}{c}
+\mathbf{f}_{1}\\
+\mathbf{f}_{2}\\
+...\\
+\mathbf{f}_{n}
+\end{array}\right],\mathbf{A}=\left[\begin{array}{cccc}
+\mathbf{A}_{1}\\
+ &amp; \mathbf{A}_{2}\\
+  &amp;  &amp; ...\\
+   &amp;  &amp;  &amp; \mathbf{A}_{n}
+   \end{array}\right]\end{split}\]</div>
+<p>To each local frame <span class="math">\(\mathcal{C}_{\alpha}\)</span>, there corresponds a block&#8211;row
+of the global <span class="math">\(\mathbf{H}\)</span> operator</p>
+<div class="math" id="equation-Hglob">
+<span class="eqno">(16)</span>\[\begin{split}\mathbf{H}=\left[\begin{array}{ccccccc}
+... &amp; -\mathbf{H}_{j1} &amp; ... &amp; \mathbf{H}_{i1} &amp; ...\\
+... &amp; ... &amp; ... &amp; ... &amp; ... &amp; ... &amp; ...\\
+&amp; ... &amp; \mathbf{H}_{i\alpha} &amp; ... &amp; -\mathbf{H}_{j\alpha} &amp; ...\\
+... &amp; ... &amp; ... &amp; ... &amp; ... &amp; ... &amp; ...\\
+ &amp;  &amp; ... &amp; \mathbf{H}_{im} &amp; ... &amp; -\mathbf{H}_{jm} &amp; ...
+ \end{array}\right]\end{split}\]</div>
+<p>where</p>
+<div class="math">
+\[\mathbf{H}_{k\alpha}=\mathbf{H}\left(\left\{ \mathbf{a}^{i}\right\} \in\mathcal{C}_{\alpha},\mathbf{X}\in\mathcal{B}_{k}\right)\]</div>
+<p>is evaluated according to one of the specific formulas <a class="reference internal" href="constraints.html#solfec-theory-constraints"><span class="std std-ref">introduced in the section on constraints</span></a>.</p>
+</div>
+<div class="section" id="the-operator">
+<h2>The <span class="math">\(\mathbf{W}\)</span> operator<a class="headerlink" href="#the-operator" title="Permalink to this headline">¶</a></h2>
+<p>Operator <span class="math">\(\mathbf{W}\)</span> maps local forces into local relative velocities.
+Algebraically, it is represented by a sparse matrix, composed of dense
+<span class="math">\(3\times3\)</span> blocks <span class="math">\(\mathbf{W}_{\alpha\beta}\)</span>. The sparsity pattern
+of <span class="math">\(\textbf{ $\mathbf{W}$}\)</span> corresponds to the vertex connectivity in
+the graph of local frames. Vertices of this graph are the local frames
+<span class="math">\(\left\{ \mathcal{C}_{\alpha}\right\}\)</span>, while the edges comprise
+a subset of all bodies <span class="math">\(\left\{ \mathcal{B}_{i}\right\}\)</span>, such that
+<span class="math">\(\mathcal{B}_{i}\in\mathcal{C_{\alpha}}\)</span> and <span class="math">\(\mathcal{B}_{i}\in\mathcal{C}_{\beta}\)</span>
+for <span class="math">\(\alpha\ne\beta\)</span>. This has been illustrated in <a class="reference internal" href="#locgraph"><span class="std std-numref">Fig. 6</span></a>.
+Operator <span class="math">\(\mathbf{W}\)</span> derives from the formula</p>
+<div class="math">
+\[\mathbf{W}=\mathbf{H}\mathbf{A}^{-1}\mathbf{H}^{T}\]</div>
+<p>where <span class="math">\(\mathbf{A}\)</span> is a <span class="math">\(n\times n\)</span> symmetric and positive definite
+matrix, and <span class="math">\(\mathbf{H}\)</span> is an <span class="math">\(m\times n\)</span> transformation operator.
+<span class="math">\(\mathbf{W}\)</span> is an <span class="math">\(m\times m\)</span> symmetric matrix. It is positive
+definite, provided rows of <span class="math">\(\mathbf{H}\)</span> are linearly independent.
+This is easiest to see from the flow of the actions in the above formula.
+A local force <span class="math">\(\mathbf{R}\)</span> is first mapped by <span class="math">\(\mathbf{H}^{T}\)</span> into
+a generalized force <span class="math">\(\mathbf{r}\)</span>. If rows of <span class="math">\(\mathbf{H}\)</span> are not
+linearly independent, then there exist <span class="math">\(\mathbf{R}_{1}\ne\mathbf{R}_{2}\)</span>
+such that <span class="math">\(\mathbf{H}^{T}\mathbf{R}_{1}=\mathbf{H}^{T}\mathbf{R}_{2}\)</span>
+and hence <span class="math">\(\mathbf{W}\)</span> fails to be a bijection. This means, that
+the null space of <span class="math">\(\mathbf{W}\)</span> is larger than <span class="math">\(\left\{ \mathbf{0}\right\}\)</span>,
+so that <span class="math">\(\mathbf{W}\)</span> is not invertible in the usual sense. <span class="math">\(\mathbf{W}\)</span>
+becomes singular whenever <span class="math">\(m&gt;n\)</span>, which is trivially related to the
+number of considered bodies relative to the number of constraints.
+On the other hand, one can always introduce singularity of <span class="math">\(\mathbf{W}\)</span>
+by using local frames between the same pair of bodies, in such a way
+that their <span class="math">\(\mathbf{H}\)</span> operators are linearly dependent. This can
+be related to deformability of kinematic models. For example, the
+pseudo&#8211;rigid body has a linear distribution of the instantaneous velocity
+over an arbitrary flat surface. Thus, the relative velocity between
+two bodies over a flat surface is fully parametrized by three points.
+A larger number of local frames results in the singularity of <span class="math">\(\mathbf{W}\)</span>.
+So does their collinearity. In practice, <span class="math">\(\mathbf{W}\)</span> often becomes
+numerically singular for many practically encountered configurations
+of local frames. Indeterminacy of local forces <span class="math">\(\mathbf{R}\)</span> is then
+an unavoidable consequence of either kinematic simplicity, or geometric
+complexity, and as such it needs to be accepted in numerical practice.</p>
+<div class="figure align-center" id="id1">
+<span id="locgraph"></span><a class="reference internal image-reference" href="../../_images/locgraph.png"><img alt="../../_images/locgraph.png" src="../../_images/locgraph.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">A graph of local frames and the corresponding pattern of <span class="math">\(\mathbf{W}\)</span>.</span></p>
+</div>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>Implementation ...</p>
+</div>
 </div>
 
   <div class="section">
@@ -99,7 +260,12 @@
 <li class="toctree-l3"><a class="reference internal" href="dynamics.html">Dynamics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeint.html">Time integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Local dynamics</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Local dynamics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#detailed-multi-body-derivation">Detailed multi&#8211;body derivation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-operator">The <span class="math">\(\mathbf{W}\)</span> operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="joints.html">Joints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="conpnt.html">Contact points</a></li>
 <li class="toctree-l3"><a class="reference internal" href="conform.html">Contact formulations</a></li>
