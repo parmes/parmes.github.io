@@ -72,7 +72,7 @@ scheme from the <a class="reference internal" href="constraints.html#timesteppin
 <span class="eqno">(5)</span>\[\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\]</div>
 <p>We said, that the equations <a href="#equation-u2">(2)</a>, <a href="#equation-UHu2">(3)</a>, <a href="#equation-CUR2">(4)</a>
 are solved together, implicitly. In practice, since a solution process
-may take many iterations, it is often more efficient to produce an
+may take many iterations, it is often efficient to produce an
 assembled form of the relationship between <span class="math">\(\mathbf{U}\)</span> and <span class="math">\(\mathbf{R}\)</span>,
 and use it together with <span class="math">\(\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)\)</span>,
 to find reaction forces <span class="math">\(\mathbf{R}\)</span>. By substituting <a href="#equation-u2">(2)</a>
@@ -80,20 +80,20 @@ into <a href="#equation-UHu2">(3)</a> we obtain</p>
 <div class="math">
 \[\mathbf{U}=\mathbf{H}\left(\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\right)+\mathbf{H}\mathbf{A}^{-1}h\mathbf{H}^{T}\mathbf{R}\]</div>
 <p>and rewrite it as</p>
-<div class="math" id="equation-UWRB">
+<div class="math" id="equation-UBWR">
 <span class="eqno">(6)</span>\[\mathbf{U}=\mathbf{B}+\mathbf{W}\mathbf{R}\]</div>
 <p>where</p>
 <div class="math" id="equation-B0">
 <span class="eqno">(7)</span>\[\mathbf{B}=\mathbf{H}\left(\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\right)\]</div>
 <div class="math" id="equation-W0">
 <span class="eqno">(8)</span>\[\mathbf{W}=h\mathbf{H}\mathbf{A}^{-1}\mathbf{H}^{T}\label{eq:W0}\]</div>
-<p>Relation <a href="#equation-UWRB">(6)</a> can be called <em>local dynamics</em>, since
+<p>Relation <a href="#equation-UBWR">(6)</a> can be called <em>local dynamics</em>, since
 it relates point forces and (relative) point velocities. <span class="math">\(\mathbf{B}\)</span>
 can be called local free velocity, since it is a relative local velocity
 of constraints when no reaction forces are applied. <span class="math">\(\mathbf{W}\)</span>
 can be called a generalized inverse inertia matrix.</p>
-<div class="section" id="detailed-multi-body-derivation">
-<h2>Detailed multi&#8211;body derivation<a class="headerlink" href="#detailed-multi-body-derivation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="detailed-multi-body-notation">
+<span id="detailed-notation"></span><h2>Detailed multi&#8211;body notation<a class="headerlink" href="#detailed-multi-body-notation" title="Permalink to this headline">¶</a></h2>
 <p>So far we have presented formulas at certain level of generality.
 Let us now present detailed multi&#8211;body formulas. Let <span class="math">\(\left\{ \mathcal{B}_{i}\right\}\)</span>
 be a set of bodies and <span class="math">\(\left\{ \mathcal{C}_{\alpha}\right\}\)</span> be
@@ -105,18 +105,19 @@ and denoted by <span class="math">\(\mathcal{M}_{\alpha}\)</span>. Consequently,
 will be called the <em>slave</em> in <span class="math">\(\mathcal{C}_{\alpha}\)</span> and denoted
 by <span class="math">\(\mathcal{S}_{\alpha}\)</span>. Of course, the choice is arbitrary. Considering
 evolution of a multi&#8211;body system over an interval <span class="math">\(\left[t,t+h\right]\)</span>,
-an analogue of equation <a href="#equation-UWRB">(6)</a> can be written down for each of the local frames</p>
+an analogue of equation <a href="#equation-UBWR">(6)</a> can be written down for each of the local frames</p>
 <div class="math" id="equation-dynloc">
 <span class="eqno">(9)</span>\[\mathbf{U_{\alpha}}=\mathbf{B_{\alpha}}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}\]</div>
 <p>where</p>
 <div class="math" id="equation-U">
-<span class="eqno">(10)</span>\[\mathbf{U}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{u}_{i}-\mathbf{H}_{j\alpha}\mathbf{u}_{j}\]</div>
-<div class="math" id="equation-B">
-<span class="eqno">(11)</span>\[\mathbf{B}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{b}_{i}-\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{b}_{j}\]</div>
+<span class="eqno">(10)</span>\[\mathbf{U}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{u}_{i}^{t+h}-\mathbf{H}_{j\alpha}\mathbf{u}_{j}^{t+h}\]</div>
+<div class="math" id="equation-Bal">
+<span class="eqno">(11)</span>\[\mathbf{B}_{\alpha}=\mathbf{H}_{i\alpha}\left(\mathbf{u}_{i}^{t}+\mathbf{A}_{i}^{-1}h\mathbf{f}_{i}\right)-
+\mathbf{H}_{j\alpha}\left(\mathbf{u}_{j}^{t}+\mathbf{A}_{j}^{-1}h\mathbf{f}_{j}\right)\]</div>
 <div class="math" id="equation-Walbe">
-<span class="eqno">(12)</span>\[\left.\mathbf{W}_{\alpha\beta}\right|_{\alpha\ne\beta}=s_{\alpha\beta}\mathbf{H}_{k_{\beta}\alpha}\mathbf{A}_{k_{\beta}}^{-1}\mathbf{H}_{k_{\beta}\beta}^{T}\]</div>
+<span class="eqno">(12)</span>\[\left.\mathbf{W}_{\alpha\beta}\right|_{\alpha\ne\beta}=s_{\alpha\beta}h\mathbf{H}_{k_{\beta}\alpha}\mathbf{A}_{k_{\beta}}^{-1}\mathbf{H}_{k_{\beta}\beta}^{T}\]</div>
 <div class="math" id="equation-Walal">
-<span class="eqno">(13)</span>\[\mathbf{W}_{\alpha\alpha}=\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{H}_{i\alpha}^{T}+\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{H}_{j\alpha}^{T}\]</div>
+<span class="eqno">(13)</span>\[\mathbf{W}_{\alpha\alpha}=h\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{H}_{i\alpha}^{T}+h\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{H}_{j\alpha}^{T}\]</div>
 <div class="math">
 \[\begin{split}k_{\beta}=\left\{ \begin{array}{cc}
 i &amp; \textrm{if }\mathcal{B}_{i}\in\mathcal{C}_{\beta}\\
@@ -128,7 +129,7 @@ j &amp; \textrm{if }\mathcal{B}_{j}\in\mathbf{\mathcal{C}_{\beta}}
 1 &amp; \textrm{otherwise}
 \end{array}\right.\end{split}\]</div>
 <p>The above formulae can be conveniently applied in a computer implementation.
-They stem from the following algebra of the multi&#8211;body dynamics.
+They stem from the following, juxtaposed algebra of multi&#8211;body dynamics.
 Let <span class="math">\(\mathbf{q}\)</span>, <span class="math">\(\mathbf{u}\)</span>, <span class="math">\(\mathbf{f}\)</span>, <span class="math">\(\mathbf{A}\)</span>
 gather the suitable vectors and matrices as</p>
 <div class="math" id="equation-qufM">
@@ -168,9 +169,9 @@ of the global <span class="math">\(\mathbf{H}\)</span> operator</p>
 \[\mathbf{H}_{k\alpha}=\mathbf{H}\left(\left\{ \mathbf{a}^{i}\right\} \in\mathcal{C}_{\alpha},\mathbf{X}\in\mathcal{B}_{k}\right)\]</div>
 <p>is evaluated according to one of the specific formulas <a class="reference internal" href="constraints.html#solfec-theory-constraints"><span class="std std-ref">introduced in the section on constraints</span></a>.</p>
 </div>
-<div class="section" id="the-operator">
-<h2>The <span class="math">\(\mathbf{W}\)</span> operator<a class="headerlink" href="#the-operator" title="Permalink to this headline">¶</a></h2>
-<p>Operator <span class="math">\(\mathbf{W}\)</span> maps local forces into local relative velocities.
+<div class="section" id="the-matrix">
+<h2>The <span class="math">\(\mathbf{W}\)</span> matrix<a class="headerlink" href="#the-matrix" title="Permalink to this headline">¶</a></h2>
+<p><span class="math">\(\mathbf{W}\)</span> maps local forces into local relative velocities.
 Algebraically, it is represented by a sparse matrix, composed of dense
 <span class="math">\(3\times3\)</span> blocks <span class="math">\(\mathbf{W}_{\alpha\beta}\)</span>. The sparsity pattern
 of <span class="math">\(\textbf{ $\mathbf{W}$}\)</span> corresponds to the vertex connectivity in
@@ -216,7 +217,85 @@ complexity, and as such it needs to be accepted in numerical practice.</p>
 </div>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
-<p>Implementation ...</p>
+<p>Local dynamics is implemented in files <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.h">ldy.h</a>
+and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.h">ldy.c</a>.</p>
+<p>Off&#8211;diagonal blocks of <span class="math">\(\mathbf{W}_{\alpha\beta}\)</span> <a href="#equation-Walal">(13)</a>,
+diagonal block <span class="math">\(\mathbf{W}_{\alpha\alpha}\)</span> <a href="#equation-Walal">(13)</a>,
+and the entire <span class="math">\(\mathbf{U}=\mathbf{B}+\mathbf{W}\mathbf{R}\)</span> system <a href="#equation-UBWR">(6)</a> are
+declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.h#L39">ldy.h:39</a> as follows:</p>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>39
+40
+41</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">typedef</span> <span class="n">struct</span> <span class="n">offb</span> <span class="n">OFFB</span><span class="p">;</span>
+<span class="n">typedef</span> <span class="n">struct</span> <span class="n">diab</span> <span class="n">DIAB</span><span class="p">;</span>
+<span class="n">typedef</span> <span class="n">struct</span> <span class="n">locdyn</span> <span class="n">LOCDYN</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Off&#8211;diagonal blocks of <span class="math">\(\mathbf{W}_{\alpha\beta}\)</span> <a href="#equation-Walbe">(12)</a> are declared in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.h#L44">ldy.h:44</a> as follows:</p>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>44
+45
+46
+47
+48
+49
+50</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">offb</span>
+<span class="p">{</span>
+  <span class="kt">double</span> <span class="n">W</span> <span class="p">[</span><span class="mi">9</span><span class="p">];</span>
+  <span class="p">...</span>
+  <span class="n">DIAB</span> <span class="o">*</span><span class="n">dia</span><span class="p">;</span>
+  <span class="n">OFFB</span> <span class="o">*</span><span class="n">n</span><span class="p">;</span>
+<span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<p>Diagonal blocks of <span class="math">\(\mathbf{W}_{\alpha\alpha}\)</span> <a href="#equation-Walal">(13)</a> and
+free velocity <span class="math">\(\mathbf{B}_{\alpha}\)</span> <a href="#equation-Bal">(11)</a> are declared in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.h#L53">ldy.h:53</a> as follows:</p>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>53
+54
+55</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">diab</span>
+<span class="p">{</span>
+  <span class="kt">double</span> <span class="o">*</span><span class="n">R</span><span class="p">,</span> <span class="cm">/* average reaction ... */</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>58
+59
+60</pre></div></td><td class="code"><div class="highlight"><pre><span></span>         <span class="n">W</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="cm">/* diagonal block of W */</span>
+         <span class="p">...</span>
+         <span class="n">B</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="cm">/* free velocity */</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>63
+64
+65</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">OFFB</span> <span class="o">*</span><span class="n">adj</span><span class="p">;</span>
+
+  <span class="n">CON</span> <span class="o">*</span><span class="n">con</span><span class="p">;</span>  <span class="cm">/* the underlying constraint ... */</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>71</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">DIAB</span> <span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="o">*</span><span class="n">n</span><span class="p">;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>78</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<p>The local dynamics system is stored as a doubly linked list of diagonal blocs
+further pointing to singly linked lists of off&#8211;diagonal blocks in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.h#L81">ldy.h:81</a> as:</p>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>81
+82</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">locdyn</span>
+<span class="p">{</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>87</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">DIAB</span> <span class="o">*</span><span class="n">dia</span><span class="p">;</span> <span class="cm">/* list of diagonal blocks */</span>
+</pre></div>
+</td></tr></table></div>
+<div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>90</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">};</span>
+</pre></div>
+</td></tr></table></div>
+<p>Symbolic insertion of rows into <span class="math">\(\mathbf{W}\)</span>, without assembling of the numeric block values,
+is administered by <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.c#L478">ldy.c:LOCDYN_Insert</a>. <br />
+Similarly, deletion of rows from <span class="math">\(\mathbf{W}\)</span> is administered by
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.c#L557">ldy.c:LOCDYN_Remove</a>. <br />
+Assembling of <span class="math">\(\mathbf{W}\)</span> and <span class="math">\(\mathbf{B}\)</span> is invoked by <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.c#L612">ldy.c:LOCDYN_Update_Begin</a>.</p>
 </div>
 </div>
 
@@ -261,8 +340,8 @@ complexity, and as such it needs to be accepted in numerical practice.</p>
 <li class="toctree-l3"><a class="reference internal" href="timeint.html">Time integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Local dynamics</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#detailed-multi-body-derivation">Detailed multi&#8211;body derivation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-operator">The <span class="math">\(\mathbf{W}\)</span> operator</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#detailed-multi-body-notation">Detailed multi&#8211;body notation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-matrix">The <span class="math">\(\mathbf{W}\)</span> matrix</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a></li>
 </ul>
 </li>
