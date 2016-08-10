@@ -57,6 +57,130 @@
             
   <div class="section" id="joints">
 <span id="solfec-theory-joints"></span><h1>Joints<a class="headerlink" href="#joints" title="Permalink to this headline">¶</a></h1>
+<p>Joints in  Solfec are defined by <a class="reference internal" href="../user/constraints.html#fix-point"><span class="std std-ref">FIX_POINT</span></a>, <a class="reference internal" href="../user/constraints.html#fix-direction"><span class="std std-ref">FIX_DIRECTION</span></a>,
+<a class="reference internal" href="../user/constraints.html#set-displacement"><span class="std std-ref">SET_DISPLACEMENT</span></a>, <a class="reference internal" href="../user/constraints.html#set-velocity"><span class="std std-ref">SET_VELOCITY</span></a>, <a class="reference internal" href="../user/constraints.html#set-acceleration"><span class="std std-ref">SET_ACCELERATION</span></a>, <a class="reference internal" href="../user/constraints.html#put-rigid-link"><span class="std std-ref">PUT_RIGID_LINK</span></a>, and
+<a class="reference internal" href="../user/constraints.html#put-spring"><span class="std std-ref">PUT_SPRING</span></a> commands. Joints are also called bilateral constraints. They restrain absolute motion
+of individual points of individual bodies, or relative motion of pairs of points between two bodies.</p>
+<p>Joints are implemented via suitably setting values of components of relative constraint velocities or
+constraint reactions. That is to say, the general implicit relation</p>
+<div class="math" id="equation-Cal">
+<span class="eqno">(1)</span>\[\mathbf{C}_{\alpha}\left(\mathbf{U}_{\alpha},\mathbf{R}_{\alpha}\right)=\mathbf{0}\]</div>
+<p>for a bilateral constraint with index <span class="math">\(\alpha\)</span> takes a particular shape. In order to work with components
+of relative velocities and forces it is convenient to introduce the following naming convention. Let every local
+frame be defined by a matrix <span class="math">\(\left\{ \mathbf{a}_{T1},\mathbf{a}_{T2},\mathbf{a}_{N}\right\}\)</span>  made of juxtaposed
+column vectors: <span class="math">\(\mathbf{a}_{T1}\)</span> and <span class="math">\(\mathbf{a}_{T2}\)</span>, called <em>tangent</em>, and <span class="math">\(\mathbf{a}_{N}\)</span>, called <em>normal</em>.
+We also assume, that these vectors are mutually perpendicular: <span class="math">\(\mathbf{a}_{T1}\perp\mathbf{a}_{T2}\perp\mathbf{a}_{N}\)</span>.
+With this convenetion at hand, below we define particular versions of relation <a href="#equation-Cal">(1)</a> for joint types available in Solfec.</p>
+<div class="section" id="fixed-point">
+<span id="id1"></span><h2>Fixed point<a class="headerlink" href="#fixed-point" title="Permalink to this headline">¶</a></h2>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#fix-point"><span class="std std-ref">FIX_POINT</span></a> command is realized by defining</p>
+<div class="math">
+\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{U}\]</div>
+<p>and hence</p>
+<div class="math">
+\[\mathbf{U}=\mathbf{0}\]</div>
+<p>imposes the fixed point constraint.</p>
+</div>
+<div class="section" id="fixed-direction">
+<span id="id2"></span><h2>Fixed direction<a class="headerlink" href="#fixed-direction" title="Permalink to this headline">¶</a></h2>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#fix-direction"><span class="std std-ref">FIX_DIRECTION</span></a> command is realized by defining</p>
+<div class="math">
+\[\begin{split}\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
+R_{T1}\\
+R_{T2}\\
+U_{N}
+\end{array}\right]\end{split}\]</div>
+<p>and hence</p>
+<div class="math">
+\[\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=0\]</div>
+<p>imposes the fixed direction constraint. In this case the normal direction is taken to be the fixed direction,
+while the tangential plane is unused (hence zero tangential reaction,
+<span class="math">\(\mathbf{R}_{T}=\left[\begin{array}{c} R_{T1}\\ R_{T2} \end{array}\right]\)</span>)</p>
+</div>
+<div class="section" id="prescribed-displacement">
+<span id="id3"></span><h2>Prescribed displacement<a class="headerlink" href="#prescribed-displacement" title="Permalink to this headline">¶</a></h2>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#set-displacement"><span class="std std-ref">SET_DISPLACEMENT</span></a> command is realized by defining</p>
+<div class="math">
+\[\begin{split}\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
+R_{T1}\\
+R_{T2}\\
+U_{N}-\frac{d}{dt}\text{disp}\left(t\right)
+\end{array}\right]\end{split}\]</div>
+<p>and hence</p>
+<div class="math">
+\[\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=\frac{d}{dt}\text{disp}\left(t\right)\]</div>
+<p>where the displacement signal <span class="math">\(\text{disp}\left(t\right)\)</span> is provided by the user as a linear spline and
+differentiated numerically to obtain velocity. The tangential plane is unused, hence zero tangential reaction.</p>
+</div>
+<div class="section" id="prescribed-velocity">
+<span id="id4"></span><h2>Prescribed velocity<a class="headerlink" href="#prescribed-velocity" title="Permalink to this headline">¶</a></h2>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#set-velocity"><span class="std std-ref">SET_VELOCITY</span></a> command is realized by defining</p>
+<div class="math">
+\[\begin{split}\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
+R_{T1}\\
+R_{T2}\\
+U_{N}-\text{velo}\left(t\right)
+\end{array}\right]\end{split}\]</div>
+<p>and hence</p>
+<div class="math">
+\[\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=\text{velo}\left(t\right)\]</div>
+<p>where the velocity signal <span class="math">\(\text{velo}\left(t\right)\)</span> is provided by the user as a linear spline.
+The tangential plane is unused, hence zero tangential reaction.</p>
+</div>
+<div class="section" id="prescribed-acceleration">
+<span id="id5"></span><h2>Prescribed acceleration<a class="headerlink" href="#prescribed-acceleration" title="Permalink to this headline">¶</a></h2>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#set-acceleration"><span class="std std-ref">SET_ACCELERATION</span></a> command is realized by defining</p>
+<div class="math">
+\[\begin{split}\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
+R_{T1}\\
+R_{T2}\\
+U_{N}-\int_{0}^{t}\text{acc}\left(t\right)
+\end{array}\right]\end{split}\]</div>
+<p>and hence</p>
+<div class="math">
+\[\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=\int_{0}^{t}\text{acc}\left(t\right)\]</div>
+<p>where the acceleration signal <span class="math">\(\text{acc}\left(t\right)\)</span> is provided by the user as a linear spline and
+integrated numerically to obtain velocity. The tangential plane is unused, hence zero tangential reaction.</p>
+</div>
+<div class="section" id="rigid-link-constraint">
+<span id="rigid-link"></span><h2>Rigid link constraint<a class="headerlink" href="#rigid-link-constraint" title="Permalink to this headline">¶</a></h2>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#put-rigid-link"><span class="std std-ref">PUT_RIGID_LINK</span></a> command is realized by defining a normal direction</p>
+<div class="math">
+\[\mathbf{a}_{N}=\frac{\mathbf{x}_{1}\left(\mathbf{X}_{1},t\right)-\mathbf{x}_{2}\left(\mathbf{X}_{2},t\right)}{\left\Vert \mathbf{x}_{1}-\mathbf{x}_{2}\right\Vert }\]</div>
+<p>and tangential plane as orthogonal to this direction <span class="math">\(\mathbf{a}_{T1}\perp\mathbf{a}_{T2}\perp\mathbf{a}_{N}\)</span>, followed by imposing</p>
+<div class="math">
+\[\begin{split}\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
+R_{T1}\\
+R_{T2}\\
+U_{N}
+\end{array}\right]\end{split}\]</div>
+<p>and hence</p>
+<div class="math">
+\[\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=0\]</div>
+<p>which fixes the relative motion of points <span class="math">\(\mathbf{x}_{1}\)</span> and <span class="math">\(\mathbf{x}_{2}\)</span> along the normal direction.
+The tangential plane is unused, hence zero tangential reaction.</p>
+</div>
+<div class="section" id="spring-constraint">
+<span id="simple-spring"></span><h2>Spring constraint<a class="headerlink" href="#spring-constraint" title="Permalink to this headline">¶</a></h2>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#put-spring"><span class="std std-ref">PUT_SPRING</span></a> command is realized by defining a stretch</p>
+<div class="math">
+\[d=\left\Vert \mathbf{x}_{1}\left(\mathbf{X}_{1},t\right)-\mathbf{x}_{2}\left(\mathbf{X}_{2},t\right)\right\Vert -\left\Vert \mathbf{X}_{1}-\mathbf{X}_{2}\right\Vert\]</div>
+<p>a normal direction</p>
+<div class="math">
+\[\mathbf{a}_{N}=\frac{\mathbf{x}_{1}\left(\mathbf{X}_{1},t\right)-\mathbf{x}_{2}\left(\mathbf{X}_{2},t\right)}{\left\Vert \mathbf{x}_{1}-\mathbf{x}_{2}\right\Vert }\]</div>
+<p>and tangential plane as orthogonal to this direction <span class="math">\(\mathbf{a}_{T1}\perp\mathbf{a}_{T2}\perp\mathbf{a}_{N}\)</span>, followed by imposing</p>
+<div class="math">
+\[\begin{split}\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
+R_{T1}\\
+R_{T2}\\
+R_{N}=\text{user_force}\left(d,\dot{d}\right)
+\end{array}\right]\end{split}\]</div>
+<p>and hence</p>
+<div class="math">
+\[\mathbf{R}_{T}=\mathbf{0},\,\,\,R_{N}=\text{user_force}\left(d,\dot{d}\right)\]</div>
+<p>where the user force is prescribed as a Python subroutine.
+The tangential plane is unused, hence zero tangential reaction.</p>
+</div>
 </div>
 
   <div class="section">
@@ -100,7 +224,16 @@
 <li class="toctree-l3"><a class="reference internal" href="timeint.html">Time integration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="locdyn.html">Local dynamics</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Joints</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Joints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fixed-point">Fixed point</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fixed-direction">Fixed direction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prescribed-displacement">Prescribed displacement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prescribed-velocity">Prescribed velocity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prescribed-acceleration">Prescribed acceleration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rigid-link-constraint">Rigid link constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#spring-constraint">Spring constraint</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="conpnt.html">Contact points</a></li>
 <li class="toctree-l3"><a class="reference internal" href="conform.html">Contact formulations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="solvers.html">Constraint solvers</a></li>
