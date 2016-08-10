@@ -181,6 +181,15 @@ R_{N}=\text{user_force}\left(d,\dot{d}\right)
 <p>where the user force is prescribed as a Python subroutine.
 The tangential plane is unused, hence zero tangential reaction.</p>
 </div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>Joints are implemented as a part of constraint solvers. For example, function
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L483">dbs.c:DIAGONAL_BLOCK_Solver</a> is a driver
+routine for all joint types solved within the <a class="reference internal" href="../user/solvers.html#gauss-seidel"><span class="std std-ref">Gauss&#8211;Seidel</span></a> solver, invoked from within
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bgs.c#L901">bgs.c:GAUSS_SEIDEL_Solve</a>.
+Within the <a class="reference internal" href="../user/solvers.html#projected-newton"><span class="std std-ref">Projected Newton</span></a> solver the routine
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/nts.c#L939">nts.c:solve</a> implements all joint types.</p>
+</div>
 </div>
 
   <div class="section">
@@ -232,6 +241,7 @@ The tangential plane is unused, hence zero tangential reaction.</p>
 <li class="toctree-l4"><a class="reference internal" href="#prescribed-acceleration">Prescribed acceleration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rigid-link-constraint">Rigid link constraint</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#spring-constraint">Spring constraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="conpnt.html">Contact points</a></li>
