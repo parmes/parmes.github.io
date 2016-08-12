@@ -57,6 +57,162 @@
             
   <div class="section" id="contact-points">
 <span id="solfec-theory-conpnt"></span><h1>Contact points<a class="headerlink" href="#contact-points" title="Permalink to this headline">¶</a></h1>
+<p>In Solfec contact points are generated from volumetric intersections of convex primitive shapes.
+For example, in case of finite elements, a single contact point is generated as a result of an
+intersection of two elements. Once an intersection is calculated, a contact point is obtained as
+a centroid of the intersection surface; a contact normal is calculated by averaging normal directions
+of the constituent surfaces. This is illustrated in Figure <a class="reference internal" href="#conpnt"><span class="std std-numref">Fig. 7</span></a>.</p>
+<div class="figure align-center" id="id7">
+<span id="conpnt"></span><a class="reference internal image-reference" href="../../_images/conpnt.png"><img alt="../../_images/conpnt.png" src="../../_images/conpnt.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Contact points and normals obtained from volumetric intersections of convex primitives.</span></p>
+</div>
+<div class="section" id="calculating-volumetric-intersection">
+<h2>Calculating volumetric intersection<a class="headerlink" href="#calculating-volumetric-intersection" title="Permalink to this headline">¶</a></h2>
+<p>Intersection of two convex polyhedra is a convex polyhedron. The convex intersection algorithm,
+based on <a class="footnote-reference" href="#id4" id="id1">[1]</a>, is implemented in cvi.c and it can be summarized as follows. Let vectors</p>
+<div class="math">
+\[\begin{split}\mathbf{v}=\left[\begin{array}{c}
+\mathbf{v}_{1}\\
+...\\
+\mathbf{v}_{n}
+\end{array}\right],\,\,\,\mathbf{p}=\left[\begin{array}{c}
+\mathbf{p}_{1}\\
+...\\
+\mathbf{p}_{m}
+\end{array}\right]\end{split}\]</div>
+<p>store vertices and face planes of a polyhedron. Vertices are made of triplets of coordinates</p>
+<div class="math">
+\[\begin{split}\mathbf{v}_{i}=\left[\begin{array}{c}
+v_{x}\\
+v_{y}\\
+v_{z}
+\end{array}\right]_{i}\end{split}\]</div>
+<p>Planes are made of four components</p>
+<div class="math">
+\[\begin{split}\mathbf{p}_{i}=\left[\begin{array}{c}
+n_{x}\\
+n_{y}\\
+n_{z}\\
+d
+\end{array}\right]_{i}\end{split}\]</div>
+<p>The plane equation reads</p>
+<div class="math">
+\[n_{x}\cdot x+n_{y}\cdot y+n_{z}\cdot z+d=0\]</div>
+<p>where <span class="math">\(\left[n_{x},n_{y},n_{z}\right]^{T}\)</span> can be interpreted as a direction normal to the plane. The convex intersection takes as input</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>va - vertices of polyhedron &#39;a&#39;
+pa - face planes of polyhedron &#39;a&#39;
+vb, pb - vertices and planes of polyhedron &#39;b&#39;
+</pre></div>
+</div>
+<p>as seen in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L118">cvi.c:118</a>.
+The algorithm begins by finding a distance between, and a pair closest points in &#8216;a&#8217; and &#8216;b&#8217;</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>1  d,p,q = gjk(va, vb)
+2  if d &gt; 0 return NULL
+3  else x = p
+</pre></div>
+</div>
+<p>which maps to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L132">cvi.c:132</a>.
+The GJK algorithm <a class="footnote-reference" href="#id6" id="id2">[3]</a>, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/gjk.c#L342">gjk.c:342</a>, is used.
+In case there is a positive separating distance between the input polyhedrons, null intersection is returned.
+For the intersection algorithm to work we need a point <span class="math">\(\mathbf{x}\)</span>, that is inside of both input polyhedrons.
+GJK will at best return a common point on the surfaces of both polyhedra. In the next step</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>4  x = refine_point(x)
+</pre></div>
+</div>
+<p>point <span class="math">\(\mathbf{x}\)</span> is refined by pushing it deeper inside of polyhedrons &#8216;a&#8217; and &#8216;b&#8217;.
+This maps to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L136">cvi.c:136</a>.
+Once <span class="math">\(\mathbf{x}\)</span> has been refined, we transform the input plane definitions</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>5  transform(pa)
+6  transform(pb)
+</pre></div>
+</div>
+<p>so that <span class="math">\(\mathbf{x}\)</span> acts as an origin of the coordinate system <span class="math">\(\left[0,0,0\right]^{T}\)</span>.
+In the course of this transformation we also scale the normal direction components so that <span class="math">\(d_{i}=-1\)</span>.
+This maps to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L143L159">cvi.c:143-159</a>.
+In the next step</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>7  h = quickhull(normals(pa+pb))
+</pre></div>
+</div>
+<p>we calculate the convex hull of the transformed normal directions of &#8216;a&#8217; and &#8216;b&#8217;
+(<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L163">cvi.c:163</a>).
+The quickhull algorithm <a class="footnote-reference" href="#id5" id="id3">[2]</a>, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/hul.c#L555">hul.c:555</a>,
+is used. The result can be interpreted as a <em>dual polyhedron</em> of the intersection polyhedron of &#8216;a&#8217; and &#8216;b&#8217;:
+for a convex polyhedron <span class="math">\(\left(\mathbf{v},\mathbf{p}\right)\)</span>, its dual (or <em>polar</em>) polyhedron is made
+by reinterpreting vertices as planes, and planes as vertices, as follows</p>
+<div class="math">
+\[\begin{split}\left[\begin{array}{c}
+v_{x}\\
+v_{y}\\
+v_{z}
+\end{array}\right]_{i}\rightarrow\left[\begin{array}{c}
+v_{x}\\
+v_{y}\\
+v_{z}\\
+-1
+\end{array}\right]_{i},\,\,\,l_{v}=\sqrt{v_{x}^{2}+v_{y}^{2}+v_{z}^{2}}\end{split}\]</div>
+<div class="math">
+\[\begin{split}\left[\begin{array}{c}
+n_{x}\\
+n_{y}\\
+n_{z}\\
+-1
+\end{array}\right]_{i}\rightarrow\left[\begin{array}{c}
+n_{x}\\
+n_{y}\\
+n_{z}
+\end{array}\right]_{i},\,\,\,l_{n}=\sqrt{n_{x}^{2}+n_{y}^{2}+n_{z}^{2}}\end{split}\]</div>
+<p>where vertices at distance <span class="math">\(l_{v}\)</span> from the origin become planes at distance <span class="math">\(1/l_{v}\)</span> from the origin,
+while planes at distance <span class="math">\(1/l_{n}\)</span> from the origin become vertices at distance <span class="math">\(l_{n}\)</span>. In order to obtain
+vertices of the intersection polyhedron we then calculate the polar set</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>8  v = polarize(h)
+</pre></div>
+</div>
+<p>which maps to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L164">cvi.c:164</a> and is implemented in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/tri.c#L351">tri.c:351</a>. The vertices <span class="math">\(\mathbf{v}\)</span> of
+the dual intersection polyhedron are translated back, <span class="math">\(\mathbf{v}+\mathbf{x}\)</span>, into the input coordinate
+system, and triangulated</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>9  t = triangulate(v+x)
+</pre></div>
+</div>
+<p>which maps to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L170L220">cvi.c:170-220</a>. The triangulation is then returned</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>10 return t
+</pre></div>
+</div>
+<p>at <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L231">cvi.c:231</a>.</p>
+</div>
+<div class="section" id="deriving-contact-points-and-normals">
+<h2>Deriving contact points and normals<a class="headerlink" href="#deriving-contact-points-and-normals" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="contact-sparsification">
+<h2>Contact sparsification<a class="headerlink" href="#contact-sparsification" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="broad-phase-contact-detection">
+<h2>Broad phase contact detection<a class="headerlink" href="#broad-phase-contact-detection" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="other-implementation-aspects">
+<h2>Other implementation aspects<a class="headerlink" href="#other-implementation-aspects" title="Permalink to this headline">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>D. E. Muller and F. P. Preparata, Finding the intersection of two convex polyhedra,
+Theoretical Computer Science, 7, 217-236, 1978.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>C. B. Barber, D. P. Dobkin, and H. Huhdanpaa, The Quickhull Algorithm for Convex Hulls,
+ACM Transactions on Mathematical Software, 22 (4), 469-483, 1996.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[3]</a></td><td>E. G. Gilbert, and D. W. Johnson, and S. S. Keerthi, Fast procedure for computing the distance between complex
+bjects in three-dimensional space, IEEE journal of robotics and automation, 4 (2), 193-203, 1988.</td></tr>
+</tbody>
+</table>
+</div>
 </div>
 
   <div class="section">
@@ -101,7 +257,14 @@
 <li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="locdyn.html">Local dynamics</a></li>
 <li class="toctree-l3"><a class="reference internal" href="joints.html">Joints</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Contact points</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Contact points</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#calculating-volumetric-intersection">Calculating volumetric intersection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deriving-contact-points-and-normals">Deriving contact points and normals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contact-sparsification">Contact sparsification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#broad-phase-contact-detection">Broad phase contact detection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-implementation-aspects">Other implementation aspects</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="conform.html">Contact formulations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="solvers.html">Constraint solvers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="materials.html">Material models</a></li>
