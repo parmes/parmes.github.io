@@ -62,14 +62,14 @@ For example, in case of finite elements, a single contact point is generated as 
 intersection of two elements. Once an intersection is calculated, a contact point is obtained as
 a centroid of the intersection surface; a contact normal is calculated by averaging normal directions
 of the constituent surfaces. This is illustrated in Figure <a class="reference internal" href="#conpnt"><span class="std std-numref">Fig. 7</span></a>.</p>
-<div class="figure align-center" id="id7">
+<div class="figure align-center" id="id8">
 <span id="conpnt"></span><a class="reference internal image-reference" href="../../_images/conpnt.png"><img alt="../../_images/conpnt.png" src="../../_images/conpnt.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Contact points and normals obtained from volumetric intersections of convex primitives.</span></p>
 </div>
 <div class="section" id="calculating-volumetric-intersection">
 <h2>Calculating volumetric intersection<a class="headerlink" href="#calculating-volumetric-intersection" title="Permalink to this headline">¶</a></h2>
 <p>Intersection of two convex polyhedra is a convex polyhedron. The convex intersection algorithm,
-based on <a class="footnote-reference" href="#id4" id="id1">[1]</a>, is implemented in cvi.c and it can be summarized as follows. Let vectors</p>
+based on <a class="footnote-reference" href="#id5" id="id1">[1]</a>, is implemented in cvi.c and it can be summarized as follows. Let vectors</p>
 <div class="math">
 \[\begin{split}\mathbf{v}=\left[\begin{array}{c}
 \mathbf{v}_{1}\\
@@ -112,7 +112,7 @@ The algorithm begins by finding a distance between, and a pair closest points in
 </pre></div>
 </div>
 <p>which maps to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L132">cvi.c:132</a>.
-The GJK algorithm <a class="footnote-reference" href="#id6" id="id2">[3]</a>, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/gjk.c#L342">gjk.c:342</a>, is used.
+The GJK algorithm <a class="footnote-reference" href="#id7" id="id2">[3]</a>, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/gjk.c#L342">gjk.c:342</a>, is used.
 In case there is a positive separating distance between the input polyhedrons, null intersection is returned.
 For the intersection algorithm to work we need a point <span class="math">\(\mathbf{x}\)</span>, that is inside of both input polyhedrons.
 GJK will at best return a common point on the surfaces of both polyhedra. In the next step</p>
@@ -135,7 +135,7 @@ In the next step</p>
 </div>
 <p>we calculate the convex hull of the transformed normal directions of &#8216;a&#8217; and &#8216;b&#8217;
 (<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L163">cvi.c:163</a>).
-The quickhull algorithm <a class="footnote-reference" href="#id5" id="id3">[2]</a>, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/hul.c#L555">hul.c:555</a>,
+The quickhull algorithm <a class="footnote-reference" href="#id6" id="id3">[2]</a>, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/hul.c#L555">hul.c:555</a>,
 is used. The result can be interpreted as a <em>dual polyhedron</em> of the intersection polyhedron of &#8216;a&#8217; and &#8216;b&#8217;:
 for a convex polyhedron <span class="math">\(\left(\mathbf{v},\mathbf{p}\right)\)</span>, its dual (or <em>polar</em>) polyhedron is made
 by reinterpreting vertices as planes, and planes as vertices, as follows</p>
@@ -182,30 +182,90 @@ system, and triangulated</p>
 </div>
 <div class="section" id="deriving-contact-points-and-normals">
 <h2>Deriving contact points and normals<a class="headerlink" href="#deriving-contact-points-and-normals" title="Permalink to this headline">¶</a></h2>
+<p>Contact points and contact normals are calculated based on the intersection surfaces obtained in the previous step.
+For various pairing of geometrical objects, calculation of contact points and contact normals is implemented in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c">goc.c</a>. For the pairing of two convex polyhedral surfaces
+contact detection is implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L257">goc.c:detect_convex_convex</a>,
+where fist at <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L272">goc.c:272</a>, triangulation of the intersection of
+the input surfaces is obtained, and next at <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L274">goc.c:274</a> a contact
+point and contact normal are obtained out of this triangulation. Implementation of this calculation is found at
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L130">goc.c:130</a> and it can be summarized as follows. Let <span class="math">\(\partial A\)</span>
+and <span class="math">\(\partial B\)</span> be the surfaces of the input polytopes <span class="math">\(A\)</span> and <span class="math">\(B\)</span>. Let <span class="math">\(\left\{ t_{i}\right\}\)</span>  and
+<span class="math">\(\left\{ \mathbf{v}_{i}\right\}\)</span>  be the sets of triangles and vertices of the intersection surface of <span class="math">\(A\cap B\)</span>. Then</p>
+<p>1 <span class="math">\(\,\,\)</span> <span class="math">\(\mathbf{p}=\mathbf{0}\)</span>, <span class="math">\(\mathbf{n}=\mathbf{0}\)</span>, <span class="math">\(area = 0\)</span> <br />
+2 <span class="math">\(\,\,\)</span> for each <span class="math">\(t_{i}\in\left\{ t_{i}\right\}\)</span>  do <br />
+3 <span class="math">\(\,\,\,\,\,\,\)</span> <span class="math">\(a = area \left(t_{i}\right)\)</span>, <span class="math">\(b = a^{2}\)</span> <br />
+4 <span class="math">\(\,\,\,\,\,\,\)</span> if <span class="math">\(t_{i}\in\partial A\)</span> then <span class="math">\(\mathbf{n}=\mathbf{n}+b\cdot\text{normal}\left(t_{i}\right)\)</span> <br />
+5 <span class="math">\(\,\,\,\,\,\,\)</span> else <span class="math">\(\mathbf{n}=\mathbf{n}-b\cdot\text{normal}\left(t_{i}\right)\)</span> <br />
+6 <span class="math">\(\,\,\,\,\,\,\)</span> <span class="math">\(\mathbf{p}=\mathbf{p}+a\cdot\text{centroid}\left(t_{i}\right)\)</span> <br />
+7 <span class="math">\(\,\,\,\,\,\,\)</span> <span class="math">\(area=area+a\)</span> <br />
+8 <span class="math">\(\,\,\,\,\,\,\)</span> <span class="math">\(\mathbf{p}=\mathbf{p}/area\)</span>, <span class="math">\(\mathbf{n}=\mathbf{n}/\left\Vert \mathbf{n}\right\Vert\)</span> , <span class="math">\(area=0.5\cdot area\)</span> <br />
+9 <span class="math">\(\,\,\,\,\,\,\)</span> if <span class="math">\(\mathbf{p}\)</span> outside of <span class="math">\(A\)</span> or <span class="math">\(B\)</span> return NULL <br />
+10 <span class="math">\(\,\,\,\,\,\)</span> <span class="math">\(spair_{0}=\text{nearest_surface_id}\left(\mathbf{p},\partial A\right)\)</span> <br />
+11 <span class="math">\(\,\,\,\,\,\)</span> <span class="math">\(spair_{1}=\text{nearest_surface_id}\left(\mathbf{p},\partial B\right)\)</span> <br />
+12 <span class="math">\(\,\,\,\,\,\)</span> <span class="math">\(gap=\underset{\mathbf{v}_{i}\in\left\{ \mathbf{v}_{i}\right\} }{\min}\mathbf{n}\cdot\mathbf{v}_{i}-
+\underset{\mathbf{v}_{i}\in\left\{ \mathbf{v}_{i}\right\} }{\max}\mathbf{n}\cdot\mathbf{v}_{i}\)</span> <br />
+13 <span class="math">\(\,\,\,\,\,\)</span> if <span class="math">\(\left|gap\right|\)</span> seems too large <br />
+14 <span class="math">\(\,\,\,\,\,\,\,\,\,\)</span> <span class="math">\(A^{\prime}=A+\mathbf{n}\cdot\left|gap\right|\)</span>, <span class="math">\(B^{\prime}=B-\mathbf{n}\cdot\left|gap\right|\)</span> <br />
+15 <span class="math">\(\,\,\,\,\,\,\,\,\,\)</span> <span class="math">\(gap=\min\left(\text{gjk}\left(A^{\prime},B^{\prime}\right)-2\left|gap\right|,0\right)\)</span> <br />
+16 <span class="math">\(\,\,\)</span> return <span class="math">\(\mathbf{p}\)</span>, <span class="math">\(\mathbf{n}\)</span>, <span class="math">\(area\)</span>, <span class="math">\(spair\)</span>, <span class="math">\(gap\)</span></p>
+<p>Lines 1-8 above map to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L141L158">goc.c:141-158</a>.
+Line 9 corresponds to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L160">goc.c:160</a> .
+Lines 10-11 map to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L163L172">goc.c:163-172</a> .
+Lines 12-15 map to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L214L243">goc.c:214-243</a>.
+The extra check in line 13-15 is added to improve robustness of gap calculation. We note that, apart from the contact point,
+the contact normal, and the gap, we also calculate contact area, and surface pairing spair, storing identifiers of the input
+surfaces that are nearest to the contact point. In line 4, accumulated normal directions are scaled by square area of triangles,
+weighting down the influence of triangles with small areas. In line 9, we terminate in case the contact point fell outside of
+the input surfaces due to roundoff.</p>
 </div>
 <div class="section" id="contact-sparsification">
-<h2>Contact sparsification<a class="headerlink" href="#contact-sparsification" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>Contact sparsification<a class="headerlink" href="#contact-sparsification" title="Permalink to this headline">¶</a></h2>
+<p>Contact geometries made of many individual convex objects often generate many contact points. Some of these contact points
+are ill–conditioned, in the sense that their corresponding contact normals do not necessarily represent a most natural
+direction of contact resolution. This frequently happens near corners or sharp edges, due to roundoff error. Also, for
+contact problems among bodies represented by simple kinematic models (e.g. rigid or pseudo-rigid) complex geometries may
+give rise to the number of contact points far exceeding the available kinematic freedom. This renders the <span class="math">\(\mathbf{W}\)</span>
+matrix ill-conditioned, as already explained in <a class="reference internal" href="locdyn.html#w-matrix"><span class="std std-ref">the section on local dynamics</span></a>. For the above
+reasons, a heuristic method of refining contact points, or <em>sparsification</em>, has been implemented in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dom.c#L2808">dom.c:sparsify_contacts</a>.
+The result of application of this routine is seen in <a class="reference internal" href="#sparsification"><span class="std std-numref">Fig. 8</span></a>.</p>
+<div class="figure align-center" id="id9">
+<span id="sparsification"></span><a class="reference internal image-reference" href="../../_images/sparsification.png"><img alt="../../_images/sparsification.png" src="../../_images/sparsification.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Heuristic filtering of redundant contact points (736 to 168).</span></p>
+</div>
+<p>The sparsification approach can be summarized as follows. Let <span class="math">\(\left\{ c_{i}\right\}\)</span>  be a set of all contact points
+and let <span class="math">\(threshold\)</span>, <span class="math">\(minarea\)</span> and <span class="math">\(mindist\)</span> be given. Then</p>
+<p>1 <span class="math">\(\,\,\)</span> for all newly detected <span class="math">\(c_{i}\in\left\{ c_{i}\right\}\)</span> do <br />
+2 <span class="math">\(\,\,\,\,\,\,\)</span> if <span class="math">\(\text{area}\left(c_{i}\right)&lt;minarea\)</span> then <span class="math">\(\text{delete}\left(c_{i}\right)\)</span> <br />
+3 <span class="math">\(\,\,\,\,\,\,\)</span>  for all <span class="math">\(c_{j}\in\text{adjacency}\left(c_{i}\right)\)</span> do <br />
+4 <span class="math">\(\,\,\,\,\,\,\,\,\,\,\)</span> if <span class="math">\(\text{area}\left(c_{i}\right)&lt;threshold\cdot\text{area}\left(c_{j}\right)\)</span> and <br />
+<span class="math">\(\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\)</span> <span class="math">\(c_{i}\text{ and }c_{j}\text{ are topologically adjacent}\)</span> then <span class="math">\(\text{delete}\left(c_{i}\right)\)</span> <br />
+5 <span class="math">\(\,\,\,\,\,\,\,\,\,\,\)</span> else if <span class="math">\(\left\Vert \mathbf{p}\left(c_{i}\right)-\mathbf{p}\left(c_{j}\right)\right\Vert &lt;mindist\)</span> then <span class="math">\(\text{delete}\left(c_{i}\right)\)</span></p>
+<p>Contact points are “topologically adjacent” if they are generated by geometrical primitives which themselves are topologically adjacent
+(e.g. finite elements that share element faces). We note, that parameters <span class="math">\(threshold\)</span>, <span class="math">\(minarea\)</span> and <span class="math">\(mindist\)</span> can be
+adjusted by using the <a class="reference internal" href="../user/simulation.html#contact-sparsify"><span class="std std-ref">CONTACT_SPARSIFY</span></a> input command.</p>
 </div>
 <div class="section" id="broad-phase-contact-detection">
 <h2>Broad phase contact detection<a class="headerlink" href="#broad-phase-contact-detection" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="other-implementation-aspects">
 <h2>Other implementation aspects<a class="headerlink" href="#other-implementation-aspects" title="Permalink to this headline">¶</a></h2>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
+<table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>D. E. Muller and F. P. Preparata, Finding the intersection of two convex polyhedra,
 Theoretical Computer Science, 7, 217-236, 1978.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
+<table class="docutils footnote" frame="void" id="id6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>C. B. Barber, D. P. Dobkin, and H. Huhdanpaa, The Quickhull Algorithm for Convex Hulls,
 ACM Transactions on Mathematical Software, 22 (4), 469-483, 1996.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+<table class="docutils footnote" frame="void" id="id7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[3]</a></td><td>E. G. Gilbert, and D. W. Johnson, and S. S. Keerthi, Fast procedure for computing the distance between complex
