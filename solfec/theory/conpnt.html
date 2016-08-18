@@ -62,14 +62,14 @@ For example, in case of finite elements, a single contact point is generated as 
 intersection of two elements. Once an intersection is calculated, a contact point is obtained as
 a centroid of the intersection surface; a contact normal is calculated by averaging normal directions
 of the constituent surfaces. This is illustrated in Figure <a class="reference internal" href="#conpnt"><span class="std std-numref">Fig. 7</span></a>.</p>
-<div class="figure align-center" id="id8">
+<div class="figure align-center" id="id12">
 <span id="conpnt"></span><a class="reference internal image-reference" href="../../_images/conpnt.png"><img alt="../../_images/conpnt.png" src="../../_images/conpnt.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Contact points and normals obtained from volumetric intersections of convex primitives.</span></p>
 </div>
 <div class="section" id="calculating-volumetric-intersection">
 <h2>Calculating volumetric intersection<a class="headerlink" href="#calculating-volumetric-intersection" title="Permalink to this headline">¶</a></h2>
 <p>Intersection of two convex polyhedra is a convex polyhedron. The convex intersection algorithm,
-based on <a class="footnote-reference" href="#id5" id="id1">[1]</a>, is implemented in cvi.c and it can be summarized as follows. Let vectors</p>
+based on <a class="footnote-reference" href="#id7" id="id1">[1]</a>, is implemented in cvi.c and it can be summarized as follows. Let vectors</p>
 <div class="math">
 \[\begin{split}\mathbf{v}=\left[\begin{array}{c}
 \mathbf{v}_{1}\\
@@ -112,7 +112,7 @@ The algorithm begins by finding a distance between, and a pair closest points in
 </pre></div>
 </div>
 <p>which maps to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L132">cvi.c:132</a>.
-The GJK algorithm <a class="footnote-reference" href="#id7" id="id2">[3]</a>, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/gjk.c#L342">gjk.c:342</a>, is used.
+The GJK algorithm <a class="footnote-reference" href="#id9" id="id2">[3]</a>, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/gjk.c#L342">gjk.c:342</a>, is used.
 In case there is a positive separating distance between the input polyhedrons, null intersection is returned.
 For the intersection algorithm to work we need a point <span class="math">\(\mathbf{x}\)</span>, that is inside of both input polyhedrons.
 GJK will at best return a common point on the surfaces of both polyhedra. In the next step</p>
@@ -135,7 +135,7 @@ In the next step</p>
 </div>
 <p>we calculate the convex hull of the transformed normal directions of &#8216;a&#8217; and &#8216;b&#8217;
 (<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L163">cvi.c:163</a>).
-The quickhull algorithm <a class="footnote-reference" href="#id6" id="id3">[2]</a>, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/hul.c#L555">hul.c:555</a>,
+The quickhull algorithm <a class="footnote-reference" href="#id8" id="id3">[2]</a>, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/hul.c#L555">hul.c:555</a>,
 is used. The result can be interpreted as a <em>dual polyhedron</em> of the intersection polyhedron of &#8216;a&#8217; and &#8216;b&#8217;:
 for a convex polyhedron <span class="math">\(\left(\mathbf{v},\mathbf{p}\right)\)</span>, its dual (or <em>polar</em>) polyhedron is made
 by reinterpreting vertices as planes, and planes as vertices, as follows</p>
@@ -230,7 +230,7 @@ matrix ill-conditioned, as already explained in <a class="reference internal" hr
 reasons, a heuristic method of refining contact points, or <em>sparsification</em>, has been implemented in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dom.c#L2808">dom.c:sparsify_contacts</a>.
 The result of application of this routine is seen in <a class="reference internal" href="#sparsification"><span class="std std-numref">Fig. 8</span></a>.</p>
-<div class="figure align-center" id="id9">
+<div class="figure align-center" id="id13">
 <span id="sparsification"></span><a class="reference internal image-reference" href="../../_images/sparsification.png"><img alt="../../_images/sparsification.png" src="../../_images/sparsification.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Heuristic filtering of redundant contact points (736 to 168).</span></p>
 </div>
@@ -248,28 +248,75 @@ adjusted by using the <a class="reference internal" href="../user/simulation.htm
 </div>
 <div class="section" id="broad-phase-contact-detection">
 <h2>Broad phase contact detection<a class="headerlink" href="#broad-phase-contact-detection" title="Permalink to this headline">¶</a></h2>
+<p>Broad phase contact detection precedes the detailed pairwise checks, one of which is described above.
+During the broad phase we only intend to find a likely candidates for the detailed pairwise overlap tests
+and for this reason axis aligned bounding boxes are used to represent geometrical primitives. For example,
+each finite element is represented by a corresponding bounding box, and so are spheres and ellipsoids present
+in a simulation. A number of box overlap test algorithms are implemented, as seen in <a class="reference internal" href="#boxtest"><span class="std std-numref">Fig. 9</span></a>, where
+a test program, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/tst/boxtest.c">tst/boxtest.c</a>,
+is shown. All these algorithms are detailed in thesis <a class="footnote-reference" href="#id11" id="id5">[5]</a>. The driver interface for various box overlap algorithms
+is implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/box.c">box.c</a> and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/box.h">box.h</a>.
+The hybrid algorithm <a class="footnote-reference" href="#id10" id="id6">[4]</a> is currently used in Solfec as a fixed choice, cf. <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dom.c#L114">dom.c:114</a>.
+The <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/box.c#L379">box.c:AABB_Update</a> routine is called inside of the time
+integration loop in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dom.c#L3595">dom.c:3595</a>. When box overlaps are
+detected the callback <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dom.c#L344">dom.c:overal_create</a> is invoked,
+from within which the <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L1339">goc.c:gobjcontact</a> pairwise overlap
+detection routined is called. Should an overlap occur, an individual contact point is created as a result,
+in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dom.c#L384L402">dom.c:384-402</a>.</p>
+<div class="figure align-center" id="id14">
+<span id="boxtest"></span><a class="reference internal image-reference" href="../../_images/boxtest.png"><img alt="../../_images/boxtest.png" src="../../_images/boxtest.png" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Box test program illustrating various box overlap detection algorithms.</span></p>
+</div>
+</div>
+<div class="section" id="geometric-epsilon">
+<span id="geometric-epsilon-section"></span><h2>Geometric epsilon<a class="headerlink" href="#geometric-epsilon" title="Permalink to this headline">¶</a></h2>
+<p>It is important to note that GEOMETRIC_EPSILON, defined in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/alg.c#L24">alg.c:24</a>,
+has significant effect on the behavior of most of the geometrical calculations in Solfec. For example, often points are regarded as
+coincident if they are closer than this value. The input command <a class="reference internal" href="../user/simulation.html#geometric-epsilon"><span class="std std-ref">GEOMETRIC_EPSILON</span></a> allows to change the
+default value of 1E-6.  It is recommended to use about 0.0001 to 0.01 times the dimension of a smallest significant geometrical
+feature in a model.</p>
 </div>
 <div class="section" id="other-implementation-aspects">
 <h2>Other implementation aspects<a class="headerlink" href="#other-implementation-aspects" title="Permalink to this headline">¶</a></h2>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
+<p>Test examples</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/tst/cvitest.c">tst/cvitest.c</a> for convex intersection implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c">cvi.c</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/tst/gjktest.c">tst/gjktest.c</a> for GJK proximity query implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/gjk.c">gjk.c</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/tst/hultest.c">tst/hultest.c</a> for convex hull calculation implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/hul.c">hul.c</a></li>
+</ul>
+<p>can be used to improve understanding of the pairwise overlap test described above.</p>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>D. E. Muller and F. P. Preparata, Finding the intersection of two convex polyhedra,
 Theoretical Computer Science, 7, 217-236, 1978.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
+<table class="docutils footnote" frame="void" id="id8" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>C. B. Barber, D. P. Dobkin, and H. Huhdanpaa, The Quickhull Algorithm for Convex Hulls,
 ACM Transactions on Mathematical Software, 22 (4), 469-483, 1996.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id7" rules="none">
+<table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[3]</a></td><td>E. G. Gilbert, and D. W. Johnson, and S. S. Keerthi, Fast procedure for computing the distance between complex
 bjects in three-dimensional space, IEEE journal of robotics and automation, 4 (2), 193-203, 1988.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[4]</a></td><td>A. Zomorodian and H. Edelsbrunner, Fast software for box intersections, International Journal
+of Computational Geometry and Applications, 12 (1-2), 143-172, 2002.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td><a class="reference external" href="http://theses.gla.ac.uk/429/">Koziara, PhD thesis, 2008.</a></td></tr>
 </tbody>
 </table>
 </div>
@@ -322,6 +369,7 @@ bjects in three-dimensional space, IEEE journal of robotics and automation, 4 (2
 <li class="toctree-l4"><a class="reference internal" href="#deriving-contact-points-and-normals">Deriving contact points and normals</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#contact-sparsification">Contact sparsification</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#broad-phase-contact-detection">Broad phase contact detection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geometric-epsilon">Geometric epsilon</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#other-implementation-aspects">Other implementation aspects</a></li>
 </ul>
 </li>
