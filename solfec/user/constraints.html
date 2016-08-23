@@ -157,7 +157,7 @@ beyond which the link will be deleted (default: infinity); or ultimate reaction 
 <p>This routine creates an arbitrary spring between two referential points of two distinct bodies.
 See also, formulation of the <a class="reference internal" href="../theory/joints.html#simple-spring"><span class="std std-ref">spring constraint</span></a>.</p>
 <div class="topic">
-<p class="topic-title first">obj = PUT_SPRING (body1, point1, body2, point2, function, limits)</p>
+<p class="topic-title first">obj = PUT_SPRING (body1, point1, body2, point2, function, limits | direction, update) <span class="red">(Under development)</span></p>
 <ul>
 <li><p class="first">obj &#8211; created CONSTRAINT object</p>
 </li>
@@ -171,12 +171,18 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 </li>
 <li><p class="first">function &#8211; Python function callback returning the value of force as the function of stroke:</p>
 <p><strong>force = function (stroke, velocity)</strong></p>
-<p>where stroke = current (|point2 &#8211; point1|) &#8211; initial (|point2 &#8211; point1|) and velocity is the current relative velocity along
-the current direction of point2 &#8211; point1 (positive if distance increases).</p>
+<p>where <span class="math">\(\text{stroke=}\mathbf{n}\cdot\text{current}\left(\text{point2}-\text{point1}\right)-\text{initial}\left(\left|\text{point2}-\text{point1}\right|\right)\)</span>
+and <em>velocity</em> is the current relative velocity along the spring direction <span class="math">\(\mathbf{n}\)</span> (positive if stroke increases)</p>
 </li>
-</ul>
-<ul class="simple">
-<li>limits &#8211; (smin, smax) tuple defining stroke limits (smin <span class="math">\(\le\)</span> 0 and smax <span class="math">\(\ge\)</span> 0)</li>
+<li><p class="first">limits &#8211; (smin, smax) tuple defining stroke limits (smin <span class="math">\(\le\)</span> 0 and smax <span class="math">\(\ge\)</span> 0)</p>
+</li>
+<li><p class="first">direction &#8211; (nx, ny, nz) tuple storing spring direction <span class="math">\(\mathbf{n}\)</span>.
+Default: <span class="math">\(\mathbf{n}=\text{normalized}\left(\text{current}\left(\text{point2}-\text{point1}\right)\right)\)</span> resulting in a follower type spring.
+When specified, <span class="math">\(\mathbf{n}\)</span> will be updated according to the value of update.</p>
+</li>
+<li><p class="first">update &#8211; direction update kind (default: &#8216;FIXED&#8217;); one of: &#8216;FIXED&#8217; where <span class="math">\(\mathbf{n}\)</span> is kept fixed,
+or &#8216;CONV1&#8217; where <span class="math">\(\mathbf{n}\)</span> is convected with body1, or &#8216;CONV2&#8217; where <span class="math">\(\mathbf{n}\)</span> is convected with body2.</p>
+</li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a CONSTRAINT object, cf. <a class="reference internal" href="#constraint-params"><span class="std std-numref">Table 18</span></a>.</p>
