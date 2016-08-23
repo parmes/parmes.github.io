@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hybrid modeling &mdash; PARMES  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="PARMES  documentation" href="../../index.html" />
+    <link rel="up" title="Solfec Examples" href="../examples.html" />
+    <link rel="next" title="DYNLB" href="../../dynlb/about.html" />
+    <link rel="prev" title="Solfec Examples" href="../examples.html" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="hybrid-modeling">
+<span id="solfec-examples-hybrid-modelling"></span><h1>Hybrid modeling<a class="headerlink" href="#hybrid-modeling" title="Permalink to this headline">¶</a></h1>
+<p>By hybrid modeling we mean multi&#8211;body modeling combining rigid bodies connected
+via springs with finite&#8211;element bodies interacting via non&#8211;smooth laws. For certain
+class of problems, this type of modeling can be useful, allowing for shorter runtime,
+in cases where solely non&#8211;smooth models could be computationally prohibitive. For example,
+when analyzing frequency response of a large scale multi&#8211;body structure, certain fraction
+of it (an area of interest) can be modelled by means of the NSCD approach, while the remaining
+(predominate) part can be modeled in a simplified manner.</p>
+<p>In the current example we analyse elastic cubes subject to a sine sweep excitation.
+First, we look into a two&#8211;body problem, based on which we find out equivalent spring and
+dashpot parameters, for a simplified model representing a non&#8211;smooth model of two elastic
+interacting blocks. Second, we look into a many&#8211;body problem, where such equivalent properties
+are used for a one&#8211;dimensional chain of <span class="math">\(n\)</span> cubes. Finally, we look into a generalization
+of the problem into a three&#8211;dimensional array of <span class="math">\(n \times n \times n\)</span> cubes.</p>
+<p>Stages of model creation, modeling rationale, comparison of results between non&#8211;smooth, simplified
+and hybrid cases, as well as, comparison of run times and parallel scaling, are detailed in the
+following two sections.</p>
+<div class="section" id="two-cubes">
+<h2>Two cubes<a class="headerlink" href="#two-cubes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="statics">
+<h3>Statics<a class="headerlink" href="#statics" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="non-smooth-model">
+<h4>Non&#8211;smooth model<a class="headerlink" href="#non-smooth-model" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="simplified-model">
+<h4>Simplified model<a class="headerlink" href="#simplified-model" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+<div class="section" id="dynamics">
+<h3>Dynamics<a class="headerlink" href="#dynamics" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h4>Non&#8211;smooth model<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id2">
+<h4>Simplified model<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="chain-of-cubes">
+<h2>Chain of cubes<a class="headerlink" href="#chain-of-cubes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>Non&#8211;smooth model<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id4">
+<h3>Simplified model<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="hybrid-model">
+<h3>Hybrid model<a class="headerlink" href="#hybrid-model" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="comparison">
+<h3>Comparison<a class="headerlink" href="#comparison" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="array-of-cubes">
+<h2>Array of cubes<a class="headerlink" href="#array-of-cubes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id5">
+<h3>Non&#8211;smooth model<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id6">
+<h3>Simplified model<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id7">
+<h3>Hybrid model<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id8">
+<h3>Comparison<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../about.html">SOLFEC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theory.html">Theory Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../abaqus.html">ABAQUS import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Hybrid modeling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#two-cubes">Two cubes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#statics">Statics</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#non-smooth-model">Non&#8211;smooth model</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#simplified-model">Simplified model</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#dynamics">Dynamics</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id1">Non&#8211;smooth model</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id2">Simplified model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#chain-of-cubes">Chain of cubes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id3">Non&#8211;smooth model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id4">Simplified model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#hybrid-model">Hybrid model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#comparison">Comparison</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#array-of-cubes">Array of cubes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id5">Non&#8211;smooth model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">Simplified model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id7">Hybrid model</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id8">Comparison</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynlb/about.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parmec/about.html">PARMEC</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../about.html">SOLFEC</a><ul>
+  <li><a href="../examples.html">Solfec Examples</a><ul>
+      <li>Previous: <a href="../examples.html" title="previous chapter">Solfec Examples</a></li>
+      <li>Next: <a href="../../dynlb/about.html" title="next chapter">DYNLB</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../blog/about.html">Jun 13 - About PARMES</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/parmes.html">parmes</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../../_sources/solfec/examples/hybrid_modelling.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
