@@ -62,68 +62,8 @@ via springs with finite&#8211;element bodies interacting via non&#8211;smooth la
 class of problems, this type of modeling can be useful, allowing for shorter runtime,
 in cases where solely non&#8211;smooth models could be computationally prohibitive. For example,
 when analyzing frequency response of a large scale multi&#8211;body structure, certain fraction
-of it (an area of interest) can be modelled by means of the NSCD approach, while the remaining
-(predominate) part can be modeled in a simplified manner.</p>
-<p>In the current example we analyse elastic cubes subject to a sine sweep excitation.
-First, we look into a two&#8211;body problem, based on which we find out equivalent spring and
-dashpot parameters, for a simplified model representing a non&#8211;smooth model of two elastic
-interacting blocks. Second, we look into a many&#8211;body problem, where such equivalent properties
-are used for a one&#8211;dimensional chain of <span class="math">\(n\)</span> cubes. Finally, we look into a generalization
-of the problem into a three&#8211;dimensional array of <span class="math">\(n \times n \times n\)</span> cubes.</p>
-<p>Stages of model creation, modeling rationale, comparison of results between non&#8211;smooth, simplified
-and hybrid cases, as well as, comparison of run times and parallel scaling, are detailed in the
-following two sections.</p>
-<div class="section" id="two-cubes">
-<h2>Two cubes<a class="headerlink" href="#two-cubes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="statics">
-<h3>Statics<a class="headerlink" href="#statics" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="non-smooth-model">
-<h4>Non&#8211;smooth model<a class="headerlink" href="#non-smooth-model" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="simplified-model">
-<h4>Simplified model<a class="headerlink" href="#simplified-model" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-<div class="section" id="dynamics">
-<h3>Dynamics<a class="headerlink" href="#dynamics" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id1">
-<h4>Non&#8211;smooth model<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="id2">
-<h4>Simplified model<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-</div>
-<div class="section" id="chain-of-cubes">
-<h2>Chain of cubes<a class="headerlink" href="#chain-of-cubes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id3">
-<h3>Non&#8211;smooth model<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="id4">
-<h3>Simplified model<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="hybrid-model">
-<h3>Hybrid model<a class="headerlink" href="#hybrid-model" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="comparison">
-<h3>Comparison<a class="headerlink" href="#comparison" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
-<div class="section" id="array-of-cubes">
-<h2>Array of cubes<a class="headerlink" href="#array-of-cubes" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id5">
-<h3>Non&#8211;smooth model<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="id6">
-<h3>Simplified model<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="id7">
-<h3>Hybrid model<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="id8">
-<h3>Comparison<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-</div>
-</div>
+of it (an area of interest) could be modelled using the NSCD approach, while the remaining
+(predominate) part could be modeled in a simplified manner (rigid bodies + springs).</p>
 </div>
 
   <div class="section">
@@ -164,36 +104,7 @@ following two sections.</p>
 <li class="toctree-l2"><a class="reference internal" href="../abaqus.html">ABAQUS import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Hybrid modeling</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#two-cubes">Two cubes</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#statics">Statics</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#non-smooth-model">Non&#8211;smooth model</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#simplified-model">Simplified model</a></li>
-</ul>
-</li>
-<li class="toctree-l5"><a class="reference internal" href="#dynamics">Dynamics</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#id1">Non&#8211;smooth model</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id2">Simplified model</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#chain-of-cubes">Chain of cubes</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id3">Non&#8211;smooth model</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id4">Simplified model</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#hybrid-model">Hybrid model</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#comparison">Comparison</a></li>
-</ul>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#array-of-cubes">Array of cubes</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id5">Non&#8211;smooth model</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id6">Simplified model</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id7">Hybrid model</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id8">Comparison</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Hybrid modeling</a></li>
 </ul>
 </li>
 </ul>
