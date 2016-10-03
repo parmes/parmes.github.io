@@ -10,4 +10,4 @@ Solfec Examples ...
   Currently available examples include:
   .. toctree::
     :maxdepth: 1
-    examples/hybrid_modelling
+    xamples/hybrid_modelling
