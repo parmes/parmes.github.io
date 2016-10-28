@@ -57,6 +57,41 @@
             
   <div class="section" id="constraint-solvers">
 <span id="solfec-theory-solvers"></span><h1>Constraint solvers<a class="headerlink" href="#constraint-solvers" title="Permalink to this headline">¶</a></h1>
+<p>Constraint solvers are used to find approximate a solution to the <a class="reference internal" href="constraints.html#solfec-theory-constraints"><span class="std std-ref">constraints</span></a> equations</p>
+<div class="math">
+\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\]</div>
+<p>expressing <a class="reference internal" href="joints.html#solfec-theory-joints"><span class="std std-ref">joints</span></a> and <a class="reference internal" href="conform.html#solfec-theory-conform"><span class="std std-ref">contact conditions</span></a>, together with
+the <a class="reference internal" href="locdyn.html#solfec-theory-locdyn"><span class="std std-ref">local dynamics</span></a> equations</p>
+<div class="math">
+\[\mathbf{U}=\mathbf{B}+\mathbf{WR}\]</div>
+<p>The merit function used as one of the termination conditions and the constraint solvers included into Solfec, are described in sections below.</p>
+<div class="section" id="merit-function">
+<h2>Merit function<a class="headerlink" href="#merit-function" title="Permalink to this headline">¶</a></h2>
+<p>As discussed on the <a class="reference internal" href="basics.html#solfec-theory-basics"><span class="std std-ref">basics page</span></a>, at every time step an implicit equation
+<span class="math">\(\mathbf{C}\left(\mathbf{R}\right)=\mathbf{0}\)</span> is solved. This solution is approximate. In order to express its accuracy
+as a scalar value, we formulate <span class="math">\(\mathbf{C}\left(\mathbf{R}\right)\)</span> in terms of velocity
+(see the <a class="reference internal" href="conform.html#solfec-theory-conform-nsveq"><span class="std std-ref">non-smooth velocity equation formulation</span></a> and use</p>
+<div class="math">
+\[g\left(\mathbf{R}\right)=\sum_{\alpha}\left\langle \mathbf{W}_{\alpha\alpha}^{-1}\mathbf{C}_{\alpha}\left(\mathbf{R}\right),
+\mathbf{C}_{\alpha}\left(\mathbf{R}\right)\right\rangle /\sum_{\alpha}\left\langle \mathbf{W}_{\alpha\alpha}^{-1}\mathbf{B}_{\alpha},
+\mathbf{B}_{\alpha}\right\rangle\]</div>
+<p>in order to approximately measure the relative amount of “energy”, due to an inexact satisfaction of constraints. The denominator corresponds
+to the kinetic energy of the relative free motion, hence <span class="math">\(g\left(\mathbf{R}\right)\)</span> is the ratio of the “spurious energy” over the nominal
+amount of the “energy available at the constraints”. Since inverting <span class="math">\(\mathbf{W}\)</span> would be unpractical or impossible due to its singularity,
+we only use the diagonal blocks, which are always positive definite. To recapitulate, in short</p>
+<div class="math">
+\[g\left(\mathbf{R}\right)\simeq\frac{\mbox{&quot;spurious energy due to inaccurate solution&quot;}}{\mbox{&quot;free energy available at the constraints&quot;}}\]</div>
+<p>Such merit function is used as one of the stopping criterions for the solvers described below.</p>
+</div>
+<div class="section" id="gauss-seidel-solver">
+<span id="solfec-theory-solvers-gs"></span><h2>Gauss&#8211;Seidel solver<a class="headerlink" href="#gauss-seidel-solver" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="projected-quasi-newton-solver">
+<span id="solfec-theory-solvers-pqn"></span><h2>Projected (quasi) Newton solver<a class="headerlink" href="#projected-quasi-newton-solver" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="penalty-solver">
+<span id="solfec-theory-solvers-penalty"></span><h2>Penalty Solver<a class="headerlink" href="#penalty-solver" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
   <div class="section">
@@ -103,7 +138,13 @@
 <li class="toctree-l3"><a class="reference internal" href="joints.html">Joints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="conpnt.html">Contact points</a></li>
 <li class="toctree-l3"><a class="reference internal" href="conform.html">Contact formulations</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Constraint solvers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Constraint solvers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#merit-function">Merit function</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gauss-seidel-solver">Gauss&#8211;Seidel solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#projected-quasi-newton-solver">Projected (quasi) Newton solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#penalty-solver">Penalty Solver</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="materials.html">Material models</a></li>
 </ul>
 </li>
