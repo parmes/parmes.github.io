@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Constraint solvers &mdash; PARMES  documentation</title>
+    <title>Bulk materials &mdash; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="PARMES  documentation" href="../../index.html" />
     <link rel="up" title="Solfec Theory Manual" href="../theory.html" />
-    <link rel="next" title="Bulk materials" href="bulkmat.html" />
-    <link rel="prev" title="Contact formulations" href="conform.html" />
+    <link rel="next" title="Solfec Validation Manual" href="../validation.html" />
+    <link rel="prev" title="Constraint solvers" href="solvers.html" />
   
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -55,43 +55,29 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="constraint-solvers">
-<span id="solfec-theory-solvers"></span><h1>Constraint solvers<a class="headerlink" href="#constraint-solvers" title="Permalink to this headline">¶</a></h1>
-<p>Constraint solvers are used to find approximate a solution to the <a class="reference internal" href="constraints.html#solfec-theory-constraints"><span class="std std-ref">constraints</span></a> equations</p>
+  <div class="section" id="bulk-materials">
+<span id="solfec-theory-bulkmat"></span><h1>Bulk materials<a class="headerlink" href="#bulk-materials" title="Permalink to this headline">¶</a></h1>
+<p>A bulk material model is assigned to a volume and defines its deformable characteristic. Available materials are summarized
+in the sections below. See also the <a class="reference internal" href="../user/materials.html#solfec-user-material-bulkmat"><span class="std std-ref">BULK_MATERIAL input command</span></a>.</p>
+<div class="section" id="kirchhoff-saint-venant">
+<h2>Kirchhoff &#8211; Saint Venant<a class="headerlink" href="#kirchhoff-saint-venant" title="Permalink to this headline">¶</a></h2>
+<p>This is a simple extension of the linearly elastic material to the large deformation regime. Suitable for large rotation,
+small strain problems. The strain energy function <span class="math">\(\Psi\)</span> of the Kirchhoff &#8211; Saint Venant materials reads</p>
 <div class="math">
-\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\]</div>
-<p>expressing <a class="reference internal" href="joints.html#solfec-theory-joints"><span class="std std-ref">joints</span></a> and <a class="reference internal" href="conform.html#solfec-theory-conform"><span class="std std-ref">contact conditions</span></a>, together with
-the <a class="reference internal" href="locdyn.html#solfec-theory-locdyn"><span class="std std-ref">local dynamics</span></a> equations</p>
+\[\Psi=\frac{1}{4}\left[\mathbf{F}^{T}\mathbf{F}-\mathbf{I}\right]:\mathbf{C}:\left[\mathbf{F}^{T}\mathbf{F}-\mathbf{I}\right]\]</div>
+<p>where</p>
 <div class="math">
-\[\mathbf{U}=\mathbf{B}+\mathbf{WR}\]</div>
-<p>The merit function used as one of the termination conditions by all solvers, and the algorithms of the Solfec solvers themselves,
-are described in sections below.</p>
-<div class="section" id="merit-function">
-<h2>Merit function<a class="headerlink" href="#merit-function" title="Permalink to this headline">¶</a></h2>
-<p>As discussed on the <a class="reference internal" href="basics.html#solfec-theory-basics"><span class="std std-ref">basics page</span></a>, at every time step an implicit equation
-<span class="math">\(\mathbf{C}\left(\mathbf{R}\right)=\mathbf{0}\)</span> is solved. This solution is approximate. In order to express its accuracy
-as a scalar value, we formulate <span class="math">\(\mathbf{C}\left(\mathbf{R}\right)\)</span> in terms of velocity
-(see <a class="reference internal" href="conform.html#solfec-theory-conform-nsveq"><span class="std std-ref">the non-smooth velocity equation formulation</span></a>) and use</p>
+\[C_{ijkl}=\lambda\delta_{ij}\delta_{kl}+\mu\left[\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk}\right]\]</div>
+<p>In the above <span class="math">\(\lambda\)</span> and <span class="math">\(\mu\)</span> are Lamé constants, while <span class="math">\(\delta_{ij}\)</span> is the Kronecker delta.
+The Lamé constants can be expressed in terms of the Young modulus <span class="math">\(E\)</span> and the Poisson ratio <span class="math">\(\nu\)</span> as</p>
 <div class="math">
-\[g\left(\mathbf{R}\right)=\sum_{\alpha}\left\langle \mathbf{W}_{\alpha\alpha}^{-1}\mathbf{C}_{\alpha}\left(\mathbf{R}\right),
-\mathbf{C}_{\alpha}\left(\mathbf{R}\right)\right\rangle /\sum_{\alpha}\left\langle \mathbf{W}_{\alpha\alpha}^{-1}\mathbf{B}_{\alpha},
-\mathbf{B}_{\alpha}\right\rangle\]</div>
-<p>in order to approximately measure the relative amount of “energy”, due to an inexact satisfaction of constraints. The denominator corresponds
-to the kinetic energy of the relative free motion, hence <span class="math">\(g\left(\mathbf{R}\right)\)</span> is the ratio of the “spurious energy” over the nominal
-amount of the “energy available at the constraints”. Since inverting <span class="math">\(\mathbf{W}\)</span> would be unpractical or impossible due to its singularity,
-we only use the diagonal blocks, which are always positive definite. To recapitulate, in short</p>
+\[\lambda=\frac{E\nu}{\left(1+\nu\right)\left(1-2\nu\right)}\]</div>
 <div class="math">
-\[g\left(\mathbf{R}\right)\simeq\frac{\mbox{&quot;spurious energy due to inaccurate solution&quot;}}{\mbox{&quot;free energy available at the constraints&quot;}}\]</div>
-<p>Such merit function is used as one of the stopping criterions for the solvers described below.</p>
-</div>
-<div class="section" id="gauss-seidel-solver">
-<span id="solfec-theory-solvers-gs"></span><h2>Gauss&#8211;Seidel solver<a class="headerlink" href="#gauss-seidel-solver" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="projected-newton-solver">
-<span id="solfec-theory-solvers-pqn"></span><h2>Projected Newton solver<a class="headerlink" href="#projected-newton-solver" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="penalty-solver">
-<span id="solfec-theory-solvers-penalty"></span><h2>Penalty Solver<a class="headerlink" href="#penalty-solver" title="Permalink to this headline">¶</a></h2>
+\[\mu=\frac{E}{2+2\nu}\]</div>
+<p>The first Piola stress tensor is computed as a gradient of the hyperelastic potential <span class="math">\(\Psi\)</span></p>
+<div class="math">
+\[\mathbf{P}=\partial_{\mathbf{F}}\Psi\left(\mathbf{F}\right)\]</div>
+<p>where <span class="math">\(\mathbf{F}\)</span> is the deformation gradient.</p>
 </div>
 </div>
 
@@ -139,14 +125,11 @@ we only use the diagonal blocks, which are always positive definite. To recapitu
 <li class="toctree-l3"><a class="reference internal" href="joints.html">Joints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="conpnt.html">Contact points</a></li>
 <li class="toctree-l3"><a class="reference internal" href="conform.html">Contact formulations</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Constraint solvers</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#merit-function">Merit function</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gauss-seidel-solver">Gauss&#8211;Seidel solver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#projected-newton-solver">Projected Newton solver</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#penalty-solver">Penalty Solver</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solvers.html">Constraint solvers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Bulk materials</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#kirchhoff-saint-venant">Kirchhoff &#8211; Saint Venant</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="bulkmat.html">Bulk materials</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../validation.html">Validation Manual</a></li>
@@ -166,8 +149,8 @@ we only use the diagonal blocks, which are always positive definite. To recapitu
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../about.html">SOLFEC</a><ul>
   <li><a href="../theory.html">Solfec Theory Manual</a><ul>
-      <li>Previous: <a href="conform.html" title="previous chapter">Contact formulations</a></li>
-      <li>Next: <a href="bulkmat.html" title="next chapter">Bulk materials</a></li>
+      <li>Previous: <a href="solvers.html" title="previous chapter">Constraint solvers</a></li>
+      <li>Next: <a href="../validation.html" title="next chapter">Solfec Validation Manual</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -232,7 +215,7 @@ we only use the diagonal blocks, which are always positive definite. To recapitu
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/solfec/theory/solvers.txt"
+      <a href="../../_sources/solfec/theory/bulkmat.txt"
           rel="nofollow">Page source</a>
     </div>
 
