@@ -242,7 +242,7 @@ the this approach. Since we aim at simplicity and want to avoid any nonlinear so
 <p>The complete interface law is expressed the below algorithm (where <span class="math">\(h\)</span> is the time step, <span class="math">\(g\)</span> is the contact gap,
 <span class="math">\(s\)</span> is the spring constant, <span class="math">\(d\)</span> is the damper constant, <span class="math">\(\mu\)</span> refers there to the coefficient of friction,
 and <span class="math">\(m\)</span> is the “Hertz power”).</p>
-<p><strong>SPRING_DASHPOT_CONTACT</strong> <span class="math">\(\left(h,g,s,d,\mu,cohesion,cohesive\right)\)</span> <br />
+<p id="spring-dashpot-contact"><strong>SPRING_DASHPOT_CONTACT</strong> <span class="math">\(\left(h,g,s,d,\mu,cohesion,cohesive\right)\)</span> <br />
 1  <span class="math">\(\,\,\)</span> <span class="math">\(\bar{B}_{N}=B_{N}+\mathbf{W}_{NT}\mathbf{R}_{T}\)</span> <br />
 2  <span class="math">\(\,\,\)</span> if semi&#8211;explicit then <br />
 3  <span class="math">\(\,\,\,\,\,\,\)</span> <span class="math">\(g_{1}=\mbox{min}\left(g+\frac{h}{4}\left(\bar{B}_{N}-U_{N}^{t}\right),0\right)\)</span> <br />
