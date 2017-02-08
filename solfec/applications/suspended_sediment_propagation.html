@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>SOLFEC object &mdash; PARMES  documentation</title>
+    <title>Suspended sediment propagation &mdash; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -26,9 +26,9 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="PARMES  documentation" href="../../index.html" />
-    <link rel="up" title="Solfec User Manual" href="../user.html" />
-    <link rel="next" title="BODY object" href="body.html" />
-    <link rel="prev" title="Solfec User Manual" href="../user.html" />
+    <link rel="up" title="Solfec Applications" href="../applications.html" />
+    <link rel="next" title="Multibody pattern formation" href="multibody_pattern_formation.html" />
+    <link rel="prev" title="Kinematic flow patterns" href="kinematic_flow_patterns.html" />
   
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -55,59 +55,39 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="solfec-object">
-<span id="solfec-user-solfec"></span><h1>SOLFEC object<a class="headerlink" href="#solfec-object" title="Permalink to this headline">¶</a></h1>
-<p>An object of type SOLFEC represents the Solfec algorithm. One can use several SOLFEC objects to run several analyses from a single input file.</p>
-<div class="topic">
-<p class="topic-title first">obj = SOLFEC (analysis, step, output)</p>
-<p>This routine creates a SOLFEC object.</p>
-<ul class="simple">
-<li>obj &#8211; created SOLFEC object</li>
-<li>analysis &#8211; &#8216;DYNAMIC&#8217; or &#8216;QUASI_STATIC&#8217; analysis kind</li>
-<li>step &#8211; initially assumed time step, regarded as an upper bound</li>
-<li>output &#8211; defines the output directory path (Important note: if this directory exists
-and contains valid output data SOLFEC is created in &#8216;READ&#8217; mode,
-otherwise SOLFEC is created in &#8216;WRITE&#8217; mode)</li>
-</ul>
-</div>
-<p>Some parameters can be accessed as members of a SOLFEC object, cf. <a class="reference internal" href="#solfec-params"><span class="std std-numref">Table 1</span></a>.</p>
-<table border="1" class="docutils" id="id1">
-<span id="solfec-params"></span><caption><span class="caption-number">Table 1 </span><span class="caption-text">SOLFEC object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col width="100%" />
-</colgroup>
+  <span class="target" id="solfec-applications-suspended-sedminent-propagation"></span><div class="section" id="suspended-sediment-propagation">
+<h1>Suspended sediment propagation<a class="headerlink" href="#suspended-sediment-propagation" title="Permalink to this headline">¶</a></h1>
+<p>Solfec was utilised by Žic et al. <a class="footnote-reference" href="#id3" id="id1">[1]</a> in the context of suspended sediment propagation.
+The abstract and figures below quote directly from reference <a class="footnote-reference" href="#id3" id="id2">[1]</a>.</p>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><strong>Read only members:</strong></td>
-</tr>
-<tr class="row-even"><td><em>obj.analysis</em></td>
-</tr>
-<tr class="row-odd"><td><strong>obj.time</strong> &#8211; current time</td>
-</tr>
-<tr class="row-even"><td><strong>obj.mode</strong> &#8211; either &#8216;READ&#8217; or &#8216;WRITE&#8217; as described above</td>
-</tr>
-<tr class="row-odd"><td><strong>obj.constraints</strong> &#8211; list of constraints (cf. <a class="reference internal" href="constraints.html#solfec-user-constraints"><span class="std std-ref">Constraints</span></a>)</td>
-</tr>
-<tr class="row-even"><td><strong>obj.ncon</strong> &#8211; number of constraints</td>
-</tr>
-<tr class="row-odd"><td><strong>obj.bodies</strong> &#8211; list of bodies (cf. <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a>)</td>
-</tr>
-<tr class="row-even"><td><strong>obj.nbod</strong> &#8211; number of bodies</td>
-</tr>
-<tr class="row-odd"><td><strong>obj.outpath</strong> &#8211; output path, including the sub-directory if the “-s” command line argument
-has been passed</td>
-</tr>
-<tr class="row-even"><td><strong>Read/write members:</strong></td>
-</tr>
-<tr class="row-odd"><td><em>obj.step</em></td>
-</tr>
-<tr class="row-even"><td><strong>obj.verbose</strong> &#8211; either &#8216;ON&#8217; or &#8216;OFF&#8217; enabling or disabling writing to standard output (default: &#8216;ON&#8217;)</td>
-</tr>
-<tr class="row-odd"><td><strong>obj.cleanup</strong> &#8211; either &#8216;ON&#8217; or &#8216;OFF&#8217; enabling or disabling removal of the output directory in &#8216;WRITE&#8217;
-mode if none results were saved (default: &#8216;OFF&#8217; in which case the initial geometry is saved as a
-sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the &#8216;ON&#8217; functionality to work;</td>
-</tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id4">3</a>, <a class="fn-backref" href="#id5">4</a>, <a class="fn-backref" href="#id6">5</a>)</em> Žic, E., Bićanić, N., Koziara, T., and Ožanić, N. (2014) The numerical modelling of suspended sediment propagation in
+small torrents with the application of the Contact Dynamics method. Technical Gazette, 21(5), pp. 939-952.
+<a class="reference external" href="http://hrcak.srce.hr/index.php?show=clanak&amp;id_clanak_jezik=190604">Journal link</a>.</td></tr>
 </tbody>
 </table>
+<p><strong>Abstract</strong> <br />
+This paper describes the SOLFEC computational code used to simulate multi&#8211;body systems with constraints.
+The code implements an instance of the Contact Dynamics (CD) method by Moreau and Jean, therefore the constraints
+are handled implicitly. One of the main goals of the software is to provide a user-friendly platform for testing
+formulations and solution methods for the (dynamical) frictional contact problem. This paper also describes a method
+used to develop a computer code written in the Python programming language that is needed to produce a numerical model
+of suspended sediment propagation. The paper also provides graphical representations of the Mud Flow simulation in the
+hypothetical example inside of the Salt Creek stream erosional base in Croatia.</p>
+<div class="figure align-center" id="id7">
+<span id="suspended-sedminent-propagation-1"></span><a class="reference internal image-reference" href="../../_images/suspended_sedminent_propagation-1.png"><img alt="../../_images/suspended_sedminent_propagation-1.png" src="../../_images/suspended_sedminent_propagation-1.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Fig. a) Salt Creek stream (winter period), fig. b) erosion base of the Salt Creek stream (Photo: Elvis Žic) (cf. Figure 6 in <a class="footnote-reference" href="#id3" id="id4">[1]</a>)</span></p>
+</div>
+<div class="figure align-center" id="id8">
+<span id="suspended-sedminent-propagation-2"></span><a class="reference internal image-reference" href="../../_images/suspended_sedminent_propagation-2.png"><img alt="../../_images/suspended_sedminent_propagation-2.png" src="../../_images/suspended_sedminent_propagation-2.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Digital elevation model of the Salt Creek erosional base created in the SOLFEC program. (cf. Figure 9 in <a class="footnote-reference" href="#id3" id="id5">[1]</a>)</span></p>
+</div>
+<div class="figure align-center" id="id9">
+<span id="suspended-sedminent-propagation-3"></span><a class="reference internal image-reference" href="../../_images/suspended_sedminent_propagation-3.png"><img alt="../../_images/suspended_sedminent_propagation-3.png" src="../../_images/suspended_sedminent_propagation-3.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Graphical comparison of calculated (SOLFEC program) and measured (terrain measurements) values of the number of
+transient stone pebbles after a certain period of time. (cf. Figure 22 in <a class="footnote-reference" href="#id3" id="id6">[1]</a>)</span></p>
+</div>
 </div>
 
   <div class="section">
@@ -143,25 +123,17 @@ sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the &#8216;
 <li class="toctree-l1 current"><a class="reference internal" href="../about.html">SOLFEC</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../user.html">User Manual</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">SOLFEC object</a></li>
-<li class="toctree-l3"><a class="reference internal" href="body.html">BODY object</a></li>
-<li class="toctree-l3"><a class="reference internal" href="geometry.html">Geometry</a></li>
-<li class="toctree-l3"><a class="reference internal" href="materials.html">Materials</a></li>
-<li class="toctree-l3"><a class="reference internal" href="times.html">Time series</a></li>
-<li class="toctree-l3"><a class="reference internal" href="loads.html">Loads</a></li>
-<li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
-<li class="toctree-l3"><a class="reference internal" href="solvers.html">Solvers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="simulation.html">Simulation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="results.html">Results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="utilities.html">Utilities</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../theory.html">Theory Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../validation.html">Validation Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../abaqus.html">ABAQUS import</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../applications.html">Applications</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="kinematic_flow_patterns.html">Kinematic flow patterns</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Suspended sediment propagation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multibody_pattern_formation.html">Multibody pattern formation</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
 </ul>
 </li>
@@ -174,9 +146,9 @@ sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the &#8216;
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../about.html">SOLFEC</a><ul>
-  <li><a href="../user.html">Solfec User Manual</a><ul>
-      <li>Previous: <a href="../user.html" title="previous chapter">Solfec User Manual</a></li>
-      <li>Next: <a href="body.html" title="next chapter">BODY object</a></li>
+  <li><a href="../applications.html">Solfec Applications</a><ul>
+      <li>Previous: <a href="kinematic_flow_patterns.html" title="previous chapter">Kinematic flow patterns</a></li>
+      <li>Next: <a href="multibody_pattern_formation.html" title="next chapter">Multibody pattern formation</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -241,7 +213,7 @@ sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the &#8216;
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/solfec/user/solfec.txt"
+      <a href="../../_sources/solfec/applications/suspended_sediment_propagation.txt"
           rel="nofollow">Page source</a>
     </div>
 

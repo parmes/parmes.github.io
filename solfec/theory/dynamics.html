@@ -190,22 +190,22 @@ and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/
 matrices <span class="math">\(\mathbf{M}\)</span> and <span class="math">\(\mathbf{K}\)</span>, and the damping factor <span class="math">\(\eta\)</span>, are declared in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L178">bod.h</a> as follows:</p>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>139
-140</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">general_body</span>
-<span class="p">{</span>
+140</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">BODY_CHILD_UPDATED</span>       <span class="o">=</span> <span class="mh">0x0040</span><span class="p">,</span> <span class="o">/*</span> <span class="n">an</span> <span class="n">updated</span> <span class="n">child</span> <span class="o">*/</span>
+  <span class="n">BODY_ABSENT</span>              <span class="o">=</span> <span class="mh">0x0080</span>  <span class="o">/*</span> <span class="n">body</span> <span class="n">whose</span> <span class="n">state</span> <span class="n">was</span> <span class="ow">not</span> <span class="n">read</span> <span class="o">*/</span>
 </pre></div>
 </td></tr></table></div>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>178
 179
 180
 181
-182</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">MX</span> <span class="o">*</span><span class="n">M</span><span class="p">;</span>            <span class="o">/*</span> <span class="n">inertia</span> <span class="n">operator</span> <span class="o">*/</span>
+182</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
+  <span class="nb">int</span> <span class="n">nsgp</span><span class="p">;</span>        <span class="o">/*</span> <span class="n">number</span> <span class="n">of</span> <span class="n">them</span> <span class="p">(</span><span class="n">above</span><span class="p">)</span> <span class="o">*/</span>
 
-  <span class="n">MX</span> <span class="o">*</span><span class="n">K</span><span class="p">;</span>            <span class="o">/*</span> <span class="n">stiffness</span> <span class="n">operator</span> <span class="o">*/</span>
+  <span class="n">double</span> <span class="n">extents</span> <span class="p">[</span><span class="mi">6</span><span class="p">];</span>  <span class="o">/*</span> <span class="n">shape</span> <span class="n">extents</span> <span class="o">*/</span>
 
-  <span class="n">double</span> <span class="n">damping</span><span class="p">;</span>   <span class="o">/*</span> <span class="n">stiffness</span> <span class="n">proportional</span> <span class="n">damping</span> <span class="o">*/</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>214</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">};</span>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>214</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="nb">int</span> <span class="n">rank</span><span class="p">;</span> <span class="o">/*</span> <span class="n">parent</span> <span class="o">=&gt;</span> <span class="n">new</span><span class="o">/</span><span class="n">current</span> <span class="n">rank</span><span class="p">;</span> <span class="n">child</span> <span class="o">=&gt;</span> <span class="n">parent</span><span class="s1">&#39;s rank */</span>
 </pre></div>
 </td></tr></table></div>
 <p>Assembling of <a href="#equation-mrig">(2)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L232">bod.c:rig_dynamic_inverse</a>. <br />
@@ -349,7 +349,7 @@ Evaluation of <a href="#equation-fext">(9)</a> is in <a class="reference externa
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2016 PARMES team.
+      &copy;2017 PARMES team.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
