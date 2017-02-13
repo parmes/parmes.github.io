@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Pinned bar &mdash; PARMES  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="PARMES  documentation" href="../../index.html" />
+    <link rel="up" title="Solfec Validation Manual" href="../validation.html" />
+    <link rel="next" title="Solfec XDMF export" href="../xdmf.html" />
+    <link rel="prev" title="Projectile in a ballistic motion" href="projectile.html" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pinned-bar">
+<span id="solfec-validation-pinned-bar"></span><h1>Pinned bar<a class="headerlink" href="#pinned-bar" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Reference:</strong> <a class="reference external" href="https://books.google.pl/books/about/Schaum_s_Outline_of_Engineering_Mechanic.html?id=fxkWKWW29sgC">W. G. McLean, E. W. Nelson, C. L. Best, Schaum&#8217;s Outline of Theory and Problems Reference: of Engineering
+Mechanics, Statics and Dynamics, McGraw-Hill Book Co., Inc., New York, NY, 1978, p. 336.</a>
+<br />
+<strong>Analysis:</strong> Explicit dynamics, bilaterally constrained motion.
+<br />
+<strong>Purpose:</strong> Examine the accuracy of an analysis involving spherical joints.
+<br />
+<strong>Summary:</strong> A homogeneous bar, pinned at a distance a from one end, with total length <span class="math">\(L\)</span>, is subjected to gravity
+loading and released from rest at an angle <span class="math">\(\theta=30\deg\)</span> from the vertical. The rotational speed when it passes through
+<span class="math">\(\theta=0\deg\)</span> is calculated and compared to an analytical expression.</td>
+</tr>
+</tbody>
+</table>
+<p>The length of the spatial angular velocity vector at <span class="math">\(\theta=0\deg\)</span> reads</p>
+<div class="math">
+\[\left|\omega\right|=\sqrt{\frac{0.402g_{3}\left(L-2a\right)}{L^{2}-3La+3a^{2}}}\]</div>
+<p>provided the bar was released at <span class="math">\(\theta=30\deg\)</span>.</p>
+<div class="figure align-center" id="id1">
+<span id="pinned-bar0"></span><a class="reference internal image-reference" href="../../_images/pinned-bar.png"><img alt="../../_images/pinned-bar.png" src="../../_images/pinned-bar.png" style="width: 25%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">The pinned bar in the initial configuration.</span></p>
+</div>
+<div class="section" id="input-parameters">
+<h2>Input parameters<a class="headerlink" href="#input-parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Density <span class="math">\(\left(kg/m^{3}\right)\)</span></td>
+<td><span class="math">\(\rho=1\)</span></td>
+</tr>
+<tr class="row-even"><td>Square cross-section <span class="math">\(\left(m^{2}\right)\)</span></td>
+<td><span class="math">\(b\times b=0.1\times0.1\)</span></td>
+</tr>
+<tr class="row-odd"><td>Length <span class="math">\(\left(m\right)\)</span></td>
+<td><span class="math">\(L=1\)</span></td>
+</tr>
+<tr class="row-even"><td>Distance to joints <span class="math">\(\left(m\right)\)</span></td>
+<td><span class="math">\(a=0.25\)</span></td>
+</tr>
+<tr class="row-odd"><td>Gravity acceleration <span class="math">\(\left(m/s^{2}\right)\)</span></td>
+<td><span class="math">\(\mathbf{g}=\left[0,0,-9.8\right]\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<p>The time step used in the analysis is <span class="math">\(h=2^{-8}\)</span>. The hinge is modeled by a pair of spherical joints.
+The computations are terminated for the first n such that <span class="math">\(\theta\left(nh\right)\le0\)</span> (interpolation of
+the results to the exact point <span class="math">\(\theta\left(t\right)=0\)</span> is omitted). The table below summarizes the results</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="72%" />
+<col width="10%" />
+<col width="9%" />
+<col width="8%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Target</td>
+<td>Solfec</td>
+<td>Ratio</td>
+</tr>
+<tr class="row-even"><td>Length of angular velocity when <span class="math">\(\theta=0\deg\,\, \left(rad/s\right)\)</span></td>
+<td>2.121</td>
+<td>2.116</td>
+<td>0.997</td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-center" id="id2">
+<span id="pinned-bar1"></span><a class="reference internal image-reference" href="../../_images/pinned-bar.gif"><img alt="../../_images/pinned-bar.gif" src="../../_images/pinned-bar.gif" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Animation of the pinned bar (reload page or click on image to restart).</span></p>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../about.html">SOLFEC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theory.html">Theory Manual</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../validation.html">Validation Manual</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="heavy_symmetrical_top.html">Heavy symmetrical top</a></li>
+<li class="toctree-l3"><a class="reference internal" href="projectile.html">Projectile in a ballistic motion</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Pinned bar</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#input-parameters">Input parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results">Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynlb/about.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parmec/about.html">PARMEC</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../about.html">SOLFEC</a><ul>
+  <li><a href="../validation.html">Solfec Validation Manual</a><ul>
+      <li>Previous: <a href="projectile.html" title="previous chapter">Projectile in a ballistic motion</a></li>
+      <li>Next: <a href="../xdmf.html" title="next chapter">Solfec XDMF export</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../blog/about.html">Jun 13 - About PARMES</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/parmes.html">parmes</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../../_sources/solfec/validation/pinned_bar.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

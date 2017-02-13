@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Projectile in a ballistic motion &mdash; PARMES  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="PARMES  documentation" href="../../index.html" />
+    <link rel="up" title="Solfec Validation Manual" href="../validation.html" />
+    <link rel="next" title="Pinned bar" href="pinned_bar.html" />
+    <link rel="prev" title="Heavy symmetrical top" href="heavy_symmetrical_top.html" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="projectile-in-a-ballistic-motion">
+<span id="solfec-validation-projectile"></span><h1>Projectile in a ballistic motion<a class="headerlink" href="#projectile-in-a-ballistic-motion" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Reference:</strong> <a class="reference external" href="https://archive.org/details/ClassicalDynamicsOfParticlesAndSystemsMarionThornton">J. B. Marion, S. T. Thornton, Classical Dynamics of Particles &amp; Systems, 3rd Edition, Reference: Saunders
+College Publishing, 1988, pp. 60-63.</a>
+<br />
+<strong>Analysis:</strong> Explicit dynamics, unconstrained linear motion.
+<br />
+<strong>Purpose:</strong> Examine the accuracy of integration of the linear motion.
+<br />
+<strong>Summary:</strong> A projectile is subjected to gravity and air resistance loading. The total travel time and travel distance are
+calculated for an assumed initial velocity and air resistance proportionality constant, <span class="math">\(k\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<p>The air resistance force reads</p>
+<div class="math">
+\[\mathbf{f}_{air}=-km\mathbf{v}\]</div>
+<p>where <span class="math">\(k\)</span> is the resistance proportionality constant, <span class="math">\(m\)</span> is the mass, and <span class="math">\(\mathbf{v}\)</span>
+is the point mass velocity (nonzero in the <span class="math">\(x-z\)</span> plane). The exact solution is</p>
+<div class="math">
+\[\begin{split}\mathbf{x}\left(t\right)=\left[\begin{array}{c}
+\frac{v_{1}\left(0\right)}{k}\left(1-\exp\left(-kt\right)\right)\\
+0\\
+\frac{-g_{3}t}{k}+\frac{kv_{3}\left(0\right)+g_{3}}{k^{2}}\left(1-\exp\left(-kt\right)\right)
+\end{array}\right]\end{split}\]</div>
+<p>where <span class="math">\(g_{3}\)</span> is the vertical component of the gravity acceleration vector <span class="math">\(\mathbf{g}\)</span>.
+The travel time from the ground level <span class="math">\(x_{3}\left(0\right)=0\)</span> until <span class="math">\(x_{3}\left(T\right)=0\)</span> is given by</p>
+<div class="math" id="equation-T">
+<span class="eqno">(1)</span>\[T=\frac{hv_{3}\left(0\right)+g_{3}}{g_{3}k}\left(1-\exp\left(-kT\right)\right)\]</div>
+<div class="section" id="input-parameters">
+<h2>Input parameters<a class="headerlink" href="#input-parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Mass <span class="math">\(\left(kg\right)\)</span></td>
+<td><span class="math">\(m=0.45359237\)</span></td>
+</tr>
+<tr class="row-even"><td>Initial linear velocity <span class="math">\(\left(m/s\right)\)</span></td>
+<td><span class="math">\(\mathbf{v}=\left[2.54,0,12.7\right]\)</span></td>
+</tr>
+<tr class="row-odd"><td>Gravity acceleration <span class="math">\(\left(m/s^{2}\right)\)</span></td>
+<td><span class="math">\(\mathbf{g}=\left[0,0,-9.81456\right]\)</span></td>
+</tr>
+<tr class="row-even"><td>Proportionality constant</td>
+<td><span class="math">\(k=1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<p>The solution of equation <a href="#equation-T">(1)</a> is <span class="math">\(T=1.976\)</span> seconds. The time step used in the analysis was <span class="math">\(h=T/1024\)</span>.
+The table below and <a class="reference internal" href="#projectile"><span class="std std-numref">Fig. 14</span></a> summarise the results.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="67%" />
+<col width="12%" />
+<col width="11%" />
+<col width="10%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>&nbsp;</td>
+<td>Target</td>
+<td>Solfec</td>
+<td>Ratio</td>
+</tr>
+<tr class="row-even"><td>Travel time for projectile <span class="math">\(\left(s\right)\)</span></td>
+<td>1.9760</td>
+<td>1.9760</td>
+<td>1.000</td>
+</tr>
+<tr class="row-odd"><td><span class="math">\(x\)</span>-direction travel distance <span class="math">\(\left(in\right)\)</span></td>
+<td>86.138</td>
+<td>86.081</td>
+<td>0.999</td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-center" id="id1">
+<span id="projectile"></span><a class="reference internal image-reference" href="../../_images/projectile.png"><img alt="../../_images/projectile.png" src="../../_images/projectile.png" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Displacement of projectile over time.</span></p>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../about.html">SOLFEC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theory.html">Theory Manual</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../validation.html">Validation Manual</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="heavy_symmetrical_top.html">Heavy symmetrical top</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Projectile in a ballistic motion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#input-parameters">Input parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results">Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pinned_bar.html">Pinned bar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynlb/about.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parmec/about.html">PARMEC</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../about.html">SOLFEC</a><ul>
+  <li><a href="../validation.html">Solfec Validation Manual</a><ul>
+      <li>Previous: <a href="heavy_symmetrical_top.html" title="previous chapter">Heavy symmetrical top</a></li>
+      <li>Next: <a href="pinned_bar.html" title="next chapter">Pinned bar</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../blog/about.html">Jun 13 - About PARMES</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/parmes.html">parmes</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../../_sources/solfec/validation/projectile.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
