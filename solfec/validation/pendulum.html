@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Pinned bar &mdash; PARMES  documentation</title>
+    <title>Pendulum &mdash; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="PARMES  documentation" href="../../index.html" />
     <link rel="up" title="Solfec Validation Manual" href="../validation.html" />
-    <link rel="next" title="Pendulum" href="pendulum.html" />
-    <link rel="prev" title="Projectile in a ballistic motion" href="projectile.html" />
+    <link rel="next" title="Solfec XDMF export" href="../xdmf.html" />
+    <link rel="prev" title="Pinned bar" href="pinned_bar.html" />
   
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -55,71 +55,85 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="pinned-bar">
-<span id="solfec-validation-pinned-bar"></span><h1>Pinned bar<a class="headerlink" href="#pinned-bar" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pendulum">
+<span id="solfec-validation-pendulum"></span><h1>Pendulum<a class="headerlink" href="#pendulum" title="Permalink to this headline">¶</a></h1>
 <table border="1" class="docutils">
 <colgroup>
 <col width="100%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><strong>Reference:</strong> <a class="reference external" href="https://books.google.pl/books/about/Schaum_s_Outline_of_Engineering_Mechanic.html?id=fxkWKWW29sgC">W. G. McLean, E. W. Nelson, C. L. Best, Schaum&#8217;s Outline of Theory and Problems Reference: of Engineering
-Mechanics, Statics and Dynamics, McGraw-Hill Book Co., Inc., New York, NY, 1978, p. 336.</a>
+<tr class="row-odd"><td><strong>Reference:</strong> W. Rubinowicz, W. Królikowski, Mechanika teoretyczna (Theoretical mechanics), Państwowe Wydawnictwo Naukowe,
+Warszawa, 1998, pp. 91-99.
 <br />
 <strong>Analysis:</strong> Explicit dynamics, bilaterally constrained motion.
 <br />
-<strong>Purpose:</strong> Examine the accuracy of an analysis involving spherical joints.
+<strong>Purpose:</strong> Examine the accuracy of an analysis involving rigid rod constraint.
 <br />
-<strong>Summary:</strong> A homogeneous bar, pinned at a distance a from one end, with total length <span class="math">\(L\)</span>, is subjected to gravity
-loading and released from rest at an angle <span class="math">\(\theta=30\deg\)</span> from the vertical. The rotational speed when it passes through
-<span class="math">\(\theta=0\deg\)</span> is calculated and compared to an analytical expression.</td>
+<strong>Summary:</strong> A mathematical pendulum composed of a mass point and a weightless rod swings with a large amplitude. Pendulum
+period, energy conservation, constraint satisfaction and convergence are examined.</td>
 </tr>
 </tbody>
 </table>
-<p>The length of the spatial angular velocity vector at <span class="math">\(\theta=0\deg\)</span> reads</p>
+<p>The period of an oscillatory mathematical pendulum reads</p>
 <div class="math">
-\[\left|\omega\right|=\sqrt{\frac{0.402g_{3}\left(L-2a\right)}{L^{2}-3La+3a^{2}}}\]</div>
-<p>provided the bar was released at <span class="math">\(\theta=30\deg\)</span>.</p>
-<div class="figure align-center" id="id1">
-<span id="pinned-bar0"></span><a class="reference internal image-reference" href="../../_images/pinned-bar.png"><img alt="../../_images/pinned-bar.png" src="../../_images/pinned-bar.png" style="width: 25%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">The pinned bar in the initial configuration.</span></p>
-</div>
+\[T=2\pi\sqrt{\frac{l}{g_{3}}}\left(1+\left(\frac{1}{2}\right)^{2}k^{2}+\left(\frac{1\cdot3}
+{2\cdot4}\right)k^{2}+\left(\frac{1\cdot3\cdot5}{2\cdot4\cdot6}\right)k^{2}+...\right)\]</div>
+<p>where</p>
+<div class="math">
+\[k=\sin\left(\frac{\theta_{max}}{2}\right)\]</div>
+<p>and <span class="math">\(l\)</span> is the length of the pendulum, <span class="math">\(g_{3}\)</span> is the vertical component of the gravity acceleration
+and <span class="math">\(\theta_{max}\)</span> is the maximal tilt angle of the pendulum. Let us assume the initial velocity of the
+pendulum to be zero. Thus <span class="math">\(\theta_{max}=\theta\left(0\right)\)</span>. Taking the rest configuration position of
+the mass point <span class="math">\(\bar{\mathbf{x}}=\left[0,0,0\right]\)</span> and considering the swing in the <span class="math">\(x-z\)</span> plane,
+the initial position of the pendulum reads</p>
+<div class="math">
+\[\begin{split}\bar{\mathbf{x}}\left(0\right)=\left[\begin{array}{c}
+l\sin\left(\theta_{max}\right)\\
+0\\
+l\left(1-\cos\left(\theta_{max}\right)\right)
+\end{array}\right]\end{split}\]</div>
+<p>Without the initial kinetic energy <span class="math">\((E_{k}\left(0\right)=0)\)</span>, the energy conservation requires that</p>
+<div class="math">
+\[E_{k}\left(t\right)+E_{p}\left(t\right)=E_{p}\left(0\right)\]</div>
+<p>where</p>
+<div class="math">
+\[E_{p}\left(0\right)=mg_{3}\bar{x}_{3}\left(0\right)\]</div>
+<p>and <span class="math">\(m\)</span> is the scalar mass.</p>
 <div class="section" id="input-parameters">
 <h2>Input parameters<a class="headerlink" href="#input-parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="52%" />
-<col width="48%" />
+<col width="62%" />
+<col width="38%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>Density <span class="math">\(\left(kg/m^{3}\right)\)</span></td>
-<td><span class="math">\(\rho=1\)</span></td>
-</tr>
-<tr class="row-even"><td>Square cross-section <span class="math">\(\left(m^{2}\right)\)</span></td>
-<td><span class="math">\(b\times b=0.1\times0.1\)</span></td>
-</tr>
 <tr class="row-odd"><td>Length <span class="math">\(\left(m\right)\)</span></td>
-<td><span class="math">\(L=1\)</span></td>
+<td><span class="math">\(l=1\)</span></td>
 </tr>
-<tr class="row-even"><td>Distance to joints <span class="math">\(\left(m\right)\)</span></td>
-<td><span class="math">\(a=0.25\)</span></td>
+<tr class="row-even"><td>Mass <span class="math">\(\left(kg\right)\)</span></td>
+<td><span class="math">\(m=1\)</span></td>
 </tr>
-<tr class="row-odd"><td>Gravity acceleration <span class="math">\(\left(m/s^{2}\right)\)</span></td>
-<td><span class="math">\(\mathbf{g}=\left[0,0,-9.8\right]\)</span></td>
+<tr class="row-odd"><td>Initial angle <span class="math">\(\theta\left(0\right)=\theta_{max}\,\, \left(rad\right)\)</span></td>
+<td><span class="math">\(\theta_{max}=\pi/2\)</span></td>
+</tr>
+<tr class="row-even"><td>Gravity acceleration <span class="math">\(\left(m/s^{2}\right)\)</span></td>
+<td><span class="math">\(\mathbf{g}=\left[0,0,-\pi^{2}\right]\)</span></td>
 </tr>
 </tbody>
 </table>
+<p>The gravity acceleration <span class="math">\(g_{3}\)</span> has been chosen so that for <span class="math">\(\theta_{max}=0\deg\)</span> there holds <span class="math">\(T=2s\)</span>.</p>
 </div>
 <div class="section" id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<p>The time step used in the analysis is <span class="math">\(h=2^{-8}\)</span>. The hinge is modeled by a pair of spherical joints.
-The computations are terminated for the first n such that <span class="math">\(\theta\left(nh\right)\le0\)</span> (interpolation of
-the results to the exact point <span class="math">\(\theta\left(t\right)=0\)</span> is omitted). The table below summarizes the results</p>
+<p>The table below summarizes the results for the time step <span class="math">\(h=0.001\)</span>. The solution is accurate and stable after 1
+and 10 swings. <a class="reference internal" href="#id1"><span class="std std-numref">Fig. 17</span></a> illustrates the energy balance over one period of the pendulum. The potential and
+kinetic energies sum up to <span class="math">\(\pi^{2}\)</span>.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="72%" />
+<col width="63%" />
+<col width="18%" />
 <col width="10%" />
 <col width="9%" />
-<col width="8%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td>&nbsp;</td>
@@ -127,16 +141,31 @@ the results to the exact point <span class="math">\(\theta\left(t\right)=0\)</sp
 <td>Solfec</td>
 <td>Ratio</td>
 </tr>
-<tr class="row-even"><td>Length of angular velocity when <span class="math">\(\theta=0\deg\,\, \left(rad/s\right)\)</span></td>
-<td>2.121</td>
-<td>2.116</td>
-<td>0.997</td>
+<tr class="row-even"><td>Pendulum period &#8211; 1 swing <span class="math">\(\left(s\right)\)</span></td>
+<td>2.360</td>
+<td>2.360</td>
+<td>1.000</td>
+</tr>
+<tr class="row-odd"><td>Total energy &#8211; 1 swing <span class="math">\(\left(J\right)\)</span></td>
+<td><span class="math">\(\pi^{2}\)</span></td>
+<td>9.86960</td>
+<td>1.000</td>
+</tr>
+<tr class="row-even"><td>Pendulum period &#8211; 10 swings <span class="math">\(\left(s\right)\)</span></td>
+<td>23.60</td>
+<td>23.60</td>
+<td>1.000</td>
+</tr>
+<tr class="row-odd"><td>Total energy &#8211; 10 swings <span class="math">\(\left(J\right)\)</span></td>
+<td><span class="math">\(\pi^{2}\)</span></td>
+<td>9.86960</td>
+<td>1.000</td>
 </tr>
 </tbody>
 </table>
 <div class="figure align-center" id="id2">
-<span id="pinned-bar1"></span><a class="reference internal image-reference" href="../../_images/pinned-bar.gif"><img alt="../../_images/pinned-bar.gif" src="../../_images/pinned-bar.gif" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Animation of the pinned bar (reload page or click on image to restart).</span></p>
+<span id="id1"></span><a class="reference internal image-reference" href="../../_images/pendulum.png"><img alt="../../_images/pendulum.png" src="../../_images/pendulum.png" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Energy balance over one period of the pendulum.</span></p>
 </div>
 </div>
 </div>
@@ -179,12 +208,12 @@ the results to the exact point <span class="math">\(\theta\left(t\right)=0\)</sp
 <li class="toctree-l2 current"><a class="reference internal" href="../validation.html">Validation Manual</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="heavy_symmetrical_top.html">Heavy symmetrical top</a></li>
 <li class="toctree-l3"><a class="reference internal" href="projectile.html">Projectile in a ballistic motion</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Pinned bar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pinned_bar.html">Pinned bar</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Pendulum</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#input-parameters">Input parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#results">Results</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pendulum.html">Pendulum</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
@@ -201,8 +230,8 @@ the results to the exact point <span class="math">\(\theta\left(t\right)=0\)</sp
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../about.html">SOLFEC</a><ul>
   <li><a href="../validation.html">Solfec Validation Manual</a><ul>
-      <li>Previous: <a href="projectile.html" title="previous chapter">Projectile in a ballistic motion</a></li>
-      <li>Next: <a href="pendulum.html" title="next chapter">Pendulum</a></li>
+      <li>Previous: <a href="pinned_bar.html" title="previous chapter">Pinned bar</a></li>
+      <li>Next: <a href="../xdmf.html" title="next chapter">Solfec XDMF export</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -267,7 +296,7 @@ the results to the exact point <span class="math">\(\theta\left(t\right)=0\)</sp
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/solfec/validation/pinned_bar.txt"
+      <a href="../../_sources/solfec/validation/pendulum.txt"
           rel="nofollow">Page source</a>
     </div>
 
