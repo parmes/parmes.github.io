@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Pinned bar &mdash; PARMES  documentation</title>
+    <title>Block sliding on a frictional table &mdash; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="PARMES  documentation" href="../../index.html" />
     <link rel="up" title="Solfec Validation Manual" href="../validation.html" />
-    <link rel="next" title="Pendulum" href="pendulum.html" />
-    <link rel="prev" title="Projectile in a ballistic motion" href="projectile.html" />
+    <link rel="next" title="Solfec XDMF export" href="../xdmf.html" />
+    <link rel="prev" title="Double pendulum impacting a rigid wall" href="double_pendulum.html" />
   
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -55,89 +55,89 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="pinned-bar">
-<span id="solfec-validation-pinned-bar"></span><h1>Pinned bar<a class="headerlink" href="#pinned-bar" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="block-sliding-on-a-frictional-table">
+<span id="solfec-validation-block-sliding"></span><h1>Block sliding on a frictional table<a class="headerlink" href="#block-sliding-on-a-frictional-table" title="Permalink to this headline">¶</a></h1>
 <table border="1" class="docutils">
 <colgroup>
 <col width="100%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><strong>Reference:</strong> <a class="reference external" href="https://books.google.pl/books/about/Schaum_s_Outline_of_Engineering_Mechanic.html?id=fxkWKWW29sgC">W. G. McLean, E. W. Nelson, C. L. Best, Schaum&#8217;s Outline of Theory and Problems Reference: of Engineering
-Mechanics, Statics and Dynamics, McGraw-Hill Book Co., Inc., New York, NY, 1978, p. 336.</a>
+<tr class="row-odd"><td><strong>Reference:</strong> <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.1582/abstract">Florian A. Potra, Mihai Anitescu, Bogdan Gavrea, Jeff Trinkle. A linearly implicit trapezoidal method for
+integrating stiff multibody dynamics with contact, joints, and friction. International Journal for Numerical Methods in
+Engineering, vol. 66, pp. 1079-1124, 2006.</a>
 <br />
-<strong>Analysis:</strong> Explicit dynamics, bilaterally constrained motion.
+<strong>Analysis:</strong> Explicit dynamics, frictional stick-slip transition.
 <br />
-<strong>Purpose:</strong> Examine the accuracy of an analysis involving spherical joints.
+<strong>Purpose:</strong> Examine the accuracy of an analysis involving persistent contact and stick-slip transition.
 <br />
-<strong>Summary:</strong> A homogeneous bar, pinned at a distance a from one end, with total length <span class="math">\(L\)</span>, is subjected to gravity
-loading and released from rest at an angle <span class="math">\(\theta=30\deg\)</span> from the vertical. The rotational speed when it passes through
-<span class="math">\(\theta=0\deg\)</span> is calculated and compared to an analytical expression.</td>
+<strong>Summary:</strong> A block subjected to a sinusoidal force slips over a frictional surface. Position and velocity plots are compared
+against those available in the source paper.</td>
 </tr>
 </tbody>
 </table>
-<p>The length of the spatial angular velocity vector at <span class="math">\(\theta=0\deg\)</span> reads</p>
-<div class="math">
-\[\left|\omega\right|=\sqrt{\frac{0.402g_{3}\left(L-2a\right)}{L^{2}-3La+3a^{2}}}\]</div>
-<p>provided the bar was released at <span class="math">\(\theta=30\deg\)</span>.</p>
-<div class="figure align-center" id="id1">
-<span id="pinned-bar0"></span><a class="reference internal image-reference" href="../../_images/pinned-bar.png"><img alt="../../_images/pinned-bar.png" src="../../_images/pinned-bar.png" style="width: 25%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">The pinned bar in the initial configuration.</span></p>
+<div class="figure align-center" id="id4">
+<span id="block-sliding0"></span><a class="reference internal image-reference" href="../../_images/block-sliding.png"><img alt="../../_images/block-sliding.png" src="../../_images/block-sliding.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Block sliding on top of a frictional surface &#8211; initial configuration with four contact points.</span></p>
 </div>
+<p>The block has been discretised into four hexahedral elements, thus four contact points result from the element to element contact
+model implemented in Solfec. An equivalent three&#8211;dimensional model is used in Solfec as the reference <a class="footnote-reference" href="#id3" id="id1">[1]</a> uses a two&#8211;dimensional set&#8211;up.
+The external force acting on the mass centre of the cube reads</p>
+<div class="math">
+\[\mathbf{f}\left(t\right)=\left[8\cos\left(t\right),0,0\right]\]</div>
 <div class="section" id="input-parameters">
 <h2>Input parameters<a class="headerlink" href="#input-parameters" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
 <colgroup>
-<col width="52%" />
-<col width="48%" />
+<col width="51%" />
+<col width="49%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>Density <span class="math">\(\left(kg/m^{3}\right)\)</span></td>
-<td><span class="math">\(\rho=1\)</span></td>
+<tr class="row-odd"><td>Block density <span class="math">\(\left(kg/m^{3}\right)\)</span></td>
+<td><span class="math">\(\rho=111.1(1)\)</span></td>
 </tr>
-<tr class="row-even"><td>Square cross-section <span class="math">\(\left(m^{2}\right)\)</span></td>
-<td><span class="math">\(b\times b=0.1\times0.1\)</span></td>
+<tr class="row-even"><td>Block dimensions <span class="math">\(\left(m\right)\)</span></td>
+<td><span class="math">\(a\times b\times h=0.3\times0.3\times0.1\)</span></td>
 </tr>
-<tr class="row-odd"><td>Length <span class="math">\(\left(m\right)\)</span></td>
-<td><span class="math">\(L=1\)</span></td>
+<tr class="row-odd"><td>Initial velocities <span class="math">\(\left(m/s\right)\)</span></td>
+<td>all zero</td>
 </tr>
-<tr class="row-even"><td>Distance to joints <span class="math">\(\left(m\right)\)</span></td>
-<td><span class="math">\(a=0.25\)</span></td>
+<tr class="row-even"><td>Gravity acceleration <span class="math">\(\left(m/s^{2}\right)\)</span></td>
+<td><span class="math">\(\mathbf{g}=\left[0,0,-9.81\right]\)</span></td>
 </tr>
-<tr class="row-odd"><td>Gravity acceleration <span class="math">\(\left(m/s^{2}\right)\)</span></td>
-<td><span class="math">\(\mathbf{g}=\left[0,0,-9.8\right]\)</span></td>
+<tr class="row-odd"><td>Velocity restitution</td>
+<td><span class="math">\(\epsilon=0\)</span></td>
+</tr>
+<tr class="row-even"><td>Coulomb friction coefficient</td>
+<td><span class="math">\(\mu=0.8\)</span></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<p>The time step used in the analysis is <span class="math">\(h=2^{-8}\)</span>. The hinge is modeled by a pair of spherical joints.
-The computations are terminated for the first n such that <span class="math">\(\theta\left(nh\right)\le0\)</span> (interpolation of
-the results to the exact point <span class="math">\(\theta\left(t\right)=0\)</span> is omitted). The table below summarizes the results</p>
-<table border="1" class="docutils">
-<colgroup>
-<col width="72%" />
-<col width="10%" />
-<col width="9%" />
-<col width="8%" />
-</colgroup>
+<p>Simulation over the time interval <span class="math">\(\left[0,10\right]\)</span> was performed with the time step <span class="math">\(h=0.001\)</span>.
+As the reference <a class="footnote-reference" href="#id3" id="id2">[1]</a> does not specify numerical values of the results, a visual comparison of the <span class="math">\(v_{x}\)</span>
+velocity component and the <span class="math">\(x\)</span>-coordinate histories of the mass centre is provided in <a class="reference internal" href="#block-sliding1"><span class="std std-numref">Fig. 23</span></a>
+and <a class="reference internal" href="#block-sliding2"><span class="std std-numref">Fig. 24</span></a>.</p>
+<div class="figure align-center" id="id5">
+<span id="block-sliding1"></span><a class="reference internal image-reference" href="../../_images/block-compare-v.png"><img alt="../../_images/block-compare-v.png" src="../../_images/block-compare-v.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Comparison the <span class="math">\(v_{x}\)</span> velocity component plots of the block mass centre.</span></p>
+</div>
+<div class="figure align-center" id="id6">
+<span id="block-sliding2"></span><a class="reference internal image-reference" href="../../_images/block-compare-x.png"><img alt="../../_images/block-compare-x.png" src="../../_images/block-compare-x.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Comparison of the <span class="math">\(x\)</span>-coordinate plots of the block mass centre.</span></p>
+</div>
+<div class="figure align-center" id="id7">
+<span id="block-sliding3"></span><a class="reference internal image-reference" href="../../_images/block-sliding.gif"><img alt="../../_images/block-sliding.gif" src="../../_images/block-sliding.gif" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Animation of the sliding block motion (reload page or click on image to restart).</span></p>
+</div>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>&nbsp;</td>
-<td>Target</td>
-<td>Solfec</td>
-<td>Ratio</td>
-</tr>
-<tr class="row-even"><td>Length of angular velocity when <span class="math">\(\theta=0\deg\,\, \left(rad/s\right)\)</span></td>
-<td>2.121</td>
-<td>2.116</td>
-<td>0.997</td>
-</tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.1582/abstract">Florian A. Potra, Mihai Anitescu Bogdan Gavrea Jeff Trinkle, &#8220;A linearly implicit trapezoidal method for integrating stiff
+multibody dynamics with contact, joints, and friction&#8221;, International Journal for Numerical Methods in Engineering (2006), 1079&#8211;1124.</a></td></tr>
 </tbody>
 </table>
-<div class="figure align-center" id="id2">
-<span id="pinned-bar1"></span><a class="reference internal image-reference" href="../../_images/pinned-bar.gif"><img alt="../../_images/pinned-bar.gif" src="../../_images/pinned-bar.gif" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Animation of the pinned bar (reload page or click on image to restart).</span></p>
-</div>
 </div>
 </div>
 
@@ -179,14 +179,14 @@ the results to the exact point <span class="math">\(\theta\left(t\right)=0\)</sp
 <li class="toctree-l2 current"><a class="reference internal" href="../validation.html">Validation Manual</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="heavy_symmetrical_top.html">Heavy symmetrical top</a></li>
 <li class="toctree-l3"><a class="reference internal" href="projectile.html">Projectile in a ballistic motion</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Pinned bar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pinned_bar.html">Pinned bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pendulum.html">Pendulum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="double_pendulum.html">Double pendulum impacting a rigid wall</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Block sliding on a frictional table</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#input-parameters">Input parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#results">Results</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="pendulum.html">Pendulum</a></li>
-<li class="toctree-l3"><a class="reference internal" href="double_pendulum.html">Double pendulum impacting a rigid wall</a></li>
-<li class="toctree-l3"><a class="reference internal" href="block_sliding.html">Block sliding on a frictional table</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
@@ -203,8 +203,8 @@ the results to the exact point <span class="math">\(\theta\left(t\right)=0\)</sp
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../about.html">SOLFEC</a><ul>
   <li><a href="../validation.html">Solfec Validation Manual</a><ul>
-      <li>Previous: <a href="projectile.html" title="previous chapter">Projectile in a ballistic motion</a></li>
-      <li>Next: <a href="pendulum.html" title="next chapter">Pendulum</a></li>
+      <li>Previous: <a href="double_pendulum.html" title="previous chapter">Double pendulum impacting a rigid wall</a></li>
+      <li>Next: <a href="../xdmf.html" title="next chapter">Solfec XDMF export</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -269,7 +269,7 @@ the results to the exact point <span class="math">\(\theta\left(t\right)=0\)</sp
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/solfec/validation/pinned_bar.txt"
+      <a href="../../_sources/solfec/validation/block_sliding.txt"
           rel="nofollow">Page source</a>
     </div>
 
