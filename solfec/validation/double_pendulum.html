@@ -1,0 +1,295 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Double pendulum impacting a rigid wall &mdash; PARMES  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="PARMES  documentation" href="../../index.html" />
+    <link rel="up" title="Solfec Validation Manual" href="../validation.html" />
+    <link rel="next" title="Solfec XDMF export" href="../xdmf.html" />
+    <link rel="prev" title="Pendulum" href="pendulum.html" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="double-pendulum-impacting-a-rigid-wall">
+<span id="solfec-validation-double-pendulum"></span><h1>Double pendulum impacting a rigid wall<a class="headerlink" href="#double-pendulum-impacting-a-rigid-wall" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Reference:</strong> <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.1582/abstract">Florian A. Potra, Mihai Anitescu, Bogdan Gavrea, Jeff Trinkle. A linearly implicit trapezoidal method for
+integrating stiff multibody dynamics with contact, joints, and friction. International Journal for Numerical Methods in
+Engineering, vol. 66, pp. 1079-1124, 2006.</a>
+<br />
+<strong>Analysis:</strong> Explicit dynamics, frictionless impact, bilateral constraints.
+<br />
+<strong>Purpose:</strong> Examine the accuracy of an analysis involving frictionless impact and bilateral constraints.
+<br />
+<strong>Summary:</strong> A double pendulum composed of two mass points connected by weightless rods impacts a rigid wall. Position and
+energy plots are compared against those available in the source paper.</td>
+</tr>
+</tbody>
+</table>
+<div class="figure align-center" id="id6">
+<span id="double-pendulum0"></span><a class="reference internal image-reference" href="../../_images/double-pendulum.png"><img alt="../../_images/double-pendulum.png" src="../../_images/double-pendulum.png" style="width: 35%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text">Double pendulum in the initial configuration.</span></p>
+</div>
+<p>The reference <a class="footnote-reference" href="#id4" id="id1">[1]</a> uses the Poisson impact model, while Solfec uses the Newton model. Both models are equivalent in case of frictionless
+impact if all restitution coefficients are identical <a class="footnote-reference" href="#id5" id="id2">[2]</a>. This is the case in the example, thus the comparison is feasible. As Solfec does
+not handle contacts between objects with zero volume, mass points were approximated by spheres and the distance between the wall and the rest
+configuration of the pendulum was shifted by the sphere radius.</p>
+<div class="section" id="input-parameters">
+<h2>Input parameters<a class="headerlink" href="#input-parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="64%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Mass <span class="math">\(\left(kg\right)\)</span></td>
+<td><span class="math">\(m_{1}=m_{2}=1\)</span></td>
+</tr>
+<tr class="row-even"><td>Length <span class="math">\(\left(m\right)\)</span></td>
+<td><span class="math">\(l_{1}=l_{2}=1\)</span></td>
+</tr>
+<tr class="row-odd"><td>Point <span class="math">\(\mathbf{x}_{0} \left(m\right)\)</span></td>
+<td><span class="math">\(\mathbf{x}_{0}=\left[0,0,2\right]\)</span></td>
+</tr>
+<tr class="row-even"><td>Point <span class="math">\(\mathbf{x}_{1} \left(m\right)\)</span></td>
+<td><span class="math">\(\mathbf{x}_{1}=\left[\sin\left(\frac{\pi}{3}\right),
+0,2-\cos\left(\frac{\pi}{3}\right)\right]\)</span></td>
+</tr>
+<tr class="row-odd"><td>Point <span class="math">\(\mathbf{x}_{2} \left(m\right)\)</span></td>
+<td><span class="math">\(\mathbf{x}_{2}=\left[\sin\left(\frac{\pi}{3}\right)+\sin\left(\frac{\pi}{5}\right),
+0,2-\cos\left(\frac{\pi}{3}\right)-\cos\left(\frac{\pi}{5}\right)\right]\)</span></td>
+</tr>
+<tr class="row-even"><td>Initial velocities <span class="math">\(\left(m/s\right)\)</span></td>
+<td>all zero</td>
+</tr>
+<tr class="row-odd"><td>Gravity acceleration <span class="math">\(\left(m/s^{2}\right)\)</span></td>
+<td><span class="math">\(\mathbf{g}=\left[0,0,-9.81\right]\)</span></td>
+</tr>
+<tr class="row-even"><td>Velocity restitution</td>
+<td><span class="math">\(\epsilon=0.1\)</span></td>
+</tr>
+<tr class="row-odd"><td>Coulomb friction coefficient</td>
+<td><span class="math">\(\mu=0\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<p>Simulation over the time interval <span class="math">\(\left[0,2.5\right]\)</span> was performed with the time step <span class="math">\(h=0.001\)</span>. As the reference <a class="footnote-reference" href="#id4" id="id3">[1]</a> does
+not specify numerical values of the results, a visual comparison of the total energy and the <span class="math">\(x\)</span>-coordinate histories of the mass
+points is provided in <a class="reference internal" href="#double-pendulum1"><span class="std std-numref">Fig. 19</span></a> and <a class="reference internal" href="#double-pendulum2"><span class="std std-numref">Fig. 20</span></a>.</p>
+<div class="figure align-center" id="id7">
+<span id="double-pendulum1"></span><a class="reference internal image-reference" href="../../_images/double-compare-energy.png"><img alt="../../_images/double-compare-energy.png" src="../../_images/double-compare-energy.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text">Comparison the total energy plots versus time.</span></p>
+</div>
+<div class="figure align-center" id="id8">
+<span id="double-pendulum2"></span><a class="reference internal image-reference" href="../../_images/double-compare-x.png"><img alt="../../_images/double-compare-x.png" src="../../_images/double-compare-x.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Comparison of the <span class="math">\(x\)</span>-coordinate plots (<span class="math">\(x_{i}\left(t\right)\)</span> stands for the <span class="math">\(i\)</span>-th mass point <span class="math">\(x\)</span>-coordinate).</span></p>
+</div>
+<div class="figure align-center" id="id9">
+<span id="double-pendulum3"></span><a class="reference internal image-reference" href="../../_images/double-pendulum.gif"><img alt="../../_images/double-pendulum.gif" src="../../_images/double-pendulum.gif" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Animation of the double pendulum motion (reload page or click on image to restart).</span></p>
+</div>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>)</em> <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.1582/abstract">Florian A. Potra, Mihai Anitescu Bogdan Gavrea Jeff Trinkle, &#8220;A linearly implicit trapezoidal method for integrating stiff
+multibody dynamics with contact, joints, and friction&#8221;, International Journal for Numerical Methods in Engineering (2006), 1079&#8211;1124.</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://rsta.royalsocietypublishing.org/content/359/1789/2385">Christoph Glocker, &#8220;On Frictionless Impact Models in Rigid-Body Systems&#8221;, Philosophical Transactions: Mathematical,
+Physical and Engineering Sciences (2001), 2385&#8211;2404.</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../about.html">SOLFEC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theory.html">Theory Manual</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../validation.html">Validation Manual</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="heavy_symmetrical_top.html">Heavy symmetrical top</a></li>
+<li class="toctree-l3"><a class="reference internal" href="projectile.html">Projectile in a ballistic motion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pinned_bar.html">Pinned bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pendulum.html">Pendulum</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Double pendulum impacting a rigid wall</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#input-parameters">Input parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results">Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynlb/about.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parmec/about.html">PARMEC</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../about.html">SOLFEC</a><ul>
+  <li><a href="../validation.html">Solfec Validation Manual</a><ul>
+      <li>Previous: <a href="pendulum.html" title="previous chapter">Pendulum</a></li>
+      <li>Next: <a href="../xdmf.html" title="next chapter">Solfec XDMF export</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../blog/about.html">Jun 13 - About PARMES</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/parmes.html">parmes</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      
+      |
+      <a href="../../_sources/solfec/validation/double_pendulum.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
