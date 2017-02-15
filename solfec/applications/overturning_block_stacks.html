@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Kinematic flow patterns &mdash; PARMES  documentation</title>
+    <title>Overturning of multiple-block stacks &mdash; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -27,8 +27,8 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="PARMES  documentation" href="../../index.html" />
     <link rel="up" title="Solfec Applications" href="../applications.html" />
-    <link rel="next" title="Suspended sediment propagation" href="suspended_sediment_propagation.html" />
-    <link rel="prev" title="Solfec Applications" href="../applications.html" />
+    <link rel="next" title="DYNLB" href="../../dynlb/about.html" />
+    <link rel="prev" title="Multibody pattern formation" href="multibody_pattern_formation.html" />
   
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -55,52 +55,46 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="kinematic-flow-patterns">
-<span id="solfec-applications-kinematic-flow-patterns"></span><h1>Kinematic flow patterns<a class="headerlink" href="#kinematic-flow-patterns" title="Permalink to this headline">¶</a></h1>
-<p>Solfec was utilised by Viswanathan et al. <a class="footnote-reference" href="#id3" id="id1">[1]</a> in the context of modeling of granular flow patterns.
+  <div class="section" id="overturning-of-multiple-block-stacks">
+<span id="solfec-applications-overturning-block-stacks"></span><h1>Overturning of multiple-block stacks<a class="headerlink" href="#overturning-of-multiple-block-stacks" title="Permalink to this headline">¶</a></h1>
+<p>Solfec was utilised by Nina Čeh and Jean-Francois Camenen et al. <a class="footnote-reference" href="#id3" id="id1">[1]</a> in the context of analysis of overturning of multiple-block stacks.
 The abstract and figures below quote directly from reference <a class="footnote-reference" href="#id3" id="id2">[1]</a>.</p>
 <table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id4">3</a>, <a class="fn-backref" href="#id5">4</a>, <a class="fn-backref" href="#id6">5</a>)</em> Koushik Viswanathan, Anirban Mahato, Tejas G. Murthy, Tomasz Koziara, Srinivasan Chandrasekar,
-Kinematic flow patterns in slow deformation of a dense granular material, Granular Matter,
-October 2015, Volume 17, Issue 5, pp 553–565.
-<a class="reference external" href="http://link.springer.com/article/10.1007%2Fs10035-015-0576-y">Journal link</a>,
-<a class="reference external" href="https://arxiv.org/abs/1507.05354">Preprint link</a>.</td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id4">3</a>, <a class="fn-backref" href="#id5">4</a>, <a class="fn-backref" href="#id6">5</a>, <a class="fn-backref" href="#id7">6</a>)</em> Nina Čeh, Jean-Francois Camenen, Nenad Bićanić, Antonio Pellegrino, Nik Petrinić, Overturning of multiple&#8211;block
+stacks &#8211; dynamic sensitivity parameters and scaling effect, Int. J. Masonry Research and Innovation, Vol. 1, No. 4, 2016.
+<a class="reference external" href="http://www.inderscienceonline.com/doi/abs/10.1504/IJMRI.2016.081279">Journal link</a>.</td></tr>
 </tbody>
 </table>
 <p><strong>Abstract</strong> <br />
-The kinematic flow pattern in slow deformation of a model dense granular medium is studied at high
-resolution using <em>in situ</em> imaging, coupled with particle tracking. The deformation configuration is indentation
-by a flat punch under macroscopic plane&#8211;strain conditions. Using a general analysis method, velocity gradients and
-deformation fields are obtained from the disordered grain arrangement, enabling flow characteristics to be quantified.
-The key observations are the formation of a stagnation zone, as in dilute granular flow past obstacles; occurrence of
-vortices in the flow immediately underneath the punch; and formation of distinct shear bands adjoining the stagnation zone.
-The transient and steady state stagnation zone geometry, as well as the strength of the vortices and strain rates in the
-shear bands, are obtained from the experimental data. All of these results are well&#8211;reproduced in exact&#8211;scale Non&#8211;Smooth
-Contact Dynamics (NSCD) simulations. Full 3D numerical particle positions from the simulations allow extraction of flow
-features that are extremely difficult to obtain from experiments. Three examples of these, namely material free surface
-evolution, deformation of a grain column below the punch and resolution of velocities inside the primary shear band,
-are highlighted. The variety of flow features observed in this model problem also illustrates the difficulty involved
-in formulating a complete micromechanical analytical description of the deformation.</p>
-<div class="figure align-center" id="id7">
-<span id="kinematic-flow-patterns-1"></span><a class="reference internal image-reference" href="../../_images/kinematic_flow_patterns-1.png"><img alt="../../_images/kinematic_flow_patterns-1.png" src="../../_images/kinematic_flow_patterns-1.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 33 </span><span class="caption-text">Problem setup. (Left) Schematic of the experimental setup with sample image frame superimposed over the field of view (highlighted in red).
-(Right) Reference frame with punch stationary, showing the coordinate system used. The punch width 2D, used for normalizing lengths, is also depicted.
-(cf. Figure 1 in <a class="footnote-reference" href="#id3" id="id4">[1]</a>)</span></p>
-</div>
+Both experimental and computational dynamic sensitivity study of multiple-block stacks subjected to a double pulse base excitation
+are examined. Series of test experiments was conducted at the Oxford Impact Engineering Laboratory on a bespoke platform for a controlled
+double (initial and reverse) pulse base excitation history. For the computational simulations and validation, the base of the block stack
+was subjected to a constant acceleration of a finite duration until the desired peak-base velocity, corresponding to the measured experimental
+values, was achieved. Different overturning modes (forward, backward, global and partial) in both simulations and experiments were characterised
+as a function of the peak initial base velocity and the timing of the reverse impulse, controlled by the stop gap distance between the base
+and the stopper. The influence of the block sample scales has also been examined. The conducted set of validation benchmarks is believed to be
+valuable for researchers, code developers, safety case engineers and industry regulators.</p>
 <div class="figure align-center" id="id8">
-<span id="kinematic-flow-patterns-2"></span><a class="reference internal image-reference" href="../../_images/kinematic_flow_patterns-2.png"><img alt="../../_images/kinematic_flow_patterns-2.png" src="../../_images/kinematic_flow_patterns-2.png" style="width: 30%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 34 </span><span class="caption-text">Stagnation (or dead material) zone and its evolution. Sequence of 100 experimental (top) and simulation (bottom) frames superimposed,
-showing the flow pattern. The streaks correspond to particle pathlines. The stagnation zone (white dashed line) appears motionless,
-as revealed by lack of streaklines. (cf. Figure 4 in <a class="footnote-reference" href="#id3" id="id5">[1]</a>)</span></p>
+<span id="overturning-block-stacks-1"></span><a class="reference internal image-reference" href="../../_images/overturning_block_stacks-1.png"><img alt="../../_images/overturning_block_stacks-1.png" src="../../_images/overturning_block_stacks-1.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 42 </span><span class="caption-text">Schematic view of the ROORI-1 test facility in Impact Engineering Laboratory,
+University of Oxford (see online version for colours) (cf. Figure 2 in <a class="footnote-reference" href="#id3" id="id4">[1]</a>)</span></p>
 </div>
 <div class="figure align-center" id="id9">
-<span id="kinematic-flow-patterns-3"></span><a class="reference internal image-reference" href="../../_images/kinematic_flow_patterns-3.png"><img alt="../../_images/kinematic_flow_patterns-3.png" src="../../_images/kinematic_flow_patterns-3.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 35 </span><span class="caption-text">Particle velocities and vorticity field near the punch. Arrows represent velocity of individual particles, estimated from successive images;
-arrow size is proportional to velocity magnitude. Background is colored based on vorticity using linear interpolation from values at particle
-locations. Vorticity is scaled between -1 (blue, clockwise) and 1 (red, counterclockwise). (a) Experimental image. (b) Corresponding image
-from NSCD simulation. (cf. Figure 5 in <a class="footnote-reference" href="#id3" id="id6">[1]</a>)</span></p>
+<span id="overturning-block-stacks-2"></span><a class="reference internal image-reference" href="../../_images/overturning_block_stacks-2.png"><img alt="../../_images/overturning_block_stacks-2.png" src="../../_images/overturning_block_stacks-2.png" style="width: 40%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 43 </span><span class="caption-text">SOLFEC NSCD simulations of the ROORI-1 experimental set-up: set-up scheme;
+(cf. Figure 5(a) in <a class="footnote-reference" href="#id3" id="id5">[1]</a>)</span></p>
+</div>
+<div class="figure align-center" id="id10">
+<span id="overturning-block-stacks-3"></span><a class="reference internal image-reference" href="../../_images/overturning_block_stacks-3.png"><img alt="../../_images/overturning_block_stacks-3.png" src="../../_images/overturning_block_stacks-3.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 44 </span><span class="caption-text">Modes of overturning of a single-block structure (Scale 1) from experimental study (see online version for colours)
+(cf. Figure 9 in <a class="footnote-reference" href="#id3" id="id6">[1]</a>)</span></p>
+</div>
+<div class="figure align-center" id="id11">
+<span id="overturning-block-stacks-4"></span><a class="reference internal image-reference" href="../../_images/overturning_block_stacks-4.png"><img alt="../../_images/overturning_block_stacks-4.png" src="../../_images/overturning_block_stacks-4.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 45 </span><span class="caption-text">Modes of overturning of a single-block structure (Scale 1) from computational simulation study (see online version for colours)
+(cf. Figure 10 in <a class="footnote-reference" href="#id3" id="id7">[1]</a>)</span></p>
 </div>
 </div>
 
@@ -142,10 +136,10 @@ from NSCD simulation. (cf. Figure 5 in <a class="footnote-reference" href="#id3"
 <li class="toctree-l2"><a class="reference internal" href="../validation.html">Validation Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../applications.html">Applications</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Kinematic flow patterns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kinematic_flow_patterns.html">Kinematic flow patterns</a></li>
 <li class="toctree-l3"><a class="reference internal" href="suspended_sediment_propagation.html">Suspended sediment propagation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="multibody_pattern_formation.html">Multibody pattern formation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="overturning_block_stacks.html">Overturning of multiple-block stacks</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Overturning of multiple-block stacks</a></li>
 </ul>
 </li>
 </ul>
@@ -160,8 +154,8 @@ from NSCD simulation. (cf. Figure 5 in <a class="footnote-reference" href="#id3"
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../about.html">SOLFEC</a><ul>
   <li><a href="../applications.html">Solfec Applications</a><ul>
-      <li>Previous: <a href="../applications.html" title="previous chapter">Solfec Applications</a></li>
-      <li>Next: <a href="suspended_sediment_propagation.html" title="next chapter">Suspended sediment propagation</a></li>
+      <li>Previous: <a href="multibody_pattern_formation.html" title="previous chapter">Multibody pattern formation</a></li>
+      <li>Next: <a href="../../dynlb/about.html" title="next chapter">DYNLB</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -226,7 +220,7 @@ from NSCD simulation. (cf. Figure 5 in <a class="footnote-reference" href="#id3"
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/solfec/applications/kinematic_flow_patterns.txt"
+      <a href="../../_sources/solfec/applications/overturning_block_stacks.txt"
           rel="nofollow">Page source</a>
     </div>
 
