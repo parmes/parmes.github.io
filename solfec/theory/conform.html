@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Contact formulations &mdash; PARMES  documentation</title>
+    <title>Contact formulations &#8212; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,15 +18,16 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PARMES  documentation" href="../../index.html" />
-    <link rel="up" title="Solfec Theory Manual" href="../theory.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Constraint solvers" href="solvers.html" />
     <link rel="prev" title="Contact points" href="conpnt.html" />
   
@@ -69,14 +70,14 @@ descriptions of solvers that utilize them.</p>
 <h2>The frictional contact law<a class="headerlink" href="#the-frictional-contact-law" title="Permalink to this headline">¶</a></h2>
 <p>The frictional contact law in Solfec employs the so called Signorini&#8211;Coulomb conditions. The velocity based Signorini non&#8211;penetration condition reads</p>
 <div class="math" id="equation-Signorini">
-<span class="eqno">(1)</span>\[\bar{U}_{N}\ge0\,\,\,R_{N}\ge0\,\,\,\bar{U}_{N}R_{N}=0\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-Signorini" title="Permalink to this equation">¶</a></span>\[\bar{U}_{N}\ge0\,\,\,R_{N}\ge0\,\,\,\bar{U}_{N}R_{N}=0\]</div>
 <p>where <span class="math">\(\bar{U}_{N}=U_{N}^{t+h}+e\min\left(0,U_{N}^{t}\right)\)</span>, <span class="math">\(e\)</span> is the velocity restitution coefficient, <span class="math">\(U_{N}\)</span> is the the normal
-relative velocity, and <span class="math">\(R_{N}\)</span> is the normal reaction. The normal direction is consistent with the positive gap velocity so that <a href="#equation-Signorini">(1)</a>
+relative velocity, and <span class="math">\(R_{N}\)</span> is the normal reaction. The normal direction is consistent with the positive gap velocity so that <a class="reference internal" href="#equation-Signorini">(1)</a>
 states, that any violation of the non&#8211;penetration results in a reaction force or velocity driving at the penetration&#8211;free configuration. While
 using <span class="math">\(\bar{U}_{N}\)</span> allows to account for the Newton impact law, for models where multiple impacts occur during one time step, using <span class="math">\(e&gt;0\)</span>
 cannot be justified from a theoretical standpoint. The Coulomb&#8217;s friction law reads</p>
 <div class="math" id="equation-Coulomb">
-<span class="eqno">(2)</span>\[\begin{split}\left\{ \begin{array}{ll}
+<span class="eqno">(2)<a class="headerlink" href="#equation-Coulomb" title="Permalink to this equation">¶</a></span>\[\begin{split}\left\{ \begin{array}{ll}
 \left\Vert \mathbf{R}_{T}\right\Vert \le\mu R_{N}\\
 \left\Vert \mathbf{R}_{T}\right\Vert &lt;\mu R_{N} &amp; \Rightarrow\mathbf{U}_{T}=\mathbf{0}\\
 \left\Vert \mathbf{R}_{T}\right\Vert =\mu R_{N} &amp; \Rightarrow\exists_{\lambda\ge0}\mathbf{U}_{T}=-\lambda\mathbf{R}_{T}
@@ -88,14 +89,14 @@ to the slip velocity.</p>
 <h2>Projected gradient formulation<a class="headerlink" href="#projected-gradient-formulation" title="Permalink to this headline">¶</a></h2>
 <p>This is an implicit formulation based on <a class="footnote-reference" href="#id8" id="id1">[1]</a> and it is optionally used on an individual contact point level within the
 <a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss&#8211;Seidel solver</span></a>. On the point level this formulation is implemented in
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L35">dbs.c:35</a>.  The Signorini condition <a href="#equation-Signorini">(1)</a> is expressed
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L35">dbs.c:35</a>.  The Signorini condition <a class="reference internal" href="#equation-Signorini">(1)</a> is expressed
 as a projection</p>
 <div class="math" id="equation-RNproj">
-<span class="eqno">(3)</span>\[R_{N}=\textrm{proj}_{R_{+}}\left(R_{N}-\rho\bar{U}_{N}\right)\]</div>
-<p>where vector <span class="math">\(R_{N}-\rho\bar{U}_{N}\)</span> is projected onto the set of positive real numbers <span class="math">\(R_{+}\)</span>. Similarly, the Coulomb law <a href="#equation-Coulomb">(2)</a> is expressed
+<span class="eqno">(3)<a class="headerlink" href="#equation-RNproj" title="Permalink to this equation">¶</a></span>\[R_{N}=\textrm{proj}_{R_{+}}\left(R_{N}-\rho\bar{U}_{N}\right)\]</div>
+<p>where vector <span class="math">\(R_{N}-\rho\bar{U}_{N}\)</span> is projected onto the set of positive real numbers <span class="math">\(R_{+}\)</span>. Similarly, the Coulomb law <a class="reference internal" href="#equation-Coulomb">(2)</a> is expressed
 as a projection as follows</p>
 <div class="math" id="equation-RTproj">
-<span class="eqno">(4)</span>\[\mathbf{R}_{T}=\textrm{proj}_{D\left(\mu R_{N}\right)}\left(\mathbf{R}_{T}-\rho\mathbf{U}_{T}\right)\]</div>
+<span class="eqno">(4)<a class="headerlink" href="#equation-RTproj" title="Permalink to this equation">¶</a></span>\[\mathbf{R}_{T}=\textrm{proj}_{D\left(\mu R_{N}\right)}\left(\mathbf{R}_{T}-\rho\mathbf{U}_{T}\right)\]</div>
 <p>where <span class="math">\(D\left(F\right)\)</span> is a two-dimensional <span class="math">\(\mathbf{0}\)</span>&#8211;centred disc of radius <span class="math">\(\mu R_{N}\)</span>. In both cases above, <span class="math">\(\rho&gt;0\)</span>.
 The name “projected gradient” refers to the above as resembling a gradient projection formula for an optimization problem, where <span class="math">\(\mathbf{U}\)</span> expresses
 a derivative of an objective function with respect to <span class="math">\(\mathbf{R}\)</span>.</p>
@@ -104,27 +105,27 @@ a derivative of an objective function with respect to <span class="math">\(\math
 <h2>De Saxcé and Feng formulation<a class="headerlink" href="#de-saxce-and-feng-formulation" title="Permalink to this headline">¶</a></h2>
 <p>This is an implicit formulation based on <a class="footnote-reference" href="#id9" id="id2">[2]</a> and it is optionally used on an individual contact point level within the
 <a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss&#8211;Seidel solver</span></a>. On the point level this formulation is implemented in
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L96">dbs.c:96</a>. We express the Signorini&#8211;Coulomb law <a href="#equation-Signorini">(1)</a> and <a href="#equation-Coulomb">(2)</a>
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L96">dbs.c:96</a>. We express the Signorini&#8211;Coulomb law <a class="reference internal" href="#equation-Signorini">(1)</a> and <a class="reference internal" href="#equation-Coulomb">(2)</a>
 as an inclusion. The friction cone <span class="math">\(K_{\alpha}\)</span> is defined as</p>
 <div class="math" id="equation-Kalpha">
-<span class="eqno">(5)</span>\[K_{\alpha}=\left\{ \mathbf{R}_{\alpha}:\left\Vert \mathbf{R}_{\alpha T}\right\Vert \le\mu_{\alpha}R_{\alpha N},R_{\alpha N}\ge0\right\}\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-Kalpha" title="Permalink to this equation">¶</a></span>\[K_{\alpha}=\left\{ \mathbf{R}_{\alpha}:\left\Vert \mathbf{R}_{\alpha T}\right\Vert \le\mu_{\alpha}R_{\alpha N},R_{\alpha N}\ge0\right\}\]</div>
 <p>where <span class="math">\(\mu_{\alpha}\)</span> is the coefficient of friction. It has been shown by De Saxcé and Feng <a class="footnote-reference" href="#id9" id="id3">[2]</a>, that the Signorini&#8211;Coulomb law
 can be expressed in a compact form</p>
 <div class="math" id="equation-DSF">
-<span class="eqno">(6)</span>\[\begin{split}-\left[\begin{array}{c}
+<span class="eqno">(6)<a class="headerlink" href="#equation-DSF" title="Permalink to this equation">¶</a></span>\[\begin{split}-\left[\begin{array}{c}
 \mathbf{U}_{\alpha T}\\
 \bar{U}_{\alpha N}+\mu_{\alpha}\left\Vert \mathbf{U}_{\alpha T}\right\Vert
 \end{array}\right]\in N_{K_{\alpha}}\left(\mathbf{R}_{\alpha}\right)\end{split}\]</div>
 <p>where <span class="math">\(N_{K_{\alpha}}\)</span> stands for the normal cone of the set <span class="math">\(K_{\alpha}\)</span>. For a convex set A the normal cone <span class="math">\(N_{A}\left(\mathbf{R}\right)\)</span>
 at point <span class="math">\(\mathbf{R}\in A\)</span> is defined as the set of all vectors <span class="math">\(\mathbf{V}\)</span> such that <span class="math">\(\left\langle \mathbf{V},\mathbf{S}-\mathbf{R}\right\rangle \le0\)</span>
-for all <span class="math">\(\mathbf{S}\in A\)</span>. Based on inclusion <a href="#equation-DSF">(6)</a>, the authors of <a class="footnote-reference" href="#id9" id="id4">[2]</a> propose the following projection formula</p>
+for all <span class="math">\(\mathbf{S}\in A\)</span>. Based on inclusion <a class="reference internal" href="#equation-DSF">(6)</a>, the authors of <a class="footnote-reference" href="#id9" id="id4">[2]</a> propose the following projection formula</p>
 <div class="math" id="equation-DSFproj">
-<span class="eqno">(7)</span>\[\begin{split}\mathbf{R}_{\alpha}=\mbox{proj}_{K_{\alpha}}\left(\mathbf{R}_{\alpha}-\rho\left[\begin{array}{c}
+<span class="eqno">(7)<a class="headerlink" href="#equation-DSFproj" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{R}_{\alpha}=\mbox{proj}_{K_{\alpha}}\left(\mathbf{R}_{\alpha}-\rho\left[\begin{array}{c}
 \mathbf{U}_{\alpha T}\\
 \bar{U}_{\alpha N}+\mu_{\alpha}\left\Vert \mathbf{U}_{\alpha T}\right\Vert
 \end{array}\right]\right)\end{split}\]</div>
-<p>where <span class="math">\(\rho&gt;0\)</span>. Formula <a href="#equation-DSFproj">(7)</a> can be used instead of the projected gradient formulas <a href="#equation-RNproj">(3)</a> and <a href="#equation-RTproj">(4)</a>. The appeal of this approach is in
-the separation of velocities on the left hand side of the inclusion <a href="#equation-DSF">(6)</a> from forces on the right hand side, as well as in the constancy of the friction cone
+<p>where <span class="math">\(\rho&gt;0\)</span>. Formula <a class="reference internal" href="#equation-DSFproj">(7)</a> can be used instead of the projected gradient formulas <a class="reference internal" href="#equation-RNproj">(3)</a> and <a class="reference internal" href="#equation-RTproj">(4)</a>. The appeal of this approach is in
+the separation of velocities on the left hand side of the inclusion <a class="reference internal" href="#equation-DSF">(6)</a> from forces on the right hand side, as well as in the constancy of the friction cone
 <span class="math">\(K_{\alpha}\)</span>, which together make this formulation seem even more like a statement of optimality for a constrained optimization problem. This may be helpful
 in formulating solution strategies based on already existing approaches.</p>
 </div>
@@ -133,31 +134,31 @@ in formulating solution strategies based on already existing approaches.</p>
 <p>This is an implicit formulation based on <a class="footnote-reference" href="#id10" id="id5">[3]</a> and it is used by default on an individual contact point level within the
 <a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss&#8211;Seidel solver</span></a>. On the point level this formulation is implemented in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L142">dbs.c:142</a>. The authors of <a class="footnote-reference" href="#id10" id="id6">[3]</a> propose to express the Signorini and Coulomb
-conditions <a href="#equation-Signorini">(1)</a> and <a href="#equation-Coulomb">(2)</a> as a non&#8211;smooth equation <span class="math">\(\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\)</span>, where</p>
+conditions <a class="reference internal" href="#equation-Signorini">(1)</a> and <a class="reference internal" href="#equation-Coulomb">(2)</a> as a non&#8211;smooth equation <span class="math">\(\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\)</span>, where</p>
 <div class="math" id="equation-NSFEQ">
-<span class="eqno">(8)</span>\[\begin{split}\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
+<span class="eqno">(8)<a class="headerlink" href="#equation-NSFEQ" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
 \max\left(\mu d_{N},\left\Vert \mathbf{d}_{T}\right\Vert \right)\mathbf{R}_{T}-\mu\max\left(0,d_{N}\right)\mathbf{d}_{T}\\
 R_{N}-\max\left(0,d_{N}\right)
 \end{array}\right]\end{split}\]</div>
 <p>and</p>
 <div class="math" id="equation-dN">
-<span class="eqno">(9)</span>\[d_{N}=R_{N}-\rho\bar{U}_{N}\]</div>
+<span class="eqno">(9)<a class="headerlink" href="#equation-dN" title="Permalink to this equation">¶</a></span>\[d_{N}=R_{N}-\rho\bar{U}_{N}\]</div>
 <div class="math" id="equation-dT">
-<span class="eqno">(10)</span>\[\mathbf{d}_{T}=\mathbf{R}_{T}-\rho\mathbf{U}_{T}\]</div>
-<p>while <span class="math">\(\rho&gt;0\)</span>. Equation <a href="#equation-NSFEQ">(8)</a> encapsulates the projection formulas <a href="#equation-RNproj">(3)</a> and <a href="#equation-RTproj">(4)</a> and it has been shown to work well
+<span class="eqno">(10)<a class="headerlink" href="#equation-dT" title="Permalink to this equation">¶</a></span>\[\mathbf{d}_{T}=\mathbf{R}_{T}-\rho\mathbf{U}_{T}\]</div>
+<p>while <span class="math">\(\rho&gt;0\)</span>. Equation <a class="reference internal" href="#equation-NSFEQ">(8)</a> encapsulates the projection formulas <a class="reference internal" href="#equation-RNproj">(3)</a> and <a class="reference internal" href="#equation-RTproj">(4)</a> and it has been shown to work well
 as a basis for Newton type solution schemes in the finite&#8211;element context.</p>
 </div>
 <div class="section" id="non-smooth-velocity-equation-formulation">
 <span id="solfec-theory-conform-nsveq"></span><h2>Non&#8211;smooth velocity equation formulation<a class="headerlink" href="#non-smooth-velocity-equation-formulation" title="Permalink to this headline">¶</a></h2>
-<p>This is an implicit formulation developed specifically for Solfec based on formula <a href="#equation-DSF">(6)</a> from <a class="footnote-reference" href="#id9" id="id7">[2]</a>. It is optionally used on an individual
+<p>This is an implicit formulation developed specifically for Solfec based on formula <a class="reference internal" href="#equation-DSF">(6)</a> from <a class="footnote-reference" href="#id9" id="id7">[2]</a>. It is optionally used on an individual
 contact point level within the <a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss&#8211;Seidel solver</span></a>. It is also the basis of contact linearization within the
 <a class="reference internal" href="solvers.html#solfec-theory-solvers-pqn"><span class="std std-ref">projected Newton solver</span></a>. On the point level this formulation is implemented in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/scf.c#L28">scf.c</a>. Using the <a class="reference internal" href="locdyn.html#solfec-theory-locdyn"><span class="std std-ref">local dynamics</span></a> relationship</p>
-<div class="math" id="equation-locdyn">
-<span class="eqno">(11)</span>\[\mathbf{U_{\alpha}}=\mathbf{B_{\alpha}}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}\]</div>
+<div class="math">
+\[\mathbf{U_{\alpha}}=\mathbf{B_{\alpha}}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}\]</div>
 <p>let us define a function</p>
 <div class="math" id="equation-F">
-<span class="eqno">(12)</span>\[\begin{split}\mathbf{F}\left(\mathbf{R}\right)=\left[\begin{array}{c}
+<span class="eqno">(11)<a class="headerlink" href="#equation-F" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{F}\left(\mathbf{R}\right)=\left[\begin{array}{c}
 ...\\
 \mathbf{U}_{\alpha T}\left(\mathbf{R}\right)\\
 \bar{U}_{\alpha N}\left(\mathbf{R}\right)+\mu_{\alpha}\left\Vert \mathbf{U}_{\alpha T}\left(\mathbf{R}\right)\right\Vert \\
@@ -167,20 +168,20 @@ contact point level within the <a class="reference internal" href="solvers.html#
 <div class="math">
 \[K=\bigcup_{\alpha}K_{\alpha}\]</div>
 <p>where <span class="math">\(\mu_{\alpha}\)</span> is the coefficient of friction at a contact point <span class="math">\(\alpha\)</span>, <span class="math">\(K_{\alpha}\)</span> is the corresponding friction cone
-<a href="#equation-Kalpha">(5)</a>, while the dependence <span class="math">\(\mathbf{U}_{\alpha}\left(\mathbf{R}\right)\)</span> is given by <a href="#equation-locdyn">(11)</a>. Formula <a href="#equation-DSF">(6)</a> states, that the
+<a class="reference internal" href="#equation-Kalpha">(5)</a>, while the dependence <span class="math">\(\mathbf{U}_{\alpha}\left(\mathbf{R}\right)\)</span> is given by <a class="reference internal" href="basics.html#equation-locdyn">(10)</a>. Formula <a class="reference internal" href="#equation-DSF">(6)</a> states, that the
 frictional contact constraints are satisfied if <span class="math">\(-\mathbf{F}\left(\mathbf{R}\right)\)</span> belongs to the normal cone of the friction cone at
 <span class="math">\(\mathbf{R}\)</span>. Hence</p>
 <div class="math">
 \[-\mathbf{F}\left(\mathbf{R}\right)=\mathbf{R}-\mathbf{F}\left(\mathbf{R}\right)-
 \mbox{proj}_{K}\left(\mathbf{R}-\mathbf{F}\left(\mathbf{R}\right)\right)\]</div>
 <p>which can be reduced to the usual projection formula <span class="math">\(\mathbf{R}=\mbox{proj}_{K}\left(\mathbf{R}-\mathbf{F}\left(\mathbf{R}\right)\right)\)</span> or
-<a href="#equation-DSFproj">(7)</a> with <span class="math">\(\rho=1\)</span>. Let us not do it though, but rather define a vector field</p>
+<a class="reference internal" href="#equation-DSFproj">(7)</a> with <span class="math">\(\rho=1\)</span>. Let us not do it though, but rather define a vector field</p>
 <div class="math">
 \[\mathbf{m}\left(\mathbf{S}\right)=\mathbf{S}-\mbox{proj}_{K}\left(\mathbf{S}\right)=
 \mathbf{n}\left(\mathbf{S}\right)\left\langle \mathbf{n}\left(\mathbf{S}\right),\mathbf{S}\right\rangle\]</div>
 <p>where</p>
 <div class="math" id="equation-n">
-<span class="eqno">(13)</span>\[\begin{split}\mathbf{n}_{\alpha}\left(\mathbf{S}_{\alpha}\right)=\left\{ \begin{array}{lll}
+<span class="eqno">(12)<a class="headerlink" href="#equation-n" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{n}_{\alpha}\left(\mathbf{S}_{\alpha}\right)=\left\{ \begin{array}{lll}
 \mathbf{0} &amp; \mbox{if} &amp; \left\Vert \mathbf{S}_{\alpha T}\right\Vert -\mu_{\alpha}S_{\alpha N}\le0\\
 \mathbf{S}_{\alpha}/\left\Vert \mathbf{S}_{\alpha}\right\Vert  &amp; \mbox{if} &amp;
 \mu_{\alpha}\left\Vert \mathbf{S}_{\alpha T}\right\Vert +S_{\alpha N}&lt;0\\
@@ -189,11 +190,11 @@ frictional contact constraints are satisfied if <span class="math">\(-\mathbf{F}
 -\mu_{\alpha}
 \end{array}\right] &amp; \mbox{} &amp; \mbox{otherwise}
 \end{array}\right.\end{split}\]</div>
-<p>We can rewrite <a href="#equation-DSF">(6)</a> as</p>
+<p>We can rewrite <a class="reference internal" href="#equation-DSF">(6)</a> as</p>
 <div class="math" id="equation-NSVEQ">
-<span class="eqno">(14)</span>\[\mathbf{C}\left(\mathbf{R}\right)=\mathbf{F}\left(\mathbf{R}\right)+\mathbf{m}\left(\mathbf{R}-\mathbf{F}\left(\mathbf{R}\right)\right)=\mathbf{0}\mbox{ and }\mathbf{R}\in K\]</div>
+<span class="eqno">(13)<a class="headerlink" href="#equation-NSVEQ" title="Permalink to this equation">¶</a></span>\[\mathbf{C}\left(\mathbf{R}\right)=\mathbf{F}\left(\mathbf{R}\right)+\mathbf{m}\left(\mathbf{R}-\mathbf{F}\left(\mathbf{R}\right)\right)=\mathbf{0}\mbox{ and }\mathbf{R}\in K\]</div>
 <p>Note, that <span class="math">\(\mathbf{F}\left(\mathbf{R}\right)\)</span> is expressed in terms of velocity, and so is <span class="math">\(\mathbf{C}\left(\mathbf{R}\right)\)</span>.
-Equation <a href="#equation-NSVEQ">(14)</a> expresses, in velocity form, the projection formula <a href="#equation-DSFproj">(7)</a>.</p>
+Equation <a class="reference internal" href="#equation-NSVEQ">(13)</a> expresses, in velocity form, the projection formula <a class="reference internal" href="#equation-DSFproj">(7)</a>.</p>
 </div>
 <div class="section" id="semi-explicit-penalty-formulation">
 <h2>Semi&#8211;explicit penalty formulation<a class="headerlink" href="#semi-explicit-penalty-formulation" title="Permalink to this headline">¶</a></h2>
@@ -204,7 +205,7 @@ in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/m
 \[s=spring\mbox{ and }d=dashpot\mbox{ and }g=gap\mbox{ and }m=hpow\]</div>
 <p>where <span class="math">\(hpow\)</span> stands for the “Hertz power”. The normal reaction is computed as follows</p>
 <div class="math" id="equation-spring-dashpot-1">
-<span class="eqno">(15)</span>\[R_{N}=-s\cdot\frac{g^{t+h}+g^{t}}{2}-d\cdot\frac{U_{N}^{t+h}+U_{N}^{t}}{2}\]</div>
+<span class="eqno">(14)<a class="headerlink" href="#equation-spring-dashpot-1" title="Permalink to this equation">¶</a></span>\[R_{N}=-s\cdot\frac{g^{t+h}+g^{t}}{2}-d\cdot\frac{U_{N}^{t+h}+U_{N}^{t}}{2}\]</div>
 <p>where <span class="math">\(U_{N}\)</span> is the normal relative velocity. <a class="reference internal" href="basics.html#solfec-theory-basics"><span class="std std-ref">Recall</span></a>, that the gap function is computed for the configuration
 <span class="math">\(\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\)</span>, so that the gap function value computed during geometrical contact detection reads</p>
 <div class="math">
@@ -214,18 +215,18 @@ in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/m
 \[g^{t+h}=g^{t}+\frac{h}{2}\left(U_{N}^{t+h}+U_{N}^{t}\right)=g+\frac{h}{2}U_{N}^{t+h}\]</div>
 <p>and since <span class="math">\(g^{t}=g-\frac{h}{2}U_{N}^{t}\)</span> we can estimate</p>
 <div class="math" id="equation-spring-dashpot-2">
-<span class="eqno">(16)</span>\[R_{N}=-s\cdot\left(g+\frac{h}{4}\left(U_{N}^{t+h}-U_{N}^{t}\right)\right)-\frac{d}{2}\cdot\left(U_{N}^{t+h}+U_{N}^{t}\right)\]</div>
+<span class="eqno">(15)<a class="headerlink" href="#equation-spring-dashpot-2" title="Permalink to this equation">¶</a></span>\[R_{N}=-s\cdot\left(g+\frac{h}{4}\left(U_{N}^{t+h}-U_{N}^{t}\right)\right)-\frac{d}{2}\cdot\left(U_{N}^{t+h}+U_{N}^{t}\right)\]</div>
 <p>We then use the diagonal block of local dynamics</p>
 <div class="math">
 \[\mathbf{U}^{t+h}=\mathbf{B}+\mathbf{W}\mathbf{R}\]</div>
 <p>in order to estimate <span class="math">\(U_{N}^{t+h}\)</span> as follows</p>
 <div class="math">
 \[U_{N}^{t+h}=B_{N}+\mathbf{W}_{NT}\mathbf{R}_{T}+W_{NN}R_{N}\]</div>
-<p>where a previous tangential reaction <span class="math">\(\mathbf{R}_{T}\)</span> is employed. Inserting this it into <a href="#equation-spring-dashpot-2">(16)</a> results in</p>
+<p>where a previous tangential reaction <span class="math">\(\mathbf{R}_{T}\)</span> is employed. Inserting this it into <a class="reference internal" href="#equation-spring-dashpot-2">(15)</a> results in</p>
 <div class="math">
 \[\bar{B}_{N}=B_{N}+\mathbf{W}_{NT}\mathbf{R}_{T}\]</div>
 <div class="math" id="equation-spring-dashpot-3">
-<span class="eqno">(17)</span>\[R_{N}=\left[-s\cdot\left(g+\frac{h}{4}\left(\bar{B}_{N}-U_{N}^{t}\right)\right)-\frac{d}{2}\cdot\left(
+<span class="eqno">(16)<a class="headerlink" href="#equation-spring-dashpot-3" title="Permalink to this equation">¶</a></span>\[R_{N}=\left[-s\cdot\left(g+\frac{h}{4}\left(\bar{B}_{N}-U_{N}^{t}\right)\right)-\frac{d}{2}\cdot\left(
 \bar{B}_{N}+U_{N}^{t}\right)\right]/\left[1+\left(s\cdot\frac{h}{4}+\frac{d}{2}\right)\cdot W_{NN}\right]\]</div>
 <p>The reason for using the above, rather than the classical <span class="math">\(R_{N}=-s\cdot g-d\cdot U_{N}^{t}\)</span> is in an increased stability of
 the this approach. Since we aim at simplicity and want to avoid any nonlinear solve only at this stage we include the “Hertz power”</p>
@@ -412,11 +413,11 @@ with Coulomb friction, SIAM Journal on Scientific Computing, 30 (2), 572-596, 20
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/solfec/theory/conform.txt"
+      <a href="../../_sources/solfec/theory/conform.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

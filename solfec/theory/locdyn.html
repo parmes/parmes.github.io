@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Local dynamics &mdash; PARMES  documentation</title>
+    <title>Local dynamics &#8212; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,15 +18,16 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PARMES  documentation" href="../../index.html" />
-    <link rel="up" title="Solfec Theory Manual" href="../theory.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Joints" href="joints.html" />
     <link rel="prev" title="Constraints" href="constraints.html" />
   
@@ -59,35 +60,35 @@
 <span id="solfec-theory-locdyn"></span><h1>Local dynamics<a class="headerlink" href="#local-dynamics" title="Permalink to this headline">¶</a></h1>
 <p>Let us start by restating the constrained time stepping
 scheme from the <a class="reference internal" href="constraints.html#timestepping1"><span class="std std-ref">previous section</span></a></p>
-<div class="math" id="equation-q1">
-<span class="eqno">(1)</span>\[\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\]</div>
-<div class="math" id="equation-u2">
-<span class="eqno">(2)</span>\[\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\left(\mathbf{q}^{t+\frac{h}{2}},\mathbf{u}^{t}\right)+
+<div class="math">
+\[\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\]</div>
+<div class="math">
+\[\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\left(\mathbf{q}^{t+\frac{h}{2}},\mathbf{u}^{t}\right)+
 \mathbf{A}^{-1}h\mathbf{H}^{T}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{R}\]</div>
-<div class="math" id="equation-UHu2">
-<span class="eqno">(3)</span>\[\mathbf{U}=\mathbf{H}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{u}\]</div>
-<div class="math" id="equation-CUR2">
-<span class="eqno">(4)</span>\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\]</div>
-<div class="math" id="equation-q2">
-<span class="eqno">(5)</span>\[\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\]</div>
-<p>We said, that the equations <a href="#equation-u2">(2)</a>, <a href="#equation-UHu2">(3)</a>, <a href="#equation-CUR2">(4)</a>
+<div class="math">
+\[\mathbf{U}=\mathbf{H}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{u}\]</div>
+<div class="math">
+\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\]</div>
+<div class="math">
+\[\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\]</div>
+<p>We said, that the equations <a class="reference internal" href="constraints.html#equation-u2">(10)</a>, <a class="reference internal" href="constraints.html#equation-UHu2">(11)</a>, <a class="reference internal" href="constraints.html#equation-CUR2">(12)</a>
 are solved together, implicitly. In practice, since a solution process
 may take many iterations, it is often efficient to produce an
 assembled form of the relationship between <span class="math">\(\mathbf{U}\)</span> and <span class="math">\(\mathbf{R}\)</span>,
 and use it together with <span class="math">\(\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)\)</span>,
-to find reaction forces <span class="math">\(\mathbf{R}\)</span>. By substituting <a href="#equation-u2">(2)</a>
-into <a href="#equation-UHu2">(3)</a> we obtain</p>
+to find reaction forces <span class="math">\(\mathbf{R}\)</span>. By substituting <a class="reference internal" href="constraints.html#equation-u2">(10)</a>
+into <a class="reference internal" href="constraints.html#equation-UHu2">(11)</a> we obtain</p>
 <div class="math">
 \[\mathbf{U}=\mathbf{H}\left(\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\right)+\mathbf{H}\mathbf{A}^{-1}h\mathbf{H}^{T}\mathbf{R}\]</div>
 <p>and rewrite it as</p>
 <div class="math" id="equation-UBWR">
-<span class="eqno">(6)</span>\[\mathbf{U}=\mathbf{B}+\mathbf{W}\mathbf{R}\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-UBWR" title="Permalink to this equation">¶</a></span>\[\mathbf{U}=\mathbf{B}+\mathbf{W}\mathbf{R}\]</div>
 <p>where</p>
 <div class="math" id="equation-B0">
-<span class="eqno">(7)</span>\[\mathbf{B}=\mathbf{H}\left(\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\right)\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-B0" title="Permalink to this equation">¶</a></span>\[\mathbf{B}=\mathbf{H}\left(\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\right)\]</div>
 <div class="math" id="equation-W0">
-<span class="eqno">(8)</span>\[\mathbf{W}=h\mathbf{H}\mathbf{A}^{-1}\mathbf{H}^{T}\label{eq:W0}\]</div>
-<p>Relation <a href="#equation-UBWR">(6)</a> can be called <em>local dynamics</em>, since
+<span class="eqno">(3)<a class="headerlink" href="#equation-W0" title="Permalink to this equation">¶</a></span>\[\mathbf{W}=h\mathbf{H}\mathbf{A}^{-1}\mathbf{H}^{T}\label{eq:W0}\]</div>
+<p>Relation <a class="reference internal" href="#equation-UBWR">(1)</a> can be called <em>local dynamics</em>, since
 it relates point forces and (relative) point velocities. <span class="math">\(\mathbf{B}\)</span>
 can be called local free velocity, since it is a relative local velocity
 of constraints when no reaction forces are applied. <span class="math">\(\mathbf{W}\)</span>
@@ -105,26 +106,26 @@ and denoted by <span class="math">\(\mathcal{M}_{\alpha}\)</span>. Consequently,
 will be called the <em>slave</em> in <span class="math">\(\mathcal{C}_{\alpha}\)</span> and denoted
 by <span class="math">\(\mathcal{S}_{\alpha}\)</span>. Of course, the choice is arbitrary. Considering
 evolution of a multi&#8211;body system over an interval <span class="math">\(\left[t,t+h\right]\)</span>,
-an analogue of equation <a href="#equation-UBWR">(6)</a> can be written down for each of the local frames</p>
+an analogue of equation <a class="reference internal" href="#equation-UBWR">(1)</a> can be written down for each of the local frames</p>
 <div class="math" id="equation-dynloc">
-<span class="eqno">(9)</span>\[\mathbf{U_{\alpha}}=\mathbf{B_{\alpha}}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}\]</div>
+<span class="eqno">(4)<a class="headerlink" href="#equation-dynloc" title="Permalink to this equation">¶</a></span>\[\mathbf{U_{\alpha}}=\mathbf{B_{\alpha}}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}\]</div>
 <p>where</p>
 <div class="math" id="equation-U">
-<span class="eqno">(10)</span>\[\mathbf{U}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{u}_{i}^{t+h}-\mathbf{H}_{j\alpha}\mathbf{u}_{j}^{t+h}\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-U" title="Permalink to this equation">¶</a></span>\[\mathbf{U}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{u}_{i}^{t+h}-\mathbf{H}_{j\alpha}\mathbf{u}_{j}^{t+h}\]</div>
 <div class="math" id="equation-Bal">
-<span class="eqno">(11)</span>\[\mathbf{B}_{\alpha}=\mathbf{H}_{i\alpha}\left(\mathbf{u}_{i}^{t}+\mathbf{A}_{i}^{-1}h\mathbf{f}_{i}\right)-
+<span class="eqno">(6)<a class="headerlink" href="#equation-Bal" title="Permalink to this equation">¶</a></span>\[\mathbf{B}_{\alpha}=\mathbf{H}_{i\alpha}\left(\mathbf{u}_{i}^{t}+\mathbf{A}_{i}^{-1}h\mathbf{f}_{i}\right)-
 \mathbf{H}_{j\alpha}\left(\mathbf{u}_{j}^{t}+\mathbf{A}_{j}^{-1}h\mathbf{f}_{j}\right)\]</div>
 <div class="math" id="equation-Walbe">
-<span class="eqno">(12)</span>\[\left.\mathbf{W}_{\alpha\beta}\right|_{\alpha\ne\beta}=s_{\alpha\beta}h\mathbf{H}_{k_{\beta}\alpha}\mathbf{A}_{k_{\beta}}^{-1}\mathbf{H}_{k_{\beta}\beta}^{T}\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-Walbe" title="Permalink to this equation">¶</a></span>\[\left.\mathbf{W}_{\alpha\beta}\right|_{\alpha\ne\beta}=s_{\alpha\beta}h\mathbf{H}_{k_{\beta}\alpha}\mathbf{A}_{k_{\beta}}^{-1}\mathbf{H}_{k_{\beta}\beta}^{T}\]</div>
 <div class="math" id="equation-Walal">
-<span class="eqno">(13)</span>\[\mathbf{W}_{\alpha\alpha}=h\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{H}_{i\alpha}^{T}+h\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{H}_{j\alpha}^{T}\]</div>
+<span class="eqno">(8)<a class="headerlink" href="#equation-Walal" title="Permalink to this equation">¶</a></span>\[\mathbf{W}_{\alpha\alpha}=h\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{H}_{i\alpha}^{T}+h\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{H}_{j\alpha}^{T}\]</div>
 <div class="math">
 \[\begin{split}k_{\beta}=\left\{ \begin{array}{cc}
 i &amp; \textrm{if }\mathcal{B}_{i}\in\mathcal{C}_{\beta}\\
 j &amp; \textrm{if }\mathcal{B}_{j}\in\mathbf{\mathcal{C}_{\beta}}
 \end{array}\right.\end{split}\]</div>
 <div class="math" id="equation-sdef">
-<span class="eqno">(14)</span>\[\begin{split}s_{\alpha\beta}=\left\{ \begin{array}{rl}
+<span class="eqno">(9)<a class="headerlink" href="#equation-sdef" title="Permalink to this equation">¶</a></span>\[\begin{split}s_{\alpha\beta}=\left\{ \begin{array}{rl}
 -1 &amp; \textrm{if }\mathcal{B}_{k_{\beta}}\textrm{ is }\left(\mathcal{M}_{\alpha}\wedge\mathcal{S}_{\beta}\right)\vee\left(\mathcal{S}_{\alpha}\wedge\mathcal{M}_{\beta}\right)\\
 1 &amp; \textrm{otherwise}
 \end{array}\right.\end{split}\]</div>
@@ -133,7 +134,7 @@ They stem from the following, juxtaposed algebra of multi&#8211;body dynamics.
 Let <span class="math">\(\mathbf{q}\)</span>, <span class="math">\(\mathbf{u}\)</span>, <span class="math">\(\mathbf{f}\)</span>, <span class="math">\(\mathbf{A}\)</span>
 gather the suitable vectors and matrices as</p>
 <div class="math" id="equation-qufM">
-<span class="eqno">(15)</span>\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
+<span class="eqno">(10)<a class="headerlink" href="#equation-qufM" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
 \mathbf{q}_{1}\\
 \mathbf{q}_{2}\\
 ...\\
@@ -157,7 +158,7 @@ gather the suitable vectors and matrices as</p>
 <p>To each local frame <span class="math">\(\mathcal{C}_{\alpha}\)</span>, there corresponds a block&#8211;row
 of the global <span class="math">\(\mathbf{H}\)</span> operator</p>
 <div class="math" id="equation-Hglob">
-<span class="eqno">(16)</span>\[\begin{split}\mathbf{H}=\left[\begin{array}{ccccccc}
+<span class="eqno">(11)<a class="headerlink" href="#equation-Hglob" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{H}=\left[\begin{array}{ccccccc}
 ... &amp; -\mathbf{H}_{j1} &amp; ... &amp; \mathbf{H}_{i1} &amp; ...\\
 ... &amp; ... &amp; ... &amp; ... &amp; ... &amp; ... &amp; ...\\
 &amp; ... &amp; \mathbf{H}_{i\alpha} &amp; ... &amp; -\mathbf{H}_{j\alpha} &amp; ...\\
@@ -219,9 +220,9 @@ complexity, and as such it needs to be accepted in numerical practice.</p>
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>Local dynamics is implemented in files <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.h">ldy.h</a>
 and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.h">ldy.c</a>.</p>
-<p>Off&#8211;diagonal blocks of <span class="math">\(\mathbf{W}_{\alpha\beta}\)</span> <a href="#equation-Walal">(13)</a>,
-diagonal block <span class="math">\(\mathbf{W}_{\alpha\alpha}\)</span> <a href="#equation-Walal">(13)</a>,
-and the entire <span class="math">\(\mathbf{U}=\mathbf{B}+\mathbf{W}\mathbf{R}\)</span> system <a href="#equation-UBWR">(6)</a> are
+<p>Off&#8211;diagonal blocks of <span class="math">\(\mathbf{W}_{\alpha\beta}\)</span> <a class="reference internal" href="#equation-Walal">(8)</a>,
+diagonal block <span class="math">\(\mathbf{W}_{\alpha\alpha}\)</span> <a class="reference internal" href="#equation-Walal">(8)</a>,
+and the entire <span class="math">\(\mathbf{U}=\mathbf{B}+\mathbf{W}\mathbf{R}\)</span> system <a class="reference internal" href="#equation-UBWR">(1)</a> are
 declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.h#L39">ldy.h:39</a> as follows:</p>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>39
 40
@@ -230,7 +231,7 @@ declared in <a class="reference external" href="https://github.com/tkoziara/solf
 <span class="n">typedef</span> <span class="n">struct</span> <span class="n">locdyn</span> <span class="n">LOCDYN</span><span class="p">;</span>
 </pre></div>
 </td></tr></table></div>
-<p>Off&#8211;diagonal blocks of <span class="math">\(\mathbf{W}_{\alpha\beta}\)</span> <a href="#equation-Walbe">(12)</a> are declared in
+<p>Off&#8211;diagonal blocks of <span class="math">\(\mathbf{W}_{\alpha\beta}\)</span> <a class="reference internal" href="#equation-Walbe">(7)</a> are declared in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.h#L44">ldy.h:44</a> as follows:</p>
 <div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>44
 45
@@ -247,8 +248,8 @@ declared in <a class="reference external" href="https://github.com/tkoziara/solf
 <span class="p">};</span>
 </pre></div>
 </td></tr></table></div>
-<p>Diagonal blocks of <span class="math">\(\mathbf{W}_{\alpha\alpha}\)</span> <a href="#equation-Walal">(13)</a> and
-free velocity <span class="math">\(\mathbf{B}_{\alpha}\)</span> <a href="#equation-Bal">(11)</a> are declared in
+<p>Diagonal blocks of <span class="math">\(\mathbf{W}_{\alpha\alpha}\)</span> <a class="reference internal" href="#equation-Walal">(8)</a> and
+free velocity <span class="math">\(\mathbf{B}_{\alpha}\)</span> <a class="reference internal" href="#equation-Bal">(6)</a> are declared in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/ldy.h#L53">ldy.h:53</a> as follows:</p>
 <div class="highlight-c"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>53
 54
@@ -429,11 +430,11 @@ Assembling of <span class="math">\(\mathbf{W}\)</span> and <span class="math">\(
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/solfec/theory/locdyn.txt"
+      <a href="../../_sources/solfec/theory/locdyn.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

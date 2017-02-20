@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Time integration &mdash; PARMES  documentation</title>
+    <title>Time integration &#8212; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,15 +18,16 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PARMES  documentation" href="../../index.html" />
-    <link rel="up" title="Solfec Theory Manual" href="../theory.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Constraints" href="constraints.html" />
     <link rel="prev" title="Dynamics" href="dynamics.html" />
   
@@ -73,26 +74,26 @@
 <h2>Rigid integration<a class="headerlink" href="#rigid-integration" title="Permalink to this headline">¶</a></h2>
 <p>Linear motion is integrated like <a class="reference internal" href="#deformable-integration"><span class="std std-ref">deformable motion</span></a>. Rigid rotations are integrated as follows</p>
 <div class="math" id="equation-R(t+h/2)">
-<span class="eqno">(1)</span>\[\mathbf{\Lambda}^{t+\frac{h}{2}}=\mathbf{\Lambda}^{t}\exp\left[\frac{h}{2}\mathbf{\Omega}^{t}\right]\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-R(t+h/2)" title="Permalink to this equation">¶</a></span>\[\mathbf{\Lambda}^{t+\frac{h}{2}}=\mathbf{\Lambda}^{t}\exp\left[\frac{h}{2}\mathbf{\Omega}^{t}\right]\]</div>
 <div class="math" id="equation-T(t+h/2)">
-<span class="eqno">(2)</span>\[\mathbf{T}^{t+\frac{h}{2}}=\left(\mathbf{\Lambda}^{t+\frac{h}{2}}\right)^{T}\mathbf{t}^{t+\frac{h}{2}}\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-T(t+h/2)" title="Permalink to this equation">¶</a></span>\[\mathbf{T}^{t+\frac{h}{2}}=\left(\mathbf{\Lambda}^{t+\frac{h}{2}}\right)^{T}\mathbf{t}^{t+\frac{h}{2}}\]</div>
 <div class="math" id="equation-W(t+h/2)">
-<span class="eqno">(3)</span>\[\mathbf{\Omega}^{t+\frac{h}{2}}=\mathbf{J}^{-1}\left[\exp\left[-\frac{h}{2}\mathbf{\Omega}^{t}\right]\mathbf{J}\mathbf{\Omega}^{t}+\frac{h}{2}\mathbf{T}^{t+\frac{h}{2}}\right]\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-W(t+h/2)" title="Permalink to this equation">¶</a></span>\[\mathbf{\Omega}^{t+\frac{h}{2}}=\mathbf{J}^{-1}\left[\exp\left[-\frac{h}{2}\mathbf{\Omega}^{t}\right]\mathbf{J}\mathbf{\Omega}^{t}+\frac{h}{2}\mathbf{T}^{t+\frac{h}{2}}\right]\]</div>
 <div class="math" id="equation-W1(t+h)">
-<span class="eqno">(4)</span>\[\mathbf{\Omega}_{1}^{t+h}=\mathbf{\Omega}^{t}+\mathbf{J}^{-1}h\left[\mathbf{T}^{t+\frac{h}{2}}-\mathbf{\Omega}^{t+\frac{h}{2}}\times\mathbf{J}\mathbf{\Omega}^{t+\frac{h}{2}}\right]\]</div>
+<span class="eqno">(4)<a class="headerlink" href="#equation-W1(t+h)" title="Permalink to this equation">¶</a></span>\[\mathbf{\Omega}_{1}^{t+h}=\mathbf{\Omega}^{t}+\mathbf{J}^{-1}h\left[\mathbf{T}^{t+\frac{h}{2}}-\mathbf{\Omega}^{t+\frac{h}{2}}\times\mathbf{J}\mathbf{\Omega}^{t+\frac{h}{2}}\right]\]</div>
 <p>If explicit</p>
 <div class="math" id="equation-R1(t+h)">
-<span class="eqno">(5)</span>\[\mathbf{\Lambda}^{t+h}=\mathbf{\Lambda}^{t+\frac{h}{2}}\exp\left[\frac{h}{2}\mathbf{\Omega}_{1}^{t+h}\right]\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-R1(t+h)" title="Permalink to this equation">¶</a></span>\[\mathbf{\Lambda}^{t+h}=\mathbf{\Lambda}^{t+\frac{h}{2}}\exp\left[\frac{h}{2}\mathbf{\Omega}_{1}^{t+h}\right]\]</div>
 <div class="math" id="equation-W2(t+h)">
-<span class="eqno">(6)</span>\[\mathbf{\Omega}_{2}^{t+h}=\mathbf{J}^{-1}\exp\left[-\frac{h}{2}\mathbf{\Omega}_{1}^{t+h}\right]\left[\exp\left
+<span class="eqno">(6)<a class="headerlink" href="#equation-W2(t+h)" title="Permalink to this equation">¶</a></span>\[\mathbf{\Omega}_{2}^{t+h}=\mathbf{J}^{-1}\exp\left[-\frac{h}{2}\mathbf{\Omega}_{1}^{t+h}\right]\left[\exp\left
 [-\frac{h}{2}\mathbf{\Omega}^{t}\right]\mathbf{J}\mathbf{\Omega}^{t}+h\mathbf{T}^{t+\frac{h}{2}}\right]\]</div>
 <p>otherwise</p>
 <div class="math" id="equation-W3(t+h)">
-<span class="eqno">(7)</span>\[\textbf{solve} \left(\exp\left[\frac{h}{2}\mathbf{\Omega}_{3}^{t+h}\right]\mathbf{J}\mathbf{\Omega}_{3}^{t+h}=
+<span class="eqno">(7)<a class="headerlink" href="#equation-W3(t+h)" title="Permalink to this equation">¶</a></span>\[\textbf{solve} \left(\exp\left[\frac{h}{2}\mathbf{\Omega}_{3}^{t+h}\right]\mathbf{J}\mathbf{\Omega}_{3}^{t+h}=
 \exp\left[-\frac{h}{2}\mathbf{\Omega}^{t}\right]\mathbf{J}\mathbf{\Omega}^{t}+h\mathbf{T}^{t+\frac{h}{2}}\right)\]</div>
 <div class="math" id="equation-R2(t+h)">
-<span class="eqno">(8)</span>\[\mathbf{\Lambda}^{t+h}=\mathbf{\Lambda}^{t+\frac{h}{2}}\exp\left[\frac{h}{2}\mathbf{\Omega}_{3}^{t+h}\right]\]</div>
-<p>The scheme ending at <a href="#equation-R1(t+h)">(5)</a> is DEF_POS, ending at <a href="#equation-W2(t+h)">(6)</a> is DEF_NEG, and using instead <a href="#equation-W3(t+h)">(7)</a> and <a href="#equation-R2(t+h)">(8)</a> is DEF_IMP.
+<span class="eqno">(8)<a class="headerlink" href="#equation-R2(t+h)" title="Permalink to this equation">¶</a></span>\[\mathbf{\Lambda}^{t+h}=\mathbf{\Lambda}^{t+\frac{h}{2}}\exp\left[\frac{h}{2}\mathbf{\Omega}_{3}^{t+h}\right]\]</div>
+<p>The scheme ending at <a class="reference internal" href="#equation-R1(t+h)">(5)</a> is DEF_POS, ending at <a class="reference internal" href="#equation-W2(t+h)">(6)</a> is DEF_NEG, and using instead <a class="reference internal" href="#equation-W3(t+h)">(7)</a> and <a class="reference internal" href="#equation-R2(t+h)">(8)</a> is DEF_IMP.
 Above, <span class="math">\(\exp\left[\cdot\right]\)</span> is the exponential map defined by the Rodrigues formula</p>
 <div class="math">
 \[\exp\left[\mathbf{\Psi}\right]=\mathbf{I}+\frac{\sin\left\Vert \mathbf{\Psi}\right\Vert }{\left\Vert \mathbf{\Psi}\right\Vert }
@@ -103,18 +104,18 @@ out of a 3-vector <span class="math">\(\mathbf{\Psi}\)</span>, and <span class="
 <div class="section" id="deformable-integration">
 <span id="id6"></span><h2>Deformable integration<a class="headerlink" href="#deformable-integration" title="Permalink to this headline">¶</a></h2>
 <p>Deformable time integrator reads</p>
-<div class="math" id="equation-q(t+h/2)">
-<span class="eqno">(9)</span>\[\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\]</div>
-<div class="math" id="equation-u(t+h)">
-<span class="eqno">(10)</span>\[\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\left(\mathbf{q}^{t+\frac{h}{2}},\mathbf{u}^{t}\right)\]</div>
-<div class="math" id="equation-q(t+h)">
-<span class="eqno">(11)</span>\[\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\]</div>
+<div class="math">
+\[\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\]</div>
+<div class="math">
+\[\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\left(\mathbf{q}^{t+\frac{h}{2}},\mathbf{u}^{t}\right)\]</div>
+<div class="math">
+\[\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\]</div>
 <p>where in the explicit case</p>
 <div class="math" id="equation-Aexp">
-<span class="eqno">(12)</span>\[\mathbf{A}=\mathbf{M}\text{ for DEF_EXP}\]</div>
+<span class="eqno">(9)<a class="headerlink" href="#equation-Aexp" title="Permalink to this equation">¶</a></span>\[\mathbf{A}=\mathbf{M}\text{ for DEF_EXP}\]</div>
 <p>and in the linearly implicit case</p>
 <div class="math" id="equation-Aimp">
-<span class="eqno">(13)</span>\[\mathbf{A}=\mathbf{M}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\mathbf{K}\left(\mathbf{q}^{t+h/2}\right)\text{ for DEF_LIM}\]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-Aimp" title="Permalink to this equation">¶</a></span>\[\mathbf{A}=\mathbf{M}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\mathbf{K}\left(\mathbf{q}^{t+h/2}\right)\text{ for DEF_LIM}\]</div>
 <p>The time step is denoted as <span class="math">\(h\)</span>.</p>
 </div>
 <div class="section" id="implementation">
@@ -133,16 +134,16 @@ inertia matrix <span class="math">\(\mathbf{A}^{-1}\)</span> is declared in <a c
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>214</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="nb">int</span> <span class="n">rank</span><span class="p">;</span> <span class="o">/*</span> <span class="n">parent</span> <span class="o">=&gt;</span> <span class="n">new</span><span class="o">/</span><span class="n">current</span> <span class="n">rank</span><span class="p">;</span> <span class="n">child</span> <span class="o">=&gt;</span> <span class="n">parent</span><span class="s1">&#39;s rank */</span>
 </pre></div>
 </td></tr></table></div>
-<p>Rigid integration formulae <a href="#equation-R(t+h/2)">(1)</a>-<a href="#equation-W1(t+h)">(4)</a> are in
+<p>Rigid integration formulae <a class="reference internal" href="#equation-R(t+h/2)">(1)</a>-<a class="reference internal" href="#equation-W1(t+h)">(4)</a> are in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1296">bod.c:BODY_Dynamic_Step_Begin</a>. <br />
-Rigid integration formulae <a href="#equation-R1(t+h)">(5)</a>-<a href="#equation-R2(t+h)">(8)</a> are in
+Rigid integration formulae <a class="reference internal" href="#equation-R1(t+h)">(5)</a>-<a class="reference internal" href="#equation-R2(t+h)">(8)</a> are in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1403">bod.c:BODY_Dynamic_Step_End</a>. <br />
 Pseudo&#8211;rigid integration is included in the same routines:
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1353">first half&#8211;step</a> and
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1467">second half&#8211;step</a>. <br />
-Finite&#8211;element, total Lagrangian formulation based, integration formulae <a href="#equation-q(t+h/2)">(9)</a> and <a href="#equation-u(t+h)">(10)</a>
+Finite&#8211;element, total Lagrangian formulation based, integration formulae <a class="reference internal" href="basics.html#equation-q(t+h/2)">(5)</a> and <a class="reference internal" href="basics.html#equation-u(t+h)">(6)</a>
 are in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1879">fem.c:TL_dynamic_step_begin</a>. <br />
-Finite&#8211;element, total Lagrangian formulation based, integration formula <a href="#equation-q(t+h)">(11)</a>
+Finite&#8211;element, total Lagrangian formulation based, integration formula <a class="reference internal" href="basics.html#equation-q(t+h)">(7)</a>
 is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1930">fem.c:TL_dynamic_step_end</a>. <br /></p>
 <table class="docutils footnote" frame="void" id="id7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -295,11 +296,11 @@ is in <a class="reference external" href="https://github.com/tkoziara/solfec/blo
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/solfec/theory/timeint.txt"
+      <a href="../../_sources/solfec/theory/timeint.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

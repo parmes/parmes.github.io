@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Dynamics &mdash; PARMES  documentation</title>
+    <title>Dynamics &#8212; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,15 +18,16 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PARMES  documentation" href="../../index.html" />
-    <link rel="up" title="Solfec Theory Manual" href="../theory.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Time integration" href="timeint.html" />
     <link rel="prev" title="Kinematics" href="kinematics.html" />
   
@@ -88,7 +89,7 @@ principles, as required, for each of the kinematic models available in Solfec.</
 \[\mathbf{j}=\mathbf{\Lambda}\mathbf{J}\mathbf{\Lambda}^{T},\,\,\,\mathbf{J}=\mbox{tr}\left(\mathbf{E}_{0}\right)\mathbf{I}-\mathbf{E}_{0}\]</div>
 <p>the spatial and the referential inertia tensors, respectively. <span class="math">\(\mathbf{I}\)</span> is the <span class="math">\(3\times3\)</span> identity matrix. <span class="math">\(\mathbf{E}_{0}\)</span> is the referential Euler tensor</p>
 <div class="math" id="equation-E0">
-<span class="eqno">(1)</span>\[\mathbf{E}_{0}=\int_{\mathcal{B}_{0}}\left(\mathbf{X}-\bar{\mathbf{X}}\right)\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)\rho_{0}dV\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-E0" title="Permalink to this equation">¶</a></span>\[\mathbf{E}_{0}=\int_{\mathcal{B}_{0}}\left(\mathbf{X}-\bar{\mathbf{X}}\right)\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)\rho_{0}dV\]</div>
 <p>where <span class="math">\(\mathcal{B}_{0}\)</span> is the reference configuration, <span class="math">\(\rho_{0}\)</span> is the referential mass density,
 and the tensor product operator <span class="math">\(\otimes\)</span> makes a <span class="math">\(3\times3\)</span> matrix out of two 3-vectors, e.g.
 <span class="math">\(\mathbf{a}=\mathbf{b}\otimes\mathbf{c}\)</span> means <span class="math">\(a_{ij}=b_{i}c_{j}\)</span>.</p>
@@ -97,13 +98,13 @@ and the tensor product operator <span class="math">\(\otimes\)</span> makes a <s
 \[\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}\]</div>
 <p>where</p>
 <div class="math" id="equation-mrig">
-<span class="eqno">(2)</span>\[\begin{split}\mathbf{M}=\left[\begin{array}{cc}
+<span class="eqno">(2)<a class="headerlink" href="#equation-mrig" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{M}=\left[\begin{array}{cc}
 \mathbf{J}\\
  &amp; m\mathbf{I}
  \end{array}\right]\end{split}\]</div>
 <p>and</p>
 <div class="math" id="equation-frig">
-<span class="eqno">(3)</span>\[\begin{split}\mathbf{f}=\left[\begin{array}{c}
+<span class="eqno">(3)<a class="headerlink" href="#equation-frig" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{f}=\left[\begin{array}{c}
 \mathbf{\Lambda}^{T}\int_{\partial\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\mathbf{t}da+
 \mathbf{\Lambda}^{T}\int_{\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\rho\mathbf{b}dv-\mathbf{\Omega}\times\mathbf{J}\mathbf{\Omega}\\
 \int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv
@@ -119,7 +120,7 @@ and the tensor product operator <span class="math">\(\otimes\)</span> makes a <s
 \[\ddot{\mathbf{F}}\mathbf{E}_{0}+V\bar{\mathbf{P}}=\int_{\partial\mathcal{B}_{0}}\mathbf{t}\otimes
 \left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(
 \mathbf{X}-\bar{\mathbf{X}}\right)dV\]</div>
-<p>where <span class="math">\(\mathbf{E}_{0}\)</span> is defined in <a href="#equation-E0">(1)</a>, <span class="math">\(V\)</span> is the volume of the domain, and <span class="math">\(\bar{\mathbf{P}}\)</span> is the average referential first Piola stress, defined as</p>
+<p>where <span class="math">\(\mathbf{E}_{0}\)</span> is defined in <a class="reference internal" href="#equation-E0">(1)</a>, <span class="math">\(V\)</span> is the volume of the domain, and <span class="math">\(\bar{\mathbf{P}}\)</span> is the average referential first Piola stress, defined as</p>
 <div class="math">
 \[\bar{\mathbf{P}}=\partial_{\mathbf{F}}\Psi\left(\mathbf{F}\right)\]</div>
 <div class="math">
@@ -137,7 +138,7 @@ The Lam&#8217;e constants can be expressed in terms of the Young modulus <span c
 \[\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}\]</div>
 <p>where</p>
 <div class="math" id="equation-mprb">
-<span class="eqno">(4)</span>\[\begin{split}\mathbf{M}=\left[\begin{array}{cccc}
+<span class="eqno">(4)<a class="headerlink" href="#equation-mprb" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{M}=\left[\begin{array}{cccc}
 \mathbf{E}_{0}\\
 &amp; \mathbf{E}_{0}\\
 &amp;  &amp; \mathbf{E}_{0}\\
@@ -145,7 +146,7 @@ The Lam&#8217;e constants can be expressed in terms of the Young modulus <span c
 \end{array}\right]\end{split}\]</div>
 <p>and</p>
 <div class="math" id="equation-fprb">
-<span class="eqno">(5)</span>\[\begin{split}\mathbf{f}=\left[\begin{array}{c}
+<span class="eqno">(5)<a class="headerlink" href="#equation-fprb" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{f}=\left[\begin{array}{c}
 \int_{\partial\mathcal{B}_{0}}\mathbf{t}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dV-V\bar{\mathbf{P}}\\
 \int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv
 \end{array}\right]\end{split}\]</div>
@@ -162,15 +163,15 @@ which allows us to use the computationally convenient block&#8211;diagonal form 
 <span class="math">\(\mathbf{f}_{\text{damp}}\)</span> is a vector of damping forces, and <span class="math">\(\mathbf{f}_{\text{ext}}\)</span> is a vector
 of external forces. These matrices and vectors are defined as follows</p>
 <div class="math" id="equation-mfem">
-<span class="eqno">(6)</span>\[\mathbf{M}=\int_{\mathcal{B}_{0}}\rho_{0}\mathbf{N}^{T}\mathbf{N}dV\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-mfem" title="Permalink to this equation">¶</a></span>\[\mathbf{M}=\int_{\mathcal{B}_{0}}\rho_{0}\mathbf{N}^{T}\mathbf{N}dV\]</div>
 <div class="math" id="equation-fint">
-<span class="eqno">(7)</span>\[\mathbf{f}_{\text{int}}=\int_{\mathcal{B}_{0}}\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\} ^{T}\colon\mathbf{P}dV\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-fint" title="Permalink to this equation">¶</a></span>\[\mathbf{f}_{\text{int}}=\int_{\mathcal{B}_{0}}\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\} ^{T}\colon\mathbf{P}dV\]</div>
 <div class="math" id="equation-kfem">
-<span class="eqno">(8)</span>\[\mathbf{K}=\partial\mathbf{f}_{\text{int}}/\partial\mathbf{q}\]</div>
+<span class="eqno">(8)<a class="headerlink" href="#equation-kfem" title="Permalink to this equation">¶</a></span>\[\mathbf{K}=\partial\mathbf{f}_{\text{int}}/\partial\mathbf{q}\]</div>
 <div class="math">
 \[\mathbf{f}_{\text{damp}}=\eta\mathbf{K}\]</div>
 <div class="math" id="equation-fext">
-<span class="eqno">(9)</span>\[\mathbf{f}_{\text{ext}}=\int_{\mathcal{B}}\rho\mathbf{N}^{T}\mathbf{b}dv+\int_{\partial\mathcal{B}}\mathbf{N}^{T}\mathbf{t}da\]</div>
+<span class="eqno">(9)<a class="headerlink" href="#equation-fext" title="Permalink to this equation">¶</a></span>\[\mathbf{f}_{\text{ext}}=\int_{\mathcal{B}}\rho\mathbf{N}^{T}\mathbf{b}dv+\int_{\partial\mathcal{B}}\mathbf{N}^{T}\mathbf{t}da\]</div>
 <p>where, except for <span class="math">\(\mathbf{f}_{\text{ext}}\)</span>, the so called total Lagrangian notation was used. The contraction of the strain matrix
 <span class="math">\(\mathbf{B}=\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\}^{T}\)</span> with the first Piola stress tensor, <span class="math">\(\mathbf{B}:\mathbf{P}=\sum_{ij}B_{ij}P_{ij}\)</span>,
 creates the nodal components of the internal force vector. The derivative of the internal force with respect to displacements,
@@ -208,14 +209,14 @@ matrices <span class="math">\(\mathbf{M}\)</span> and <span class="math">\(\math
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>214</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="nb">int</span> <span class="n">rank</span><span class="p">;</span> <span class="o">/*</span> <span class="n">parent</span> <span class="o">=&gt;</span> <span class="n">new</span><span class="o">/</span><span class="n">current</span> <span class="n">rank</span><span class="p">;</span> <span class="n">child</span> <span class="o">=&gt;</span> <span class="n">parent</span><span class="s1">&#39;s rank */</span>
 </pre></div>
 </td></tr></table></div>
-<p>Assembling of <a href="#equation-mrig">(2)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L232">bod.c:rig_dynamic_inverse</a>. <br />
-Evaluation of <a href="#equation-frig">(3)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L345">bod.c:rig_static_force</a>. <br />
-Assembling of <a href="#equation-mprb">(4)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L479">bod.c:prb_dynamic_explicit_inverse</a>. <br />
-Evaluation of <a href="#equation-fprb">(5)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L647">bod.c:prb_dynamic_force</a>. <br />
-Assembling of diagonalized <a href="#equation-mfem">(6)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1697">fem.c:diagonal_inertia</a>. <br />
-Evaluation of <a href="#equation-fint">(7)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1398">fem.c:internal_force</a>. <br />
-Assembling of <a href="#equation-kfem">(8)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1577">fem.c:tangent_stiffness</a>. <br />
-Evaluation of <a href="#equation-fext">(9)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1506">fem.c:external_force</a>. <br /></p>
+<p>Assembling of <a class="reference internal" href="#equation-mrig">(2)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L232">bod.c:rig_dynamic_inverse</a>. <br />
+Evaluation of <a class="reference internal" href="#equation-frig">(3)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L345">bod.c:rig_static_force</a>. <br />
+Assembling of <a class="reference internal" href="#equation-mprb">(4)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L479">bod.c:prb_dynamic_explicit_inverse</a>. <br />
+Evaluation of <a class="reference internal" href="#equation-fprb">(5)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L647">bod.c:prb_dynamic_force</a>. <br />
+Assembling of diagonalized <a class="reference internal" href="#equation-mfem">(6)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1697">fem.c:diagonal_inertia</a>. <br />
+Evaluation of <a class="reference internal" href="#equation-fint">(7)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1398">fem.c:internal_force</a>. <br />
+Assembling of <a class="reference internal" href="#equation-kfem">(8)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1577">fem.c:tangent_stiffness</a>. <br />
+Evaluation of <a class="reference internal" href="#equation-fext">(9)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1506">fem.c:external_force</a>. <br /></p>
 </div>
 </div>
 
@@ -350,11 +351,11 @@ Evaluation of <a href="#equation-fext">(9)</a> is in <a class="reference externa
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/solfec/theory/dynamics.txt"
+      <a href="../../_sources/solfec/theory/dynamics.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

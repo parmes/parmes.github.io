@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Constraint solvers &mdash; PARMES  documentation</title>
+    <title>Constraint solvers &#8212; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,15 +18,16 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PARMES  documentation" href="../../index.html" />
-    <link rel="up" title="Solfec Theory Manual" href="../theory.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Bulk materials" href="bulkmat.html" />
     <link rel="prev" title="Contact formulations" href="conform.html" />
   
@@ -96,8 +97,8 @@ constraint equation can be formulated as</p>
 \[\mathbf{C}_{\alpha}\left(\mathbf{U}_{\alpha},\mathbf{R}_{\alpha}\right)=\mathbf{0}\]</div>
 <p>or in other words</p>
 <div class="math" id="equation-nleq">
-<span class="eqno">(1)</span>\[\mathbf{C}_{\alpha}\left(\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta},\mathbf{R}_{\alpha}\right)=\mathbf{0}\]</div>
-<p>A series of 3&#8211;component non&#8211;linear equations <a href="#equation-nleq">(1)</a> for all constrains can be approximately solved using the below serial Gauss&#8211;Seidel paradigm</p>
+<span class="eqno">(1)<a class="headerlink" href="#equation-nleq" title="Permalink to this equation">¶</a></span>\[\mathbf{C}_{\alpha}\left(\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta},\mathbf{R}_{\alpha}\right)=\mathbf{0}\]</div>
+<p>A series of 3&#8211;component non&#8211;linear equations <a class="reference internal" href="#equation-nleq">(1)</a> for all constrains can be approximately solved using the below serial Gauss&#8211;Seidel paradigm</p>
 <p><strong>SERIAL_GS</strong> <span class="math">\(\left(Constraints,\epsilon,\gamma\right)\)</span> <br />
 1 <span class="math">\(\,\,\)</span> do <br />
 2 <span class="math">\(\,\,\,\,\,\,\)</span> for each <span class="math">\(\alpha in Constraints\)</span> do <br />
@@ -143,7 +144,7 @@ The middle constraints require communication with either. The inner constraints 
 <div class="math">
 \[Inner_{i}=Inner1_{i}\cup Inner2_{i}so that\]</div>
 <div class="math" id="equation-gsbalcnd">
-<span class="eqno">(2)</span>\[\left|Bottom_{i}\right|+\left|Inner2_{i}\right|=\left|Top_{i}\right|+\left|Inner1_{i}\right|\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-gsbalcnd" title="Permalink to this equation">¶</a></span>\[\left|Bottom_{i}\right|+\left|Inner2_{i}\right|=\left|Top_{i}\right|+\left|Inner1_{i}\right|\]</div>
 <p>The parallel Gauss&#8211;Seidel scheme is summarized in Algorithm <strong>PARALLEL_GS</strong> below. The presented version is simplified in the respect,
 that alternate forward and backward runs are not accounted for (in terms of constraints ordering).</p>
 <p><strong>SWEEP</strong> <span class="math">\(\left(Set\right)\)</span> <br />
@@ -183,7 +184,7 @@ this ordering while processing constraints. As the top reactions were already se
 higher colors fully updated. These will be processed first in line 5 of LOOP and then sent to lower and higher (by color) processors in line 7. This way some processors
 with lower colors will have their higher color off-diagonal reactions of middle set constraints fully updated and they will proceed next. And so on. At the end (line 8),
 we need to receive all remaining reactions that have been sent in line 7 of <strong>LOOP</strong>. Coming back to <strong>PARALLEL_GS</strong>, after the bottleneck of the LOOP, in lines 9&#8211;12 we
-process the <span class="math">\(Bottom_{i}\)</span> and <span class="math">\(Inner1_{i}\)</span> sets in the same way as we did with the <span class="math">\(Top_{i}\)</span> and <span class="math">\(Inner2_{i}\)</span> sets. The condition <a href="#equation-gsbalcnd">(2)</a>
+process the <span class="math">\(Bottom_{i}\)</span> and <span class="math">\(Inner1_{i}\)</span> sets in the same way as we did with the <span class="math">\(Top_{i}\)</span> and <span class="math">\(Inner2_{i}\)</span> sets. The condition <a class="reference internal" href="#equation-gsbalcnd">(2)</a>
 attempts to balance the amount of computations needed to hide the communication (e.g. the larger the <span class="math">\(Top_{i}\)</span> set is, the larger the <span class="math">\(Inner2_{i}\)</span> set becomes).
 It should be noted that the convergence criterion in line 13 is global across all processors.</p>
 <p>In <a class="reference internal" href="../user/solvers.html#solfec-user-solvers"><span class="std std-ref">User Manual Solvers Section</span></a> several variants of the parallel Gauss&#8211;Seidel algorithm are listed. Algorithm <strong>PARALLEL_GS</strong> corresponds to
@@ -212,7 +213,7 @@ gross inconsistency: something usually called “a processor Gauss-Seidel method
 generalize the approach from <a class="footnote-reference" href="#id5" id="id2">[2]</a> and <a class="footnote-reference" href="#id6" id="id3">[3]</a> and use a smoothed <span class="math">\(\nabla_{\omega}\mathbf{C}\)</span> with <span class="math">\(\omega&gt;0\)</span> (we skip the details here), where only the self&#8211;dual case
 was considered (friction coefficient equal to 1). Our idea is to employ the following projected quasi&#8211;Newton step</p>
 <div class="math" id="equation-newton">
-<span class="eqno">(3)</span>\[\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}-\mathbf{A}^{-1}\mathbf{C}\left(\mathbf{R}\right)\right]\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-newton" title="Permalink to this equation">¶</a></span>\[\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}-\mathbf{A}^{-1}\mathbf{C}\left(\mathbf{R}\right)\right]\]</div>
 <p>so that, as required, the iterates remain within the friction cone and where</p>
 <div class="math">
 \[\mathbf{A}\simeq\nabla_{\omega}\mathbf{C}\]</div>
@@ -454,11 +455,11 @@ Second&#8211;Order Cone Complementarity Problems, SIAM J. Optim., 15(2), 593–6
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/solfec/theory/solvers.txt"
+      <a href="../../_sources/solfec/theory/solvers.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

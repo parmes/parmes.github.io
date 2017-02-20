@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Constraints &mdash; PARMES  documentation</title>
+    <title>Constraints &#8212; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,15 +18,16 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PARMES  documentation" href="../../index.html" />
-    <link rel="up" title="Solfec Theory Manual" href="../theory.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Local dynamics" href="locdyn.html" />
     <link rel="prev" title="Time integration" href="timeint.html" />
   
@@ -70,7 +71,7 @@ velocity vector, <span class="math">\(\mathbf{U}\)</span>, of any spatial image 
 of a referential point <span class="math">\(\mathbf{X}\)</span>, we shall use a linear transformation
 of the kind</p>
 <div class="math" id="equation-UHu0">
-<span class="eqno">(1)</span>\[\mathbf{U}=\mathbf{H}\left(\mathbf{X}\right)\mathbf{u}\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-UHu0" title="Permalink to this equation">¶</a></span>\[\mathbf{U}=\mathbf{H}\left(\mathbf{X}\right)\mathbf{u}\]</div>
 <p>Most generally the local velocity <span class="math">\(\mathbf{U}\)</span> will be expressed
 in a local coordinate system, made up of three linearly independent
 3&#8211;vectors, <span class="math">\(\mathbf{a}_{i}\)</span>, juxtaposed, in a column&#8211;wise
@@ -89,7 +90,7 @@ matrix.</p>
 <span id="localframe"></span><a class="reference internal image-reference" href="../../_images/localframe.png"><img alt="../../_images/localframe.png" src="../../_images/localframe.png" style="width: 40%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">A local frame between two bodies.</span></p>
 </div>
-<p>The linear transformation <a href="#equation-UHu0">(1)</a> can be most generally derived
+<p>The linear transformation <a class="reference internal" href="#equation-UHu0">(1)</a> can be most generally derived
 as follows. Take any motion</p>
 <div class="math">
 \[\mathbf{x}\left(\mathbf{X},t\right)=\chi\left(\mathbf{X},\mathbf{q}\left(t\right)\right)\]</div>
@@ -101,7 +102,7 @@ as follows. Take any motion</p>
 \[\mathbf{U}=\left\{ \mathbf{a}^{i}\right\} ^{T}\frac{\partial\chi\left(\mathbf{X},\mathbf{q}\left(t\right)\right)}{\partial\mathbf{q}}\mathbf{u}\]</div>
 <p>Thus</p>
 <div class="math" id="equation-H">
-<span class="eqno">(2)</span>\[\mathbf{H}\left(\mathbf{X}\right)=\left\{ \mathbf{a}^{i}\right\} ^{T}\frac{\partial\chi\left(\mathbf{X},\mathbf{q}\left(t\right)\right)}{\partial\mathbf{q}}\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-H" title="Permalink to this equation">¶</a></span>\[\mathbf{H}\left(\mathbf{X}\right)=\left\{ \mathbf{a}^{i}\right\} ^{T}\frac{\partial\chi\left(\mathbf{X},\mathbf{q}\left(t\right)\right)}{\partial\mathbf{q}}\]</div>
 <p>Specific forms of this transformation are described in sections below.</p>
 <div class="section" id="rigid-kinematics">
 <h3>Rigid kinematics<a class="headerlink" href="#rigid-kinematics" title="Permalink to this headline">¶</a></h3>
@@ -115,7 +116,7 @@ as follows. Take any motion</p>
 \end{array}\right]\end{split}\]</div>
 <p>and hence</p>
 <div class="math" id="equation-Hrig">
-<span class="eqno">(3)</span>\[\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\left[\begin{array}{ccc}
+<span class="eqno">(3)<a class="headerlink" href="#equation-Hrig" title="Permalink to this equation">¶</a></span>\[\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\left[\begin{array}{ccc}
 \mathbf{\Lambda}\left(\hat{\bar{\mathbf{X}}}-\hat{\mathbf{X}}\right) &amp;  &amp; \mathbf{I}\end{array}\right]\]</div>
 <p>where the <a class="reference internal" href="kinematics.html#hat"><span class="std std-ref">hat operator</span></a> makes an anti&#8211;symmetric matrix out of a 3&#8211;vector,
 and <span class="math">\(\mathbf{I}\)</span> is a <span class="math">\(3\times3\)</span> identity matrix.</p>
@@ -134,7 +135,7 @@ and <span class="math">\(\mathbf{I}\)</span> is a <span class="math">\(3\times3\
 \end{array}\right]\end{split}\]</div>
 <p>and hence</p>
 <div class="math" id="equation-Hprb">
-<span class="eqno">(4)</span>\[\begin{split}\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\left[\begin{array}{cccccc}
+<span class="eqno">(4)<a class="headerlink" href="#equation-Hprb" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\left[\begin{array}{cccccc}
 \mathbf{X}^{T}-\bar{\mathbf{X}}^{T} &amp;  &amp;  &amp; 1\\
  &amp; \mathbf{X}^{T}-\bar{\mathbf{X}}^{T} &amp;  &amp;  &amp; 1\\
   &amp;  &amp; \mathbf{X}^{T}-\bar{\mathbf{X}}^{T} &amp;  &amp;  &amp; 1
@@ -147,7 +148,7 @@ and <span class="math">\(\mathbf{I}\)</span> is a <span class="math">\(3\times3\
 \[\dot{\mathbf{x}}\left(\mathbf{X},t\right)=\mathbf{N}\left(\mathbf{X}\right)\mathbf{u}\]</div>
 <p>and hence</p>
 <div class="math" id="equation-Hfem">
-<span class="eqno">(5)</span>\[\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\mathbf{N}\left(\mathbf{X}\right)\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-Hfem" title="Permalink to this equation">¶</a></span>\[\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\mathbf{N}\left(\mathbf{X}\right)\]</div>
 </div>
 </div>
 <div class="section" id="time-stepping-with-constraints">
@@ -204,29 +205,29 @@ all associated individual bodies or constraints. For example</p>
 <p>With such understanding in mind, we can incorporate any set of constraints
 into a multi&#8211;body system, by saying</p>
 <div class="math" id="equation-Muf1">
-<span class="eqno">(6)</span>\[\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}+\mathbf{H}^{T}\mathbf{R}\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-Muf1" title="Permalink to this equation">¶</a></span>\[\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}+\mathbf{H}^{T}\mathbf{R}\]</div>
 <div class="math" id="equation-UHu1">
-<span class="eqno">(7)</span>\[\mathbf{U}=\mathbf{H}\mathbf{u}\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-UHu1" title="Permalink to this equation">¶</a></span>\[\mathbf{U}=\mathbf{H}\mathbf{u}\]</div>
 <div class="math" id="equation-CUR1">
-<span class="eqno">(8)</span>\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\]</div>
+<span class="eqno">(8)<a class="headerlink" href="#equation-CUR1" title="Permalink to this equation">¶</a></span>\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\]</div>
 <p>where the relation <span class="math">\(\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\)</span>
 implicitly expresses a control over local velocities <span class="math">\(\mathbf{U}_{\alpha}\)</span>,
 exerted using reaction forces <span class="math">\(\mathbf{R}_{\alpha}\)</span>. Now, including
 constraints, we can modify the <a class="reference internal" href="timeint.html#solfec-theory-timeint"><span class="std std-ref">previously introduced time stepping</span></a> as follows</p>
 <div class="math" id="equation-q1">
-<span id="timestepping1"></span><span class="eqno">(9)</span>\[\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\]</div>
+<span id="timestepping1"></span><span class="eqno">(9)<a class="headerlink" href="#equation-q1" title="Permalink to this equation">¶</a></span>\[\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\]</div>
 <div class="math" id="equation-u2">
-<span class="eqno">(10)</span>\[\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\left(\mathbf{q}^{t+\frac{h}{2}},\mathbf{u}^{t}\right)+
+<span class="eqno">(10)<a class="headerlink" href="#equation-u2" title="Permalink to this equation">¶</a></span>\[\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\left(\mathbf{q}^{t+\frac{h}{2}},\mathbf{u}^{t}\right)+
 \mathbf{A}^{-1}h\mathbf{H}^{T}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{R}\]</div>
 <div class="math" id="equation-UHu2">
-<span class="eqno">(11)</span>\[\mathbf{U}=\mathbf{H}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{u}\]</div>
+<span class="eqno">(11)<a class="headerlink" href="#equation-UHu2" title="Permalink to this equation">¶</a></span>\[\mathbf{U}=\mathbf{H}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{u}\]</div>
 <div class="math" id="equation-CUR2">
-<span class="eqno">(12)</span>\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\label{eq:CUR2}\]</div>
+<span class="eqno">(12)<a class="headerlink" href="#equation-CUR2" title="Permalink to this equation">¶</a></span>\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\label{eq:CUR2}\]</div>
 <div class="math" id="equation-q2">
-<span class="eqno">(13)</span>\[\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\]</div>
-<p>The first step <a href="#equation-q1">(9)</a> is explicit. Equations <a href="#equation-u2">(10)</a>,
-<a href="#equation-UHu2">(11)</a>, <a href="#equation-CUR2">(12)</a> are solved together, implicitly.
-The final step <a href="#equation-q2">(13)</a> is again explicit. This form of constrained
+<span class="eqno">(13)<a class="headerlink" href="#equation-q2" title="Permalink to this equation">¶</a></span>\[\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\]</div>
+<p>The first step <a class="reference internal" href="#equation-q1">(9)</a> is explicit. Equations <a class="reference internal" href="#equation-u2">(10)</a>,
+<a class="reference internal" href="#equation-UHu2">(11)</a>, <a class="reference internal" href="#equation-CUR2">(12)</a> are solved together, implicitly.
+The final step <a class="reference internal" href="#equation-q2">(13)</a> is again explicit. This form of constrained
 time integration is implemented in Solfec.</p>
 </div>
 <div class="section" id="implementation">
@@ -255,10 +256,10 @@ and rection <span class="math">\(\mathbf{R}\)</span>, is declared in
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>120</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">};</span>
 </pre></div>
 </td></tr></table></div>
-<p>Evaluation of <a href="#equation-H">(2)</a> in accessed via <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1829">bod.c:BODY_Gen_To_Loc_Operator</a>. <br />
-Assembling of <a href="#equation-Hrig">(3)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L216">bod.c:rig_operator_H</a>. <br />
-Assembling of <a href="#equation-Hprb">(4)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L429">bod.c:prb_operator_H</a>. <br />
-Assembling of <a href="#equation-Hfem">(5)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L3371">fem.c:FEM_Gen_To_Loc_Operator</a>. <br /></p>
+<p>Evaluation of <a class="reference internal" href="#equation-H">(2)</a> in accessed via <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1829">bod.c:BODY_Gen_To_Loc_Operator</a>. <br />
+Assembling of <a class="reference internal" href="#equation-Hrig">(3)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L216">bod.c:rig_operator_H</a>. <br />
+Assembling of <a class="reference internal" href="#equation-Hprb">(4)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L429">bod.c:prb_operator_H</a>. <br />
+Assembling of <a class="reference internal" href="#equation-Hfem">(5)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L3371">fem.c:FEM_Gen_To_Loc_Operator</a>. <br /></p>
 </div>
 </div>
 
@@ -397,11 +398,11 @@ Assembling of <a href="#equation-Hfem">(5)</a> is in <a class="reference externa
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/solfec/theory/constraints.txt"
+      <a href="../../_sources/solfec/theory/constraints.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

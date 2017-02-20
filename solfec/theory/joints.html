@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Joints &mdash; PARMES  documentation</title>
+    <title>Joints &#8212; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -18,15 +18,16 @@
         VERSION:     '',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="top" title="PARMES  documentation" href="../../index.html" />
-    <link rel="up" title="Solfec Theory Manual" href="../theory.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Contact points" href="conpnt.html" />
     <link rel="prev" title="Local dynamics" href="locdyn.html" />
   
@@ -64,13 +65,13 @@ of individual points of individual bodies, or relative motion of pairs of points
 <p>Joints are implemented via suitably setting values of components of relative constraint velocities or
 constraint reactions. That is to say, the general implicit relation</p>
 <div class="math" id="equation-Cal">
-<span class="eqno">(1)</span>\[\mathbf{C}_{\alpha}\left(\mathbf{U}_{\alpha},\mathbf{R}_{\alpha}\right)=\mathbf{0}\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-Cal" title="Permalink to this equation">¶</a></span>\[\mathbf{C}_{\alpha}\left(\mathbf{U}_{\alpha},\mathbf{R}_{\alpha}\right)=\mathbf{0}\]</div>
 <p>for a bilateral constraint with index <span class="math">\(\alpha\)</span> takes a particular shape. In order to work with components
 of relative velocities and forces it is convenient to introduce the following naming convention. Let every local
 frame be defined by a matrix <span class="math">\(\left\{ \mathbf{a}_{T1},\mathbf{a}_{T2},\mathbf{a}_{N}\right\}\)</span>  made of juxtaposed
 column vectors: <span class="math">\(\mathbf{a}_{T1}\)</span> and <span class="math">\(\mathbf{a}_{T2}\)</span>, called <em>tangent</em>, and <span class="math">\(\mathbf{a}_{N}\)</span>, called <em>normal</em>.
 We also assume, that these vectors are mutually perpendicular: <span class="math">\(\mathbf{a}_{T1}\perp\mathbf{a}_{T2}\perp\mathbf{a}_{N}\)</span>.
-With this convenetion at hand, below we define particular versions of relation <a href="#equation-Cal">(1)</a> for joint types available in Solfec.</p>
+With this convenetion at hand, below we define particular versions of relation <a class="reference internal" href="#equation-Cal">(1)</a> for joint types available in Solfec.</p>
 <div class="section" id="fixed-point">
 <span id="id1"></span><h2>Fixed point<a class="headerlink" href="#fixed-point" title="Permalink to this headline">¶</a></h2>
 <p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#fix-point"><span class="std std-ref">FIX_POINT</span></a> command is realized by defining</p>
@@ -327,11 +328,11 @@ Within the <a class="reference internal" href="../user/solvers.html#projected-ne
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
       
       |
-      <a href="../../_sources/solfec/theory/joints.txt"
+      <a href="../../_sources/solfec/theory/joints.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
