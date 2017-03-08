@@ -34,6 +34,7 @@
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
+  
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   
@@ -142,8 +143,8 @@ The file <em>solfec/Config.mak</em> needs to be modified in order to set up libr
 
 <span class="n">HDF5</span> <span class="o">=</span> <span class="n">yes</span>
 
-<span class="n">HDF5INC</span> <span class="o">=</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="n">include</span>
-<span class="n">HDF5LIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">hdf5</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lhdf5</span> <span class="o">-</span><span class="n">lhdf5_hl</span>
+<span class="n">HDF5INC</span> <span class="o">=</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">include</span>
+<span class="n">HDF5LIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lhdf5</span> <span class="o">-</span><span class="n">lhdf5_hl</span>
 
 <span class="c1">#</span>
 <span class="c1"># XDR (must be set when HDF5 = no)</span>
@@ -170,8 +171,8 @@ The file <em>solfec/Config.mak</em> needs to be modified in order to set up libr
 <span class="c1"># Python</span>
 <span class="c1">#</span>
 
-<span class="n">PYTHON</span> <span class="o">=</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">python2</span><span class="o">.</span><span class="mi">7</span>
-<span class="n">PYTHONLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lpython2</span><span class="o">.</span><span class="mi">7</span>
+<span class="n">PYTHON</span> <span class="o">=</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Frameworks</span><span class="o">/</span><span class="n">Python</span><span class="o">.</span><span class="n">framework</span><span class="o">/</span><span class="n">Versions</span><span class="o">/</span><span class="mf">2.7</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">python2</span><span class="o">.</span><span class="mi">7</span>
+<span class="n">PYTHONLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lpython2</span><span class="o">.</span><span class="mi">7</span>
 
 <span class="c1">#</span>
 <span class="c1"># OpenGL (yes/no)</span>
@@ -397,7 +398,7 @@ You can ask for help, using the <a class="reference external" href="http://group
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.8</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
       <a href="../_sources/solfec/installation.rst.txt"
