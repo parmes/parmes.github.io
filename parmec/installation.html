@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Parmec Installation &#8212; PARMES  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Running Parmec" href="running.html" />
+    <link rel="prev" title="PARMEC" href="index.html" />
+  
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="parmec-installation">
+<span id="id1"></span><h1>Parmec Installation<a class="headerlink" href="#parmec-installation" title="Permalink to this headline">¶</a></h1>
+<p>Clone parmec sources from <a class="reference external" href="https://github.com/tkoziara/parmec">GitHub</a>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tkoziara</span><span class="o">/</span><span class="n">parmec</span>
+</pre></div>
+</div>
+<p>Enter parmec directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">parmec</span>
+</pre></div>
+</div>
+<p>Edit Makefile variables:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># C++ compiler (ISPC is assumed to be in the PATH; \ http://ispc.github.io)</span>
+<span class="n">CXX</span><span class="o">=</span><span class="n">g</span><span class="o">++</span>
+
+<span class="c1"># Python paths</span>
+<span class="n">PYTHONINC</span><span class="o">=-</span><span class="n">I</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">python2</span><span class="o">.</span><span class="mi">7</span>
+<span class="n">PYTHONLIB</span><span class="o">=-</span><span class="n">L</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lpython2</span><span class="o">.</span><span class="mi">7</span>
+
+<span class="c1"># HDF5 paths</span>
+<span class="n">HDF5INC</span><span class="o">=-</span><span class="n">I</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span>
+<span class="n">HDF5LIB</span><span class="o">=-</span><span class="n">L</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lhdf5</span> <span class="o">-</span><span class="n">lhdf5</span>\<span class="n">_hl</span>
+
+<span class="c1"># Debug version</span>
+<span class="n">DEBUG</span><span class="o">=</span><span class="n">no</span>
+</pre></div>
+</div>
+<p>Compile sources:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span>
+</pre></div>
+</div>
+<p>Parmec executable files are:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parmec4</span> <span class="p">(</span><span class="n">single</span> <span class="n">precision</span><span class="p">)</span>
+<span class="n">parmec8</span> <span class="p">(</span><span class="n">double</span> <span class="n">precision</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Parmec library files are:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">libparmec4</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">parmec4</span><span class="o">.</span><span class="n">h</span> <span class="p">(</span><span class="n">single</span> <span class="n">precision</span> <span class="n">library</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+<span class="n">libparmec8</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">paremc8</span><span class="o">.</span><span class="n">h</span> <span class="p">(</span><span class="n">double</span> <span class="n">precision</span> <span class="n">library</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To update parmec type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span>
+<span class="n">git</span> <span class="n">pull</span>
+<span class="n">make</span>
+</pre></div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../solfec/index.html">SOLFEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dynlb/index.html">DYNLB</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PARMEC</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementation_status.html">Implementation status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_commands.html">Input commands</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">PARMEC</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">PARMEC</a></li>
+      <li>Next: <a href="running.html" title="next chapter">Running Parmec</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../blog/about.html">Jun 13 - About PARMES</a></li>
+    
+  </ul>
+
+  <h3><a href="../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../blog/tag/parmes.html">parmes</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../_sources/parmec/installation.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

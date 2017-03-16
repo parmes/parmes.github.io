@@ -1,0 +1,691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Parmec Input Commands &#8212; PARMES  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Parmec Implementation Status" href="implementation_status.html" />
+  
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="parmec-input-commands">
+<span id="id1"></span><h1>Parmec Input Commands<a class="headerlink" href="#parmec-input-commands" title="Permalink to this headline">¶</a></h1>
+<p>PARMEC input language extends <a class="reference external" href="http://www.python.org/">Python</a>.
+Subroutines related to input processing are listed below.</p>
+<div class="section" id="reset">
+<h2>RESET<a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h2>
+<p>Erase all data.</p>
+<div class="topic">
+<p class="topic-title first">RESET ()</p>
+<p><em>(Can be used to run multiple simulations using one input file)</em></p>
+</div>
+</div>
+<div class="section" id="tseries">
+<h2>TSERIES<a class="headerlink" href="#tseries" title="Permalink to this headline">¶</a></h2>
+<p>Create time series: a linear spline based on series of 2-points.</p>
+<div class="topic">
+<p class="topic-title first">tmsnum = TSERIES (points)</p>
+<ul class="simple">
+<li><strong>tmsnum</strong> - time series number</li>
+<li><strong>points</strong> - a constant <em>v0</em>, or a list <em>[t0, v0, t1, v1, ....]</em> or
+<em>[[t0,v0], [t1,v1], ...]</em> or <em>[(t0,v0), (t1,v1), ...]</em> of points
+(where <em>ti &lt; tj</em>, when <em>i &lt; j</em>), or a path to a file storing pairs of
+times and values in format:</li>
+</ul>
+<p>#&nbsp;comment&nbsp;1&nbsp;... <br />
+#&nbsp;comment&nbsp;2&nbsp;... <br />
+t0&nbsp;v0 <br />
+t1&nbsp;v1 <br /></p>
+<p>#&nbsp;comment&nbsp;3&nbsp;... <br />
+t2&nbsp;v2 <br />
+...</p>
+</div>
+</div>
+<div class="section" id="material">
+<h2>MATERIAL<a class="headerlink" href="#material" title="Permalink to this headline">¶</a></h2>
+<p>Create material.</p>
+<div class="topic">
+<p class="topic-title first">matnum = MATERIAL (density, young, poisson)</p>
+<ul class="simple">
+<li><strong>matnum</strong> - material number</li>
+<li><strong>density</strong> - mass density</li>
+<li><strong>young</strong> - Young modulus</li>
+<li><strong>poisson</strong> - Poisson ratio</li>
+</ul>
+</div>
+</div>
+<div class="section" id="sphere">
+<h2>SPHERE<a class="headerlink" href="#sphere" title="Permalink to this headline">¶</a></h2>
+<p>Create a spherical particle.</p>
+<div class="topic">
+<p class="topic-title first">parnum = SPHERE (center, radius, material, color)</p>
+<ul class="simple">
+<li><strong>parnum</strong> - particle number</li>
+<li><strong>center</strong> - tuple <em>:math:`left(x,y,zright)`</em> defining the center</li>
+<li><strong>radius</strong> - radius</li>
+<li><strong>material</strong> - material number</li>
+<li><strong>color</strong> - positive integer surface color</li>
+</ul>
+</div>
+</div>
+<div class="section" id="mesh">
+<h2>MESH<a class="headerlink" href="#mesh" title="Permalink to this headline">¶</a></h2>
+<p>Create a meshed particle.</p>
+<div class="topic">
+<p class="topic-title first">parnum = MESH (nodes, elements, material, colors)</p>
+<ul class="simple">
+<li><strong>parnum</strong> - particle number</li>
+<li><strong>nodes</strong> - list of nodes: [<em>x0, y0, z0, x1, y1, z1, ...</em>]</li>
+<li><strong>elements</strong> - list of elements: [<em>e1, n1, n2, ..., ne1, me1, e2,
+n1, n2, ..., ne2, me2, ...</em>], where <em>e1</em> is the number of nodes of
+the first element, <em>n1, n2, ..., ne1</em> enumerate the element nodes,
+and <em>me1</em> is the material number. Similarly for the second and all
+remaining elements. Supported numbers of nodes per element are <em>4, 5,
+6, and 8</em> for respectively <em>tetrahedron, pyramid, wedge, and
+hexahedron</em>, cf. <a class="reference internal" href="#parmec-mesh-elements"><span class="std std-numref">Fig. 50</span></a></li>
+<li><strong>material</strong> - material number</li>
+<li><strong>colors</strong> - list of positive integer face colors: [<em>gcolor, f1,
+n1, n2, ..., nf1, c1, f2, n1, n2, ..., nf2, c2, ...</em>], where
+<em>gcolor</em> is the global color for all not specified faces, <em>f1</em> is the
+number of nodes in the first specified face, <em>n1, n2, ..., nf1</em>
+enumerate the face nodes, and <em>c1</em> is the surface color of that face.
+Similarly for the second and all remaining faces. If only the global
+color is required, it can be passed as [<em>gcolor</em>] or as <em>gcolor</em>
+alone.</li>
+</ul>
+</div>
+<div class="figure align-center" id="id2">
+<span id="parmec-mesh-elements"></span><a class="reference internal image-reference" href="../_images/elements.png"><img alt="../_images/elements.png" src="../_images/elements.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 50 </span><span class="caption-text">Mesh element types in Parmec.</span></p>
+</div>
+</div>
+<div class="section" id="analytical">
+<h2>ANALYTICAL<a class="headerlink" href="#analytical" title="Permalink to this headline">¶</a></h2>
+<p>Create an analytical particle. Analytical particles have no shapes and
+are not involved in contact.</p>
+<div class="topic">
+<p class="topic-title first">parnum = ANALYTICAL ( | inertia, mass, rotation, position, material, particle)</p>
+<p>Note, that all parameters are optional.</p>
+<ul class="simple">
+<li><strong>parnum</strong> - particle number</li>
+<li><strong>inertia</strong> - inertia tensor passed as a list [<em>Ixx, Iyy, Izz, Ixy,
+Ixz, Iyz</em>]; optional, if <strong>particle</strong> parameter is used; default
+[<em>1, 1, 1, 0, 0, 0</em>]</li>
+<li><strong>mass</strong> - scalar mass; optional, if <strong>particle</strong> parameter is used;
+default 1</li>
+<li><strong>rotation</strong> - optional orientation matrix passed as a list [<em>e1x,
+e1y, e1z, e2x, e2y, e2z, e3x, e3y, e3z</em>], where vectors <em>e1</em>, <em>e2</em>,
+<em>e3</em> are orthonormal; default [<em>1, 0, 0, 0, 1, 0, 0, 0, 1</em>]</li>
+<li><strong>position</strong> - optional position vector passed as a tuple (<em>x, y,
+z</em>); default (<em>0, 0, 0</em>)</li>
+<li><strong>material</strong> - material number; default <em>0</em></li>
+<li><strong>particle</strong> - optional; if specified, an existing particle is
+converted into an analytical particle; its properties are inherited
+or overwritten, depending on whether any of the <strong>inertia</strong>,
+<strong>mass</strong>, <strong>rotation</strong>, <strong>position</strong> parameters are used; if
+initially specified, particle shape is inherited and its animated
+motion is included into the results</li>
+</ul>
+</div>
+</div>
+<div class="section" id="obstacle">
+<h2>OBSTACLE<a class="headerlink" href="#obstacle" title="Permalink to this headline">¶</a></h2>
+<p>Create an obstacle.</p>
+<div class="topic">
+<p class="topic-title first">OBSTACLE (triangles, color | point, linear, angular)</p>
+<ul class="simple">
+<li><strong>triangles</strong> - list of triangle tuples [(<em>t1x1, t1y1, t1z1, t1x2,
+t1y2, t1z2, t1x3, t1y3, t1z3), (t2x1, t2y1, t2z1, t2x2, t2y2, t2z2,
+t2x3, t2y3, t2z3), ...</em>] defining the obstacle</li>
+<li><strong>color</strong> - positive integer surface color or a list [<em>color1,
+color2, ...</em>] of colors for each individual triangle</li>
+<li><strong>point</strong> - spatial reference point</li>
+<li><strong>linear</strong> - linear velocity history callback:
+<span class="math">\(\left(v_{x},v_{y},v_{z}\right)=\)</span> <strong>linear</strong>
+<span class="math">\(\left(t\right)\)</span></li>
+<li><strong>angular</strong> - spatial angular velocity history callback:
+<span class="math">\(\left(\omega_{x},\omega_{y},\omega_{z}\right)=\)</span> <strong>angular</strong>
+<span class="math">\(\left(t\right)\)</span></li>
+</ul>
+</div>
+</div>
+<div class="section" id="spring">
+<h2>SPRING<a class="headerlink" href="#spring" title="Permalink to this headline">¶</a></h2>
+<p>Create a translational spring constraint. The applied force formula
+reads</p>
+<div class="math">
+\[\text{force}\left(t\right)=\text{direction}\left(t\right)\cdot\left[\text{spring}
+\left(\text{stroke}\left(t\right)\right)+\text{dashpot}\left(\text{velocity}\left(t\right)\right)
+\cdot\left|\text{sign}\left(\text{spring}\left(\text{stroke}\left(t\right)\right)\right)\right|\right]\]</div>
+<p>where</p>
+<div class="math">
+\[\text{direction}\left(t\right)=\left(\text{point2}\left(t\right)-\text{point1}
+\left(t\right)\right)/\left|\text{point2}\left(t\right)-\text{point1}\left(t\right)
+\right|\text{ \textbf{or} constant}\left(d_{x},d_{y},d_{z}\right)\text{ \textbf{or} tangent}\]</div>
+<div class="math">
+\[\text{stroke}\left(t\right)=\text{direction\ensuremath{\left(t\right)}}\cdot\left[
+\text{point2}\left(t\right)-\text{point1}\left(t\right)\right]-\text{direction}\left(
+0\right)\cdot\left[\text{point2}\left(0\right)-\text{point1}\left(0\right)\right]\]</div>
+<div class="math">
+\[\text{velocity}\left(t\right)=\text{direction}\left(t\right)\cdot\frac{d}{dt}
+\left[\text{point2}\left(t\right)-\text{point1}\left(t\right)\right]\]</div>
+<div class="math">
+\[\begin{split}\text{sign}\left(x\right)=\left\{ \begin{array}{c}
+-1\text{ if }x&lt;0\\
+0\text{ if }x=0\\
+1\text{ if }x&gt;0
+\end{array}\right.\end{split}\]</div>
+<p>The <span class="math">\(\text{spring}\left(\text{stroke}\right)\)</span> and <span class="math">\(\text{dashpot}\left(\text{velocity}\right)\)</span> relationships are
+defined by means of lookup tables; <span class="math">\(\text{force}\left(t\right)\)</span> is applied at <span class="math">\(\text{point2}\left(t\right)\)</span>, and
+<span class="math">\(-\text{force}\left(t\right)\)</span> is applied at <span class="math">\(\text{point1}\left(t\right)\)</span>; dashpot force is not applied when
+spring force is zero.</p>
+<div class="topic">
+<p class="topic-title first">sprnum = SPRING (part1, point1, part2, point2, spring | dashpot, direction, planar, unload, ylim)</p>
+<ul>
+<li><p class="first"><strong>sprnum</strong> - spring number</p>
+</li>
+<li><p class="first"><strong>part1</strong> - first particle number</p>
+</li>
+<li><p class="first"><strong>point1</strong> - tuple <span class="math">\(\left(x,y,z\right)\)</span> defining a point moving
+with the first particle</p>
+</li>
+<li><p class="first"><strong>part2</strong> - second particle number; <span class="math">\(-1\)</span> can be used to
+indicate a single-particle constraint</p>
+</li>
+<li><p class="first"><strong>point2</strong> - tuple <span class="math">\(\left(x,y,z\right)\)</span> defining a second
+point, either moving with the second particle, or a spatial point</p>
+</li>
+<li><p class="first"><strong>spring</strong> - spring force lookup table
+<span class="math">\(\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]\)</span>;
+used for both loading and unloading when the <strong>unload</strong> table and the
+<strong>yield</strong> limits are not given</p>
+</li>
+<li><p class="first"><strong>dashpot</strong> - optional dashpot force lookup table
+<span class="math">\(\left[\text{velocity}_{1},\text{force}_{1},\text{velocity}_{2},\text{force}_{2},...,\text{velocity}_{m},\text{force}_{m}\right]\)</span>;
+default: <span class="math">\(\left[-\infty,0,+\infty,0\right]\)</span></p>
+</li>
+<li><p class="first"><strong>direction</strong> - optional constant direction
+<span class="math">\(\left(d_{x},d_{y},d_{z}\right)\)</span></p>
+</li>
+<li><p class="first"><strong>planar</strong> - optional planar spring flag; when ’ON’ spring direction</p>
+<div class="math">
+\[ \begin{align}\begin{aligned}\left(\text{point2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|\text{point2}\left(t\right)-\text{point1}\left(t\right)\right|\\is projected onto a plane orthogonal to :math:`\left(d_{x},d_{y},d_{z}\right)`; default: ’OFF’\end{aligned}\end{align} \]</div>
+</li>
+<li><p class="first"><strong>unload</strong> - spring unloading lookup table
+<span class="math">\(\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]\)</span>;
+must be monotonically increasing</p>
+</li>
+<li><p class="first"><strong>ylim</strong> - tuple <span class="math">\(\left(f_{yc},f_{yt}\right)\)</span> defining the
+compression, <span class="math">\(f_{yc}&lt;0\)</span>, and tension, <span class="math">\(f_{yt}&gt;0\)</span>, yield
+limits; the unloading curve begins to be used once either of these
+limits is crossed; default: (0, 0)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="granular">
+<h2>GRANULAR<a class="headerlink" href="#granular" title="Permalink to this headline">¶</a></h2>
+<p>Define surface pairing for the granular contact interaction model.</p>
+<div class="topic">
+<p class="topic-title first">GRANULAR (color1, color2, spring | damper, friction, rolling, drilling, kskn)</p>
+<ul class="simple">
+<li><strong>color1</strong> - first color (positive, or color1 = 0 and color2 = 0 to
+redefine default parameters)</li>
+<li><strong>color2</strong> - second color (positive, or color1 = 0 and color2 = 0 to
+redefine default parameters)</li>
+<li><strong>spring</strong> - normal spring constant</li>
+<li><strong>damper</strong> - optional normal damping ratio; default: 1.0</li>
+<li><strong>friction</strong> - optional Coulomb’s friction coefficient; default: 0.0;
+tuple <span class="math">\(\left(\mu_{s},\mu_{d}\right)\)</span> can be used to specify
+respectively static and dynamic friction coefficients; <span class="red">(experimental)</span></li>
+<li><strong>rolling</strong> - optional rolling friction coefficient; default: 0.0; <span class="red">(under development)</span></li>
+<li><strong>drilling</strong> - optional drilling friction coefficient; default: 0.0; <span class="red">(under development)</span></li>
+<li><strong>kskn</strong> - optional ratio of normal to tangential spring and dashpot
+parameters; default: 0.5</li>
+</ul>
+</div>
+</div>
+<div class="section" id="constrain">
+<h2>CONSTRAIN<a class="headerlink" href="#constrain" title="Permalink to this headline">¶</a></h2>
+<p>Constrain particle motion.</p>
+<div class="topic">
+<p class="topic-title first">CONSTRAIN (parnum | linear, angular)</p>
+<ul class="simple">
+<li><strong>parnum</strong> - particle number</li>
+<li><strong>linear</strong> - list <span class="math">\(\left[x_{1},y_{1},z_{1}\right]\)</span>,
+<span class="math">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2}\right]\)</span>, or
+<span class="math">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2},x_{3},y_{3},z_{3}\right]\)</span>
+defining directions of constrained linear motion; default:
+<span class="math">\(\left[0,0,0\right]\)</span></li>
+<li><strong>angular</strong> - list <span class="math">\(\left[x_{1},y_{1},z_{1}\right]\)</span>,
+<span class="math">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2}\right]\)</span>, or
+<span class="math">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2},x_{3},y_{3},z_{3}\right]\)</span>
+defining directions of constrained spatial rotation; default:
+<span class="math">\(\left[0,0,0\right]\)</span></li>
+</ul>
+</div>
+</div>
+<div class="section" id="prescribe">
+<h2>PRESCRIBE<a class="headerlink" href="#prescribe" title="Permalink to this headline">¶</a></h2>
+<p>Prescribe particle motion. Prescribed motion overwrites this resulting
+from dynamics and constraints.</p>
+<div class="topic">
+<p class="topic-title first">PRESCRIBE (parnum | linear, angular, kind)</p>
+<ul class="simple">
+<li><strong>parnum</strong> - particle number</li>
+<li><strong>linear</strong> - a tuple <span class="math">\((i,j,k)\)</span> of TSERIES numbers, or a
+callback: <span class="math">\(\left(v_{x},v_{y},v_{z}\right)=\)</span> <strong>linear</strong>
+<span class="math">\(\left(t\right)\)</span>, defining linear velocity or acceleration
+history; default: <em>not prescribed</em></li>
+<li><strong>angular</strong> - a tuple <span class="math">\((i,j,k)\)</span> of TSERIES numbers, or a
+callback: <span class="math">\(\left(\omega_{x},\omega_{y},\omega_{z}\right)=\)</span>
+<strong>angular</strong> <span class="math">\(\left(t\right)\)</span>, defining spatial angular velocity
+or acceleration history; default: <em>not prescribed</em></li>
+<li><strong>kind</strong> - string ’vv’, ’va’, ’av’, or ’aa’ indicating interpretation
+of respectively <strong>linear</strong> and <strong>angular</strong> time histories as either
+velocity or acceleration; default: ’vv’</li>
+</ul>
+</div>
+</div>
+<div class="section" id="velocity">
+<h2>VELOCITY<a class="headerlink" href="#velocity" title="Permalink to this headline">¶</a></h2>
+<p>Set particle velocity.</p>
+<div class="topic">
+<p class="topic-title first">VELOCITY (parnum | linear, angular)</p>
+<ul class="simple">
+<li><strong>parnum</strong> - particle number</li>
+<li><strong>linear</strong> - linear velocity tuple
+<span class="math">\(\left(v_{x},v_{y},v_{z}\right)\)</span>; default:
+<span class="math">\(\left(0,0,0\right)\)</span> at <span class="math">\(t=0\)</span></li>
+<li><strong>angular</strong> - angular velocity tuple
+<span class="math">\(\left(\omega_{x},\omega_{y},\omega_{z}\right)\)</span>; default:
+<span class="math">\(\left(0,0,0\right)\)</span> at <span class="math">\(t=0\)</span></li>
+</ul>
+</div>
+</div>
+<div class="section" id="gravity">
+<h2>GRAVITY<a class="headerlink" href="#gravity" title="Permalink to this headline">¶</a></h2>
+<p>Set gravity.</p>
+<div class="topic">
+<p class="topic-title first">GRAVITY (gx, gy, gz)</p>
+<ul class="simple">
+<li><strong>gx</strong> - constant <span class="math">\(x\)</span> float number, or callback
+<strong>gx</strong><span class="math">\((t)\)</span>, or TSERIES number</li>
+<li><strong>gy</strong> - constant <span class="math">\(y\)</span> float number, or callback
+<strong>gy</strong><span class="math">\((t)\)</span>, or TSERIES number</li>
+<li><strong>gz</strong> - constant <span class="math">\(z\)</span> float number, or callback
+<strong>gz</strong><span class="math">\((t)\)</span>, or TSERIES number</li>
+</ul>
+</div>
+</div>
+<div class="section" id="damping">
+<h2>DAMPING<a class="headerlink" href="#damping" title="Permalink to this headline">¶</a></h2>
+<p>Set global damping, applied as</p>
+<div class="math">
+\[\begin{split}\text{force}=-m\left[\begin{array}{c}
+-d_{vx}v_{x}\\
+-d_{vy}v_{y}\\
+-d_{vz}v_{z}
+\end{array}\right],\text{ torque}=-\mathbf{\Lambda}\mathbf{J}\mathbf{\Lambda}^{T}\left[\begin{array}{c}
+-d_{\omega x}\omega_{x}\\
+-d_{\omega y}\omega_{y}\\
+-d_{\omega z}\omega_{z}
+\end{array}\right]\end{split}\]</div>
+<p>where <span class="math">\(m\)</span> is scalar mass, <span class="math">\(v\)</span> is linear velocity,
+<span class="math">\(\mathbf{\Lambda}\)</span> is the rotation matrix, <span class="math">\(\mathbf{J}\)</span> is
+the referential inertia matrix, and <span class="math">\(\omega\)</span> is spatial angular
+velocity.</p>
+<div class="topic">
+<p class="topic-title first">DAMPING (linear, angular)</p>
+<ul class="simple">
+<li><strong>linear</strong> - linear damping curve callback
+<span class="math">\(\left(d_{vx},d_{vy},d_{vz}\right)=\)</span> <strong>linear</strong>
+<span class="math">\(\left(t\right)\)</span>, or a tuple <span class="math">\((i,j,k)\)</span> of TSERIES numbers</li>
+<li><strong>angular</strong> - angular damping curve callback
+<span class="math">\(\left(d_{\omega x},d_{\omega y},d_{\omega z}\right)=\)</span>
+<strong>angular</strong> <span class="math">\(\left(t\right)\)</span>, or a tuple <span class="math">\((i,j,k)\)</span> of
+TSERIES numbers</li>
+</ul>
+</div>
+</div>
+<div class="section" id="critical">
+<h2>CRITICAL<a class="headerlink" href="#critical" title="Permalink to this headline">¶</a></h2>
+<p>Estimate critical time step.</p>
+<div class="topic">
+<p class="topic-title first">h = CRITICAL ()</p>
+<ul class="simple">
+<li><strong>h</strong> - critical time step</li>
+</ul>
+</div>
+</div>
+<div class="section" id="history">
+<span id="parmec-command-history"></span><h2>HISTORY<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
+<p>Before running a simulation, request time history output.</p>
+<div class="topic">
+<p class="topic-title first">list = HISTORY (entity | source, point)</p>
+<ul class="simple">
+<li><strong>list</strong> - output time history list (empty upon initial request,
+populated during simulation)</li>
+<li><strong>entity</strong> - entity name; global entities: (output time) ’TIME’;
+particle entities: (position) ’PX’, ’PY’, ’PZ’, ’|P|’,
+(displacement) ’DX’, ’DY’, ’DZ’, ’|D|’, (linear velocity) ’VX’,
+’VY’, ’VZ’, ’|V|’, (angular velocity) ’OX’, ’OY’, ’OZ’, ’|O|’,
+(body force) ’FX’, ’FY’, ’FZ’, ’|F|’, (body torque) ’TX’, ’TY’,
+’TZ’, ’|T|’; spring entities: (spring stroke) ’STROKE’, (spring
+total force) ’STF’, (spring force without damping) ’SF’;</li>
+<li><strong>source</strong> - particle number <em>i</em>, or a list of particle numbers
+[<em>i, j, ...</em>], or a spatial sphere defined as tuple
+<span class="math">\(\left(x,y,z,r\right)\)</span> <span class="red">(under development)</span>, or a spatial box defined as tuple
+<span class="math">\(\left(x_{\text{min}},y_{\text{min}},z_{\text{min}},x_{\text{max}},y_{\text{max}},z_{\text{max}}\right)\)</span>
+<span class="red">(under development)</span>; in case of a list of particle numbers the output entity is averaged
+over the set of particles; in case of a spatial sphere or box the
+output entity is averaged over the set of particles passing through
+it <span class="red">(under development)</span>; default: 0 (useful when entity is ’TIME’); spring number or a
+list of numbers can be used as a source in case of spring entities</li>
+<li><strong>point</strong> - optional referential point used in case of a single
+particle source; default: particle mass centre</li>
+</ul>
+</div>
+</div>
+<div class="section" id="output">
+<span id="parmec-command-output"></span><h2>OUTPUT<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h2>
+<p>Before running a simulation, define scalar and/or vector entities
+included into the output file(s). PARMEC outputs:</p>
+<ul class="simple">
+<li>*.dump files for spherical particles</li>
+<li>*0.vtk.* <strong>and/or</strong> (*0.h5, *0.xmf) files for obstacles and mesh
+based particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT
+command</li>
+<li>*1.vtk.*, *2.vtk.*, ... <strong>and/or</strong> (*1.h5, *1.xmf, *2.h5,
+*2.xmf, ...) files for mesh based particles specified as subsets,
+where numbers 1, 2, ... match consecutive OUTPUT calls</li>
+<li>*0rb.vtk.* <strong>and/or</strong> (*0rb.h5, *0rb.xmf) for rigid body data of
+particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT command</li>
+<li>*1rb.vtk.*, *2rb.vtk.*, ... <strong>and/or</strong> (*1rb.h5, *1rb.xmf,
+*2rb.h5, *2rb.xmf, ...) files for rigid body data of particles
+specified as subsets, where numbers 1, 2, ... match consecutive
+OUTPUT calls</li>
+<li>*0cd.vtk.* <strong>and/or</strong> (*0cd.h5, *0cd.xmf) for contact data
+including particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT
+command</li>
+<li>*1cd.vtk.*, *2cd.vtk.*, ... <strong>and/or</strong> (*1cd.h5, *1cd.xmf,
+*2cd.h5, *2cd.xmf, ...) files for contact data including particles
+specified as subsets, where numbers 1, 2, ... match consecutive
+OUTPUT calls</li>
+<li>*0sd.vtk.* <strong>and/or</strong> (*0sd.h5, *0sd.xmf) for spring data
+including particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT
+command</li>
+<li>*1sd.vtk.*, *2sd.vtk.*, ... <strong>and/or</strong> (*1sd.h5, *1sd.xmf,
+*2sd.h5, *2sd.xmf, ...) files for spring data including particles
+specified as subsets, where numbers 1, 2, ... match consecutive
+OUTPUT calls</li>
+</ul>
+<div class="topic">
+<p class="topic-title first">OUTPUT (entities | subset, mode, format)</p>
+<ul class="simple">
+<li><strong>entities</strong> - list of output entities; default: [’NUMBER’, ’COLOR’,
+’DISPL’, ’ORIENT’, ’LINVEL’, ’ANGVEL’, ’FORCE’, ’TORQUE’, ’F’, ’FN’,
+’FT’, ’SF’, ’AREA’, ’PAIR’] where:<ul>
+<li>’NUMBER’ - scalar field of particle numbers (modes: ’SPH’, ’MESH’,
+’RB’), or scalar field of spring numbers (modes: ’SD’)</li>
+<li>’COLOR’ - scalar field of surface colors (modes: ’SPH’, ’MESH’),
+or 2-component vector field of contact surface colors (modes:
+’CD’)</li>
+<li>’DISPL’ - 3-component vector field of displacements (modes: ’SPH’,
+’MESH’, ’RB’), or scalar field of contact depths (modes: ’CD’), or
+scalar field of spring strokes (modes: ’SD’)</li>
+<li>’ORIENT’ - three 3-component vector fields representing columns of
+rigid rotation matrix (orientation vectors) (modes: ’RB’), or
+3-component vector field of spring orientations (modes: ’SD’)</li>
+<li>’LINVEL’ - 3-component vector field of linear velocity (modes:
+’SPH’, ’MESH’, ’RB’)</li>
+<li>’ANGVEL’ - 3-component vector field of (spatially constant)
+angular velocity (modes: ’SPH’, ’MESH’, ’RB’)</li>
+<li>’FORCE’ - 3-component vector field of (spatially constant) total
+body force (modes: ’SPH’, ’MESH’, ’RB’)</li>
+<li>’TORQUE’ - 3-component vector field of (spatially constant) total
+body torque (modes: ’SPH’, ’MESH’, ’RB’)</li>
+<li>’F’ - 3-component vector field of total contact forces (modes:
+’CD’), or scalar field of total spring forces (modes: ’SD’)</li>
+<li>’FN’ - 3-component vector field of normal contact forces (modes:
+’CD’)</li>
+<li>’FT’ - 3-component vector field of tangential contact forces
+(modes: ’CD’)</li>
+<li>’SF’ - scalar field of spring force magnitude, without dashpot
+contribution (modes: ’CD’, ’SD’)</li>
+<li>’AREA’ - scalar field of contact area (modes: ’CD’)</li>
+<li>’PAIR’ - 2-component vector field of particle pair numbers (modes:
+’CD’, ’SD’)</li>
+</ul>
+</li>
+<li><strong>subset</strong> - optional particle number <em>i,</em> or a list of particle
+numbers [<em>i, j, ...</em>], to which this specification is narrowed
+down</li>
+<li><strong>mode</strong> - optional output mode or list of output modes: ’SPH’ for
+sphere output, ’MESH’ for mesh output, ’RB’ for rigid body output,
+’CD’ for contact data output, ’SD’ for spring data output; default:
+[’SPH’, ’MESH’, ’RB’, ’CD’, ’SD’]</li>
+<li><strong>format</strong> - optional output format, e.g. ’VTK’ or ’XDMF’, or list
+[’VTK’, ’XDMF’], where ’VTK’ is the text based legacy <a class="reference external" href="http://www.vtk.org/wp-content/uploads/2015/04/file-formats.pdf">VTK
+format</a>,
+’XDMF’ is the HDF5/XML based <a class="reference external" href="http://www.xdmf.org/index.php/XDMF_Model_and_Format">XDMF
+format</a>;
+default: ’XDMF’</li>
+</ul>
+</div>
+</div>
+<div class="section" id="dem">
+<h2>DEM<a class="headerlink" href="#dem" title="Permalink to this headline">¶</a></h2>
+<p>Run DEM simulation.</p>
+<div class="topic">
+<p class="topic-title first">t = DEM (duration, step | interval, prefix, adaptive)</p>
+<ul class="simple">
+<li><strong>t</strong> - simulation runtime in seconds</li>
+<li><strong>duration</strong> - simulation duration</li>
+<li><strong>step</strong> - time step; initial if <strong>adaptive</strong> is used or constant
+otherwise</li>
+<li><strong>interval</strong> - output interval (default: time step); tuple
+<span class="math">\(\left(dt_{\text{files}},dt_{\text{history}}\right)\)</span> can be
+used to indicate different output frequencies of output files and
+time histories, respectively; callback functions or TSERIES numbers
+can also be used, e.g.
+<span class="math">\(dt_{\text{files}}=\text{dt\_fiels}\left(t\right)\)</span> and
+<span class="math">\(dt_{\text{history}}=\text{tmsnum}\)</span>, prescribing variable
+interval frequencies, depending on current time;</li>
+<li><strong>prefix</strong> - output file name prefix (default: input file name
+without the “.py” extension)</li>
+<li><strong>adaptive</strong> - adaptive time step reduction factor; zero turns off
+adaptive time stepping, values <span class="math">\(&gt;0.0\)</span> and <span class="math">\(\le1.0\)</span> turn
+it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimental)</span></li>
+</ul>
+</div>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../solfec/index.html">SOLFEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dynlb/index.html">DYNLB</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">PARMEC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementation_status.html">Implementation status</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Input commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#reset">RESET</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tseries">TSERIES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#material">MATERIAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sphere">SPHERE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mesh">MESH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#analytical">ANALYTICAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#obstacle">OBSTACLE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spring">SPRING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#granular">GRANULAR</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constrain">CONSTRAIN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prescribe">PRESCRIBE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#velocity">VELOCITY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gravity">GRAVITY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#damping">DAMPING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#critical">CRITICAL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#history">HISTORY</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output">OUTPUT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dem">DEM</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">PARMEC</a><ul>
+      <li>Previous: <a href="implementation_status.html" title="previous chapter">Parmec Implementation Status</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../blog/about.html">Jun 13 - About PARMES</a></li>
+    
+  </ul>
+
+  <h3><a href="../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../blog/tag/parmes.html">parmes</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../_sources/parmec/input_commands.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
