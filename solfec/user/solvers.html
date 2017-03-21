@@ -275,6 +275,36 @@ Currently only the the nonlinear Gauss&#8211;Seidel solver is enabled, making th
 </tbody>
 </table>
 </div>
+<div class="section" id="hybrid-solver">
+<h2>Hybrid solver<a class="headerlink" href="#hybrid-solver" title="Permalink to this headline">¶</a></h2>
+<p>Hybrid solver allows to combine smooth rigid body nonlinear spring based <a class="reference internal" href="../../parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a> models with non&#8211;smooth SOLFEC models.</p>
+<div class="topic">
+<p class="topic-title first">obj = HYBRID_SOLVER (parmec_file, parmec_step, parmec2solfec, solfec_solver) <span class="red">(Under development)</span></p>
+<ul class="simple">
+<li>obj &#8211; created HYBRID_SOLVER object</li>
+<li>parmec_step &#8211; an upper bound of the PARMEC time step</li>
+<li>parmec2solfec &#8211; Python dictionary based mapping of PARMEC particle numbers to SOLFEC body identifiers</li>
+<li>solfec_solver &#8211; SOLFEC constraint solver (e.g. NEWTON_SOLVER)</li>
+</ul>
+</div>
+<p>Some parameters can also be accessed as members of a HYBRID_SOLVER object, cf. <a class="reference internal" href="#hybrid-params"><span class="std std-numref">Table 24</span></a>.</p>
+<table border="1" class="docutils" id="id8">
+<span id="hybrid-params"></span><caption><span class="caption-number">Table 24 </span><span class="caption-text">HYBRID_SOLVER object parameters.</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Read/write members:</strong></td>
+</tr>
+<tr class="row-even"><td><em>obj.parmec_interval</em> &#8211; PARMEC output interval specification (as in <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-dem"><span class="std std-ref">parmec’s DEM command</span></a>); when not specified PARMEC will not write output files; the read value is
+[(d,d), (O,O), (i, i)], where the first tuple contains floating point intervals, the second tuple
+contains Python callbacks, the third tuple contains TSERIES numbers</td>
+</tr>
+<tr class="row-odd"><td><em>obj.parmec_prefix</em> &#8211; PARMEC output file name prefix (as in <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-dem"><span class="std std-ref">parmec’s DEM command</span></a>)</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
   <div class="section">
@@ -323,6 +353,7 @@ Currently only the the nonlinear Gauss&#8211;Seidel solver is enabled, making th
 <li class="toctree-l4"><a class="reference internal" href="#projected-newton">Projected Newton</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#penalty-based">Penalty based</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#siconos-solver">Siconos solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hybrid-solver">Hybrid solver</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="simulation.html">Simulation</a></li>
