@@ -89,8 +89,8 @@ where for the returned value equal zero Solfec run is stopped</li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a GAUSS_SEIDEL_SOLVER object, cf. <a class="reference internal" href="#gauss-seidel-params"><span class="std std-numref">Table 19</span></a>.</p>
-<table border="1" class="docutils" id="id3">
-<span id="gauss-seidel-params"></span><caption><span class="caption-number">Table 19 </span><span class="caption-text">GAUSS_SEIDEL_SOLVER object parameters.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id4">
+<span id="gauss-seidel-params"></span><caption><span class="caption-number">Table 19 </span><span class="caption-text">GAUSS_SEIDEL_SOLVER object parameters.</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -125,8 +125,8 @@ cf. <a class="reference internal" href="#gauss-seidel-variant"><span class="std 
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table border="1" class="docutils" id="id4">
-<span id="gauss-seidel-error"></span><caption><span class="caption-number">Table 20 </span><span class="caption-text">Error codes of GAUSS_SEIDEL_SOLVER object.</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id5">
+<span id="gauss-seidel-error"></span><caption><span class="caption-number">Table 20 </span><span class="caption-text">Error codes of GAUSS_SEIDEL_SOLVER object.</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="25%" />
 <col width="75%" />
@@ -149,8 +149,8 @@ cf. <a class="reference internal" href="#gauss-seidel-variant"><span class="std 
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table border="1" class="docutils" id="id5">
-<span id="gauss-seidel-variant"></span><caption><span class="caption-number">Table 21 </span><span class="caption-text">Variants of parallel Gauss&#8211;Seidel update.</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id6">
+<span id="gauss-seidel-variant"></span><caption><span class="caption-number">Table 21 </span><span class="caption-text">Variants of parallel Gauss&#8211;Seidel update.</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="25%" />
 <col width="75%" />
@@ -207,8 +207,8 @@ default: 0.25); smaller initial theta may improve overall convergence behavior</
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a NEWTON_SOLVER object, cf. <a class="reference internal" href="#newton-params"><span class="std std-numref">Table 22</span></a>.</p>
-<table border="1" class="docutils" id="id6">
-<span id="newton-params"></span><caption><span class="caption-number">Table 22 </span><span class="caption-text">NEWTON_SOLVER object parameters.</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id7">
+<span id="newton-params"></span><caption><span class="caption-number">Table 22 </span><span class="caption-text">NEWTON_SOLVER object parameters.</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -262,8 +262,8 @@ Currently only the the nonlinear Gauss&#8211;Seidel solver is enabled, making th
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a SICONOS_SOLVER object, cf. <a class="reference internal" href="#siconos-params"><span class="std std-numref">Table 23</span></a>.</p>
-<table border="1" class="docutils" id="id7">
-<span id="siconos-params"></span><caption><span class="caption-number">Table 23 </span><span class="caption-text">SICONOS_SOLVER object parameters.</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id8">
+<span id="siconos-params"></span><caption><span class="caption-number">Table 23 </span><span class="caption-text">SICONOS_SOLVER object parameters.</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -276,8 +276,10 @@ Currently only the the nonlinear Gauss&#8211;Seidel solver is enabled, making th
 </table>
 </div>
 <div class="section" id="hybrid-solver">
-<h2>Hybrid solver<a class="headerlink" href="#hybrid-solver" title="Permalink to this headline">¶</a></h2>
-<p>Hybrid solver allows to combine smooth rigid body nonlinear spring based <a class="reference internal" href="../../parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a> models with non&#8211;smooth SOLFEC models.</p>
+<span id="id3"></span><h2>Hybrid solver<a class="headerlink" href="#hybrid-solver" title="Permalink to this headline">¶</a></h2>
+<p>Hybrid solver allows to combine smooth rigid body nonlinear spring based <a class="reference internal" href="../../parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a> models with non&#8211;smooth SOLFEC models.
+The solver is supported both in the serial and MPI version of Solfec. The Parmec library is shared memory parallel and in the MPI mode this
+part of modeling is executed on MPI rank 0 process, employing maximum available shared memory parallelism.</p>
 <div class="topic">
 <p class="topic-title first">obj = HYBRID_SOLVER (parmec_file, parmec_step, parmec2solfec, solfec_solver) <span class="red">(Under development)</span></p>
 <ul class="simple">
@@ -288,8 +290,8 @@ Currently only the the nonlinear Gauss&#8211;Seidel solver is enabled, making th
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a HYBRID_SOLVER object, cf. <a class="reference internal" href="#hybrid-params"><span class="std std-numref">Table 24</span></a>.</p>
-<table border="1" class="docutils" id="id8">
-<span id="hybrid-params"></span><caption><span class="caption-number">Table 24 </span><span class="caption-text">HYBRID_SOLVER object parameters.</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id9">
+<span id="hybrid-params"></span><caption><span class="caption-number">Table 24 </span><span class="caption-text">HYBRID_SOLVER object parameters.</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -365,6 +367,7 @@ contains Python callbacks, the third tuple contains TSERIES numbers</td>
 <li class="toctree-l2"><a class="reference internal" href="../validation.html">Validation Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>

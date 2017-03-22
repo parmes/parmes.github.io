@@ -69,7 +69,7 @@ Subroutines related to input processing are listed below.</p>
 </div>
 </div>
 <div class="section" id="tseries">
-<h2>TSERIES<a class="headerlink" href="#tseries" title="Permalink to this headline">¶</a></h2>
+<span id="parmec-command-tseries"></span><h2>TSERIES<a class="headerlink" href="#tseries" title="Permalink to this headline">¶</a></h2>
 <p>Create time series: a linear spline based on series of 2-points.</p>
 <div class="topic">
 <p class="topic-title first">tmsnum = TSERIES (points)</p>
@@ -90,7 +90,7 @@ t2&nbsp;v2 <br />
 </div>
 </div>
 <div class="section" id="material">
-<h2>MATERIAL<a class="headerlink" href="#material" title="Permalink to this headline">¶</a></h2>
+<span id="parmec-command-material"></span><h2>MATERIAL<a class="headerlink" href="#material" title="Permalink to this headline">¶</a></h2>
 <p>Create material.</p>
 <div class="topic">
 <p class="topic-title first">matnum = MATERIAL (density, young, poisson)</p>
@@ -117,7 +117,7 @@ t2&nbsp;v2 <br />
 </div>
 </div>
 <div class="section" id="mesh">
-<h2>MESH<a class="headerlink" href="#mesh" title="Permalink to this headline">¶</a></h2>
+<span id="parmec-command-mesh"></span><h2>MESH<a class="headerlink" href="#mesh" title="Permalink to this headline">¶</a></h2>
 <p>Create a meshed particle.</p>
 <div class="topic">
 <p class="topic-title first">parnum = MESH (nodes, elements, material, colors)</p>
@@ -130,7 +130,7 @@ the first element, <em>n1, n2, ..., ne1</em> enumerate the element nodes,
 and <em>me1</em> is the material number. Similarly for the second and all
 remaining elements. Supported numbers of nodes per element are <em>4, 5,
 6, and 8</em> for respectively <em>tetrahedron, pyramid, wedge, and
-hexahedron</em>, cf. <a class="reference internal" href="#parmec-mesh-elements"><span class="std std-numref">Fig. 50</span></a></li>
+hexahedron</em>, cf. <a class="reference internal" href="#parmec-mesh-elements"><span class="std std-numref">Fig. 53</span></a></li>
 <li><strong>material</strong> - material number</li>
 <li><strong>colors</strong> - list of positive integer face colors: [<em>gcolor, f1,
 n1, n2, ..., nf1, c1, f2, n1, n2, ..., nf2, c2, ...</em>], where
@@ -144,7 +144,7 @@ alone.</li>
 </div>
 <div class="figure align-center" id="id2">
 <span id="parmec-mesh-elements"></span><a class="reference internal image-reference" href="../_images/elements.png"><img alt="../_images/elements.png" src="../_images/elements.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 50 </span><span class="caption-text">Mesh element types in Parmec.</span></p>
+<p class="caption"><span class="caption-number">Fig. 53 </span><span class="caption-text">Mesh element types in Parmec.</span></p>
 </div>
 </div>
 <div class="section" id="analytical">
@@ -198,7 +198,7 @@ color2, ...</em>] of colors for each individual triangle</li>
 </div>
 </div>
 <div class="section" id="spring">
-<h2>SPRING<a class="headerlink" href="#spring" title="Permalink to this headline">¶</a></h2>
+<span id="parmec-command-spring"></span><h2>SPRING<a class="headerlink" href="#spring" title="Permalink to this headline">¶</a></h2>
 <p>Create a translational spring constraint. The applied force formula
 reads</p>
 <div class="math">
@@ -294,7 +294,7 @@ parameters; default: 0.5</li>
 </div>
 </div>
 <div class="section" id="constrain">
-<h2>CONSTRAIN<a class="headerlink" href="#constrain" title="Permalink to this headline">¶</a></h2>
+<span id="parmec-command-constrain"></span><h2>CONSTRAIN<a class="headerlink" href="#constrain" title="Permalink to this headline">¶</a></h2>
 <p>Constrain particle motion.</p>
 <div class="topic">
 <p class="topic-title first">CONSTRAIN (parnum | linear, angular)</p>
@@ -352,7 +352,7 @@ velocity or acceleration; default: ’vv’</li>
 </div>
 </div>
 <div class="section" id="gravity">
-<h2>GRAVITY<a class="headerlink" href="#gravity" title="Permalink to this headline">¶</a></h2>
+<span id="parmec-command-gravity"></span><h2>GRAVITY<a class="headerlink" href="#gravity" title="Permalink to this headline">¶</a></h2>
 <p>Set gravity.</p>
 <div class="topic">
 <p class="topic-title first">GRAVITY (gx, gy, gz)</p>

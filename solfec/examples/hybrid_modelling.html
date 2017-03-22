@@ -28,6 +28,8 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="A two–body impact problem" href="hybrid_modelling/hs0.html" />
+    <link rel="prev" title="Solfec Examples" href="../examples.html" />
   
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -58,12 +60,21 @@
   <div class="section" id="hybrid-modeling">
 <span id="solfec-examples-hybrid-modelling"></span><h1>Hybrid modeling<a class="headerlink" href="#hybrid-modeling" title="Permalink to this headline">¶</a></h1>
 <p>By hybrid modeling we mean multi&#8211;body modeling combining rigid bodies connected
-via springs with finite&#8211;element bodies interacting via non&#8211;smooth laws. For certain
-class of problems, this type of modeling can be useful, allowing for shorter runtime,
-in cases where solely non&#8211;smooth models could be computationally prohibitive. For example,
-when analyzing frequency response of a large scale multi&#8211;body structure, certain fraction
-of it (an area of interest) could be modelled using the NSCD approach, while the remaining
-(predominate) part could be modeled in a simplified manner (rigid bodies + springs).</p>
+via springs with finite&#8211;element or rigid bodies interacting via non&#8211;smooth laws. For some
+problems, this type of modeling can be useful, allowing for shorter runtime, in cases where
+solely non&#8211;smooth models could be computationally prohibitive. For example, when analyzing
+frequency response of a large scale multi&#8211;body structure, a fraction of it (an area of interest)
+could be modelled using the NSCD approach, while the remaining (predominate) part could be modeled
+in a simplified manner (using rigid bodies and springs).</p>
+<p>Hybrid modeling is available in Solfec via the <a class="reference internal" href="../user/solvers.html#hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a> interface.
+In this case <a class="reference internal" href="../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> is used as a software library facilitating modeling
+of the rigid body &#8211; spring systems. Currently available examples of the hybrid modelling
+functionality include:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_modelling/hs0.html">A two&#8211;body impact problem</a></li>
+</ul>
+</div>
 </div>
 
   <div class="section">
@@ -95,8 +106,24 @@ of it (an area of interest) could be modelled using the NSCD approach, while the
 
 
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../index.html">SOLFEC</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">SOLFEC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theory.html">Theory Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../validation.html">Validation Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Hybrid modeling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="hybrid_modelling/hs0.html">A two&#8211;body impact problem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
 </ul>
@@ -105,6 +132,12 @@ of it (an area of interest) could be modelled using the NSCD approach, while the
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">SOLFEC</a><ul>
+  <li><a href="../examples.html">Solfec Examples</a><ul>
+      <li>Previous: <a href="../examples.html" title="previous chapter">Solfec Examples</a></li>
+      <li>Next: <a href="hybrid_modelling/hs0.html" title="next chapter">A two&#8211;body impact problem</a></li>
+  </ul></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>

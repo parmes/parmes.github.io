@@ -61,7 +61,7 @@
 <span id="solfec-user-simulation"></span><h1>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h1>
 <p>Routines listed in this section control the solution process.
 A simulation can be run be invoking the RUN command, documented below.</p>
-<div class="topic">
+<div class="topic" id="solfec-user-run">
 <p class="topic-title first">RUN (solfec, solver, duration)</p>
 <p>This routine runs a simulation.</p>
 <ul class="simple">
@@ -114,7 +114,7 @@ this is guaranteed if the input files for both analyses differ only by the presc
 <div class="section" id="runtime-utilities">
 <h2>Runtime utilities<a class="headerlink" href="#runtime-utilities" title="Permalink to this headline">¶</a></h2>
 <p>Routines below help control runtime behaviour.</p>
-<div class="topic">
+<div class="topic" id="solfec-user-output">
 <p class="topic-title first">OUTPUT (solfec, interval | compression)</p>
 <p>This routine specifies the frequency of writing to the output file.</p>
 <ul class="simple">
@@ -132,7 +132,7 @@ Compressed output files are smaller, although they might not be portable between
 <li>extents &#8211; (xmin, ymin, zmin, xmax, ymax, zmax) tuple</li>
 </ul>
 </div>
-<div class="topic">
+<div class="topic" id="solfec-user-callback">
 <p class="topic-title first">CALLBACK (solfec, interval, data, callback)</p>
 <p>This routine defines a callback function, invoked during a run of Solfec every interval of time.
 A callback routine can interrupt the course of RUN command by returning 0.</p>
@@ -326,6 +326,7 @@ to check whether an object resides on the current processor.</p>
 <li class="toctree-l2"><a class="reference internal" href="../validation.html">Validation Manual</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>

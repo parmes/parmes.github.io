@@ -1,20 +1,20 @@
 
-* On Mar 17 2017 :ref:`parmec-input_commands`
+* On Mar 22 2017 :ref:`parmec-input_commands`
 
-* On Mar 16 2017 :ref:`parmec-installation`
+* On Mar 22 2017 :ref:`solfec-examples-hybrid_modelling-hs0`
 
-* On Mar 16 2017 :ref:`parmec-implementation_status`
+* On Mar 22 2017 :ref:`solfec-user-geometry`
 
-* On Mar 16 2017 :ref:`dynlb-index`
+* On Mar 22 2017 :ref:`solfec-user-loads`
 
-* On Mar 16 2017 :ref:`parmec-index`
+* On Mar 22 2017 :ref:`solfec-user-materials`
 
-* On Mar 16 2017 :ref:`parmec-running`
+* On Mar 22 2017 :ref:`solfec-user-simulation`
 
-* On Mar 16 2017 :ref:`solfec-index`
+* On Mar 22 2017 :ref:`solfec-examples`
 
-* On Feb 20 2017 :ref:`solfec-abaqus`
+* On Mar 22 2017 :ref:`solfec-examples-hybrid_modelling`
 
-* On Feb 16 2017 :ref:`solfec-applications-overturning_block_stacks`
+* On Mar 22 2017 :ref:`solfec-index`
 
-* On Feb 16 2017 :ref:`solfec-validation`
+* On Mar 22 2017 :ref:`solfec-user-solvers`
