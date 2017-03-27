@@ -73,11 +73,13 @@ are located in:</p>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/README">README</a> &#8211; a text based specification of the problem</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec.py">hs2&#8211;parmec.py</a> &#8211; including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py">hs2&#8211;solfec.py</a> &#8211; including the <a class="reference internal" href="../../index.html#solfec-index"><span class="std std-ref">Solfec</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2&#8211;state&#8211;1.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state file for post&#8211;processing</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2&#8211;state&#8211;2.pvsm</a> &#8211; another <a class="reference external" href="http://www.paraview.org">ParaView</a> state file</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2&#8211;state&#8211;1.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id10" id="id2">[1]</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2&#8211;state&#8211;2.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id13" id="id4">[2]</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-3.pvsm">hs2&#8211;state&#8211;3.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig3"><span class="std std-numref">Fig. 55</span></a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-4.pvsm">hs2&#8211;state&#8211;4.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig4"><span class="std std-numref">Fig. 56</span></a></li>
 </ul>
 <p><a class="reference internal" href="#hs2-fig1"><span class="std std-numref">Fig. 53</span></a> states the problem and describes the hybrid model.</p>
-<div class="figure align-center" id="id10">
+<div class="figure align-center" id="id16">
 <span id="hs2-fig1"></span><a class="reference internal image-reference" href="../../../_images/hs2.png"><img alt="../../../_images/hs2.png" src="../../../_images/hs2.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 53 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: a 2&#8211;dimensional cube array acceleration dwell hybrid model</span></p>
 </div>
@@ -88,7 +90,7 @@ are located in:</p>
 <li>green &#8211; the boundary Parmec&#8211;Solfec bodies, modelled in both codes</li>
 <li>grey &#8211; the inner Solfec bodies, interacting via a non&#8211;smooth contact law</li>
 </ul>
-<div class="figure align-center" id="id11">
+<div class="figure align-center" id="id17">
 <span id="hs2-fig2"></span><a class="reference internal image-reference" href="../../../_images/hs2-geometry.png"><img alt="../../../_images/hs2-geometry.png" src="../../../_images/hs2-geometry.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 54 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: initial geometry.</span></p>
 </div>
@@ -425,7 +427,7 @@ of the <a class="reference internal" href="hs0.html#solfec-examples-hybrid-model
 
 <span class="c1"># bulk and surface materials</span>
 <span class="n">mat</span> <span class="o">=</span> <span class="n">BULK_MATERIAL</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;KIRCHHOFF&#39;</span><span class="p">,</span>
-    <span class="n">young</span> <span class="o">=</span> <span class="mf">1E6</span><span class="p">,</span> <span class="n">poisson</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">density</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+  <span class="n">young</span> <span class="o">=</span> <span class="mf">1E6</span><span class="p">,</span> <span class="n">poisson</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">density</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">SURFACE_MATERIAL</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span>
   <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;SIGNORINI_COULOMB&#39;</span><span class="p">,</span> <span class="n">friction</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
 
@@ -517,18 +519,28 @@ without depending on the exported XDMF files, <a class="reference external" href
 The application of ParaView can be simplified by utilising the two state .pvsm files distributed with the example: by selecting
 &#8220;File/Load State...&#8221; menu choice in ParaView one can load a pre&#8211;set post&#8211;processing state. The videos included below depict the
 forced motion of the hybrid system, visualised using the two enclosed states files.</p>
-<p><a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2&#8211;state&#8211;1.pvsm</a>.</p>
-<p align="center"><iframe width="648" height="432" src="//www.youtube.com/embed/Eg_Qm2tOtIY?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2&#8211;state&#8211;2.pvsm</a>.</p>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2&#8211;state&#8211;1.pvsm</a>.</td></tr>
+</tbody>
+</table>
+<p align="center"><iframe width="648" height="432" src="//www.youtube.com/embed/Eg_Qm2tOtIY?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><table class="docutils footnote" frame="void" id="id13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[2]</a></td><td><a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2&#8211;state&#8211;2.pvsm</a>.</td></tr>
+</tbody>
+</table>
 <p align="center"><iframe width="648" height="432" src="//www.youtube.com/embed/EzyFSkX7lLM?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference internal" href="#hs2-fig3"><span class="std std-numref">Fig. 55</span></a> and <a class="reference internal" href="#hs2-fig4"><span class="std std-numref">Fig. 56</span></a> respectively show the linear velocity magnitude time history and the displacement magnitude
 time history, at points A (Parmec) and B (Solfec), marked out in <a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>. These plots were generated using ParaView&#8217;s &#8220;Plot
 Selection Over Time&#8221; feature.</p>
-<div class="figure align-center" id="id12">
+<div class="figure align-center" id="id18">
 <span id="hs2-fig3"></span><a class="reference internal image-reference" href="../../../_images/hs2-linvel-mag.png"><img alt="../../../_images/hs2-linvel-mag.png" src="../../../_images/hs2-linvel-mag.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 55 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Linear velocity magnitude history at points A and B (<a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>).</span></p>
 </div>
-<div class="figure align-center" id="id13">
+<div class="figure align-center" id="id19">
 <span id="hs2-fig4"></span><a class="reference internal image-reference" href="../../../_images/hs2-disp-mag.png"><img alt="../../../_images/hs2-disp-mag.png" src="../../../_images/hs2-disp-mag.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 56 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Displacement magnitude history at points A and B (<a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>).</span></p>
 </div>
