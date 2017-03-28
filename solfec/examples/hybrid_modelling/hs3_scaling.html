@@ -67,49 +67,52 @@ subject to an acceleration sine dwell signal. The specifcation of geomery and ma
 The <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">solfec/examples/hybrid&#8211;solver3</a> directory contains:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/README">README</a> &#8211; a text based specification of the problem</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-parmec.py">hs2&#8211;parmec.py</a> &#8211; including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-solfec.py">hs2&#8211;solfec.py</a> &#8211; including the <a class="reference internal" href="../../index.html#solfec-index"><span class="std std-ref">Solfec</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-1.pvsm">hs2&#8211;state&#8211;1.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id5" id="id2">[1]</a></li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-2.pvsm">hs2&#8211;state&#8211;2.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id7" id="id4">[2]</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-parmec.py">hs3&#8211;parmec.py</a> &#8211; including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-solfec.py">hs3&#8211;solfec.py</a> &#8211; including the <a class="reference internal" href="../../index.html#solfec-index"><span class="std std-ref">Solfec</span></a> input code</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-1.pvsm">hs3&#8211;state&#8211;1.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id5" id="id2">[1]</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-2.pvsm">hs3&#8211;state&#8211;2.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id8" id="id4">[2]</a></li>
 </ul>
 <table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id9">2</a>)</em> <a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> <a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-1.pvsm">hs3&#8211;state&#8211;1.pvsm</a>.
 The see&#8211;through array is modeled in Parmec: rotations are restrained and spring&#8211;dashpot elements, emulating contact,
 are insered at the centres of faces of neighbouring cubes. The solid 3x3 inner arrays is modeled in Solfec: hexahedral
 finite elements are used and contact interactions are modelled via <a class="reference internal" href="../../theory/conform.html#solfec-theory-conform"><span class="std std-ref">a non&#8211;smooth Signorini&#8211;Coulomb law</span></a></td></tr>
 </tbody>
 </table>
-<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/L4ylaXQTQsY?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><table class="docutils footnote" frame="void" id="id7" rules="none">
+<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/L4ylaXQTQsY?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><table class="docutils footnote" frame="void" id="id8" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> <a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id11">2</a>)</em> <a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-2.pvsm">hs3&#8211;state&#8211;3.pvsm</a>.
 Parmec spring forces are visualised on the left hand side. On the right hand side, in the Solfec model,
 the spheres symbolizse detected contact points, while their colors depict the magnitudes of the contact forces.</td></tr>
 </tbody>
 </table>
-<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/FfPGKxlr5kQ?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p>Animations <a class="footnote-reference" href="#id5" id="id9">[1]</a> and <a class="footnote-reference" href="#id7" id="id10">[2]</a> are based on <span class="math">\((M+N+M)\times(M+N+M)\times(M+N+M)\)</span> arrays, where <span class="math">\(M = 5\)</span> and <span class="math">\(N = 3\)</span>.
-To test parallel scaling, a large model, with <span class="math">\(M = 5\)</span> and <span class="math">\(N = 20\)</span>, was used. This resulted in the total number of
-27000 bodies, of which the inner 8000 was modeled using <span class="math">\(2\times2\times2\)</span> finite element meshes in Solfec. None of the
-remaining parameters of the model were changed. Animation <a class="footnote-reference" href="#id12" id="id11">[3]</a> depicts this larger model.</p>
-<table class="docutils footnote" frame="void" id="id12" rules="none">
+<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/FfPGKxlr5kQ?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p>Animations <a class="footnote-reference" href="#id5" id="id10">[1]</a> and <a class="footnote-reference" href="#id8" id="id11">[2]</a> are based on <span class="math">\((M+N+M)\times(M+N+M)\times(M+N+M)\)</span> arrays, where <span class="math">\(M = 5\)</span> and <span class="math">\(N = 3\)</span>.
+To test parallel scaling, a larger model, with <span class="math">\(M = 5\)</span> and <span class="math">\(N = 20\)</span>, was used. This resulted in the total number of
+27000 bodies, of which the inner 8000 was modeled using <span class="math">\(2\times2\times2\)</span> finite element meshes in Solfec. The total number
+of Solfec bodies was 10408, which includes the additional layer of 2408 rigid bodies, providing an overlap with the Parmec submodel.
+In order to provide a stiffer support for the larger, <span class="math">\(20\times20\times20\)</span>, inner array of bodies, the spring stifness and
+damping coefficients in the Parmec submodel were multiplied by 10. One second runs with time step of 5E-4s were performed. None
+of the remaining parameters of the model were changed. Animation <a class="footnote-reference" href="#id13" id="id12">[3]</a> depicts the motion of this larger model.</p>
+<table class="docutils footnote" frame="void" id="id13" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[3]</a></td><td><a class="reference external" href="http://www.paraview.org">ParaView</a> animation of the 30x30x30 model with N=20. A part of the Parmec model
+<tr><td class="label"><a class="fn-backref" href="#id12">[3]</a></td><td><a class="reference external" href="http://www.paraview.org">ParaView</a> animation of the 30x30x30 array with N=20. A part of the Parmec model
 is hidden so that the inner 20x20x20 Solfec array can be seen; this also helps to visualize interaction between
 the Parmec and Solfec submodels.</td></tr>
 </tbody>
 </table>
-<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/7eR4iCSTG44?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference internal" href="#hs3-runtimes"><span class="std std-numref">Table 27</span></a> summarises the parallel runtimes. Total speedup of 4.45 was achieved using 192 CPU cores,
+<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/yt-r9cIkEzA?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference internal" href="#hs3-runtimes"><span class="std std-numref">Table 27</span></a> summarises the parallel runtimes. Total speedup of 3.87 was achieved using 192 CPU cores,
 versus the baseline single cluster node run on 24 CPU cores. Intel Xeon E5&#8211;2600 CPU based nodes were used,
 with 24 cores per node and InfiniBand 1 x 56 Gb/s FDR interconnect. We note, that only the inner <span class="math">\(20\times20\times20\)</span>
 Solfec array was parallelized using MPI; the entire Parmec model (the remaining 19000 bodies) was run on MPI rank 0 process,
 utilising task based parallelism (in all cases all 24 cores of the single node were used).</p>
-<table border="1" class="docutils" id="id16">
-<span id="hs3-runtimes"></span><caption><span class="caption-number">Table 27 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): runtime scaling.</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id17">
+<span id="hs3-runtimes"></span><caption><span class="caption-number">Table 27 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): runtime scaling.</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="21%" />
 <col width="19%" />
@@ -125,30 +128,32 @@ utilising task based parallelism (in all cases all 24 cores of the single node w
 <td>192</td>
 </tr>
 <tr class="row-even"><td>Runtime [h]</td>
-<td>11.56</td>
-<td>6.62</td>
-<td>3.99</td>
-<td>2.60</td>
+<td>1.82</td>
+<td>1.09</td>
+<td>0.69</td>
+<td>0.47</td>
 </tr>
 </tbody>
 </table>
-<p>Animation <a class="footnote-reference" href="#id15" id="id14">[4]</a> depicts load balancing of contact points within Solfec submodel. The inner <span class="math">\(20\times20\times20\)</span>
-array generates about 68000 contact points on average. <a class="reference internal" href="#hs3-stats-1"><span class="std std-numref">Table 28</span></a> summarises the minimum, average and maximum
-numbers of bodies and contact points for 24&#8211;192 MPI ranks (CPU cores). Solfec utilizes a single geometrical
-partitioning in order to balance together the bodies and the contact points. Contact points are favoured in the load
-balancing (hence their better overall balance) due to the higher computational work related to their processing.
+<p>Animation <a class="footnote-reference" href="#id16" id="id15">[4]</a> depicts load balancing of contact points within Solfec submodel. The inner <span class="math">\(20\times20\times20\)</span>
+array generates up to 100k contact points on average, as seen in <a class="reference internal" href="#hs3-fig1"><span class="std std-numref">Fig. 57</span></a>. <a class="reference internal" href="#hs3-stats-1"><span class="std std-numref">Table 28</span></a> summarises
+the minimum, average and maximum numbers of bodies and contact points for 24&#8211;192 MPI rank (CPU cores) runs. Solfec
+utilizes a single geometrical partitioning in order to balance together the bodies and the contact points. Contact
+points are favoured in the load balancing due to the higher computational work related to their processing.
 <a class="reference internal" href="#hs3-stats-2"><span class="std std-numref">Table 29</span></a> shows that contact update, detection, solution and assembling of the <a class="reference internal" href="../../theory/locdyn.html#solfec-theory-locdyn"><span class="std std-ref">local dynamics</span></a>
-take up the majority of the computational time.</p>
-<table class="docutils footnote" frame="void" id="id15" rules="none">
+take up the majority of the computational time. The remaining time is spent in load balancing. In this example,
+Solfec <a class="reference internal" href="../../theory/solvers.html#solfec-theory-solvers"><span class="std std-ref">solves an implicit frictional contact problem</span></a> of varying size at every time step.
+<a class="reference internal" href="#hs3-fig1"><span class="std std-numref">Fig. 57</span></a> depicts the time history of the number of contact points over the one second duration of the simulation.</p>
+<table class="docutils footnote" frame="void" id="id16" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id14">[4]</a></td><td><a class="reference internal" href="../../running.html#solfec-running"><span class="std std-ref">Solfec viewer</span></a> based animation of load balancing for the 30x30x30 model with N=20.
-Contact points are colored according to processor rank for the 24 CPU cores based parallel run. Solfec utilizes
+<tr><td class="label"><a class="fn-backref" href="#id15">[4]</a></td><td><a class="reference internal" href="../../running.html#solfec-running"><span class="std std-ref">Solfec viewer</span></a> based animation of load balancing for the 30x30x30 model with N=20.
+Contact points are colored according to processor rank for the 48 CPU cores based parallel run. Solfec utilizes
 <a class="reference internal" href="../../../dynlb/index.html#dynlb-index"><span class="std std-ref">dynamic load balancing</span></a> in order maintain parallel balance.</td></tr>
 </tbody>
 </table>
-<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/rO5Qw4HG6sw?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><table border="1" class="docutils" id="id17">
-<span id="hs3-stats-1"></span><caption><span class="caption-number">Table 28 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): body and contact point count statistics.</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
+<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/D6Q9iQSl3Bo?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><table border="1" class="docutils" id="id18">
+<span id="hs3-stats-1"></span><caption><span class="caption-number">Table 28 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): body and contact point count statistics per MPI rank.</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="21%" />
 <col width="19%" />
@@ -164,10 +169,10 @@ Contact points are colored according to processor rank for the 24 CPU cores base
 <td>192</td>
 </tr>
 <tr class="row-even"><td>Body min</td>
-<td>297</td>
-<td>134</td>
-<td>63</td>
-<td>22</td>
+<td>250</td>
+<td>109</td>
+<td>49</td>
+<td>17</td>
 </tr>
 <tr class="row-odd"><td>Body avg</td>
 <td>433</td>
@@ -176,36 +181,36 @@ Contact points are colored according to processor rank for the 24 CPU cores base
 <td>54</td>
 </tr>
 <tr class="row-even"><td>Body max</td>
-<td>620</td>
-<td>340</td>
-<td>190</td>
-<td>116</td>
+<td>687</td>
+<td>383</td>
+<td>220</td>
+<td>132</td>
 </tr>
 <tr class="row-odd"><td>Contact min</td>
-<td>2655</td>
-<td>1310</td>
-<td>639</td>
-<td>294</td>
+<td>1421</td>
+<td>731</td>
+<td>394</td>
+<td>183</td>
 </tr>
 <tr class="row-even"><td>Contact avg</td>
-<td>2835</td>
-<td>1435</td>
-<td>735</td>
-<td>368</td>
+<td>1651</td>
+<td>873</td>
+<td>485</td>
+<td>249</td>
 </tr>
 <tr class="row-odd"><td>Contact max</td>
-<td>3031</td>
-<td>1578</td>
-<td>846</td>
-<td>457</td>
+<td>1874</td>
+<td>1033</td>
+<td>609</td>
+<td>342</td>
 </tr>
 </tbody>
 </table>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table border="1" class="docutils" id="id18">
-<span id="hs3-stats-2"></span><caption><span class="caption-number">Table 29 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): average computational task share percentage (%).</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id19">
+<span id="hs3-stats-2"></span><caption><span class="caption-number">Table 29 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): average computational task share percentage (%).</span><a class="headerlink" href="#id19" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="26%" />
 <col width="18%" />
@@ -221,43 +226,50 @@ Contact points are colored according to processor rank for the 24 CPU cores base
 <td>192</td>
 </tr>
 <tr class="row-even"><td>Time integration</td>
-<td>10.1</td>
+<td>18.0</td>
+<td>13.8</td>
+<td>11.0</td>
 <td>8.8</td>
-<td>7.4</td>
-<td>7.4</td>
 </tr>
 <tr class="row-odd"><td>Contact update</td>
-<td>8.8</td>
-<td>9.8</td>
-<td>10.7</td>
-<td>11.5</td>
+<td>8.3</td>
+<td>10.3</td>
+<td>11.4</td>
+<td>12.7</td>
 </tr>
 <tr class="row-even"><td>Contact detection</td>
-<td>13.0</td>
-<td>12.2</td>
-<td>11.0</td>
-<td>8.9</td>
+<td>8.5</td>
+<td>7.8</td>
+<td>7.1</td>
+<td>5.6</td>
 </tr>
 <tr class="row-odd"><td>Local dynamics</td>
-<td>22.2</td>
-<td>21.6</td>
-<td>20.8</td>
-<td>20.4</td>
+<td>14.6</td>
+<td>14.3</td>
+<td>14.1</td>
+<td>13.3</td>
 </tr>
 <tr class="row-even"><td>Contact solution</td>
-<td>27.8</td>
-<td>25.0</td>
-<td>22.8</td>
-<td>18.2</td>
+<td>21.1</td>
+<td>19.5</td>
+<td>19.4</td>
+<td>16.3</td>
 </tr>
 <tr class="row-odd"><td>Load balancing</td>
-<td>18.0</td>
-<td>22.5</td>
-<td>27.3</td>
-<td>33.7</td>
+<td>29.5</td>
+<td>34.3</td>
+<td>36.9</td>
+<td>43.1</td>
 </tr>
 </tbody>
 </table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="figure align-center" id="id20">
+<span id="hs3-fig1"></span><a class="reference internal image-reference" href="../../../_images/hs3_ncon_hist.png"><img alt="../../../_images/hs3_ncon_hist.png" src="../../../_images/hs3_ncon_hist.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 57 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): time history of the contact points count.</span></p>
+</div>
 </div>
 
   <div class="section">
