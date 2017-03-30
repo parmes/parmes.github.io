@@ -293,22 +293,22 @@ parameters; default: 0.5</li>
 </ul>
 </div>
 </div>
-<div class="section" id="constrain">
-<span id="parmec-command-constrain"></span><h2>CONSTRAIN<a class="headerlink" href="#constrain" title="Permalink to this headline">¶</a></h2>
-<p>Constrain particle motion.</p>
+<div class="section" id="restrain">
+<span id="parmec-command-restrain"></span><h2>RESTRAIN<a class="headerlink" href="#restrain" title="Permalink to this headline">¶</a></h2>
+<p>Restrain particle motion.</p>
 <div class="topic">
-<p class="topic-title first">CONSTRAIN (parnum | linear, angular)</p>
+<p class="topic-title first">RESTRAIN (parnum | linear, angular)</p>
 <ul class="simple">
 <li><strong>parnum</strong> - particle number</li>
 <li><strong>linear</strong> - list <span class="math">\(\left[x_{1},y_{1},z_{1}\right]\)</span>,
 <span class="math">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2}\right]\)</span>, or
 <span class="math">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2},x_{3},y_{3},z_{3}\right]\)</span>
-defining directions of constrained linear motion; default:
+defining directions of restrained linear motion; default:
 <span class="math">\(\left[0,0,0\right]\)</span></li>
 <li><strong>angular</strong> - list <span class="math">\(\left[x_{1},y_{1},z_{1}\right]\)</span>,
 <span class="math">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2}\right]\)</span>, or
 <span class="math">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2},x_{3},y_{3},z_{3}\right]\)</span>
-defining directions of constrained spatial rotation; default:
+defining directions of restrained spatial rotation; default:
 <span class="math">\(\left[0,0,0\right]\)</span></li>
 </ul>
 </div>
@@ -316,7 +316,7 @@ defining directions of constrained spatial rotation; default:
 <div class="section" id="prescribe">
 <h2>PRESCRIBE<a class="headerlink" href="#prescribe" title="Permalink to this headline">¶</a></h2>
 <p>Prescribe particle motion. Prescribed motion overwrites this resulting
-from dynamics and constraints.</p>
+from dynamics and restraints.</p>
 <div class="topic">
 <p class="topic-title first">PRESCRIBE (parnum | linear, angular, kind)</p>
 <ul class="simple">
@@ -596,7 +596,7 @@ it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimenta
 <li class="toctree-l3"><a class="reference internal" href="#obstacle">OBSTACLE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spring">SPRING</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#granular">GRANULAR</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#constrain">CONSTRAIN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#restrain">RESTRAIN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#prescribe">PRESCRIBE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#velocity">VELOCITY</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#gravity">GRAVITY</a></li>
