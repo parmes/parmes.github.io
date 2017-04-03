@@ -303,14 +303,14 @@ as valid Solfec arguments. This way the user can pass some arguments to the inpu
 </div>
 </div>
 <div class="section" id="modal-analysis">
-<h2>MODAL_ANALYSIS<a class="headerlink" href="#modal-analysis" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-user-utilities-modal-analysis"></span><h2>MODAL_ANALYSIS<a class="headerlink" href="#modal-analysis" title="Permalink to this headline">¶</a></h2>
 <p>This routine performs modal analysis of FEM bodies.
 The modal analysis results are stored with bodies and can be viewed.</p>
 <div class="topic">
 <p class="topic-title first">obj = MODAL_ANALYSIS (body, num, path | abstol, maxiter, verbose)</p>
 <ul class="simple">
-<li>obj = (val, vec) &#8211; the returned tuple of: val = obj[0] eigenvalues and
-vec = obj[1] eigen vectors (stored contiguously one after another)</li>
+<li>obj = (val, vec) &#8211; the returned tuple of: val = obj[0] list of eigenvalues and
+vec = obj[1] list of eigen vectors (stored contiguously one after another)</li>
 <li>body &#8211; input FEM body; the model analysis results are stored with this body</li>
 <li>num &#8211; number of lowest modes to extract</li>
 <li>path &#8211; path to file where the results will be stored (to avoid recomputing if possible).

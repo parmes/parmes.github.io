@@ -125,14 +125,14 @@ out of a 3-vector <span class="math">\(\mathbf{\Psi}\)</span>, and <span class="
 and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite&#8211;element) files. Inverse generalized
 inertia matrix <span class="math">\(\mathbf{A}^{-1}\)</span> is declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L176">bod.h</a> as follows:</p>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>139
-140</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">BODY_CHILD_UPDATED</span>       <span class="o">=</span> <span class="mh">0x0040</span><span class="p">,</span> <span class="o">/*</span> <span class="n">an</span> <span class="n">updated</span> <span class="n">child</span> <span class="o">*/</span>
-  <span class="n">BODY_ABSENT</span>              <span class="o">=</span> <span class="mh">0x0080</span>  <span class="o">/*</span> <span class="n">body</span> <span class="n">whose</span> <span class="n">state</span> <span class="n">was</span> <span class="ow">not</span> <span class="n">read</span> <span class="o">*/</span>
+140</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">BODY_CHILD</span>               <span class="o">=</span> <span class="mh">0x0020</span><span class="p">,</span> <span class="o">/*</span> <span class="n">a</span> <span class="n">child</span> <span class="n">body</span> <span class="o">*/</span>
+  <span class="n">BODY_CHILD_UPDATED</span>       <span class="o">=</span> <span class="mh">0x0040</span><span class="p">,</span> <span class="o">/*</span> <span class="n">an</span> <span class="n">updated</span> <span class="n">child</span> <span class="o">*/</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>176</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>176</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">SHAPE</span> <span class="o">*</span><span class="n">shape</span><span class="p">;</span>    <span class="o">/*</span> <span class="n">shape</span> <span class="n">of</span> <span class="n">the</span> <span class="n">body</span> <span class="o">*/</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>214</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="nb">int</span> <span class="n">rank</span><span class="p">;</span> <span class="o">/*</span> <span class="n">parent</span> <span class="o">=&gt;</span> <span class="n">new</span><span class="o">/</span><span class="n">current</span> <span class="n">rank</span><span class="p">;</span> <span class="n">child</span> <span class="o">=&gt;</span> <span class="n">parent</span><span class="s1">&#39;s rank */</span>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>214</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
 </pre></div>
 </td></tr></table></div>
 <p>Rigid integration formulae <a class="reference internal" href="#equation-R(t+h/2)">(1)</a>-<a class="reference internal" href="#equation-W1(t+h)">(4)</a> are in
