@@ -193,13 +193,15 @@ Only first order elements are supported at present.</td>
 <td>Body co&#8211;rotational (one co&#8211;rotated frame per body, suitable for stiff bodies)</td>
 </tr>
 <tr class="row-even"><td>&#8216;BC&#8211;MODAL&#8217;</td>
-<td>Body co-rotational, modal approach; The &#8216;DEF_LIM&#8217; integration scheme is always used
-for this formulation (there would be no computational advantage in using &#8216;DEF_EXP&#8217;
-since the system matrix is diagonal anyway); <em>Note:</em> the <strong>base</strong> argument must be
-passed; <span class="red">(Under development)</span></td>
+<td>Body co-rotational, modal approach; &#8216;DEF_LIM&#8217; integration scheme is always used for
+this formulation (there is no computational advantage in using &#8216;DEF_EXP&#8217; since all
+system matrices are diagonal); <em>Note:</em> the <strong>base</strong> argument must be passed;
+<span class="red">(Under development)</span></td>
 </tr>
 <tr class="row-odd"><td>&#8216;BC&#8211;RO &#8216;</td>
-<td>Body co-rotational, reduced order approach; <em>Note:*</em> the <strong>base</strong> argument must be
+<td>Body co-rotational, reduced order approach; &#8216;DEF_LIM&#8217; integration scheme is always
+used for this formulation (there is no computational advantage in using &#8216;DEF_EXP&#8217;
+since all system matrices are dense); <em>Note:*</em> the <strong>base</strong> argument must be
 passed; <span class="red">(Under development)</span></td>
 </tr>
 </tbody>
