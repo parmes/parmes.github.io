@@ -163,6 +163,14 @@ as [gid] or as gid alone.</li>
 <tr class="row-odd"><td><strong>obj.get_data()</strong> &#8211; return a tuple (nodes, elements, surfids), in the same format as for MESH().
 Note these are read-only - changing the returned lists does not affect the mesh.</td>
 </tr>
+<tr class="row-even"><td><strong>obj.surface_integration_points( | surfid)</strong> &#8211; returns surface integration points as a list of tuples
+[(x0, y0, z0), (x1, y1, z1), ...]; if <strong>surfid</strong> is passed, integration points only fort that surface
+identifier are returned</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.volume_integration_points( | volid)</strong> &#8211; returns volume integration points as a list of tuples
+[(x0, y0, z0), (x1, y1, z1), ...]; if <strong>volid</strong> is passed, integration points only fort that volume
+identifier are returned</td>
+</tr>
 <tr class="row-even"><td><strong>Read-write members and methods:</strong></td>
 </tr>
 <tr class="row-odd"><td><strong>obj.node (n | x, y, z)</strong> &#8211; returns a (x, y, z) tuple storing coordinates of nth node;
