@@ -122,21 +122,24 @@ or inertia tensor (rigid kinematics) of the body</td>
 <tr class="row-even"><td><strong>obj.display_points</strong> &#8211; list of tuples of display point labels and coordinates:
 [(&#8216;label&#8217;, (x, y, z)), (&#8216;label&#8217;, (x, y, z)), ...]</td>
 </tr>
-<tr class="row-odd"><td><strong>Read/write members:</strong></td>
+<tr class="row-odd"><td><strong>obj.mesh</strong> &#8211; returns computational MESH associated with a &#8216;FINITE_ELEMENT&#8217; body; for other body
+kinds a MESH or a list of MESH objects is returned if such are present as components of the body shape</td>
 </tr>
-<tr class="row-even"><td><strong>obj.conf</strong> &#8211; tuple (q1, q2, ..., qN) storing configuration of the body. See <a class="reference internal" href="#body-conf"><span class="std std-numref">Table 5</span></a>.</td>
+<tr class="row-even"><td><strong>Read/write members:</strong></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.velo</strong> &#8211; tuple (u1, u2, ..., uN) storing velocity of the body. See <a class="reference internal" href="#body-velo"><span class="std std-numref">Table 6</span></a>.</td>
+<tr class="row-odd"><td><strong>obj.conf</strong> &#8211; tuple (q1, q2, ..., qN) storing configuration of the body. See <a class="reference internal" href="#body-conf"><span class="std std-numref">Table 5</span></a>.</td>
 </tr>
-<tr class="row-even"><td><strong>obj.selfcontact</strong> &#8211; self-contact detection flag (default: &#8216;OFF”) taking values &#8216;ON&#8217; or &#8216;OFF&#8217;</td>
+<tr class="row-even"><td><strong>obj.velo</strong> &#8211; tuple (u1, u2, ..., uN) storing velocity of the body. See <a class="reference internal" href="#body-velo"><span class="std std-numref">Table 6</span></a>.</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.scheme</strong> &#8211; time integration scheme (default: &#8216;DEFAULT&#8217;) used to integrate motion.
+<tr class="row-odd"><td><strong>obj.selfcontact</strong> &#8211; self-contact detection flag (default: &#8216;OFF”) taking values &#8216;ON&#8217; or &#8216;OFF&#8217;</td>
+</tr>
+<tr class="row-even"><td><strong>obj.scheme</strong> &#8211; time integration scheme (default: &#8216;DEFAULT&#8217;) used to integrate motion.
 See <a class="reference internal" href="#body-scheme"><span class="std std-numref">Table 7</span></a> and the <a class="reference internal" href="../theory/timeint.html#solfec-theory-timeint"><span class="std std-ref">Time integration manual page</span></a>.</td>
 </tr>
-<tr class="row-even"><td><strong>obj.damping</strong> &#8211; stiffness proportional damping coefficient (default: 0.0) for the dynamic case
+<tr class="row-odd"><td><strong>obj.damping</strong> &#8211; stiffness proportional damping coefficient (default: 0.0) for the dynamic case
 (ignored for rigid bodies).</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.fracturecheck</strong> &#8211; check fracture criterion for FEM bodies (&#8216;ON&#8217; or default: &#8216;OFF&#8217;).
+<tr class="row-even"><td><strong>obj.fracturecheck</strong> &#8211; check fracture criterion for FEM bodies (&#8216;ON&#8217; or default: &#8216;OFF&#8217;).
 <span class="red">(Under development)</span></td>
 </tr>
 </tbody>
