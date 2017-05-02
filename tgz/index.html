@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Posted in 2016 &#8212; PARMES  documentation</title>
+    <title>parmes.tar.gz &#8212; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -28,6 +28,8 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="About PARMES" href="../blog/about.html" />
+    <link rel="prev" title="Parmes VirtualBox Image" href="../vbox/index.html" />
   
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -35,8 +37,6 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
-  
-  <link rel="alternate" type="application/atom+xml"  href="../blog/atom.xml" title="Posted in 2016">
   
   
   <style type="text/css">
@@ -57,63 +57,40 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
+  <div class="section" id="parmes-tar-gz">
+<span id="tgz-index"></span><h1>parmes.tar.gz<a class="headerlink" href="#parmes-tar-gz" title="Permalink to this headline">¶</a></h1>
+<p>On a Unix system, you can download:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://drive.google.com/uc?export=download&amp;id=0B0lQ6Rj8GeMVWk9ZTEtTeTZ5YVE">parmes.tar.gz file</a></li>
+</ul>
+<p>and unpack it into a <code class="docutils literal"><span class="pre">parmes</span></code> directory by typing:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">xzvf</span> <span class="n">parmes</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>You can edit files:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">parmes/config/dynlb/Config.mak</span></code></li>
+<li><code class="docutils literal"><span class="pre">parmes/config/parmec/Config.mak</span></code></li>
+<li><code class="docutils literal"><span class="pre">parmes/config/solfec/Config.mak</span></code></li>
+</ul>
+<p>in order to set up compilation flags and paths. Then, you can enter the <code class="docutils literal"><span class="pre">parmec</span></code> directory and type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span>
+</pre></div>
+</div>
+<p>This will update the entire source code tree and recompile all software. <strong>Note, that all local changes inside of the parmes directory will be lost.</strong>
+Serial, shared memory parallel, and MPI parallel versions of the software are all compiled by default.</p>
+<p>The <code class="docutils literal"><span class="pre">parmec/Makefile</span></code> also supports the following targets:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">make</span> <span class="pre">update</span></code> to only update the source tree; this will also clean all object and executable files</li>
+<li><code class="docutils literal"><span class="pre">make</span> <span class="pre">compile</span></code> to compile everything</li>
+<li><code class="docutils literal"><span class="pre">make</span> <span class="pre">clean</span></code> to clean all object and executable files</li>
+<li><code class="docutils literal"><span class="pre">make</span> <span class="pre">code-update</span></code>, <code class="docutils literal"><span class="pre">make</span> <span class="pre">code-compile</span></code>, <code class="docutils literal"><span class="pre">make</span> <span class="pre">code-clean</span></code> to update, compile and clean a particular <code class="docutils literal"><span class="pre">code</span></code> &#8211; one of: <code class="docutils literal"><span class="pre">dynlb</span></code>, <code class="docutils literal"><span class="pre">parmec</span></code>, <code class="docutils literal"><span class="pre">solfec</span></code></li>
+</ul>
+</div>
+
   <div class="section">
-
-    <h1>
-      
-      Posted in
-      
-      2016
-      
-    </h1>
-    
-    
-
-    <div class="section">
-      <h2><a href="about.html">About PARMES</a></h2>
-
-      <ul class="ablog-archive">
-      <li>
-      
-        Jun 13, 2016
-      
-      </li>
-        
-
   
-  <li>Author:
-    
-      
-      <a href="author/tomek.html">Tomek</a>
-      
-    </li>
   
-
-  
-
-  
-
-  
-
-  
-  <li>Tag:
-    
-      
-      <a href="tag/parmes.html">parmes</a>
-      
-    </li>
-  
-  </ul>
-      <p>Hi. This website is an outlet for ideas and resources in the area of parallel computational mechanics
-and particulate media software. On and off, I have been working on one such software, <a class="reference internal" href="../solfec/index.html#solfec-index"><span class="std std-ref">SOLFEC</span></a>,
-which you will find gradually better documented here. There are also other computational codes and libraries,
-that I would like to share and write about. Some of those are included in the Navigation area.</p>
-
-      <p><a href="about.html">Read more ...</a></p>
-      <hr>
-    </div>
-    
-    
   </div>
 
           </div>
@@ -140,13 +117,13 @@ that I would like to share and write about. Some of those are included in the Na
 
 
 <h3>Navigation</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../solfec/index.html">SOLFEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vbox/index.html">VBOX</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tgz/index.html">TGZ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TGZ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../blog/about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../patreon.html">Patreon</a></li>
 </ul>
@@ -155,6 +132,8 @@ that I would like to share and write about. Some of those are included in the Na
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../vbox/index.html" title="previous chapter">Parmes VirtualBox Image</a></li>
+      <li>Next: <a href="../blog/about.html" title="next chapter">About PARMES</a></li>
   </ul></li>
 </ul>
 </div>
@@ -172,13 +151,13 @@ that I would like to share and write about. Some of those are included in the Na
   <ul>
     
     
-      <li><a href="hybrid_solver.html">Apr 27 - Hybrid solver in Solfec</a></li>
+      <li><a href="../blog/hybrid_solver.html">Apr 27 - Hybrid solver in Solfec</a></li>
     
-      <li><a href="about.html">Jun 13 - About PARMES</a></li>
+      <li><a href="../blog/about.html">Jun 13 - About PARMES</a></li>
     
   </ul>
 
-  <h3><a href="tag.html">Tags</a></h3>
+  <h3><a href="../blog/tag.html">Tags</a></h3>
   <style type="text/css">
     ul.ablog-cloud {list-style: none; overflow: auto;}
     ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
@@ -193,30 +172,30 @@ that I would like to share and write about. Some of those are included in the Na
     
       
       <li class="ablog-cloud ablog-cloud-3">
-        <a href="tag/parmec.html">parmec</a></li>
+        <a href="../blog/tag/parmec.html">parmec</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-3">
-        <a href="tag/parmes.html">parmes</a></li>
+        <a href="../blog/tag/parmes.html">parmes</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-3">
-        <a href="tag/solfec.html">solfec</a></li>
+        <a href="../blog/tag/solfec.html">solfec</a></li>
       
     
   </ul>
 
-  <h3><a href="archive.html">Archives</a></h3>
+  <h3><a href="../blog/archive.html">Archives</a></h3>
   <ul>
   
     
-    <li><a href="2017.html">2017 (1)</a></li>
+    <li><a href="../blog/2017.html">2017 (1)</a></li>
     
   
     
-    <li><a href="#">2016 (1)</a></li>
+    <li><a href="../blog/2016.html">2016 (1)</a></li>
     
   
   </ul>
@@ -232,6 +211,9 @@ that I would like to share and write about. Some of those are included in the Na
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
+      |
+      <a href="../_sources/tgz/index.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     
