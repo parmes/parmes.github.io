@@ -238,6 +238,21 @@ but their ratios) and applied to the local x direction of the generated shape.</
 </ul>
 </div>
 </div>
+<div class="section" id="ellip-mesh">
+<h2>ELLIP_MESH<a class="headerlink" href="#ellip-mesh" title="Permalink to this headline">¶</a></h2>
+<p>This routine creates a MESH object corresponding to an ellipsoid (tetrahedral elements are used).</p>
+<div class="topic">
+<p class="topic-title first">obj = ELLIP_MESH (center, radii, size, volid, surfid) <span class="red">(Under development)</span></p>
+<ul class="simple">
+<li>obj &#8211; created MESH object</li>
+<li>center &#8211; tuple (x, y, z) defining the center</li>
+<li>radii &#8211; tuple (rx, ry, rz) of ellipsoid radii</li>
+<li>size &#8211; mesh edge size</li>
+<li>volid &#8211; volume identifier</li>
+<li>surfid &#8211; surface identifier</li>
+</ul>
+</div>
+</div>
 <div class="section" id="tetrahedralize">
 <h2>TETRAHEDRALIZE<a class="headerlink" href="#tetrahedralize" title="Permalink to this headline">¶</a></h2>
 <p>This routine creates a tetrahedral mesh. <a class="reference external" href="http://wias-berlin.de/software/tetgen/">Tetgen</a> is invoked internally.</p>
@@ -366,6 +381,7 @@ system to the global cooridinate system</td>
 <li class="toctree-l4"><a class="reference internal" href="#hex">HEX</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#rough-hex">ROUGH_HEX</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#pipe">PIPE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ellip-mesh">ELLIP_MESH</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#tetrahedralize">TETRAHEDRALIZE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#sphere">SPHERE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ellip">ELLIP</a></li>
