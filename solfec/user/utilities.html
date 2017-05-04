@@ -365,6 +365,19 @@ but only from a Viewer script by selecting &#8216;run python script&#8217; in th
 </ul>
 </div>
 </div>
+<div class="section" id="register-base">
+<span id="solfec-user-utilities-register-base"></span><h2>REGISTER_BASE<a class="headerlink" href="#register-base" title="Permalink to this headline">¶</a></h2>
+<p>Register &#8216;BC&#8211;RO&#8217; or &#8216;BC&#8211;MODAL&#8217; base for the finite element <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY formulation</span></a>. Registering
+a reduced order or modal base saves memory when multiple instances of bodies employing the same base are used.</p>
+<div class="topic">
+<p class="topic-title first">REGISTER_BASE (solfec, base, label) <span class="red">(Under development)</span></p>
+<ul class="simple">
+<li>solfec &#8211; SOLFEC object</li>
+<li>base &#8211; base definition: <em>(val, vec)</em> where <em>val</em> is a list of eigenvalues and <em>vec</em> is a list of eigenvectors (stored contiguously one after another)</li>
+<li>label &#8211; unique string label</li>
+</ul>
+</div>
+</div>
 </div>
 
   <div class="section">
@@ -433,6 +446,7 @@ but only from a Viewer script by selecting &#8216;run python script&#8217; in th
 <li class="toctree-l4"><a class="reference internal" href="#body-mm-export">BODY_MM_EXPORT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#display-point">DISPLAY_POINT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#render">RENDER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-base">REGISTER_BASE</a></li>
 </ul>
 </li>
 </ul>
