@@ -59,7 +59,7 @@
             
   <div class="section" id="a-two-body-impact-problem">
 <span id="solfec-examples-hybrid-modeling-hs0"></span><h1>A two&#8211;body impact problem<a class="headerlink" href="#a-two-body-impact-problem" title="Permalink to this headline">¶</a></h1>
-<p>This is a simplest application of the <a class="reference internal" href="../../user/solvers.html#hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>. The input files for this example are
+<p>This is a simplest application of the <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>. The input files for this example are
 located in the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver0">solfec/examples/hybrid&#8211;solver0</a> directory.
 These are:</p>
 <ul class="simple">
@@ -142,16 +142,16 @@ The cube&#8217;s motion is <a class="reference internal" href="../../../parmec/i
 directory and be viewed using <a class="reference external" href="http://www.paraview.org">ParaView</a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For the sake of using hs0&#8211;parmec.py as Parmec input in Solfec&#8217;s <a class="reference internal" href="../../user/solvers.html#hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>,
+<p class="last">For the sake of using hs0&#8211;parmec.py as Parmec input in Solfec&#8217;s <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>,
 the &#8220;DEM&#8221; command in line 25 should remain commented out.</p>
 </div>
 <p><a class="reference internal" href="#hs0-lst2"><span class="std std-numref">Listing 2</span></a> includes the Solfec file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-1.py">hs0&#8211;solfec&#8211;1.py</a>.
 <a class="reference internal" href="../../user/solfec.html#solfec-user-solfec"><span class="std std-ref">SOLFEC object</span></a> is created in line 3, specifying the output directory as &#8216;out/hybrid&#8211;solver0&#8217; (relative where <em>solfec</em> is run from).
-<a class="reference internal" href="../../user/loads.html#solfec-user-gravity"><span class="std std-ref">Gravity</span></a> is applied in line 5. Volumetric <a class="reference internal" href="../../user/materials.html#solfec-user-material-bulkmat"><span class="std std-ref">&#8220;bulk&#8221; material</span></a> is created in line 7
-and <a class="reference internal" href="../../user/materials.html#solfec-user-material-surface"><span class="std std-ref">&#8220;suraface material&#8221;</span></a> for contact interactions is created in line 10. Then the lower <a class="reference internal" href="../../user/body.html#solfec-user-body"><span class="std std-ref">body</span></a> &#8220;bod1&#8221;
+<a class="reference internal" href="../../user/loads.html#solfec-command-gravity"><span class="std std-ref">Gravity</span></a> is applied in line 5. Volumetric <a class="reference internal" href="../../user/materials.html#solfec-command-bulk-material"><span class="std std-ref">&#8220;bulk&#8221; material</span></a> is created in line 7
+and <a class="reference internal" href="../../user/materials.html#solfec-command-surface-material"><span class="std std-ref">&#8220;suraface material&#8221;</span></a> for contact interactions is created in line 10. Then the lower <a class="reference internal" href="../../user/body.html#solfec-user-body"><span class="std std-ref">body</span></a> &#8220;bod1&#8221;
 is created in line 22. This is a <em>boundary body</em>, coinciding with the Parmec body defined in line 16 of <a class="reference internal" href="#hs0-lst1"><span class="std std-numref">Listing 1</span></a>. <em>This body will be used to transfer
 forces between Solfec and Parmec, and its motion will be driven by the Parmec model.</em>  The upper body &#8220;bod2&#8221; is created in line 26. In both cases Solfec&#8217;s
-<a class="reference internal" href="../../user/geometry.html#solfec-user-mesh"><span class="std std-ref">MESH</span></a> object is used to define geometry.</p>
+<a class="reference internal" href="../../user/geometry.html#solfec-command-mesh"><span class="std std-ref">MESH</span></a> object is used to define geometry.</p>
 <div class="literal-block-wrapper docutils container" id="hs0-lst2">
 <div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Listing of hs0&#8211;solfec&#8211;1.py</span><a class="headerlink" href="#hs0-lst2" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -232,14 +232,15 @@ forces between Solfec and Parmec, and its motion will be driven by the Parmec mo
 </pre></div>
 </td></tr></table></div>
 </div>
-<p>The <a class="reference internal" href="../../user/solvers.html#projected-newton"><span class="std std-ref">Newton solver</span></a> is created next in line 28. It will be used internally by the <a class="reference internal" href="../../user/solvers.html#hybrid-solver"><span class="std std-ref">hybrid solver</span></a> in order to resolve
-(non&#8211;smooth) contact interactions between the two bodies. The <a class="reference internal" href="../../user/solvers.html#hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a> itself is created further, in line 32. We pass the full relative
-path to the parmec input file &#8216;examples/hybrid-solver0/hs0-parmec.py&#8217;, which implies that the example will be run from the solfec source directory. The Solfec time
-step is used as the upper bound for the Parmec step. Knowing that Parmec numbers bodies starting from zero, we create a simple dictionary mapping, {0 : bod1.id},
-to define the &#8220;boundary bodies&#8221; through which forces are passed between the two codes. Finally, we pass the Newton solver object &#8220;ns&#8221; as the last argument.</p>
+<p>The <a class="reference internal" href="../../user/solvers.html#solfec-command-newton-solver"><span class="std std-ref">Newton solver</span></a> is created next in line 28. It will be used internally by the <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">hybrid solver</span></a>
+in order to resolve (non&#8211;smooth) contact interactions between the two bodies. The <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a> itself is created further, in line 32.
+We pass the full relative path to the parmec input file &#8216;examples/hybrid-solver0/hs0-parmec.py&#8217;, which implies that the example will be run from the solfec
+source directory. The Solfec time step is used as the upper bound for the Parmec step. Knowing that Parmec numbers bodies starting from zero, we create a simple
+dictionary mapping, {0 : bod1.id}, to define the &#8220;boundary bodies&#8221; through which forces are passed between the two codes. Finally, we pass the Newton solver
+object &#8220;ns&#8221; as the last argument.</p>
 <p>We note, that Parmec output intervals are not specified in this invocation of the hybrid solver. This means that Parmec will not create output files during the
-simulation. In lines 35 and 36 we define the Solfec output interval. Because the <a class="reference internal" href="../../user/simulation.html#solfec-user-output"><span class="std std-ref">&#8220;OUTPUT&#8221;</span></a> commands <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-output"><span class="std std-ref">coincide</span></a>
-in both codes, we need to explicitly call the Solfec command in this case. The input file is concluded with the <a class="reference internal" href="../../user/simulation.html#solfec-user-run"><span class="std std-ref">&#8220;RUN&#8221; command</span></a> (line 38),
+simulation. In lines 35 and 36 we define the Solfec output interval. Because the <a class="reference internal" href="../../user/simulation.html#solfec-command-output"><span class="std std-ref">&#8220;OUTPUT&#8221;</span></a> commands <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-output"><span class="std std-ref">coincide</span></a>
+in both codes, we need to explicitly call the Solfec command in this case. The input file is concluded with the <a class="reference internal" href="../../user/simulation.html#solfec-command-run"><span class="std std-ref">&#8220;RUN&#8221; command</span></a> (line 38),
 which executes a 10 second long simulation of the hybrid model.</p>
 <p>The example is run by calling</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solver0</span><span class="o">/</span><span class="n">hs0</span><span class="o">-</span><span class="n">solfec</span><span class="o">-</span><span class="mf">1.</span><span class="n">py</span>
@@ -251,7 +252,7 @@ which executes a 10 second long simulation of the hybrid model.</p>
 </div>
 <p>An example animation is included below:</p>
 <p align="center"><iframe width="640" height="360" src="//www.youtube.com/embed/osRepFXukDo?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference internal" href="#hs0-lst3"><span class="std std-numref">Listing 3</span></a> includes the second Solfec file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-2.py">hs0&#8211;solfec&#8211;2.py</a>.
-This input file demonstrates several more elaborate features of the <a class="reference internal" href="../../user/solvers.html#hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a> and of Solfec input usage in general:</p>
+This input file demonstrates several more elaborate features of the <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a> and of Solfec input usage in general:</p>
 <blockquote>
 <div><ul class="simple">
 <li>creation of Parmec output files (lines 32&#8211;36)</li>
@@ -430,7 +431,7 @@ Enabling this feature is demonstrated in lines 32&#8211;36, where the &#8220;par
 value &#8220;(tms0, 0.03)&#8221;. The &#8220;tms0&#8221; object is Parmec&#8217;s <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number, which in this case defines
 a variable output frequency for the Parmec output files. The second number, &#8220;0.03&#8221;, defines a constant time interval, at which
 <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-history"><span class="std std-ref">Parmec time histories</span></a> will be generated. These are requested in the following lines 38&#8211;40.
-This functionality (runtime generation of time histories) is matched in Solfec via application of a <a class="reference internal" href="../../user/simulation.html#solfec-user-callback"><span class="std std-ref">callback function</span></a>, as demonstrated in lines 42&#8211;51. These time histories are later used, in lines 59&#8211;73, in order to
+This functionality (runtime generation of time histories) is matched in Solfec via application of a <a class="reference internal" href="../../user/simulation.html#solfec-command-callback"><span class="std std-ref">callback function</span></a>, as demonstrated in lines 42&#8211;51. These time histories are later used, in lines 59&#8211;73, in order to
 create a plot of the vertical displacement versus time, for the lower and the upper body. The result is seen in <a class="reference internal" href="#hs0-fig2"><span class="std std-numref">Fig. 51</span></a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>

@@ -61,7 +61,7 @@
 <span id="solfec-user-simulation"></span><h1>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h1>
 <p>Routines listed in this section control the solution process.
 A simulation can be run be invoking the RUN command, documented below.</p>
-<div class="topic" id="solfec-user-run">
+<div class="topic" id="solfec-command-run">
 <p class="topic-title first">RUN (solfec, solver, duration)</p>
 <p>This routine runs a simulation.</p>
 <ul class="simple">
@@ -114,7 +114,7 @@ this is guaranteed if the input files for both analyses differ only by the presc
 <div class="section" id="runtime-utilities">
 <h2>Runtime utilities<a class="headerlink" href="#runtime-utilities" title="Permalink to this headline">¶</a></h2>
 <p>Routines below help control runtime behaviour.</p>
-<div class="topic" id="solfec-user-output">
+<div class="topic" id="solfec-command-output">
 <p class="topic-title first">OUTPUT (solfec, interval | compression)</p>
 <p>This routine specifies the frequency of writing to the output file.</p>
 <ul class="simple">
@@ -132,7 +132,7 @@ Compressed output files are smaller, although they might not be portable between
 <li>extents &#8211; (xmin, ymin, zmin, xmax, ymax, zmax) tuple</li>
 </ul>
 </div>
-<div class="topic" id="solfec-user-callback">
+<div class="topic" id="solfec-command-callback">
 <p class="topic-title first">CALLBACK (solfec, interval, data, callback)</p>
 <p>This routine defines a callback function, invoked during a run of Solfec every interval of time.
 A callback routine can interrupt the course of RUN command by returning 0.</p>
@@ -155,7 +155,7 @@ warnings enabled and only switch them off after making sure, that they can be ig
 <div class="section" id="contact-handling">
 <h2>Contact handling<a class="headerlink" href="#contact-handling" title="Permalink to this headline">¶</a></h2>
 <p>Routines listed below affect contact detection and contact handling.</p>
-<div class="topic" id="geometric-epsilon">
+<div class="topic" id="solfec-command-geometric-epsilon">
 <p class="topic-title first">GEOMETRIC_EPSILON (epsilon)</p>
 <p>This routine sets a numerical tolerance for geometric tests performed within Solfec.
 The tolerance is a characteristic distance between two distinct points below which they can be regarded as one.
@@ -194,7 +194,7 @@ run (do not use from within a callback).</p>
 <li>surf2 &#8211; second BODY object</li>
 </ul>
 </div>
-<div class="topic" id="contact-sparsify">
+<div class="topic" id="solfec-command-contact-sparsify">
 <p class="topic-title first">CONTACT_SPARSIFY (solfec, threshold | minarea, mindist)</p>
 <p>This routine modifies contact filtering (sparsification) behaviour. Generally speaking, some contact points
 are filtered out in order to avoid unnecessary dense contact point clusters. If a pair of bodies is connected
@@ -254,7 +254,7 @@ meet at it before they can continue). It is ignored in the serial mode.</p>
 <li>solfec &#8211; SOLFEC object</li>
 </ul>
 </div>
-<div class="topic" id="solfec-user-here">
+<div class="topic" id="solfec-command-here">
 <p class="topic-title first">ret = HERE (solfec, object)</p>
 <p>This routine tests whether an object is located on the current processor. During parallel runs
 objects migrate between processors. When calling a function (or a member) for an object not present

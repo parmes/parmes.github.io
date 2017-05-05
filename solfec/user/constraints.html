@@ -63,7 +63,7 @@
 Both, user prescribed constraints (routines below) and contact constraints (detected automatically) are
 represented by an object of the same type. See also, the <a class="reference internal" href="../theory/joints.html#solfec-theory-joints"><span class="std std-ref">Joints section</span></a>.</p>
 <div class="section" id="fix-point">
-<span id="id1"></span><h2>FIX_POINT<a class="headerlink" href="#fix-point" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-command-fix-point"></span><h2>FIX_POINT<a class="headerlink" href="#fix-point" title="Permalink to this headline">¶</a></h2>
 <p>This routine creates a <a class="reference internal" href="../theory/joints.html#fixed-point"><span class="std std-ref">fixed point constraint</span></a>.</p>
 <div class="topic">
 <p class="topic-title first">obj = FIX_POINT (body, point | strength)</p>
@@ -76,7 +76,7 @@ represented by an object of the same type. See also, the <a class="reference int
 </div>
 </div>
 <div class="section" id="fix-direction">
-<span id="id2"></span><h2>FIX_DIRECTION<a class="headerlink" href="#fix-direction" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-command-fix-direction"></span><h2>FIX_DIRECTION<a class="headerlink" href="#fix-direction" title="Permalink to this headline">¶</a></h2>
 <p>This routine fixes the motion of a referential point along a specified spatial direction.
 If body2 is given the motion of point2 along the direction convected with the first body is fixed.
 See also, formulation of the <a class="reference internal" href="../theory/joints.html#fixed-direction"><span class="std std-ref">fixed direction constraint</span></a>.</p>
@@ -93,7 +93,7 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 </div>
 </div>
 <div class="section" id="set-displacement">
-<span id="id3"></span><h2>SET_DISPLACEMENT<a class="headerlink" href="#set-displacement" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-command-set-displacement"></span><h2>SET_DISPLACEMENT<a class="headerlink" href="#set-displacement" title="Permalink to this headline">¶</a></h2>
 <p>This routine prescribes a displacement history of a referential point along a specified spacial direction.
 See also, formulation of the <a class="reference internal" href="../theory/joints.html#prescribed-displacement"><span class="std std-ref">prescribed displacement constraint</span></a>.</p>
 <div class="topic">
@@ -108,7 +108,7 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 </div>
 </div>
 <div class="section" id="set-velocity">
-<span id="id4"></span><h2>SET_VELOCITY<a class="headerlink" href="#set-velocity" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-command-set-velocity"></span><h2>SET_VELOCITY<a class="headerlink" href="#set-velocity" title="Permalink to this headline">¶</a></h2>
 <p>This routine prescribes a velocity history of a referential point along a specified spacial direction.
 See also, formulation of the <a class="reference internal" href="../theory/joints.html#prescribed-velocity"><span class="std std-ref">prescribed velocity constraint</span></a>.</p>
 <div class="topic">
@@ -123,7 +123,7 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 </div>
 </div>
 <div class="section" id="set-acceleration">
-<span id="id5"></span><h2>SET_ACCELERATION<a class="headerlink" href="#set-acceleration" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-command-set-acceleration"></span><h2>SET_ACCELERATION<a class="headerlink" href="#set-acceleration" title="Permalink to this headline">¶</a></h2>
 <p>This routine prescribes an acceleration history of a referential point along a specified spacial direction.
 See also, formulation of the <a class="reference internal" href="../theory/joints.html#prescribed-acceleration"><span class="std std-ref">prescribed acceleration constraint</span></a>.</p>
 <div class="topic">
@@ -138,7 +138,7 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 </div>
 </div>
 <div class="section" id="put-rigid-link">
-<span id="id6"></span><h2>PUT_RIGID_LINK<a class="headerlink" href="#put-rigid-link" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-command-put-rigid-link"></span><h2>PUT_RIGID_LINK<a class="headerlink" href="#put-rigid-link" title="Permalink to this headline">¶</a></h2>
 <p>This routine creates a rigid link constraints between two referential points of two distinct bodies.
 See also, formulation of the <a class="reference internal" href="../theory/joints.html#rigid-link"><span class="std std-ref">rigid link constraint</span></a>.</p>
 <div class="topic">
@@ -155,7 +155,7 @@ beyond which the link will be deleted (default: infinity); or ultimate reaction 
 </div>
 </div>
 <div class="section" id="put-spring">
-<span id="id7"></span><h2>PUT_SPRING<a class="headerlink" href="#put-spring" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-command-put-spring"></span><h2>PUT_SPRING<a class="headerlink" href="#put-spring" title="Permalink to this headline">¶</a></h2>
 <p>This routine creates an arbitrary spring between two referential points of two distinct bodies.
 See also, formulation of the <a class="reference internal" href="../theory/joints.html#simple-spring"><span class="std std-ref">spring constraint</span></a>.</p>
 <div class="topic">
@@ -188,8 +188,8 @@ or &#8216;CONV1&#8217; where <span class="math">\(\mathbf{n}\)</span> is convect
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a CONSTRAINT object, cf. <a class="reference internal" href="#constraint-params"><span class="std std-numref">Table 18</span></a>.</p>
-<table border="1" class="docutils" id="id8">
-<span id="constraint-params"></span><caption><span class="caption-number">Table 18 </span><span class="caption-text">CONSTRAINT object parameters.</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id1">
+<span id="constraint-params"></span><caption><span class="caption-number">Table 18 </span><span class="caption-text">CONSTRAINT object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>

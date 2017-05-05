@@ -73,13 +73,16 @@ once some analysis has been run. Routines listed in this section facilitate acce
 </div>
 </div>
 <div class="section" id="forward">
-<h2>FORWARD<a class="headerlink" href="#forward" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-command-forward"></span><h2>FORWARD<a class="headerlink" href="#forward" title="Permalink to this headline">¶</a></h2>
 <p>This routine steps forward within the simulation output file. Ignored in SOLFEC&#8217;s &#8216;WRITE&#8217; mode.</p>
 <div class="topic">
-<p class="topic-title first">FORWARD (solfec, steps)</p>
+<p class="topic-title first">FORWARD (solfec, steps | corotated_displacements)</p>
 <ul class="simple">
 <li>solfec &#8211; SOLFEC object</li>
 <li>steps &#8211; numbers of steps forward</li>
+<li>corotated_displacements &#8211; optional co&#8211;rotated displacements sampling flag; if &#8216;TRUE&#8217; and a call or multiple
+calls to <a class="reference internal" href="utilities.html#solfec-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> was/were made prior to FORWARD,
+sampling of co&#8211;rotated displacements will be enabled; default: &#8216;FALSE&#8217;</li>
 </ul>
 </div>
 </div>

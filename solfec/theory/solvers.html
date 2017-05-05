@@ -247,14 +247,14 @@ needs to be adjusted “by hand”. The automatic update formulas that can be fo
 For ill&#8211;conditioned problems one should pick <span class="math">\(\delta\)</span> that delivers an overall best convergence behavior. Large values will slow down convergence, but stabilize it;
 small values may destabilize convergence for ill&#8211;conditioned problems; <span class="math">\(\delta\)</span> (typically <span class="math">\(\ll1\)</span>) should be tuned together with <span class="math">\(\epsilon\)</span> and <span class="math">\(m\)</span>
 (e.g. find a suitably small <span class="math">\(\delta\)</span> first, then tweak <span class="math">\(\epsilon\)</span>). Since rigorous analysis is still missing for these parameters, please experiment before settling
-on specific values for a specific problem. Use linver = &#8216;GMRES&#8217; in <a class="reference internal" href="../user/solvers.html#projected-newton"><span class="std std-ref">NEWTON_SOLVER</span></a> to enable this variant (this is also the default).</p>
+on specific values for a specific problem. Use linver = &#8216;GMRES&#8217; in <a class="reference internal" href="../user/solvers.html#solfec-command-newton-solver"><span class="std std-ref">NEWTON_SOLVER</span></a> to enable this variant (this is also the default).</p>
 <ol class="arabic simple" start="2">
 <li>PQN2:</li>
 </ol>
 <div class="math">
 \[\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\left(1-\theta\right)\triangle\mathbf{R}^{k}-\theta\left(\mbox{diag}_{3\times3}\left[\nabla_{\omega}\mathbf{C}^{k}\right]\right)^{-1}\mathbf{C}^{k}\right]\]</div>
 <p>where <span class="math">\(\theta\in\left[0,1\right]\)</span> and the diagonal <span class="math">\(3\times3\)</span> blocks of <span class="math">\(\nabla_{\omega}\mathbf{C}^{k}\)</span> are directly inverted. This simple scheme is interesting
-because it converges for a sufficiently small <span class="math">\(\theta\)</span>, while it is essentially a nonlinear Jacobi&#8211;type method. Use linver = &#8216;DIAG&#8217; in <a class="reference internal" href="../user/solvers.html#projected-newton"><span class="std std-ref">NEWTON_SOLVER</span></a>
+because it converges for a sufficiently small <span class="math">\(\theta\)</span>, while it is essentially a nonlinear Jacobi&#8211;type method. Use linver = &#8216;DIAG&#8217; in <a class="reference internal" href="../user/solvers.html#solfec-command-newton-solver"><span class="std std-ref">NEWTON_SOLVER</span></a>
 to enable this variant.</p>
 <p>Both variants are summarized as algorithms below.</p>
 <p><strong>PQN1</strong> <span class="math">\(\left(\mathbf{R},\gamma,n,\omega,\delta,m,\epsilon\right)\)</span> <br />

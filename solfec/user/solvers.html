@@ -63,7 +63,7 @@
 of a simulation in order to resolve the equality and inequality constraints. User defined
 constraints and contact constraints are handled together as one nonlinear root finding problem.</p>
 <div class="section" id="gauss-seidel">
-<span id="id1"></span><h2>Gauss&#8211;Seidel<a class="headerlink" href="#gauss-seidel" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-command-gauss-seidel-solver"></span><h2>Gauss&#8211;Seidel<a class="headerlink" href="#gauss-seidel" title="Permalink to this headline">¶</a></h2>
 <p>An object of type GAUSS_SEIDEL_SOLVER represents a nonlinear block Gauss&#8211;Seidel solver,
 employed for the calculation of constraint reactions.</p>
 <div class="topic">
@@ -89,8 +89,8 @@ where for the returned value equal zero Solfec run is stopped</li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a GAUSS_SEIDEL_SOLVER object, cf. <a class="reference internal" href="#gauss-seidel-params"><span class="std std-numref">Table 19</span></a>.</p>
-<table border="1" class="docutils" id="id4">
-<span id="gauss-seidel-params"></span><caption><span class="caption-number">Table 19 </span><span class="caption-text">GAUSS_SEIDEL_SOLVER object parameters.</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id1">
+<span id="gauss-seidel-params"></span><caption><span class="caption-number">Table 19 </span><span class="caption-text">GAUSS_SEIDEL_SOLVER object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -125,8 +125,8 @@ cf. <a class="reference internal" href="#gauss-seidel-variant"><span class="std 
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table border="1" class="docutils" id="id5">
-<span id="gauss-seidel-error"></span><caption><span class="caption-number">Table 20 </span><span class="caption-text">Error codes of GAUSS_SEIDEL_SOLVER object.</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id2">
+<span id="gauss-seidel-error"></span><caption><span class="caption-number">Table 20 </span><span class="caption-text">Error codes of GAUSS_SEIDEL_SOLVER object.</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="25%" />
 <col width="75%" />
@@ -149,8 +149,8 @@ cf. <a class="reference internal" href="#gauss-seidel-variant"><span class="std 
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table border="1" class="docutils" id="id6">
-<span id="gauss-seidel-variant"></span><caption><span class="caption-number">Table 21 </span><span class="caption-text">Variants of parallel Gauss&#8211;Seidel update.</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id3">
+<span id="gauss-seidel-variant"></span><caption><span class="caption-number">Table 21 </span><span class="caption-text">Variants of parallel Gauss&#8211;Seidel update.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="25%" />
 <col width="75%" />
@@ -175,7 +175,7 @@ most cases. It servers as illustration.</td>
 </table>
 </div>
 <div class="section" id="projected-newton">
-<span id="id2"></span><h2>Projected Newton<a class="headerlink" href="#projected-newton" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-command-newton-solver"></span><h2>Projected Newton<a class="headerlink" href="#projected-newton" title="Permalink to this headline">¶</a></h2>
 <p>Object of type NEWTON_SOLVER represents a projected quasi&#8211;Newton constraints solver.
 If local dynamics is enabled (locdyn = &#8216;ON&#8217;) and iterations fail to converge,
 the Gauss&#8211;Seidel solver will be invoked, starting from the previous time step solution.
@@ -207,8 +207,8 @@ default: 0.25); smaller initial theta may improve overall convergence behavior</
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a NEWTON_SOLVER object, cf. <a class="reference internal" href="#newton-params"><span class="std std-numref">Table 22</span></a>.</p>
-<table border="1" class="docutils" id="id7">
-<span id="newton-params"></span><caption><span class="caption-number">Table 22 </span><span class="caption-text">NEWTON_SOLVER object parameters.</span><a class="headerlink" href="#id7" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id4">
+<span id="newton-params"></span><caption><span class="caption-number">Table 22 </span><span class="caption-text">NEWTON_SOLVER object parameters.</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -262,8 +262,8 @@ Currently only the the nonlinear Gauss&#8211;Seidel solver is enabled, making th
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a SICONOS_SOLVER object, cf. <a class="reference internal" href="#siconos-params"><span class="std std-numref">Table 23</span></a>.</p>
-<table border="1" class="docutils" id="id8">
-<span id="siconos-params"></span><caption><span class="caption-number">Table 23 </span><span class="caption-text">SICONOS_SOLVER object parameters.</span><a class="headerlink" href="#id8" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id5">
+<span id="siconos-params"></span><caption><span class="caption-number">Table 23 </span><span class="caption-text">SICONOS_SOLVER object parameters.</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -276,7 +276,7 @@ Currently only the the nonlinear Gauss&#8211;Seidel solver is enabled, making th
 </table>
 </div>
 <div class="section" id="hybrid-solver">
-<span id="id3"></span><h2>Hybrid solver<a class="headerlink" href="#hybrid-solver" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-command-hybrid-solver"></span><h2>Hybrid solver<a class="headerlink" href="#hybrid-solver" title="Permalink to this headline">¶</a></h2>
 <p>Hybrid solver allows to combine smooth rigid body nonlinear spring based <a class="reference internal" href="../../parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a> models with non&#8211;smooth SOLFEC models.
 The solver is supported both in the serial and MPI version of Solfec. The Parmec library is shared memory parallel and in the MPI mode this
 part of modeling is executed on MPI rank 0 process, employing maximum available shared memory parallelism.</p>
@@ -290,8 +290,8 @@ part of modeling is executed on MPI rank 0 process, employing maximum available 
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a HYBRID_SOLVER object, cf. <a class="reference internal" href="#hybrid-params"><span class="std std-numref">Table 24</span></a>.</p>
-<table border="1" class="docutils" id="id9">
-<span id="hybrid-params"></span><caption><span class="caption-number">Table 24 </span><span class="caption-text">HYBRID_SOLVER object parameters.</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<table border="1" class="docutils" id="id6">
+<span id="hybrid-params"></span><caption><span class="caption-number">Table 24 </span><span class="caption-text">HYBRID_SOLVER object parameters.</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
