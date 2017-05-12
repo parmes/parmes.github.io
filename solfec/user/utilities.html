@@ -316,7 +316,8 @@ vec = obj[1] list of eigen vectors (stored contiguously one after another)</li>
 <li>path &#8211; path to file where the results will be stored (to avoid recomputing if possible).
 Note, that if previous modal analysis results are found they are used rather then recomputed
 if the number of modes and num are the same. If num is different from the previous modes count,
-then new num modes is computed from scratch.</li>
+then new num modes is computed from scratch. <em>Note:</em> “.h5” extension is automatically added to
+the stored path;</li>
 <li>abstol &#8211; residual tolerance for the eigenvalue solver (default: 1E-11)</li>
 <li>maxiter &#8211; iterations bound for the eigenvalue solver (default: 100)</li>
 <li>verbose &#8211; &#8216;ON&#8217; or &#8216;OFF&#8217; verbosity flag for the eigenvalue solver (default: &#8216;OFF&#8217;)</li>
