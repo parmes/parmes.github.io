@@ -194,19 +194,20 @@ Only first order elements are supported at present.</td>
 <td>Total Lagrangian (default)</td>
 </tr>
 <tr class="row-odd"><td>&#8216;BC&#8217;</td>
-<td>Body co&#8211;rotational (one co&#8211;rotated frame per body, suitable for stiff bodies)</td>
+<td>Body co&#8211;rotational (one co&#8211;rotated frame per body, suitable for stiff bodies);
+See <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> for technical details</td>
 </tr>
 <tr class="row-even"><td>&#8216;BC&#8211;MODAL&#8217;</td>
 <td>Body co&#8211;rotational, modal approach; &#8216;DEF_LIM&#8217; integration scheme is always used for
 this formulation (there is no computational advantage in using &#8216;DEF_EXP&#8217; since all
 system matrices are diagonal); <em>Note:</em> the <strong>base</strong> argument must be passed;
-<span class="red">(Under development)</span></td>
+See <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> for technical details; <span class="red">(Under development)</span></td>
 </tr>
 <tr class="row-odd"><td>&#8216;BC&#8211;RO &#8216;</td>
 <td>Body co&#8211;rotational, reduced order approach; &#8216;DEF_LIM&#8217; integration scheme is always
 used for this formulation (there is no computational advantage in using &#8216;DEF_EXP&#8217;
 since all system matrices are dense); <em>Note:*</em> the <strong>base</strong> argument must be
-passed; <span class="red">(Under development)</span></td>
+passed; See <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> for technical details; <span class="red">(Under development)</span></td>
 </tr>
 </tbody>
 </table>
@@ -307,9 +308,8 @@ kinematics, energy and momentum conserving, conditionally stable</td>
 <td>pseudo&#8211;rigid,
 finite element</td>
 <td>Linearly implicit scheme similar to <a class="footnote-reference" href="#id8" id="id5">[3]</a>; energy and momentum conserving,
-stable for moderate to large steps; <em>NOTE:</em> if the time step is too large,
-artificial negative internal energy increments may be produced in
-the event of impacts</td>
+stable for moderate to large steps; See <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> for technical
+details</td>
 </tr>
 </tbody>
 </table>

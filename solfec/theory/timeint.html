@@ -68,7 +68,7 @@
 <p>And two variants of time integration for pseudo–rigid and finite–element kinematics:</p>
 <ul class="simple">
 <li>DEF_EXP &#8211; an explicit leap&#8211;frog scheme, cf. Section 5.1 in <a class="footnote-reference" href="#id8" id="id4">[2]</a></li>
-<li>DEF_LIM &#8211; a linearly implicit leap&#8211;frog scheme, <a class="footnote-reference" href="#id9" id="id5">[3]</a></li>
+<li>DEF_LIM &#8211; a linearly implicit leap&#8211;frog scheme, <a class="footnote-reference" href="#id9" id="id5">[3]</a> and <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a></li>
 </ul>
 <p>A time integration scheme is selected by modifying the <em>scheme</em> parameter of the <a class="reference internal" href="../user/body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a>.</p>
 <div class="section" id="rigid-integration">
@@ -117,7 +117,7 @@ out of a 3-vector <span class="math">\(\mathbf{\Psi}\)</span>, and <span class="
 <p>and in the linearly implicit case</p>
 <div class="math" id="equation-Aimp">
 <span class="eqno">(10)<a class="headerlink" href="#equation-Aimp" title="Permalink to this equation">¶</a></span>\[\mathbf{A}=\mathbf{M}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\mathbf{K}\left(\mathbf{q}^{t+h/2}\right)\text{ for DEF_LIM}\]</div>
-<p>The time step is denoted as <span class="math">\(h\)</span>.</p>
+<p>The time step is denoted as <span class="math">\(h\)</span>. See <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> for technical details.</p>
 </div>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
