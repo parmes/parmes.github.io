@@ -8,10 +8,10 @@
   <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
   <entry xml:base="http://parmes.org/blog/atom.xml">
     <title type="text">TR1: Co-rotated and reduced order time integrators</title>
-    <id>http://parmes.org/blog/reports.html</id>
+    <id>http://parmes.org/blog/tr1.html</id>
     <updated>2017-05-20T00:00:00Z</updated>
     <published>2017-05-20T00:00:00Z</published>
-    <link href="http://parmes.org/blog/reports.html" />
+    <link href="http://parmes.org/blog/tr1.html" />
     <author>
       <name>Tomek</name>
     </author>
