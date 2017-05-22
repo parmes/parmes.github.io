@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Rotating bar &#8212; PARMES  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/parmes.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="PARMES/blog">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="rotating-bar">
+<span id="solfec-examples-reduced-order-ro0"></span><h1>Rotating bar<a class="headerlink" href="#rotating-bar" title="Permalink to this headline">¶</a></h1>
+<p>This is a simplest application of the reduced order modeling functionality. This example is also included in <a class="reference internal" href="../../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>. The input files for
+this example are located in the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">solfec/examples/reduced&#8211;order0</a> directory.
+These are:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/README">README</a> &#8211; a text based specification of the problem</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-convtest.py">ro0&#8211;convtest.py</a> &#8211; convergence test runs and plotting</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-elong.py">ro0&#8211;elong.py</a> &#8211; elongation test runs and time history plotting</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-energy.py">ro0&#8211;energy.py</a> &#8211; energy balance test runs and time history plotting</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-gen-bases.py">ro0&#8211;gen&#8211;bases.py</a> &#8211; calculation of a reduced
+<a class="reference external" href="https://en.wikipedia.org/wiki/Principal_component_analysis">POD</a> base</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py">ro0&#8211;lib.py</a> &#8211; library functions used by other input files</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-run-all.py">ro0&#8211;run&#8211;all.py</a> &#8211; input file that runs all tests and generates all plots</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-view.py">ro0&#8211;view.py</a> &#8211; input file suitable for use with Solfec <a class="reference internal" href="../../running.html#solfec-running"><span class="std std-ref">viewer</span></a></li>
+</ul>
+<div class="figure align-center" id="id5">
+<span id="ro0-fig1"></span><a class="reference internal image-reference" href="../../../_images/ro0_mesh.png"><img alt="../../../_images/ro0_mesh.png" src="../../../_images/ro0_mesh.png" style="width: 20%;" /></a>
+<p class="caption"><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: geometry of the <span class="math">\(2\times2\times20\)</span> mesh.</span></p>
+</div>
+<p>A prismatic bar with <span class="math">\(x,y,z\)</span> dimensions <span class="math">\(0.1\times0.1\times1\mbox{ m}\)</span> and material parameters
+<span class="math">\(E\in\left\{ 200\mbox{E4 Pa},200\mbox{E9 Pa}\right\}\)</span>, <span class="math">\(\nu=0.26,\rho=7.8\mbox{E3 kg /}\mbox{m}^{3}\)</span>
+is rotating about the <span class="math">\(x\)</span>&#8211;axis with an initial angular velocity of <span class="math">\(1\mbox{ rad/s}\)</span>. We use the
+smaller Young&#8217;s modulus in most demonstrations since in this case the time scales of the rigid and deformable
+motions are not far apart. For <span class="math">\(E=200\mbox{E9 Pa}\)</span> the material parameters correspond to steel. In this
+case the time scale of elastic deformations is much faster then that of the rigid rotation. We use this material
+to test performance of the proposed integrators when applied with large time steps. In what follows, unless stated
+otherwise, the value <span class="math">\(E=200\mbox{E4}\)</span> is used by default.</p>
+<table class="docutils footnote" frame="void" id="id1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>An animation of the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a> rotating bar example.</td></tr>
+</tbody>
+</table>
+<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/c136dWHwWNU?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p>The bar is discretized with <span class="math">\(2\times2\times20\)</span> fully integrated trilinear hexahedral elements, <code class="xref std std-numref docutils literal"><span class="pre">ro0-fig1</span></code>
+and animation <a class="footnote-reference" href="#id1" id="id2">[1]</a>. This results in 576 degrees of freedom for the full order model. For the reduced order
+BC&#8211;RO approach we used 100 co&#8211;rotated displacement samples from the Total Lagrangian solution (with rigid rotation
+factored out) and 6 rigid motion modes (generated algebraically) as input for the <a class="reference external" href="http://pythonhosted.org/modred">Python modred package</a>
+and calculated 11 Proper Orthogonal Decomposition modes. In the current example, we also include the BC&#8211;MODAL approach,
+for which the 6 rigid modes where combined with deformable modes 14, 19, 26, 34, 39 (of the initial linearized system), picked by hand
+as visually corresponding to the predominantly longitudinal deformation of the bar. Hence, the BC&#8211;MODAL case also had 11 degrees of freedom.</p>
+<div class="figure align-center" id="id6">
+<span id="ro0-fig2"></span><a class="reference internal image-reference" href="../../../_images/ro0_elongation_d0.png"><img alt="../../../_images/ro0_elongation_d0.png" src="../../../_images/ro0_elongation_d0.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of the elongation for <span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span> and <span class="math">\(1\mbox{s}\)</span> runs.</span></p>
+</div>
+<div class="figure align-center" id="id7">
+<span id="ro0-fig3"></span><a class="reference internal image-reference" href="../../../_images/ro0_elongation_d0.05.png"><img alt="../../../_images/ro0_elongation_d0.05.png" src="../../../_images/ro0_elongation_d0.05.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of the elongation for <span class="math">\(h=1/64\mbox{s}, \eta\in\left\{ 0.01,0.05\right\}\)</span> and <span class="math">\(1\mbox{s}\)</span> runs.</span></p>
+</div>
+<p>We first compare the solutions for damped and undamped cases. <code class="xref std std-numref docutils literal"><span class="pre">ro0-fig2</span></code> illustrates the time history of the elongation
+of the bar, measured between the top and bottom center nodes, for undamped <span class="math">\(1\mbox{s}\)</span> runs with time steps
+<span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>. It can be seen that the results compare well between the formulations
+proposed here and the Total Lagrangian approach integrated in an analogous manner. A damped case is illustrated in <code class="xref std std-numref docutils literal"><span class="pre">ro0-fig3</span></code>
+for the large time step of <span class="math">\(h=1/64\mbox{s}\)</span>. Also in this case the agreement is good. The Total Lagrangian based solution
+deviates from the co&#8211;rotational solution since for the TL the stiffness matrix magnitude changes with configuration, which affects
+the stiffness proportional damping. We can conclude the 5 deformable modes used by the BC&#8211;RO and BC&#8211;MODAL approaches represent
+well the longitudinal oscillation accompanying the rotational motion of the bar.</p>
+<div class="figure align-center" id="id8">
+<span id="ro0-fig4"></span><a class="reference internal image-reference" href="../../../_images/ro0_energy_d0_100s.png"><img alt="../../../_images/ro0_energy_d0_100s.png" src="../../../_images/ro0_energy_d0_100s.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of total energy for <span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>  and <span class="math">\(100\mbox{s}\)</span> runs.</span></p>
+</div>
+<p><code class="xref std std-numref docutils literal"><span class="pre">ro0-fig4</span></code> illustrates the time history of the total energy of the bar for 100s runs with time steps
+<span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>. For all but the BC&#8211;RO approach, the small oscillation of energy remains
+bounded with time. The full space co&#8211;rotational BC approach is better behaved than BC&#8211;MODAL: in nearly coincides with the
+Total Lagrangian approach. The relatively small oscillation of energy, present in TL, BC, and BC&#8211;MODAL cases, is characteristic
+for the adopted time stepping and it has been also demonstrated <a class="footnote-reference" href="#id4" id="id3">[2]</a> on simpler model problems. The larger oscillation and dissipation
+of energy, clear in case of the BC&#8211;RO approach, remains a shortcoming and it may be addressed in future revisions of <a class="reference internal" href="../../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>.</p>
+<div class="figure align-center" id="id9">
+<span id="ro0-fig5"></span><a class="reference internal image-reference" href="../../../_images/ro0_convtest.png"><img alt="../../../_images/ro0_convtest.png" src="../../../_images/ro0_convtest.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: second order convergence of displacements for soft undamped (<span class="math">\(E=200\mbox{E4, }\eta=0\)</span>) and
+stiff damped (<span class="math">\(E=200\mbox{E9, }\eta=1/10^{6}\)</span>) materials.</span></p>
+</div>
+<p>The second order convergence rate is illustrated in <code class="xref std std-numref docutils literal"><span class="pre">ro0-fig5</span></code>. Two cases are considered: undamped motion
+of a soft bar <span class="math">\(E=200\mbox{E4}\)</span> and damped motion of stiff bar <span class="math">\(E=200\mbox{E9}\)</span>. In both cases the
+reference solution <span class="math">\(q_{ref}\)</span> was obtained at time <span class="math">\(t=1/2^{4}\mbox{s}\)</span> with time step <span class="math">\(h=1/2^{16}\mbox{s}\)</span>.
+For the softer material the time scales of the rigid and deformable motion are not far apart and hence it is easier
+to observe the second order convergence for larger time steps. For the stiffer model we used damping <span class="math">\(\eta=1/10^{6}\)</span>
+in order to damp out the high frequency oscillations that could not be well represented for the large time steps used here.</p>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0168927497000664">ANM, 25(2&#8211;3): 297&#8211;302, 1997.</a></td></tr>
+</tbody>
+</table>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">SOLFEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dynlb/index.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../parmec/index.html">PARMEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vbox/index.html">VBOX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tgz/index.html">TGZ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../trs/index.html">TRs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../blog/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../patreon.html">Patreon</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../../../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../blog/tr1_post.html">May 20 - TR1: Co-rotated and reduced order time integrators</a></li>
+    
+      <li><a href="../../../blog/hybrid_solver.html">Apr 27 - Hybrid solver in Solfec</a></li>
+    
+      <li><a href="../../../blog/about.html">Jun 13 - About PARMES</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../../blog/tag/parmec.html">parmec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../../blog/tag/parmes.html">parmes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../../blog/tag/reports.html">reports</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../../blog/tag/solfec.html">solfec</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../blog/2017.html">2017 (2)</a></li>
+    
+  
+    
+    <li><a href="../../../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../../../_sources/solfec/examples/reduced_order/ro0.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

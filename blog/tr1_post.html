@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>TR1: Co-rotated and reduced order time integrators &#8212; PARMES  documentation</title>
+    
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../blog/atom.xml" title="PARMES/blog">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="tr1-co-rotated-and-reduced-order-time-integrators">
+<span id="blog-tr1"></span><h1>TR1: Co-rotated and reduced order time integrators<a class="headerlink" href="#tr1-co-rotated-and-reduced-order-time-integrators" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="../trs/index.html#tr1"><span class="std std-ref">Technical Report 1</span></a> describes a linearly implicit time integration method
+combined with a family of finite element formulations:</p>
+<ul class="simple">
+<li>Total Lagrangian (TL)</li>
+<li>body co&#8211;rotational full mesh (BC)</li>
+<li>body co&#8211;rotational reduced order (BC&#8211;RO)</li>
+<li>body co&#8211;rotational modal (BC&#8211;MODAL)</li>
+</ul>
+<p>as they are implemented in <a class="reference internal" href="../solfec/index.html#solfec-index"><span class="std std-ref">Solfec</span></a>. These formulations allow to vary the amount of deformation
+expressed by a finite element mesh and facilitate saving computational time and storage. They may be helpful in the context
+of multibody modeling.</p>
+<p>The methods described in <a class="reference internal" href="../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> can be accessed by creating a <a class="reference internal" href="../solfec/user/body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a> as follows</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bdTL</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;TL&#39;</span><span class="p">)</span>
+<span class="n">bdTL</span><span class="o">.</span><span class="n">scheme</span> <span class="o">=</span> <span class="s1">&#39;DEF_LIM&#39;</span>
+
+<span class="n">bdBC</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;BC&#39;</span><span class="p">)</span>
+<span class="n">bdBC</span><span class="o">.</span><span class="n">scheme</span> <span class="o">=</span> <span class="s1">&#39;DEF_LIM&#39;</span>
+
+<span class="n">bdRO</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span>
+             <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;BC-RO&#39;</span><span class="p">,</span> <span class="n">base</span> <span class="o">=</span> <span class="n">pod_base</span><span class="p">)</span>
+
+<span class="n">dbMD</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span>
+             <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;BC-MODAL&#39;</span><span class="p">,</span> <span class="n">base</span> <span class="o">=</span> <span class="n">modal_base</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In case of the &#8216;BC&#8211;RO&#8217; and &#8216;BC&#8211;MODAL&#8217; the linearly implicit integrator is default.
+For &#8216;TL&#8217; and &#8216;BC&#8217; the default time integration scheme is &#8216;DEF_EXP&#8217; (<a class="reference internal" href="../solfec/user/body.html#solfec-body-scheme"><span class="std std-numref">Table 7</span></a>);
+we change it to &#8216;DEF_LIM&#8217; after body creation.</p>
+<p>The <em>base</em> format is a tuple of two lists</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="p">([</span><span class="n">eval1</span><span class="p">,</span> <span class="n">eval2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">evaln</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">evec11</span><span class="p">,</span> <span class="n">evec12</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">evec1m</span><span class="p">,</span>
+         <span class="n">evec21</span><span class="p">,</span> <span class="n">evec22</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">evec2m</span><span class="p">,</span>
+         <span class="o">...</span><span class="p">,</span> <span class="n">evecnm</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>where we assumed <em>n</em> base vectors of size <em>m</em>. The first list stores eigenvalues and the second list stores
+eigenvectors. <a class="reference internal" href="../solfec/user/utilities.html#solfec-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> and
+<a class="reference internal" href="../solfec/user/utilities.html#solfec-command-rigid-displacements"><span class="std std-ref">RIGID_DISPLACEMENTS</span></a> commands can be used together to sample
+displacements and generate a reduced base using <a class="reference external" href="https://pypi.python.org/pypi/modred">Python&#8217;s modred package</a>.
+<a class="reference internal" href="../solfec/user/utilities.html#solfec-command-modal-analysis"><span class="std std-ref">MODAL_ANALYSIS</span></a> command can be used to generate a modal base.</p>
+<p>Input decks for the rotating bar, pipe impact, and array excitation examples from <a class="reference internal" href="../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>
+can be respectively found in</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">solfec/examples/reduced&#8211;ordero0</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">solfec/example/reduced&#8211;order1</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">solfec/example/81array</a></li>
+</ul>
+<p>directories.</p>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  Previous: 
+  <a href="hybrid_solver.html">
+    
+    Hybrid solver in Solfec
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'parmes';
+        var disqus_identifier = '/blog/tr1_post/';
+        var disqus_title = 'TR1: Co-rotated and reduced order time integrators';
+        var disqus_url = 'http://parmes.org/blog/tr1_post';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../solfec/index.html">SOLFEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dynlb/index.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parmec/index.html">PARMEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vbox/index.html">VBOX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tgz/index.html">TGZ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../trs/index.html">TRs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../patreon.html">Patreon</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="hybrid_solver.html">Apr 27 - Hybrid solver in Solfec</a></li>
+    
+      <li><a href="about.html">Jun 13 - About PARMES</a></li>
+    
+  </ul>
+
+  <h3><a href="tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="tag/parmec.html">parmec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="tag/parmes.html">parmes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="tag/reports.html">reports</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="tag/solfec.html">solfec</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="2017.html">2017 (2)</a></li>
+    
+  
+    
+    <li><a href="2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../_sources/blog/tr1_post.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

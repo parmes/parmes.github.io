@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Pipe impact &#8212; PARMES  documentation</title>
+    
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/parmes.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="PARMES/blog">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pipe-impact">
+<span id="solfec-examples-reduced-order-ro1"></span><h1>Pipe impact<a class="headerlink" href="#pipe-impact" title="Permalink to this headline">¶</a></h1>
+<p>This example, also included in <a class="reference internal" href="../../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>, illustrates the reduced order modeling functionality on a pipe impact problem. The input files for
+this example are located in the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">solfec/examples/reduced&#8211;order1</a> directory.
+These are:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/README">README</a> &#8211; a text based specification of the problem</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-fem-bc.py">ro1&#8211;fem&#8211;bc.py</a> &#8211; finite element body co&#8211;rotated model</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-fem-tl.py">ro1&#8211;fem&#8211;tl.py</a> &#8211; finite element Total Lagrangian model</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-reduced.py">ro1&#8211;reduced.py</a> &#8211; finite element reduced order model</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py">ro1&#8211;lib.py</a> &#8211; library functions used by other input files</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-modred.py">ro1&#8211;modred.py</a> &#8211; calculation of a reduced
+<a class="reference external" href="https://en.wikipedia.org/wiki/Principal_component_analysis">POD</a> base</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-postp.py">ro1&#8211;postp.py</a> &#8211; post&#8211;processing script</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-run-all.py">ro1&#8211;run&#8211;all.py</a> &#8211; input file that runs all tests and generates all plots</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-view.py">ro1&#8211;view.py</a> &#8211; input file suitable for use with Solfec <a class="reference internal" href="../../running.html#solfec-running"><span class="std std-ref">viewer</span></a></li>
+</ul>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">SOLFEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dynlb/index.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../parmec/index.html">PARMEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../vbox/index.html">VBOX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tgz/index.html">TGZ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../trs/index.html">TRs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../blog/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../patreon.html">Patreon</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../../../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../../blog/tr1_post.html">May 20 - TR1: Co-rotated and reduced order time integrators</a></li>
+    
+      <li><a href="../../../blog/hybrid_solver.html">Apr 27 - Hybrid solver in Solfec</a></li>
+    
+      <li><a href="../../../blog/about.html">Jun 13 - About PARMES</a></li>
+    
+  </ul>
+
+  <h3><a href="../../../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../../blog/tag/parmec.html">parmec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../../blog/tag/parmes.html">parmes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../../blog/tag/reports.html">reports</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../../blog/tag/solfec.html">solfec</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../../blog/2017.html">2017 (2)</a></li>
+    
+  
+    
+    <li><a href="../../../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../../../_sources/solfec/examples/reduced_order/ro1.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
