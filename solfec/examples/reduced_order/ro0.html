@@ -28,6 +28,8 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Pipe impact" href="ro1.html" />
+    <link rel="prev" title="Reduced order modeling" href="../reduced_order.html" />
   
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
@@ -59,6 +61,10 @@
             
   <div class="section" id="rotating-bar">
 <span id="solfec-examples-reduced-order-ro0"></span><h1>Rotating bar<a class="headerlink" href="#rotating-bar" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Under construction</p>
+</div>
 <p>This is a simplest application of the reduced order modeling functionality. This example is also included in <a class="reference internal" href="../../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>. The input files for
 this example are located in the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">solfec/examples/reduced&#8211;order0</a> directory.
 These are:</p>
@@ -75,7 +81,7 @@ These are:</p>
 </ul>
 <div class="figure align-center" id="id5">
 <span id="ro0-fig1"></span><a class="reference internal image-reference" href="../../../_images/ro0_mesh.png"><img alt="../../../_images/ro0_mesh.png" src="../../../_images/ro0_mesh.png" style="width: 20%;" /></a>
-<p class="caption"><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: geometry of the <span class="math">\(2\times2\times20\)</span> mesh.</span></p>
+<p class="caption"><span class="caption-number">Fig. 58 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: geometry of the <span class="math">\(2\times2\times20\)</span> mesh.</span></p>
 </div>
 <p>A prismatic bar with <span class="math">\(x,y,z\)</span> dimensions <span class="math">\(0.1\times0.1\times1\mbox{ m}\)</span> and material parameters
 <span class="math">\(E\in\left\{ 200\mbox{E4 Pa},200\mbox{E9 Pa}\right\}\)</span>, <span class="math">\(\nu=0.26,\rho=7.8\mbox{E3 kg /}\mbox{m}^{3}\)</span>
@@ -91,7 +97,7 @@ otherwise, the value <span class="math">\(E=200\mbox{E4}\)</span> is used by def
 <tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>An animation of the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a> rotating bar example.</td></tr>
 </tbody>
 </table>
-<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/c136dWHwWNU?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p>The bar is discretized with <span class="math">\(2\times2\times20\)</span> fully integrated trilinear hexahedral elements, <code class="xref std std-numref docutils literal"><span class="pre">ro0-fig1</span></code>
+<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/c136dWHwWNU?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p>The bar is discretized with <span class="math">\(2\times2\times20\)</span> fully integrated trilinear hexahedral elements, <a class="reference internal" href="#ro0-fig1"><span class="std std-numref">Fig. 58</span></a>
 and animation <a class="footnote-reference" href="#id1" id="id2">[1]</a>. This results in 576 degrees of freedom for the full order model. For the reduced order
 BC&#8211;RO approach we used 100 co&#8211;rotated displacement samples from the Total Lagrangian solution (with rigid rotation
 factored out) and 6 rigid motion modes (generated algebraically) as input for the <a class="reference external" href="http://pythonhosted.org/modred">Python modred package</a>
@@ -100,25 +106,25 @@ for which the 6 rigid modes where combined with deformable modes 14, 19, 26, 34,
 as visually corresponding to the predominantly longitudinal deformation of the bar. Hence, the BC&#8211;MODAL case also had 11 degrees of freedom.</p>
 <div class="figure align-center" id="id6">
 <span id="ro0-fig2"></span><a class="reference internal image-reference" href="../../../_images/ro0_elongation_d0.png"><img alt="../../../_images/ro0_elongation_d0.png" src="../../../_images/ro0_elongation_d0.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of the elongation for <span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span> and <span class="math">\(1\mbox{s}\)</span> runs.</span></p>
+<p class="caption"><span class="caption-number">Fig. 59 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of the elongation for <span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span> and <span class="math">\(1\mbox{s}\)</span> runs.</span></p>
 </div>
 <div class="figure align-center" id="id7">
 <span id="ro0-fig3"></span><a class="reference internal image-reference" href="../../../_images/ro0_elongation_d0.05.png"><img alt="../../../_images/ro0_elongation_d0.05.png" src="../../../_images/ro0_elongation_d0.05.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of the elongation for <span class="math">\(h=1/64\mbox{s}, \eta\in\left\{ 0.01,0.05\right\}\)</span> and <span class="math">\(1\mbox{s}\)</span> runs.</span></p>
+<p class="caption"><span class="caption-number">Fig. 60 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of the elongation for <span class="math">\(h=1/64\mbox{s}, \eta\in\left\{ 0.01,0.05\right\}\)</span> and <span class="math">\(1\mbox{s}\)</span> runs.</span></p>
 </div>
-<p>We first compare the solutions for damped and undamped cases. <code class="xref std std-numref docutils literal"><span class="pre">ro0-fig2</span></code> illustrates the time history of the elongation
+<p>We first compare the solutions for damped and undamped cases. <a class="reference internal" href="#ro0-fig2"><span class="std std-numref">Fig. 59</span></a> illustrates the time history of the elongation
 of the bar, measured between the top and bottom center nodes, for undamped <span class="math">\(1\mbox{s}\)</span> runs with time steps
 <span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>. It can be seen that the results compare well between the formulations
-proposed here and the Total Lagrangian approach integrated in an analogous manner. A damped case is illustrated in <code class="xref std std-numref docutils literal"><span class="pre">ro0-fig3</span></code>
+proposed here and the Total Lagrangian approach integrated in an analogous manner. A damped case is illustrated in <a class="reference internal" href="#ro0-fig3"><span class="std std-numref">Fig. 60</span></a>
 for the large time step of <span class="math">\(h=1/64\mbox{s}\)</span>. Also in this case the agreement is good. The Total Lagrangian based solution
 deviates from the co&#8211;rotational solution since for the TL the stiffness matrix magnitude changes with configuration, which affects
 the stiffness proportional damping. We can conclude the 5 deformable modes used by the BC&#8211;RO and BC&#8211;MODAL approaches represent
 well the longitudinal oscillation accompanying the rotational motion of the bar.</p>
 <div class="figure align-center" id="id8">
 <span id="ro0-fig4"></span><a class="reference internal image-reference" href="../../../_images/ro0_energy_d0_100s.png"><img alt="../../../_images/ro0_energy_d0_100s.png" src="../../../_images/ro0_energy_d0_100s.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of total energy for <span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>  and <span class="math">\(100\mbox{s}\)</span> runs.</span></p>
+<p class="caption"><span class="caption-number">Fig. 61 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of total energy for <span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>  and <span class="math">\(100\mbox{s}\)</span> runs.</span></p>
 </div>
-<p><code class="xref std std-numref docutils literal"><span class="pre">ro0-fig4</span></code> illustrates the time history of the total energy of the bar for 100s runs with time steps
+<p><a class="reference internal" href="#ro0-fig4"><span class="std std-numref">Fig. 61</span></a> illustrates the time history of the total energy of the bar for 100s runs with time steps
 <span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>. For all but the BC&#8211;RO approach, the small oscillation of energy remains
 bounded with time. The full space co&#8211;rotational BC approach is better behaved than BC&#8211;MODAL: in nearly coincides with the
 Total Lagrangian approach. The relatively small oscillation of energy, present in TL, BC, and BC&#8211;MODAL cases, is characteristic
@@ -126,10 +132,10 @@ for the adopted time stepping and it has been also demonstrated <a class="footno
 of energy, clear in case of the BC&#8211;RO approach, remains a shortcoming and it may be addressed in future revisions of <a class="reference internal" href="../../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>.</p>
 <div class="figure align-center" id="id9">
 <span id="ro0-fig5"></span><a class="reference internal image-reference" href="../../../_images/ro0_convtest.png"><img alt="../../../_images/ro0_convtest.png" src="../../../_images/ro0_convtest.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: second order convergence of displacements for soft undamped (<span class="math">\(E=200\mbox{E4, }\eta=0\)</span>) and
+<p class="caption"><span class="caption-number">Fig. 62 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: second order convergence of displacements for soft undamped (<span class="math">\(E=200\mbox{E4, }\eta=0\)</span>) and
 stiff damped (<span class="math">\(E=200\mbox{E9, }\eta=1/10^{6}\)</span>) materials.</span></p>
 </div>
-<p>The second order convergence rate is illustrated in <code class="xref std std-numref docutils literal"><span class="pre">ro0-fig5</span></code>. Two cases are considered: undamped motion
+<p>The second order convergence rate is illustrated in <a class="reference internal" href="#ro0-fig5"><span class="std std-numref">Fig. 62</span></a>. Two cases are considered: undamped motion
 of a soft bar <span class="math">\(E=200\mbox{E4}\)</span> and damped motion of stiff bar <span class="math">\(E=200\mbox{E9}\)</span>. In both cases the
 reference solution <span class="math">\(q_{ref}\)</span> was obtained at time <span class="math">\(t=1/2^{4}\mbox{s}\)</span> with time step <span class="math">\(h=1/2^{16}\mbox{s}\)</span>.
 For the softer material the time scales of the rigid and deformable motion are not far apart and hence it is easier
@@ -172,8 +178,27 @@ in order to damp out the high frequency oscillations that could not be well repr
 
 
 <h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../index.html">SOLFEC</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">SOLFEC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../running.html">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../user.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theory.html">Theory Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../validation.html">Validation Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../xdmf.html">XDMF export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../applications.html">Applications</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../examples.html">Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../hybrid_modeling.html">Hybrid modeling</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../reduced_order.html">Reduced order modeling</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Rotating bar</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ro1.html">Pipe impact</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../81array.html">81 bricks array</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../vbox/index.html">VBOX</a></li>
@@ -188,6 +213,14 @@ in order to damp out the high frequency oscillations that could not be well repr
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">SOLFEC</a><ul>
+  <li><a href="../../examples.html">Solfec Examples</a><ul>
+  <li><a href="../reduced_order.html">Reduced order modeling</a><ul>
+      <li>Previous: <a href="../reduced_order.html" title="previous chapter">Reduced order modeling</a></li>
+      <li>Next: <a href="ro1.html" title="next chapter">Pipe impact</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
