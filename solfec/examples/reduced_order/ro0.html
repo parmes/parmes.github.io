@@ -65,8 +65,9 @@
 <p class="first admonition-title">Warning</p>
 <p class="last">Under construction</p>
 </div>
-<p>This is a simplest application of the reduced order modeling functionality. This example is also included in <a class="reference internal" href="../../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>. The input files for
-this example are located in the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">solfec/examples/reduced&#8211;order0</a> directory.
+<p>This is a simplest application of the reduced order modeling functionality. This example is also included in <a class="reference internal" href="../../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>:
+having a look into this technical report may be helpful. The input files for this example are located in the
+<a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">solfec/examples/reduced&#8211;order0</a> directory.
 These are:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/README">README</a> &#8211; a text based specification of the problem</li>
@@ -79,7 +80,7 @@ These are:</p>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-run-all.py">ro0&#8211;run&#8211;all.py</a> &#8211; input file that runs all tests and generates all plots</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-view.py">ro0&#8211;view.py</a> &#8211; input file suitable for use with Solfec <a class="reference internal" href="../../running.html#solfec-running"><span class="std std-ref">viewer</span></a></li>
 </ul>
-<div class="figure align-center" id="id5">
+<div class="figure align-center" id="id13">
 <span id="ro0-fig1"></span><a class="reference internal image-reference" href="../../../_images/ro0_mesh.png"><img alt="../../../_images/ro0_mesh.png" src="../../../_images/ro0_mesh.png" style="width: 20%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 58 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: geometry of the <span class="math">\(2\times2\times20\)</span> mesh.</span></p>
 </div>
@@ -94,7 +95,7 @@ otherwise, the value <span class="math">\(E=200\mbox{E4}\)</span> is used by def
 <table class="docutils footnote" frame="void" id="id1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>An animation of the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a> rotating bar example.</td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id11">2</a>)</em> An animation of the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a> rotating bar example.</td></tr>
 </tbody>
 </table>
 <p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/c136dWHwWNU?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p>The bar is discretized with <span class="math">\(2\times2\times20\)</span> fully integrated trilinear hexahedral elements, <a class="reference internal" href="#ro0-fig1"><span class="std std-numref">Fig. 58</span></a>
@@ -104,11 +105,11 @@ factored out) and 6 rigid motion modes (generated algebraically) as input for th
 and calculated 11 Proper Orthogonal Decomposition modes. In the current example, we also include the BC&#8211;MODAL approach,
 for which the 6 rigid modes where combined with deformable modes 14, 19, 26, 34, 39 (of the initial linearized system), picked by hand
 as visually corresponding to the predominantly longitudinal deformation of the bar. Hence, the BC&#8211;MODAL case also had 11 degrees of freedom.</p>
-<div class="figure align-center" id="id6">
+<div class="figure align-center" id="id14">
 <span id="ro0-fig2"></span><a class="reference internal image-reference" href="../../../_images/ro0_elongation_d0.png"><img alt="../../../_images/ro0_elongation_d0.png" src="../../../_images/ro0_elongation_d0.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 59 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of the elongation for <span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span> and <span class="math">\(1\mbox{s}\)</span> runs.</span></p>
 </div>
-<div class="figure align-center" id="id7">
+<div class="figure align-center" id="id15">
 <span id="ro0-fig3"></span><a class="reference internal image-reference" href="../../../_images/ro0_elongation_d0.05.png"><img alt="../../../_images/ro0_elongation_d0.05.png" src="../../../_images/ro0_elongation_d0.05.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 60 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of the elongation for <span class="math">\(h=1/64\mbox{s}, \eta\in\left\{ 0.01,0.05\right\}\)</span> and <span class="math">\(1\mbox{s}\)</span> runs.</span></p>
 </div>
@@ -120,7 +121,194 @@ for the large time step of <span class="math">\(h=1/64\mbox{s}\)</span>. Also in
 deviates from the co&#8211;rotational solution since for the TL the stiffness matrix magnitude changes with configuration, which affects
 the stiffness proportional damping. We can conclude the 5 deformable modes used by the BC&#8211;RO and BC&#8211;MODAL approaches represent
 well the longitudinal oscillation accompanying the rotational motion of the bar.</p>
-<div class="figure align-center" id="id8">
+<div class="literal-block-wrapper docutils container" id="ro0-lst1">
+<div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">Listing of a portion of ro0&#8211;elong.py responsible for creation of <a class="reference internal" href="#ro0-fig2"><span class="std std-numref">Fig. 59</span></a></span><a class="headerlink" href="#ro0-lst1" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">execfile</span> <span class="p">(</span><span class="n">dirpath</span> <span class="o">+</span> <span class="s1">&#39;/ro0-gen-bases.py&#39;</span><span class="p">)</span>
+  <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+  <span class="n">ro0_path_extension</span> <span class="p">(</span><span class="s1">&#39;-elong&#39;</span><span class="p">)</span>
+  <span class="nb">print</span> <span class="s1">&#39;================&#39;</span>
+  <span class="nb">print</span> <span class="s1">&#39;Elongation plots&#39;</span>
+  <span class="nb">print</span> <span class="s1">&#39;================&#39;</span>
+  <span class="c1"># Plot bar elongation history for:</span>
+  <span class="c1"># - all schemes</span>
+  <span class="c1"># - steps 1/64s and 1/256s</span>
+  <span class="c1"># - damping 0.0</span>
+  <span class="n">step_denom</span> <span class="o">=</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">256</span><span class="p">]</span>
+  <span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">step_denom</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="s1">&#39;Solving for step 1/</span><span class="si">%d</span><span class="s1"> and damping 0.0 ...&#39;</span> <span class="o">%</span> <span class="n">div</span>
+    <span class="nb">print</span> <span class="s1">&#39;FEM-TL ...&#39;</span><span class="p">,</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">ro0_model</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">div</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;TL&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">,</span>
+		     <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">runduration</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">FEM-BC ...&#39;</span><span class="p">,</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">ro0_model</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">div</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;BC&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">,</span>
+		     <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">runduration</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">FEM-BC-RO ...&#39;</span><span class="p">,</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">ro0_model</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">div</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;BC-RO&#39;</span><span class="p">,</span> <span class="n">pod_base</span><span class="p">,</span>
+	<span class="n">verbose</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">runduration</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">FEM-BC-MODAL ...&#39;</span><span class="p">,</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">ro0_model</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">div</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;BC-MODAL&#39;</span><span class="p">,</span> <span class="n">modal_base</span><span class="p">,</span>
+	    <span class="n">verbose</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">runduration</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="c1"># open in &#39;READ&#39; mode and retrieve time histories</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="n">ro0_times</span> <span class="p">(</span><span class="n">ro0_model</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">div</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;TL&#39;</span><span class="p">))</span>
+    <span class="n">l_tl</span> <span class="o">=</span> <span class="n">ro0_elongation</span> <span class="p">(</span><span class="n">ro0_model</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">div</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;TL&#39;</span><span class="p">))</span>
+    <span class="n">l_bc</span> <span class="o">=</span> <span class="n">ro0_elongation</span> <span class="p">(</span><span class="n">ro0_model</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">div</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;BC&#39;</span><span class="p">))</span>
+    <span class="n">l_bc_ro</span> <span class="o">=</span> <span class="n">ro0_elongation</span> <span class="p">(</span><span class="n">ro0_model</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">div</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+                                         <span class="s1">&#39;BC-RO&#39;</span><span class="p">,</span> <span class="n">pod_base</span><span class="p">))</span>
+    <span class="n">l_bc_modal</span> <span class="o">=</span> <span class="n">ro0_elongation</span> <span class="p">(</span><span class="n">ro0_model</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">div</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+                                    <span class="s1">&#39;BC-MODAL&#39;</span><span class="p">,</span> <span class="n">modal_base</span><span class="p">))</span>
+
+    <span class="nb">print</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">Plotting elongation history h=1/</span><span class="si">%d</span><span class="s1">, eta=0.0 ...&#39;</span> <span class="o">%</span> <span class="n">div</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">clf</span> <span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span> <span class="p">(</span><span class="s1">&#39;Rotating bar: elongation ($h = 1/</span><span class="si">%d</span><span class="s1">, \eta = 0.0$)&#39;</span> <span class="o">%</span> <span class="n">div</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span> <span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">l_tl</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;TL&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span> <span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">l_bc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;BC&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span> <span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">l_bc_ro</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;BC-RO&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span> <span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">l_bc_modal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;BC-MODAL&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span> <span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span> <span class="p">(</span><span class="s1">&#39;Elongation [m]&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="s1">&#39;upper right&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mf">0.15</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span> <span class="p">(</span><span class="s1">&#39;out/reduced-order0/ro0_elongation_h</span><span class="si">%d</span><span class="s1">_d0.png&#39;</span> <span class="o">%</span> <span class="n">div</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<p>Looking at the input code that helped to generate the above results, we can start with file
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-elong.py">ro0&#8211;elong.py</a>. <a class="reference internal" href="#ro0-lst1"><span class="std std-numref">Listing 6</span></a>
+includes a portion of this file responsible for generating <a class="reference internal" href="#ro0-fig2"><span class="std std-numref">Fig. 59</span></a>. In line 9 we execute the
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-gen-bases.py">ro0&#8211;gen&#8211;bases.py</a> file
+which generates reduced order and modal bases variables <code class="docutils literal"><span class="pre">pod_base</span></code> and <code class="docutils literal"><span class="pre">modal_base</span></code>, used in lines  40 and 42.
+We then use a library routine <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L9">ro0_path_extension</a>
+to include into the output directory path an extension specific to the elongation history tests. All library <code class="docutils literal"><span class="pre">ro0_*</span></code> subroutines are included in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py">ro0&#8211;lib.py</a> file, executed at the start,
+not shown here. In line 20 we start a loop over two time steps: 1/64s and 1/256s. For each time step, we run 1.0s long simulations
+using <code class="docutils literal"><span class="pre">'TL'</span></code>, <code class="docutils literal"><span class="pre">'BC'</span></code>, <code class="docutils literal"><span class="pre">'BC-RO</span></code>, <code class="docutils literal"><span class="pre">'BC-MODAL'</span></code> formulations, in lines 23&#8211;33, and then read the resulting time histories
+in lines 36&#8211;42. The <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L14">ro0_model</a> function
+creates a rotating bar model, runs the analysis, or reads the results, depending on parameters.
+The <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L180">ro0_times</a> function returners
+the time history of time itself. The <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L186">ro0_elongation</a>
+function reads and returns the time history of bar elongation, given a <a class="reference internal" href="../../user/solfec.html#solfec-user-solfec"><span class="std std-ref">SOLFEC object</span></a> in <code class="docutils literal"><span class="pre">'READ'</span></code> mode as an input.
+Finally, in lines 44&#8211;55, we use <a class="reference external" href="https://matplotlib.org">matplotlib</a> to generate figures that contribute to <a class="reference internal" href="#ro0-fig2"><span class="std std-numref">Fig. 59</span></a>.</p>
+<div class="literal-block-wrapper docutils container" id="ro0-lst2">
+<div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">Listing of ro0&#8211;gen&#8211;bases.py</span><a class="headerlink" href="#ro0-lst2" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># import model library routines</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">dirpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="n">execfile</span> <span class="p">(</span><span class="n">dirpath</span> <span class="o">+</span> <span class="s1">&#39;/ro0-lib.py&#39;</span><span class="p">)</span>
+
+<span class="c1"># Initialise POD and modal bases</span>
+<span class="k">try</span><span class="p">:</span>
+  <span class="kn">import</span> <span class="nn">pickle</span>
+  <span class="n">pod_base</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;out/reduced-order0/pod_base.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+  <span class="n">modal_base</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;out/reduced-order0/modal_base.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+<span class="k">except</span><span class="p">:</span>
+  <span class="n">ro0_path_extension</span> <span class="p">(</span><span class="s1">&#39;-init&#39;</span><span class="p">)</span>
+  <span class="nb">print</span> <span class="s1">&#39;==============&#39;</span>
+  <span class="nb">print</span> <span class="s1">&#39;Initialization&#39;</span>
+  <span class="nb">print</span> <span class="s1">&#39;==============&#39;</span>
+  <span class="n">sol</span> <span class="o">=</span> <span class="n">ro0_model</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="mi">256</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;TL&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="nb">print</span> <span class="s1">&#39;Samping displacements ...&#39;</span><span class="p">,</span>
+  <span class="n">rig</span> <span class="o">=</span> <span class="n">RIGID_DISPLACEMENTS</span> <span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">bodies</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+  <span class="n">defo</span> <span class="o">=</span> <span class="n">COROTATED_DISPLACEMENTS</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">bodies</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+  <span class="n">RUN</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">NEWTON_SOLVER</span><span class="p">(),</span> <span class="mf">1.0</span><span class="p">)</span>
+  <span class="nb">print</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">Calculating POD base ...&#39;</span>
+  <span class="n">pod_base</span> <span class="o">=</span> <span class="n">ro0_POD_base</span> <span class="p">(</span><span class="n">rig</span><span class="p">,</span> <span class="n">defo</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+  <span class="nb">print</span> <span class="s1">&#39;Calculating modal base ...&#39;</span>
+  <span class="n">modal_base</span> <span class="o">=</span> <span class="n">ro0_modal_base</span> <span class="p">()</span>
+
+  <span class="c1"># Save POD and modal bases</span>
+  <span class="kn">import</span> <span class="nn">pickle</span>
+  <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">pod_base</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;out/reduced-order0/pod_base.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">))</span> 
+  <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">modal_base</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;out/reduced-order0/modal_base.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">))</span> 
+</pre></div>
+</td></tr></table></div>
+</div>
+<p><a class="reference internal" href="#ro0-lst2"><span class="std std-numref">Listing 7</span></a> includes the <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-gen-bases.py">ro0&#8211;gen&#8211;bases.py</a>
+file. Because this code is used by multiple tests, in lines 9&#8211;10 we first attempt to read existing bases: one of the input files could have
+been called already and those bases may have been saved. If this is not the case, in lines 12&#8211;29 we generate and save the reduced order
+and modal bases. To generate the proper orthogonal decomposition reduced order base, we first create a Total Lagrangian model, in line 16,
+but do not run it yet (the <code class="docutils literal"><span class="pre">runduration</span></code> parameter of <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L14">ro0_model</a>
+is not used). Instead, we used the <a class="reference internal" href="../../user/utilities.html#solfec-command-rigid-displacements"><span class="std std-ref">RIGID_DISPLACEMENTS</span></a>
+and <a class="reference internal" href="../../user/utilities.html#solfec-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> commands in order to sample rigid and co&#8211;rotated deformable displacements,
+and then run the analysis in line 20. The rigid displacements <code class="docutils literal"><span class="pre">rig</span></code> and the sampled deformable displacements <code class="docutils literal"><span class="pre">defo</span></code> are then passed to the library
+routine <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L100">ro0_POD_base</a> which employs the <a class="reference external" href="https://pypi.python.org/pypi/modred">modred package</a> to calculate the reduced base. Following this, in line 24, the modal base is generated using library call
+to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L69">ro0_modal_base</a>, which employs Solfec&#8217;s utility
+function <a class="reference internal" href="../../user/utilities.html#solfec-command-modal-analysis"><span class="std std-ref">MODAL_ANALYSIS</span></a> in order to calculate the modal base.  Finally, the results are saved in lines 28 and 29.</p>
+<div class="figure align-center" id="id16">
 <span id="ro0-fig4"></span><a class="reference internal image-reference" href="../../../_images/ro0_energy_d0_100s.png"><img alt="../../../_images/ro0_energy_d0_100s.png" src="../../../_images/ro0_energy_d0_100s.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 61 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of total energy for <span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>  and <span class="math">\(100\mbox{s}\)</span> runs.</span></p>
 </div>
@@ -128,9 +316,11 @@ well the longitudinal oscillation accompanying the rotational motion of the bar.
 <span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>. For all but the BC&#8211;RO approach, the small oscillation of energy remains
 bounded with time. The full space co&#8211;rotational BC approach is better behaved than BC&#8211;MODAL: in nearly coincides with the
 Total Lagrangian approach. The relatively small oscillation of energy, present in TL, BC, and BC&#8211;MODAL cases, is characteristic
-for the adopted time stepping and it has been also demonstrated <a class="footnote-reference" href="#id4" id="id3">[2]</a> on simpler model problems. The larger oscillation and dissipation
-of energy, clear in case of the BC&#8211;RO approach, remains a shortcoming and it may be addressed in future revisions of <a class="reference internal" href="../../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>.</p>
-<div class="figure align-center" id="id9">
+for the adopted time stepping and it has been also demonstrated <a class="footnote-reference" href="#id12" id="id8">[2]</a> on simpler model problems. The larger oscillation and dissipation
+of energy, clear in case of the BC&#8211;RO approach, remains a shortcoming and it may be addressed in future revisions of <a class="reference internal" href="../../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>.
+We note, that the <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-energy.py">ro0&#8211;energy.py</a> input file
+was used to generate <a class="reference internal" href="#ro0-fig4"><span class="std std-numref">Fig. 61</span></a>.</p>
+<div class="figure align-center" id="id17">
 <span id="ro0-fig5"></span><a class="reference internal image-reference" href="../../../_images/ro0_convtest.png"><img alt="../../../_images/ro0_convtest.png" src="../../../_images/ro0_convtest.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 62 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: second order convergence of displacements for soft undamped (<span class="math">\(E=200\mbox{E4, }\eta=0\)</span>) and
 stiff damped (<span class="math">\(E=200\mbox{E9, }\eta=1/10^{6}\)</span>) materials.</span></p>
@@ -140,11 +330,25 @@ of a soft bar <span class="math">\(E=200\mbox{E4}\)</span> and damped motion of 
 reference solution <span class="math">\(q_{ref}\)</span> was obtained at time <span class="math">\(t=1/2^{4}\mbox{s}\)</span> with time step <span class="math">\(h=1/2^{16}\mbox{s}\)</span>.
 For the softer material the time scales of the rigid and deformable motion are not far apart and hence it is easier
 to observe the second order convergence for larger time steps. For the stiffer model we used damping <span class="math">\(\eta=1/10^{6}\)</span>
-in order to damp out the high frequency oscillations that could not be well represented for the large time steps used here.</p>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
+in order to damp out the high frequency oscillations that could not be well represented for the large time steps used here.
+<a class="reference internal" href="#ro0-fig5"><span class="std std-numref">Fig. 62</span></a> was generated using the
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-convtest.py">ro0&#8211;convtest.py</a> input file.</p>
+<p>To run this example and generate figures presented here, enter Solfec source directory and type</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">reduced</span><span class="o">-</span><span class="n">order0</span><span class="o">/</span><span class="n">ro0</span><span class="o">-</span><span class="n">run</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>After several minutes, when progress messages cease, figures are saved as <code class="docutils literal"><span class="pre">out/reduced-order0/*.png</span></code> files.
+To interactively view the animated bar, as in video <a class="footnote-reference" href="#id1" id="id11">[1]</a>, call</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="o">-</span><span class="n">v</span> <span class="n">examples</span><span class="o">/</span><span class="n">reduced</span><span class="o">-</span><span class="n">order0</span><span class="o">/</span><span class="n">ro0</span><span class="o">-</span><span class="n">view</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>You can type <code class="docutils literal"><span class="pre">o</span></code> in order to highlight the output path in the viewer and see which model you are currently looking at.
+You can switch between models using <code class="docutils literal"><span class="pre">&lt;</span></code> and <code class="docutils literal"><span class="pre">&gt;</span></code>. Right&#8211;click the mouse button to activate a drop&#8211;down menu and see
+other available options and keyboard shortcuts.</p>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0168927497000664">ANM, 25(2&#8211;3): 297&#8211;302, 1997.</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id8">[2]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0168927497000664">ANM, 25(2&#8211;3): 297&#8211;302, 1997.</a></td></tr>
 </tbody>
 </table>
 </div>
