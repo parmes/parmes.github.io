@@ -80,7 +80,85 @@ These are:</p>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-run-all.py">ro1&#8211;run&#8211;all.py</a> &#8211; input file that runs all tests and generates all plots</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-view.py">ro1&#8211;view.py</a> &#8211; input file suitable for use with Solfec <a class="reference internal" href="../../running.html#solfec-running"><span class="std std-ref">viewer</span></a></li>
 </ul>
+<div class="figure align-center" id="id3">
+<span id="ro1-fig1"></span><a class="reference internal image-reference" href="../../../_images/ro1_pipe.png"><img alt="../../../_images/ro1_pipe.png" src="../../../_images/ro1_pipe.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 63 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: initial, impact, and final configurations (left to right).</span></p>
 </div>
+<p>An elastic pipe free falls onto a block obstacle. <a class="reference internal" href="#ro1-fig1"><span class="std std-numref">Fig. 63</span></a> illustrates the initial, impact and final configurations.
+The inner pipe radius is 0.01 m, its thickness is 0.005 m, and its length is 0.1 m. The pipe lowest point is initially located
+0.025 m above the top surface of the block. <a class="reference internal" href="#ro1-fig2"><span class="std std-numref">Fig. 64</span></a> shows the characteristic points, used to extract results. Point
+p0 impacts the geometrical center of the block. Points p0, p1, p2, p3 are 0.025 m away from p4, when measuring along the pipe
+length. The pipe is made of <span class="math">\(36\times36\times4\)</span> fully integrated trilinear hexahedral elements. The elastic properties
+of the pipe are <span class="math">\(E=1\mbox{E7 Pa}\)</span>, <span class="math">\(\nu=0.25\)</span> and its density is <span class="math">\(\rho=1\mbox{E3 kg /}\mbox{m}^{3}\)</span>. The
+obstacle has dimensions <span class="math">\(0.01\times0.1\times0.01\mbox{ m}\)</span> and it is modeled as a geometrical boundary which does not
+contribute mass. The gravity along the z&#8211;direction is <span class="math">\(-10\text{ m/s}^{2}\)</span>. The simulation time step is 0.001 s, the
+duration is 0.1 s, and the amount of damping is <span class="math">\(\eta=1\text{E-4}\)</span>. Schemes TL, BC, and BC&#8211;RO are compared. 100 co&#8211;rotated
+displacement samples from the Total Lagrangian solution and 6 rigid motion modes are used as input for the <a class="reference external" href="http://pythonhosted.org/modred/">Python modred package</a>, to produce 18 Proper Orthogonal Decomposition modes for the BC&#8211;RO approach.</p>
+<div class="figure align-center" id="id4">
+<span id="ro1-fig2"></span><a class="reference internal image-reference" href="../../../_images/ro1_points.png"><img alt="../../../_images/ro1_points.png" src="../../../_images/ro1_points.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 64 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: mesh characteristic points.</span></p>
+</div>
+<p><a class="reference internal" href="#ro1-fig3"><span class="std std-numref">Fig. 65</span></a> illustrates the energy balance: in all cases the graphs coincide relatively well. While the BC approach closely
+follows the Total Lagrangian approach (TL), the reduced order BC&#8211;RO approach slightly deviates in its post-impact response.
+Similar general response characteristic can be seen in <a class="reference internal" href="#ro1-fig4"><span class="std std-numref">Fig. 66</span></a>, <a class="reference internal" href="#ro1-fig5"><span class="std std-numref">Fig. 67</span></a>, <a class="reference internal" href="#ro1-fig6"><span class="std std-numref">Fig. 68</span></a>, where other
+types of results are compared: we have some variation in the post&#8211;impact response, while overall the results match. We note,
+that the rotation angle in <a class="reference internal" href="#ro1-fig4"><span class="std std-numref">Fig. 66</span></a> was calculated using</p>
+<div class="math">
+\[\text{angle}=\arcsin\left(\frac{\text{p5}-\text{p4}}{\left|\text{p5}-\text{p4}\right|}\times\left(-1,0,0\right)\right)\text{.}\]</div>
+<p><a class="reference internal" href="#ro1-tab1"><span class="std std-numref">Table 30</span></a> illustrates the runtime and storage statistics. The body co&#8211;rotational (BC) approach is about 6 times faster than
+TL; the reduced order (BC&#8211;RO) approach is about 50 time faster and requires about 50 times less storage. The animated output of this
+example can be seen in video <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
+<div class="figure align-center" id="id5">
+<span id="ro1-fig3"></span><a class="reference internal image-reference" href="../../../_images/ro1_energy.png"><img alt="../../../_images/ro1_energy.png" src="../../../_images/ro1_energy.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 65 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: kinetic (left), and internal energy between <span class="math">\(t=0.05\text{s}\)</span> and <span class="math">\(t=0.1\text{s}\)</span>.</span></p>
+</div>
+<div class="figure align-center" id="id6">
+<span id="ro1-fig4"></span><a class="reference internal image-reference" href="../../../_images/ro1_p4zp5z_rot.png"><img alt="../../../_images/ro1_p4zp5z_rot.png" src="../../../_images/ro1_p4zp5z_rot.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 66 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: z&#8211;coordinates of points p4, p5 (left), and pipe rotation angle (about y)
+between <span class="math">\(t=0.05\text{s}\)</span> and <span class="math">\(t=0.1\text{s}\)</span>.</span></p>
+</div>
+<div class="figure align-center" id="id7">
+<span id="ro1-fig5"></span><a class="reference internal image-reference" href="../../../_images/ro1_diameters.png"><img alt="../../../_images/ro1_diameters.png" src="../../../_images/ro1_diameters.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 67 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: inner <span class="math">\(\left|\text{p2}-\text{p3}\right|\)</span> (left), and outer <span class="math">\(\left|\text{p0}-\text{p1}\right|\)</span>
+pipe diameter in the contact area between <span class="math">\(t=0.05\text{s}\)</span> and <span class="math">\(t=0.1\text{s}\)</span>.</span></p>
+</div>
+<div class="figure align-center" id="id8">
+<span id="ro1-fig6"></span><a class="reference internal image-reference" href="../../../_images/ro1_p0p2_mises.png"><img alt="../../../_images/ro1_p0p2_mises.png" src="../../../_images/ro1_p0p2_mises.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 68 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: inner point p0 (left), and outer point p2 MISES stress between <span class="math">\(t=0.05\text{s}\)</span> and <span class="math">\(t=0.1\text{s}\)</span>.</span></p>
+</div>
+<table border="1" class="docutils" id="id9">
+<span id="ro1-tab1"></span><caption><span class="caption-number">Table 30 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: runtime and storage comparison.</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="32%" />
+<col width="22%" />
+<col width="23%" />
+<col width="23%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Formulation</td>
+<td>TL</td>
+<td>BC</td>
+<td>BC&#8211;RO</td>
+</tr>
+<tr class="row-even"><td>Runtime [s]</td>
+<td>101</td>
+<td>16.2</td>
+<td>2.0</td>
+</tr>
+<tr class="row-odd"><td>Storage [MB]</td>
+<td>13</td>
+<td>13</td>
+<td>0.264</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>An animation of the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a> pipe impact example.</td></tr>
+</tbody>
+</table>
+<p align="center"><iframe width="640" height="360" src="//www.youtube.com/embed/RoSfE7-7ZH8?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p></div>
 
   <div class="section">
   
