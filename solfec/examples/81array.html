@@ -73,13 +73,332 @@ directory. These are:</p>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81array.py">81array.py</a> &#8211; array excitation analysis input file</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81fbi.py">81fbi.py</a> &#8211; fuel brick impact test input file</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81postp.py">81postp.py</a> &#8211; post-processing script for the 81array.py input deck</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81array.inp">81array[*].inp files</a> &#8211; ABAQUS input decks used by 81array.py</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81fbi.inp">81fbi[*].inp files</a> &#8211; ABAQUS input decks used by 81fbi.py</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81array.inp">81array[*].inp files</a> &#8211; <a class="reference external" href="https://en.wikipedia.org/wiki/Abaqus">ABAQUS</a> input decks used by 81array.py</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81fbi.inp">81fbi[*].inp files</a> &#8211; <a class="reference external" href="https://en.wikipedia.org/wiki/Abaqus">ABAQUS</a> input decks used by 81fbi.py</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array">81array[*]base.pikle.gz files</a> &#8211; saved reduced
 <a class="reference external" href="https://en.wikipedia.org/wiki/Principal_component_analysis">POD</a> base files used by 81array.py and 81fbi.py</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array">FB[*].csv files</a> &#8211; experimental results curves used by 81postp.py</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array">ts81.py.bz2 file</a> &#8211; compressed time history of a seisimic excitation signal used by 81array.py</li>
 </ul>
+<div class="figure align-center" id="id9">
+<span id="array-fig1"></span><a class="reference internal image-reference" href="../../_images/81rig.png"><img alt="../../_images/81rig.png" src="../../_images/81rig.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 69 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: experimental setup of the experiment.</span></p>
+</div>
+<p>The experiment behind this example comes from the context of the civil nuclear power generation in the UK.
+A series of dynamic tests were carried out by National Nuclear Corporation in 1985 as part of the seismic
+endorsement of the Heysham II / Torness AGR <a class="footnote-reference" href="#id6" id="id3">[*]</a> core design. These tests used an array of 81 graphite bricks
+as shown in <a class="reference internal" href="#array-fig1"><span class="std std-numref">Fig. 69</span></a>, consisting of alternating ‘fuel’ and ‘interstitial’ bricks. The array was
+mounted in a rigid frame on a shaker table. The boundary frame was driven in the horizontal plane with synthesized
+seismic or swept&#8211;sine input motions in either one or both axes simultaneously. Measurements were taken of the
+resulting velocities of certain bricks in the array (determined from accelerometer data) and also of the forces
+within the keying system (using load cells built into some components). Some details of the experimental setup
+has been described in <a class="footnote-reference" href="#id7" id="id4">[1]</a> and <a class="footnote-reference" href="#id8" id="id5">[2]</a>. We note, that this example is also called the “81 bricks array”, or simply
+the “81 array”, because the total number of unconstrained fuel and interstitial bricks is 81.</p>
+<div class="figure align-center" id="id10">
+<span id="array-fig2"></span><a class="reference internal image-reference" href="../../_images/81mesh.png"><img alt="../../_images/81mesh.png" src="../../_images/81mesh.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 70 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: meshed model (base mesh).</span></p>
+</div>
+<p>In the current demonstration we bypass many of the details of our mechanical model. The ultimate aim is modeling
+the entire AGR core (<span class="math">\(\sim5\text{K}\)</span> fuel bricks), hence we are in the search for the lowest possible resolution
+model. We are going to demonstrate some results for two mesh densities: denoted as a &#8220;basic mesh&#8221; and a &#8220;fine mesh&#8221;,
+cf. <a class="reference internal" href="#array-tab1"><span class="std std-numref">Table 31</span></a>. The basic meshed model is presented in <a class="reference internal" href="#array-fig2"><span class="std std-numref">Fig. 70</span></a>. As in the experiment all
+bodies are vertically restrained so that they move in a frictionless manner in the horizontal plane. Since the behavior
+of the assembly is essentially two dimensional the number of elements along the height is kept to minimum. In
+<a class="reference internal" href="#array-fig3"><span class="std std-numref">Fig. 71</span></a> one can see that the number of elements used in the horizontal brick sections is also small.
+For fuel brick meshes the error in the lowest eigenmodes corresponding to planar squeezing is below 35% (as compared
+with finer meshes), which we tentatively accept in the quest for a lowest possible resolution model.</p>
+<div class="figure align-center" id="id11">
+<span id="array-fig3"></span><a class="reference internal image-reference" href="../../_images/81module_fbi.png"><img alt="../../_images/81module_fbi.png" src="../../_images/81module_fbi.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 71 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: array module closeup (left: base mesh) and the binary impact test (right: fine mesh).</span></p>
+</div>
+<table border="1" class="docutils" id="id12">
+<span id="array-tab1"></span><caption><span class="caption-number">Table 31 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: base and fine mesh statistics. There are 61 fuel bricks, 60 interstitial bricks, and 100 loose keys in each case.</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="14%" />
+<col width="16%" />
+<col width="7%" />
+<col width="14%" />
+<col width="23%" />
+<col width="13%" />
+<col width="15%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="3">&nbsp;</td>
+<td>Fuel brick</td>
+<td>Interstitial brick</td>
+<td>Loose key</td>
+<td>Model total</td>
+</tr>
+<tr class="row-even"><td rowspan="2">BC</td>
+<td>base mesh</td>
+<td rowspan="4">DOFs</td>
+<td>432</td>
+<td>456</td>
+<td>24</td>
+<td>56112</td>
+</tr>
+<tr class="row-odd"><td>fine mesh</td>
+<td>1512</td>
+<td>456</td>
+<td>24</td>
+<td>121992</td>
+</tr>
+<tr class="row-even"><td rowspan="2">BC&#8211;RO</td>
+<td>base mesh</td>
+<td>64</td>
+<td>64</td>
+<td>24</td>
+<td>10144</td>
+</tr>
+<tr class="row-odd"><td>fine mesh</td>
+<td>64</td>
+<td>64</td>
+<td>24</td>
+<td>10144</td>
+</tr>
+</tbody>
+</table>
+<p>The following material parameters were assumed for the graphite used in the experiment: 1.18E10Pa for Young&#8217;s modulus,
+0.21 for Poisson&#8217;s ratio, and for mass density 1688kg/<span class="math">\(\mbox{m}^{3}\)</span>, 1637kg/<span class="math">\(\mbox{m}^{3}\)</span>, 1740kg/<span class="math">\(\mbox{m}^{3}\)</span>
+for respectively fuel bricks, interstitial bricks and loose keys (the mass densities were tuned to obtain the total brick
+weights reported in the experiment). The coefficient of Coulomb&#8217;s friction was assumed 0.1. Among several simple impact tests
+performed in the preliminary experimental work, a binary impact between fuel bricks was <a class="reference internal" href="#array-fig3"><span class="std std-numref">Fig. 71</span></a> (right). A range
+of relative input velocities was used (5-35 cm/s) for which the ratio of the output velocity to the input velocity remained
+consistently in the area of 0.9. It should be noted that due to geometrical setup, this particular type of impact is not present
+in our full array model. We then have two independent experiments, which we try to validate simultaneously.</p>
+<p>We use three families of models: solely rigid (RG), body co-rotational (BC), and reduced order (BC&#8211;RO). In all cases
+the time step is 0.0001s.  Co&#8211;rotated displacements from the BC simulation were sampled at 0.02s intervals and together
+with the 6 algebraically generated rigid modes, for each distinct mesh instance, served as an input for the
+<a class="reference external" href="http://pythonhosted.org/modred/">Python modred package</a>, to produce POD bases for the BC-RO approach: 64 modes were
+used for both the fuel and the interstitial bricks. The loose keys were modeled as single elements based on the co&#8211;rotated
+BC approach. For the deformable models we used damping <span class="math">\(\eta=\mbox{1E-7}\)</span>, which, for the finer mesh, roughly reproduced
+the required macroscopic velocity restitution of 0.9 for the binary impact test from <a class="reference internal" href="#array-fig1"><span class="std std-numref">Fig. 69</span></a> (right): restitution
+of 0.91 was produced by the BC approach, and 0.86 by BC&#8211;RO. For the basic mesh, the reproduced coefficient of restitution was
+0.85 for the BC approach, and 0.82 for BC&#8211;RO. In case of the rigid body model the impact restitution was zero, resulting in
+a totally passive response.</p>
+<p>In the initial validation of the entire array model we aimed at reproducing a swept&#8211;sine constant amplitude acceleration test.
+In the experiment the array was subject to a 3s 3Hz settling dwell at start, followed by a 3Hz to 10Hz sweep with 0.1Hz/s buildup
+rate and constant amplitude of 0.3g, all this amounting to the total duration of 72s. The sweep direction was aligned with one
+of the sides of the array. Linear velocity histories of the centre points of several bricks were recorded at 50Hz. Magnitudes
+of these velocities were then averaged using 0.1Hz window and plotted as time series normalized by the corresponding magnitudes
+of the input velocity.</p>
+<p>The input acceleration signal produces a smoothly decaying envelope of displacement, which given a fixed amount of clearance between
+bricks, initially builds up their &#8220;rattling&#8221; interactions and then passes a threshold beyond which interactions cease. Initially
+the displacements are much larger than the clearance and the entire array is swept back and forth. When the boundary displacements
+reach the level of the clearance (few mm) the kinetic energy starts being injected into higher modes of the system. This builds up
+a peak in the velocity response. When the input displacements fall below the clearance distance the bricks disengage and there is
+a drop in the velocity response.</p>
+<div class="figure align-center" id="id13">
+<span id="array-fig4"></span><a class="reference internal image-reference" href="../../_images/81velo_BC.png"><img alt="../../_images/81velo_BC.png" src="../../_images/81velo_BC.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 72 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
+BC&#8211;base and BC&#8211;fine denote the body co&#8211;rotational formulation using respectively the base and the fine mesh.</span></p>
+</div>
+<div class="figure align-center" id="id14">
+<span id="array-fig5"></span><a class="reference internal image-reference" href="../../_images/81velo_RO.png"><img alt="../../_images/81velo_RO.png" src="../../_images/81velo_RO.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 73 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
+RO&#8211;base and RO&#8211;fine denote the reduced order formulation using respectively the base and the fine mesh.</span></p>
+</div>
+<div class="figure align-center" id="id15">
+<span id="array-fig6"></span><a class="reference internal image-reference" href="../../_images/81velo_BC_RO_base.png"><img alt="../../_images/81velo_BC_RO_base.png" src="../../_images/81velo_BC_RO_base.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 74 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
+BC&#8211;base and RO&#8211;base are respectively the BC and the BC&#8211;RO formulations, both using the base mesh.</span></p>
+</div>
+<div class="figure align-center" id="id16">
+<span id="array-fig7"></span><a class="reference internal image-reference" href="../../_images/81velo_BC_RO_fine.png"><img alt="../../_images/81velo_BC_RO_fine.png" src="../../_images/81velo_BC_RO_fine.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 75 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
+BC&#8211;fine and RO&#8211;fine are respectively the BC and the BC&#8211;RO formulations, both using the fine mesh.</span></p>
+</div>
+<p><a class="reference internal" href="#array-fig4"><span class="std std-numref">Fig. 72</span></a> &#8211; <a class="reference internal" href="#array-fig7"><span class="std std-numref">Fig. 75</span></a> show time histories of normalized output velocity magnitudes for selected fuel
+and interstitial bricks, compared with those obtained in the experiment. One can see that relatively good agreement is obtained
+for all combinations of base and fine FE meshes combined with the body co&#8211;rotational (BC) and reduced order BC&#8211;RO (dented as RO
+in the figures) formulations. The best overall match seems to be obtained in case of the BC&#8211;fine model: combining the body
+co&#8211;rotational formulation (BC) and the fine mesh (where only the fuel bricks are refined). This is specifically visible in <a class="reference internal" href="#array-fig4"><span class="std std-numref">Fig. 72</span></a>
+and <a class="reference internal" href="#array-fig7"><span class="std std-numref">Fig. 75</span></a> where the performance of the BC&#8211;fine model for the FB2(2)(2) fuel brick is better than of the BC&#8211;base
+and RO&#8211;fine models. There seems to be some correlation between the ability to reproduce the 0.9 binary impact velocity restitution
+from the experiment, and the ability to match most of the experimental curves in <a class="reference internal" href="#array-fig4"><span class="std std-numref">Fig. 72</span></a> &#8211; <a class="reference internal" href="#array-fig7"><span class="std std-numref">Fig. 75</span></a>.
+On the other hand, <a class="reference internal" href="#array-fig8"><span class="std std-numref">Fig. 76</span></a> compares the performance of the BC&#8211;base approach with that of the purely rigid body model
+(RG). Clearly, the rigid body approach is not able to reproduce the experimentally observed peaks.</p>
+<div class="figure align-center" id="id17">
+<span id="array-fig8"></span><a class="reference internal image-reference" href="../../_images/81velo_RG_BC.png"><img alt="../../_images/81velo_RG_BC.png" src="../../_images/81velo_RG_BC.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 76 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
+RG and BC&#8211;base are respectively the rigid body and the body co&#8211;rotational formulations, both using the base mesh.</span></p>
+</div>
+<p>Statistics of total runtimes and average time shares of computational stages are included in <a class="reference internal" href="#array-tab2"><span class="std std-numref">Table 32</span></a>. These are
+collected for BC&#8211;fine/base, RO&#8211;fine/base and the rigid body models, all run using 6 MPI ranks on a single compute node, equipped
+with Intel Xeon E5&#8211;2600 processing units. There is some &#8220;give and take&#8221; happening in terms of the share of the computational time
+taken by various operations. The time integration runtime, which is significant for the deformable models, for RO&#8211;fine/base is shorter
+compared to the fully resolved BC&#8211;fine/base models. Assembling of constraint equations, which dominates the computational time, also
+takes less time in case of RO&#8211;fine/base, when compared to BC-fine/base. In the deformable model cases contact solution does not dominate
+the total runtime. This reversed in case of the solely rigid model, where solving the ill&#8211;conditioned constraint equations dominates.
+<a class="reference internal" href="#array-tab3"><span class="std std-numref">Table 33</span></a> illustrates parallel scaling, from 3 to 24 MPI&#8211;ranks, on a 24 core cluster node equipped with two Intel Xeon
+E5&#8211;2600 CPUs. Maximum speedups are 3.43/2.49 for the BC/RO&#8211;base models and 3.99/2.57 for the BC/RO&#8211;fine models. We note that currently
+Solfec does not exploit shared memory parallelism. The domain decomposition based load balancing may not be a most suitable parallelization
+strategy for a problem of this size, run on a single cluster node. <a class="reference internal" href="#array-tab4"><span class="std std-numref">Table 34</span></a> illustrates the size of the output storage for
+the tested approaches. Naturally, the reduced order models output less, compared to the fully resolved models.</p>
+<table border="1" class="docutils" id="id18">
+<span id="array-tab2"></span><caption><span class="caption-number">Table 32 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: comparison of runtimes, for various formulations, using 6 MPI ranks on a single Intel
+         Xeon E5&#8211;2600 CPU based compute node.</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="7%" />
+<col width="24%" />
+<col width="13%" />
+<col width="14%" />
+<col width="13%" />
+<col width="14%" />
+<col width="15%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td colspan="2">Formulation</td>
+<td>BC&#8211;fine</td>
+<td>BC&#8211;base</td>
+<td>RO&#8211;fine</td>
+<td>RO&#8211;base</td>
+<td>Rigid body</td>
+</tr>
+<tr class="row-even"><td rowspan="5">Comp.
+stage
+(h)</td>
+<td>Time integration</td>
+<td>4.6</td>
+<td>2.1</td>
+<td>3.4</td>
+<td>1.7</td>
+<td>0.1</td>
+</tr>
+<tr class="row-odd"><td>Contact detection</td>
+<td>0.9</td>
+<td>0.5</td>
+<td>0.8</td>
+<td>0.5</td>
+<td>0.4</td>
+</tr>
+<tr class="row-even"><td>Constraints equations</td>
+<td>13.7</td>
+<td>5.7</td>
+<td>4.0</td>
+<td>2.9</td>
+<td>0.2</td>
+</tr>
+<tr class="row-odd"><td>Constraints solution</td>
+<td>0.7</td>
+<td>0.9</td>
+<td>1.2</td>
+<td>1.3</td>
+<td>3.4</td>
+</tr>
+<tr class="row-even"><td>Load balancing</td>
+<td>1.3</td>
+<td>0.7</td>
+<td>1.0</td>
+<td>0.7</td>
+<td>0.3</td>
+</tr>
+<tr class="row-odd"><td colspan="2">Total runtime (h)</td>
+<td>21.18</td>
+<td>9.92</td>
+<td>10.53</td>
+<td>7.15</td>
+<td>4.37</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table border="1" class="docutils" id="id19">
+<span id="array-tab3"></span><caption><span class="caption-number">Table 33 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: comparison of runtime scaling, for various formulations, on a single Intel Xeon
+         E5&#8211;2600 CPU based compute node. BC&#8211;base&#8211;72s and RO&#8211;base&#8211;72s used the base mesh and had 72s duration.
+         BC&#8211;fine&#8211;7.2s and RO&#8211;fine&#8211;7.2s used the fine mesh and had a 10x shorter duration of 7.2s.</span><a class="headerlink" href="#id19" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="48%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>MPI ranks</td>
+<td>3</td>
+<td>6</td>
+<td>12</td>
+<td>24</td>
+</tr>
+<tr class="row-even"><td>BC&#8211;base&#8211;72s runtime (h)</td>
+<td>17.81</td>
+<td>9.92</td>
+<td>6.90</td>
+<td>5.20</td>
+</tr>
+<tr class="row-odd"><td>RO&#8211;base&#8211;72s runtime (h)</td>
+<td>11.94</td>
+<td>7.15</td>
+<td>5.56</td>
+<td>4.79</td>
+</tr>
+<tr class="row-even"><td>BC&#8211;fine&#8211;7.2s runtime (h)</td>
+<td>4.31</td>
+<td>2.31</td>
+<td>1.52</td>
+<td>1.08</td>
+</tr>
+<tr class="row-odd"><td>RO&#8211;fine&#8211;7.2s runtime (h)</td>
+<td>2.03</td>
+<td>1.19</td>
+<td>0.97</td>
+<td>0.79</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table border="1" class="docutils" id="id20">
+<span id="array-tab4"></span><caption><span class="caption-number">Table 34 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: comparison of storage size, for various formulations, for the 72s long runs and using the 50Hz file output frequency.</span><a class="headerlink" href="#id20" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="17%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Formulation</td>
+<td>BC&#8211;fine</td>
+<td>BC&#8211;base</td>
+<td>RO&#8211;fine</td>
+<td>RO&#8211;base</td>
+<td>Rigid body</td>
+</tr>
+<tr class="row-even"><td>Storage size</td>
+<td>7.2GB</td>
+<td>3.7GB</td>
+<td>1.2GB</td>
+<td>1.2GB</td>
+<td>0.84GB</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[*]</a></td><td>AGR stands for an <a class="reference external" href="https://en.wikipedia.org/wiki/Advanced_gas-cooled_reactor">Advanced Gass-cooled Reactor</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td><a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/eqe.4290150203/abstract">Ahmed, Khalid and Stojko, Stefan, &#8220;The non&#8211;linear seismic response of AGR core graphite brick slices
+&#8211; correlation of experimental and analytical results&#8221;, Earthquake Engineering &amp; Structural Dynamics (1987), 159&#8211;188.</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[2]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/0029549387903037">Ahmed, K. M., &#8220;The dynamic response of multi-layers AGR core brick arrays&#8221;, Nuclear Engineering and Design (1987),
+1&#8211;66.</a></td></tr>
+</tbody>
+</table>
 </div>
 
   <div class="section">
