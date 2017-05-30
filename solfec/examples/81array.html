@@ -159,7 +159,7 @@ with finer meshes), which we tentatively accept in the quest for a lowest possib
 for respectively fuel bricks, interstitial bricks and loose keys (the mass densities were tuned to obtain the total brick
 weights reported in the experiment). The coefficient of Coulomb&#8217;s friction was assumed 0.1. Among several simple impact tests
 performed in the preliminary experimental work, a binary impact between fuel bricks was <a class="reference internal" href="#array-fig3"><span class="std std-numref">Fig. 71</span></a> (right). A range
-of relative input velocities was used (5-35 cm/s) for which the ratio of the output velocity to the input velocity remained
+of relative input velocities was used (5&#8211;35 cm/s) for which the ratio of the output velocity to the input velocity remained
 consistently in the area of 0.9. It should be noted that due to geometrical setup, this particular type of impact is not present
 in our full array model. We then have two independent experiments, which we try to validate simultaneously.</p>
 <p>We use three families of models: solely rigid (RG), body co-rotational (BC), and reduced order (BC&#8211;RO). In all cases
@@ -432,16 +432,21 @@ add <code class="docutils literal"><span class="pre">-form</span> <span class="p
 <p>Note, that the order of arguments after the Solfec command does not matter. This example comes equipped with reduced order bases
 made of 64 modes for both fuel and interstitial bricks. These are saved as
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array">81array[*]base.pikle.gz files</a> files and they corepond to
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81array.inp">81array[*].inp files</a> input decks: 81array.inp
-(base mesh) and 81array_4_2.inp (fine mesh). If you would like to generate your own reduced base, you first need to run BC&#8211;based
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81array.inp">81array[*].inp files</a> input decks: <code class="docutils literal"><span class="pre">81array.inp</span></code>
+(base mesh) and <code class="docutils literal"><span class="pre">81array_4_2.inp</span></code> (fine mesh). If you would like to generate your own reduced base, you first need to run BC&#8211;based
 or a TL&#8211;based analysis. Once it has terminated, you then need to run it again, <strong>in serial mode</strong>, using the <code class="docutils literal"><span class="pre">-genbase</span></code> switch, e.g.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="o">-</span><span class="n">form</span> <span class="n">TL</span> <span class="n">examples</span><span class="o">/</span><span class="mi">81</span><span class="n">array</span><span class="o">/</span><span class="mi">81</span><span class="n">array</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">genbase</span> <span class="o">-</span><span class="n">fbbod</span> <span class="mi">96</span> <span class="o">-</span><span class="n">ibmod</span> <span class="mi">32</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="mi">81</span><span class="n">array</span><span class="o">/</span><span class="mi">81</span><span class="n">array</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">genbase</span> <span class="o">-</span><span class="n">fbbod</span> <span class="mi">96</span> <span class="o">-</span><span class="n">ibmod</span> <span class="mi">32</span>
 </pre></div>
 </div>
-<p>This will read the results and generate a reduced order base made of 96 modes for fuel bricks and 32 modes for interstitial bricks.
-Note, that this will also overwrite the default bases saved in the <code class="docutils literal"><span class="pre">examples/81array</span></code> directory. You may want to make a copy of
-this directory when investigating various reduced bases like that.</p>
-<p>The output files are saved inside of <code class="docutils literal"><span class="pre">out/81array[*]</span></code> directories: what goes after the <em>81array</em> string depends on the paramters
+<p>This will read the results and generate a reduced order base made of 96 modes for fuel bricks and 32 modes for interstitial bricks,
+for the default body co&#8211;rotated finite element formulation employing the base mesh. Note, that this will also overwrite the default
+bases stored in the <code class="docutils literal"><span class="pre">examples/81array</span></code> directory. You may want to make a copy of this directory when investigating various reduced
+bases, e.g.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">examples</span><span class="o">/</span><span class="mi">81</span><span class="n">array</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="mi">81</span><span class="n">array_copy</span>
+<span class="n">solfec</span> <span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="mi">81</span><span class="n">array_copy</span><span class="o">/</span><span class="mi">81</span><span class="n">array</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">genbase</span> <span class="o">-</span><span class="n">fbbod</span> <span class="mi">96</span> <span class="o">-</span><span class="n">ibmod</span> <span class="mi">32</span>
+</pre></div>
+</div>
+<p>The output files are saved inside of <code class="docutils literal"><span class="pre">out/81array[*]</span></code> directories: what goes after the <code class="docutils literal"><span class="pre">81array</span></code> string depends on the paramters
 used to run the analysis. E.g. the default parameters result in the following outout directory:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_BC_s1</span><span class="o">.</span><span class="mf">0e-04</span><span class="n">_d1</span><span class="o">.</span><span class="mf">0e-07</span><span class="n">_r0</span><span class="o">/</span>
 </pre></div>
