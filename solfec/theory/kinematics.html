@@ -256,12 +256,12 @@ and find <span class="math">\(\xi_{1}\)</span>, <span class="math">\(\xi_{2}\)</
 and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite&#8211;element) files. Configuration and velocity
 vectors are declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L153">bod.h</a> as follows:</p>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>139
-140</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">BODY_CHILD</span>               <span class="o">=</span> <span class="mh">0x0020</span><span class="p">,</span> <span class="o">/*</span> <span class="n">a</span> <span class="n">child</span> <span class="n">body</span> <span class="o">*/</span>
-  <span class="n">BODY_CHILD_UPDATED</span>       <span class="o">=</span> <span class="mh">0x0040</span><span class="p">,</span> <span class="o">/*</span> <span class="n">an</span> <span class="n">updated</span> <span class="n">child</span> <span class="o">*/</span>
+140</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">BODY_CHECK_FRACTURE</span>      <span class="o">=</span> <span class="mh">0x0002</span><span class="p">,</span> <span class="o">/*</span> <span class="n">enable</span> <span class="n">fracture</span> <span class="n">check</span> <span class="k">for</span> <span class="n">finite</span> <span class="n">element</span> <span class="n">bodies</span> <span class="o">*/</span>
+  <span class="n">BODY_PARENT</span>              <span class="o">=</span> <span class="mh">0x0010</span><span class="p">,</span> <span class="o">/*</span> <span class="n">a</span> <span class="n">parent</span> <span class="n">body</span> <span class="o">*/</span>
 </pre></div>
 </td></tr></table></div>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>153
-154</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">BULK_MATERIAL</span> <span class="o">*</span><span class="n">mat</span><span class="p">;</span> <span class="o">/*</span> <span class="n">default</span> <span class="n">material</span> <span class="o">*/</span>
+154</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">unsigned</span> <span class="nb">int</span> <span class="nb">id</span><span class="p">;</span>  <span class="o">/*</span> <span class="n">unique</span> <span class="n">identifier</span> <span class="p">(</span><span class="k">for</span> <span class="n">serialization</span> <span class="o">&amp;</span> <span class="n">parallel</span> <span class="n">processing</span><span class="p">)</span> <span class="o">*/</span>
 
 </pre></div>
 </td></tr></table></div>
