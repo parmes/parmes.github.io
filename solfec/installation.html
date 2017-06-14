@@ -82,7 +82,7 @@ The file <em>solfec/Config.mak</em> needs to be modified in order to set up libr
 <span class="c1"># Specify C compiler</span>
 <span class="c1">#</span>
 
-<span class="n">CC</span> <span class="o">=</span> <span class="n">cc</span>
+<span class="n">CC</span> <span class="o">=</span> <span class="n">gcc</span>
 
 <span class="c1">#</span>
 <span class="c1"># Specify C++ compiler</span>
@@ -191,7 +191,7 @@ The file <em>solfec/Config.mak</em> needs to be modified in order to set up libr
 <span class="n">VBO</span> <span class="o">=</span> <span class="n">yes</span>
 
 <span class="c1">#</span>
-<span class="c1"># OpenMP (yes/no)</span>
+<span class="c1"># OpenMP (yes/no) XXX (Under development) XXX</span>
 <span class="c1">#</span>
 
 <span class="n">OPENMP</span> <span class="o">=</span> <span class="n">yes</span>
@@ -201,7 +201,7 @@ The file <em>solfec/Config.mak</em> needs to be modified in order to set up libr
 <span class="c1">#</span>
 
 <span class="n">MPI</span> <span class="o">=</span> <span class="n">yes</span>
-<span class="n">MPICC</span> <span class="o">=</span> <span class="n">mpicc</span> <span class="o">-</span><span class="n">Wno</span><span class="o">-</span><span class="n">unused</span><span class="o">-</span><span class="n">but</span><span class="o">-</span><span class="nb">set</span><span class="o">-</span><span class="n">variable</span> <span class="o">-</span><span class="n">fopenmp</span>
+<span class="n">MPICC</span> <span class="o">=</span> <span class="n">mpicc</span>
 
 <span class="c1">#</span>
 <span class="c1"># Zoltan load balancer (MPI = yes); optional</span>
@@ -216,7 +216,6 @@ The file <em>solfec/Config.mak</em> needs to be modified in order to set up libr
 <span class="c1"># https://github.com/tkoziara/dynlb</span>
 <span class="c1"># This option is used when ZOLTAN = no above;</span>
 <span class="c1"># Use path to dynlb directory below;</span>
-<span class="c1"># Use -fopenmp flag with MPICC when compiling with dynlb;</span>
 <span class="c1">#</span>
 
 <span class="n">DYNLB</span> <span class="o">=</span> <span class="o">../</span><span class="n">dynlb</span>

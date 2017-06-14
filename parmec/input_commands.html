@@ -63,6 +63,17 @@
 <span id="id1"></span><h1>Parmec Input Commands<a class="headerlink" href="#parmec-input-commands" title="Permalink to this headline">¶</a></h1>
 <p>PARMEC input language extends <a class="reference external" href="http://www.python.org/">Python</a>.
 Subroutines related to input processing are listed below.</p>
+<div class="section" id="argv">
+<h2>ARGV<a class="headerlink" href="#argv" title="Permalink to this headline">¶</a></h2>
+<p>List command line arguments.</p>
+<div class="topic">
+<p class="topic-title first">list = ARGV (| nonparmec)</p>
+<ul class="simple">
+<li><strong>list</strong> - Python list (possibly empty) of command line arguments</li>
+<li><strong>nonparmec</strong> - optional boolean flag enabling filtering out parmec arguments; default: True</li>
+</ul>
+</div>
+</div>
 <div class="section" id="reset">
 <h2>RESET<a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h2>
 <p>Erase all data.</p>
@@ -590,6 +601,7 @@ it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimenta
 <li class="toctree-l2"><a class="reference internal" href="running.html">Running</a></li>
 <li class="toctree-l2"><a class="reference internal" href="implementation_status.html">Implementation status</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Input commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#argv">ARGV</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#reset">RESET</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#tseries">TSERIES</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#material">MATERIAL</a></li>
