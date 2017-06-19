@@ -86,7 +86,7 @@ Below we list subroutines providing per&#8211;body or per&#8211;simulation initi
 </ul>
 </div>
 <div class="topic">
-<p class="topic-title first">INITIALIZE_STATE (solfec, path, time)</p>
+<p class="topic-title first">INITIALIZE_STATE (solfec, path, time | subset)</p>
 <p>This routine initializes the state of a Solfec object with the state red from an output
 directory at a given time. It is ignored in the &#8216;READ&#8217; mode. <em>Note</em>: constraint reactions
 are initialized with zeros and recalculated at the next time step.</p>
@@ -94,10 +94,13 @@ are initialized with zeros and recalculated at the next time step.</p>
 <li>solfec &#8211; Solfec object in the &#8216;WRITE&#8217; mode</li>
 <li>path &#8211; path to the output directory containing matching analysis results (note: this cannot be the same output directory as for the solfec object)</li>
 <li>time &#8211; time at which the state should be red from the output files</li>
+<li>subset &#8211; defines a subset of initialized bodies; a string can be used to define a POSIX regular expression <a class="footnote-reference" href="#id3" id="id1">[1]</a> that will be matched against body labels;
+a list of such strings can also be passed; e.g. [‘^BOD.*A$’, &#8216;^BODY1$&#8217;, &#8216;^BODY2$&#8217;, &#8216;^BOD.*B$&#8217;] defines two direct labels &#8216;BODY1&#8217; and &#8216;BODY2&#8217; and two
+possible subsets made of labels such as &#8216;BODY123A&#8217;, &#8216;BODY_anything_B&#8217;, etc.</li>
 </ul>
 </div>
 <div class="topic">
-<p class="topic-title first">RIGID_TO_FEM (path, time, solfec)</p>
+<p class="topic-title first">RIGID_TO_FEM (path, time, solfec | subset)</p>
 <p>This routine initializes the state of FEM bodies within the Solfec object with the state of rigid bodies
 red from an output directory at a given time. It is ignored in the &#8216;READ&#8217; mode. <em>Note:</em> rigid displacements
 are applied to the finite element bodies; this implies that when you add boundary conditions to finite element
@@ -110,6 +113,9 @@ the identifiers of rigid bodies must match the identifiers of FEM bodies;
 this is guaranteed if the input files for both analyses differ only by the prescribed body kinds;</li>
 <li>time &#8211; time at which the state should be red from the output files</li>
 <li>solfec &#8211; Solfec object in the &#8216;WRITE&#8217; mode</li>
+<li>subset &#8211; defines a subset of initialized bodies; a string can be used to define a POSIX regular expression <a class="footnote-reference" href="#id3" id="id2">[1]</a> that will be matched against body labels;
+a list of such strings can also be passed; e.g. [‘^BOD.*A$’, &#8216;^BODY1$&#8217;, &#8216;^BODY2$&#8217;, &#8216;^BOD.*B$&#8217;] defines two direct labels &#8216;BODY1&#8217; and &#8216;BODY2&#8217; and two
+possible subsets made of labels such as &#8216;BODY123A&#8217;, &#8216;BODY_anything_B&#8217;, etc.</li>
 </ul>
 </div>
 </div>
@@ -268,6 +274,12 @@ to check whether an object resides on the current processor.</p>
 <li>object &#8211; BODY or CONSTRAINT object</li>
 </ul>
 </div>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="https://en.wikibooks.org/wiki/Regular_Expressions/POSIX_Basic_Regular_Expressions">POSIX regular expressions</a></td></tr>
+</tbody>
+</table>
 </div>
 </div>
 
