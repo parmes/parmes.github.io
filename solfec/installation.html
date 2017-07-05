@@ -97,17 +97,6 @@ The file <em>solfec/Config.mak</em> needs to be modified in order to set up libr
 <span class="n">FC</span> <span class="o">=</span> <span class="n">gfortran</span>
 <span class="n">FCLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">lgfortran</span>
 
-<span class="c1">#</span>
-<span class="c1"># Local body storage (yes/no)</span>
-<span class="c1">#</span>
-<span class="c1"># If &#39;no&#39; all bodies all stored on all processors;</span>
-<span class="c1"># this implies less communication during parallel balancing;</span>
-<span class="c1"># When &#39;yes&#39; bodies are only stored locally in parallel;</span>
-<span class="c1"># this is more suitable for larger simulations;</span>
-<span class="c1">#</span>
-
-<span class="n">LOCAL_BODIES</span> <span class="o">=</span> <span class="n">yes</span>
-
 <span class="c1"># </span>
 <span class="c1"># Debug or optimized version switch (yes/no)</span>
 <span class="c1">#</span>
