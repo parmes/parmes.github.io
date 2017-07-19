@@ -245,45 +245,34 @@ defined by means of lookup tables; <span class="math">\(\text{force}\left(t\righ
 spring force is zero.</p>
 <div class="topic">
 <p class="topic-title first">sprnum = SPRING (part1, point1, part2, point2, spring | dashpot, direction, planar, unload, ylim)</p>
-<ul>
-<li><p class="first"><strong>sprnum</strong> - spring number</p>
-</li>
-<li><p class="first"><strong>part1</strong> - first particle number</p>
-</li>
-<li><p class="first"><strong>point1</strong> - tuple <span class="math">\(\left(x,y,z\right)\)</span> defining a point moving
-with the first particle</p>
-</li>
-<li><p class="first"><strong>part2</strong> - second particle number; <span class="math">\(-1\)</span> can be used to
-indicate a single-particle constraint</p>
-</li>
-<li><p class="first"><strong>point2</strong> - tuple <span class="math">\(\left(x,y,z\right)\)</span> defining a second
-point, either moving with the second particle, or a spatial point</p>
-</li>
-<li><p class="first"><strong>spring</strong> - spring force lookup table
+<ul class="simple">
+<li><strong>sprnum</strong> - spring number</li>
+<li><strong>part1</strong> - first particle number</li>
+<li><strong>point1</strong> - tuple <span class="math">\(\left(x,y,z\right)\)</span> defining a point moving
+with the first particle</li>
+<li><strong>part2</strong> - second particle number; <span class="math">\(-1\)</span> can be used to
+indicate a single-particle constraint</li>
+<li><strong>point2</strong> - tuple <span class="math">\(\left(x,y,z\right)\)</span> defining a second
+point, either moving with the second particle, or a spatial point</li>
+<li><strong>spring</strong> - spring force lookup table
 <span class="math">\(\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]\)</span>;
 used for both loading and unloading when the <strong>unload</strong> table and the
-<strong>yield</strong> limits are not given</p>
-</li>
-<li><p class="first"><strong>dashpot</strong> - optional dashpot force lookup table
+<strong>yield</strong> limits are not given</li>
+<li><strong>dashpot</strong> - optional dashpot force lookup table
 <span class="math">\(\left[\text{velocity}_{1},\text{force}_{1},\text{velocity}_{2},\text{force}_{2},...,\text{velocity}_{m},\text{force}_{m}\right]\)</span>;
-default: <span class="math">\(\left[-\infty,0,+\infty,0\right]\)</span></p>
-</li>
-<li><p class="first"><strong>direction</strong> - optional constant direction
-<span class="math">\(\left(d_{x},d_{y},d_{z}\right)\)</span></p>
-</li>
-<li><p class="first"><strong>planar</strong> - optional planar spring flag; when ’ON’ spring direction</p>
-<div class="math">
-\[ \begin{align}\begin{aligned}\left(\text{point2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|\text{point2}\left(t\right)-\text{point1}\left(t\right)\right|\\is projected onto a plane orthogonal to :math:`\left(d_{x},d_{y},d_{z}\right)`; default: ’OFF’\end{aligned}\end{align} \]</div>
-</li>
-<li><p class="first"><strong>unload</strong> - spring unloading lookup table
+default: <span class="math">\(\left[-\infty,0,+\infty,0\right]\)</span></li>
+<li><strong>direction</strong> - optional constant direction
+<span class="math">\(\left(d_{x},d_{y},d_{z}\right)\)</span></li>
+<li><strong>planar</strong> - optional planar spring flag; when ’ON’ spring direction
+<span class="math">\(\left(\text{point2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|\text{point2}\left(t\right)-\text{point1}\left(t\right)\right|\)</span>
+is projected onto a plane orthogonal to <span class="math">\(\left(d_{x},d_{y},d_{z}\right)\)</span>; default: ’OFF’</li>
+<li><strong>unload</strong> - spring unloading lookup table
 <span class="math">\(\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]\)</span>;
-must be monotonically increasing</p>
-</li>
-<li><p class="first"><strong>ylim</strong> - tuple <span class="math">\(\left(f_{yc},f_{yt}\right)\)</span> defining the
+must be monotonically increasing</li>
+<li><strong>ylim</strong> - tuple <span class="math">\(\left(f_{yc},f_{yt}\right)\)</span> defining the
 compression, <span class="math">\(f_{yc}&lt;0\)</span>, and tension, <span class="math">\(f_{yt}&gt;0\)</span>, yield
 limits; the unloading curve begins to be used once either of these
-limits is crossed; default: (0, 0)</p>
-</li>
+limits is crossed; default: (0, 0)</li>
 </ul>
 </div>
 </div>
