@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>SOLFEC object &#8212; PARMES  documentation</title>
+    <title>Fragmentation &#8212; PARMES  documentation</title>
     
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
@@ -28,8 +28,8 @@
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="BODY object" href="body.html" />
-    <link rel="prev" title="Solfec User Manual" href="../user.html" />
+    <link rel="next" title="Results" href="results.html" />
+    <link rel="prev" title="Simulation" href="simulation.html" />
   
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
@@ -59,60 +59,39 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="solfec-object">
-<span id="solfec-user-solfec"></span><h1>SOLFEC object<a class="headerlink" href="#solfec-object" title="Permalink to this headline">¶</a></h1>
-<p>An object of type SOLFEC represents the Solfec algorithm. One can use several SOLFEC objects to run several analyses from a single input file.</p>
+  <div class="section" id="fragmentation">
+<span id="solfec-user-fragmentation"></span><h1>Fragmentation<a class="headerlink" href="#fragmentation" title="Permalink to this headline">¶</a></h1>
+<p>Routines listed in this section control fragmentation of bodies.</p>
+<div class="section" id="rt-split">
+<h2>RT_SPLIT<a class="headerlink" href="#rt-split" title="Permalink to this headline">¶</a></h2>
+<p>This routine splits a meshed BODY object along a surface aligned with internal element boundaries. It can be invoked from within a callback function
+&#8211; see the <a class="reference internal" href="simulation.html#solfec-command-callback"><span class="std std-ref">CALLBACK command</span></a> &#8211; and hence “RT” stands for “real time”.</p>
 <div class="topic">
-<p class="topic-title first">obj = SOLFEC (analysis, step, output)</p>
-<p>This routine creates a SOLFEC object.</p>
+<p class="topic-title first">(body2, lst1, lst2) = RT_SPLIT (body1, surf | sid1, sid2, label1, label2) <span class="red">(Under development)</span></p>
 <ul class="simple">
-<li>obj &#8211; created SOLFEC object</li>
-<li>analysis &#8211; &#8216;DYNAMIC&#8217; or &#8216;QUASI_STATIC&#8217; analysis kind</li>
-<li>step &#8211; initially assumed time step, regarded as an upper bound</li>
-<li>output &#8211; defines the output directory path (Important note: if this directory exists
-and contains valid output data SOLFEC is created in &#8216;READ&#8217; mode,
-otherwise SOLFEC is created in &#8216;WRITE&#8217; mode)</li>
+<li>body2 &#8211; created BODY object or <em>None</em> if the split does not create another body</li>
+<li>lst1, lst2 &#8211; lists mapping original mesh node numbers to new mesh node numbers in <strong>body1</strong> and <strong>body2</strong>. Only <strong>lst1</strong>
+is valid in case of a split which does not create two separate bodies &#8211; in this case <strong>lst2</strong> = <em>None</em></li>
+<li>body1 &#8211; a MESH based BODY which is split</li>
+<li>surf &#8211; surface definition of the split plane on <strong>body1</strong>: a list of lists of face nodes <em>[[n0, n1, n2], [n3, n4, n5, n6], ...]</em>
+defining the splitting surface (zero based indexing)</li>
+<li>sid1 &#8211; optional identifier for the newly created surface on <strong>body1</strong>; default: 0</li>
+<li>sid2 &#8211; optional identifier for the newly created surface on <strong>body2</strong>; default: 0</li>
+<li>label1 &#8211; optional label of <strong>body1</strong>; default: <em>None</em> (split in two bodies) or no change (a partial split of <strong>body1</strong>)</li>
+<li>label2 &#8211; optional label of <strong>body2</strong>; default: <em>None</em></li>
 </ul>
 </div>
-<p>Some parameters can be accessed as members of a SOLFEC object, cf. <a class="reference internal" href="#solfec-params"><span class="std std-numref">Table 1</span></a>.</p>
-<table border="1" class="docutils" id="id1">
-<span id="solfec-params"></span><caption><span class="caption-number">Table 1 </span><span class="caption-text">SOLFEC object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col width="100%" />
-</colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Read only members:</strong></td>
-</tr>
-<tr class="row-even"><td><em>obj.analysis</em></td>
-</tr>
-<tr class="row-odd"><td><strong>obj.time</strong> &#8211; current time</td>
-</tr>
-<tr class="row-even"><td><strong>obj.mode</strong> &#8211; either &#8216;READ&#8217; or &#8216;WRITE&#8217; as described above</td>
-</tr>
-<tr class="row-odd"><td><strong>obj.constraints</strong> &#8211; list of constraints (cf. <a class="reference internal" href="constraints.html#solfec-user-constraints"><span class="std std-ref">Constraints</span></a>)</td>
-</tr>
-<tr class="row-even"><td><strong>obj.ncon</strong> &#8211; number of constraints</td>
-</tr>
-<tr class="row-odd"><td><strong>obj.bodies</strong> &#8211; list of bodies (cf. <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a>)</td>
-</tr>
-<tr class="row-even"><td><strong>obj.nbod</strong> &#8211; number of bodies</td>
-</tr>
-<tr class="row-odd"><td><strong>obj.outpath</strong> &#8211; output path, including the sub-directory if the “-s” command line argument
-has been passed</td>
-</tr>
-<tr class="row-even"><td><strong>Read/write members:</strong></td>
-</tr>
-<tr class="row-odd"><td><em>obj.step</em></td>
-</tr>
-<tr class="row-even"><td><strong>obj.verbose</strong> &#8211; &#8216;ON&#8217; or &#8216;OFF&#8217; enabling or disabling writing to standard output (default: &#8216;ON&#8217;);
-&#8216;%&#8217; can also be used to enable plain percentage printout per individual <a class="reference internal" href="simulation.html#solfec-command-run"><span class="std std-ref">RUN</span></a></td>
-</tr>
-<tr class="row-odd"><td><strong>obj.cleanup</strong> &#8211; either &#8216;ON&#8217; or &#8216;OFF&#8217; enabling or disabling removal of the output directory in &#8216;WRITE&#8217;
-mode if none results were saved (default: &#8216;OFF&#8217; in which case the initial geometry is saved as a
-sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the &#8216;ON&#8217; functionality to work;</td>
-</tr>
-</tbody>
-</table>
+<p>Properties:</p>
+<ol class="arabic simple">
+<li><strong>surf</strong> normals are calculated so that the face nodes are counter clockwise oriented when looking from the positive normal direction.</li>
+<li><strong>body2</strong> is on the positive side of <strong>surf</strong>, i.e. the normals of <strong>surf</strong> points towards the newly created body.</li>
+<li><strong>body1</strong> maintains its ID as long as <strong>body2</strong> == <em>None</em>.</li>
+<li>ID of <strong>body1</strong> changes when <strong>body2</strong> != <em>None</em> (when two fragments are created).</li>
+<li>All constraints attached to <strong>body1</strong> are deleted during splitting.</li>
+<li>All forces applied to <strong>body1</strong> are deleted during splitting.</li>
+<li>RT_SPLIT terminates with an error message in case none or more then two mesh fragments were created.</li>
+</ol>
+</div>
 </div>
 
   <div class="section">
@@ -149,7 +128,7 @@ sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the &#8216;
 <li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../user.html">User Manual</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">SOLFEC object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solfec.html">SOLFEC object</a></li>
 <li class="toctree-l3"><a class="reference internal" href="body.html">BODY object</a></li>
 <li class="toctree-l3"><a class="reference internal" href="geometry.html">Geometry</a></li>
 <li class="toctree-l3"><a class="reference internal" href="materials.html">Materials</a></li>
@@ -158,7 +137,10 @@ sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the &#8216;
 <li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="solvers.html">Solvers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="simulation.html">Simulation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fragmentation.html">Fragmentation</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Fragmentation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rt-split">RT_SPLIT</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="results.html">Results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="utilities.html">Utilities</a></li>
 </ul>
@@ -186,8 +168,8 @@ sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the &#8216;
   <li><a href="../../index.html">Documentation overview</a><ul>
   <li><a href="../index.html">SOLFEC</a><ul>
   <li><a href="../user.html">Solfec User Manual</a><ul>
-      <li>Previous: <a href="../user.html" title="previous chapter">Solfec User Manual</a></li>
-      <li>Next: <a href="body.html" title="next chapter">BODY object</a></li>
+      <li>Previous: <a href="simulation.html" title="previous chapter">Simulation</a></li>
+      <li>Next: <a href="results.html" title="next chapter">Results</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -275,7 +257,7 @@ sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the &#8216;
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
       
       |
-      <a href="../../_sources/solfec/user/solfec.rst.txt"
+      <a href="../../_sources/solfec/user/fragmentation.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

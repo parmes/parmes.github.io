@@ -200,35 +200,6 @@ Depending on the topological properties of the mesh this may or may not result i
 </ul>
 </div>
 </div>
-<div class="section" id="rt-split">
-<h2>RT_SPLIT<a class="headerlink" href="#rt-split" title="Permalink to this headline">¶</a></h2>
-<p>This routine splits a meshed BODY object along a surface aligned with internal element boundaries.</p>
-<div class="topic">
-<p class="topic-title first">(body2, lst1, lst2) = RT_SPLIT (body1, surf | sid1, sid2, label1, label2) <span class="red">(Under development)</span></p>
-<ul class="simple">
-<li>body2 &#8211; created BODY object or <em>None</em> if the split does not create another body</li>
-<li>lst1, lst2 &#8211; lists mapping original mesh node numbers to new mesh node numbers in <strong>body1</strong> and <strong>body2</strong>. Only <strong>lst1</strong>
-is valid in case of a split which does not create two separate bodies &#8211; in this case <strong>lst2</strong> == <em>None</em></li>
-<li>body1 &#8211; a MESH based BODY which is split</li>
-<li>surf &#8211; surface definition of the split plane on <strong>body1</strong>: a list of lists face nodes <em>[[n0, n1, n2], [n3, n4, n5, n6], ...]</em>
-defining the splitting surface (zero based indexing)</li>
-<li>sid1 &#8211; optional identifier for the newly created surface on <strong>body1</strong>; default: 0</li>
-<li>sid2 &#8211; optional identifier for the newly created surface on <strong>body2</strong>; default: 0</li>
-<li>label1 &#8211; optional label of <strong>body1</strong>; default: <em>None</em> (split in two bodies) or no change (a partial split of <strong>body1</strong>)</li>
-<li>label2 &#8211; optional label of <strong>body2</strong>; default: <em>None</em></li>
-</ul>
-</div>
-<p>Properties:</p>
-<ol class="arabic simple">
-<li><strong>surf</strong> normals are calculated so that the face nodes are counter clockwise oriented when looking from the positive normal direction.</li>
-<li><strong>body2</strong> is on the positive side of <strong>surf</strong>, i.e. the normals of <strong>surf</strong> points towards the newly created body.</li>
-<li><strong>body1</strong> maintains its ID as long as <strong>body2</strong> == <em>None</em>.</li>
-<li>ID of <strong>body1</strong> changes when <strong>body2</strong> != <em>None</em> (when two fragments are created).</li>
-<li>All constraints attached to <strong>body1</strong> are deleted during splitting.</li>
-<li>All forces applied to <strong>body1</strong> are deleted during splitting.</li>
-<li>RT_SPLIT terminates with an error message in case none or more then two mesh fragments are created.</li>
-</ol>
-</div>
 <div class="section" id="copy">
 <h2>COPY<a class="headerlink" href="#copy" title="Permalink to this headline">¶</a></h2>
 <p>This routine makes a copy of input objects.</p>
@@ -508,6 +479,7 @@ a reduced order or modal base saves memory when multiple instances of bodies emp
 <li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
 <li class="toctree-l3"><a class="reference internal" href="solvers.html">Solvers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="simulation.html">Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fragmentation.html">Fragmentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="results.html">Results</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Utilities</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#viewer">VIEWER</a></li>
@@ -519,7 +491,6 @@ a reduced order or modal base saves memory when multiple instances of bodies emp
 <li class="toctree-l4"><a class="reference internal" href="#rotate">ROTATE</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#split">SPLIT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#mesh-split">MESH_SPLIT</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rt-split">RT_SPLIT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#copy">COPY</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bend">BEND</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bylabel">BYLABEL</a></li>
