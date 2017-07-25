@@ -173,15 +173,18 @@ identifier are returned</td>
 [(x0, y0, z0), (x1, y1, z1), ...]; if <strong>volid</strong> is passed, integration points only fort that volume
 identifier are returned</td>
 </tr>
-<tr class="row-even"><td><strong>Read-write members and methods:</strong></td>
+<tr class="row-even"><td><strong>obj.inter_element_faces()</strong> &#8211; returns a list of lists of node indices of inter&#8211;element faces,
+e.g. [[n0, n1, n2], [n0, n1, n2, n3], ...]</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.node (n | x, y, z)</strong> &#8211; returns a (x, y, z) tuple storing coordinates of nth node;
+<tr class="row-odd"><td><strong>Read-write members and methods:</strong></td>
+</tr>
+<tr class="row-even"><td><strong>obj.node (n | x, y, z)</strong> &#8211; returns a (x, y, z) tuple storing coordinates of nth node;
 if x, y or z are given the current coordinates are overwritten</td>
 </tr>
-<tr class="row-even"><td><strong>obj.nodes_on_surface (surfid)</strong> &#8211; returns a list of node numbers belonging to the given surface;
+<tr class="row-odd"><td><strong>obj.nodes_on_surface (surfid)</strong> &#8211; returns a list of node numbers belonging to the given surface;
 <em>None</em> object is returned if the list is empty.</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.set_volid(volid)</strong> &#8211; set all elements to have the given volume ID. Returns the volid set.
+<tr class="row-even"><td><strong>obj.set_volid(volid)</strong> &#8211; set all elements to have the given volume ID. Returns the volid set.
 This is mostly useful for being able to distinguish bodies in the Viewer, using
 menu <span class="math">\(\to\)</span> kinds of <span class="math">\(\to\)</span> volumes. Note that materials are also assigned by volume id.</td>
 </tr>
