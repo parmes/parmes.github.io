@@ -63,7 +63,7 @@
 <span id="solfec-user-times"></span><h1>Time series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h1>
 <p>An object of type TIME_SERIES is a linear spline based on a series of 2-points.</p>
 <div class="topic">
-<p class="topic-title first">obj = TIME_SERIES (points | label)</p>
+<p class="topic-title first">obj = TIME_SERIES (points | label, cache)</p>
 <p>This routine creates a TIME_SERIES object.</p>
 <ul>
 <li><p class="first">obj &#8211; created TIME_SERIES object</p>
@@ -81,6 +81,11 @@ t2 v2 <br />
 <li><p class="first">label &#8211; optional label string; if a label is provided than the TIME_SERIES object is stored in
 memory just once; this facilitates more optimal memory usage in cases where many identical
 TIME_SERIES objects are used in multiple constraints (for example); the label should be unique</p>
+</li>
+<li><p class="first">cache &#8211; optional partial cache size; if <strong>points</strong> = file path and <strong>cache</strong> &gt; 0 then only the
+cache size of points is stored in memory at any given time; this helps to save memory in case of
+a need for many large time series objects; default: 0 (entire time series is stored in memory)
+<span class="red">(Under development)</span></p>
 </li>
 </ul>
 </div>

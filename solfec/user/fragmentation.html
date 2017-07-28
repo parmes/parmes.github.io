@@ -85,8 +85,7 @@ defining the splitting surface (zero based indexing)</li>
 <ol class="arabic simple">
 <li><strong>surf</strong> normals are calculated so that the face nodes are counter clockwise oriented when looking from the positive normal direction.</li>
 <li><strong>body2</strong> is on the positive side of <strong>surf</strong>, i.e. the normals of <strong>surf</strong> points towards the newly created body.</li>
-<li><strong>body1</strong> maintains its ID as long as <strong>body2</strong> == <em>None</em>.</li>
-<li>ID of <strong>body1</strong> changes when <strong>body2</strong> != <em>None</em> (when two fragments are created).</li>
+<li>ID of <strong>body1</strong> changes every time a split happens (even if <strong>body2</strong> is <em>None</em>).</li>
 <li>All constraints attached to <strong>body1</strong> are deleted during splitting.</li>
 <li>All forces applied to <strong>body1</strong> are deleted during splitting.</li>
 <li>RT_SPLIT terminates with an error message in case none or more then two mesh fragments were created.</li>
