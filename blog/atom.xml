@@ -15,7 +15,7 @@
     <author>
       <name>Tomek</name>
     </author>
-    <content type="html">&lt;p&gt;Based on a user feedback a partially cached time series capability has been included into &lt;a class=&quot;reference internal&quot; href=&quot;solfec/index.html#solfec-index&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;SOLFEC&lt;/span&gt;&lt;/a&gt;.
+    <content type="html">&lt;p&gt;Motivated by user feedback a partially cached time series capability has been included into &lt;a class=&quot;reference internal&quot; href=&quot;solfec/index.html#solfec-index&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;SOLFEC&lt;/span&gt;&lt;/a&gt;.
 This allows to use many large &lt;a class=&quot;reference internal&quot; href=&quot;solfec/user/times.html#solfec-user-times&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;TIME_SERIES&lt;/span&gt;&lt;/a&gt; objects without running out of
 memory. To facilitate that an optional &lt;em&gt;cache&lt;/em&gt; argument has been added &amp;#8211; please see the &lt;a class=&quot;reference internal&quot; href=&quot;solfec/user/times.html#solfec-user-times&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;documentation&lt;/span&gt;&lt;/a&gt; and &lt;a class=&quot;reference internal&quot; href=&quot;solfec/examples/time_series.html#solfec-examples-time-series&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;example&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
 </content>
