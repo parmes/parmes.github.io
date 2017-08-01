@@ -1,0 +1,427 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Time series &#8212; PARMES  documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DYNLB" href="../../dynlb/index.html" />
+    <link rel="prev" title="81 bricks array" href="81array.html" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="time-series">
+<span id="solfec-examples-time-series"></span><h1>Time series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h1>
+<p>This is example illustrates the <a class="reference internal" href="../user/times.html#solfec-user-times"><span class="std std-ref">TIME_SERIES</span></a> functionality in Solfec. The input files for this example
+are located in the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/time-series">solfec/examples/time&#8211;series</a> directory.
+These are:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/README">README</a> &#8211; a text based summary of the examples</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/basic-ts.py">basic&#8211;ts.py</a> &#8211; example of simple time series without a simulation</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/cached-ts.py">cached&#8211;ts.py</a> &#8211; example of the partially cached time series capablity</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/labeled-ts.py">labeled&#8211;ts.py</a> &#8211; example of the labeled time series capability</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/ts-gen.py">ts&#8211;gen.py</a> &#8211; generates time series data files ts&#8211;data&#8211;{1 .. 10}.txt</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/ts-data-0.txt">ts&#8211;data&#8211;{0 .. 10}.txt</a> &#8211; time series data files</li>
+</ul>
+<p><a class="reference internal" href="../user/times.html#solfec-user-times"><span class="std std-ref">TIME_SERIES</span></a> object can be used in Solfec to prescribe time&#8211;dependent <a class="reference internal" href="../user/constraints.html#solfec-user-constraints"><span class="std std-ref">constraints</span></a> and
+<a class="reference internal" href="../user/loads.html#solfec-user-loads"><span class="std std-ref">loads</span></a>. The three minimalist input files included with this example illustrate the ways the time series can be used:
+<a class="reference internal" href="#basic-ts"><span class="std std-numref">Listing 11</span></a>, <a class="reference internal" href="#cached-ts"><span class="std std-numref">Listing 12</span></a>, <a class="reference internal" href="#labeled-ts"><span class="std std-numref">Listing 13</span></a> below include comments and are self&#8211;explanatory. An animated output of the <em>cached&#8211;ts.py</em>
+example is included as video <a class="footnote-reference" href="#id3" id="id2">[1]</a>.</p>
+<div class="literal-block-wrapper docutils container" id="basic-ts">
+<div class="code-block-caption"><span class="caption-number">Listing 11 </span><span class="caption-text">Listing of basic&#8211;ts.py</span><a class="headerlink" href="#basic-ts" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># basic applications of TIME_SERIES (points)</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">d0</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+
+<span class="n">tms1</span> <span class="o">=</span> <span class="n">TIME_SERIES</span> <span class="p">(</span><span class="n">d0</span><span class="o">+</span><span class="s1">&#39;/ts-data-0.txt&#39;</span><span class="p">);</span>
+<span class="nb">print</span> <span class="s1">&#39;From file:&#39;</span>
+<span class="nb">print</span> <span class="n">tms1</span><span class="o">.</span><span class="n">times</span>
+<span class="nb">print</span> <span class="n">tms1</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">list2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">];</span>
+<span class="n">tms2</span> <span class="o">=</span> <span class="n">TIME_SERIES</span> <span class="p">(</span><span class="n">list2</span><span class="p">);</span>
+<span class="nb">print</span> <span class="s1">&#39;From [t0,v0, t1,v1, ..] list:&#39;</span>
+<span class="nb">print</span> <span class="n">tms2</span><span class="o">.</span><span class="n">times</span>
+<span class="nb">print</span> <span class="n">tms2</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">list3</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">16</span><span class="p">]];</span>
+<span class="n">tms3</span> <span class="o">=</span> <span class="n">TIME_SERIES</span> <span class="p">(</span><span class="n">list3</span><span class="p">);</span>
+<span class="nb">print</span> <span class="s1">&#39;From [[t0,v0], [t1,v1], ...] list:&#39;</span>
+<span class="nb">print</span> <span class="n">tms3</span><span class="o">.</span><span class="n">times</span>
+<span class="nb">print</span> <span class="n">tms3</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">tms4</span> <span class="o">=</span> <span class="n">tms3</span><span class="o">.</span><span class="n">derivative</span>
+<span class="nb">print</span> <span class="s1">&#39;Derivative:&#39;</span>
+<span class="nb">print</span> <span class="n">tms4</span><span class="o">.</span><span class="n">times</span>
+<span class="nb">print</span> <span class="n">tms4</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">tms5</span> <span class="o">=</span> <span class="n">tms3</span><span class="o">.</span><span class="n">integral</span>
+<span class="nb">print</span> <span class="s1">&#39;Integral:&#39;</span>
+<span class="nb">print</span> <span class="n">tms5</span><span class="o">.</span><span class="n">times</span>
+<span class="nb">print</span> <span class="n">tms5</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="cached-ts">
+<div class="code-block-caption"><span class="caption-number">Listing 12 </span><span class="caption-text">Listing of cached&#8211;ts.py</span><a class="headerlink" href="#cached-ts" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># partially cached TIME_SERIES (&#39;data.txt&#39;, cache = N) example</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">d0</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+
+<span class="c1"># create SOLFEC object and bulk material</span>
+<span class="n">solfec</span> <span class="o">=</span> <span class="n">SOLFEC</span> <span class="p">(</span><span class="s1">&#39;DYNAMIC&#39;</span><span class="p">,</span> <span class="mf">1E-3</span><span class="p">,</span> <span class="s1">&#39;out/cached-ts&#39;</span><span class="p">)</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">BULK_MATERIAL</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;KIRCHHOFF&#39;</span><span class="p">,</span>
+      <span class="n">young</span> <span class="o">=</span> <span class="mf">1E9</span><span class="p">,</span> <span class="n">poisson</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">density</span> <span class="o">=</span> <span class="mf">1E3</span><span class="p">)</span>
+
+<span class="c1"># create 10 rigid spheres following along the y-direction</span>
+<span class="c1"># the time series based displacement history; note that</span>
+<span class="c1"># in this case we use a unique time series for each body;</span>
+<span class="c1"># should the number of bodies and the size of the time series</span>
+<span class="c1"># be large - this would easily lead to using up all memory;</span>
+<span class="c1"># using partially cached time series allows to avoid this</span>
+<span class="c1"># issue; in our case we have 100 data points per series and</span>
+<span class="c1"># we set the partial cache size to 10; this means that only</span>
+<span class="c1"># 10 points are stored in memory, per series, at any time;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+  <span class="n">tms</span> <span class="o">=</span> <span class="n">TIME_SERIES</span> <span class="p">(</span><span class="n">d0</span><span class="o">+</span><span class="s1">&#39;/ts-data-</span><span class="si">%d</span><span class="s1">.txt&#39;</span> <span class="o">%</span> <span class="n">i</span><span class="p">,</span> <span class="n">cache</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+  <span class="n">sph</span> <span class="o">=</span> <span class="n">SPHERE</span> <span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="n">bod</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="s1">&#39;RIGID&#39;</span><span class="p">,</span> <span class="n">sph</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span>
+  <span class="n">SET_DISPLACEMENT</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">tms</span><span class="p">)</span>
+
+<span class="c1"># create constraints solver and run simulation</span>
+<span class="n">slv</span> <span class="o">=</span> <span class="n">NEWTON_SOLVER</span><span class="p">()</span>
+<span class="n">RUN</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="n">slv</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="literal-block-wrapper docutils container" id="labeled-ts">
+<div class="code-block-caption"><span class="caption-number">Listing 13 </span><span class="caption-text">Listing of labeled&#8211;ts.py</span><a class="headerlink" href="#labeled-ts" title="Permalink to this code">¶</a></div>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># labeled TIME_SERIES (&#39;data.txt&#39;, label = &#39;string&#39;) example</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">d0</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+
+<span class="c1"># create SOLFEC object and bulk material</span>
+<span class="n">solfec</span> <span class="o">=</span> <span class="n">SOLFEC</span> <span class="p">(</span><span class="s1">&#39;DYNAMIC&#39;</span><span class="p">,</span> <span class="mf">1E-3</span><span class="p">,</span> <span class="s1">&#39;out/labeled-ts&#39;</span><span class="p">)</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">BULK_MATERIAL</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;KIRCHHOFF&#39;</span><span class="p">,</span>
+      <span class="n">young</span> <span class="o">=</span> <span class="mf">1E9</span><span class="p">,</span> <span class="n">poisson</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">density</span> <span class="o">=</span> <span class="mf">1E3</span><span class="p">)</span>
+
+<span class="c1"># create labeled time series object</span>
+<span class="n">tms</span> <span class="o">=</span> <span class="n">TIME_SERIES</span> <span class="p">(</span><span class="n">d0</span><span class="o">+</span><span class="s1">&#39;/ts-data-1.txt&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;data-1&#39;</span><span class="p">)</span>
+
+<span class="c1"># create 10 rigid spheres following along the y-direction</span>
+<span class="c1"># the time series based displacement history; note that</span>
+<span class="c1"># in this case, because the time series object was labeled,</span>
+<span class="c1"># only a single copy of the time series object will be used</span>
+<span class="c1"># internally - saving memory; should &#39;tms&#39; be unlabeled 10</span>
+<span class="c1"># separate data sets would be used;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+  <span class="n">sph</span> <span class="o">=</span> <span class="n">SPHERE</span> <span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+  <span class="n">bod</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="s1">&#39;RIGID&#39;</span><span class="p">,</span> <span class="n">sph</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span>
+  <span class="n">SET_DISPLACEMENT</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">tms</span><span class="p">)</span>
+
+<span class="c1"># create constraints solver and run simulation</span>
+<span class="n">slv</span> <span class="o">=</span> <span class="n">NEWTON_SOLVER</span><span class="p">()</span>
+<span class="n">RUN</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="n">slv</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Animated output of the <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/cached-ts.py">cached&#8211;ts.py</a>
+example from <a class="reference internal" href="#cached-ts"><span class="std std-numref">Listing 12</span></a>.</td></tr>
+</tbody>
+</table>
+<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/X9_aS4RILTA?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p></div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">SOLFEC</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theory.html">Theory Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../validation.html">Validation Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="hybrid_modeling.html">Hybrid modeling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reduced_order.html">Reduced order modeling</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Time series</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tgz/index.html">TGZ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trs/index.html">TRs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blog/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../patreon.html">Patreon</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">SOLFEC</a><ul>
+  <li><a href="../examples.html">Solfec Examples</a><ul>
+      <li>Previous: <a href="81array.html" title="previous chapter">81 bricks array</a></li>
+      <li>Next: <a href="../../dynlb/index.html" title="next chapter">DYNLB</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../blog/cached_time_series.html">Aug 01 - Partially cached time series in Solfec</a></li>
+    
+      <li><a href="../../blog/tr1_post.html">May 20 - TR1: Co-rotated and reduced order time integrators</a></li>
+    
+      <li><a href="../../blog/hybrid_solver.html">Apr 27 - Hybrid solver in Solfec</a></li>
+    
+      <li><a href="../../blog/about.html">Jun 13 - About PARMES</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/parmec.html">parmec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/parmes.html">parmes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/reports.html">reports</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/solfec.html">solfec</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2017.html">2017 (3)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../../_sources/solfec/examples/time_series.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
