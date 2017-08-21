@@ -152,6 +152,23 @@ this time Solfec will print:</p>
 </pre></div>
 </div>
 <p>followed by setting up your model and ignoring all occurrences of the RUN command <a class="footnote-reference" href="#id4" id="id2">[2]</a>.</p>
+</div>
+<div class="section" id="output-directory-as-an-input-path">
+<h2>Output directory as an input path<a class="headerlink" href="#output-directory-as-an-input-path" title="Permalink to this headline">¶</a></h2>
+<p>Solfec creates a copy of an input file in the output directory. For example, if the output path is</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">/</span><span class="n">analysis1</span>
+</pre></div>
+</div>
+<p>the corresponding copy of the input file will be</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">/</span><span class="n">analysis1</span><span class="o">/</span><span class="n">analysis1</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>In order to view or post-process the results that have been saved in this directory, one can run</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="o">-</span><span class="n">v</span> <span class="n">out</span><span class="o">/</span><span class="n">analysis1</span>
+</pre></div>
+</div>
+<p>For this approach to be robust, care needs to be taken to ensure that the input file can be correctly run from
+any location (e.g. access to additional data or scripts required by an input file needs to be suitably resolved).</p>
 <table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -201,6 +218,7 @@ this time Solfec will print:</p>
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Running</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#read-write-mode">Read/write mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-directory-as-an-input-path">Output directory as an input path</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user.html">User Manual</a></li>
