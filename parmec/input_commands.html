@@ -477,8 +477,8 @@ OUTPUT calls</li>
 <p class="topic-title first">OUTPUT (entities | subset, mode, format)</p>
 <ul class="simple">
 <li><strong>entities</strong> - list of output entities; default: [’NUMBER’, ’COLOR’,
-’DISPL’, ’ORIENT’, ’LINVEL’, ’ANGVEL’, ’FORCE’, ’TORQUE’, ’F’, ’FN’,
-’FT’, ’SF’, ’AREA’, ’PAIR’] where:<ul>
+’DISPL’, ’ORIENT’, &#8216;ORIENT1&#8217;, &#8216;ORIENT2&#8217;, &#8216;ORIENT3&#8217;, ’LINVEL’, ’ANGVEL’,
+’FORCE’, ’TORQUE’, ’F’, ’FN’, ’FT’, ’SF’, ’AREA’, ’PAIR’] where:<ul>
 <li>’NUMBER’ - scalar field of particle numbers (modes: ’SPH’, ’MESH’,
 ’RB’), or scalar field of spring numbers (modes: ’SD’)</li>
 <li>’COLOR’ - scalar field of surface colors (modes: ’SPH’, ’MESH’),
@@ -487,9 +487,12 @@ or 2-component vector field of contact surface colors (modes:
 <li>’DISPL’ - 3-component vector field of displacements (modes: ’SPH’,
 ’MESH’, ’RB’), or scalar field of contact depths (modes: ’CD’), or
 scalar field of spring strokes (modes: ’SD’)</li>
-<li>’ORIENT’ - three 3-component vector fields representing columns of
-rigid rotation matrix (orientation vectors) (modes: ’RB’), or
-3-component vector field of spring orientations (modes: ’SD’)</li>
+<li>’ORIENT’ - 9-component tensor field representing rigid rotation
+matrix (modes: &#8216;RB&#8217;), or 3-component vector field of spring
+orientations (modes: ’SD’)</li>
+<li>’ORIENT1’, &#8216;ORIENT2&#8217;, &#8216;ORIENT3&#8217; - three 3-component vector fields
+representing columns of rigid rotation matrix (orientation vectors)
+(modes: ’RB’)</li>
 <li>’LINVEL’ - 3-component vector field of linear velocity (modes:
 ’SPH’, ’MESH’, ’RB’)</li>
 <li>’ANGVEL’ - 3-component vector field of (spatially constant)
