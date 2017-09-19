@@ -279,9 +279,10 @@ Currently only the the nonlinear Gauss&#8211;Seidel solver is enabled, making th
 </div>
 <div class="section" id="hybrid-solver">
 <span id="solfec-command-hybrid-solver"></span><h2>Hybrid solver<a class="headerlink" href="#hybrid-solver" title="Permalink to this headline">¶</a></h2>
-<p>Hybrid solver allows to combine smooth rigid body nonlinear spring based <a class="reference internal" href="../../parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a> models with non&#8211;smooth SOLFEC models.
-The solver is supported both in the serial and MPI version of Solfec. The Parmec library is shared memory parallel and in the MPI mode this
-part of modeling is executed on MPI rank 0 process, employing maximum available shared memory parallelism.</p>
+<p>Hybrid solver allows to combine smooth rigid body nonlinear spring based <a class="reference internal" href="../../parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a> models with non&#8211;smooth SOLFEC models
+(see <a class="reference internal" href="../examples/hybrid_modeling.html#solfec-examples-hybrid-modeling"><span class="std std-ref">examples</span></a>). The solver is supported both in the serial and MPI version of Solfec. The Parmec
+library is shared memory parallel and in the MPI mode this part of modeling is executed on MPI rank 0 process, employing maximum available
+shared memory parallelism.</p>
 <div class="topic">
 <p class="topic-title first">obj = HYBRID_SOLVER (parmec_file, parmec_step, parmec2solfec, solfec_solver) <span class="red">(Under development)</span></p>
 <ul class="simple">
@@ -289,6 +290,12 @@ part of modeling is executed on MPI rank 0 process, employing maximum available 
 <li>parmec_step &#8211; an upper bound of the PARMEC time step</li>
 <li>parmec2solfec &#8211; Python dictionary based mapping of PARMEC particle numbers to SOLFEC body identifiers</li>
 <li>solfec_solver &#8211; SOLFEC constraint solver (e.g. NEWTON_SOLVER)</li>
+</ul>
+<p>Notes:</p>
+<ul class="simple">
+<li>motion of the boundary bodies listed in the <strong>parmec2solfec</strong> mapping is driven by the PARMEC model</li>
+<li>SOLFEC boundary bodies listed in the <strong>parmec2solfec</strong> mapping must be rigid</li>
+<li>if motion of the boundary bodies is restrained in PARMEC, equivalent kinematic constraints need to applied to the same bodies in SOLFEC</li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a HYBRID_SOLVER object, cf. <a class="reference internal" href="#hybrid-params"><span class="std std-numref">Table 24</span></a>.</p>
