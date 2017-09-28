@@ -276,6 +276,45 @@ limits is crossed; default: (0, 0)</li>
 </ul>
 </div>
 </div>
+<div class="section" id="unspring">
+<h2>UNSPRING<a class="headerlink" href="#unspring" title="Permalink to this headline">¶</a></h2>
+<p>Undoes user defined selection of springs (<strong>msprings</strong>) based on the value of spring entities experienced by a different user defined
+selection of springs (<strong>tsprings</strong>). Modifications to the spring curves occur during a simulation. Undone springs remain in the simulation
+but generate zero forces.</p>
+<div class="topic">
+<p class="topic-title first">UNSPRING (tsprings, msprings, limits | entity, operator, abs, nsteps, nfreq, unload) <span class="red">(under development)</span></p>
+<ul class="simple">
+<li><strong>tsprings</strong> - list of unique spring numbers whose spring entities are assessed against a criteria defined by limits; must be nonempty</li>
+<li><strong>msprings</strong> - list of unique spring numbers which are to be modified if <strong>tsprings</strong> meet the limits criteria (springs defined in <strong>tsprings</strong>
+are not modified unless also specified in <strong>msprings</strong>); must be nonempty</li>
+<li><strong>limits</strong> - tuple of (min, max) <strong>tsprings operator entity</strong> limit values which need to be exceeded for <strong>msprings</strong> to be modified; if either
+value is <em>None</em> then no failure limit is assumed e.g. (<em>None</em>, max) only has an upper failure limit; also min &lt; max</li>
+<li><strong>entity</strong> - scalar spring entity string: (spring stroke) &#8216;STROKE&#8217;, (spring total force) &#8216;STF&#8217;, (spring force without damping) &#8216;SF&#8217;, cf.
+<a class="reference internal" href="#parmec-command-history"><span class="std std-ref">HISTORY</span></a> and <a class="reference internal" href="#parmec-command-output"><span class="std std-ref">OUTPUT</span></a>; default: &#8216;SF&#8217;</li>
+<li><strong>operator</strong> - collective <strong>tsprings</strong> operator string: &#8216;SUM&#8217;, &#8216;MIN&#8217;, &#8216;MAX&#8217;; default: &#8216;SUM&#8217;</li>
+<li><strong>abs</strong> - boolean, if <em>True</em> then spring forces are converted to absolute values before summation of the spring forces; default: <em>False</em></li>
+<li><strong>nsteps</strong> - int, number of time steps between calls of UNSPRING; default: 1</li>
+<li><strong>nfreq</strong> - int, number of <strong>nsteps</strong> for which <strong>tsprings</strong> exceed <strong>limits</strong> before <strong>msprings</strong> are modified; default: 1</li>
+<li><strong>unload</strong> - Python dictionary (i.e. <strong>unload</strong> [key] = value), where <em>key</em> (int) - unique spring number (must be present in <strong>msprings</strong>)
+and value (int) - time series number (<a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a>) defining the unload spring curve; an unloading curve must
+originate at zero and increase monotonically; once modification is activated, for each spring in <strong>msprings</strong>, the unloading curve is
+individually applied with a shift specific to the current displacement; both negative and positive displacement increments decrease total
+spring forces until zero; the spring force remains zero ever after; dashpot force is zero during unloading; default: instantaneous unloading
+to zero total force</li>
+</ul>
+</div>
+<p>By default, modification of <strong>msprings</strong> is based on the sum of the elastic spring force values across all spring numbers defined in tsprings. This is a sum
+of absolute values if <strong>abs</strong> = <em>True</em>. Forces in all <strong>tsprings</strong> must exceed the specific min/max values defined in <strong>limits</strong> for the spring curves to be
+modified (i.e. spring curve modification is an <em>and</em> operation, not <em>or</em>). For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">tsprings</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">msprings</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">limits</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">UNSPRING</span><span class="p">(</span><span class="n">tsprings</span><span class="p">,</span> <span class="n">msprings</span><span class="p">,</span> <span class="n">limits</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>results in the resultant elastic spring force (SF) being assessed against the (-1.0, 1.0) limits. For the spring curves of springs 3 and 4 to be modified,
+the sum of the forces of springs 1 and 2 must be outside of the (-1.0,1.0) limits for <strong>nfreq</strong> (=1) number of <strong>nsteps</strong> (=1).</p>
+</div>
 <div class="section" id="granular">
 <h2>GRANULAR<a class="headerlink" href="#granular" title="Permalink to this headline">¶</a></h2>
 <p>Define surface pairing for the granular contact interaction model.</p>
@@ -326,14 +365,12 @@ from dynamics and restraints.</p>
 <p class="topic-title first">PRESCRIBE (parnum | linear, angular, kind)</p>
 <ul class="simple">
 <li><strong>parnum</strong> - particle number</li>
-<li><strong>linear</strong> - a tuple <span class="math">\((i,j,k)\)</span> of TSERIES numbers, or a
-callback: <span class="math">\(\left(v_{x},v_{y},v_{z}\right)=\)</span> <strong>linear</strong>
-<span class="math">\(\left(t\right)\)</span>, defining linear velocity or acceleration
-history; default: <em>not prescribed</em></li>
-<li><strong>angular</strong> - a tuple <span class="math">\((i,j,k)\)</span> of TSERIES numbers, or a
-callback: <span class="math">\(\left(\omega_{x},\omega_{y},\omega_{z}\right)=\)</span>
-<strong>angular</strong> <span class="math">\(\left(t\right)\)</span>, defining spatial angular velocity
-or acceleration history; default: <em>not prescribed</em></li>
+<li><strong>linear</strong> - a tuple <span class="math">\((i,j,k)\)</span> of <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> numbers,
+or a callback: <span class="math">\(\left(v_{x},v_{y},v_{z}\right)=\)</span> <strong>linear</strong> <span class="math">\(\left(t\right)\)</span>,
+defining linear velocity or acceleration history; default: <em>not prescribed</em></li>
+<li><strong>angular</strong> - a tuple <span class="math">\((i,j,k)\)</span> of <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> numbers,
+or a callback: <span class="math">\(\left(\omega_{x},\omega_{y},\omega_{z}\right)=\)</span> <strong>angular</strong> <span class="math">\(\left(t\right)\)</span>,
+defining spatial angular velocity or acceleration history; default: <em>not prescribed</em></li>
 <li><strong>kind</strong> - string ’vv’, ’va’, ’av’, or ’aa’ indicating interpretation
 of respectively <strong>linear</strong> and <strong>angular</strong> time histories as either
 velocity or acceleration; default: ’vv’</li>
@@ -363,11 +400,11 @@ velocity or acceleration; default: ’vv’</li>
 <p class="topic-title first">GRAVITY (gx, gy, gz)</p>
 <ul class="simple">
 <li><strong>gx</strong> - constant <span class="math">\(x\)</span> float number, or callback
-<strong>gx</strong><span class="math">\((t)\)</span>, or TSERIES number</li>
+<strong>gx</strong><span class="math">\((t)\)</span>, or <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number</li>
 <li><strong>gy</strong> - constant <span class="math">\(y\)</span> float number, or callback
-<strong>gy</strong><span class="math">\((t)\)</span>, or TSERIES number</li>
+<strong>gy</strong><span class="math">\((t)\)</span>, or <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number</li>
 <li><strong>gz</strong> - constant <span class="math">\(z\)</span> float number, or callback
-<strong>gz</strong><span class="math">\((t)\)</span>, or TSERIES number</li>
+<strong>gz</strong><span class="math">\((t)\)</span>, or <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number</li>
 </ul>
 </div>
 </div>
@@ -391,13 +428,10 @@ velocity.</p>
 <div class="topic">
 <p class="topic-title first">DAMPING (linear, angular)</p>
 <ul class="simple">
-<li><strong>linear</strong> - linear damping curve callback
-<span class="math">\(\left(d_{vx},d_{vy},d_{vz}\right)=\)</span> <strong>linear</strong>
-<span class="math">\(\left(t\right)\)</span>, or a tuple <span class="math">\((i,j,k)\)</span> of TSERIES numbers</li>
-<li><strong>angular</strong> - angular damping curve callback
-<span class="math">\(\left(d_{\omega x},d_{\omega y},d_{\omega z}\right)=\)</span>
-<strong>angular</strong> <span class="math">\(\left(t\right)\)</span>, or a tuple <span class="math">\((i,j,k)\)</span> of
-TSERIES numbers</li>
+<li><strong>linear</strong> - linear damping curve callback <span class="math">\(\left(d_{vx},d_{vy},d_{vz}\right)=\)</span> <strong>linear</strong>
+<span class="math">\(\left(t\right)\)</span>, or a tuple <span class="math">\((i,j,k)\)</span> of <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> numbers</li>
+<li><strong>angular</strong> - angular damping curve callback <span class="math">\(\left(d_{\omega x},d_{\omega y},d_{\omega z}\right)=\)</span>
+<strong>angular</strong> <span class="math">\(\left(t\right)\)</span>, or a tuple <span class="math">\((i,j,k)\)</span> of <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> numbers</li>
 </ul>
 </div>
 </div>
@@ -545,8 +579,8 @@ otherwise</li>
 <li><strong>interval</strong> - output interval (default: time step); tuple
 <span class="math">\(\left(dt_{\text{files}},dt_{\text{history}}\right)\)</span> can be
 used to indicate different output frequencies of output files and
-time histories, respectively; callback functions or TSERIES numbers
-can also be used, e.g.
+time histories, respectively; callback functions or <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a>
+numbers can also be used, e.g.
 <span class="math">\(dt_{\text{files}}=\text{dt_fiels}\left(t\right)\)</span> and
 <span class="math">\(dt_{\text{history}}=\text{tmsnum}\)</span>, prescribing variable
 interval frequencies, depending on current time;</li>
@@ -606,6 +640,7 @@ it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimenta
 <li class="toctree-l3"><a class="reference internal" href="#analytical">ANALYTICAL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#obstacle">OBSTACLE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spring">SPRING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unspring">UNSPRING</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#granular">GRANULAR</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#restrain">RESTRAIN</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#prescribe">PRESCRIBE</a></li>
