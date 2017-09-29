@@ -449,7 +449,7 @@ velocity.</p>
 <span id="parmec-command-history"></span><h2>HISTORY<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
 <p>Before running a simulation, request time history output.</p>
 <div class="topic">
-<p class="topic-title first">list = HISTORY (entity | source, point)</p>
+<p class="topic-title first">list = HISTORY (entity | source, point, h5file, h5last)</p>
 <ul class="simple">
 <li><strong>list</strong> - output time history list (empty upon initial request,
 populated during simulation)</li>
@@ -472,6 +472,13 @@ it <span class="red">(under development)</span>; default: 0 (useful when entity 
 list of numbers can be used as a source in case of spring entities</li>
 <li><strong>point</strong> - optional referential point used in case of a single
 particle source; default: particle mass centre</li>
+<li><strong>h5file</strong> <span class="red">(experimental)</span> - optional .h5 file storing existing results; in this case the history is retrieved
+from this file (if found) or an error message is issued; an appropriate output file needs to be picked depending
+on the entity, cf. <a class="reference internal" href="#parmec-command-output"><span class="std std-ref">OUTPUT</span></a>; the output list is not populated until <strong>h5last</strong> = <em>True</em>;
+default: not specified</li>
+<li><strong>h5last</strong> <span class="red">(experimental)</span> - optional boolean flag marking a last call to HISTORY for which the <strong>h5file</strong> argument
+is used; for faster reading all such histories are populated once HISTORY(..., <strong>h5file</strong> = ..., <strong>h5last</strong> = <em>True</em>) is
+called; default: <em>False</em></li>
 </ul>
 </div>
 </div>
