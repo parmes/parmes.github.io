@@ -185,9 +185,11 @@ corresponds to the work of tangential contact reactions</li>
 <li>hist &#8211; a tuple of list objects storing the histories: (times, values1, values2, ..., valuesN)</li>
 <li>solfec &#8211; SOLFEC object</li>
 <li>list &#8211; list of objects [object1, object2, ..., objectN] indicating requested values. The valid objects are:<ul>
-<li>a tuple (body, point, entity) where body is a BODY object, point is a (x, y, z) tuple storing the referential point,
-and entity is one of: &#8216;CX&#8217;, &#8216;CY&#8217;, &#8216;CZ&#8217; (current coordinate), &#8216;DX&#8217;, &#8216;DY&#8217;, &#8216;DZ&#8217; (displacement), &#8216;VX&#8217;, &#8216;VY&#8217;, &#8216;VZ&#8217; (velocity),
-&#8216;SX&#8217;, &#8216;SY&#8217;, &#8216;SZ&#8217;, &#8216;SXY&#8217;, &#8216;SXZ&#8217;, &#8216;SYZ&#8217; (stress), &#8216;MISES&#8217; (von Mises norm of stress)</li>
+<li>a tuple (body, point, entity) where body is a BODY object or a body label string, point is a (x, y, z) tuple storing the
+referential point, and entity is one of: &#8216;CX&#8217;, &#8216;CY&#8217;, &#8216;CZ&#8217; (current coordinate), &#8216;DX&#8217;, &#8216;DY&#8217;, &#8216;DZ&#8217; (displacement), &#8216;VX&#8217;, &#8216;VY&#8217;,
+&#8216;VZ&#8217; (velocity), &#8216;SX&#8217;, &#8216;SY&#8217;, &#8216;SZ&#8217;, &#8216;SXY&#8217;, &#8216;SXZ&#8217;, &#8216;SYZ&#8217; (stress), &#8216;MISES&#8217; (von Mises norm of stress); <strong>Note:</strong> if body label
+is used and the body initially did not exist (e.g. it was inserted during simulation or produced as a result of fragmentation)
+corresponding values for times when it did not exit are NaN;</li>
 <li>a tuple (object, kind) where object is a SOLFEC object, a BODY object or a list of BODY objects,
 and kind is a string &#8216;KINETIC&#8217;, &#8216;INTERNAL&#8217;, &#8216;EXTERNAL&#8217;, &#8216;CONTACT&#8217; (included in external),
 &#8216;FRICTION&#8217; (included in external) and it corresponds to the energy kind;

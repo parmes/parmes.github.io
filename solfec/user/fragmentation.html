@@ -67,7 +67,7 @@
 <p>This routine splits a meshed BODY object along a surface aligned with internal element boundaries. It can be invoked from within a callback function
 &#8211; see the <a class="reference internal" href="simulation.html#solfec-command-callback"><span class="std std-ref">CALLBACK command</span></a> &#8211; and hence “RT” stands for “runtime”.</p>
 <div class="topic">
-<p class="topic-title first">(body2, lst1, lst2) = RT_SPLIT (body1, surf | sid1, sid2, label1, label2) <span class="red">(Under development)</span></p>
+<p class="topic-title first">(body2, lst1, lst2) = RT_SPLIT (body1, surf | sid1, sid2, label1, label2) <span class="red">(Experimental)</span></p>
 <ul class="simple">
 <li>body2 &#8211; created BODY object or <em>None</em> if the split does not create another body</li>
 <li>lst1, lst2 &#8211; lists mapping original mesh node numbers to new mesh node numbers in <strong>body1</strong> and <strong>body2</strong>. Only <strong>lst1</strong>
