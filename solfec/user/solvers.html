@@ -122,6 +122,9 @@ cf. <a class="reference internal" href="#gauss-seidel-variant"><span class="std 
 <tr class="row-odd"><td><strong>obj.innerloops</strong> &#8211; number of inner Gauss&#8211;Seidel loops per one global step during a parallel run
 (default: 1). Ignored in sequential mode.</td>
 </tr>
+<tr class="row-even"><td><strong>obj.itershist</strong> &#8211; set to &#8216;ON&#8217; before reading; when red returns a Python list storing iterations
+counts from all solver runs.</td>
+</tr>
 </tbody>
 </table>
 <div class="line-block">
@@ -204,7 +207,7 @@ and linmaxiter, so that the linear sub-problems are solved only roughly; since r
 for these parameters, please experiment before settling on specific values for a specific problem;</li>
 <li>theta &#8211; relaxation parameter greater than 0 and not greater than 1 (used only for linver = &#8216;DIAG&#8217;,
 default: 0.25); smaller initial theta may improve overall convergence behavior</li>
-<li>omega &#8211; positive equation smoothing omega (default: mbox{textbf{meritval}}cdot0.01)</li>
+<li>omega &#8211; positive equation smoothing omega (default: <span class="math">\(\mbox{meritval}\cdot0.01\)</span>)</li>
 <li>gsflag &#8211; &#8216;ON&#8217; or &#8216;OFF&#8217; deciding whether to us Gauss-Seidel iterations in case of failure (default: &#8216;ON&#8217;)</li>
 </ul>
 </div>
@@ -229,6 +232,9 @@ default: 0.25); smaller initial theta may improve overall convergence behavior</
 </tr>
 <tr class="row-odd"><td><em>obj.meritval, obj.maxiter, obj.locdyn, obj.linver, obj.linmaxiter, obj.maxmatvec, obj.epsilon,</em>
 <em>obj.delta, obj.theta, obj.omega, obj.gsflag</em></td>
+</tr>
+<tr class="row-even"><td><strong>obj.itershist</strong> &#8211; set to &#8216;ON&#8217; before reading; when red returns a Python list storing iterations
+counts from all solver runs.</td>
 </tr>
 </tbody>
 </table>
