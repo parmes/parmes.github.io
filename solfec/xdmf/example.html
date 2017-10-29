@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Export domino example &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Paraview session example" href="paraview.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -62,8 +59,8 @@
   <div class="section" id="export-domino-example">
 <span id="solfec-xdmf-example"></span><h1>Export domino example<a class="headerlink" href="#export-domino-example" title="Permalink to this headline">¶</a></h1>
 <p>The source code below demonstrate the XDMF export functionality using a domino toppling example.
-Lines 1&#8211;16 set up the simulation. Lines 18&#8211;23 either export the initial geometry or run simulation.
-Lines 25&#8211;40 exemplify the remaining export capability. Within Solfec sources
+Lines 1–16 set up the simulation. Lines 18–23 either export the initial geometry or run simulation.
+Lines 25–40 exemplify the remaining export capability. Within Solfec sources
 this example can be found as <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/inp/devel/xdmf-export.py">inp/devel/xdmf-export.py</a>.</p>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
@@ -150,19 +147,19 @@ this example can be found as <a class="reference external" href="https://github.
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">solfec</span> <span class="n">inp</span><span class="o">/</span><span class="n">devel</span><span class="o">/</span><span class="n">xdmf</span><span class="o">-</span><span class="n">export</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">geom0</span>
 </pre></div>
 </div>
-<p>to first demonstrate the export of initial geometry in &#8216;WRITE&#8217; mode. In this case no calculations
+<p>to first demonstrate the export of initial geometry in ‘WRITE’ mode. In this case no calculations
 were done and only one, initial state was saved in <em>out/xmftest0</em> directory. The saved files are:</p>
 <ul class="simple">
-<li><em>out/xmftest0/xmftest0_grids.xmf</em> &#8211; storing grids markup</li>
-<li><em>out/xmftest0/xmftest0_spheres.xmf</em> &#8211; storing spheres markup</li>
-<li><em>out/xmftest0/xmftest0.h5</em> &#8211; storing all remaining data</li>
+<li><em>out/xmftest0/xmftest0_grids.xmf</em> – storing grids markup</li>
+<li><em>out/xmftest0/xmftest0_spheres.xmf</em> – storing spheres markup</li>
+<li><em>out/xmftest0/xmftest0.h5</em> – storing all remaining data</li>
 </ul>
 <p>We note that:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span><span class="o">.</span><span class="n">cleanup</span> <span class="o">=</span> <span class="s1">&#39;ON&#39;</span>
 </pre></div>
 </div>
 <p>in line 22 allows Solfec to delete the output directory <em>out/domino</em> in case no results were saved.
-This is just a matter of convenience, allowing us to run Solfec without the &#8211;w switch:</p>
+This is just a matter of convenience, allowing us to run Solfec without the –w switch:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">solfec</span> <span class="n">inp</span><span class="o">/</span><span class="n">devel</span><span class="o">/</span><span class="n">xdmf</span><span class="o">-</span><span class="n">export</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
@@ -172,8 +169,8 @@ screenshots captured using a viewer session:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">solfec</span> <span class="n">inp</span><span class="o">/</span><span class="n">devel</span><span class="o">/</span><span class="n">xdmf</span><span class="o">-</span><span class="n">export</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">v</span>
 </pre></div>
 </div>
-<table border="1" class="docutils" id="id1">
-<span id="domino-0-3"></span><caption><span class="caption-number">Table 26 </span><span class="caption-text">Domino animation at times <span class="math">\(t\in\{0.0, 0.25, 0.5, 0.75\}\)</span>.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<span id="domino-0-3"></span><table border="1" class="docutils" id="id1">
+<caption><span class="caption-number">Table 26 </span><span class="caption-text">Domino animation at times <span class="math">\(t\in\{0.0, 0.25, 0.5, 0.75\}\)</span>.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="25%" />
 <col width="25%" />
@@ -192,8 +189,8 @@ screenshots captured using a viewer session:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">solfec</span> <span class="n">inp</span><span class="o">/</span><span class="n">devel</span><span class="o">/</span><span class="n">xdmf</span><span class="o">-</span><span class="n">export</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>in order to execute lines 25&#8211;40 and output the <em>out/xdmftest[1&#8211;5]</em> directories. Recall, that when results
-are present Solfec runs in the &#8216;READ&#8217; mode, facilitating access to post&#8211;processing routines.</p>
+<p>in order to execute lines 25–40 and output the <em>out/xdmftest[1–5]</em> directories. Recall, that when results
+are present Solfec runs in the ‘READ’ mode, facilitating access to post–processing routines.</p>
 <p>The first export instance in line 28:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">XDMF_EXPORT</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;out/xmftest1&#39;</span><span class="p">)</span>
 </pre></div>
@@ -205,10 +202,10 @@ are present Solfec runs in the &#8216;READ&#8217; mode, facilitating access to p
 <p>outputs the entire 1000 steps of the simulation into the <em>out/xmftest2</em> directory. We note that in both cases an extra file
 has been created in the output directories, e.g.:</p>
 <ul class="simple">
-<li><em>out/xmftest2/xmftest2_constraints.xmf</em> &#8211; storing constraints markup</li>
+<li><em>out/xmftest2/xmftest2_constraints.xmf</em> – storing constraints markup</li>
 </ul>
 <p>Exporting all time steps of a simulation may not always be desirable. Sometimes we might like to store more results within the large
-hard drives of a HPC facility and only export subsets for local post&#8211;processing. In line 32 we define a list of 101 time instants:</p>
+hard drives of a HPC facility and only export subsets for local post–processing. In line 32 we define a list of 101 time instants:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">times</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -224,13 +221,13 @@ and further specialise our export. This is done in the fourth export instance in
 </div>
 <p>where we used a combination of a bounding box, a body label, and a BODY object to define a subset. Bodies, whose bounding boxes
 overlap the box defined by two corners <span class="math">\([0.4, 0, 0]\)</span> and <span class="math">\([0.6, 0.05, 0.2]\)</span> at time <span class="math">\(t = 0\)</span> will be exported
-together with the domino piece labeled &#8216;Domino2&#8217; and the ball used to initially topple the domino set.</p>
+together with the domino piece labeled ‘Domino2’ and the ball used to initially topple the domino set.</p>
 <p>The last example, in line 39, demonstrates the usage of a regular expression based subset definition:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">XDMF_EXPORT</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="s1">&#39;out/xmftest5&#39;</span><span class="p">,</span>
     <span class="n">subset</span> <span class="o">=</span> <span class="s1">&#39;Domino[2,3]&#39;</span><span class="p">,</span> <span class="n">attributes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;VELO&#39;</span><span class="p">,</span> <span class="s1">&#39;RELV&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>together with a non-default definition of exported attributes. In this case domino pieces labeled &#8216;Domino2&#8217; and &#8216;Domino3&#8217;
+<p>together with a non-default definition of exported attributes. In this case domino pieces labeled ‘Domino2’ and ‘Domino3’
 will be exported. Only the velocity field will be saved as a grid attribute and only relative constraint velocities
 will be saved as constraints attributes.</p>
 <p>In the <a class="reference internal" href="paraview.html#solfec-xdmf-paraview"><span class="std std-ref">following section</span></a> we are going to use <a class="reference external" href="http://www.paraview.org">Paraview</a> in order to
@@ -386,8 +383,8 @@ view some of the XDMF files generated by the current example.</p>
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/xdmf/example.rst.txt"

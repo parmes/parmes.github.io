@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Solfec XDMF export &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="XDMF_EXPORT command" href="xdmf/export.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -62,15 +59,15 @@
   <div class="section" id="solfec-xdmf-export">
 <span id="solfec-xdmf"></span><h1>Solfec XDMF export<a class="headerlink" href="#solfec-xdmf-export" title="Permalink to this headline">¶</a></h1>
 <p>XDMF export allows Solfec results to be saved in <a class="reference external" href="http://www.xdmf.org">XDMF format</a> and viewed in <a class="reference external" href="http://www.paraview.org">ParaView</a>
-and other post&#8211;processors. A quick example of Python syntax is provided below:</p>
+and other post–processors. A quick example of Python syntax is provided below:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">XDMF_EXPORT</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="s1">&#39;/tmp/sim0&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>where results from the time interval <span class="math">\([0.0, 1.0]\)</span> are exported into the &#8216;/tmp/sim0&#8217; directory. A typical Solfec workflow including XDMF export could be:</p>
+<p>where results from the time interval <span class="math">\([0.0, 1.0]\)</span> are exported into the ‘/tmp/sim0’ directory. A typical Solfec workflow including XDMF export could be:</p>
 <ol class="arabic simple">
 <li>Prepare and run an input deck (e.g. submit a batch job onto a HPC cluster).</li>
-<li>Run Solfec again and export a subset of results by calling XDMF_EXPORT from within your input deck (Solfec needs to be in the &#8216;READ&#8217; mode).</li>
-<li>Copy the exported fiels into your desktop compouter and view them using Paraview or another post&#8211;processor.</li>
+<li>Run Solfec again and export a subset of results by calling XDMF_EXPORT from within your input deck (Solfec needs to be in the ‘READ’ mode).</li>
+<li>Copy the exported fiels into your desktop compouter and view them using Paraview or another post–processor.</li>
 </ol>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -241,8 +238,8 @@ from there using an interactive ssh session.</p>
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../_sources/solfec/xdmf.rst.txt"

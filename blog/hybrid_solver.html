@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Hybrid solver in Solfec &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   
@@ -49,7 +46,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -59,14 +56,14 @@
             
   <div class="section" id="hybrid-solver-in-solfec">
 <span id="blog-hybrid-solver"></span><h1>Hybrid solver in Solfec<a class="headerlink" href="#hybrid-solver-in-solfec" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="../solfec/user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">Solfec&#8217;s hybrid solver</span></a> is now ready for testing. This solver combines the ability
-of modeling non&#8211;smooth multi&#8211;body structures in Solfec (e.g. as fully resolved FE models) in conjunction with a lightweight
-rigid&#8211;body/nonlinear&#8211;spring approach implemented in <a class="reference internal" href="../parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a>. A simple example of that can be
+<p><a class="reference internal" href="../solfec/user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">Solfec’s hybrid solver</span></a> is now ready for testing. This solver combines the ability
+of modeling non–smooth multi–body structures in Solfec (e.g. as fully resolved FE models) in conjunction with a lightweight
+rigid–body/nonlinear–spring approach implemented in <a class="reference internal" href="../parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a>. A simple example of that can be
 seen in the video below:</p>
 <p align="center"><iframe width="486" height="324" src="//www.youtube.com/embed/CW080-GCB1w?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p>The inner three bodies (with colorful velocity map on them) are modeled in Solfec, while the outer bodies are modeled
 in Parmec (used as a library from within Solfec). This type of approach can potentially help speed up calculations for
 some Solfec models, where an area of interest can be fully resolved, while the remaining part of the model can be simplified
-into a set of (geometry&#8211;less) rigid bodies interacting via <a class="reference internal" href="../parmec/input_commands.html#parmec-command-spring"><span class="std std-ref">non&#8211;linear springs and dampers</span></a>
+into a set of (geometry–less) rigid bodies interacting via <a class="reference internal" href="../parmec/input_commands.html#parmec-command-spring"><span class="std std-ref">non–linear springs and dampers</span></a>
 (defined in a tabular manner). See also <a class="reference internal" href="../solfec/examples/hybrid_modeling.html#solfec-examples-hybrid-modeling"><span class="std std-ref">hybrid modeling examples</span></a> where more of this
 functionality is explained.</p>
 </div>
@@ -242,8 +239,8 @@ functionality is explained.</p>
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../_sources/blog/hybrid_solver.rst.txt"

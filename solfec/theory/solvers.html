@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Constraint solvers &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Bulk materials" href="bulkmat.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -89,19 +86,19 @@ we only use the diagonal blocks, which are always positive definite. To recapitu
 <p>Such merit function is used as one of the stopping criterions for the solvers described below.</p>
 </div>
 <div class="section" id="gauss-seidel-solver">
-<span id="solfec-theory-solvers-gs"></span><h2>Gauss&#8211;Seidel solver<a class="headerlink" href="#gauss-seidel-solver" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-theory-solvers-gs"></span><h2>Gauss–Seidel solver<a class="headerlink" href="#gauss-seidel-solver" title="Permalink to this headline">¶</a></h2>
 <p>The equations of <a class="reference internal" href="locdyn.html#solfec-theory-locdyn"><span class="std std-ref">local dynamics</span></a> read</p>
 <div class="math">
 \[\mathbf{U}_{\alpha}=\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}\]</div>
 <p>where <span class="math">\(\mathbf{U}_{\alpha}\)</span> are relative velocities and <span class="math">\(\mathbf{R}_{\alpha}\)</span> are reactions at constraint points. <span class="math">\(\mathbf{U}_{\alpha}\)</span>,
-<span class="math">\(\mathbf{R}_{\alpha}\)</span>, <span class="math">\(\mathbf{B}_{\alpha}\)</span> are 3&#8211;vectors, while <span class="math">\(\mathbf{W}_{\alpha\beta}\)</span> are <span class="math">\(3\times3\)</span> matrix blocks. Each
+<span class="math">\(\mathbf{R}_{\alpha}\)</span>, <span class="math">\(\mathbf{B}_{\alpha}\)</span> are 3–vectors, while <span class="math">\(\mathbf{W}_{\alpha\beta}\)</span> are <span class="math">\(3\times3\)</span> matrix blocks. Each
 constraint equation can be formulated as</p>
 <div class="math">
 \[\mathbf{C}_{\alpha}\left(\mathbf{U}_{\alpha},\mathbf{R}_{\alpha}\right)=\mathbf{0}\]</div>
 <p>or in other words</p>
 <div class="math" id="equation-nleq">
 <span class="eqno">(1)<a class="headerlink" href="#equation-nleq" title="Permalink to this equation">¶</a></span>\[\mathbf{C}_{\alpha}\left(\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta},\mathbf{R}_{\alpha}\right)=\mathbf{0}\]</div>
-<p>A series of 3&#8211;component non&#8211;linear equations <a class="reference internal" href="#equation-nleq">(1)</a> for all constrains can be approximately solved using the below serial Gauss&#8211;Seidel paradigm</p>
+<p>A series of 3–component non–linear equations <a class="reference internal" href="#equation-nleq">(1)</a> for all constrains can be approximately solved using the below serial Gauss–Seidel paradigm</p>
 <p><strong>SERIAL_GS</strong> <span class="math">\(\left(Constraints,\epsilon,\gamma\right)\)</span> <br />
 1 <span class="math">\(\,\,\)</span> do <br />
 2 <span class="math">\(\,\,\,\,\,\,\)</span> for each <span class="math">\(\alpha in Constraints\)</span> do <br />
@@ -109,9 +106,9 @@ constraint equation can be formulated as</p>
 4 <span class="math">\(\,\,\,\,\,\,\)</span> find <span class="math">\(\mathbf{R}_{\alpha}\)</span> such that <span class="math">\(\mathbf{C}_{\alpha}\left(\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta},\mathbf{R}_{\alpha}\right)=\mathbf{0}\)</span> <br />
 5 <span class="math">\(\,\,\,\,\,\,\,\,\,\,\)</span> assuming <span class="math">\(\mathbf{R}_{\beta}=\mbox{constant}\)</span> for <span class="math">\(\beta\ne\alpha\)</span> <br />
 6 <span class="math">\(\,\,\)</span>  while <span class="math">\(\left\Vert \mathbf{S}-\mathbf{R}\right\Vert /\left\Vert \mathbf{R}\right\Vert &gt;\epsilon\)</span> and <span class="math">\(g\left(\mathbf{R}\right)&gt;\gamma\)</span> <br /></p>
-<p>Algorithm <strong>SERIAL_GS</strong> is quite simple: diagonal block problems are solved until reaction change is small enough. The Gauss&#8211;Seidel paradigm corresponds to the fact,
-that the most recent off&#8211;diagonal reactions are used when solving the diagonal problem. Of course, because of that, a perfectly parallel implementation is not possible.
-After all, reactions are updated in a sequence. We can nevertheless relax the need for sequential processing. Perhaps the most scalable Gauss&#8211;Seidel approach to date was
+<p>Algorithm <strong>SERIAL_GS</strong> is quite simple: diagonal block problems are solved until reaction change is small enough. The Gauss–Seidel paradigm corresponds to the fact,
+that the most recent off–diagonal reactions are used when solving the diagonal problem. Of course, because of that, a perfectly parallel implementation is not possible.
+After all, reactions are updated in a sequence. We can nevertheless relax the need for sequential processing. Perhaps the most scalable Gauss–Seidel approach to date was
 devised by Adams <a class="footnote-reference" href="#id4" id="id1">[1]</a>. Although originally it was used as a multigrid smoother, the core idea can be as well applied in our context. Each processor owes a subset of
 (internal) constraints <span class="math">\(Q_{i}\)</span>, where <span class="math">\(i=1,2,...,n\)</span> are the processors indices. Therefore the local velocity update can be rewritten as</p>
 <div class="math">
@@ -148,7 +145,7 @@ The middle constraints require communication with either. The inner constraints 
 \[Inner_{i}=Inner1_{i}\cup Inner2_{i}so that\]</div>
 <div class="math" id="equation-gsbalcnd">
 <span class="eqno">(2)<a class="headerlink" href="#equation-gsbalcnd" title="Permalink to this equation">¶</a></span>\[\left|Bottom_{i}\right|+\left|Inner2_{i}\right|=\left|Top_{i}\right|+\left|Inner1_{i}\right|\]</div>
-<p>The parallel Gauss&#8211;Seidel scheme is summarized in Algorithm <strong>PARALLEL_GS</strong> below. The presented version is simplified in the respect,
+<p>The parallel Gauss–Seidel scheme is summarized in Algorithm <strong>PARALLEL_GS</strong> below. The presented version is simplified in the respect,
 that alternate forward and backward runs are not accounted for (in terms of constraints ordering).</p>
 <p><strong>SWEEP</strong> <span class="math">\(\left(Set\right)\)</span> <br />
 1 <span class="math">\(\,\,\)</span> for each <span class="math">\(\alpha\in Set\)</span> do <br />
@@ -179,29 +176,29 @@ that alternate forward and backward runs are not accounted for (in terms of cons
 13 <span class="math">\(\,\)</span> while <span class="math">\(\left\Vert \mathbf{S}-\mathbf{R}\right\Vert /\left\Vert \mathbf{R}\right\Vert &gt;\epsilon\)</span> and <span class="math">\(g\left(\mathbf{R}\right)&gt;\gamma\)</span></p>
 <p>In <strong>PARALLEL_GS</strong> we first process the <span class="math">\(Top_{i}\)</span> set: a single sweep over the corresponding diagonal block problems is performed in line 4. Then we send the
 computed top reactions to the processors with lower colors. We try to overlap communication and computation, hence we sweep over the <span class="math">\(Inner2_{i}\)</span> set (line 6) while
-sending. We then receive the top reactions. It should be noted that all communication is asynchronous &#8211; we only wait to receive reactions immediately necessary
+sending. We then receive the top reactions. It should be noted that all communication is asynchronous – we only wait to receive reactions immediately necessary
 for computations. In line 8 we enter the loop processing the <span class="math">\(Middle_{i}\)</span> set. This is the location of the computational bottleneck. Middle nodes communicate
 with processors of higher and lower colors and hence, they need to be processed in a sequence. The sequential processing is still relaxed by using processor coloring.
 In the <strong>LOOP</strong> algorithm we first sort the constraints according to the descending order of maximal colors of their adjacent processors (line 1). We then maintain
 this ordering while processing constraints. As the top reactions were already sent, some of the constraints from the middle set will have their external reactions from
 higher colors fully updated. These will be processed first in line 5 of LOOP and then sent to lower and higher (by color) processors in line 7. This way some processors
 with lower colors will have their higher color off-diagonal reactions of middle set constraints fully updated and they will proceed next. And so on. At the end (line 8),
-we need to receive all remaining reactions that have been sent in line 7 of <strong>LOOP</strong>. Coming back to <strong>PARALLEL_GS</strong>, after the bottleneck of the LOOP, in lines 9&#8211;12 we
+we need to receive all remaining reactions that have been sent in line 7 of <strong>LOOP</strong>. Coming back to <strong>PARALLEL_GS</strong>, after the bottleneck of the LOOP, in lines 9–12 we
 process the <span class="math">\(Bottom_{i}\)</span> and <span class="math">\(Inner1_{i}\)</span> sets in the same way as we did with the <span class="math">\(Top_{i}\)</span> and <span class="math">\(Inner2_{i}\)</span> sets. The condition <a class="reference internal" href="#equation-gsbalcnd">(2)</a>
 attempts to balance the amount of computations needed to hide the communication (e.g. the larger the <span class="math">\(Top_{i}\)</span> set is, the larger the <span class="math">\(Inner2_{i}\)</span> set becomes).
 It should be noted that the convergence criterion in line 13 is global across all processors.</p>
-<p>In <a class="reference internal" href="../user/solvers.html#solfec-user-solvers"><span class="std std-ref">User Manual Solvers Section</span></a> several variants of the parallel Gauss&#8211;Seidel algorithm are listed. Algorithm <strong>PARALLEL_GS</strong> corresponds to
+<p>In <a class="reference internal" href="../user/solvers.html#solfec-user-solvers"><span class="std std-ref">User Manual Solvers Section</span></a> several variants of the parallel Gauss–Seidel algorithm are listed. Algorithm <strong>PARALLEL_GS</strong> corresponds to
 the FULL variant. We might like to relax the bottleneck of <strong>LOOP</strong> in line 8 of <strong>PARALLEL_GS</strong> by replacing it with</p>
 <p>8.1 <span class="math">\(\,\,\)</span> SWEEP <span class="math">\(\left(Middle_{i}\right)\)</span> <br />
 8.2 <span class="math">\(\,\,\)</span> send <span class="math">\(\left(Middle_{i}\right)\)</span> <br />
 8.3 <span class="math">\(\,\,\)</span> receive <span class="math">\(\left(Middle_{i}\right)\)</span> <br /></p>
-<p>so that the middle nodes are processed in an inconsistent manner: the off&#8211;processor information corresponds to the previous iteration (just like in the Jacobi method).
+<p>so that the middle nodes are processed in an inconsistent manner: the off–processor information corresponds to the previous iteration (just like in the Jacobi method).
 Usually the <span class="math">\(Middle_{i}\)</span> sets are small and hence this inconsistency does not have to lead to divergence (especially for deformable kinematics, where constraint
 interactions are weak, while <span class="math">\(\mathbf{W}\)</span> is diagonally dominant). This is the MIDDLE_JACOBI variant of the algorithm. The last variant corresponds to a rather
 gross inconsistency: something usually called “a processor Gauss-Seidel method”. Let us define the set</p>
 <div class="math">
 \[All_{i}=Top_{i}\cup Bottom_{i}\cup Middle_{i}\cup Inner_{i}\]</div>
-<p>In this case, lines 4&#8211;12 of <strong>PARALLEL_GS</strong> need to be replaced with</p>
+<p>In this case, lines 4–12 of <strong>PARALLEL_GS</strong> need to be replaced with</p>
 <p>3 <span class="math">\(\,\,\)</span> SWEEP <span class="math">\(\left(All_{i}\right)\)</span> <br />
 4 <span class="math">\(\,\,\)</span> send <span class="math">\(\left(All_{i}\right)\)</span> <br />
 5 <span class="math">\(\,\,\)</span> receive <span class="math">\(\left(All_{i}\right)\)</span> <br /></p>
@@ -209,12 +206,12 @@ gross inconsistency: something usually called “a processor Gauss-Seidel method
 </div>
 <div class="section" id="projected-newton-solver">
 <span id="solfec-theory-solvers-pqn"></span><h2>Projected Newton solver<a class="headerlink" href="#projected-newton-solver" title="Permalink to this headline">¶</a></h2>
-<p>Using the <a class="reference internal" href="conform.html#solfec-theory-conform-nsveq"><span class="std std-ref">non&#8211;smooth velocity equation formulation</span></a> let us rewrite the frictional contact problem as</p>
+<p>Using the <a class="reference internal" href="conform.html#solfec-theory-conform-nsveq"><span class="std std-ref">non–smooth velocity equation formulation</span></a> let us rewrite the frictional contact problem as</p>
 <div class="math">
 \[\mathbf{C}\left(\mathbf{R}\right)=\mathbf{F}\left(\mathbf{R}\right)+\mathbf{m}\left(\mathbf{R}-\mathbf{F}\left(\mathbf{R}\right)\right)=\mathbf{0}\mbox{ and }\mathbf{R}\in K\]</div>
 <p>where <span class="math">\(K\)</span> is the direct sum of friction cones at all contact points. Since <span class="math">\(\mathbf{C}\left(\mathbf{R}\right)\)</span> is not smooth, to compute <span class="math">\(\nabla\mathbf{C}\)</span> we
-generalize the approach from <a class="footnote-reference" href="#id5" id="id2">[2]</a> and <a class="footnote-reference" href="#id6" id="id3">[3]</a> and use a smoothed <span class="math">\(\nabla_{\omega}\mathbf{C}\)</span> with <span class="math">\(\omega&gt;0\)</span> (we skip the details here), where only the self&#8211;dual case
-was considered (friction coefficient equal to 1). Our idea is to employ the following projected quasi&#8211;Newton step</p>
+generalize the approach from <a class="footnote-reference" href="#id5" id="id2">[2]</a> and <a class="footnote-reference" href="#id6" id="id3">[3]</a> and use a smoothed <span class="math">\(\nabla_{\omega}\mathbf{C}\)</span> with <span class="math">\(\omega&gt;0\)</span> (we skip the details here), where only the self–dual case
+was considered (friction coefficient equal to 1). Our idea is to employ the following projected quasi–Newton step</p>
 <div class="math" id="equation-newton">
 <span class="eqno">(3)<a class="headerlink" href="#equation-newton" title="Permalink to this equation">¶</a></span>\[\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}-\mathbf{A}^{-1}\mathbf{C}\left(\mathbf{R}\right)\right]\]</div>
 <p>so that, as required, the iterates remain within the friction cone and where</p>
@@ -227,7 +224,7 @@ it directly. Instead, we then two variants of <span class="math">\(\mathbf{A}\si
 <p>where <span class="math">\(\delta\ge0\)</span>. This is related to numerical integration of an artificial ODE</p>
 <div class="math">
 \[\frac{d\mathbf{R}}{dt}=\mathbf{C}\left(\mathbf{R}\right)\]</div>
-<p>to a steady state (take one step of implicit Euler, in the literature this is called pseudo&#8211;transient continuation). The second variant reads</p>
+<p>to a steady state (take one step of implicit Euler, in the literature this is called pseudo–transient continuation). The second variant reads</p>
 <div class="math">
 \[\mathbf{A}_{2}=\mbox{diag}_{3\times3}\left[\nabla_{\omega}\mathbf{C}\right],\mbox{ combined with direct inversion.}\]</div>
 <p>and it is combined with a heuristic stabilization technique</p>
@@ -236,7 +233,7 @@ it directly. Instead, we then two variants of <span class="math">\(\mathbf{A}\si
 <p>where</p>
 <div class="math">
 \[\theta\in\left[0,1\right]\mbox{.}\]</div>
-<p>We then have two variants of the projected quasi&#8211;Newton step:</p>
+<p>We then have two variants of the projected quasi–Newton step:</p>
 <ol class="arabic simple">
 <li>PQN1:</li>
 </ol>
@@ -244,19 +241,19 @@ it directly. Instead, we then two variants of <span class="math">\(\mathbf{A}\si
 \[\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}-\left(\nabla_{\omega}\mathbf{C}^{k}+\delta\mathbf{I}\right)_{\mbox{GMRES}\left(\epsilon\left\Vert \mathbf{C}^{k}\right\Vert ,m\right)}^{-1}\mathbf{C}^{k}\right]\]</div>
 <p>where GMRES is preconditioned with <span class="math">\(\left[\mbox{diag}_{3\times3}\left(\nabla_{\omega}\mathbf{C}_{\alpha\alpha}^{k}+\delta\mathbf{I}\right)\right]^{-1}\)</span> and <span class="math">\(\delta\)</span>,
 <span class="math">\(\epsilon\)</span> and <span class="math">\(m\)</span> need to be suitably selected. The linear problem should be solved only roughly, usually <span class="math">\(\epsilon=0.25\)</span> and <span class="math">\(m=10\)</span> (iterations
-bound) work well. For ill&#8211;conditioned problems a too accurate solution of the linear sub&#8211;problem results in a poor convergence rate. The diagonal regularization <span class="math">\(\delta\)</span>
-needs to be adjusted “by hand”. The automatic update formulas that can be found in literature work only for well&#8211;conditioned cases and hence they are not very useful for us.
-For ill&#8211;conditioned problems one should pick <span class="math">\(\delta\)</span> that delivers an overall best convergence behavior. Large values will slow down convergence, but stabilize it;
-small values may destabilize convergence for ill&#8211;conditioned problems; <span class="math">\(\delta\)</span> (typically <span class="math">\(\ll1\)</span>) should be tuned together with <span class="math">\(\epsilon\)</span> and <span class="math">\(m\)</span>
+bound) work well. For ill–conditioned problems a too accurate solution of the linear sub–problem results in a poor convergence rate. The diagonal regularization <span class="math">\(\delta\)</span>
+needs to be adjusted “by hand”. The automatic update formulas that can be found in literature work only for well–conditioned cases and hence they are not very useful for us.
+For ill–conditioned problems one should pick <span class="math">\(\delta\)</span> that delivers an overall best convergence behavior. Large values will slow down convergence, but stabilize it;
+small values may destabilize convergence for ill–conditioned problems; <span class="math">\(\delta\)</span> (typically <span class="math">\(\ll1\)</span>) should be tuned together with <span class="math">\(\epsilon\)</span> and <span class="math">\(m\)</span>
 (e.g. find a suitably small <span class="math">\(\delta\)</span> first, then tweak <span class="math">\(\epsilon\)</span>). Since rigorous analysis is still missing for these parameters, please experiment before settling
-on specific values for a specific problem. Use linver = &#8216;GMRES&#8217; in <a class="reference internal" href="../user/solvers.html#solfec-command-newton-solver"><span class="std std-ref">NEWTON_SOLVER</span></a> to enable this variant (this is also the default).</p>
+on specific values for a specific problem. Use linver = ‘GMRES’ in <a class="reference internal" href="../user/solvers.html#solfec-command-newton-solver"><span class="std std-ref">NEWTON_SOLVER</span></a> to enable this variant (this is also the default).</p>
 <ol class="arabic simple" start="2">
 <li>PQN2:</li>
 </ol>
 <div class="math">
 \[\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\left(1-\theta\right)\triangle\mathbf{R}^{k}-\theta\left(\mbox{diag}_{3\times3}\left[\nabla_{\omega}\mathbf{C}^{k}\right]\right)^{-1}\mathbf{C}^{k}\right]\]</div>
 <p>where <span class="math">\(\theta\in\left[0,1\right]\)</span> and the diagonal <span class="math">\(3\times3\)</span> blocks of <span class="math">\(\nabla_{\omega}\mathbf{C}^{k}\)</span> are directly inverted. This simple scheme is interesting
-because it converges for a sufficiently small <span class="math">\(\theta\)</span>, while it is essentially a nonlinear Jacobi&#8211;type method. Use linver = &#8216;DIAG&#8217; in <a class="reference internal" href="../user/solvers.html#solfec-command-newton-solver"><span class="std std-ref">NEWTON_SOLVER</span></a>
+because it converges for a sufficiently small <span class="math">\(\theta\)</span>, while it is essentially a nonlinear Jacobi–type method. Use linver = ‘DIAG’ in <a class="reference internal" href="../user/solvers.html#solfec-command-newton-solver"><span class="std std-ref">NEWTON_SOLVER</span></a>
 to enable this variant.</p>
 <p>Both variants are summarized as algorithms below.</p>
 <p><strong>PQN1</strong> <span class="math">\(\left(\mathbf{R},\gamma,n,\omega,\delta,m,\epsilon\right)\)</span> <br />
@@ -281,9 +278,9 @@ to enable this variant.</p>
 <div class="section" id="penalty-solver">
 <span id="solfec-theory-solvers-penalty"></span><h2>Penalty Solver<a class="headerlink" href="#penalty-solver" title="Permalink to this headline">¶</a></h2>
 <p>The penalty solver is quite straightforward. On each processor we split the constraints into <span class="math">\(Contacts_{i}\)</span> and <span class="math">\(Others_{i}\)</span>,
-hence we separate contact constraints from bilateral ones. We then update the contacts using the spring&#8211;dashpot model and calculate reactions
-of bilateral constraints using the Gauss&#8211;Seidel solver (fixed accuracy <span class="math">\(\mbox{epsilon=1E-4, maxiter = 1000}\)</span> is used). We use the
-Gauss&#8211;Seidel approach for non&#8211;contacts because in this case it is quite fast, while it avoids issues related to penalization of bilateral constraints.</p>
+hence we separate contact constraints from bilateral ones. We then update the contacts using the spring–dashpot model and calculate reactions
+of bilateral constraints using the Gauss–Seidel solver (fixed accuracy <span class="math">\(\mbox{epsilon=1E-4, maxiter = 1000}\)</span> is used). We use the
+Gauss–Seidel approach for non–contacts because in this case it is quite fast, while it avoids issues related to penalization of bilateral constraints.</p>
 <p><strong>PENALTY_SOLVER</strong> <span class="math">\(\left(\right)\)</span> <br />
 1 <span class="math">\(\,\,\)</span> for all <span class="math">\(\alpha\)</span> in <span class="math">\(Contacts_{i}\)</span> do <br />
 2 <span class="math">\(\,\,\,\,\,\,\)</span> SPRING_DASHPOT_CONTACT <span class="math">\(\left(h,gap_{\alpha},spring_{\alpha},dashpot_{\alpha},friction_{\alpha},cohesion_{\alpha},cohesive_{\alpha}\right)\)</span> <br />
@@ -291,12 +288,12 @@ Gauss&#8211;Seidel approach for non&#8211;contacts because in this case it is qu
 4 <span class="math">\(\,\,\)</span> receive <span class="math">\(\left(Contacts_{i}\right)\)</span> <br />
 5 <span class="math">\(\,\,\)</span> PARALLEL_GS <span class="math">\(\left(Others_{i}\right)\)</span> <br /></p>
 <p>Algorithm <strong>PENALTY_SOLVER</strong> summarizes the method. First all contact forces are calculated using the <a class="reference internal" href="conform.html#spring-dashpot-contact"><span class="std std-ref">SPRING_DASHPOT_CONTACT algorithm</span></a>.
-In lines 3 and 4 contact domain boundary contact forces are sent to and received on the neighboring processors. Finally, the parallel Gauss&#8211;Seidel algorithm is executed
+In lines 3 and 4 contact domain boundary contact forces are sent to and received on the neighboring processors. Finally, the parallel Gauss–Seidel algorithm is executed
 to calculate the reactions of the bilateral constraints. In the serial mode lines 3 and 4 are skipped, while <strong>SERIAL_GS</strong> is used instead of the parallel one.</p>
 </div>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
-<p>The Gauss&#8211;Seidel solver is implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bgs.c">bgs.c</a> and
+<p>The Gauss–Seidel solver is implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bgs.c">bgs.c</a> and
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bgs.h">bgs.h</a>.
 The projected Newton solver is implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/nts.c">nts.c</a> and
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/nts.h">nts.h</a>.
@@ -305,7 +302,7 @@ The penalty solver is implemented in <a class="reference external" href="https:/
 <table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Mark F. Adams, A distributed memory unstructured Gauss&#8211;Seidel algorithm for multigrid smoothers, In Supercomputing 01:
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Mark F. Adams, A distributed memory unstructured Gauss–Seidel algorithm for multigrid smoothers, In Supercomputing 01:
 Proceedings of the 2001 ACM/IEEE conference on Supercomputing, pages 4-4, New York, USA, 2001.</td></tr>
 </tbody>
 </table>
@@ -320,7 +317,7 @@ SIAM Journal on Optimization, 12(2):436–460, 2002.</td></tr>
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Shunsuke Hayashi, Nobuo Yamashita, and Masao Fukushima, A Combined Smoothing and Regularization Method for Monotone
-Second&#8211;Order Cone Complementarity Problems, SIAM J. Optim., 15(2), 593–615, 2005.</td></tr>
+Second–Order Cone Complementarity Problems, SIAM J. Optim., 15(2), 593–615, 2005.</td></tr>
 </tbody>
 </table>
 </div>
@@ -372,7 +369,7 @@ Second&#8211;Order Cone Complementarity Problems, SIAM J. Optim., 15(2), 593–6
 <li class="toctree-l3"><a class="reference internal" href="conform.html">Contact formulations</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Constraint solvers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#merit-function">Merit function</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#gauss-seidel-solver">Gauss&#8211;Seidel solver</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gauss-seidel-solver">Gauss–Seidel solver</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#projected-newton-solver">Projected Newton solver</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#penalty-solver">Penalty Solver</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a></li>
@@ -490,8 +487,8 @@ Second&#8211;Order Cone Complementarity Problems, SIAM J. Optim., 15(2), 593–6
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/theory/solvers.rst.txt"

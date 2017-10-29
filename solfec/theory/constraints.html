@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Constraints &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Local dynamics" href="locdyn.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -67,9 +64,9 @@ Solfec includes equality constraints, or joints, and contact constraints applied
 In this section we briefly demonstrate how constraints are incorporated into the time stepping schemes introduced earlier.</p>
 <div class="section" id="from-global-to-local-velocity">
 <h2>From global to local velocity<a class="headerlink" href="#from-global-to-local-velocity" title="Permalink to this headline">¶</a></h2>
-<p>Velocity <span class="math">\(\mathbf{u}\)</span>, as defined for <a class="reference internal" href="kinematics.html#qurig"><span class="std std-ref">rigid</span></a>, <a class="reference internal" href="kinematics.html#quprb"><span class="std std-ref">pseudo-rigid</span></a>, and <a class="reference internal" href="kinematics.html#qufem"><span class="std std-ref">finite&#8211;element</span></a> bodies, can
+<p>Velocity <span class="math">\(\mathbf{u}\)</span>, as defined for <a class="reference internal" href="kinematics.html#qurig"><span class="std std-ref">rigid</span></a>, <a class="reference internal" href="kinematics.html#quprb"><span class="std std-ref">pseudo-rigid</span></a>, and <a class="reference internal" href="kinematics.html#qufem"><span class="std std-ref">finite–element</span></a> bodies, can
 be qualified as a global, or generalized, or bodytextendash space
-entity. In order to obtain a local, spatial 3&#8211;dimensional
+entity. In order to obtain a local, spatial 3–dimensional
 velocity vector, <span class="math">\(\mathbf{U}\)</span>, of any spatial image <span class="math">\(\mathbf{x}\)</span>
 of a referential point <span class="math">\(\mathbf{X}\)</span>, we shall use a linear transformation
 of the kind</p>
@@ -77,7 +74,7 @@ of the kind</p>
 <span class="eqno">(1)<a class="headerlink" href="#equation-UHu0" title="Permalink to this equation">¶</a></span>\[\mathbf{U}=\mathbf{H}\left(\mathbf{X}\right)\mathbf{u}\]</div>
 <p>Most generally the local velocity <span class="math">\(\mathbf{U}\)</span> will be expressed
 in a local coordinate system, made up of three linearly independent
-3&#8211;vectors, <span class="math">\(\mathbf{a}_{i}\)</span>, juxtaposed, in a column&#8211;wise
+3–vectors, <span class="math">\(\mathbf{a}_{i}\)</span>, juxtaposed, in a column–wise
 manner into a matrix <span class="math">\(\left\{ \mathbf{a}_{i}\right\}\)</span>, also called
 <em>local frame</em>, cf. <a class="reference internal" href="#localframe"><span class="std std-numref">Fig. 5</span></a>. Such matrix will have an inverse
 which we can denote as <span class="math">\(\left\{ \mathbf{a}^{i}\right\} ^{T}=\left\{ \mathbf{a}_{i}\right\} ^{-1}\)</span>.
@@ -121,11 +118,11 @@ as follows. Take any motion</p>
 <div class="math" id="equation-Hrig">
 <span class="eqno">(3)<a class="headerlink" href="#equation-Hrig" title="Permalink to this equation">¶</a></span>\[\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\left[\begin{array}{ccc}
 \mathbf{\Lambda}\left(\hat{\bar{\mathbf{X}}}-\hat{\mathbf{X}}\right) &amp;  &amp; \mathbf{I}\end{array}\right]\]</div>
-<p>where the <a class="reference internal" href="kinematics.html#hat"><span class="std std-ref">hat operator</span></a> makes an anti&#8211;symmetric matrix out of a 3&#8211;vector,
+<p>where the <a class="reference internal" href="kinematics.html#hat"><span class="std std-ref">hat operator</span></a> makes an anti–symmetric matrix out of a 3–vector,
 and <span class="math">\(\mathbf{I}\)</span> is a <span class="math">\(3\times3\)</span> identity matrix.</p>
 </div>
 <div class="section" id="pseudo-rigid-kinematics">
-<h3>Pseudo&#8211;rigid kinematics<a class="headerlink" href="#pseudo-rigid-kinematics" title="Permalink to this headline">¶</a></h3>
+<h3>Pseudo–rigid kinematics<a class="headerlink" href="#pseudo-rigid-kinematics" title="Permalink to this headline">¶</a></h3>
 <p>For pseudo-rigid bodies, there holds</p>
 <div class="math">
 \[\dot{\mathbf{x}}=\dot{\mathbf{F}}\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\dot{\bar{\mathbf{x}}}\]</div>
@@ -145,8 +142,8 @@ and <span class="math">\(\mathbf{I}\)</span> is a <span class="math">\(3\times3\
   \end{array}\right]\end{split}\]</div>
 </div>
 <div class="section" id="finite-element-kinematics">
-<h3>Finite&#8211;element kinematics<a class="headerlink" href="#finite-element-kinematics" title="Permalink to this headline">¶</a></h3>
-<p>For finite&#8211;element bodies, there holds</p>
+<h3>Finite–element kinematics<a class="headerlink" href="#finite-element-kinematics" title="Permalink to this headline">¶</a></h3>
+<p>For finite–element bodies, there holds</p>
 <div class="math">
 \[\dot{\mathbf{x}}\left(\mathbf{X},t\right)=\mathbf{N}\left(\mathbf{X}\right)\mathbf{u}\]</div>
 <p>and hence</p>
@@ -159,7 +156,7 @@ and <span class="math">\(\mathbf{I}\)</span> is a <span class="math">\(3\times3\
 <p>If we wish to control components of a local velocity <span class="math">\(\mathbf{U}\)</span>
 at a point <span class="math">\(\mathbf{x}\)</span>, we can do this by applying a force <span class="math">\(\mathbf{R}\)</span>
 at this point. Such local force <span class="math">\(\mathbf{R}\)</span> is reflected as a global,
-or generalized, or body&#8211;space force, <span class="math">\(\mathbf{r}\)</span> as follows</p>
+or generalized, or body–space force, <span class="math">\(\mathbf{r}\)</span> as follows</p>
 <div class="math">
 \[\mathbf{r}=\mathbf{H}^{T}\mathbf{R}\]</div>
 <p>The momentum balance is modified accordingly</p>
@@ -174,7 +171,7 @@ points <span class="math">\(\mathbf{x}_{\alpha}\)</span>, and controlling multip
 as applying <em>constraints</em>. With such understanding, we can call
 <span class="math">\(\mathbf{U}_{\alpha}\)</span> <em>constraints velocities</em>, and <span class="math">\(\mathbf{R}_{\alpha}\)</span>
 <em>constraints reactions</em>. For the sake of convenience, in case
-of a multi&#8211;body system, we can use symbols <span class="math">\(\mathbf{M}\)</span>,
+of a multi–body system, we can use symbols <span class="math">\(\mathbf{M}\)</span>,
 <span class="math">\(\mathbf{q}\)</span>, <span class="math">\(\mathbf{u}\)</span>, <span class="math">\(\mathbf{f}\)</span>, <span class="math">\(\mathbf{H}\)</span>,
 <span class="math">\(\mathbf{U}\)</span>, <span class="math">\(\mathbf{R}\)</span>, etc. as suitably juxtaposing matrices and vectors of
 all associated individual bodies or constraints. For example</p>
@@ -206,7 +203,7 @@ all associated individual bodies or constraints. For example</p>
   ...
   \end{array}\right]\end{split}\]</div>
 <p>With such understanding in mind, we can incorporate any set of constraints
-into a multi&#8211;body system, by saying</p>
+into a multi–body system, by saying</p>
 <div class="math" id="equation-Muf1">
 <span class="eqno">(6)<a class="headerlink" href="#equation-Muf1" title="Permalink to this equation">¶</a></span>\[\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}+\mathbf{H}^{T}\mathbf{R}\]</div>
 <div class="math" id="equation-UHu1">
@@ -236,8 +233,8 @@ time integration is implemented in Solfec.</p>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>Calculation of the global to local velocity mapping <span class="math">\(\mathbf{H}\)</span> is implement in
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo&#8211;rigid)
-and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite&#8211;element) files.
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo–rigid)
+and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite–element) files.
 A constraint data structure, including the local frame <span class="math">\(\left\{ \mathbf{a}_{i}\right\}\)</span>,
 the spatial point <span class="math">\(\mathbf{x}\)</span>, the constraint velocity <span class="math">\(\mathbf{U}\)</span>,
 and rection <span class="math">\(\mathbf{R}\)</span>, is declared in
@@ -308,8 +305,8 @@ Assembling of <a class="reference internal" href="#equation-Hfem">(5)</a> is in 
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Constraints</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#from-global-to-local-velocity">From global to local velocity</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#rigid-kinematics">Rigid kinematics</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#pseudo-rigid-kinematics">Pseudo&#8211;rigid kinematics</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#finite-element-kinematics">Finite&#8211;element kinematics</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pseudo-rigid-kinematics">Pseudo–rigid kinematics</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#finite-element-kinematics">Finite–element kinematics</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#time-stepping-with-constraints">Time stepping with constraints</a></li>
@@ -433,8 +430,8 @@ Assembling of <a class="reference internal" href="#equation-Hfem">(5)</a> is in 
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/theory/constraints.rst.txt"

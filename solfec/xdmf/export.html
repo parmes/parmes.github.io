@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>XDMF_EXPORT command &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Export domino example" href="example.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -64,27 +61,27 @@
 <p>Python syntax for XDMF export reads:</p>
 <div class="topic">
 <p class="topic-title first">XDMF_EXPORT (solfec, time, path | subset, attributes)</p>
-<p>Export results in XDMF format. In &#8216;WRITE&#8217; mode only the geometry at time <span class="math">\(t=0\)</span> is saved,
+<p>Export results in XDMF format. In ‘WRITE’ mode only the geometry at time <span class="math">\(t=0\)</span> is saved,
 while arguments <em>time</em> and <em>attributes</em> are ignored.</p>
 <ul class="simple">
-<li>solfec &#8211; SOLFEC object;</li>
-<li>time &#8211; time instant, e.g. t0, a collection of time instants,
-e.g. [t0, t1, t2, ..., tN], or a time interval, e.g. (t0, t1);</li>
-<li>path &#8211; output path to the directory that will contain the XDMF markup file(s) and a HDF5 data file;
-e.g. &#8216;/tmp/sim0&#8217; will possibly result in a /tmp/sim0/sim0_grids.xmf, /tmp/sim0/sim0_constraints.xmf,
+<li>solfec – SOLFEC object;</li>
+<li>time – time instant, e.g. t0, a collection of time instants,
+e.g. [t0, t1, t2, …, tN], or a time interval, e.g. (t0, t1);</li>
+<li>path – output path to the directory that will contain the XDMF markup file(s) and a HDF5 data file;
+e.g. ‘/tmp/sim0’ will possibly result in a /tmp/sim0/sim0_grids.xmf, /tmp/sim0/sim0_constraints.xmf,
 /tmp/sim0/sim0_spheres.xmf markup files and a /tmp/sim0/sim0.h5 data file output;</li>
-<li>subset &#8211; specification of a subset of exported bodies; a string can be used to define a POSIX regular
+<li>subset – specification of a subset of exported bodies; a string can be used to define a POSIX regular
 expression <a class="footnote-reference" href="#id2" id="id1">[1]</a> that will be matched against body labels; a list of body objects or integer body identifiers
-can be used [body1, body2, id3, id4, body5, ...] mixed up in an arbitrary manner; or a tuple specifying
+can be used [body1, body2, id3, id4, body5, …] mixed up in an arbitrary manner; or a tuple specifying
 extents of a bounding box can be used (xlow, ylow, zlow, xhigh, yhigh, zhigh), which the bounding boxes of
 exported bodies overlapped at time t=0; also a list of an arbitrary combination of those can be used,
-e.g. [&#8216;BOD*A&#8217;, 123, body1, body2, 256, (0, 0, 0, 1, 1, 1), &#8216;KEY??7&#8217;, (3, 3, 3, 4, 4, 4)] defines two labels,
+e.g. [‘BOD*A’, 123, body1, body2, 256, (0, 0, 0, 1, 1, 1), ‘KEY??7’, (3, 3, 3, 4, 4, 4)] defines two labels,
 two integer body ids, two body objects, and two bounding boxes, that together define a subset of bodies
 that will be used during export;</li>
-<li>attributes &#8211; list of export attributes; default [&#8216;DISP&#8217;, &#8216;VELO&#8217;, &#8216;REAC&#8217;, &#8216;GAP&#8217;];
-available attributes are &#8216;DISP&#8217; (body displacement), &#8216;VELO&#8217; (body velocity), &#8216;STRESS&#8217; (body stress),
-&#8216;REAC&#8217; (constraint reactions), &#8216;RELV&#8217; (relative constraint velocities), &#8216;GAP&#8217; (contact gaps);
-a non-optional scalar attribute &#8216;BID&#8217; (body identifier) is always included with exported geometry;</li>
+<li>attributes – list of export attributes; default [‘DISP’, ‘VELO’, ‘REAC’, ‘GAP’];
+available attributes are ‘DISP’ (body displacement), ‘VELO’ (body velocity), ‘STRESS’ (body stress),
+‘REAC’ (constraint reactions), ‘RELV’ (relative constraint velocities), ‘GAP’ (contact gaps);
+a non-optional scalar attribute ‘BID’ (body identifier) is always included with exported geometry;</li>
 </ul>
 </div>
 <p>Currently implemented features:</p>
@@ -255,8 +252,8 @@ a non-optional scalar attribute &#8216;BID&#8217; (body identifier) is always in
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/xdmf/export.rst.txt"

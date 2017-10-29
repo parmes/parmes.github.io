@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>SOLFEC object &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BODY object" href="body.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -66,17 +63,17 @@
 <p class="topic-title first">obj = SOLFEC (analysis, step, output)</p>
 <p>This routine creates a SOLFEC object.</p>
 <ul class="simple">
-<li>obj &#8211; created SOLFEC object</li>
-<li>analysis &#8211; &#8216;DYNAMIC&#8217; or &#8216;QUASI_STATIC&#8217; analysis kind</li>
-<li>step &#8211; initially assumed time step, regarded as an upper bound</li>
-<li>output &#8211; defines the output directory path (Important note: if this directory exists
-and contains valid output data SOLFEC is created in &#8216;READ&#8217; mode,
-otherwise SOLFEC is created in &#8216;WRITE&#8217; mode)</li>
+<li>obj – created SOLFEC object</li>
+<li>analysis – ‘DYNAMIC’ or ‘QUASI_STATIC’ analysis kind</li>
+<li>step – initially assumed time step, regarded as an upper bound</li>
+<li>output – defines the output directory path (Important note: if this directory exists
+and contains valid output data SOLFEC is created in ‘READ’ mode,
+otherwise SOLFEC is created in ‘WRITE’ mode)</li>
 </ul>
 </div>
 <p>Some parameters can be accessed as members of a SOLFEC object, cf. <a class="reference internal" href="#solfec-params"><span class="std std-numref">Table 1</span></a>.</p>
-<table border="1" class="docutils" id="id1">
-<span id="solfec-params"></span><caption><span class="caption-number">Table 1 </span><span class="caption-text">SOLFEC object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<span id="solfec-params"></span><table border="1" class="docutils" id="id1">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">SOLFEC object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -85,31 +82,31 @@ otherwise SOLFEC is created in &#8216;WRITE&#8217; mode)</li>
 </tr>
 <tr class="row-even"><td><em>obj.analysis</em></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.time</strong> &#8211; current time</td>
+<tr class="row-odd"><td><strong>obj.time</strong> – current time</td>
 </tr>
-<tr class="row-even"><td><strong>obj.mode</strong> &#8211; either &#8216;READ&#8217; or &#8216;WRITE&#8217; as described above</td>
+<tr class="row-even"><td><strong>obj.mode</strong> – either ‘READ’ or ‘WRITE’ as described above</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.constraints</strong> &#8211; list of constraints (cf. <a class="reference internal" href="constraints.html#solfec-user-constraints"><span class="std std-ref">Constraints</span></a>)</td>
+<tr class="row-odd"><td><strong>obj.constraints</strong> – list of constraints (cf. <a class="reference internal" href="constraints.html#solfec-user-constraints"><span class="std std-ref">Constraints</span></a>)</td>
 </tr>
-<tr class="row-even"><td><strong>obj.ncon</strong> &#8211; number of constraints</td>
+<tr class="row-even"><td><strong>obj.ncon</strong> – number of constraints</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.bodies</strong> &#8211; list of bodies (cf. <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a>)</td>
+<tr class="row-odd"><td><strong>obj.bodies</strong> – list of bodies (cf. <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a>)</td>
 </tr>
-<tr class="row-even"><td><strong>obj.nbod</strong> &#8211; number of bodies</td>
+<tr class="row-even"><td><strong>obj.nbod</strong> – number of bodies</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.outpath</strong> &#8211; output path, including the sub-directory if the “-s” command line argument
+<tr class="row-odd"><td><strong>obj.outpath</strong> – output path, including the sub-directory if the “-s” command line argument
 has been passed</td>
 </tr>
 <tr class="row-even"><td><strong>Read/write members:</strong></td>
 </tr>
 <tr class="row-odd"><td><em>obj.step</em></td>
 </tr>
-<tr class="row-even"><td><strong>obj.verbose</strong> &#8211; &#8216;ON&#8217; or &#8216;OFF&#8217; enabling or disabling writing to standard output (default: &#8216;ON&#8217;);
-&#8216;%&#8217; can also be used to enable plain percentage printout per individual <a class="reference internal" href="simulation.html#solfec-command-run"><span class="std std-ref">RUN</span></a></td>
+<tr class="row-even"><td><strong>obj.verbose</strong> – ‘ON’ or ‘OFF’ enabling or disabling writing to standard output (default: ‘ON’);
+‘%’ can also be used to enable plain percentage printout per individual <a class="reference internal" href="simulation.html#solfec-command-run"><span class="std std-ref">RUN</span></a></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.cleanup</strong> &#8211; either &#8216;ON&#8217; or &#8216;OFF&#8217; enabling or disabling removal of the output directory in &#8216;WRITE&#8217;
-mode if none results were saved (default: &#8216;OFF&#8217; in which case the initial geometry is saved as a
-sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the &#8216;ON&#8217; functionality to work;</td>
+<tr class="row-odd"><td><strong>obj.cleanup</strong> – either ‘ON’ or ‘OFF’ enabling or disabling removal of the output directory in ‘WRITE’
+mode if none results were saved (default: ‘OFF’ in which case the initial geometry is saved as a
+sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the ‘ON’ functionality to work;</td>
 </tr>
 </tbody>
 </table>
@@ -273,8 +270,8 @@ sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the &#8216;
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/user/solfec.rst.txt"

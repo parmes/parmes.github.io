@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Contact points &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Contact formulations" href="conform.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -109,7 +106,7 @@ vb, pb - vertices and planes of polyhedron &#39;b&#39;
 </pre></div>
 </div>
 <p>as seen in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L118">cvi.c:118</a>.
-The algorithm begins by finding a distance between, and a pair closest points in &#8216;a&#8217; and &#8216;b&#8217;</p>
+The algorithm begins by finding a distance between, and a pair closest points in ‘a’ and ‘b’</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>1  d,p,q = gjk(va, vb)
 2  if d &gt; 0 return NULL
 3  else x = p
@@ -123,7 +120,7 @@ GJK will at best return a common point on the surfaces of both polyhedra. In the
 <div class="highlight-none"><div class="highlight"><pre><span></span>4  x = refine_point(x)
 </pre></div>
 </div>
-<p>point <span class="math">\(\mathbf{x}\)</span> is refined by pushing it deeper inside of polyhedrons &#8216;a&#8217; and &#8216;b&#8217;.
+<p>point <span class="math">\(\mathbf{x}\)</span> is refined by pushing it deeper inside of polyhedrons ‘a’ and ‘b’.
 This maps to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L136">cvi.c:136</a>.
 Once <span class="math">\(\mathbf{x}\)</span> has been refined, we transform the input plane definitions</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>5  transform(pa)
@@ -137,10 +134,10 @@ In the next step</p>
 <div class="highlight-none"><div class="highlight"><pre><span></span>7  h = quickhull(normals(pa+pb))
 </pre></div>
 </div>
-<p>we calculate the convex hull of the transformed normal directions of &#8216;a&#8217; and &#8216;b&#8217;
+<p>we calculate the convex hull of the transformed normal directions of ‘a’ and ‘b’
 (<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L163">cvi.c:163</a>).
 The quickhull algorithm <a class="footnote-reference" href="#id8" id="id3">[2]</a>, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/hul.c#L555">hul.c:555</a>,
-is used. The result can be interpreted as a <em>dual polyhedron</em> of the intersection polyhedron of &#8216;a&#8217; and &#8216;b&#8217;:
+is used. The result can be interpreted as a <em>dual polyhedron</em> of the intersection polyhedron of ‘a’ and ‘b’:
 for a convex polyhedron <span class="math">\(\left(\mathbf{v},\mathbf{p}\right)\)</span>, its dual (or <em>polar</em>) polyhedron is made
 by reinterpreting vertices as planes, and planes as vertices, as follows</p>
 <div class="math">
@@ -491,8 +488,8 @@ of Computational Geometry and Applications, 12 (1-2), 143-172, 2002.</td></tr>
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/theory/conpnt.rst.txt"

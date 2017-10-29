@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Solfec Installation &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Running Solfec" href="running.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -228,7 +225,7 @@ The file <em>solfec/Config.mak</em> needs to be modified in order to set up libr
 <li>(optional, deprecated) XDR (standard part of RPC on all Unix type systems)</li>
 <li><a class="reference external" href="http://www.netlib.org/lapack/">BLAS and LAPACK</a> libraries (standard on most systems)</li>
 <li>Python together with development files and libraries (versions 2.x have been tested)</li>
-<li>OpenGL libraries and developments files (this enables Solfec&#8217;s viewer)</li>
+<li>OpenGL libraries and developments files (this enables Solfec’s viewer)</li>
 <li>(optional) VBO (Vertex Buffer Object extension of OpenGL for faster rendering)</li>
 <li>MPI libraries and development files</li>
 <li>either <a class="reference external" href="http://www.cs.sandia.gov/Zoltan/">Zoltan</a> or <a class="reference external" href="https://github.com/tkoziara/dynlb">dynlb</a> load balancing library</li>
@@ -272,7 +269,7 @@ For every subsequent update and compilation you may like to do the following</p>
 <p>Use “DEBUG = no” most of the time: this will make Solfec about 40% faster.
 Nonetheless, when you experience trouble with running the code, recompile it with “DEBUG = yes”
 (this is slower but outputs more information) and run it again.
-The solfec/inp directory contains example input files. If you haven&#8217;t used the “POSIX = yes” flag,
+The solfec/inp directory contains example input files. If you haven’t used the “POSIX = yes” flag,
 you will need to create output directories yourself, before running calculations (on systems where “POSIX = yes” works,
 this is done automatically). It may be convenient to modify the PATH variable to point to the <em>solfec</em> directory,
 making it easier to run Solfec form any location within your filesystem.
@@ -421,8 +418,8 @@ You can ask for help, using the <a class="reference external" href="http://group
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../_sources/solfec/installation.rst.txt"

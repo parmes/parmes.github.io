@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Parmec Input Commands &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Parmes VirtualBox Image" href="../vbox/index.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -91,18 +88,18 @@ indexing starts at 0 and increments on each call</strong>.</p>
 <p class="topic-title first">tmsnum = TSERIES (points)</p>
 <ul class="simple">
 <li><strong>tmsnum</strong> - time series number</li>
-<li><strong>points</strong> - a constant <em>v0</em>, or a list <em>[t0, v0, t1, v1, ....]</em> or
-<em>[[t0,v0], [t1,v1], ...]</em> or <em>[(t0,v0), (t1,v1), ...]</em> of points
+<li><strong>points</strong> - a constant <em>v0</em>, or a list <em>[t0, v0, t1, v1, ….]</em> or
+<em>[[t0,v0], [t1,v1], …]</em> or <em>[(t0,v0), (t1,v1), …]</em> of points
 (where <em>ti &lt; tj</em>, when <em>i &lt; j</em>), or a path to a file storing pairs of
 times and values in format:</li>
 </ul>
-<p>#&nbsp;comment&nbsp;1&nbsp;... <br />
-#&nbsp;comment&nbsp;2&nbsp;... <br />
+<p>#&nbsp;comment&nbsp;1&nbsp;… <br />
+#&nbsp;comment&nbsp;2&nbsp;… <br />
 t0&nbsp;v0 <br />
 t1&nbsp;v1 <br /></p>
-<p>#&nbsp;comment&nbsp;3&nbsp;... <br />
+<p>#&nbsp;comment&nbsp;3&nbsp;… <br />
 t2&nbsp;v2 <br />
-...</p>
+…</p>
 </div>
 </div>
 <div class="section" id="material">
@@ -139,19 +136,19 @@ t2&nbsp;v2 <br />
 <p class="topic-title first">parnum = MESH (nodes, elements, material, colors)</p>
 <ul class="simple">
 <li><strong>parnum</strong> - particle number</li>
-<li><strong>nodes</strong> - list of nodes: [<em>x0, y0, z0, x1, y1, z1, ...</em>]</li>
-<li><strong>elements</strong> - list of elements: [<em>e1, n1, n2, ..., ne1, me1, e2,
-n1, n2, ..., ne2, me2, ...</em>], where <em>e1</em> is the number of nodes of
-the first element, <em>n1, n2, ..., ne1</em> enumerate the element nodes,
+<li><strong>nodes</strong> - list of nodes: [<em>x0, y0, z0, x1, y1, z1, …</em>]</li>
+<li><strong>elements</strong> - list of elements: [<em>e1, n1, n2, …, ne1, me1, e2,
+n1, n2, …, ne2, me2, …</em>], where <em>e1</em> is the number of nodes of
+the first element, <em>n1, n2, …, ne1</em> enumerate the element nodes,
 and <em>me1</em> is the material number. Similarly for the second and all
 remaining elements. Supported numbers of nodes per element are <em>4, 5,
 6, and 8</em> for respectively <em>tetrahedron, pyramid, wedge, and
 hexahedron</em>, cf. <a class="reference internal" href="#parmec-mesh-elements"><span class="std std-numref">Fig. 78</span></a></li>
 <li><strong>material</strong> - material number</li>
 <li><strong>colors</strong> - list of positive integer face colors: [<em>gcolor, f1,
-n1, n2, ..., nf1, c1, f2, n1, n2, ..., nf2, c2, ...</em>], where
+n1, n2, …, nf1, c1, f2, n1, n2, …, nf2, c2, …</em>], where
 <em>gcolor</em> is the global color for all not specified faces, <em>f1</em> is the
-number of nodes in the first specified face, <em>n1, n2, ..., nf1</em>
+number of nodes in the first specified face, <em>n1, n2, …, nf1</em>
 enumerate the face nodes, and <em>c1</em> is the surface color of that face.
 Similarly for the second and all remaining faces. If only the global
 color is required, it can be passed as [<em>gcolor</em>] or as <em>gcolor</em>
@@ -200,9 +197,9 @@ motion is included into the results</li>
 <ul class="simple">
 <li><strong>triangles</strong> - list of triangle tuples [(<em>t1x1, t1y1, t1z1, t1x2,
 t1y2, t1z2, t1x3, t1y3, t1z3), (t2x1, t2y1, t2z1, t2x2, t2y2, t2z2,
-t2x3, t2y3, t2z3), ...</em>] defining the obstacle</li>
+t2x3, t2y3, t2z3), …</em>] defining the obstacle</li>
 <li><strong>color</strong> - positive integer surface color or a list [<em>color1,
-color2, ...</em>] of colors for each individual triangle</li>
+color2, …</em>] of colors for each individual triangle</li>
 <li><strong>point</strong> - spatial reference point</li>
 <li><strong>linear</strong> - linear velocity history callback:
 <span class="math">\(\left(v_{x},v_{y},v_{z}\right)=\)</span> <strong>linear</strong>
@@ -289,9 +286,9 @@ but generate zero forces.</p>
 are not modified unless also specified in <strong>msprings</strong>); must be nonempty</li>
 <li><strong>limits</strong> - tuple of (min, max) <strong>tsprings operator entity</strong> limit values which need to be exceeded for <strong>msprings</strong> to be modified; if either
 value is <em>None</em> then no failure limit is assumed e.g. (<em>None</em>, max) only has an upper failure limit; also min &lt; max</li>
-<li><strong>entity</strong> - scalar spring entity string: (spring stroke) &#8216;STROKE&#8217;, (spring total force) &#8216;STF&#8217;, (spring force without damping) &#8216;SF&#8217;, cf.
-<a class="reference internal" href="#parmec-command-history"><span class="std std-ref">HISTORY</span></a> and <a class="reference internal" href="#parmec-command-output"><span class="std std-ref">OUTPUT</span></a>; default: &#8216;SF&#8217;</li>
-<li><strong>operator</strong> - collective <strong>tsprings</strong> operator string: &#8216;SUM&#8217;, &#8216;MIN&#8217;, &#8216;MAX&#8217;; default: &#8216;SUM&#8217;</li>
+<li><strong>entity</strong> - scalar spring entity string: (spring stroke) ‘STROKE’, (spring total force) ‘STF’, (spring force without damping) ‘SF’, cf.
+<a class="reference internal" href="#parmec-command-history"><span class="std std-ref">HISTORY</span></a> and <a class="reference internal" href="#parmec-command-output"><span class="std std-ref">OUTPUT</span></a>; default: ‘SF’</li>
+<li><strong>operator</strong> - collective <strong>tsprings</strong> operator string: ‘SUM’, ‘MIN’, ‘MAX’; default: ‘SUM’</li>
 <li><strong>abs</strong> - boolean, if <em>True</em> then spring forces are converted to absolute values before summation of the spring forces; default: <em>False</em></li>
 <li><strong>nsteps</strong> - int, number of time steps between calls of UNSPRING; default: 1</li>
 <li><strong>nfreq</strong> - int, number of <strong>nsteps</strong> for which <strong>tsprings</strong> exceed <strong>limits</strong> before <strong>msprings</strong> are modified; default: 1</li>
@@ -458,11 +455,11 @@ particle entities: (position) ’PX’, ’PY’, ’PZ’, ’|P|’,
 (displacement) ’DX’, ’DY’, ’DZ’, ’|D|’, (linear velocity) ’VX’,
 ’VY’, ’VZ’, ’|V|’, (angular velocity) ’OX’, ’OY’, ’OZ’, ’|O|’,
 (body force) ’FX’, ’FY’, ’FZ’, ’|F|’, (body torque) ’TX’, ’TY’,
-’TZ’, ’|T|’; spring entities: (spring length) &#8216;LENGTH&#8217;, (spring
+’TZ’, ’|T|’; spring entities: (spring length) ‘LENGTH’, (spring
 stroke) ’STROKE’, (spring total force) ’STF’, (spring force without
 damping) ’SF’;</li>
 <li><strong>source</strong> - particle number <em>i</em>, or a list of particle numbers
-[<em>i, j, ...</em>], or a spatial sphere defined as tuple
+[<em>i, j, …</em>], or a spatial sphere defined as tuple
 <span class="math">\(\left(x,y,z,r\right)\)</span> <span class="red">(under development)</span>, or a spatial box defined as tuple
 <span class="math">\(\left(x_{\text{min}},y_{\text{min}},z_{\text{min}},x_{\text{max}},y_{\text{max}},z_{\text{max}}\right)\)</span>
 <span class="red">(under development)</span>; in case of a list of particle numbers the output entity is averaged
@@ -477,7 +474,7 @@ from this file (if found) or an error message is issued; an appropriate output f
 on the entity, cf. <a class="reference internal" href="#parmec-command-output"><span class="std std-ref">OUTPUT</span></a>; the output list is not populated until <strong>h5last</strong> = <em>True</em>;
 default: not specified</li>
 <li><strong>h5last</strong> <span class="red">(experimental)</span> - optional boolean flag marking a last call to HISTORY for which the <strong>h5file</strong> argument
-is used; for faster reading all such histories are populated once HISTORY(..., <strong>h5file</strong> = ..., <strong>h5last</strong> = <em>True</em>) is
+is used; for faster reading all such histories are populated once HISTORY(…, <strong>h5file</strong> = …, <strong>h5last</strong> = <em>True</em>) is
 called; default: <em>False</em></li>
 </ul>
 </div>
@@ -491,35 +488,35 @@ included into the output file(s). PARMEC outputs:</p>
 <li>*0.vtk.* <strong>and/or</strong> (*0.h5, *0.xmf) files for obstacles and mesh
 based particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT
 command</li>
-<li>*1.vtk.*, *2.vtk.*, ... <strong>and/or</strong> (*1.h5, *1.xmf, *2.h5,
-*2.xmf, ...) files for mesh based particles specified as subsets,
-where numbers 1, 2, ... match consecutive OUTPUT calls</li>
+<li>*1.vtk.*, *2.vtk.*, … <strong>and/or</strong> (*1.h5, *1.xmf, *2.h5,
+*2.xmf, …) files for mesh based particles specified as subsets,
+where numbers 1, 2, … match consecutive OUTPUT calls</li>
 <li>*0rb.vtk.* <strong>and/or</strong> (*0rb.h5, *0rb.xmf) for rigid body data of
 particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT command</li>
-<li>*1rb.vtk.*, *2rb.vtk.*, ... <strong>and/or</strong> (*1rb.h5, *1rb.xmf,
-*2rb.h5, *2rb.xmf, ...) files for rigid body data of particles
-specified as subsets, where numbers 1, 2, ... match consecutive
+<li>*1rb.vtk.*, *2rb.vtk.*, … <strong>and/or</strong> (*1rb.h5, *1rb.xmf,
+*2rb.h5, *2rb.xmf, …) files for rigid body data of particles
+specified as subsets, where numbers 1, 2, … match consecutive
 OUTPUT calls</li>
 <li>*0cd.vtk.* <strong>and/or</strong> (*0cd.h5, *0cd.xmf) for contact data
 including particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT
 command</li>
-<li>*1cd.vtk.*, *2cd.vtk.*, ... <strong>and/or</strong> (*1cd.h5, *1cd.xmf,
-*2cd.h5, *2cd.xmf, ...) files for contact data including particles
-specified as subsets, where numbers 1, 2, ... match consecutive
+<li>*1cd.vtk.*, *2cd.vtk.*, … <strong>and/or</strong> (*1cd.h5, *1cd.xmf,
+*2cd.h5, *2cd.xmf, …) files for contact data including particles
+specified as subsets, where numbers 1, 2, … match consecutive
 OUTPUT calls</li>
 <li>*0sd.vtk.* <strong>and/or</strong> (*0sd.h5, *0sd.xmf) for spring data
 including particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT
 command</li>
-<li>*1sd.vtk.*, *2sd.vtk.*, ... <strong>and/or</strong> (*1sd.h5, *1sd.xmf,
-*2sd.h5, *2sd.xmf, ...) files for spring data including particles
-specified as subsets, where numbers 1, 2, ... match consecutive
+<li>*1sd.vtk.*, *2sd.vtk.*, … <strong>and/or</strong> (*1sd.h5, *1sd.xmf,
+*2sd.h5, *2sd.xmf, …) files for spring data including particles
+specified as subsets, where numbers 1, 2, … match consecutive
 OUTPUT calls</li>
 </ul>
 <div class="topic">
 <p class="topic-title first">OUTPUT (entities | subset, mode, format)</p>
 <ul class="simple">
 <li><strong>entities</strong> - list of output entities; default: [’NUMBER’, ’COLOR’,
-’DISPL’, ’LENGTH’, ’ORIENT’, &#8216;ORIENT1&#8217;, &#8216;ORIENT2&#8217;, &#8216;ORIENT3&#8217;, ’LINVEL’,
+’DISPL’, ’LENGTH’, ’ORIENT’, ‘ORIENT1’, ‘ORIENT2’, ‘ORIENT3’, ’LINVEL’,
 ’ANGVEL’, ’FORCE’, ’TORQUE’, ’F’, ’FN’, ’FT’, ’SF’, ’AREA’, ’PAIR’] where:<ul>
 <li>’NUMBER’ - scalar field of particle numbers (modes: ’SPH’, ’MESH’,
 ’RB’), or scalar field of spring numbers (modes: ’SD’)</li>
@@ -529,11 +526,11 @@ or 2-component vector field of contact surface colors (modes:
 <li>’DISPL’ - 3-component vector field of displacements (modes: ’SPH’,
 ’MESH’, ’RB’), or scalar field of contact depths (modes: ’CD’), or
 scalar field of spring strokes (modes: ’SD’)</li>
-<li>’LENGTH’ - scalar field of spring lengths (modes: &#8216;SD&#8217;)</li>
+<li>’LENGTH’ - scalar field of spring lengths (modes: ‘SD’)</li>
 <li>’ORIENT’ - 9-component tensor field representing rigid rotation
-matrix (modes: &#8216;RB&#8217;), or 3-component vector field of spring
+matrix (modes: ‘RB’), or 3-component vector field of spring
 orientations (modes: ’SD’)</li>
-<li>’ORIENT1’, &#8216;ORIENT2&#8217;, &#8216;ORIENT3&#8217; - three 3-component vector fields
+<li>’ORIENT1’, ‘ORIENT2’, ‘ORIENT3’ - three 3-component vector fields
 representing columns of rigid rotation matrix (orientation vectors)
 (modes: ’RB’)</li>
 <li>’LINVEL’ - 3-component vector field of linear velocity (modes:
@@ -558,7 +555,7 @@ contribution (modes: ’CD’, ’SD’)</li>
 </ul>
 </li>
 <li><strong>subset</strong> - optional particle number <em>i,</em> or a list of particle
-numbers [<em>i, j, ...</em>], to which this specification is narrowed
+numbers [<em>i, j, …</em>], to which this specification is narrowed
 down</li>
 <li><strong>mode</strong> - optional output mode or list of output modes: ’SPH’ for
 sphere output, ’MESH’ for mesh output, ’RB’ for rigid body output,
@@ -761,8 +758,8 @@ it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimenta
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../_sources/parmec/input_commands.rst.txt"

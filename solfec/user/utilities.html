@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Utilities &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Solfec Theory Manual" href="../theory.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -68,7 +65,7 @@
 <div class="topic">
 <p class="topic-title first">obj = VIEWER ()</p>
 <ul class="simple">
-<li>obj &#8211; True or False depending on whether the viewer (&#8211;v command line option) was enabled</li>
+<li>obj – True or False depending on whether the viewer (–v command line option) was enabled</li>
 </ul>
 </div>
 </div>
@@ -78,7 +75,7 @@
 <div class="topic">
 <p class="topic-title first">obj = SUBDIR ()</p>
 <ul class="simple">
-<li>obj &#8211; None object or subdirectory string depending on whether the &#8211;s command line option was used</li>
+<li>obj – None object or subdirectory string depending on whether the –s command line option was used</li>
 </ul>
 </div>
 </div>
@@ -88,11 +85,11 @@
 <div class="topic">
 <p class="topic-title first">BODY_CHARS (body, mass, volume, center, tensor)</p>
 <ul class="simple">
-<li>body &#8211; BODY object</li>
-<li>mass &#8211; body mass</li>
-<li>volume &#8211; body volume</li>
-<li>center &#8211; (x, y, z) mass center</li>
-<li>tensor &#8211; <span class="math">\(\left(t_{11},t_{21},\,...\,,t_{33}\right)\)</span> column-wise inertia tensor for a rigid body or Euler tensor otherwise</li>
+<li>body – BODY object</li>
+<li>mass – body mass</li>
+<li>volume – body volume</li>
+<li>center – (x, y, z) mass center</li>
+<li>tensor – <span class="math">\(\left(t_{11},t_{21},\,...\,,t_{33}\right)\)</span> column-wise inertia tensor for a rigid body or Euler tensor otherwise</li>
 </ul>
 </div>
 </div>
@@ -102,8 +99,8 @@
 <div class="topic">
 <p class="topic-title first">DELETE (solfec, object)</p>
 <ul class="simple">
-<li>solfec &#8211; SOLFEC object</li>
-<li>object (emptied) &#8211; BODY or CONSTRAINT object</li>
+<li>solfec – SOLFEC object</li>
+<li>object (emptied) – BODY or CONSTRAINT object</li>
 </ul>
 </div>
 </div>
@@ -113,13 +110,13 @@
 <div class="topic">
 <p class="topic-title first">obj = SCALE (shape, coefs)</p>
 <ul class="simple">
-<li>obj &#8211; when shape is not (x, y, z) tuple: same as shape, returned for convenience.
+<li>obj – when shape is not (x, y, z) tuple: same as shape, returned for convenience.
 Otherwise the (x <span class="math">\(\cdot\)</span> coefs[0], y <span class="math">\(\cdot\)</span> coefs[1], z <span class="math">\(\cdot\)</span> coefs[2]) tuple.</li>
-<li>shape &#8211; object, collection of objects, or a list [a, b, c, ...] of objects of type CONVEX, MESH,
+<li>shape – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH,
 SPHERE, ELLIP. Alternately this can be a single (x, y, z) tuple, but then one must use
-point = SCALE (point, coefs) in order to modify the point (Python tuples are immutable &#8211;
+point = SCALE (point, coefs) in order to modify the point (Python tuples are immutable –
 they cannot be modified “in place” after creation).</li>
-<li>coefs &#8211; (cx, cy, cz) tuple of scaling factors along each axis</li>
+<li>coefs – (cx, cy, cz) tuple of scaling factors along each axis</li>
 </ul>
 </div>
 </div>
@@ -129,13 +126,13 @@ they cannot be modified “in place” after creation).</li>
 <div class="topic">
 <p class="topic-title first">obj = TRANSLATE (shape, vector)</p>
 <ul class="simple">
-<li>obj &#8211; when shape is not (x, y, z) tuple: same as shape, returned for convenience.
+<li>obj – when shape is not (x, y, z) tuple: same as shape, returned for convenience.
 Otherwise the (x+vector[0], y+vector[1], z+vector[2]) tuple.</li>
-<li>shape &#8211; object, collection of objects, or a list [a, b, c, ...] of objects of type CONVEX, MESH,
+<li>shape – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH,
 SPHERE, ELLIP. Alternately this can be a single (x, y, z) tuple, but then one must use
-point = TRANSLATE (point, vector) in order to modify the point (Python tuples are immutable &#8211;
+point = TRANSLATE (point, vector) in order to modify the point (Python tuples are immutable –
 they cannot be modified “in place” after creation).</li>
-<li>vector &#8211; (vx, vy, vz) tuple defining the translation</li>
+<li>vector – (vx, vy, vz) tuple defining the translation</li>
 </ul>
 </div>
 </div>
@@ -145,15 +142,15 @@ they cannot be modified “in place” after creation).</li>
 <div class="topic">
 <p class="topic-title first">obj = ROTATE (shape, point, vector, angle)</p>
 <ul class="simple">
-<li>obj &#8211; when shape is not (x, y, z) tuple: same as shape, returned for convenience.
+<li>obj – when shape is not (x, y, z) tuple: same as shape, returned for convenience.
 Otherwise the rotated (x1, y1, z1) image of (x, y, z).</li>
-<li>shape &#8211; object, collection of objects, or a list [a, b, c, ...] of objects of type CONVEX, MESH,
+<li>shape – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH,
 SPHERE, ELLIP. Alternately this can be a single (x, y, z) tuple, but then one must use
-point1 = ROTATE (point1, point2, vector, angle) in order to modify point1 (Python tuples are immutable &#8211;
+point1 = ROTATE (point1, point2, vector, angle) in order to modify point1 (Python tuples are immutable –
 they cannot be modified “in place” after creation).</li>
-<li>point &#8211; (px, py, pz) tuple defining a point passed by the rotation axis</li>
-<li>vector &#8211; (vx, vy, vz) tuple defining a direction of the rotation axis</li>
-<li>angle &#8211; rotation angle in degrees</li>
+<li>point – (px, py, pz) tuple defining a point passed by the rotation axis</li>
+<li>vector – (vx, vy, vz) tuple defining a direction of the rotation axis</li>
+<li>angle – rotation angle in degrees</li>
 </ul>
 </div>
 </div>
@@ -165,18 +162,18 @@ result in splitting of the body in two parts.</p>
 <div class="topic">
 <p class="topic-title first">(one, two) = SPLIT (shape, point, normal | surfid, topoadj, remesh) <span class="red">(Under development)</span></p>
 <ul class="simple">
-<li>one &#8211; objects placed below the splitting plane (<em>None</em> if no objects were placed below the plane)</li>
-<li>two &#8211; objects placed above the splitting plane (<em>None</em> if no objects were placed above the plane, or if the initial shape has not been fragmented in two parts)</li>
-<li>shape (emptied) &#8211; object, collection of objects, or a list [a, b, c, ...] of objects of type CONVEX, SPHERE, ELLIP or MESH</li>
-<li>point &#8211; (px, py, pz) tuple defining a point passed by the splitting plane</li>
-<li>normal &#8211; (nx, ny, nz) tuple defining the splitting plane normal</li>
-<li>surfid &#8211; (surf1, surf2) tuple defining a pair of surface identifier for the two newly created
+<li>one – objects placed below the splitting plane (<em>None</em> if no objects were placed below the plane)</li>
+<li>two – objects placed above the splitting plane (<em>None</em> if no objects were placed above the plane, or if the initial shape has not been fragmented in two parts)</li>
+<li>shape (emptied) – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, SPHERE, ELLIP or MESH</li>
+<li>point – (px, py, pz) tuple defining a point passed by the splitting plane</li>
+<li>normal – (nx, ny, nz) tuple defining the splitting plane normal</li>
+<li>surfid – (surf1, surf2) tuple defining a pair of surface identifier for the two newly created
 surfaces (default: 0,0). Surface surf1 has the outward normal (nx, ny, nz).</li>
-<li>topoadj &#8211; &#8216;ON&#8217; or &#8216;OFF&#8217; (default: &#8216;OFF&#8217;); when &#8216;OFF&#8217; the splitting will always propagate across
-the whole body and result in two body fragments; when &#8216;ON&#8217; the splitting will propagate from the
+<li>topoadj – ‘ON’ or ‘OFF’ (default: ‘OFF’); when ‘OFF’ the splitting will always propagate across
+the whole body and result in two body fragments; when ‘ON’ the splitting will propagate from the
 input point through the topologically adjacent elements, which may not produce fragmentation;</li>
-<li>remesh &#8211; &#8216;ON&#8217; or &#8216;OFF&#8217; (default: &#8216;ON&#8217;) flag used only for MESH based shapes; when &#8216;ON&#8217; mesh splitting
-away from inter&#8211;element boundaries will lead to tetrahedral re&#8211;meshing; when &#8216;OFF&#8217; it will raise an error.</li>
+<li>remesh – ‘ON’ or ‘OFF’ (default: ‘ON’) flag used only for MESH based shapes; when ‘ON’ mesh splitting
+away from inter–element boundaries will lead to tetrahedral re–meshing; when ‘OFF’ it will raise an error.</li>
 </ul>
 </div>
 <p><em>WARNING:</em> Mesh splitting generates tetrahedral mesh in place of the input one if the splitting plane
@@ -189,14 +186,14 @@ may encounter input/output errors.</p>
 <p>This routine splits a mesh object along internal element boundaries whose nodes belong to the given node or face set.
 Depending on the topological properties of the mesh this may or may not result in splitting of the mesh in multiple parts.</p>
 <div class="topic">
-<p class="topic-title first">[out1, out2, ...] = MESH_SPLIT (mesh | nodeset, faceset, surfid1, surfid2) <span class="red">(Under development)</span></p>
+<p class="topic-title first">[out1, out2, …] = MESH_SPLIT (mesh | nodeset, faceset, surfid1, surfid2) <span class="red">(Under development)</span></p>
 <ul class="simple">
-<li>[out1, out2, ...] &#8211; a list of output meshes (<em>None</em> if no internal element boundaries in the input mesh were split)</li>
-<li>mesh &#8211; input MESH object (the input mesh is not modified by this routine)</li>
-<li>nodeset &#8211; a list of nodes [n0, n1, n2, ...] defining the splitting surface (zero based indexing); ignored when <strong>faceset</strong> is passed</li>
-<li>faceset &#8211; a list of lists face nodes [[n0, n1, n2], [n3, n4, n5, n6], ...] defining the splitting surface (zero based indexing)</li>
-<li>surfid1 &#8211; surface identifier for the newly created surfaces (default: 0); used with <strong>nodeset</strong> or outward&#8211;counter&#8211;clockwise&#8211;normal aligned with <strong>faceset</strong></li>
-<li>surfid2 &#8211; surface identifier for the newly created surfaces (default: 0); inward&#8211;counter&#8211;clockwise&#8211;normal aligned with <strong>faceset</strong></li>
+<li>[out1, out2, …] – a list of output meshes (<em>None</em> if no internal element boundaries in the input mesh were split)</li>
+<li>mesh – input MESH object (the input mesh is not modified by this routine)</li>
+<li>nodeset – a list of nodes [n0, n1, n2, …] defining the splitting surface (zero based indexing); ignored when <strong>faceset</strong> is passed</li>
+<li>faceset – a list of lists face nodes [[n0, n1, n2], [n3, n4, n5, n6], …] defining the splitting surface (zero based indexing)</li>
+<li>surfid1 – surface identifier for the newly created surfaces (default: 0); used with <strong>nodeset</strong> or outward–counter–clockwise–normal aligned with <strong>faceset</strong></li>
+<li>surfid2 – surface identifier for the newly created surfaces (default: 0); inward–counter–clockwise–normal aligned with <strong>faceset</strong></li>
 </ul>
 </div>
 </div>
@@ -206,8 +203,8 @@ Depending on the topological properties of the mesh this may or may not result i
 <div class="topic">
 <p class="topic-title first">obj = COPY (shape)</p>
 <ul class="simple">
-<li>obj &#8211; created collection of copied objects</li>
-<li>shape &#8211; object, collection of objects, or a list [a, b, c, ...] of objects of type CONVEX, MESH, SPHERE, ELLIP</li>
+<li>obj – created collection of copied objects</li>
+<li>shape – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH, SPHERE, ELLIP</li>
 </ul>
 </div>
 </div>
@@ -223,11 +220,11 @@ in the direction of <span class="math">\(\mathbf{v}\)</span>.</p>
 <div class="topic">
 <p class="topic-title first">obj = BEND (shape, point, direction, angle)</p>
 <ul class="simple">
-<li>obj &#8211; same as shape</li>
-<li>shape &#8211; object of type MESH</li>
-<li>point &#8211; axis point</li>
-<li>direction &#8211; axis direction</li>
-<li>angle &#8211; positive bending angle in degrees</li>
+<li>obj – same as shape</li>
+<li>shape – object of type MESH</li>
+<li>point – axis point</li>
+<li>direction – axis direction</li>
+<li>angle – positive bending angle in degrees</li>
 </ul>
 </div>
 </div>
@@ -237,10 +234,10 @@ in the direction of <span class="math">\(\mathbf{v}\)</span>.</p>
 <div class="topic">
 <p class="topic-title first">obj = BYLABEL (solfec, kind, label)</p>
 <ul class="simple">
-<li>obj &#8211; returned object (<em>None</em> if a labelled object was not found)</li>
-<li>solfec &#8211; SOLFEC object</li>
-<li>kind &#8211; labelled object: &#8216;SURFACE_MATERIAL&#8217;, &#8216;BULK_MATERIAL&#8217;, &#8216;BODY&#8217;, &#8216;FIELD&#8217;</li>
-<li>label &#8211; the label string</li>
+<li>obj – returned object (<em>None</em> if a labelled object was not found)</li>
+<li>solfec – SOLFEC object</li>
+<li>kind – labelled object: ‘SURFACE_MATERIAL’, ‘BULK_MATERIAL’, ‘BODY’, ‘FIELD’</li>
+<li>label – the label string</li>
 </ul>
 </div>
 </div>
@@ -250,8 +247,8 @@ in the direction of <span class="math">\(\mathbf{v}\)</span>.</p>
 <div class="topic">
 <p class="topic-title first">obj = MASS_CENTER (shape)</p>
 <ul class="simple">
-<li>obj &#8211; (x, y, z) tuple storing the mass center</li>
-<li>shape &#8211; object, collection of objects, or a list [a, b, c, ...] of objects of type
+<li>obj – (x, y, z) tuple storing the mass center</li>
+<li>shape – object, collection of objects, or a list [a, b, c, …] of objects of type
 CONVEX, MESH, SPHERE, ELLIP. Alternately this can be a single BODY object.</li>
 </ul>
 </div>
@@ -264,8 +261,8 @@ between runs on various processor counts.</p>
 <div class="topic">
 <p class="topic-title first">LOCDYN_DUMP (solfec, path)</p>
 <ul class="simple">
-<li>solfec &#8211; SOLFEC object</li>
-<li>path &#8211; file path</li>
+<li>solfec – SOLFEC object</li>
+<li>path – file path</li>
 </ul>
 </div>
 </div>
@@ -275,11 +272,11 @@ between runs on various processor counts.</p>
 <div class="topic">
 <p class="topic-title first">obj = OVERLAPPING (obstacles, shapes | not, gap)</p>
 <ul class="simple">
-<li>obj &#8211; list of shapes (not) ovrelapping the obstacles</li>
-<li>obstacles &#8211; object, collection of objects, or a list [a, b, c, ...] of objects of type CONVEX, MESH, SPHERE, ELLIP</li>
-<li>shapes (emptied) &#8211; object, collection of objects, or a list [a, b, c, ...] of objects of type CONVEX, MESH, SPHERE, ELLIP</li>
-<li>not &#8211; &#8216;NOT&#8217; string</li>
-<li>gap &#8211; maximal negative gap</li>
+<li>obj – list of shapes (not) ovrelapping the obstacles</li>
+<li>obstacles – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH, SPHERE, ELLIP</li>
+<li>shapes (emptied) – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH, SPHERE, ELLIP</li>
+<li>not – ‘NOT’ string</li>
+<li>gap – maximal negative gap</li>
 </ul>
 </div>
 </div>
@@ -289,20 +286,20 @@ between runs on various processor counts.</p>
 <div class="topic">
 <p class="topic-title first">MBFCP_EXPORT (solfec, path)</p>
 <ul class="simple">
-<li>solfec &#8211; SOLFEC object</li>
-<li>path &#8211; output path</li>
+<li>solfec – SOLFEC object</li>
+<li>path – output path</li>
 </ul>
 </div>
 </div>
 <div class="section" id="non-solfec-argv">
 <h2>NON_SOLFEC_ARGV<a class="headerlink" href="#non-solfec-argv" title="Permalink to this headline">¶</a></h2>
 <p>This routine returns all command line arguments (in the form of a list of strings)
-that have been passed to &#8216;solfec&#8217; or &#8216;solfec&#8211;mpi&#8217; application and has not been identified
+that have been passed to ‘solfec’ or ‘solfec–mpi’ application and has not been identified
 as valid Solfec arguments. This way the user can pass some arguments to the input scripts.</p>
 <div class="topic">
 <p class="topic-title first">argv = NON_SOLFEC_ARGV ()</p>
 <ul class="simple">
-<li>argv &#8211; list of non&#8211;solfec specific arguments passed to &#8216;solfec&#8217; or &#8216;solfec&#8211;mpi&#8217; command</li>
+<li>argv – list of non–solfec specific arguments passed to ‘solfec’ or ‘solfec–mpi’ command</li>
 </ul>
 </div>
 </div>
@@ -313,48 +310,48 @@ The modal analysis results are stored with bodies and can be viewed.</p>
 <div class="topic">
 <p class="topic-title first">obj = MODAL_ANALYSIS (body, num, path | abstol, maxiter, verbose)</p>
 <ul class="simple">
-<li>obj = (val, vec) &#8211; the returned tuple of: val = obj[0] list of eigenvalues and
+<li>obj = (val, vec) – the returned tuple of: val = obj[0] list of eigenvalues and
 vec = obj[1] list of eigen vectors (stored contiguously one after another)</li>
-<li>body &#8211; input FEM body; the model analysis results are stored with this body</li>
-<li>num &#8211; number of lowest modes to extract</li>
-<li>path &#8211; path to file where the results will be stored (to avoid recomputing if possible).
+<li>body – input FEM body; the model analysis results are stored with this body</li>
+<li>num – number of lowest modes to extract</li>
+<li>path – path to file where the results will be stored (to avoid recomputing if possible).
 Note, that if previous modal analysis results are found they are used rather then recomputed
 if the number of modes and num are the same. If num is different from the previous modes count,
 then new num modes is computed from scratch. <em>Note:</em> “.h5” extension is automatically added to
 the stored path;</li>
-<li>abstol &#8211; residual tolerance for the eigenvalue solver (default: 1E-11)</li>
-<li>maxiter &#8211; iterations bound for the eigenvalue solver (default: 100)</li>
-<li>verbose &#8211; &#8216;ON&#8217; or &#8216;OFF&#8217; verbosity flag for the eigenvalue solver (default: &#8216;OFF&#8217;)</li>
+<li>abstol – residual tolerance for the eigenvalue solver (default: 1E-11)</li>
+<li>maxiter – iterations bound for the eigenvalue solver (default: 100)</li>
+<li>verbose – ‘ON’ or ‘OFF’ verbosity flag for the eigenvalue solver (default: ‘OFF’)</li>
 </ul>
 </div>
 </div>
 <div class="section" id="corotated-displacements">
 <span id="solfec-command-corotated-displacements"></span><h2>COROTATED_DISPLACEMENTS<a class="headerlink" href="#corotated-displacements" title="Permalink to this headline">¶</a></h2>
-<p>This routine extracts snapshots of co&#8211;rotated displacements of FEM bodies. Co&#8211;rotated displacements factor out
+<p>This routine extracts snapshots of co–rotated displacements of FEM bodies. Co–rotated displacements factor out
 the rigid body rotation, only including deformational motion about the initial configuration of the body. Multiple
 calls to this command need to be used to extract multiple snapshot sets for distinct subsets of bodies. <em>Note 1:</em>
 identical sequence of calls to this routine must be executed on all MPI ranks; <em>Note 2:</em> this routine is relevant
-in the context of the &#8216;BC&#8211;RO&#8217; FEM formulation, see <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY page</span></a> and <a class="reference internal" href="body.html#fem-form"><span class="std std-numref">Table 4</span></a>,
-and <a class="reference external" href="https://pypi.python.org/pypi/modred">Python&#8217;s modred package</a> which can be used to calculate a reduced base;
+in the context of the ‘BC–RO’ FEM formulation, see <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY page</span></a> and <a class="reference internal" href="body.html#fem-form"><span class="std std-numref">Table 4</span></a>,
+and <a class="reference external" href="https://pypi.python.org/pypi/modred">Python’s modred package</a> which can be used to calculate a reduced base;
 before being passed to the <a class="reference external" href="https://pypi.python.org/pypi/modred">modred package</a> the outputted displacements
 snapshots need to be complemented by the six rigid displacements generated by the RIGID_DISPLACEMENTS command (defined below);</p>
 <div class="topic">
 <p class="topic-title first">obj = COROTATED_DISPLACEMENTS (solfec, subset | sampling)  <span class="red">(Experimental)</span></p>
 <ul class="simple">
-<li>obj &#8211; upon termination of all <a class="reference internal" href="simulation.html#solfec-command-run"><span class="std std-ref">RUN</span></a> commands, a list of lists of displacement snapshots;
-this works both in &#8216;WRITE&#8217; and &#8216;READ&#8217; modes; MPI&#8211;parallel extraction of co&#8211;rotated displacement snapshots is
-enabled in the &#8216;WRITE&#8217; mode: in this case only MPI rank 0 process will store a valid output list (None is returned
-for ranks &gt; 0); in &#8216;READ&#8217; mode enable the corotated_displacements flag of the <a class="reference internal" href="results.html#solfec-command-forward"><span class="std std-ref">FORWARD command</span></a>
+<li>obj – upon termination of all <a class="reference internal" href="simulation.html#solfec-command-run"><span class="std std-ref">RUN</span></a> commands, a list of lists of displacement snapshots;
+this works both in ‘WRITE’ and ‘READ’ modes; MPI–parallel extraction of co–rotated displacement snapshots is
+enabled in the ‘WRITE’ mode: in this case only MPI rank 0 process will store a valid output list (None is returned
+for ranks &gt; 0); in ‘READ’ mode enable the corotated_displacements flag of the <a class="reference internal" href="results.html#solfec-command-forward"><span class="std std-ref">FORWARD command</span></a>
 in order to sample displacements while skipping forward through results;</li>
-<li>solfec &#8211; SOLFEC object</li>
-<li>subset &#8211; specification of a subset of bodies for which co-rotated displacements are to be extracted; a string can be used to
+<li>solfec – SOLFEC object</li>
+<li>subset – specification of a subset of bodies for which co-rotated displacements are to be extracted; a string can be used to
 define a POSIX regular expression <a class="footnote-reference" href="#id3" id="id1">[1]</a> that will be matched against body labels; a list of body objects or integer body identifiers
-can be used [body1, body2, id3, id4, body5, ...] mixed up in an arbitrary manner; or a tuple specifying extents of a bounding box
+can be used [body1, body2, id3, id4, body5, …] mixed up in an arbitrary manner; or a tuple specifying extents of a bounding box
 can be used (xlow, ylow, zlow, xhigh, yhigh, zhigh), which the bounding boxes of exported bodies will overlapped at time t=0;
-also a list of an arbitrary combination of those can be used, e.g. [&#8216;BOD*A&#8217;, 123, body1, body2, 256, (0, 0, 0, 1, 1, 1), &#8216;KEY??7&#8217;,
+also a list of an arbitrary combination of those can be used, e.g. [‘BOD*A’, 123, body1, body2, 256, (0, 0, 0, 1, 1, 1), ‘KEY??7’,
 (3, 3, 3, 4, 4, 4)] defines two labels, two integer body ids, two body objects, and two bounding boxes, that together define a subset
 of bodies that will be used during snapshot extraction; Note:* meshes of all bodies in the subset must have the same number of nodes;</li>
-<li>sampling &#8211; optional collection of time instants, e.g. [t0, t1, t2, ..., tN], or a time interval, e.g. dt0, at which the displacement
+<li>sampling – optional collection of time instants, e.g. [t0, t1, t2, …, tN], or a time interval, e.g. dt0, at which the displacement
 snapshots are to be sampled; default: same as the output interval, see <a class="reference internal" href="simulation.html#solfec-command-output"><span class="std std-ref">OUTPUT</span></a></li>
 </ul>
 </div>
@@ -362,14 +359,14 @@ snapshots are to be sampled; default: same as the output interval, see <a class=
 <div class="section" id="rigid-displacements">
 <span id="solfec-command-rigid-displacements"></span><h2>RIGID_DISPLACEMENTS<a class="headerlink" href="#rigid-displacements" title="Permalink to this headline">¶</a></h2>
 <p>This routine outputs six unit vectors of rigid displacements of a FEM body (three translations and three rotations).
-<em>Note:</em> this routine is relevant in the context of the &#8216;BC&#8211;RO&#8217; FEM formulation, see <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY page</span></a>
-and <a class="reference internal" href="body.html#fem-form"><span class="std std-numref">Table 4</span></a>, and <a class="reference external" href="https://pypi.python.org/pypi/modred">Python&#8217;s modred package</a> which can be used to
+<em>Note:</em> this routine is relevant in the context of the ‘BC–RO’ FEM formulation, see <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY page</span></a>
+and <a class="reference internal" href="body.html#fem-form"><span class="std std-numref">Table 4</span></a>, and <a class="reference external" href="https://pypi.python.org/pypi/modred">Python’s modred package</a> which can be used to
 calculate a reduced base; see also the COROTATED_DISPLACEMENTS command (defined above);</p>
 <div class="topic">
 <p class="topic-title first">obj = RIGID_DISPLACEMENTS (body) <span class="red">(Experimental)</span></p>
 <ul class="simple">
-<li>obj &#8211; a list comprising six lists representing the unit displacement vectors</li>
-<li>body &#8211; a finite element BODY object</li>
+<li>obj – a list comprising six lists representing the unit displacement vectors</li>
+<li>body – a finite element BODY object</li>
 </ul>
 </div>
 </div>
@@ -379,11 +376,11 @@ calculate a reduced base; see also the COROTATED_DISPLACEMENTS command (defined 
 <div class="topic">
 <p class="topic-title first">BODY_MM_EXPORT (body, pathM, pathK | spdM, spdK)</p>
 <ul class="simple">
-<li>body &#8211; BODY object of &#8216;FINITE_ELEMENT&#8217; kind</li>
-<li>pathM &#8211; output path for mass matrix M</li>
-<li>pathK &#8211; output path for stiffness matrix K</li>
-<li>spdM &#8211; symmetric positive definite flag M; &#8216;ON&#8217; or &#8216;OFF&#8217; (default: &#8216;ON&#8217;); only lower triangle is exported when &#8216;ON&#8217;</li>
-<li>spdK &#8211; symmetric positive definite flag K; &#8216;ON&#8217; or &#8216;OFF&#8217; (default: &#8216;ON&#8217;); only lower triangle is exported when &#8216;ON&#8217;</li>
+<li>body – BODY object of ‘FINITE_ELEMENT’ kind</li>
+<li>pathM – output path for mass matrix M</li>
+<li>pathK – output path for stiffness matrix K</li>
+<li>spdM – symmetric positive definite flag M; ‘ON’ or ‘OFF’ (default: ‘ON’); only lower triangle is exported when ‘ON’</li>
+<li>spdK – symmetric positive definite flag K; ‘ON’ or ‘OFF’ (default: ‘ON’); only lower triangle is exported when ‘ON’</li>
 </ul>
 </div>
 </div>
@@ -391,40 +388,40 @@ calculate a reduced base; see also the COROTATED_DISPLACEMENTS command (defined 
 <h2>DISPLAY_POINT<a class="headerlink" href="#display-point" title="Permalink to this headline">¶</a></h2>
 <p>Attach a display point to a body. Display points are defined in reference
 configuration and convected with bodies. Display points can be visualised by
-selecting &#8216;display points on/off&#8217; in the &#8216;tools&#8217; viewer menu. They serve purely
+selecting ‘display points on/off’ in the ‘tools’ viewer menu. They serve purely
 auxiliary purpose, for example allowing to make sure that the results are read
 from correct locations.</p>
 <div class="topic">
 <p class="topic-title first">DISPLAY_POINT (body, point | label)</p>
 <ul class="simple">
-<li>body &#8211; BODY object</li>
-<li>point &#8211; referential (x, y, z) point</li>
-<li>label &#8211; optional label</li>
+<li>body – BODY object</li>
+<li>point – referential (x, y, z) point</li>
+<li>label – optional label</li>
 </ul>
 </div>
 </div>
 <div class="section" id="render">
 <h2>RENDER<a class="headerlink" href="#render" title="Permalink to this headline">¶</a></h2>
 <p>Render selected bodies in the Viewer. <em>Note:</em> This <em>cannot</em> be used from within a normal analysis script,
-but only from a Viewer script by selecting &#8216;run python script&#8217; in the &#8216;tools&#8217; viewer menu.</p>
+but only from a Viewer script by selecting ‘run python script’ in the ‘tools’ viewer menu.</p>
 <div class="topic">
 <p class="topic-title first">RENDER(solfec, object) <span class="red">(Experimental)</span></p>
 <ul class="simple">
-<li>solfec &#8211; SOLFEC object</li>
-<li>object &#8211; BODY object or a list of BODY objects</li>
+<li>solfec – SOLFEC object</li>
+<li>object – BODY object or a list of BODY objects</li>
 </ul>
 </div>
 </div>
 <div class="section" id="register-base">
 <span id="solfec-command-register-base"></span><h2>REGISTER_BASE<a class="headerlink" href="#register-base" title="Permalink to this headline">¶</a></h2>
-<p>Register &#8216;BC&#8211;RO&#8217; or &#8216;BC&#8211;MODAL&#8217; base for the finite element <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY formulation</span></a>. Registering
+<p>Register ‘BC–RO’ or ‘BC–MODAL’ base for the finite element <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY formulation</span></a>. Registering
 a reduced order or modal base saves memory when multiple instances of bodies employing the same base are used.</p>
 <div class="topic">
 <p class="topic-title first">REGISTER_BASE (solfec, base, label) <span class="red">(Experimental)</span></p>
 <ul class="simple">
-<li>solfec &#8211; SOLFEC object</li>
-<li>base &#8211; base definition: <em>(val, vec)</em> where <em>val</em> is a list of eigenvalues and <em>vec</em> is a list of eigenvectors (stored contiguously one after another)</li>
-<li>label &#8211; unique string label</li>
+<li>solfec – SOLFEC object</li>
+<li>base – base definition: <em>(val, vec)</em> where <em>val</em> is a list of eigenvalues and <em>vec</em> is a list of eigenvectors (stored contiguously one after another)</li>
+<li>label – unique string label</li>
 </ul>
 </div>
 <table class="docutils footnote" frame="void" id="id3" rules="none">
@@ -620,8 +617,8 @@ a reduced order or modal base saves memory when multiple instances of bodies emp
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/user/utilities.rst.txt"

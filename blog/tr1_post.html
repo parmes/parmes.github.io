@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>TR1: Co-rotated and reduced order time integrators &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   
@@ -49,7 +46,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -63,9 +60,9 @@
 combined with a family of finite element formulations:</p>
 <ul class="simple">
 <li>Total Lagrangian (TL)</li>
-<li>body co&#8211;rotational full mesh (BC)</li>
-<li>body co&#8211;rotational reduced order (BC&#8211;RO)</li>
-<li>body co&#8211;rotational modal (BC&#8211;MODAL)</li>
+<li>body co–rotational full mesh (BC)</li>
+<li>body co–rotational reduced order (BC–RO)</li>
+<li>body co–rotational modal (BC–MODAL)</li>
 </ul>
 <p>as they are implemented in <a class="reference internal" href="../solfec/index.html#solfec-index"><span class="std std-ref">Solfec</span></a>. These formulations allow to vary the amount of deformation
 expressed by a finite element mesh and facilitate saving computational time and storage. They may be helpful in the context
@@ -84,9 +81,9 @@ of multibody modeling.</p>
              <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;BC-MODAL&#39;</span><span class="p">,</span> <span class="n">base</span> <span class="o">=</span> <span class="n">modal_base</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>In case of the &#8216;BC&#8211;RO&#8217; and &#8216;BC&#8211;MODAL&#8217; the linearly implicit integrator is default.
-For &#8216;TL&#8217; and &#8216;BC&#8217; the default time integration scheme is &#8216;DEF_EXP&#8217; (<a class="reference internal" href="../solfec/user/body.html#solfec-body-scheme"><span class="std std-numref">Table 7</span></a>);
-we change it to &#8216;DEF_LIM&#8217; after body creation.</p>
+<p>In case of the ‘BC–RO’ and ‘BC–MODAL’ the linearly implicit integrator is default.
+For ‘TL’ and ‘BC’ the default time integration scheme is ‘DEF_EXP’ (<a class="reference internal" href="../solfec/user/body.html#solfec-body-scheme"><span class="std std-numref">Table 7</span></a>);
+we change it to ‘DEF_LIM’ after body creation.</p>
 <p>The <em>base</em> format is a tuple of two lists</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="p">([</span><span class="n">eval1</span><span class="p">,</span> <span class="n">eval2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">evaln</span><span class="p">],</span>
         <span class="p">[</span><span class="n">evec11</span><span class="p">,</span> <span class="n">evec12</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">evec1m</span><span class="p">,</span>
@@ -97,13 +94,13 @@ we change it to &#8216;DEF_LIM&#8217; after body creation.</p>
 <p>where we assumed <em>n</em> base vectors of size <em>m</em>. The first list stores eigenvalues and the second list stores
 eigenvectors. <a class="reference internal" href="../solfec/user/utilities.html#solfec-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> and
 <a class="reference internal" href="../solfec/user/utilities.html#solfec-command-rigid-displacements"><span class="std std-ref">RIGID_DISPLACEMENTS</span></a> commands can be used together to sample
-displacements and generate a reduced base using <a class="reference external" href="https://pypi.python.org/pypi/modred">Python&#8217;s modred package</a>.
+displacements and generate a reduced base using <a class="reference external" href="https://pypi.python.org/pypi/modred">Python’s modred package</a>.
 <a class="reference internal" href="../solfec/user/utilities.html#solfec-command-modal-analysis"><span class="std std-ref">MODAL_ANALYSIS</span></a> command can be used to generate a modal base.</p>
 <p>Input decks for the rotating bar, pipe impact, and array excitation examples from <a class="reference internal" href="../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>
 can be respectively found in</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">solfec/examples/reduced&#8211;ordero0</a></li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">solfec/example/reduced&#8211;order1</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">solfec/examples/reduced–ordero0</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">solfec/example/reduced–order1</a></li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">solfec/example/81array</a></li>
 </ul>
 <p>directories. See also <a class="reference internal" href="../solfec/examples/reduced_order.html#solfec-examples-reduced-order"><span class="std std-ref">the online version of these examples</span></a>.</p>
@@ -280,8 +277,8 @@ can be respectively found in</p>
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../_sources/blog/tr1_post.rst.txt"

@@ -17,7 +17,7 @@
     </author>
     <content type="html">&lt;p&gt;Motivated by user feedback a partially cached time series capability has been included into &lt;a class=&quot;reference internal&quot; href=&quot;solfec/index.html#solfec-index&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;SOLFEC&lt;/span&gt;&lt;/a&gt;.
 This allows to use many large &lt;a class=&quot;reference internal&quot; href=&quot;solfec/user/times.html#solfec-user-times&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;TIME_SERIES&lt;/span&gt;&lt;/a&gt; objects without running out of
-memory. To facilitate that an optional &lt;em&gt;cache&lt;/em&gt; argument has been added &amp;#8211; please see the &lt;a class=&quot;reference internal&quot; href=&quot;solfec/user/times.html#solfec-user-times&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;documentation&lt;/span&gt;&lt;/a&gt; and &lt;a class=&quot;reference internal&quot; href=&quot;solfec/examples/time_series.html#solfec-examples-time-series&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;example&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
+memory. To facilitate that an optional &lt;em&gt;cache&lt;/em&gt; argument has been added – please see the &lt;a class=&quot;reference internal&quot; href=&quot;solfec/user/times.html#solfec-user-times&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;documentation&lt;/span&gt;&lt;/a&gt; and &lt;a class=&quot;reference internal&quot; href=&quot;solfec/examples/time_series.html#solfec-examples-time-series&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;example&lt;/span&gt;&lt;/a&gt;.&lt;/p&gt;
 </content>
   </entry>
   <entry xml:base="http://parmes.org/blog/atom.xml">
@@ -42,9 +42,9 @@ combined with a family of finite element formulations:&lt;/p&gt;
     <author>
       <name>Tomek</name>
     </author>
-    <content type="html">&lt;p&gt;&lt;a class=&quot;reference internal&quot; href=&quot;solfec/user/solvers.html#solfec-command-hybrid-solver&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;Solfec&amp;#8217;s hybrid solver&lt;/span&gt;&lt;/a&gt; is now ready for testing. This solver combines the ability
-of modeling non&amp;#8211;smooth multi&amp;#8211;body structures in Solfec (e.g. as fully resolved FE models) in conjunction with a lightweight
-rigid&amp;#8211;body/nonlinear&amp;#8211;spring approach implemented in &lt;a class=&quot;reference internal&quot; href=&quot;parmec/index.html#parmec-index&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;PARMEC&lt;/span&gt;&lt;/a&gt;. A simple example of that can be
+    <content type="html">&lt;p&gt;&lt;a class=&quot;reference internal&quot; href=&quot;solfec/user/solvers.html#solfec-command-hybrid-solver&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;Solfec’s hybrid solver&lt;/span&gt;&lt;/a&gt; is now ready for testing. This solver combines the ability
+of modeling non–smooth multi–body structures in Solfec (e.g. as fully resolved FE models) in conjunction with a lightweight
+rigid–body/nonlinear–spring approach implemented in &lt;a class=&quot;reference internal&quot; href=&quot;parmec/index.html#parmec-index&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;PARMEC&lt;/span&gt;&lt;/a&gt;. A simple example of that can be
 seen in the video below:&lt;/p&gt;
 </content>
   </entry>

@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Hybrid modeling &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="A two–body impact problem" href="hybrid_modeling/hs0.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -61,22 +58,22 @@
             
   <div class="section" id="hybrid-modeling">
 <span id="solfec-examples-hybrid-modeling"></span><h1>Hybrid modeling<a class="headerlink" href="#hybrid-modeling" title="Permalink to this headline">¶</a></h1>
-<p>By hybrid modeling we mean multi&#8211;body modeling combining rigid bodies connected
-via springs with finite&#8211;element or rigid bodies interacting via non&#8211;smooth laws. For some
+<p>By hybrid modeling we mean multi–body modeling combining rigid bodies connected
+via springs with finite–element or rigid bodies interacting via non–smooth laws. For some
 problems, this type of modeling can be useful, allowing for shorter runtime, in cases where
-solely non&#8211;smooth models could be computationally prohibitive. For example, when analyzing
-frequency response of a large scale multi&#8211;body structure, a fraction of it (an area of interest)
+solely non–smooth models could be computationally prohibitive. For example, when analyzing
+frequency response of a large scale multi–body structure, a fraction of it (an area of interest)
 could be modeled using the NSCD approach, while the remaining (predominate) part could be modeled
 in a simplified manner (using rigid bodies and springs).</p>
 <p>Hybrid modeling is available in Solfec via the <a class="reference internal" href="../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>
 interface.  In this case <a class="reference internal" href="../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> is used as a software library facilitating
-modeling of the rigid body &#8211; spring systems. Currently available examples of the hybrid modeling
+modeling of the rigid body – spring systems. Currently available examples of the hybrid modeling
 functionality include:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="hybrid_modeling/hs0.html">A two&#8211;body impact problem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hybrid_modeling/hs123.html">1,2,3&#8211;dimensional cube array acceleration dwell</a></li>
-<li class="toctree-l1"><a class="reference internal" href="hybrid_modeling/hs3_scaling.html">3&#8211;dimensional cube array parallel scaling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_modeling/hs0.html">A two–body impact problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_modeling/hs123.html">1,2,3–dimensional cube array acceleration dwell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hybrid_modeling/hs3_scaling.html">3–dimensional cube array parallel scaling</a></li>
 </ul>
 </div>
 </div>
@@ -121,9 +118,9 @@ functionality include:</p>
 <li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../examples.html">Examples</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Hybrid modeling</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="hybrid_modeling/hs0.html">A two&#8211;body impact problem</a></li>
-<li class="toctree-l4"><a class="reference internal" href="hybrid_modeling/hs123.html">1,2,3&#8211;dimensional cube array acceleration dwell</a></li>
-<li class="toctree-l4"><a class="reference internal" href="hybrid_modeling/hs3_scaling.html">3&#8211;dimensional cube array parallel scaling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hybrid_modeling/hs0.html">A two–body impact problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hybrid_modeling/hs123.html">1,2,3–dimensional cube array acceleration dwell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hybrid_modeling/hs3_scaling.html">3–dimensional cube array parallel scaling</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="reduced_order.html">Reduced order modeling</a></li>
@@ -149,7 +146,7 @@ functionality include:</p>
   <li><a href="../index.html">SOLFEC</a><ul>
   <li><a href="../examples.html">Solfec Examples</a><ul>
       <li>Previous: <a href="../examples.html" title="previous chapter">Solfec Examples</a></li>
-      <li>Next: <a href="hybrid_modeling/hs0.html" title="next chapter">A two&#8211;body impact problem</a></li>
+      <li>Next: <a href="hybrid_modeling/hs0.html" title="next chapter">A two–body impact problem</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -235,8 +232,8 @@ functionality include:</p>
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/examples/hybrid_modeling.rst.txt"

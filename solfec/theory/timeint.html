@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Time integration &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Constraints" href="constraints.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -63,14 +60,14 @@
 <span id="solfec-theory-timeint"></span><h1>Time integration<a class="headerlink" href="#time-integration" title="Permalink to this headline">¶</a></h1>
 <p>Solfec implements three variants of time integration of rigid body kinematics:</p>
 <ul class="simple">
-<li>RIG_POS &#8211; a semi&#8211;explicit scheme with a positive energy drift, cf. NEW1 in <a class="footnote-reference" href="#id7" id="id1">[1]</a></li>
-<li>RIG_NEG &#8211; a semi&#8211;explicit scheme with a negative energy drift, cf. NEW2 in <a class="footnote-reference" href="#id7" id="id2">[1]</a></li>
-<li>RIG_IMP &#8211; a semi&#8211;implicit without energy drift (but rather, oscillation), cf. NEW3 in <a class="footnote-reference" href="#id7" id="id3">[1]</a></li>
+<li>RIG_POS – a semi–explicit scheme with a positive energy drift, cf. NEW1 in <a class="footnote-reference" href="#id7" id="id1">[1]</a></li>
+<li>RIG_NEG – a semi–explicit scheme with a negative energy drift, cf. NEW2 in <a class="footnote-reference" href="#id7" id="id2">[1]</a></li>
+<li>RIG_IMP – a semi–implicit without energy drift (but rather, oscillation), cf. NEW3 in <a class="footnote-reference" href="#id7" id="id3">[1]</a></li>
 </ul>
 <p>And two variants of time integration for pseudo–rigid and finite–element kinematics:</p>
 <ul class="simple">
-<li>DEF_EXP &#8211; an explicit leap&#8211;frog scheme, cf. Section 5.1 in <a class="footnote-reference" href="#id8" id="id4">[2]</a></li>
-<li>DEF_LIM &#8211; a linearly implicit leap&#8211;frog scheme, <a class="footnote-reference" href="#id9" id="id5">[3]</a> and <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a></li>
+<li>DEF_EXP – an explicit leap–frog scheme, cf. Section 5.1 in <a class="footnote-reference" href="#id8" id="id4">[2]</a></li>
+<li>DEF_LIM – a linearly implicit leap–frog scheme, <a class="footnote-reference" href="#id9" id="id5">[3]</a> and <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a></li>
 </ul>
 <p>A time integration scheme is selected by modifying the <em>scheme</em> parameter of the <a class="reference internal" href="../user/body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a>.</p>
 <div class="section" id="rigid-integration">
@@ -123,8 +120,8 @@ out of a 3-vector <span class="math">\(\mathbf{\Psi}\)</span>, and <span class="
 </div>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
-<p>Time integration is implement in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo&#8211;rigid)
-and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite&#8211;element) files. Inverse generalized
+<p>Time integration is implement in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo–rigid)
+and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite–element) files. Inverse generalized
 inertia matrix <span class="math">\(\mathbf{A}^{-1}\)</span> is declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L176">bod.h</a> as follows:</p>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>139
 140</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">BODY_CHECK_FRACTURE</span>      <span class="o">=</span> <span class="mh">0x0002</span><span class="p">,</span> <span class="o">/*</span> <span class="n">enable</span> <span class="n">fracture</span> <span class="n">check</span> <span class="k">for</span> <span class="n">finite</span> <span class="n">element</span> <span class="n">bodies</span> <span class="o">*/</span>
@@ -141,17 +138,17 @@ inertia matrix <span class="math">\(\mathbf{A}^{-1}\)</span> is declared in <a c
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1296">bod.c:BODY_Dynamic_Step_Begin</a>. <br />
 Rigid integration formulae <a class="reference internal" href="#equation-R1(t+h)">(5)</a>-<a class="reference internal" href="#equation-R2(t+h)">(8)</a> are in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1403">bod.c:BODY_Dynamic_Step_End</a>. <br />
-Pseudo&#8211;rigid integration is included in the same routines:
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1353">first half&#8211;step</a> and
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1467">second half&#8211;step</a>. <br />
-Finite&#8211;element, total Lagrangian formulation based, integration formulae <a class="reference internal" href="basics.html#equation-q(t+h/2)">(5)</a> and <a class="reference internal" href="basics.html#equation-u(t+h)">(6)</a>
+Pseudo–rigid integration is included in the same routines:
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1353">first half–step</a> and
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1467">second half–step</a>. <br />
+Finite–element, total Lagrangian formulation based, integration formulae <a class="reference internal" href="basics.html#equation-q(t+h/2)">(5)</a> and <a class="reference internal" href="basics.html#equation-u(t+h)">(6)</a>
 are in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1879">fem.c:TL_dynamic_step_begin</a>. <br />
-Finite&#8211;element, total Lagrangian formulation based, integration formula <a class="reference internal" href="basics.html#equation-q(t+h)">(7)</a>
+Finite–element, total Lagrangian formulation based, integration formula <a class="reference internal" href="basics.html#equation-q(t+h)">(7)</a>
 is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1930">fem.c:TL_dynamic_step_end</a>. <br /></p>
 <table class="docutils footnote" frame="void" id="id7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.2711/full">IJNME, 81(9):1073&#8211;1092, 2010.</a></td></tr>
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.2711/full">IJNME, 81(9):1073–1092, 2010.</a></td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id8" rules="none">
@@ -163,7 +160,7 @@ is in <a class="reference external" href="https://github.com/tkoziara/solfec/blo
 <table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0168927497000664">ANM, 25(2&#8211;3): 297&#8211;302, 1997.</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0168927497000664">ANM, 25(2–3): 297–302, 1997.</a></td></tr>
 </tbody>
 </table>
 </div>
@@ -331,8 +328,8 @@ is in <a class="reference external" href="https://github.com/tkoziara/solfec/blo
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/theory/timeint.rst.txt"

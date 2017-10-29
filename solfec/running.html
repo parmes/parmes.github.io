@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Running Solfec &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Solfec User Manual" href="user.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -62,7 +59,7 @@
   <div class="section" id="running-solfec">
 <span id="solfec-running"></span><h1>Running Solfec<a class="headerlink" href="#running-solfec" title="Permalink to this headline">¶</a></h1>
 <p>Solfec is a command line program. It can be run sequentially (command: solfec) or in parallel
-using an MPI runtime environment (command: solfec&#8211;mpi). Running it without parameters</p>
+using an MPI runtime environment (command: solfec–mpi). Running it without parameters</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">solfec</span>
 </pre></div>
 </div>
@@ -71,33 +68,33 @@ using an MPI runtime environment (command: solfec&#8211;mpi). Running it without
                  <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="n">sub</span><span class="o">-</span><span class="n">directory</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">verbosity</span> <span class="n">interval</span><span class="p">]</span> <span class="n">path</span>
 </pre></div>
 </div>
-<p><strong>The &#8211;v switch</strong> opens the interactive graphical viewer (cf. <a class="reference internal" href="#viewer-1"><span class="std std-numref">Fig. 1</span></a>). In this mode the user
+<p><strong>The –v switch</strong> opens the interactive graphical viewer (cf. <a class="reference internal" href="#viewer-1"><span class="std std-numref">Fig. 1</span></a>). In this mode the user
 can view the geometrical model, run or step through analysis, and view results.
 The right mouse click on the viewer window expands the menu.</p>
 <div class="figure align-center" id="id5">
 <span id="viewer-1"></span><a class="reference internal image-reference" href="../_images/viewer-1.png"><img alt="../_images/viewer-1.png" src="../_images/viewer-1.png" style="width: 50%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Solfec viewer window.</span></p>
 </div>
-<p><strong>The &#8211;w switch</strong> forces the computation (write) mode. If some results are present, Solfec will ask:</p>
+<p><strong>The –w switch</strong> forces the computation (write) mode. If some results are present, Solfec will ask:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span>WARNING: Valid output files exist at path: &lt;path&gt;
 Would you like to overwrite them? y/[n]:
 </pre></div>
 </div>
-<p>and terminate in case you answered &#8216;n&#8217;.</p>
-<p><strong>The &#8211;c switch</strong> forces the continued computation (write) mode: if some results are present,
+<p>and terminate in case you answered ‘n’.</p>
+<p><strong>The –c switch</strong> forces the continued computation (write) mode: if some results are present,
 the analysis will be continued from where it was stopped.  <em>NOTE1:</em> this option works correctly only
-if RUN is used once per input file; With &#8211;c Solfec terminates in case RUN is used multiple times;
-<em>NOTE2:</em> this option works only with the HDF5 output; in case of the XDR  output it is the same as &#8211;w;
+if RUN is used once per input file; With –c Solfec terminates in case RUN is used multiple times;
+<em>NOTE2:</em> this option works only with the HDF5 output; in case of the XDR  output it is the same as –w;
 <em>NOTE3:</em> in parallel, continuation must be done using the same number of MPI ranks
-(e.g. N in “mpirun &#8211;np N ...” must not change).</p>
-<p><strong>The &#8211;f switch</strong>, together with &#8211;v, opens the viewer in the wireframe mode,
+(e.g. N in “mpirun –np N …” must not change).</p>
+<p><strong>The –f switch</strong>, together with –v, opens the viewer in the wireframe mode,
 which requires substantially less memory and can be used to visualize large models.
 You can then use render <span class="math">\(\to\)</span> 2D/3D wireframe selection option in order to
 selectively switch on volumetric rendering of selected areas of the model.</p>
-<p><strong>The &#8211;g switch</strong> allows to specify the initial width and height of the viewer window (512 by default).
+<p><strong>The –g switch</strong> allows to specify the initial width and height of the viewer window (512 by default).
 This option may be useful in case you would like to generate videos with a specific resolution.</p>
-<p><strong>The &#8211;s switch</strong> allows to output or read the results from a sub&#8211;directory. This option is useful when one
-wishes to output results of similar analysis to different sub&#8211;directories of a common root directory
+<p><strong>The –s switch</strong> allows to output or read the results from a sub–directory. This option is useful when one
+wishes to output results of similar analysis to different sub–directories of a common root directory
 specified when creating a SOLFEC object. For example, the bellow commands would run a parallel example
 and output the results into different sub-directories denoted by the number of processors involved in the analysis:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">4</span> <span class="n">solfec</span><span class="o">-</span><span class="n">mpi</span> <span class="o">-</span><span class="n">s</span> <span class="mi">4</span> <span class="n">inp</span><span class="o">/</span><span class="n">cubes</span><span class="o">.</span><span class="n">py</span>
@@ -118,16 +115,16 @@ stopped at any time by placing a file named STOP in the output directory of a si
 <p><strong>The -i switch</strong> allows to adjust the time interval of verbose output of runtime statistics (default is 1s).</p>
 <div class="section" id="read-write-mode">
 <h2>Read/write mode<a class="headerlink" href="#read-write-mode" title="Permalink to this headline">¶</a></h2>
-<p>Solfec&#8217;s read/write mode behavior may need some explanation.
-Let&#8217;s say that you created an input file called &#8216;test.py&#8217;
-inside of a directory called &#8216;inp&#8217; and wrote in there the following code:</p>
+<p>Solfec’s read/write mode behavior may need some explanation.
+Let’s say that you created an input file called ‘test.py’
+inside of a directory called ‘inp’ and wrote in there the following code:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="o">=</span> <span class="n">SOLFEC</span> <span class="p">(</span><span class="s1">&#39;DYNAMIC&#39;</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="s1">&#39;out/test&#39;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">solfec</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;WRITE&#39;</span><span class="p">:</span> <span class="nb">print</span> <span class="s1">&#39;WRITE MODE!&#39;</span>
 <span class="k">elif</span> <span class="n">solfec</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;READ&#39;</span><span class="p">:</span> <span class="nb">print</span> <span class="s1">&#39;READ MODE!&#39;</span>
 </pre></div>
 </div>
-<p>Hence, the results will be placed in the directory &#8216;out/test&#8217;.  An analysis
+<p>Hence, the results will be placed in the directory ‘out/test’.  An analysis
 has not yet been run for this input file and there are no results. If you run:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">solfec</span> <span class="n">inp</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
@@ -136,8 +133,8 @@ has not yet been run for this input file and there are no results. If you run:</
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">-</span><span class="n">np</span> <span class="mi">4</span> <span class="o">./</span><span class="n">solfec</span><span class="o">-</span><span class="n">mpi</span> <span class="n">inp</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>the results will be written into &#8216;out/test&#8217;.  Since during this first run no
-results were found at the &#8216;out/test&#8217; path, Solfec will print:</p>
+<p>the results will be written into ‘out/test’.  Since during this first run no
+results were found at the ‘out/test’ path, Solfec will print:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;WRITE MODE!&#39;</span>
 </pre></div>
 </div>
@@ -146,7 +143,7 @@ Upon completion you will be able to access results by again invoking <a class="f
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">solfec</span> <span class="n">inp</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>Since in this case some results will be found at the &#8216;out/test&#8217; path,
+<p>Since in this case some results will be found at the ‘out/test’ path,
 this time Solfec will print:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;READ MODE!&#39;</span>
 </pre></div>
@@ -172,13 +169,13 @@ any location (e.g. access to additional data or scripts required by an input fil
 <table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><em>solfec&#8211;mpi</em> always runs in the write mode.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><em>solfec–mpi</em> always runs in the write mode.</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>When viewer is used (&#8211;v switch), the execution of the input file stops at the first occurrence of the RUN command.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>When viewer is used (–v switch), the execution of the input file stops at the first occurrence of the RUN command.</td></tr>
 </tbody>
 </table>
 </div>
@@ -330,8 +327,8 @@ any location (e.g. access to additional data or scripts required by an input fil
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../_sources/solfec/running.rst.txt"

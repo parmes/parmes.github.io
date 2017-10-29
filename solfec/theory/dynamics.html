@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Dynamics &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Time integration" href="timeint.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -114,7 +111,7 @@ and the tensor product operator <span class="math">\(\otimes\)</span> makes a <s
 \end{array}\right]\end{split}\]</div>
 </div>
 <div class="section" id="pseudo-rigid-dynamics">
-<h2>Pseudo&#8211;rigid dynamics<a class="headerlink" href="#pseudo-rigid-dynamics" title="Permalink to this headline">¶</a></h2>
+<h2>Pseudo–rigid dynamics<a class="headerlink" href="#pseudo-rigid-dynamics" title="Permalink to this headline">¶</a></h2>
 <p>Linear momentum balance reads</p>
 <div class="math">
 \[m\ddot{\bar{\mathbf{x}}}=\int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv\]</div>
@@ -130,8 +127,8 @@ and the tensor product operator <span class="math">\(\otimes\)</span> makes a <s
 \[\Psi=\frac{1}{4}\left[\mathbf{F}^{T}\mathbf{F}-\mathbf{I}\right]:\mathbf{C}:\left[\mathbf{F}^{T}\mathbf{F}-\mathbf{I}\right]\]</div>
 <div class="math">
 \[C_{ijkl}=\lambda\delta_{ij}\delta_{kl}+\mu\left[\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk}\right]\]</div>
-<p>where the hyperelastic Saint Venant &#8211; Kirchhoff material is adopted. In the above <span class="math">\(\lambda\)</span> and <span class="math">\(\mu\)</span> are Lam&#8217;e constants, while <span class="math">\(\delta_{ij}\)</span> is the Kronecker delta.
-The Lam&#8217;e constants can be expressed in terms of the Young modulus <span class="math">\(E\)</span> and the Poisson ratio <span class="math">\(\nu\)</span> as</p>
+<p>where the hyperelastic Saint Venant – Kirchhoff material is adopted. In the above <span class="math">\(\lambda\)</span> and <span class="math">\(\mu\)</span> are Lam’e constants, while <span class="math">\(\delta_{ij}\)</span> is the Kronecker delta.
+The Lam’e constants can be expressed in terms of the Young modulus <span class="math">\(E\)</span> and the Poisson ratio <span class="math">\(\nu\)</span> as</p>
 <div class="math">
 \[\lambda=\frac{E\nu}{\left(1+\nu\right)\left(1-2\nu\right)}\]</div>
 <div class="math">
@@ -153,11 +150,11 @@ The Lam&#8217;e constants can be expressed in terms of the Young modulus <span c
 \int_{\partial\mathcal{B}_{0}}\mathbf{t}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dV-V\bar{\mathbf{P}}\\
 \int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv
 \end{array}\right]\end{split}\]</div>
-<p>It should be noted, that it is the row&#8211;wise composition of <span class="math">\(\dot{\mathbf{F}}\)</span> in <span class="math">\(\mathbf{u}\)</span> (cf. <a class="reference internal" href="kinematics.html#pseudo-rigid-vectors"><span class="std std-ref">Kinematics</span></a>),
-which allows us to use the computationally convenient block&#8211;diagonal form of <span class="math">\(\mathbf{M}\)</span> for pseudo&#8211;rigid bodies.</p>
+<p>It should be noted, that it is the row–wise composition of <span class="math">\(\dot{\mathbf{F}}\)</span> in <span class="math">\(\mathbf{u}\)</span> (cf. <a class="reference internal" href="kinematics.html#pseudo-rigid-vectors"><span class="std std-ref">Kinematics</span></a>),
+which allows us to use the computationally convenient block–diagonal form of <span class="math">\(\mathbf{M}\)</span> for pseudo–rigid bodies.</p>
 </div>
 <div class="section" id="finite-element-dynamics">
-<h2>Finite&#8211;element dynamics<a class="headerlink" href="#finite-element-dynamics" title="Permalink to this headline">¶</a></h2>
+<h2>Finite–element dynamics<a class="headerlink" href="#finite-element-dynamics" title="Permalink to this headline">¶</a></h2>
 <p>The linear momentum balance reads</p>
 <div class="math">
 \[\mathbf{M}\dot{\mathbf{u}}+\mathbf{f}_{\text{int}}\left(\mathbf{q}\right)+
@@ -189,8 +186,8 @@ is used in Solfec, hence <span class="math">\(\mathbf{f}_{\text{damp}}=\eta\math
 </div>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
-<p>Dynamics is implement in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo&#8211;rigid)
-and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite&#8211;element) files. Mass and stiffness
+<p>Dynamics is implement in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo–rigid)
+and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite–element) files. Mass and stiffness
 matrices <span class="math">\(\mathbf{M}\)</span> and <span class="math">\(\mathbf{K}\)</span>, and the damping factor <span class="math">\(\eta\)</span>, are declared in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L178">bod.h</a> as follows:</p>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>139
@@ -262,8 +259,8 @@ Evaluation of <a class="reference internal" href="#equation-fext">(9)</a> is in 
 <li class="toctree-l3"><a class="reference internal" href="kinematics.html">Kinematics</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Dynamics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#rigid-dynamics">Rigid dynamics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pseudo-rigid-dynamics">Pseudo&#8211;rigid dynamics</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#finite-element-dynamics">Finite&#8211;element dynamics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pseudo-rigid-dynamics">Pseudo–rigid dynamics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#finite-element-dynamics">Finite–element dynamics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a></li>
 </ul>
 </li>
@@ -386,8 +383,8 @@ Evaluation of <a class="reference internal" href="#equation-fext">(9)</a> is in 
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/theory/dynamics.rst.txt"

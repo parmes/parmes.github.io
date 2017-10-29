@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Solfec Theory Manual &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Basics" href="theory/basics.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -61,19 +58,19 @@
             
   <div class="section" id="solfec-theory-manual">
 <span id="solfec-theory"></span><h1>Solfec Theory Manual<a class="headerlink" href="#solfec-theory-manual" title="Permalink to this headline">¶</a></h1>
-<p>Solfec implements instances of the Non&#8211;Smooth <a class="reference external" href="https://en.wikipedia.org/wiki/Contact_dynamics">Contact Dynamics</a> Method
+<p>Solfec implements instances of the Non–Smooth <a class="reference external" href="https://en.wikipedia.org/wiki/Contact_dynamics">Contact Dynamics</a> Method
 <a class="footnote-reference" href="#id6" id="id1">[1]</a>, <a class="footnote-reference" href="#id7" id="id2">[2]</a> and the <a class="reference external" href="https://en.wikipedia.org/wiki/Discrete_element_method">Discrete Element Method</a>. The software originated
-from the PhD research <a class="footnote-reference" href="#id8" id="id3">[3]</a> and its further development <a class="footnote-reference" href="#id9" id="id4">[4]</a>. Thesis <a class="footnote-reference" href="#id8" id="id5">[3]</a> can be used as an auxiliary &#8220;theory manual&#8221;. The intention
+from the PhD research <a class="footnote-reference" href="#id8" id="id3">[3]</a> and its further development <a class="footnote-reference" href="#id9" id="id4">[4]</a>. Thesis <a class="footnote-reference" href="#id8" id="id5">[3]</a> can be used as an auxiliary “theory manual”. The intention
 behind this document is to provide a minimalist exposition of core computational methods and algorithms implemented in Solfec
-and facilitate cross&#8211;referencing with <a class="reference external" href="https://github.com/tkoziara/solfec">the source code</a> and the functionalities described
+and facilitate cross–referencing with <a class="reference external" href="https://github.com/tkoziara/solfec">the source code</a> and the functionalities described
 in the <a class="reference internal" href="user.html#solfec-user"><span class="std std-ref">User Manual</span></a>. The theory manual comprises the following sections:</p>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="theory/basics.html">Basics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="theory/kinematics.html">Kinematics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="theory/kinematics.html#rigid-body">Rigid body</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theory/kinematics.html#pseudo-rigid-body">Pseudo&#8211;rigid body</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theory/kinematics.html#finite-element-body">Finite&#8211;element body</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="theory/kinematics.html#pseudo-rigid-body">Pseudo–rigid body</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory/kinematics.html#finite-element-body">Finite–element body</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="theory/kinematics.html#shape-functions">Shape functions</a></li>
 </ul>
 </li>
@@ -82,8 +79,8 @@ in the <a class="reference internal" href="user.html#solfec-user"><span class="s
 </li>
 <li class="toctree-l1"><a class="reference internal" href="theory/dynamics.html">Dynamics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="theory/dynamics.html#rigid-dynamics">Rigid dynamics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theory/dynamics.html#pseudo-rigid-dynamics">Pseudo&#8211;rigid dynamics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theory/dynamics.html#finite-element-dynamics">Finite&#8211;element dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory/dynamics.html#pseudo-rigid-dynamics">Pseudo–rigid dynamics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory/dynamics.html#finite-element-dynamics">Finite–element dynamics</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory/dynamics.html#implementation">Implementation</a></li>
 </ul>
 </li>
@@ -96,8 +93,8 @@ in the <a class="reference internal" href="user.html#solfec-user"><span class="s
 <li class="toctree-l1"><a class="reference internal" href="theory/constraints.html">Constraints</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="theory/constraints.html#from-global-to-local-velocity">From global to local velocity</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="theory/constraints.html#rigid-kinematics">Rigid kinematics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory/constraints.html#pseudo-rigid-kinematics">Pseudo&#8211;rigid kinematics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="theory/constraints.html#finite-element-kinematics">Finite&#8211;element kinematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory/constraints.html#pseudo-rigid-kinematics">Pseudo–rigid kinematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theory/constraints.html#finite-element-kinematics">Finite–element kinematics</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="theory/constraints.html#time-stepping-with-constraints">Time stepping with constraints</a></li>
@@ -105,7 +102,7 @@ in the <a class="reference internal" href="user.html#solfec-user"><span class="s
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="theory/locdyn.html">Local dynamics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="theory/locdyn.html#detailed-multi-body-notation">Detailed multi&#8211;body notation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory/locdyn.html#detailed-multi-body-notation">Detailed multi–body notation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory/locdyn.html#the-matrix">The <span class="math">\(\mathbf{W}\)</span> matrix</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory/locdyn.html#implementation">Implementation</a></li>
 </ul>
@@ -134,21 +131,21 @@ in the <a class="reference internal" href="user.html#solfec-user"><span class="s
 <li class="toctree-l2"><a class="reference internal" href="theory/conform.html#the-frictional-contact-law">The frictional contact law</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory/conform.html#projected-gradient-formulation">Projected gradient formulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory/conform.html#de-saxce-and-feng-formulation">De Saxcé and Feng formulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theory/conform.html#non-smooth-force-equation-formulation">Non&#8211;smooth force equation formulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theory/conform.html#non-smooth-velocity-equation-formulation">Non&#8211;smooth velocity equation formulation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theory/conform.html#semi-explicit-penalty-formulation">Semi&#8211;explicit penalty formulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory/conform.html#non-smooth-force-equation-formulation">Non–smooth force equation formulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory/conform.html#non-smooth-velocity-equation-formulation">Non–smooth velocity equation formulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory/conform.html#semi-explicit-penalty-formulation">Semi–explicit penalty formulation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="theory/solvers.html">Constraint solvers</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="theory/solvers.html#merit-function">Merit function</a></li>
-<li class="toctree-l2"><a class="reference internal" href="theory/solvers.html#gauss-seidel-solver">Gauss&#8211;Seidel solver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory/solvers.html#gauss-seidel-solver">Gauss–Seidel solver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory/solvers.html#projected-newton-solver">Projected Newton solver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory/solvers.html#penalty-solver">Penalty Solver</a></li>
 <li class="toctree-l2"><a class="reference internal" href="theory/solvers.html#implementation">Implementation</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="theory/bulkmat.html">Bulk materials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="theory/bulkmat.html#kirchhoff-saint-venant">Kirchhoff &#8211; Saint Venant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theory/bulkmat.html#kirchhoff-saint-venant">Kirchhoff – Saint Venant</a></li>
 </ul>
 </li>
 </ul>
@@ -156,13 +153,13 @@ in the <a class="reference internal" href="user.html#solfec-user"><span class="s
 <table class="docutils footnote" frame="void" id="id6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0045782598003879">CMAME, 177(3&#8211;4):329&#8211;349, 1999.</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0045782598003879">CMAME, 177(3–4):329–349, 1999.</a></td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id7" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0045782598003831">CMAME, 177(3&#8211;4):235&#8211;257, 1999.</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0045782598003831">CMAME, 177(3–4):235–257, 1999.</a></td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id8" rules="none">
@@ -174,7 +171,7 @@ in the <a class="reference internal" href="user.html#solfec-user"><span class="s
 <table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.3158/full">IJNME, 87(1&#8211;5):437&#8211;456, 2011.</a></td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td><a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.3158/full">IJNME, 87(1–5):437–456, 2011.</a></td></tr>
 </tbody>
 </table>
 </div>
@@ -334,8 +331,8 @@ in the <a class="reference internal" href="user.html#solfec-user"><span class="s
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../_sources/solfec/theory.rst.txt"

@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Constraints &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Solvers" href="solvers.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -70,9 +67,9 @@ represented by an object of the same type. See also, the <a class="reference int
 <div class="topic">
 <p class="topic-title first">obj = FIX_POINT (body, point | strength)</p>
 <ul class="simple">
-<li>obj &#8211; created CONSTRAINT object</li>
-<li>body &#8211; BODY object whose motion is constrained</li>
-<li>point &#8211; (x, y, z) tuple with referential point coordinates</li>
+<li>obj – created CONSTRAINT object</li>
+<li>body – BODY object whose motion is constrained</li>
+<li>point – (x, y, z) tuple with referential point coordinates</li>
 <li>strength - optionally an ultimate magnitude of the reaction force, beyond which the constraint will be deleted (default: infinity)</li>
 </ul>
 </div>
@@ -85,12 +82,12 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 <div class="topic">
 <p class="topic-title first">obj = FIX_DIRECTION (body, point, direction | body2, point2)</p>
 <ul class="simple">
-<li>obj &#8211; created CONSTRAINT object</li>
-<li>body &#8211; BODY object whose motion is constrained</li>
-<li>point &#8211; (x, y, z) tuple with referential point coordinates</li>
-<li>direction &#8211; (vx, vy, vz) tuple with spatial direction components</li>
-<li>body2 &#8211; BODY object whose motion is constrained with respect to the motion of the first body (in this case body and body2 can only be either rigid or pseudo-rigid)</li>
-<li>point2 &#8211; (x, y, z) tuple with referential point on body2</li>
+<li>obj – created CONSTRAINT object</li>
+<li>body – BODY object whose motion is constrained</li>
+<li>point – (x, y, z) tuple with referential point coordinates</li>
+<li>direction – (vx, vy, vz) tuple with spatial direction components</li>
+<li>body2 – BODY object whose motion is constrained with respect to the motion of the first body (in this case body and body2 can only be either rigid or pseudo-rigid)</li>
+<li>point2 – (x, y, z) tuple with referential point on body2</li>
 </ul>
 </div>
 </div>
@@ -101,11 +98,11 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 <div class="topic">
 <p class="topic-title first">obj = SET_DISPLACEMENT (body, point, direction, tms)</p>
 <ul class="simple">
-<li>obj &#8211; created CONSTRAINT object</li>
-<li>body &#8211; BODY object whose motion is constrained</li>
-<li>point &#8211; (x, y, z) tuple with referential point coordinates</li>
-<li>direction &#8211; (vx, vy, vz) tuple with spatial direction components</li>
-<li>tms &#8211; TIME_SERIES object with the displacement history</li>
+<li>obj – created CONSTRAINT object</li>
+<li>body – BODY object whose motion is constrained</li>
+<li>point – (x, y, z) tuple with referential point coordinates</li>
+<li>direction – (vx, vy, vz) tuple with spatial direction components</li>
+<li>tms – TIME_SERIES object with the displacement history</li>
 </ul>
 </div>
 </div>
@@ -116,11 +113,11 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 <div class="topic">
 <p class="topic-title first">obj = SET_VELOCITY (body, point, direction, value)</p>
 <ul class="simple">
-<li>obj &#8211; created CONSTRAINT object</li>
-<li>body &#8211; BODY object whose motion is constrained</li>
-<li>point &#8211; (x, y, z) tuple with referential point coordinates</li>
-<li>direction &#8211; (vx, vy, vz) tuple with spatial direction components</li>
-<li>value &#8211; a constant value or a TIME_SERIES object with the velocity history</li>
+<li>obj – created CONSTRAINT object</li>
+<li>body – BODY object whose motion is constrained</li>
+<li>point – (x, y, z) tuple with referential point coordinates</li>
+<li>direction – (vx, vy, vz) tuple with spatial direction components</li>
+<li>value – a constant value or a TIME_SERIES object with the velocity history</li>
 </ul>
 </div>
 </div>
@@ -131,11 +128,11 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 <div class="topic">
 <p class="topic-title first">obj = SET_ACCELERATION (body, point, direction, tms)</p>
 <ul class="simple">
-<li>obj &#8211; created CONSTRAINT object</li>
-<li>body &#8211; BODY object whose motion is constrained</li>
-<li>point &#8211; (x, y, z) tuple with referential point coordinates</li>
-<li>direction &#8211; (vx, vy, vz) tuple with spatial direction components</li>
-<li>tms &#8211; TIME_SERIES object with the acceleration history</li>
+<li>obj – created CONSTRAINT object</li>
+<li>body – BODY object whose motion is constrained</li>
+<li>point – (x, y, z) tuple with referential point coordinates</li>
+<li>direction – (vx, vy, vz) tuple with spatial direction components</li>
+<li>tms – TIME_SERIES object with the acceleration history</li>
 </ul>
 </div>
 </div>
@@ -146,12 +143,12 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 <div class="topic">
 <p class="topic-title first">obj = PUT_RIGID_LINK (body1, body2, point1, point2 | strength)</p>
 <ul class="simple">
-<li>obj &#8211; created CONSTRAINT object</li>
-<li>body1 &#8211; BODY object one whose motion is constrained (could be <em>None</em> when body2 is not <em>None</em> &#8211; then one of the points is fixed “in the air”)</li>
-<li>body2 &#8211; BODY object two whose motion is constrained (could be <em>None</em> when body1 is not <em>None</em>)</li>
-<li>point1 &#8211; (x1, y1, z1) tuple with the first referential point coordinates</li>
-<li>point2 &#8211; (x2, y2, z2) tuple with the second referential point coordinates</li>
-<li>strength &#8211; optionally an ultimate tensile strength if point1 != point2,
+<li>obj – created CONSTRAINT object</li>
+<li>body1 – BODY object one whose motion is constrained (could be <em>None</em> when body2 is not <em>None</em> – then one of the points is fixed “in the air”)</li>
+<li>body2 – BODY object two whose motion is constrained (could be <em>None</em> when body1 is not <em>None</em>)</li>
+<li>point1 – (x1, y1, z1) tuple with the first referential point coordinates</li>
+<li>point2 – (x2, y2, z2) tuple with the second referential point coordinates</li>
+<li>strength – optionally an ultimate tensile strength if point1 != point2,
 beyond which the link will be deleted (default: infinity); or ultimate reaction magnitude (point1 == point2)</li>
 </ul>
 </div>
@@ -163,70 +160,70 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 <div class="topic">
 <p class="topic-title first">obj = PUT_SPRING (body1, point1, body2, point2, function, limits | direction, update) <span class="red">(Under development)</span></p>
 <ul>
-<li><p class="first">obj &#8211; created CONSTRAINT object</p>
+<li><p class="first">obj – created CONSTRAINT object</p>
 </li>
-<li><p class="first">body1 &#8211; BODY object one whose motion is constrained</p>
+<li><p class="first">body1 – BODY object one whose motion is constrained</p>
 </li>
-<li><p class="first">point1 &#8211; (x1, y1, z1) tuple with the first referential point coordinates</p>
+<li><p class="first">point1 – (x1, y1, z1) tuple with the first referential point coordinates</p>
 </li>
-<li><p class="first">body2 &#8211; BODY object two whose motion is constrained</p>
+<li><p class="first">body2 – BODY object two whose motion is constrained</p>
 </li>
-<li><p class="first">point2 &#8211; (x2, y2, z2) tuple with the second referential point coordinates</p>
+<li><p class="first">point2 – (x2, y2, z2) tuple with the second referential point coordinates</p>
 </li>
-<li><p class="first">function &#8211; Python function callback returning the value of force as the function of stroke:</p>
+<li><p class="first">function – Python function callback returning the value of force as the function of stroke:</p>
 <p><strong>force = function (stroke, velocity)</strong></p>
 <p>where <span class="math">\(\text{stroke=}\mathbf{n}\cdot\text{current}\left(\text{point2}-\text{point1}\right)-\text{initial}\left(\left|\text{point2}-\text{point1}\right|\right)\)</span>
 and <em>velocity</em> is the current relative velocity along the spring direction <span class="math">\(\mathbf{n}\)</span> (positive if stroke increases)</p>
 </li>
-<li><p class="first">limits &#8211; (smin, smax) tuple defining stroke limits (smin <span class="math">\(\le\)</span> 0 and smax <span class="math">\(\ge\)</span> 0)</p>
+<li><p class="first">limits – (smin, smax) tuple defining stroke limits (smin <span class="math">\(\le\)</span> 0 and smax <span class="math">\(\ge\)</span> 0)</p>
 </li>
-<li><p class="first">direction &#8211; (nx, ny, nz) tuple storing spring direction <span class="math">\(\mathbf{n}\)</span>.
+<li><p class="first">direction – (nx, ny, nz) tuple storing spring direction <span class="math">\(\mathbf{n}\)</span>.
 Default: <span class="math">\(\mathbf{n}=\text{normalized}\left(\text{current}\left(\text{point2}-\text{point1}\right)\right)\)</span> resulting in a follower type spring.
 When specified, <span class="math">\(\mathbf{n}\)</span> will be updated according to the value of update.</p>
 </li>
-<li><p class="first">update &#8211; direction update kind (default: &#8216;FIXED&#8217;); one of: &#8216;FIXED&#8217; where <span class="math">\(\mathbf{n}\)</span> is kept fixed,
-or &#8216;CONV1&#8217; where <span class="math">\(\mathbf{n}\)</span> is convected with body1, or &#8216;CONV2&#8217; where <span class="math">\(\mathbf{n}\)</span> is convected with body2.</p>
+<li><p class="first">update – direction update kind (default: ‘FIXED’); one of: ‘FIXED’ where <span class="math">\(\mathbf{n}\)</span> is kept fixed,
+or ‘CONV1’ where <span class="math">\(\mathbf{n}\)</span> is convected with body1, or ‘CONV2’ where <span class="math">\(\mathbf{n}\)</span> is convected with body2.</p>
 </li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a CONSTRAINT object, cf. <a class="reference internal" href="#constraint-params"><span class="std std-numref">Table 18</span></a>.</p>
-<table border="1" class="docutils" id="id1">
-<span id="constraint-params"></span><caption><span class="caption-number">Table 18 </span><span class="caption-text">CONSTRAINT object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<span id="constraint-params"></span><table border="1" class="docutils" id="id1">
+<caption><span class="caption-number">Table 18 </span><span class="caption-text">CONSTRAINT object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><strong>Read only members:</strong></td>
 </tr>
-<tr class="row-even"><td><strong>obj.kind</strong> &#8211; kind of constraint: &#8216;CONTACT&#8217;, &#8216;FIXPNT&#8217; (fixed point), &#8216;FIXDIR&#8217; (fixed direction),
-&#8216;VELODIR&#8217; (prescribed velocity; note that prescribed displacement and acceleration are converted into
-this case), &#8216;RIGLNK&#8217; (rigid link)</td>
+<tr class="row-even"><td><strong>obj.kind</strong> – kind of constraint: ‘CONTACT’, ‘FIXPNT’ (fixed point), ‘FIXDIR’ (fixed direction),
+‘VELODIR’ (prescribed velocity; note that prescribed displacement and acceleration are converted into
+this case), ‘RIGLNK’ (rigid link)</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.R</strong> &#8211; current average (over time step <span class="math">\(\left[t,t+h\right]\)</span>) constraint reaction in a form
+<tr class="row-odd"><td><strong>obj.R</strong> – current average (over time step <span class="math">\(\left[t,t+h\right]\)</span>) constraint reaction in a form
 of a tuple: (RT1, RT2, RN) given with respect to a local base stored at <em>obj.base</em></td>
 </tr>
-<tr class="row-even"><td><strong>obj.U</strong> &#8211; constraint output relative velocity tuple: (UT1, UT2, UN) given with respect to a local
+<tr class="row-even"><td><strong>obj.U</strong> – constraint output relative velocity tuple: (UT1, UT2, UN) given with respect to a local
 base stored at <em>obj.base</em></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.V</strong> &#8211; contact input relative velocity tuple: (VT1, VT2, VN) given with respect to a local base
+<tr class="row-odd"><td><strong>obj.V</strong> – contact input relative velocity tuple: (VT1, VT2, VN) given with respect to a local base
 stored at <em>obj.base</em></td>
 </tr>
-<tr class="row-even"><td><strong>obj.base</strong> &#8211; current spatial coordinate system in a form of a tuple: (eT1x, eT2x, eNx, eT1y, eT2y,
+<tr class="row-even"><td><strong>obj.base</strong> – current spatial coordinate system in a form of a tuple: (eT1x, eT2x, eNx, eT1y, eT2y,
 eNy, eT1z, eT2z, eNz) where x, y, z components are global</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.point</strong> &#8211; current spatial point where the constraint force acts. This is a (x, y, z) tuple for
-all constraint types, but &#8216;RIGLNK&#8217; for which this is a (x1, y1, z1, x2, y2, z2) tuple.</td>
+<tr class="row-odd"><td><strong>obj.point</strong> – current spatial point where the constraint force acts. This is a (x, y, z) tuple for
+all constraint types, but ‘RIGLNK’ for which this is a (x1, y1, z1, x2, y2, z2) tuple.</td>
 </tr>
-<tr class="row-even"><td><strong>obj.area</strong> &#8211; current area for contact constraints or zero otherwise</td>
+<tr class="row-even"><td><strong>obj.area</strong> – current area for contact constraints or zero otherwise</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.gap</strong> &#8211; current gap for contact constraints or zero otherwise</td>
+<tr class="row-odd"><td><strong>obj.gap</strong> – current gap for contact constraints or zero otherwise</td>
 </tr>
-<tr class="row-even"><td><strong>obj.merit</strong> &#8211; current value of the per&#8211;constraint merit function</td>
+<tr class="row-even"><td><strong>obj.merit</strong> – current value of the per–constraint merit function</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.adjbod</strong> &#8211; adjacent bodies. This is a tuple (body1, body2) of BODY objects for &#8216;CONTACT&#8217; and
-&#8216;RIGLNK&#8217; or a single BODY object otherwise.</td>
+<tr class="row-odd"><td><strong>obj.adjbod</strong> – adjacent bodies. This is a tuple (body1, body2) of BODY objects for ‘CONTACT’ and
+‘RIGLNK’ or a single BODY object otherwise.</td>
 </tr>
-<tr class="row-even"><td><strong>obj.matlab</strong> - surface material label for constraints of kind &#8216;CONTACT&#8217;, or a <em>None</em> object otherwise.</td>
+<tr class="row-even"><td><strong>obj.matlab</strong> - surface material label for constraints of kind ‘CONTACT’, or a <em>None</em> object otherwise.</td>
 </tr>
 <tr class="row-odd"><td><strong>obj.spair</strong> - pairing of surfaces (surf1, surf2) for contact constraints or <em>None</em> object otherwise.
 The tuple (surf1, surf2) corresponds to the surface identifiers for the (body1, body2) body pairing
@@ -404,8 +401,8 @@ returned by <em>obj.adjbod</em></td>
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/user/constraints.rst.txt"

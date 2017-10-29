@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Time series &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="DYNLB" href="../../dynlb/index.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -62,22 +59,22 @@
   <div class="section" id="time-series">
 <span id="solfec-examples-time-series"></span><h1>Time series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h1>
 <p>This example illustrates the <a class="reference internal" href="../user/times.html#solfec-user-times"><span class="std std-ref">TIME_SERIES</span></a> functionality in Solfec. The input files for this example
-are located in the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/time-series">solfec/examples/time&#8211;series</a> directory.
+are located in the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/time-series">solfec/examples/time–series</a> directory.
 These are:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/README">README</a> &#8211; a text based summary of the examples</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/basic-ts.py">basic&#8211;ts.py</a> &#8211; example of simple time series without a simulation</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/cached-ts.py">cached&#8211;ts.py</a> &#8211; example of the partially cached time series capablity</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/labeled-ts.py">labeled&#8211;ts.py</a> &#8211; example of the labeled time series capability</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/ts-gen.py">ts&#8211;gen.py</a> &#8211; generates time series data files ts&#8211;data&#8211;{1 .. 10}.txt</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/ts-data-0.txt">ts&#8211;data&#8211;{0 .. 10}.txt</a> &#8211; time series data files</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/README">README</a> – a text based summary of the examples</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/basic-ts.py">basic–ts.py</a> – example of simple time series without a simulation</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/cached-ts.py">cached–ts.py</a> – example of the partially cached time series capablity</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/labeled-ts.py">labeled–ts.py</a> – example of the labeled time series capability</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/ts-gen.py">ts–gen.py</a> – generates time series data files ts–data–{1 .. 10}.txt</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/ts-data-0.txt">ts–data–{0 .. 10}.txt</a> – time series data files</li>
 </ul>
-<p><a class="reference internal" href="../user/times.html#solfec-user-times"><span class="std std-ref">TIME_SERIES</span></a> object can be used in Solfec to prescribe time&#8211;dependent <a class="reference internal" href="../user/constraints.html#solfec-user-constraints"><span class="std std-ref">constraints</span></a> and
+<p><a class="reference internal" href="../user/times.html#solfec-user-times"><span class="std std-ref">TIME_SERIES</span></a> object can be used in Solfec to prescribe time–dependent <a class="reference internal" href="../user/constraints.html#solfec-user-constraints"><span class="std std-ref">constraints</span></a> and
 <a class="reference internal" href="../user/loads.html#solfec-user-loads"><span class="std std-ref">loads</span></a>. The three minimalist input files included with this example illustrate the ways the time series can be used:
-<a class="reference internal" href="#basic-ts"><span class="std std-numref">Listing 11</span></a>, <a class="reference internal" href="#cached-ts"><span class="std std-numref">Listing 12</span></a>, <a class="reference internal" href="#labeled-ts"><span class="std std-numref">Listing 13</span></a> below include comments and are self&#8211;explanatory. An animated output of the <em>cached&#8211;ts.py</em>
+<a class="reference internal" href="#basic-ts"><span class="std std-numref">Listing 11</span></a>, <a class="reference internal" href="#cached-ts"><span class="std std-numref">Listing 12</span></a>, <a class="reference internal" href="#labeled-ts"><span class="std std-numref">Listing 13</span></a> below include comments and are self–explanatory. An animated output of the <em>cached–ts.py</em>
 example is included as video <a class="footnote-reference" href="#id3" id="id2">[1]</a>.</p>
 <div class="literal-block-wrapper docutils container" id="basic-ts">
-<div class="code-block-caption"><span class="caption-number">Listing 11 </span><span class="caption-text">Listing of basic&#8211;ts.py</span><a class="headerlink" href="#basic-ts" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 11 </span><span class="caption-text">Listing of basic–ts.py</span><a class="headerlink" href="#basic-ts" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -141,7 +138,7 @@ example is included as video <a class="footnote-reference" href="#id3" id="id2">
 </td></tr></table></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="cached-ts">
-<div class="code-block-caption"><span class="caption-number">Listing 12 </span><span class="caption-text">Listing of cached&#8211;ts.py</span><a class="headerlink" href="#cached-ts" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 12 </span><span class="caption-text">Listing of cached–ts.py</span><a class="headerlink" href="#cached-ts" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -199,7 +196,7 @@ example is included as video <a class="footnote-reference" href="#id3" id="id2">
 </td></tr></table></div>
 </div>
 <div class="literal-block-wrapper docutils container" id="labeled-ts">
-<div class="code-block-caption"><span class="caption-number">Listing 13 </span><span class="caption-text">Listing of labeled&#8211;ts.py</span><a class="headerlink" href="#labeled-ts" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 13 </span><span class="caption-text">Listing of labeled–ts.py</span><a class="headerlink" href="#labeled-ts" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -257,7 +254,7 @@ example is included as video <a class="footnote-reference" href="#id3" id="id2">
 <table class="docutils footnote" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Animated output of the <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/cached-ts.py">cached&#8211;ts.py</a>
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Animated output of the <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/time-series/cached-ts.py">cached–ts.py</a>
 example from <a class="reference internal" href="#cached-ts"><span class="std std-numref">Listing 12</span></a>.</td></tr>
 </tbody>
 </table>
@@ -412,8 +409,8 @@ example from <a class="reference internal" href="#cached-ts"><span class="std st
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/examples/time_series.rst.txt"

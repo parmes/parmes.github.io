@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>3–dimensional cube array parallel scaling &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Reduced order modeling" href="../reduced_order.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -60,35 +57,35 @@
           <div class="body" role="main">
             
   <div class="section" id="dimensional-cube-array-parallel-scaling">
-<span id="solfec-examples-hybrid-modeling-hs3-scaling"></span><h1>3&#8211;dimensional cube array parallel scaling<a class="headerlink" href="#dimensional-cube-array-parallel-scaling" title="Permalink to this headline">¶</a></h1>
-<p>This is a 3&#8211;dimensional case, <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">solfec/examples/hybrid&#8211;solver3</a>,
-of the family of <a class="reference internal" href="hs123.html#solfec-examples-hybrid-modeling-hs123"><span class="std std-ref">1,2 and 3&#8211;dismenional examples</span></a>, demonstrating applications of
-the <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a> to hybrid, <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a>&#8211;<a class="reference internal" href="../../index.html#solfec-index"><span class="std std-ref">Solfec</span></a> based, arrays of cubes
+<span id="solfec-examples-hybrid-modeling-hs3-scaling"></span><h1>3–dimensional cube array parallel scaling<a class="headerlink" href="#dimensional-cube-array-parallel-scaling" title="Permalink to this headline">¶</a></h1>
+<p>This is a 3–dimensional case, <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">solfec/examples/hybrid–solver3</a>,
+of the family of <a class="reference internal" href="hs123.html#solfec-examples-hybrid-modeling-hs123"><span class="std std-ref">1,2 and 3–dismenional examples</span></a>, demonstrating applications of
+the <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a> to hybrid, <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a>–<a class="reference internal" href="../../index.html#solfec-index"><span class="std std-ref">Solfec</span></a> based, arrays of cubes
 subject to an acceleration sine dwell signal. The specifcation of geomery and material data are exactly generalized from
-<a class="reference internal" href="hs123.html#solfec-examples-hybrid-modeling-hs123"><span class="std std-ref">the 2&#8211;dimensional counterpart</span></a>.
-The <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">solfec/examples/hybrid&#8211;solver3</a> directory contains:</p>
+<a class="reference internal" href="hs123.html#solfec-examples-hybrid-modeling-hs123"><span class="std std-ref">the 2–dimensional counterpart</span></a>.
+The <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">solfec/examples/hybrid–solver3</a> directory contains:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/README">README</a> &#8211; a text based specification of the problem</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-parmec.py">hs3&#8211;parmec.py</a> &#8211; including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-solfec.py">hs3&#8211;solfec.py</a> &#8211; including the <a class="reference internal" href="../../index.html#solfec-index"><span class="std std-ref">Solfec</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-1.pvsm">hs3&#8211;state&#8211;1.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id5" id="id2">[1]</a></li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-2.pvsm">hs3&#8211;state&#8211;2.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id8" id="id4">[2]</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/README">README</a> – a text based specification of the problem</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-parmec.py">hs3–parmec.py</a> – including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-solfec.py">hs3–solfec.py</a> – including the <a class="reference internal" href="../../index.html#solfec-index"><span class="std std-ref">Solfec</span></a> input code</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-1.pvsm">hs3–state–1.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id5" id="id2">[1]</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-2.pvsm">hs3–state–2.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id8" id="id4">[2]</a></li>
 </ul>
 <table class="docutils footnote" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id10">2</a>)</em> <a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-1.pvsm">hs3&#8211;state&#8211;1.pvsm</a>.
-The see&#8211;through array is modeled in Parmec: rotations are restrained and spring&#8211;dashpot elements, emulating contact,
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-1.pvsm">hs3–state–1.pvsm</a>.
+The see–through array is modeled in Parmec: rotations are restrained and spring–dashpot elements, emulating contact,
 are insered at the centres of faces of neighbouring cubes. The solid 3x3 inner arrays is modeled in Solfec: hexahedral
-finite elements are used and contact interactions are modeled via <a class="reference internal" href="../../theory/conform.html#solfec-theory-conform"><span class="std std-ref">a non&#8211;smooth Signorini&#8211;Coulomb law</span></a></td></tr>
+finite elements are used and contact interactions are modeled via <a class="reference internal" href="../../theory/conform.html#solfec-theory-conform"><span class="std std-ref">a non–smooth Signorini–Coulomb law</span></a></td></tr>
 </tbody>
 </table>
 <p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/7ED5jDdhrtI?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><table class="docutils footnote" frame="void" id="id8" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id11">2</a>)</em> <a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-2.pvsm">hs3&#8211;state&#8211;3.pvsm</a>.
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-2.pvsm">hs3–state–3.pvsm</a>.
 Parmec spring forces are visualised on the left hand side. On the right hand side, in the Solfec model,
 the spheres symbolizse detected contact points, while their colors depict the magnitudes of the contact forces.</td></tr>
 </tbody>
@@ -109,12 +106,12 @@ the Parmec and Solfec submodels.</td></tr>
 </tbody>
 </table>
 <p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/yt-r9cIkEzA?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference internal" href="#hs3-runtimes"><span class="std std-numref">Table 27</span></a> summarises the parallel runtimes. Total speedup of 3.87 was achieved using 192 CPU cores,
-versus the baseline single cluster node run on 24 CPU cores. Intel Xeon E5&#8211;2600 CPU based nodes were used,
+versus the baseline single cluster node run on 24 CPU cores. Intel Xeon E5–2600 CPU based nodes were used,
 with 24 cores per node and InfiniBand 1 x 56 Gb/s FDR interconnect. We note, that only the inner <span class="math">\(20\times20\times20\)</span>
 Solfec array was parallelized using MPI; the entire Parmec model (the remaining 19000 bodies) was run on MPI rank 0 process,
 utilising task based parallelism (in all cases all 24 cores of the single node were used).</p>
-<table border="1" class="docutils" id="id17">
-<span id="hs3-runtimes"></span><caption><span class="caption-number">Table 27 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): runtime scaling.</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
+<span id="hs3-runtimes"></span><table border="1" class="docutils" id="id17">
+<caption><span class="caption-number">Table 27 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): runtime scaling.</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="21%" />
 <col width="19%" />
@@ -139,7 +136,7 @@ utilising task based parallelism (in all cases all 24 cores of the single node w
 </table>
 <p>Animation <a class="footnote-reference" href="#id16" id="id15">[4]</a> depicts load balancing of contact points within Solfec submodel. The inner <span class="math">\(20\times20\times20\)</span>
 array generates up to 100k contact points on average, as seen in <a class="reference internal" href="#hs3-fig1"><span class="std std-numref">Fig. 57</span></a>. <a class="reference internal" href="#hs3-stats-1"><span class="std std-numref">Table 28</span></a> summarises
-the minimum, average and maximum numbers of bodies and contact points for 24&#8211;192 MPI rank (CPU cores) runs. Solfec
+the minimum, average and maximum numbers of bodies and contact points for 24–192 MPI rank (CPU cores) runs. Solfec
 utilizes a single geometrical partitioning in order to balance together the bodies and the contact points. Contact
 points are favoured in the load balancing due to the higher computational work related to their processing.
 <a class="reference internal" href="#hs3-stats-2"><span class="std std-numref">Table 29</span></a> shows that contact update, detection, solution and assembling of the <a class="reference internal" href="../../theory/locdyn.html#solfec-theory-locdyn"><span class="std std-ref">local dynamics</span></a>
@@ -154,8 +151,8 @@ Contact points are colored according to processor rank for the 48 CPU cores base
 <a class="reference internal" href="../../../dynlb/index.html#dynlb-index"><span class="std std-ref">dynamic load balancing</span></a> in order maintain parallel balance.</td></tr>
 </tbody>
 </table>
-<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/D6Q9iQSl3Bo?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><table border="1" class="docutils" id="id18">
-<span id="hs3-stats-1"></span><caption><span class="caption-number">Table 28 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): body and contact point count statistics per MPI rank.</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
+<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/D6Q9iQSl3Bo?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><span id="hs3-stats-1"></span><table border="1" class="docutils" id="id18">
+<caption><span class="caption-number">Table 28 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): body and contact point count statistics per MPI rank.</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="21%" />
 <col width="19%" />
@@ -211,8 +208,8 @@ Contact points are colored according to processor rank for the 48 CPU cores base
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table border="1" class="docutils" id="id19">
-<span id="hs3-stats-2"></span><caption><span class="caption-number">Table 29 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): average computational task share percentage (%).</span><a class="headerlink" href="#id19" title="Permalink to this table">¶</a></caption>
+<span id="hs3-stats-2"></span><table border="1" class="docutils" id="id19">
+<caption><span class="caption-number">Table 29 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): average computational task share percentage (%).</span><a class="headerlink" href="#id19" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="26%" />
 <col width="18%" />
@@ -314,9 +311,9 @@ Contact points are colored according to processor rank for the 48 CPU cores base
 <li class="toctree-l2"><a class="reference internal" href="../../applications.html">Applications</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../examples.html">Examples</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../hybrid_modeling.html">Hybrid modeling</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="hs0.html">A two&#8211;body impact problem</a></li>
-<li class="toctree-l4"><a class="reference internal" href="hs123.html">1,2,3&#8211;dimensional cube array acceleration dwell</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">3&#8211;dimensional cube array parallel scaling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hs0.html">A two–body impact problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hs123.html">1,2,3–dimensional cube array acceleration dwell</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">3–dimensional cube array parallel scaling</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../reduced_order.html">Reduced order modeling</a></li>
@@ -342,7 +339,7 @@ Contact points are colored according to processor rank for the 48 CPU cores base
   <li><a href="../../index.html">SOLFEC</a><ul>
   <li><a href="../../examples.html">Solfec Examples</a><ul>
   <li><a href="../hybrid_modeling.html">Hybrid modeling</a><ul>
-      <li>Previous: <a href="hs123.html" title="previous chapter">1,2,3&#8211;dimensional cube array acceleration dwell</a></li>
+      <li>Previous: <a href="hs123.html" title="previous chapter">1,2,3–dimensional cube array acceleration dwell</a></li>
       <li>Next: <a href="../reduced_order.html" title="next chapter">Reduced order modeling</a></li>
   </ul></li>
   </ul></li>
@@ -430,8 +427,8 @@ Contact points are colored according to processor rank for the 48 CPU cores base
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../../_sources/solfec/examples/hybrid_modeling/hs3_scaling.rst.txt"

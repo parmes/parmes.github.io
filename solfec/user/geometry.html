@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Geometry &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Materials" href="materials.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -73,28 +70,28 @@ or a list of CONVEX objects can be used in combination with a background MESH.</
 <p class="topic-title first">obj = CONVEX (vertices, faces, volid | convex)</p>
 <p>This routine creates a CONVEX object from a detailed input data.</p>
 <ul class="simple">
-<li>obj &#8211; created CONVEX object</li>
-<li>vertices &#8211; list of vertices: [x0, y0, z0, x1, y1, z1, ...]</li>
-<li>faces &#8211; list of faces: [n1, v1, v2, ..., vn1, s1, n2, v1, v2, ..., vn2, s2, ...],
-where n1 is the number of vertices of the first face, v1, v2, ...,
+<li>obj – created CONVEX object</li>
+<li>vertices – list of vertices: [x0, y0, z0, x1, y1, z1, …]</li>
+<li>faces – list of faces: [n1, v1, v2, …, vn1, s1, n2, v1, v2, …, vn2, s2, …],
+where n1 is the number of vertices of the first face, v1, v2, …,
 vn1 enumerate the vertices in the CCW order when looking from the outside,
 and s1 is the surface identifier of the face. Similarly for the second face and so on.</li>
-<li>volid &#8211; volume identifier</li>
-<li>convex (emptied) &#8211; collection of CONVEX objects appending obj</li>
+<li>volid – volume identifier</li>
+<li>convex (emptied) – collection of CONVEX objects appending obj</li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members and methods of a CONVEX object, cf. <a class="reference internal" href="#convex-params"><span class="std std-numref">Table 8</span></a>.</p>
-<table border="1" class="docutils" id="id1">
-<span id="convex-params"></span><caption><span class="caption-number">Table 8 </span><span class="caption-text">CONVEX object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<span id="convex-params"></span><table border="1" class="docutils" id="id1">
+<caption><span class="caption-number">Table 8 </span><span class="caption-text">CONVEX object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><strong>Read only members and methods:</strong></td>
 </tr>
-<tr class="row-even"><td><strong>obj.nver</strong> &#8211; number of convex vertices</td>
+<tr class="row-even"><td><strong>obj.nver</strong> – number of convex vertices</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.vertex (n)</strong> &#8211; returns a (x, y, z) tuple storing coordinates of nth vertex</td>
+<tr class="row-odd"><td><strong>obj.vertex (n)</strong> – returns a (x, y, z) tuple storing coordinates of nth vertex</td>
 </tr>
 </tbody>
 </table>
@@ -105,11 +102,11 @@ and s1 is the surface identifier of the face. Similarly for the second face and 
 <div class="topic">
 <p class="topic-title first">obj = HULL (points, volid, surfid | convex)</p>
 <ul class="simple">
-<li>obj &#8211; created CONVEX object</li>
-<li>points &#8211; list of points: [x0, y0, z0, x1, y1, z1, ...]</li>
-<li>volid &#8211; volume identifier</li>
-<li>surfid &#8211; surface identifier common to all faces</li>
-<li>convex (emptied) &#8211; collection of CONVEX objects appending obj</li>
+<li>obj – created CONVEX object</li>
+<li>points – list of points: [x0, y0, z0, x1, y1, z1, …]</li>
+<li>volid – volume identifier</li>
+<li>surfid – surface identifier common to all faces</li>
+<li>convex (emptied) – collection of CONVEX objects appending obj</li>
 </ul>
 </div>
 </div>
@@ -122,8 +119,8 @@ another background mesh defining deformability
 <div class="topic">
 <p class="topic-title first">obj = MESH2CONVEX (mesh)</p>
 <ul class="simple">
-<li>obj &#8211; created CONVEX object</li>
-<li>mesh &#8211; input mesh</li>
+<li>obj – created CONVEX object</li>
+<li>mesh – input mesh</li>
 </ul>
 </div>
 </div>
@@ -139,58 +136,58 @@ pyramids, wedges, and hexahedrons (<a class="reference internal" href="#mesh-ele
 <p class="topic-title first">obj = MESH (nodes, elements, surfids)</p>
 <p>This routine creates a MESH object from a detailed input data.</p>
 <ul class="simple">
-<li>obj &#8211; created MESH object</li>
-<li>nodes &#8211; list of nodes: [x0, y0, z0, x1, y1, z1, ...]</li>
-<li>elements &#8211; list of elements: [e1, n1, n2, ..., ne1, v1, e2, n1, n2, ..., ne2, v2, ...],
-where e1 is the number of nodes of the first element, n1, n2, ..., ne1 enumerate the element nodes,
+<li>obj – created MESH object</li>
+<li>nodes – list of nodes: [x0, y0, z0, x1, y1, z1, …]</li>
+<li>elements – list of elements: [e1, n1, n2, …, ne1, v1, e2, n1, n2, …, ne2, v2, …],
+where e1 is the number of nodes of the first element, n1, n2, …, ne1 enumerate the element nodes,
 and v1 is the volume identifier of the element. Similarly for the second element and so on.</li>
-<li>surfids &#8211; list of surface identifiers: [gid, f1, n1, n2, ..., nf1, s1, f2, n1, n2, ..., nf2, s2, ...],
+<li>surfids – list of surface identifiers: [gid, f1, n1, n2, …, nf1, s1, f2, n1, n2, …, nf2, s2, …],
 where gid is the global surface identifier for all not specified faces, f1 is the number of nodes in
-the first specified face, n1, n2, ..., nf1 enumerate the face nodes, and s1 is the surface identifier
+the first specified face, n1, n2, …, nf1 enumerate the face nodes, and s1 is the surface identifier
 of the face. Similarly for other specified faces. If only the gid is given, this can be done either
 as [gid] or as gid alone.</li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members and methods of a MESH object, cf. <a class="reference internal" href="#mesh-params"><span class="std std-numref">Table 9</span></a>.</p>
-<table border="1" class="docutils" id="id3">
-<span id="mesh-params"></span><caption><span class="caption-number">Table 9 </span><span class="caption-text">MESH object parameters.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<span id="mesh-params"></span><table border="1" class="docutils" id="id3">
+<caption><span class="caption-number">Table 9 </span><span class="caption-text">MESH object parameters.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
 <tbody valign="top">
 <tr class="row-odd"><td><strong>Read only members and methods:</strong></td>
 </tr>
-<tr class="row-even"><td><strong>obj.nnod</strong> &#8211; number of mesh nodes</td>
+<tr class="row-even"><td><strong>obj.nnod</strong> – number of mesh nodes</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.get_data()</strong> &#8211; return a tuple (nodes, elements, surfids), in the same format as for MESH().
+<tr class="row-odd"><td><strong>obj.get_data()</strong> – return a tuple (nodes, elements, surfids), in the same format as for MESH().
 Note these are read-only - changing the returned lists does not affect the mesh.</td>
 </tr>
-<tr class="row-even"><td><strong>obj.surface_integration_points( | surfid)</strong> &#8211; returns surface integration points as a list of tuples
-[(x0, y0, z0), (x1, y1, z1), ...]; if <strong>surfid</strong> is passed, integration points only fort that surface
+<tr class="row-even"><td><strong>obj.surface_integration_points( | surfid)</strong> – returns surface integration points as a list of tuples
+[(x0, y0, z0), (x1, y1, z1), …]; if <strong>surfid</strong> is passed, integration points only fort that surface
 identifier are returned</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.volume_integration_points( | volid)</strong> &#8211; returns volume integration points as a list of tuples
-[(x0, y0, z0), (x1, y1, z1), ...]; if <strong>volid</strong> is passed, integration points only fort that volume
+<tr class="row-odd"><td><strong>obj.volume_integration_points( | volid)</strong> – returns volume integration points as a list of tuples
+[(x0, y0, z0), (x1, y1, z1), …]; if <strong>volid</strong> is passed, integration points only fort that volume
 identifier are returned</td>
 </tr>
-<tr class="row-even"><td><strong>obj.inter_element_faces()</strong> &#8211; returns a list of lists of node indices of inter&#8211;element faces,
-e.g. [[n0, n1, n2], [n0, n1, n2, n3], ...]</td>
+<tr class="row-even"><td><strong>obj.inter_element_faces()</strong> – returns a list of lists of node indices of inter–element faces,
+e.g. [[n0, n1, n2], [n0, n1, n2, n3], …]</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.inter_element_faces_on_plane(point, normal | ref, eps)</strong> &#8211; returns a list of lists of node
-indices of inter&#8211;element faces on a plane, e.g. [[n0, n1, n2], [n0, n1, n2, n3], ...], where <strong>point</strong>,
+<tr class="row-odd"><td><strong>obj.inter_element_faces_on_plane(point, normal | ref, eps)</strong> – returns a list of lists of node
+indices of inter–element faces on a plane, e.g. [[n0, n1, n2], [n0, n1, n2, n3], …], where <strong>point</strong>,
 <strong>normal</strong> define the plane, <strong>ref</strong> can be <em>True</em> or <em>False</em> and determines whether the plane is in
 the reference or current configuration (default: <em>True</em>), <strong>eps</strong> determines the tolerance for the
-&#8220;on plane&#8221; test (default: <a class="reference internal" href="simulation.html#solfec-command-geometric-epsilon"><span class="std std-ref">geometric epsilon</span></a>)</td>
+“on plane” test (default: <a class="reference internal" href="simulation.html#solfec-command-geometric-epsilon"><span class="std std-ref">geometric epsilon</span></a>)</td>
 </tr>
 <tr class="row-even"><td><strong>Read-write members and methods:</strong></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.node (n | x, y, z)</strong> &#8211; returns a (x, y, z) tuple storing coordinates of nth node;
+<tr class="row-odd"><td><strong>obj.node (n | x, y, z)</strong> – returns a (x, y, z) tuple storing coordinates of nth node;
 if x, y or z are given the current coordinates are overwritten</td>
 </tr>
-<tr class="row-even"><td><strong>obj.nodes_on_surface (surfid)</strong> &#8211; returns a list of node numbers belonging to the given surface;
+<tr class="row-even"><td><strong>obj.nodes_on_surface (surfid)</strong> – returns a list of node numbers belonging to the given surface;
 <em>None</em> object is returned if the list is empty.</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.set_volid(volid)</strong> &#8211; set all elements to have the given volume ID. Returns the volid set.
+<tr class="row-odd"><td><strong>obj.set_volid(volid)</strong> – set all elements to have the given volume ID. Returns the volid set.
 This is mostly useful for being able to distinguish bodies in the Viewer, using
 menu <span class="math">\(\to\)</span> kinds of <span class="math">\(\to\)</span> volumes. Note that materials are also assigned by volume id.</td>
 </tr>
@@ -203,13 +200,13 @@ menu <span class="math">\(\to\)</span> kinds of <span class="math">\(\to\)</span
 <div class="topic">
 <p class="topic-title first">obj = HEX (nodes, i, j, k, volid, surfids | dx, dy, dz)</p>
 <ul class="simple">
-<li>obj &#8211; created MESH object</li>
-<li>nodes &#8211; list of 8 nodes: [x0, y0, z0, x1, y1, z1, ..., x7, y7, z7].
+<li>obj – created MESH object</li>
+<li>nodes – list of 8 nodes: [x0, y0, z0, x1, y1, z1, …, x7, y7, z7].
 The hexahedral shape will be stretched between those nodes using a linear interpolation.</li>
-<li>i, j, k &#8211; numbers of subdivisions along the local x, y, z directions</li>
-<li>volid &#8211; volume identifier</li>
-<li>surfids &#8211; list of six surface identifiers: [s1, s2, ..., s6], corresponding to the faces of the hexahedral shape</li>
-<li>dx, dy, dz &#8211; lists of subdivision schemes along local x, y, z directions. By default a subdivision is uniform.
+<li>i, j, k – numbers of subdivisions along the local x, y, z directions</li>
+<li>volid – volume identifier</li>
+<li>surfids – list of six surface identifiers: [s1, s2, …, s6], corresponding to the faces of the hexahedral shape</li>
+<li>dx, dy, dz – lists of subdivision schemes along local x, y, z directions. By default a subdivision is uniform.
 When dx = [1, 1, 5, 5, 1, 1] is present, then this scheme will be normalised (actual numbers do not matter,
 but their ratios) and applied to the local x direction of the generated shape.</li>
 </ul>
@@ -222,11 +219,11 @@ The resultant mesh properly contains the input shape and with its orientation (w
 <div class="topic">
 <p class="topic-title first">obj = ROUGH_HEX (shape, i, j, k | dx, dy, dz)</p>
 <ul class="simple">
-<li>obj &#8211; created MESH object</li>
-<li>shape &#8211; an input shape defined by a collection of CONVEX objects;
-a list of CONVEX objects (or their collections) [cvx1, cvx2, cvx3, ....] is as well accepted.</li>
-<li>i, j, k &#8211; numbers of subdivisions along the local x, y, z directions of the principal inertia axes</li>
-<li>dx, dy, dz &#8211; lists of subdivision schemes along local x, y, z directions. By default a subdivision is uniform.
+<li>obj – created MESH object</li>
+<li>shape – an input shape defined by a collection of CONVEX objects;
+a list of CONVEX objects (or their collections) [cvx1, cvx2, cvx3, ….] is as well accepted.</li>
+<li>i, j, k – numbers of subdivisions along the local x, y, z directions of the principal inertia axes</li>
+<li>dx, dy, dz – lists of subdivision schemes along local x, y, z directions. By default a subdivision is uniform.
 When dx = [1, 1, 5, 5, 1, 1] is present, then this scheme will be normalised (actual numbers do not matter,
 but their ratios) and applied to the local x direction of the generated shape.</li>
 </ul>
@@ -238,14 +235,14 @@ but their ratios) and applied to the local x direction of the generated shape.</
 <div class="topic">
 <p class="topic-title first">obj = PIPE (pnt, dir, rin, thi, ndir, nrad, nthi, volid, surfids)</p>
 <ul class="simple">
-<li>obj &#8211; created MESH object</li>
-<li>pnt &#8211; base point tuple (x, y, z)</li>
-<li>dir &#8211; direction tuple (dx, dy, dz); length of the pipe equals to the length of the direction</li>
-<li>rin &#8211; inner radius</li>
-<li>thi &#8211; thickness</li>
-<li>ndir, nrad, nthi &#8211; number of subdivisions along the direction, radius and thickness</li>
-<li>volid &#8211; volume identifier</li>
-<li>surfids &#8211; list of four surface identifiers [s1, s2, s3, s4] corresponding to the faces of the pipe</li>
+<li>obj – created MESH object</li>
+<li>pnt – base point tuple (x, y, z)</li>
+<li>dir – direction tuple (dx, dy, dz); length of the pipe equals to the length of the direction</li>
+<li>rin – inner radius</li>
+<li>thi – thickness</li>
+<li>ndir, nrad, nthi – number of subdivisions along the direction, radius and thickness</li>
+<li>volid – volume identifier</li>
+<li>surfids – list of four surface identifiers [s1, s2, s3, s4] corresponding to the faces of the pipe</li>
 </ul>
 </div>
 </div>
@@ -255,12 +252,12 @@ but their ratios) and applied to the local x direction of the generated shape.</
 <div class="topic">
 <p class="topic-title first">obj = ELLIP_MESH (center, radii, error, volid, surfid) <span class="red">(Under development)</span></p>
 <ul class="simple">
-<li>obj &#8211; created MESH object</li>
-<li>center &#8211; tuple (x, y, z) defining the center</li>
-<li>radii &#8211; tuple (rx, ry, rz) of ellipsoid radii</li>
-<li>error &#8211; surface mesh error size (measured as distance from ellipsoid)</li>
-<li>volid &#8211; volume identifier</li>
-<li>surfid &#8211; surface identifier</li>
+<li>obj – created MESH object</li>
+<li>center – tuple (x, y, z) defining the center</li>
+<li>radii – tuple (rx, ry, rz) of ellipsoid radii</li>
+<li>error – surface mesh error size (measured as distance from ellipsoid)</li>
+<li>volid – volume identifier</li>
+<li>surfid – surface identifier</li>
 </ul>
 </div>
 </div>
@@ -270,19 +267,19 @@ but their ratios) and applied to the local x direction of the generated shape.</
 <div class="topic">
 <p class="topic-title first">obj = TETRAHEDRALIZE (shape, path | volume, quality, volid, surfid)</p>
 <ul class="simple">
-<li>obj &#8211; created MESH object</li>
-<li>shape &#8211; an input shape can be:<ul>
+<li>obj – created MESH object</li>
+<li>shape – an input shape can be:<ul>
 <li>another MESH object</li>
-<li>a path (e.g. &#8216;path/to/file.stl&#8217;) to an input <a class="reference external" href="http://wias-berlin.de/software/tetgen/1.5/doc/manual/manual006.html">file supported by Tetgen</a></li>
+<li>a path (e.g. ‘path/to/file.stl’) to an input <a class="reference external" href="http://wias-berlin.de/software/tetgen/1.5/doc/manual/manual006.html">file supported by Tetgen</a></li>
 </ul>
 </li>
-<li>path &#8211; path to the output file that will store the mesh;
+<li>path – path to the output file that will store the mesh;
 when called again and this file is found the mesh will be red from the file rather than generated</li>
-<li>volume &#8211; maximum element volume (default: not enforced)</li>
-<li>quality &#8211; value &gt; 1.0 indicating element quality (default: not enforced);
+<li>volume – maximum element volume (default: not enforced)</li>
+<li>quality – value &gt; 1.0 indicating element quality (default: not enforced);
 values close to 1.0 result in better mesh quality (mesh generation may fail for small values)</li>
-<li>volid &#8211; volume identifier (default: 0); if only possible it is inherited from the input</li>
-<li>surfid &#8211; surface identifier (default: 0); if only possible it is inherited from the input</li>
+<li>volid – volume identifier (default: 0); if only possible it is inherited from the input</li>
+<li>surfid – surface identifier (default: 0); if only possible it is inherited from the input</li>
 </ul>
 </div>
 </div>
@@ -293,16 +290,16 @@ values close to 1.0 result in better mesh quality (mesh generation may fail for 
 <p class="topic-title first">obj = SPHERE (center, radius, volid, surfid)</p>
 <p>This routine creates a SPHERE object.</p>
 <ul class="simple">
-<li>obj &#8211; created SPHERE object</li>
-<li>center &#8211; tuple (x, y, z) defining the center</li>
-<li>radius &#8211; sphere radius</li>
-<li>volid &#8211; volume identifier</li>
-<li>surfid &#8211; surface identifier</li>
+<li>obj – created SPHERE object</li>
+<li>center – tuple (x, y, z) defining the center</li>
+<li>radius – sphere radius</li>
+<li>volid – volume identifier</li>
+<li>surfid – surface identifier</li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a SPHERE objec, cf. <a class="reference internal" href="#sphere-params"><span class="std std-numref">Table 10</span></a>.</p>
-<table border="1" class="docutils" id="id4">
-<span id="sphere-params"></span><caption><span class="caption-number">Table 10 </span><span class="caption-text">SPHERE object parameters.</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<span id="sphere-params"></span><table border="1" class="docutils" id="id4">
+<caption><span class="caption-number">Table 10 </span><span class="caption-text">SPHERE object parameters.</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -321,16 +318,16 @@ values close to 1.0 result in better mesh quality (mesh generation may fail for 
 <p class="topic-title first">obj = ELLIP (center, radii, volid, surfid)</p>
 <p>This routine creates an ELLIP object.</p>
 <ul class="simple">
-<li>obj &#8211; created ELLIP object</li>
-<li>center &#8211; tuple (x, y, z) defining the center</li>
-<li>radii &#8211; tuple (rx, ry, rz) of ellipsoid radii</li>
-<li>volid &#8211; volume identifier</li>
-<li>surfid &#8211; surface identifier</li>
+<li>obj – created ELLIP object</li>
+<li>center – tuple (x, y, z) defining the center</li>
+<li>radii – tuple (rx, ry, rz) of ellipsoid radii</li>
+<li>volid – volume identifier</li>
+<li>surfid – surface identifier</li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a ELLIP object, cf. <a class="reference internal" href="#ellip-params"><span class="std std-numref">Table 11</span></a>.</p>
-<table border="1" class="docutils" id="id5">
-<span id="ellip-params"></span><caption><span class="caption-number">Table 11 </span><span class="caption-text">ELLIP object parameters.</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<span id="ellip-params"></span><table border="1" class="docutils" id="id5">
+<caption><span class="caption-number">Table 11 </span><span class="caption-text">ELLIP object parameters.</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -339,7 +336,7 @@ values close to 1.0 result in better mesh quality (mesh generation may fail for 
 </tr>
 <tr class="row-even"><td><em>obj.center, obj.radii</em></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.rot</strong> &#8211; tuple <span class="math">\(\left(v_{1x},v_{1y},v_{1z},v_{2x},v_{2y},v_{2z},v_{3x},v_{3y},v_{3z}\right)\)</span>
+<tr class="row-odd"><td><strong>obj.rot</strong> – tuple <span class="math">\(\left(v_{1x},v_{1y},v_{1z},v_{2x},v_{2y},v_{2z},v_{3x},v_{3y},v_{3z}\right)\)</span>
 representing a rotation operator from the ellipsoid natural coordinaet (aligned with principal axes)
 system to the global cooridinate system</td>
 </tr>
@@ -519,8 +516,8 @@ system to the global cooridinate system</td>
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/user/geometry.rst.txt"

@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Materials &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Time series" href="times.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -64,30 +61,30 @@
 <p>Routines and objects described below allow to define bulk and surface materials.</p>
 <div class="section" id="field">
 <h2>FIELD<a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
-<p>An object of type FIELD represents a three&#8211;dimensional, scalar, time dependent field.</p>
+<p>An object of type FIELD represents a three–dimensional, scalar, time dependent field.</p>
 <div class="topic">
 <p class="topic-title first">obj = FIELD (solfec, field_callback | label, data)</p>
 <p>This routine creates a FIELD object.</p>
 <ul>
-<li><p class="first">obj &#8211; created FIELD object</p>
+<li><p class="first">obj – created FIELD object</p>
 </li>
-<li><p class="first">solfec &#8211; obj is created for this SOLFEC object</p>
+<li><p class="first">solfec – obj is created for this SOLFEC object</p>
 </li>
-<li><p class="first">field_callback &#8211; the Python function defining the scalar field:</p>
+<li><p class="first">field_callback – the Python function defining the scalar field:</p>
 <p><strong>value = field_callback (data, x, y, z, t)</strong></p>
 <p>where <em>data</em> is the optional user data passed to FIELD routine (if data is a tuple it will expand
 the list of parameters to the callback), <em>x, y, z</em> are the point coordinates, and <em>t</em> is time.
 The function should return a numeric value of the scalar field at given point and instant of time.</p>
 </li>
-<li><p class="first">label &#8211; label string (default: &#8216;FIELD_i&#8217;, where i is incremented for each call)</p>
+<li><p class="first">label – label string (default: ‘FIELD_i’, where i is incremented for each call)</p>
 </li>
-<li><p class="first">data &#8211; callback routine user data</p>
+<li><p class="first">data – callback routine user data</p>
 </li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a FIELD object, cf. <a class="reference internal" href="#field-params"><span class="std std-numref">Table 12</span></a>.</p>
-<table border="1" class="docutils" id="id1">
-<span id="field-params"></span><caption><span class="caption-number">Table 12 </span><span class="caption-text">FIELD object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<span id="field-params"></span><table border="1" class="docutils" id="id1">
+<caption><span class="caption-number">Table 12 </span><span class="caption-text">FIELD object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -106,21 +103,21 @@ The function should return a numeric value of the scalar field at given point an
 <p class="topic-title first">obj = BULK_MATERIAL (solfec| model, label, young, poisson, density, tensile, fields, fracene)</p>
 <p>This routine creates a BULK_MATERIAL object.</p>
 <ul class="simple">
-<li>obj &#8211; created BULK_MATERIAL object</li>
-<li>solfec &#8211; obj is created for this SOLFEC object</li>
-<li>model &#8211; material model name (default: &#8216;KIRCHHOFF&#8217;), see <a class="reference internal" href="#bulk-materials"><span class="std std-numref">Table 14</span></a></li>
-<li>label &#8211; label string (default: &#8216;BULK_MATERIAL_i&#8217;, where i is incremented for each call)</li>
-<li>young &#8211; Young&#8217;s modulus (default: 1E9)</li>
-<li>poisson &#8211; Poisson&#8217;s coefficient (default: 0.25)</li>
-<li>density &#8211; material density (default: 1E3)</li>
-<li>tensile &#8211; tensile strength for fracture check (default: <span class="math">\(\infty\)</span>)</li>
-<li>fields &#8211; list [field1, field1, ..., fieldN] of FIELD objects (or FIELD object labels) needed by the material model</li>
-<li>fracene &#8211; fracture energy threshold (default: <span class="math">\(\infty\)</span>)</li>
+<li>obj – created BULK_MATERIAL object</li>
+<li>solfec – obj is created for this SOLFEC object</li>
+<li>model – material model name (default: ‘KIRCHHOFF’), see <a class="reference internal" href="#bulk-materials"><span class="std std-numref">Table 14</span></a></li>
+<li>label – label string (default: ‘BULK_MATERIAL_i’, where i is incremented for each call)</li>
+<li>young – Young’s modulus (default: 1E9)</li>
+<li>poisson – Poisson’s coefficient (default: 0.25)</li>
+<li>density – material density (default: 1E3)</li>
+<li>tensile – tensile strength for fracture check (default: <span class="math">\(\infty\)</span>)</li>
+<li>fields – list [field1, field1, …, fieldN] of FIELD objects (or FIELD object labels) needed by the material model</li>
+<li>fracene – fracture energy threshold (default: <span class="math">\(\infty\)</span>)</li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a BULK_MATERIAL object, cf. <a class="reference internal" href="#bulk-params"><span class="std std-numref">Table 13</span></a>.</p>
-<table border="1" class="docutils" id="id2">
-<span id="bulk-params"></span><caption><span class="caption-number">Table 13 </span><span class="caption-text">BULK_MATERIAL object parameters.</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
+<span id="bulk-params"></span><table border="1" class="docutils" id="id2">
+<caption><span class="caption-number">Table 13 </span><span class="caption-text">BULK_MATERIAL object parameters.</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -138,8 +135,8 @@ The function should return a numeric value of the scalar field at given point an
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table border="1" class="docutils" id="id3">
-<span id="bulk-materials"></span><caption><span class="caption-number">Table 14 </span><span class="caption-text">Bulk material models.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
+<span id="bulk-materials"></span><table border="1" class="docutils" id="id3">
+<caption><span class="caption-number">Table 14 </span><span class="caption-text">Bulk material models.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="31%" />
 <col width="69%" />
@@ -148,7 +145,7 @@ The function should return a numeric value of the scalar field at given point an
 <tr class="row-odd"><td>Model name</td>
 <td>Employs variables</td>
 </tr>
-<tr class="row-even"><td>&#8216;KIRCHHOFF&#8217;</td>
+<tr class="row-even"><td>‘KIRCHHOFF’</td>
 <td>young, poisson, density</td>
 </tr>
 </tbody>
@@ -160,10 +157,10 @@ The function should return a numeric value of the scalar field at given point an
 <div class="topic">
 <p class="topic-title first">APPLY_BULKMAT (solfec, body, volid, material)</p>
 <ul class="simple">
-<li>solfec &#8211; SOLFEC object</li>
-<li>body &#8211; BODY object</li>
-<li>volid &#8211; volume identifier</li>
-<li>material &#8211; MATERIAL object or material label</li>
+<li>solfec – SOLFEC object</li>
+<li>body – BODY object</li>
+<li>volid – volume identifier</li>
+<li>material – MATERIAL object or material label</li>
 </ul>
 </div>
 </div>
@@ -175,26 +172,26 @@ Surfaces identifiers are included in definitions of all geometric objects.</p>
 <p class="topic-title first">obj = SURFACE_MATERIAL (solfec | surf1, surf2, model, label, friction, cohesion, restitution, spring, dashpot, hpow)</p>
 <p>This routine creates a SURFACE_MATERIAL object.</p>
 <ul class="simple">
-<li>obj &#8211; created SURFACE_MATERIAL object</li>
-<li>solfec &#8211; obj is created for this SOLFEC object</li>
-<li>surf1 &#8211; first surface identifier</li>
-<li>surf2 &#8211; second surface identifier; If only surf1 is specified,
+<li>obj – created SURFACE_MATERIAL object</li>
+<li>solfec – obj is created for this SOLFEC object</li>
+<li>surf1 – first surface identifier</li>
+<li>surf2 – second surface identifier; If only surf1 is specified,
 the surface material is used for all contacts with the specified surface;
 If neither surf1 or surf2 are specified, the surface material is used for
 any contacts where a more-specific pairing cannot be found.</li>
-<li>model &#8211; material model name (default: &#8216;SIGNORINI_COULOMB&#8217;), see <a class="reference internal" href="#surf-materials"><span class="std std-numref">Table 16</span></a></li>
-<li>label &#8211; label string (default: &#8216;SURFACE_MATERIAL_i&#8217;, where i is incremented for each call)</li>
-<li>friction &#8211; friction coefficient (default: 0.0)</li>
-<li>cohesion &#8211; cohesion per unit area (default: 0.0)</li>
-<li>restitution &#8211; velocity restitution (default: 0.0)</li>
-<li>spring &#8211; spring stiffness (default: 0.0)</li>
-<li>dashpot &#8211; dashpot stiffness (default: 0.0); any negative value indicates critical damping</li>
-<li>hpow &#8211; Hertz&#8217;s law power (default: 1.0)</li>
+<li>model – material model name (default: ‘SIGNORINI_COULOMB’), see <a class="reference internal" href="#surf-materials"><span class="std std-numref">Table 16</span></a></li>
+<li>label – label string (default: ‘SURFACE_MATERIAL_i’, where i is incremented for each call)</li>
+<li>friction – friction coefficient (default: 0.0)</li>
+<li>cohesion – cohesion per unit area (default: 0.0)</li>
+<li>restitution – velocity restitution (default: 0.0)</li>
+<li>spring – spring stiffness (default: 0.0)</li>
+<li>dashpot – dashpot stiffness (default: 0.0); any negative value indicates critical damping</li>
+<li>hpow – Hertz’s law power (default: 1.0)</li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a SURFACE_MATERIAL object, cf. <a class="reference internal" href="#surf-params"><span class="std std-numref">Table 15</span></a>.</p>
-<table border="1" class="docutils" id="id4">
-<span id="surf-params"></span><caption><span class="caption-number">Table 15 </span><span class="caption-text">SURFACE_MATERIAL object parameters.</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
+<span id="surf-params"></span><table border="1" class="docutils" id="id4">
+<caption><span class="caption-number">Table 15 </span><span class="caption-text">SURFACE_MATERIAL object parameters.</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
 </colgroup>
@@ -212,8 +209,8 @@ any contacts where a more-specific pairing cannot be found.</li>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table border="1" class="docutils" id="id5">
-<span id="surf-materials"></span><caption><span class="caption-number">Table 16 </span><span class="caption-text">Surface material models.</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<span id="surf-materials"></span><table border="1" class="docutils" id="id5">
+<caption><span class="caption-number">Table 16 </span><span class="caption-text">Surface material models.</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="31%" />
 <col width="69%" />
@@ -222,10 +219,10 @@ any contacts where a more-specific pairing cannot be found.</li>
 <tr class="row-odd"><td>Model name</td>
 <td>Employs variables</td>
 </tr>
-<tr class="row-even"><td>&#8216;SIGNORINI_COULOMB&#8217;</td>
+<tr class="row-even"><td>‘SIGNORINI_COULOMB’</td>
 <td>friction, cohesion, restitution</td>
 </tr>
-<tr class="row-odd"><td>&#8216;SPRING_DASHPOT&#8217;</td>
+<tr class="row-odd"><td>‘SPRING_DASHPOT’</td>
 <td>spring, dashpot, friction, cohesion, hpow</td>
 </tr>
 </tbody>
@@ -397,8 +394,8 @@ any contacts where a more-specific pairing cannot be found.</li>
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/user/materials.rst.txt"

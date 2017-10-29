@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Contact formulations &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Constraint solvers" href="solvers.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -71,14 +68,14 @@ itself. Sections below describe the formulations employed by Solfec and point to
 descriptions of solvers that utilize them.</p>
 <div class="section" id="the-frictional-contact-law">
 <h2>The frictional contact law<a class="headerlink" href="#the-frictional-contact-law" title="Permalink to this headline">¶</a></h2>
-<p>The frictional contact law in Solfec employs the so called Signorini&#8211;Coulomb conditions. The velocity based Signorini non&#8211;penetration condition reads</p>
+<p>The frictional contact law in Solfec employs the so called Signorini–Coulomb conditions. The velocity based Signorini non–penetration condition reads</p>
 <div class="math" id="equation-Signorini">
 <span class="eqno">(1)<a class="headerlink" href="#equation-Signorini" title="Permalink to this equation">¶</a></span>\[\bar{U}_{N}\ge0\,\,\,R_{N}\ge0\,\,\,\bar{U}_{N}R_{N}=0\]</div>
 <p>where <span class="math">\(\bar{U}_{N}=U_{N}^{t+h}+e\min\left(0,U_{N}^{t}\right)\)</span>, <span class="math">\(e\)</span> is the velocity restitution coefficient, <span class="math">\(U_{N}\)</span> is the the normal
 relative velocity, and <span class="math">\(R_{N}\)</span> is the normal reaction. The normal direction is consistent with the positive gap velocity so that <a class="reference internal" href="#equation-Signorini">(1)</a>
-states, that any violation of the non&#8211;penetration results in a reaction force or velocity driving at the penetration&#8211;free configuration. While
+states, that any violation of the non–penetration results in a reaction force or velocity driving at the penetration–free configuration. While
 using <span class="math">\(\bar{U}_{N}\)</span> allows to account for the Newton impact law, for models where multiple impacts occur during one time step, using <span class="math">\(e&gt;0\)</span>
-cannot be justified from a theoretical standpoint. The Coulomb&#8217;s friction law reads</p>
+cannot be justified from a theoretical standpoint. The Coulomb’s friction law reads</p>
 <div class="math" id="equation-Coulomb">
 <span class="eqno">(2)<a class="headerlink" href="#equation-Coulomb" title="Permalink to this equation">¶</a></span>\[\begin{split}\left\{ \begin{array}{ll}
 \left\Vert \mathbf{R}_{T}\right\Vert \le\mu R_{N}\\
@@ -91,7 +88,7 @@ to the slip velocity.</p>
 <div class="section" id="projected-gradient-formulation">
 <h2>Projected gradient formulation<a class="headerlink" href="#projected-gradient-formulation" title="Permalink to this headline">¶</a></h2>
 <p>This is an implicit formulation based on <a class="footnote-reference" href="#id8" id="id1">[1]</a> and it is optionally used on an individual contact point level within the
-<a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss&#8211;Seidel solver</span></a>. On the point level this formulation is implemented in
+<a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss–Seidel solver</span></a>. On the point level this formulation is implemented in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L35">dbs.c:35</a>.  The Signorini condition <a class="reference internal" href="#equation-Signorini">(1)</a> is expressed
 as a projection</p>
 <div class="math" id="equation-RNproj">
@@ -100,19 +97,19 @@ as a projection</p>
 as a projection as follows</p>
 <div class="math" id="equation-RTproj">
 <span class="eqno">(4)<a class="headerlink" href="#equation-RTproj" title="Permalink to this equation">¶</a></span>\[\mathbf{R}_{T}=\textrm{proj}_{D\left(\mu R_{N}\right)}\left(\mathbf{R}_{T}-\rho\mathbf{U}_{T}\right)\]</div>
-<p>where <span class="math">\(D\left(F\right)\)</span> is a two-dimensional <span class="math">\(\mathbf{0}\)</span>&#8211;centred disc of radius <span class="math">\(\mu R_{N}\)</span>. In both cases above, <span class="math">\(\rho&gt;0\)</span>.
+<p>where <span class="math">\(D\left(F\right)\)</span> is a two-dimensional <span class="math">\(\mathbf{0}\)</span>–centred disc of radius <span class="math">\(\mu R_{N}\)</span>. In both cases above, <span class="math">\(\rho&gt;0\)</span>.
 The name “projected gradient” refers to the above as resembling a gradient projection formula for an optimization problem, where <span class="math">\(\mathbf{U}\)</span> expresses
 a derivative of an objective function with respect to <span class="math">\(\mathbf{R}\)</span>.</p>
 </div>
 <div class="section" id="de-saxce-and-feng-formulation">
 <h2>De Saxcé and Feng formulation<a class="headerlink" href="#de-saxce-and-feng-formulation" title="Permalink to this headline">¶</a></h2>
 <p>This is an implicit formulation based on <a class="footnote-reference" href="#id9" id="id2">[2]</a> and it is optionally used on an individual contact point level within the
-<a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss&#8211;Seidel solver</span></a>. On the point level this formulation is implemented in
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L96">dbs.c:96</a>. We express the Signorini&#8211;Coulomb law <a class="reference internal" href="#equation-Signorini">(1)</a> and <a class="reference internal" href="#equation-Coulomb">(2)</a>
+<a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss–Seidel solver</span></a>. On the point level this formulation is implemented in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L96">dbs.c:96</a>. We express the Signorini–Coulomb law <a class="reference internal" href="#equation-Signorini">(1)</a> and <a class="reference internal" href="#equation-Coulomb">(2)</a>
 as an inclusion. The friction cone <span class="math">\(K_{\alpha}\)</span> is defined as</p>
 <div class="math" id="equation-Kalpha">
 <span class="eqno">(5)<a class="headerlink" href="#equation-Kalpha" title="Permalink to this equation">¶</a></span>\[K_{\alpha}=\left\{ \mathbf{R}_{\alpha}:\left\Vert \mathbf{R}_{\alpha T}\right\Vert \le\mu_{\alpha}R_{\alpha N},R_{\alpha N}\ge0\right\}\]</div>
-<p>where <span class="math">\(\mu_{\alpha}\)</span> is the coefficient of friction. It has been shown by De Saxcé and Feng <a class="footnote-reference" href="#id9" id="id3">[2]</a>, that the Signorini&#8211;Coulomb law
+<p>where <span class="math">\(\mu_{\alpha}\)</span> is the coefficient of friction. It has been shown by De Saxcé and Feng <a class="footnote-reference" href="#id9" id="id3">[2]</a>, that the Signorini–Coulomb law
 can be expressed in a compact form</p>
 <div class="math" id="equation-DSF">
 <span class="eqno">(6)<a class="headerlink" href="#equation-DSF" title="Permalink to this equation">¶</a></span>\[\begin{split}-\left[\begin{array}{c}
@@ -133,11 +130,11 @@ the separation of velocities on the left hand side of the inclusion <a class="re
 in formulating solution strategies based on already existing approaches.</p>
 </div>
 <div class="section" id="non-smooth-force-equation-formulation">
-<h2>Non&#8211;smooth force equation formulation<a class="headerlink" href="#non-smooth-force-equation-formulation" title="Permalink to this headline">¶</a></h2>
+<h2>Non–smooth force equation formulation<a class="headerlink" href="#non-smooth-force-equation-formulation" title="Permalink to this headline">¶</a></h2>
 <p>This is an implicit formulation based on <a class="footnote-reference" href="#id10" id="id5">[3]</a> and it is used by default on an individual contact point level within the
-<a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss&#8211;Seidel solver</span></a>. On the point level this formulation is implemented in
+<a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss–Seidel solver</span></a>. On the point level this formulation is implemented in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L142">dbs.c:142</a>. The authors of <a class="footnote-reference" href="#id10" id="id6">[3]</a> propose to express the Signorini and Coulomb
-conditions <a class="reference internal" href="#equation-Signorini">(1)</a> and <a class="reference internal" href="#equation-Coulomb">(2)</a> as a non&#8211;smooth equation <span class="math">\(\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\)</span>, where</p>
+conditions <a class="reference internal" href="#equation-Signorini">(1)</a> and <a class="reference internal" href="#equation-Coulomb">(2)</a> as a non–smooth equation <span class="math">\(\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\)</span>, where</p>
 <div class="math" id="equation-NSFEQ">
 <span class="eqno">(8)<a class="headerlink" href="#equation-NSFEQ" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
 \max\left(\mu d_{N},\left\Vert \mathbf{d}_{T}\right\Vert \right)\mathbf{R}_{T}-\mu\max\left(0,d_{N}\right)\mathbf{d}_{T}\\
@@ -149,12 +146,12 @@ R_{N}-\max\left(0,d_{N}\right)
 <div class="math" id="equation-dT">
 <span class="eqno">(10)<a class="headerlink" href="#equation-dT" title="Permalink to this equation">¶</a></span>\[\mathbf{d}_{T}=\mathbf{R}_{T}-\rho\mathbf{U}_{T}\]</div>
 <p>while <span class="math">\(\rho&gt;0\)</span>. Equation <a class="reference internal" href="#equation-NSFEQ">(8)</a> encapsulates the projection formulas <a class="reference internal" href="#equation-RNproj">(3)</a> and <a class="reference internal" href="#equation-RTproj">(4)</a> and it has been shown to work well
-as a basis for Newton type solution schemes in the finite&#8211;element context.</p>
+as a basis for Newton type solution schemes in the finite–element context.</p>
 </div>
 <div class="section" id="non-smooth-velocity-equation-formulation">
-<span id="solfec-theory-conform-nsveq"></span><h2>Non&#8211;smooth velocity equation formulation<a class="headerlink" href="#non-smooth-velocity-equation-formulation" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-theory-conform-nsveq"></span><h2>Non–smooth velocity equation formulation<a class="headerlink" href="#non-smooth-velocity-equation-formulation" title="Permalink to this headline">¶</a></h2>
 <p>This is an implicit formulation developed specifically for Solfec based on formula <a class="reference internal" href="#equation-DSF">(6)</a> from <a class="footnote-reference" href="#id9" id="id7">[2]</a>. It is optionally used on an individual
-contact point level within the <a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss&#8211;Seidel solver</span></a>. It is also the basis of contact linearization within the
+contact point level within the <a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss–Seidel solver</span></a>. It is also the basis of contact linearization within the
 <a class="reference internal" href="solvers.html#solfec-theory-solvers-pqn"><span class="std std-ref">projected Newton solver</span></a>. On the point level this formulation is implemented in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/scf.c#L28">scf.c</a>. Using the <a class="reference internal" href="locdyn.html#solfec-theory-locdyn"><span class="std std-ref">local dynamics</span></a> relationship</p>
 <div class="math">
@@ -200,7 +197,7 @@ frictional contact constraints are satisfied if <span class="math">\(-\mathbf{F}
 Equation <a class="reference internal" href="#equation-NSVEQ">(13)</a> expresses, in velocity form, the projection formula <a class="reference internal" href="#equation-DSFproj">(7)</a>.</p>
 </div>
 <div class="section" id="semi-explicit-penalty-formulation">
-<h2>Semi&#8211;explicit penalty formulation<a class="headerlink" href="#semi-explicit-penalty-formulation" title="Permalink to this headline">¶</a></h2>
+<h2>Semi–explicit penalty formulation<a class="headerlink" href="#semi-explicit-penalty-formulation" title="Permalink to this headline">¶</a></h2>
 <p>This is a simple penalty based formulation developed specifically for Solfec and used within the
 <a class="reference internal" href="solvers.html#solfec-theory-solvers-penalty"><span class="std std-ref">penalty solver</span></a>. On the point level this formulation is implemented
 in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/pes.c#L33">pes.c</a>. Let</p>
@@ -248,7 +245,7 @@ the this approach. Since we aim at simplicity and want to avoid any nonlinear so
 and <span class="math">\(m\)</span> is the “Hertz power”).</p>
 <p id="spring-dashpot-contact"><strong>SPRING_DASHPOT_CONTACT</strong> <span class="math">\(\left(h,g,s,d,\mu,cohesion,cohesive\right)\)</span> <br />
 1  <span class="math">\(\,\,\)</span> <span class="math">\(\bar{B}_{N}=B_{N}+\mathbf{W}_{NT}\mathbf{R}_{T}\)</span> <br />
-2  <span class="math">\(\,\,\)</span> if semi&#8211;explicit then <br />
+2  <span class="math">\(\,\,\)</span> if semi–explicit then <br />
 3  <span class="math">\(\,\,\,\,\,\,\)</span> <span class="math">\(g_{1}=\mbox{min}\left(g+\frac{h}{4}\left(\bar{B}_{N}-U_{N}^{t}\right),0\right)\)</span> <br />
 4  <span class="math">\(\,\,\,\,\,\,\)</span> <span class="math">\(s_{1}=sm\left(-g_{1}\right)^{m-1}\)</span> <br />
 5  <span class="math">\(\,\,\,\,\,\,\)</span> <span class="math">\(R_{N}=\left[s\cdot\left(-g_{1}\right)^{m}-\frac{d}{2}\cdot\left(\bar{B}_{N}+U_{N}^{t}\right)\right]/\left[1+\left(s_{1}\cdot\frac{h}{4}+\frac{d}{2}\right)\cdot W_{NN}\right]\)</span> <br />
@@ -276,7 +273,7 @@ friction and improved numerical algorithms, Mathematical and Computer Modelling,
 <table class="docutils footnote" frame="void" id="id10" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> S. Hüeber, G. Stadler, and B. I. Wohlmuth, A primal&#8211;dual active set algorithm for three&#8211;dimensional contact problems
+<tr><td class="label">[3]</td><td><em>(<a class="fn-backref" href="#id5">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> S. Hüeber, G. Stadler, and B. I. Wohlmuth, A primal–dual active set algorithm for three–dimensional contact problems
 with Coulomb friction, SIAM Journal on Scientific Computing, 30 (2), 572-596, 2007.</td></tr>
 </tbody>
 </table>
@@ -330,9 +327,9 @@ with Coulomb friction, SIAM Journal on Scientific Computing, 30 (2), 572-596, 20
 <li class="toctree-l4"><a class="reference internal" href="#the-frictional-contact-law">The frictional contact law</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#projected-gradient-formulation">Projected gradient formulation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#de-saxce-and-feng-formulation">De Saxcé and Feng formulation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#non-smooth-force-equation-formulation">Non&#8211;smooth force equation formulation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#non-smooth-velocity-equation-formulation">Non&#8211;smooth velocity equation formulation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#semi-explicit-penalty-formulation">Semi&#8211;explicit penalty formulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#non-smooth-force-equation-formulation">Non–smooth force equation formulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#non-smooth-velocity-equation-formulation">Non–smooth velocity equation formulation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#semi-explicit-penalty-formulation">Semi–explicit penalty formulation</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="solvers.html">Constraint solvers</a></li>
@@ -448,8 +445,8 @@ with Coulomb friction, SIAM Journal on Scientific Computing, 30 (2), 572-596, 20
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/theory/conform.rst.txt"

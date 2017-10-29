@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>A two–body impact problem &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="1,2,3–dimensional cube array acceleration dwell" href="hs123.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -60,30 +57,30 @@
           <div class="body" role="main">
             
   <div class="section" id="a-two-body-impact-problem">
-<span id="solfec-examples-hybrid-modeling-hs0"></span><h1>A two&#8211;body impact problem<a class="headerlink" href="#a-two-body-impact-problem" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-examples-hybrid-modeling-hs0"></span><h1>A two–body impact problem<a class="headerlink" href="#a-two-body-impact-problem" title="Permalink to this headline">¶</a></h1>
 <p>This is a simplest application of the <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>. The input files for this example are
-located in the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver0">solfec/examples/hybrid&#8211;solver0</a> directory.
+located in the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver0">solfec/examples/hybrid–solver0</a> directory.
 These are:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/README">README</a> &#8211; a text based specification of the problem</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-parmec.py">hs0&#8211;parmec.py</a> &#8211; including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-1.py">hs0&#8211;solfec&#8211;1.py</a> &#8211; including the simpler version of the <a class="reference internal" href="../../index.html#solfec-index"><span class="std std-ref">Solfec</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-2.py">hs0&#8211;solfec&#8211;2.py</a> &#8211; Solfec input file demonstrating a more elaborate usage of Parmec and Solfec features</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/README">README</a> – a text based specification of the problem</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-parmec.py">hs0–parmec.py</a> – including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-1.py">hs0–solfec–1.py</a> – including the simpler version of the <a class="reference internal" href="../../index.html#solfec-index"><span class="std std-ref">Solfec</span></a> input code</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-2.py">hs0–solfec–2.py</a> – Solfec input file demonstrating a more elaborate usage of Parmec and Solfec features</li>
 </ul>
 <div class="figure align-center" id="id5">
 <span id="hs0-fig1"></span><a class="reference internal image-reference" href="../../../_images/hs0.png"><img alt="../../../_images/hs0.png" src="../../../_images/hs0.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 50 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver0">hybrid-solver0</a>: a two body impact problem</span></p>
 </div>
-<p><a class="reference internal" href="#hs0-fig1"><span class="std std-numref">Fig. 50</span></a> states the problem. Both, the upper &#8220;Solfec&#8221; body and the lower &#8220;Parmec&#8221; body are modeled as rigid.
+<p><a class="reference internal" href="#hs0-fig1"><span class="std std-numref">Fig. 50</span></a> states the problem. Both, the upper “Solfec” body and the lower “Parmec” body are modeled as rigid.
 The upper body falls under gravity and hits the lower body, initiating vibrations. There is no impact restitution between
 the two bodies, hence the two bodies stay and vibrate together, following the initial impact. We use this simple example
 to illustrate the methodology of creating a hybrid model.</p>
-<p><a class="reference internal" href="#hs0-lst1"><span class="std std-numref">Listing 1</span></a> includes the Parmec file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-parmec.py">hs0&#8211;parmec.py</a>.
+<p><a class="reference internal" href="#hs0-lst1"><span class="std std-numref">Listing 1</span></a> includes the Parmec file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-parmec.py">hs0–parmec.py</a>.
 The <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-material"><span class="std std-ref">material</span></a> is created in line 1 and the <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-mesh"><span class="std std-ref">meshed</span></a> lower cube is created in line 16.
-The cube&#8217;s motion is <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-restrain"><span class="std std-ref">restrained</span></a> along x, y translations and x, y, z rotations in line 18. The <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-spring"><span class="std std-ref">elastic spring</span></a> is created in line 20. We note, that no damping is applied and that the spring direction is fixed along z.
+The cube’s motion is <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-restrain"><span class="std std-ref">restrained</span></a> along x, y translations and x, y, z rotations in line 18. The <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-spring"><span class="std std-ref">elastic spring</span></a> is created in line 20. We note, that no damping is applied and that the spring direction is fixed along z.
 <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-gravity"><span class="std std-ref">Gravity</span></a> is applied in line 23. This concludes the input file.</p>
 <div class="literal-block-wrapper docutils container" id="hs0-lst1">
-<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Listing of hs0&#8211;parmec.py</span><a class="headerlink" href="#hs0-lst1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Listing of hs0–parmec.py</span><a class="headerlink" href="#hs0-lst1" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -136,26 +133,26 @@ The cube&#8217;s motion is <a class="reference internal" href="../../../parmec/i
 </pre></div>
 </td></tr></table></div>
 </div>
-<p>The &#8220;DEM&#8221; command in line 25 can be uncommented to run parmec standalone and test this example:</p>
+<p>The “DEM” command in line 25 can be uncommented to run parmec standalone and test this example:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parmec4</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solver0</span><span class="o">/</span><span class="n">hs0</span><span class="o">-</span><span class="n">parmec</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>This is useful at a stage of creating and testing of an input file: the output files generated into the hybrid&#8211;solver0
+<p>This is useful at a stage of creating and testing of an input file: the output files generated into the hybrid–solver0
 directory and be viewed using <a class="reference external" href="http://www.paraview.org">ParaView</a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">For the sake of using hs0&#8211;parmec.py as Parmec input in Solfec&#8217;s <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>,
-the &#8220;DEM&#8221; command in line 25 should remain commented out.</p>
+<p class="last">For the sake of using hs0–parmec.py as Parmec input in Solfec’s <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>,
+the “DEM” command in line 25 should remain commented out.</p>
 </div>
-<p><a class="reference internal" href="#hs0-lst2"><span class="std std-numref">Listing 2</span></a> includes the Solfec file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-1.py">hs0&#8211;solfec&#8211;1.py</a>.
-<a class="reference internal" href="../../user/solfec.html#solfec-user-solfec"><span class="std std-ref">SOLFEC object</span></a> is created in line 3, specifying the output directory as &#8216;out/hybrid&#8211;solver0&#8217; (relative where <em>solfec</em> is run from).
-<a class="reference internal" href="../../user/loads.html#solfec-command-gravity"><span class="std std-ref">Gravity</span></a> is applied in line 5. Volumetric <a class="reference internal" href="../../user/materials.html#solfec-command-bulk-material"><span class="std std-ref">&#8220;bulk&#8221; material</span></a> is created in line 7
-and <a class="reference internal" href="../../user/materials.html#solfec-command-surface-material"><span class="std std-ref">&#8220;suraface material&#8221;</span></a> for contact interactions is created in line 10. Then the lower <a class="reference internal" href="../../user/body.html#solfec-user-body"><span class="std std-ref">body</span></a> &#8220;bod1&#8221;
+<p><a class="reference internal" href="#hs0-lst2"><span class="std std-numref">Listing 2</span></a> includes the Solfec file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-1.py">hs0–solfec–1.py</a>.
+<a class="reference internal" href="../../user/solfec.html#solfec-user-solfec"><span class="std std-ref">SOLFEC object</span></a> is created in line 3, specifying the output directory as ‘out/hybrid–solver0’ (relative where <em>solfec</em> is run from).
+<a class="reference internal" href="../../user/loads.html#solfec-command-gravity"><span class="std std-ref">Gravity</span></a> is applied in line 5. Volumetric <a class="reference internal" href="../../user/materials.html#solfec-command-bulk-material"><span class="std std-ref">“bulk” material</span></a> is created in line 7
+and <a class="reference internal" href="../../user/materials.html#solfec-command-surface-material"><span class="std std-ref">“suraface material”</span></a> for contact interactions is created in line 10. Then the lower <a class="reference internal" href="../../user/body.html#solfec-user-body"><span class="std std-ref">body</span></a> “bod1”
 is created in line 22. This is a <em>boundary body</em>, coinciding with the Parmec body defined in line 16 of <a class="reference internal" href="#hs0-lst1"><span class="std std-numref">Listing 1</span></a>. <em>This body will be used to transfer
-forces between Solfec and Parmec, and its motion will be driven by the Parmec model.</em>  The upper body &#8220;bod2&#8221; is created in line 26. In both cases Solfec&#8217;s
+forces between Solfec and Parmec, and its motion will be driven by the Parmec model.</em>  The upper body “bod2” is created in line 26. In both cases Solfec’s
 <a class="reference internal" href="../../user/geometry.html#solfec-command-mesh"><span class="std std-ref">MESH</span></a> object is used to define geometry.</p>
 <div class="literal-block-wrapper docutils container" id="hs0-lst2">
-<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Listing of hs0&#8211;solfec&#8211;1.py</span><a class="headerlink" href="#hs0-lst2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Listing of hs0–solfec–1.py</span><a class="headerlink" href="#hs0-lst2" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -235,14 +232,14 @@ forces between Solfec and Parmec, and its motion will be driven by the Parmec mo
 </td></tr></table></div>
 </div>
 <p>The <a class="reference internal" href="../../user/solvers.html#solfec-command-newton-solver"><span class="std std-ref">Newton solver</span></a> is created next in line 28. It will be used internally by the <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">hybrid solver</span></a>
-in order to resolve (non&#8211;smooth) contact interactions between the two bodies. The <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a> itself is created further, in line 32.
-We pass the full relative path to the parmec input file &#8216;examples/hybrid-solver0/hs0-parmec.py&#8217;, which implies that the example will be run from the solfec
+in order to resolve (non–smooth) contact interactions between the two bodies. The <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a> itself is created further, in line 32.
+We pass the full relative path to the parmec input file ‘examples/hybrid-solver0/hs0-parmec.py’, which implies that the example will be run from the solfec
 source directory. The Solfec time step is used as the upper bound for the Parmec step. Knowing that Parmec numbers bodies starting from zero, we create a simple
-dictionary mapping, {0 : bod1.id}, to define the &#8220;boundary bodies&#8221; through which forces are passed between the two codes. Finally, we pass the Newton solver
-object &#8220;ns&#8221; as the last argument.</p>
+dictionary mapping, {0 : bod1.id}, to define the “boundary bodies” through which forces are passed between the two codes. Finally, we pass the Newton solver
+object “ns” as the last argument.</p>
 <p>We note, that Parmec output intervals are not specified in this invocation of the hybrid solver. This means that Parmec will not create output files during the
-simulation. In lines 35 and 36 we define the Solfec output interval. Because the <a class="reference internal" href="../../user/simulation.html#solfec-command-output"><span class="std std-ref">&#8220;OUTPUT&#8221;</span></a> commands <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-output"><span class="std std-ref">coincide</span></a>
-in both codes, we need to explicitly call the Solfec command in this case. The input file is concluded with the <a class="reference internal" href="../../user/simulation.html#solfec-command-run"><span class="std std-ref">&#8220;RUN&#8221; command</span></a> (line 38),
+simulation. In lines 35 and 36 we define the Solfec output interval. Because the <a class="reference internal" href="../../user/simulation.html#solfec-command-output"><span class="std std-ref">“OUTPUT”</span></a> commands <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-output"><span class="std std-ref">coincide</span></a>
+in both codes, we need to explicitly call the Solfec command in this case. The input file is concluded with the <a class="reference internal" href="../../user/simulation.html#solfec-command-run"><span class="std std-ref">“RUN” command</span></a> (line 38),
 which executes a 10 second long simulation of the hybrid model.</p>
 <p>The example is run by calling</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solver0</span><span class="o">/</span><span class="n">hs0</span><span class="o">-</span><span class="n">solfec</span><span class="o">-</span><span class="mf">1.</span><span class="n">py</span>
@@ -253,19 +250,19 @@ which executes a 10 second long simulation of the hybrid model.</p>
 </pre></div>
 </div>
 <p>An example animation is included below:</p>
-<p align="center"><iframe width="640" height="360" src="//www.youtube.com/embed/osRepFXukDo?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference internal" href="#hs0-lst3"><span class="std std-numref">Listing 3</span></a> includes the second Solfec file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-2.py">hs0&#8211;solfec&#8211;2.py</a>.
+<p align="center"><iframe width="640" height="360" src="//www.youtube.com/embed/osRepFXukDo?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference internal" href="#hs0-lst3"><span class="std std-numref">Listing 3</span></a> includes the second Solfec file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-2.py">hs0–solfec–2.py</a>.
 This input file demonstrates several more elaborate features of the <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a> and of Solfec input usage in general:</p>
 <blockquote>
 <div><ul class="simple">
-<li>creation of Parmec output files (lines 32&#8211;36)</li>
-<li>creation of Parmec time histories (lines 38&#8211;40)</li>
-<li>runtime plotting from Solfec (lines 42&#8211;51)</li>
-<li>an application of <a class="reference external" href="http://matplotlib.org">matplotlib</a> within Solfec input file (lines 59&#8211;73)</li>
-<li>XDMF export of Solfec results (lines 75&#8211;80)</li>
+<li>creation of Parmec output files (lines 32–36)</li>
+<li>creation of Parmec time histories (lines 38–40)</li>
+<li>runtime plotting from Solfec (lines 42–51)</li>
+<li>an application of <a class="reference external" href="http://matplotlib.org">matplotlib</a> within Solfec input file (lines 59–73)</li>
+<li>XDMF export of Solfec results (lines 75–80)</li>
 </ul>
 </div></blockquote>
 <div class="literal-block-wrapper docutils container" id="hs0-lst3">
-<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Listing of hs0&#8211;solfec&#8211;2.py</span><a class="headerlink" href="#hs0-lst3" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Listing of hs0–solfec–2.py</span><a class="headerlink" href="#hs0-lst3" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -429,16 +426,16 @@ This input file demonstrates several more elaborate features of the <a class="re
 </td></tr></table></div>
 </div>
 <p>When the hybrid modeling is used, the Parmec library will generate output files if the Parmec output interval has been set.
-Enabling this feature is demonstrated in lines 32&#8211;36, where the &#8220;parmec_interval&#8221; parameter of the hybrid solver is set to
-value &#8220;(tms0, 0.03)&#8221;. The &#8220;tms0&#8221; object is Parmec&#8217;s <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number, which in this case defines
-a variable output frequency for the Parmec output files. The second number, &#8220;0.03&#8221;, defines a constant time interval, at which
-<a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-history"><span class="std std-ref">Parmec time histories</span></a> will be generated. These are requested in the following lines 38&#8211;40.
-This functionality (runtime generation of time histories) is matched in Solfec via application of a <a class="reference internal" href="../../user/simulation.html#solfec-command-callback"><span class="std std-ref">callback function</span></a>, as demonstrated in lines 42&#8211;51. These time histories are later used, in lines 59&#8211;73, in order to
+Enabling this feature is demonstrated in lines 32–36, where the “parmec_interval” parameter of the hybrid solver is set to
+value “(tms0, 0.03)”. The “tms0” object is Parmec’s <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number, which in this case defines
+a variable output frequency for the Parmec output files. The second number, “0.03”, defines a constant time interval, at which
+<a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-history"><span class="std std-ref">Parmec time histories</span></a> will be generated. These are requested in the following lines 38–40.
+This functionality (runtime generation of time histories) is matched in Solfec via application of a <a class="reference internal" href="../../user/simulation.html#solfec-command-callback"><span class="std std-ref">callback function</span></a>, as demonstrated in lines 42–51. These time histories are later used, in lines 59–73, in order to
 create a plot of the vertical displacement versus time, for the lower and the upper body. The result is seen in <a class="reference internal" href="#hs0-fig2"><span class="std std-numref">Fig. 51</span></a>.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Although there is no damping in the model, some dissipative behaviour is seen in <a class="reference internal" href="#hs0-fig2"><span class="std std-numref">Fig. 51</span></a>.
-This is attributed to the force transfer mechanism between the two time&#8211;stepping methods, in Solfec and Parmec.
+This is attributed to the force transfer mechanism between the two time–stepping methods, in Solfec and Parmec.
 Constant forces from the previous time step in Parmec are used over the current time step in Solfec, and vice
 versa. The amount of this numerical dissipation decreases with time step size.</p>
 </div>
@@ -446,13 +443,13 @@ versa. The amount of this numerical dissipation decreases with time step size.</
 <span id="hs0-fig2"></span><a class="reference internal image-reference" href="../../../_images/hs0-dz.png"><img alt="../../../_images/hs0-dz.png" src="../../../_images/hs0-dz.png" style="width: 80%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 51 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver0">hybrid-solver0</a>: time histories of vertical displacement.</span></p>
 </div>
-<p><a class="reference internal" href="../../xdmf.html#solfec-xdmf"><span class="std std-ref">XDMF export</span></a> is demonstrated in lines 75&#8211;80. We note, that Solfec needs to be run for the second time,
+<p><a class="reference internal" href="../../xdmf.html#solfec-xdmf"><span class="std std-ref">XDMF export</span></a> is demonstrated in lines 75–80. We note, that Solfec needs to be run for the second time,
 without the viewer -v parameter, in order for the actual export to occur:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solver0</span><span class="o">/</span><span class="n">hs0</span><span class="o">-</span><span class="n">solfec</span><span class="o">-</span><span class="mf">1.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>While Parmec output files, also in the <a class="reference external" href="http://www.xdmf.org">XDMF format</a>, are located in the &#8216;out/hybrid&#8211;solver0&#8217; directory,
-the exported Solfec XDMF files (.h5 and .xmf files) are placed inside of &#8216;out/hybrid&#8211;solver0/hs0&#8211;solfec&#8217; directory. These files
+<p>While Parmec output files, also in the <a class="reference external" href="http://www.xdmf.org">XDMF format</a>, are located in the ‘out/hybrid–solver0’ directory,
+the exported Solfec XDMF files (.h5 and .xmf files) are placed inside of ‘out/hybrid–solver0/hs0–solfec’ directory. These files
 can be viewed using <a class="reference external" href="http://www.paraview.org">ParaView</a>.  An example session is depicted in <a class="reference internal" href="#hs0-fig3"><span class="std std-numref">Fig. 52</span></a>.</p>
 <div class="figure align-center" id="id7">
 <span id="hs0-fig3"></span><a class="reference internal image-reference" href="../../../_images/hs0-paraview.png"><img alt="../../../_images/hs0-paraview.png" src="../../../_images/hs0-paraview.png" style="width: 80%;" /></a>
@@ -500,9 +497,9 @@ can be viewed using <a class="reference external" href="http://www.paraview.org"
 <li class="toctree-l2"><a class="reference internal" href="../../applications.html">Applications</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../examples.html">Examples</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../hybrid_modeling.html">Hybrid modeling</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">A two&#8211;body impact problem</a></li>
-<li class="toctree-l4"><a class="reference internal" href="hs123.html">1,2,3&#8211;dimensional cube array acceleration dwell</a></li>
-<li class="toctree-l4"><a class="reference internal" href="hs3_scaling.html">3&#8211;dimensional cube array parallel scaling</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">A two–body impact problem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hs123.html">1,2,3–dimensional cube array acceleration dwell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hs3_scaling.html">3–dimensional cube array parallel scaling</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../reduced_order.html">Reduced order modeling</a></li>
@@ -529,7 +526,7 @@ can be viewed using <a class="reference external" href="http://www.paraview.org"
   <li><a href="../../examples.html">Solfec Examples</a><ul>
   <li><a href="../hybrid_modeling.html">Hybrid modeling</a><ul>
       <li>Previous: <a href="../hybrid_modeling.html" title="previous chapter">Hybrid modeling</a></li>
-      <li>Next: <a href="hs123.html" title="next chapter">1,2,3&#8211;dimensional cube array acceleration dwell</a></li>
+      <li>Next: <a href="hs123.html" title="next chapter">1,2,3–dimensional cube array acceleration dwell</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -616,8 +613,8 @@ can be viewed using <a class="reference external" href="http://www.paraview.org"
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../../_sources/solfec/examples/hybrid_modeling/hs0.rst.txt"

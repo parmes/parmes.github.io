@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Basics &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Kinematics" href="kinematics.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -64,7 +61,7 @@
 <p>We introduce basic notions here. Let us have a look at <a class="reference internal" href="#intro"><span class="std std-numref">Fig. 3</span></a>.</p>
 <div class="figure align-center" id="id1">
 <span id="intro"></span><a class="reference internal image-reference" href="../../_images/intro.png"><img alt="../../_images/intro.png" src="../../_images/intro.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">A multi&#8211;body domain.</span></p>
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">A multi–body domain.</span></p>
 </div>
 <p>There are four bodies in the figure. Placement of each point of every body is determined by a configuration <span class="math">\(\mathbf{q}_{i}\)</span>.
 Velocity of each point of every body is determined by a velocity <span class="math">\(\mathbf{u}_{i}\)</span>. Let <span class="math">\(\mathbf{q}\)</span> and <span class="math">\(\mathbf{u}\)</span>
@@ -72,7 +69,7 @@ collect configurations and velocities of all bodies. If the time history of velo
 computed as</p>
 <div class="math" id="equation-q-update">
 <span class="eqno">(1)<a class="headerlink" href="#equation-q-update" title="Permalink to this equation">¶</a></span>\[\mathbf{q}\left(t\right)=\mathbf{q}\left(0\right)+\int_{0}^{t}\mathbf{u}dt\]</div>
-<p>The velocity is determined by integrating Newton&#8217;s law</p>
+<p>The velocity is determined by integrating Newton’s law</p>
 <div class="math" id="equation-u-update">
 <span class="eqno">(2)<a class="headerlink" href="#equation-u-update" title="Permalink to this equation">¶</a></span>\[\mathbf{u}\left(t\right)=\mathbf{u}\left(0\right)+\mathbf{M}^{-1}\int_{0}^{t}\left(\mathbf{f}+\mathbf{H}^{T}\mathbf{R}\right)dt\]</div>
 <p>where <span class="math">\(\mathbf{M}\)</span> is an inertia operator (assumed constant here), <span class="math">\(\mathbf{f}\)</span> is an out of balance force,
@@ -127,12 +124,12 @@ Relation <a class="reference internal" href="#equation-locdyn">(10)</a> will be 
 \mathbf{C}\left(\mathbf{R}\right)=\mathbf{0}\]</div>
 <p>where <span class="math">\(\mathbf{C}\)</span> is a nonlinear and usually nonsmooth operator. A basic Contact Dynamics algorithm can be summarised as follows:</p>
 <ol class="arabic simple">
-<li>Perform first half&#8211;step <span class="math">\(\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\)</span>.</li>
+<li>Perform first half–step <span class="math">\(\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\)</span>.</li>
 <li>Update existing constraints and detect new contact points.</li>
 <li>Compute <span class="math">\(\mathbf{W}\)</span>, <span class="math">\(\mathbf{B}\)</span>.</li>
 <li>Solve <span class="math">\(\mathbf{C}\left(\mathbf{R}\right)=\mathbf{0}\)</span>.</li>
 <li>Update velocity <span class="math">\(\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{M}^{-1}h\mathbf{f}^{t+\frac{h}{2}}+\mathbf{M}^{-1}\mathbf{H}^{T}\mathbf{R}\)</span>.</li>
-<li>Perform second half&#8211;step <span class="math">\(\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\)</span>.</li>
+<li>Perform second half–step <span class="math">\(\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\)</span>.</li>
 </ol>
 <p>It should be emphasized that the above presentation exemplifies only a particular
 instance among many available variants of <a class="reference external" href="https://en.wikipedia.org/wiki/Contact_dynamics">Contact Dynamics</a>.</p>
@@ -295,8 +292,8 @@ instance among many available variants of <a class="reference external" href="ht
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/theory/basics.rst.txt"

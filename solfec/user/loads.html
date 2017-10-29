@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Loads &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Constraints" href="constraints.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -68,8 +65,8 @@
 <div class="topic">
 <p class="topic-title first">GRAVITY (solfec, vector)</p>
 <ul class="simple">
-<li>solfec &#8211; SOLFEC object for which the acceleration is set up</li>
-<li>vector &#8211; (vx, vy, vz) tuple defining the gravity acceleration.
+<li>solfec – SOLFEC object for which the acceleration is set up</li>
+<li>vector – (vx, vy, vz) tuple defining the gravity acceleration.
 Each entry is a number or a TIME_SERIES object defining the value of the acceleration component.</li>
 </ul>
 </div>
@@ -80,15 +77,15 @@ Each entry is a number or a TIME_SERIES object defining the value of the acceler
 <div class="topic">
 <p class="topic-title first">FORCE (body, kind, point, direction, value | data)</p>
 <ul>
-<li><p class="first">body &#8211; BODY object to which the force is applied</p>
+<li><p class="first">body – BODY object to which the force is applied</p>
 </li>
-<li><p class="first">kind &#8211; either &#8216;SPATIAL&#8217; or &#8216;CONVECTED&#8217;; the spatial direction remains fixed, while the convected one follows deformation</p>
+<li><p class="first">kind – either ‘SPATIAL’ or ‘CONVECTED’; the spatial direction remains fixed, while the convected one follows deformation</p>
 </li>
-<li><p class="first">point &#8211; (x, y, z) tuple with the referential point where the force is applied</p>
+<li><p class="first">point – (x, y, z) tuple with the referential point where the force is applied</p>
 </li>
-<li><p class="first">direction &#8211; (vx, vy, vz) tuple defining the direction of force</p>
+<li><p class="first">direction – (vx, vy, vz) tuple defining the direction of force</p>
 </li>
-<li><p class="first">value &#8211; a number, a TIME_SERIES object or a callback routine defining the value of
+<li><p class="first">value – a number, a TIME_SERIES object or a callback routine defining the value of
 the applied force. In case of a callback routine, the following format is assumed:</p>
 <p><strong>force = value_callback (data, q, u, time, step)</strong></p>
 <p>where data is the optional user data passed to FORCE routine (if data is a tuple it will expand
@@ -98,7 +95,7 @@ and step is the current time step passed to the callback. The callback returns a
 For rigid body the force reads (spatial force, spatial torque, referential torque), while for other
 kinds of bodies this is a generalized force of the same dimension as the velocity u (power conjugate to it).</p>
 </li>
-<li><p class="first">data &#8211; callback routine user data</p>
+<li><p class="first">data – callback routine user data</p>
 </li>
 </ul>
 </div>
@@ -109,10 +106,10 @@ kinds of bodies this is a generalized force of the same dimension as the velocit
 <div class="topic">
 <p class="topic-title first">TORQUE (body, kind, direction, value)</p>
 <ul class="simple">
-<li>body &#8211; BODY object of kind &#8216;RIGID&#8217; to which the torque is applied</li>
-<li>kind &#8211; either &#8216;SPATIAL&#8217; or &#8216;CONVECTED&#8217;; the spatial direction remains fixed, while the convected one follows deformation</li>
-<li>direction &#8211; (vx, vy, vz) tuple defining the direction of torque</li>
-<li>value &#8211; a number or a TIME_SERIES object defining the value of the applied torque</li>
+<li>body – BODY object of kind ‘RIGID’ to which the torque is applied</li>
+<li>kind – either ‘SPATIAL’ or ‘CONVECTED’; the spatial direction remains fixed, while the convected one follows deformation</li>
+<li>direction – (vx, vy, vz) tuple defining the direction of torque</li>
+<li>value – a number or a TIME_SERIES object defining the value of the applied torque</li>
 </ul>
 </div>
 </div>
@@ -122,9 +119,9 @@ kinds of bodies this is a generalized force of the same dimension as the velocit
 <div class="topic">
 <p class="topic-title first">PRESSURE (body, surfid, value)</p>
 <ul class="simple">
-<li>body &#8211; BODY object to which the pressure is applied (the shape has to be composed of a single MESH)</li>
-<li>surfid &#8211; the integer surface identifier</li>
-<li>value &#8211; a number or a TIME_SERIES object defining the value of the applied load</li>
+<li>body – BODY object to which the pressure is applied (the shape has to be composed of a single MESH)</li>
+<li>surfid – the integer surface identifier</li>
+<li>value – a number or a TIME_SERIES object defining the value of the applied load</li>
 </ul>
 </div>
 </div>
@@ -294,8 +291,8 @@ kinds of bodies this is a generalized force of the same dimension as the velocit
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/user/loads.rst.txt"

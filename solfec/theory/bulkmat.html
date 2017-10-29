@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>Bulk materials &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Solfec Validation Manual" href="../validation.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -64,9 +61,9 @@
 <p>A bulk material model is assigned to a volume and defines its deformable characteristic. Available materials are summarized
 in the sections below. See also the <a class="reference internal" href="../user/materials.html#solfec-command-bulk-material"><span class="std std-ref">BULK_MATERIAL input command</span></a>.</p>
 <div class="section" id="kirchhoff-saint-venant">
-<h2>Kirchhoff &#8211; Saint Venant<a class="headerlink" href="#kirchhoff-saint-venant" title="Permalink to this headline">¶</a></h2>
+<h2>Kirchhoff – Saint Venant<a class="headerlink" href="#kirchhoff-saint-venant" title="Permalink to this headline">¶</a></h2>
 <p>This is a simple extension of the linearly elastic material to the large deformation regime. Suitable for large rotation,
-small strain problems. The strain energy function <span class="math">\(\Psi\)</span> of the Kirchhoff &#8211; Saint Venant materials reads</p>
+small strain problems. The strain energy function <span class="math">\(\Psi\)</span> of the Kirchhoff – Saint Venant materials reads</p>
 <div class="math">
 \[\Psi=\frac{1}{4}\left[\mathbf{F}^{T}\mathbf{F}-\mathbf{I}\right]:\mathbf{C}:\left[\mathbf{F}^{T}\mathbf{F}-\mathbf{I}\right]\]</div>
 <p>where</p>
@@ -131,7 +128,7 @@ The Lamé constants can be expressed in terms of the Young modulus <span class="
 <li class="toctree-l3"><a class="reference internal" href="conform.html">Contact formulations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="solvers.html">Constraint solvers</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Bulk materials</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#kirchhoff-saint-venant">Kirchhoff &#8211; Saint Venant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kirchhoff-saint-venant">Kirchhoff – Saint Venant</a></li>
 </ul>
 </li>
 </ul>
@@ -245,8 +242,8 @@ The Lamé constants can be expressed in terms of the Young modulus <span class="
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../_sources/solfec/theory/bulkmat.rst.txt"

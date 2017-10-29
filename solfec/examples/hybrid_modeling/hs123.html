@@ -1,17 +1,14 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
     <title>1,2,3–dimensional cube array acceleration dwell &#8212; PARMES  documentation</title>
-    
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/parmes.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../../',
@@ -25,7 +22,7 @@
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="3–dimensional cube array parallel scaling" href="hs3_scaling.html" />
@@ -51,7 +48,7 @@
   </style>
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -60,53 +57,53 @@
           <div class="body" role="main">
             
   <div class="section" id="dimensional-cube-array-acceleration-dwell">
-<span id="solfec-examples-hybrid-modeling-hs123"></span><h1>1,2,3&#8211;dimensional cube array acceleration dwell<a class="headerlink" href="#dimensional-cube-array-acceleration-dwell" title="Permalink to this headline">¶</a></h1>
-<p>This is a family of 1,2 and 3&#8211;dismenional examples demonstrating applications of the <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>
+<span id="solfec-examples-hybrid-modeling-hs123"></span><h1>1,2,3–dimensional cube array acceleration dwell<a class="headerlink" href="#dimensional-cube-array-acceleration-dwell" title="Permalink to this headline">¶</a></h1>
+<p>This is a family of 1,2 and 3–dismenional examples demonstrating applications of the <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>
 on an array of cubes subject to a constant amplitude and frequency acceleration since dwell signal. The input files for these examples
 are located in:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver1">solfec/examples/hybrid&#8211;solver1</a> for the 1&#8211;dimensional array.</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">solfec/examples/hybrid&#8211;solver2</a> for the 2&#8211;dimensional array.</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">solfec/examples/hybrid&#8211;solver3</a> for the 3&#8211;dimensional array.</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver1">solfec/examples/hybrid–solver1</a> for the 1–dimensional array.</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">solfec/examples/hybrid–solver2</a> for the 2–dimensional array.</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">solfec/examples/hybrid–solver3</a> for the 3–dimensional array.</li>
 </ul>
-<p>We focus on the 2&#8211;dimensional example, leaving the 1&#8211; and 3&#8211;dimensional cases for self&#8211;study. The
-<a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">solfec/examples/hybrid&#8211;solver2</a> directory contains:</p>
+<p>We focus on the 2–dimensional example, leaving the 1– and 3–dimensional cases for self–study. The
+<a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">solfec/examples/hybrid–solver2</a> directory contains:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/README">README</a> &#8211; a text based specification of the problem</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec.py">hs2&#8211;parmec.py</a> &#8211; including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py">hs2&#8211;solfec.py</a> &#8211; including the <a class="reference internal" href="../../index.html#solfec-index"><span class="std std-ref">Solfec</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2&#8211;state&#8211;1.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id10" id="id2">[1]</a></li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2&#8211;state&#8211;2.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id13" id="id4">[2]</a></li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-3.pvsm">hs2&#8211;state&#8211;3.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig3"><span class="std std-numref">Fig. 55</span></a></li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-4.pvsm">hs2&#8211;state&#8211;4.pvsm</a> &#8211; <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig4"><span class="std std-numref">Fig. 56</span></a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/README">README</a> – a text based specification of the problem</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec.py">hs2–parmec.py</a> – including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py">hs2–solfec.py</a> – including the <a class="reference internal" href="../../index.html#solfec-index"><span class="std std-ref">Solfec</span></a> input code</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2–state–1.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id10" id="id2">[1]</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2–state–2.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id13" id="id4">[2]</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-3.pvsm">hs2–state–3.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig3"><span class="std std-numref">Fig. 55</span></a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-4.pvsm">hs2–state–4.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig4"><span class="std std-numref">Fig. 56</span></a></li>
 </ul>
 <p><a class="reference internal" href="#hs2-fig1"><span class="std std-numref">Fig. 53</span></a> states the problem and describes the hybrid model.</p>
 <div class="figure align-center" id="id16">
 <span id="hs2-fig1"></span><a class="reference internal image-reference" href="../../../_images/hs2.png"><img alt="../../../_images/hs2.png" src="../../../_images/hs2.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 53 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: a 2&#8211;dimensional cube array acceleration dwell hybrid model</span></p>
+<p class="caption"><span class="caption-number">Fig. 53 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: a 2–dimensional cube array acceleration dwell hybrid model</span></p>
 </div>
 <p>An actual array geometry is depicted in <a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>, where the color coding is as follows:</p>
 <ul class="simple">
-<li>blue &#8211; the outer Parmec bodies where acceleration sweep signal is applied</li>
-<li>yellow &#8211; the inner Parmec bodies interacting via spring&#8211;dashpot elements</li>
-<li>green &#8211; the boundary Parmec&#8211;Solfec bodies, modeled in both codes</li>
-<li>grey &#8211; the inner Solfec bodies, interacting via a non&#8211;smooth contact law</li>
+<li>blue – the outer Parmec bodies where acceleration sweep signal is applied</li>
+<li>yellow – the inner Parmec bodies interacting via spring–dashpot elements</li>
+<li>green – the boundary Parmec–Solfec bodies, modeled in both codes</li>
+<li>grey – the inner Solfec bodies, interacting via a non–smooth contact law</li>
 </ul>
 <div class="figure align-center" id="id17">
 <span id="hs2-fig2"></span><a class="reference internal image-reference" href="../../../_images/hs2-geometry.png"><img alt="../../../_images/hs2-geometry.png" src="../../../_images/hs2-geometry.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 54 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: initial geometry.</span></p>
 </div>
-<p><a class="reference internal" href="#hs2-lst1"><span class="std std-numref">Listing 4</span></a> includes the Parmec file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec.py">hs2&#8211;parmec.py</a>.
-Lines 1&#8211;8 define basic parameters of the model. We note, that it is possible to transform the current example into a sine sweep test by changing
-the &#8220;hifq&#8221; variable to a value greater than &#8220;lofq&#8221;. Also the size of the problem can be modified by altering the &#8220;N&#8221; and &#8220;M&#8221; parameters.
-Lines 10&#8211;25 are Python specific and help to find the path to the parmec source directory, in order to include the acceleration sweep generation
+<p><a class="reference internal" href="#hs2-lst1"><span class="std std-numref">Listing 4</span></a> includes the Parmec file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec.py">hs2–parmec.py</a>.
+Lines 1–8 define basic parameters of the model. We note, that it is possible to transform the current example into a sine sweep test by changing
+the “hifq” variable to a value greater than “lofq”. Also the size of the problem can be modified by altering the “N” and “M” parameters.
+Lines 10–25 are Python specific and help to find the path to the parmec source directory, in order to include the acceleration sweep generation
 script into the current system path. This is then used in line 30, and further until line 38, to set up the linear motion excitation vector,
 where the velocity time history, associated with the sine dwell signal, is used. Following definition of a translate cube creation function,
-in lines 43&#8211;58, the array of cubes is generated in lines 60&#8211;68. Then the prescribed motion is applied to the outer shell of cubes in lines 70&#8211;76.
-Finally, between the lines 78 and 98 contact spring&#8211;dashpot elements are defined and inserted into the model. For information, the critical time
+in lines 43–58, the array of cubes is generated in lines 60–68. Then the prescribed motion is applied to the outer shell of cubes in lines 70–76.
+Finally, between the lines 78 and 98 contact spring–dashpot elements are defined and inserted into the model. For information, the critical time
 step estimation for the model is printed out in line 101.</p>
 <div class="literal-block-wrapper docutils container" id="hs2-lst1">
-<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">Listing of hs2&#8211;parmec.py</span><a class="headerlink" href="#hs2-lst1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">Listing of hs2–parmec.py</span><a class="headerlink" href="#hs2-lst1" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
   2
   3
@@ -315,17 +312,17 @@ step estimation for the model is printed out in line 101.</p>
 </pre></div>
 </td></tr></table></div>
 </div>
-<p><a class="reference internal" href="#hs2-lst2"><span class="std std-numref">Listing 5</span></a> includes the Solfec file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py">hs2&#8211;solfec.py</a>.
-Lines 1&#8211;5 define the global model parameters. Lines 7&#8211;24 set up the <a class="reference internal" href="../../user/solfec.html#solfec-user-solfec"><span class="std std-ref">SOLFEC object</span></a>,
+<p><a class="reference internal" href="#hs2-lst2"><span class="std std-numref">Listing 5</span></a> includes the Solfec file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py">hs2–solfec.py</a>.
+Lines 1–5 define the global model parameters. Lines 7–24 set up the <a class="reference internal" href="../../user/solfec.html#solfec-user-solfec"><span class="std std-ref">SOLFEC object</span></a>,
 <a class="reference internal" href="../../user/materials.html#solfec-command-bulk-material"><span class="std std-ref">bulk</span></a> and <a class="reference internal" href="../../user/materials.html#solfec-command-surface-material"><span class="std std-ref">surface</span></a> materials, and a unit
-cube template. Lines 26&#8211;56 contain code creating the array of Solfec bodies as well as the mapping between the
+cube template. Lines 26–56 contain code creating the array of Solfec bodies as well as the mapping between the
 Parmec and the Solfec body numbers. The double loop starting in line 30 of <a class="reference internal" href="#hs2-lst2"><span class="std std-numref">Listing 5</span></a> mimics the double loop
 starting in line 62 of <a class="reference internal" href="#hs2-lst1"><span class="std std-numref">Listing 4</span></a>. This way, it is easy to recreate the exact sequence of creation of Parmec
 bodies within the Solfec input file. Hence, it is easy to construct the <em>parmec2solfec</em> dictionary mapping of body numbers,
-on the fly, while creating the Solfec model. The inner Solfec bodies (grey in <a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>) are created in lines 33&#8211;45.
+on the fly, while creating the Solfec model. The inner Solfec bodies (grey in <a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>) are created in lines 33–45.
 This same range of i, j indices is skipped in the Parmec input file (line 65 in <a class="reference internal" href="#hs2-lst1"><span class="std std-numref">Listing 4</span></a>). Here, finite element
-bodies are created, based on a 2x2x2 <a class="reference internal" href="../../user/geometry.html#solfec-command-hex"><span class="std std-ref">hexahedral mesh</span></a>. The z&#8211;direction of the bodies is <a class="reference internal" href="../../user/constraints.html#solfec-command-fix-direction"><span class="std std-ref">fixed</span></a>
-to keep them in plane. The rigid &#8220;boundary&#8221; bodies for the Solfec&#8211;Parmec overlap interface are created in lines 50&#8211;53. We note,
+bodies are created, based on a 2x2x2 <a class="reference internal" href="../../user/geometry.html#solfec-command-hex"><span class="std std-ref">hexahedral mesh</span></a>. The z–direction of the bodies is <a class="reference internal" href="../../user/constraints.html#solfec-command-fix-direction"><span class="std std-ref">fixed</span></a>
+to keep them in plane. The rigid “boundary” bodies for the Solfec–Parmec overlap interface are created in lines 50–53. We note,
 that when a Solfec input file is run in parallel (using <em>solfec-mpi</em>) some of the bodies that are created in the loop may actually
 reside on other processor ranks. Hence we test this using the <a class="reference internal" href="../../user/simulation.html#solfec-command-here"><span class="std std-ref">HERE command</span></a> and accordingly create
 valid fragments of the parmec2solfec mapping on each MPI rank. Such fragmentary mappings are brought together during initialization
@@ -333,7 +330,7 @@ of the <a class="reference internal" href="../../user/solvers.html#solfec-comman
 to line 67 in <a class="reference internal" href="#hs2-lst1"><span class="std std-numref">Listing 4</span></a>, where Parmec bodies are created. The rest of the file is similar to that already detailed in the
 description of <a class="reference internal" href="hs0.html#hs0-lst3"><span class="std std-numref">Listing 3</span></a>, in the context of the <a class="reference internal" href="hs0.html#solfec-examples-hybrid-modeling-hs0"><span class="std std-ref">two body impact example</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="hs2-lst2">
-<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Listing of hs2&#8211;solfec.py</span><a class="headerlink" href="#hs2-lst2" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Listing of hs2–solfec.py</span><a class="headerlink" href="#hs2-lst2" title="Permalink to this code">¶</a></div>
 <div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -514,30 +511,30 @@ description of <a class="reference internal" href="hs0.html#hs0-lst3"><span clas
 <div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solfec2</span><span class="o">/</span><span class="n">hs2</span><span class="o">-</span><span class="n">solfec</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>in order to produce the XDMF&#8211;exported Solfec results. These will be located in the &#8216;out/hybrid&#8211;solver2/hs2&#8211;solfec&#8217; directory,
+<p>in order to produce the XDMF–exported Solfec results. These will be located in the ‘out/hybrid–solver2/hs2–solfec’ directory,
 relative to the solfec source directory, from where this example is conveniently called. The Parmec output files are located
-in the &#8216;out/hybrid&#8211;solver2&#8217; directory. While Solfec viewer can be used to view and post&#8211;process the Solfec part of the results
-without depending on the exported XDMF files, <a class="reference external" href="http://www.paraview.org">ParaView</a> can be used to post&#8211;process the generated .xmf files.
+in the ‘out/hybrid–solver2’ directory. While Solfec viewer can be used to view and post–process the Solfec part of the results
+without depending on the exported XDMF files, <a class="reference external" href="http://www.paraview.org">ParaView</a> can be used to post–process the generated .xmf files.
 The application of ParaView can be simplified by utilising the two state .pvsm files distributed with the example: by selecting
-&#8220;File/Load State...&#8221; menu choice in ParaView one can load a pre&#8211;set post&#8211;processing state. The videos included below depict the
+“File/Load State…” menu choice in ParaView one can load a pre–set post–processing state. The videos included below depict the
 forced motion of the hybrid system, visualised using the two enclosed states files.</p>
 <table class="docutils footnote" frame="void" id="id10" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2&#8211;state&#8211;1.pvsm</a>.</td></tr>
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2–state–1.pvsm</a>.</td></tr>
 </tbody>
 </table>
 <p align="center"><iframe width="648" height="432" src="//www.youtube.com/embed/Eg_Qm2tOtIY?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><table class="docutils footnote" frame="void" id="id13" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id4">[2]</a></td><td><a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2&#8211;state&#8211;2.pvsm</a>.</td></tr>
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2–state–2.pvsm</a>.</td></tr>
 </tbody>
 </table>
 <p align="center"><iframe width="648" height="432" src="//www.youtube.com/embed/EzyFSkX7lLM?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference internal" href="#hs2-fig3"><span class="std std-numref">Fig. 55</span></a> and <a class="reference internal" href="#hs2-fig4"><span class="std std-numref">Fig. 56</span></a> respectively show the linear velocity magnitude time history and the displacement magnitude
-time history, at points A (Parmec) and B (Solfec), marked out in <a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>. These plots were generated using ParaView&#8217;s &#8220;Plot
-Selection Over Time&#8221; feature.</p>
+time history, at points A (Parmec) and B (Solfec), marked out in <a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>. These plots were generated using ParaView’s “Plot
+Selection Over Time” feature.</p>
 <div class="figure align-center" id="id18">
 <span id="hs2-fig3"></span><a class="reference internal image-reference" href="../../../_images/hs2-linvel-mag.png"><img alt="../../../_images/hs2-linvel-mag.png" src="../../../_images/hs2-linvel-mag.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 55 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Linear velocity magnitude history at points A and B (<a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>).</span></p>
@@ -588,9 +585,9 @@ Selection Over Time&#8221; feature.</p>
 <li class="toctree-l2"><a class="reference internal" href="../../applications.html">Applications</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../../examples.html">Examples</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="../hybrid_modeling.html">Hybrid modeling</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="hs0.html">A two&#8211;body impact problem</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">1,2,3&#8211;dimensional cube array acceleration dwell</a></li>
-<li class="toctree-l4"><a class="reference internal" href="hs3_scaling.html">3&#8211;dimensional cube array parallel scaling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hs0.html">A two–body impact problem</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">1,2,3–dimensional cube array acceleration dwell</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hs3_scaling.html">3–dimensional cube array parallel scaling</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../reduced_order.html">Reduced order modeling</a></li>
@@ -616,8 +613,8 @@ Selection Over Time&#8221; feature.</p>
   <li><a href="../../index.html">SOLFEC</a><ul>
   <li><a href="../../examples.html">Solfec Examples</a><ul>
   <li><a href="../hybrid_modeling.html">Hybrid modeling</a><ul>
-      <li>Previous: <a href="hs0.html" title="previous chapter">A two&#8211;body impact problem</a></li>
-      <li>Next: <a href="hs3_scaling.html" title="next chapter">3&#8211;dimensional cube array parallel scaling</a></li>
+      <li>Previous: <a href="hs0.html" title="previous chapter">A two–body impact problem</a></li>
+      <li>Next: <a href="hs3_scaling.html" title="next chapter">3–dimensional cube array parallel scaling</a></li>
   </ul></li>
   </ul></li>
   </ul></li>
@@ -704,8 +701,8 @@ Selection Over Time&#8221; feature.</p>
       &copy;2017 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.5.2</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
       <a href="../../../_sources/solfec/examples/hybrid_modeling/hs123.rst.txt"
