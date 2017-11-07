@@ -220,9 +220,18 @@ reads</p>
 \cdot\left|\text{sign}\left(\text{spring}\left(\text{stroke}\left(t\right)\right)\right)\right|\right]\]</div>
 <p>where</p>
 <div class="math">
-\[\text{direction}\left(t\right)=\left(\text{point2}\left(t\right)-\text{point1}
-\left(t\right)\right)/\left|\text{point2}\left(t\right)-\text{point1}\left(t\right)
-\right|\textbf{ or } \text{constant}\left(d_{x},d_{y},d_{z}\right)\textbf{ or }\text{tangent}\]</div>
+\[\begin{split}\text{direction}\left(t\right)=\left\{ \begin{array}{c}
+\text{d1}\left(t\right)=\left(\text{geom2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|
+\text{geom2}\left(t\right)-\text{point1}\left(t\right)\right|\mathbf{\,if\,}\text{geom2 = }\left(x,y,z\right)\\
+\left(\text{point0}\left(t\right)-\text{point1}\left(t\right)\right)\cdot\text{normal0}\left(t\right)\mathbf{\,if\,}
+\text{ geom2 =[point0, normal0]}\\\text{constant }\mathbf{direction}=\left(d_{x},d_{y},d_{z}\right)\\
+\text{d1}\left(t\right)-\text{d1}\left(t\right)\cdot\left(d_{x},d_{y},d_{z}\right)\text{if }\mathbf{planar}\text{ is enabled}
+\end{array}\right.\end{split}\]</div>
+<div class="math">
+\[\begin{split}\text{point2}\left(t\right)=\left\{ \begin{array}{c}
+\text{geom2}\left(t\right)\mathbf{\,if\,}\text{geom2 = }\left(x,y,z\right)\\
+\text{proj}_{\text{geom2}}\left(\text{point1}\right)\mathbf{\,if\,}\text{ geom2 =[point0, normal0]}
+\end{array}\right.\end{split}\]</div>
 <div class="math">
 \[\text{stroke}\left(t\right)=\text{direction}\left(t\right)\cdot\left[
 \text{point2}\left(t\right)-\text{point1}\left(t\right)\right]-\text{direction}\left(
@@ -241,7 +250,7 @@ defined by means of lookup tables; <span class="math">\(\text{force}\left(t\righ
 <span class="math">\(-\text{force}\left(t\right)\)</span> is applied at <span class="math">\(\text{point1}\left(t\right)\)</span>; dashpot force is not applied when
 spring force is zero.</p>
 <div class="topic">
-<p class="topic-title first">sprnum = SPRING (part1, point1, part2, point2, spring | dashpot, direction, planar, unload, ylim)</p>
+<p class="topic-title first">sprnum = SPRING (part1, point1, part2, geom2, spring | dashpot, direction, planar, unload, ylim) <span class="red">(experimental)</span></p>
 <ul class="simple">
 <li><strong>sprnum</strong> - spring number</li>
 <li><strong>part1</strong> - first particle number</li>
@@ -249,8 +258,11 @@ spring force is zero.</p>
 with the first particle</li>
 <li><strong>part2</strong> - second particle number; <span class="math">\(-1\)</span> can be used to
 indicate a single-particle constraint</li>
-<li><strong>point2</strong> - tuple <span class="math">\(\left(x,y,z\right)\)</span> defining a second
-point, either moving with the second particle, or a spatial point</li>
+<li><strong>geom2</strong> - tuple <span class="math">\(\left(x,y,z\right)\)</span> defining a second point, either moving with the second particle, or a spatial point;
+alternatively a list storing a point and a normal [<span class="math">\(\left(p_{x},p_{y},p_{z}\right)\)</span>, <span class="math">\(\left(n_{x},n_{y},n_{z}\right)\)</span>]
+defining a referential plane, moving with the second particle or spatially fixed; when a plane is defined the spring direction and
+stroke are calculated from a projection of <strong>point1</strong> onto this plane: in this case the input arguments <strong>direction</strong> and <strong>planar</strong>
+are ignored</li>
 <li><strong>spring</strong> - spring force lookup table
 <span class="math">\(\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]\)</span>;
 used for both loading and unloading when the <strong>unload</strong> table and the
