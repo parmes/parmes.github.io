@@ -250,7 +250,7 @@ defined by means of lookup tables; <span class="math">\(\text{force}\left(t\righ
 <span class="math">\(-\text{force}\left(t\right)\)</span> is applied at <span class="math">\(\text{point1}\left(t\right)\)</span>; dashpot force is not applied when
 spring force is zero.</p>
 <div class="topic">
-<p class="topic-title first">sprnum = SPRING (part1, point1, part2, geom2, spring | dashpot, direction, planar, unload, ylim) <span class="red">(experimental)</span></p>
+<p class="topic-title first">sprnum = SPRING (part1, point1, part2, geom2, spring | dashpot, direction, planar, unload, ylim, inactive) <span class="red">(experimental)</span></p>
 <ul class="simple">
 <li><strong>sprnum</strong> - spring number</li>
 <li><strong>part1</strong> - first particle number</li>
@@ -282,16 +282,17 @@ must be monotonically increasing</li>
 compression, <span class="math">\(f_{yc}&lt;0\)</span>, and tension, <span class="math">\(f_{yt}&gt;0\)</span>, yield
 limits; the unloading curve begins to be used once either of these
 limits is crossed; default: (0, 0)</li>
+<li><strong>inactive</strong> - if <em>True</em> create an inactive spring, that can be activated by the <a class="reference internal" href="#parmec-command-unspring"><span class="std std-ref">UNSPRING</span></a> command; default: <em>False</em></li>
 </ul>
 </div>
 </div>
 <div class="section" id="unspring">
-<h2>UNSPRING<a class="headerlink" href="#unspring" title="Permalink to this headline">¶</a></h2>
+<span id="parmec-command-unspring"></span><h2>UNSPRING<a class="headerlink" href="#unspring" title="Permalink to this headline">¶</a></h2>
 <p>Undoes user defined selection of springs (<strong>msprings</strong>) based on the value of spring entities experienced by a different user defined
 selection of springs (<strong>tsprings</strong>). Modifications to the spring curves occur during a simulation. Undone springs remain in the simulation
 but generate zero forces.</p>
 <div class="topic">
-<p class="topic-title first">UNSPRING (tsprings, msprings, limits | entity, operator, abs, nsteps, nfreq, unload) <span class="red">(under development)</span></p>
+<p class="topic-title first">UNSPRING (tsprings, msprings, limits | entity, operator, abs, nsteps, nfreq, unload, activate) <span class="red">(under development)</span></p>
 <ul class="simple">
 <li><strong>tsprings</strong> - list of unique spring numbers whose spring entities are assessed against a criteria defined by limits; must be nonempty</li>
 <li><strong>msprings</strong> - list of unique spring numbers which are to be modified if <strong>tsprings</strong> meet the limits criteria (springs defined in <strong>tsprings</strong>
@@ -310,6 +311,7 @@ originate at zero and increase monotonically; once modification is activated, fo
 individually applied with a shift specific to the current displacement; both negative and positive displacement increments decrease total
 spring forces until zero; the spring force remains zero ever after; dashpot force is zero during unloading; default: instantaneous unloading
 to zero total force</li>
+<li>activate - a list of inactive <a class="reference internal" href="#parmec-command-spring"><span class="std std-ref">SPRING</span></a> numbers that will be activated upon complete unloading of all <strong>msprings</strong>; default: empty</li>
 </ul>
 </div>
 <p>By default, modification of <strong>msprings</strong> is based on the sum of the elastic spring force values across all spring numbers defined in tsprings. This is a sum
