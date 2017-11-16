@@ -233,9 +233,14 @@ reads</p>
 \text{proj}_{\text{geom2}}\left(\text{point1}\right)\mathbf{\,if\,}\text{ geom2 =[point0, normal0]}
 \end{array}\right.\end{split}\]</div>
 <div class="math">
-\[\text{stroke}\left(t\right)=\text{direction}\left(t\right)\cdot\left[
-\text{point2}\left(t\right)-\text{point1}\left(t\right)\right]-\text{direction}\left(
-0\right)\cdot\left[\text{point2}\left(0\right)-\text{point1}\left(0\right)\right]\]</div>
+\[\text{stroke0}=\text{direction}\left(0\right)\cdot\left[\text{point2}\left(0\right)-\text{point1}\left(0\right)\right]\]</div>
+<div class="math">
+\[\begin{split}\text{stroke}\left(t\right)=\left\{ \begin{array}{c}
+\text{direction}\left(t\right)\cdot\left[\text{point2}\left(t\right)-\text{point1}\left(t\right)\right]-
+\text{stroke0}\mathbf{\,\,\,if\,}\text{geom2 = }\left(x,y,z\right)\\
+\text{normal0}\left(t\right)\cdot\left[\text{point1}\left(t\right)-
+\text{point2}\left(t\right)\right]\mathbf{\,\,\,if\,}\text{ geom2 =[point0, normal0]}
+\end{array}\right.\end{split}\]</div>
 <div class="math">
 \[\text{velocity}\left(t\right)=\text{direction}\left(t\right)\cdot\frac{d}{dt}
 \left[\text{point2}\left(t\right)-\text{point1}\left(t\right)\right]\]</div>
