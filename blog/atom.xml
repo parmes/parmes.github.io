@@ -19,11 +19,11 @@
 As a part of it an &lt;a class=&quot;reference internal&quot; href=&quot;parmec/input_commands.html#parmec-command-unspring&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;UNSPRING&lt;/span&gt;&lt;/a&gt; command allows to deactivate selected springs
 when a total force of a set of “test springs” exceeds a prescribed bound. This facilitates modelling
 of simple failure scenarios. Spring states are outputted as scalar fields (in XDMF format) and can be
-viewed with &lt;a class=&quot;reference external&quot; href=&quot;http://www.paraview.org&quot;&gt;ParaView&lt;/a&gt; similar tools. The video clip below is based on &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/tkoziara/parmec/blob/master/tests/unspring.py&quot;&gt;this
+viewed with &lt;a class=&quot;reference external&quot; href=&quot;http://www.paraview.org&quot;&gt;ParaView&lt;/a&gt; or similar tools. The video clip below is based on &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/tkoziara/parmec/blob/master/tests/unspring.py&quot;&gt;this
 example&lt;/a&gt;.  Spring states can be visualized
 by selecting the ‘SS’ entity and using “Coor Map Editor” in ParaView to “Interpret Values as Cathegories”
-(a checkbox at the top of the editor dialog box) and then adding the discrete values used by the ‘SS’ field
-(-3.0, -2.0, -1.0, …) as described in the &lt;a class=&quot;reference internal&quot; href=&quot;parmec/input_commands.html#parmec-command-output&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;OUTPUT command&lt;/span&gt;&lt;/a&gt;.  Spring states
+(checkbox at the top of the editor dialog box) and then adding the discrete values used by the ‘SS’ field
+(-3.0, -2.0, -1.0, …) as described for the &lt;a class=&quot;reference internal&quot; href=&quot;parmec/input_commands.html#parmec-command-output&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;OUTPUT command&lt;/span&gt;&lt;/a&gt;. Spring states
 can also be outputted as &lt;a class=&quot;reference internal&quot; href=&quot;parmec/input_commands.html#parmec-command-history&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;HISTORY&lt;/span&gt;&lt;/a&gt; (as in the example).  (…)&lt;/p&gt;
 </content>
   </entry>
