@@ -476,7 +476,8 @@ particle entities: (position) ’PX’, ’PY’, ’PZ’, ’|P|’,
 (body force) ’FX’, ’FY’, ’FZ’, ’|F|’, (body torque) ’TX’, ’TY’,
 ’TZ’, ’|T|’; spring entities: (spring length) ‘LENGTH’, (spring
 stroke) ’STROKE’, (spring total force) ’STF’, (spring force without
-damping) ’SF’;</li>
+damping) ’SF’, (spring state) ‘SS’, cf. <a class="reference internal" href="#parmec-command-output"><span class="std std-ref">OUTPUT</span></a>
+for description;</li>
 <li><strong>source</strong> - particle number <em>i</em>, or a list of particle numbers
 [<em>i, j, …</em>], or a spatial sphere defined as tuple
 <span class="math">\(\left(x,y,z,r\right)\)</span> <span class="red">(under development)</span>, or a spatial box defined as tuple
@@ -568,6 +569,13 @@ body torque (modes: ’SPH’, ’MESH’, ’RB’)</li>
 (modes: ’CD’)</li>
 <li>’SF’ - scalar field of spring force magnitude, without dashpot
 contribution (modes: ’CD’, ’SD’)</li>
+<li><dl class="first docutils">
+<dt>‘SS’ - scalar field of spring states, where -3.0 denotes a regular spring (always active),</dt>
+<dd>-2.0 denotes an active spring, -1.0 denotes a deactivated spring (zero force), and values
+<span class="math">\(\ge0\)</span> denote a spring currently being unloaded (the number itself denotes
+<a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> used as an unloading curve) (modes: ‘SD’)</dd>
+</dl>
+</li>
 <li>’AREA’ - scalar field of contact area (modes: ’CD’)</li>
 <li>’PAIR’ - 2-component vector field of particle pair numbers (modes:
 ’CD’, ’SD’)</li>
@@ -712,6 +720,8 @@ it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimenta
   <ul>
     
     
+      <li><a href="../blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+    
       <li><a href="../blog/pop_audit.html">Dec 12 - Solfec POP audit report</a></li>
     
       <li><a href="../blog/cached_time_series.html">Aug 01 - Partially cached time series in Solfec</a></li>
@@ -719,8 +729,6 @@ it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimenta
       <li><a href="../blog/tr1_post.html">May 20 - TR1: Co-rotated and reduced order time integrators</a></li>
     
       <li><a href="../blog/hybrid_solver.html">Apr 27 - Hybrid solver in Solfec</a></li>
-    
-      <li><a href="../blog/about.html">Jun 13 - About PARMES</a></li>
     
   </ul>
 
@@ -739,11 +747,16 @@ it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimenta
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/optimization.html">optimization</a></li>
+        <a href="../blog/tag/failure.html">failure</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
+        <a href="../blog/tag/optimization.html">optimization</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
         <a href="../blog/tag/parmec.html">parmec</a></li>
       
     
@@ -767,10 +780,19 @@ it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimenta
         <a href="../blog/tag/solfec.html">solfec</a></li>
       
     
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../blog/tag/springs.html">springs</a></li>
+      
+    
   </ul>
 
   <h3><a href="../blog/archive.html">Archives</a></h3>
   <ul>
+  
+    
+    <li><a href="../blog/2018.html">2018 (1)</a></li>
+    
   
     
     <li><a href="../blog/2017.html">2017 (4)</a></li>
@@ -787,7 +809,7 @@ it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimenta
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2017 PARMES team.
+      &copy;2018 PARMES team.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>

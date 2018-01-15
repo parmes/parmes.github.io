@@ -59,8 +59,8 @@
 <h1>Parallel mechanics and particulate media software <a class="reference internal" href="blog/about.html#about-parmes"><span class="std std-ref">blog</span></a> <a href="blog/atom.xml"><img src="_static/feed.png" title="Atom feeds" width="17" height="17" /></a><a class="headerlink" href="#parallel-mechanics-and-particulate-media-software-blog-feed" title="Permalink to this headline">¶</a></h1>
 <p>Recently modified pages:</p>
 <ul class="simple">
+<li>On Jan 15 2018 <a class="reference internal" href="parmec/input_commands.html#parmec-input-commands"><span class="std std-ref">Parmec Input Commands</span></a></li>
 <li>On Nov 25 2017 <a class="reference internal" href="solfec/user/solvers.html#solfec-user-solvers"><span class="std std-ref">Solvers</span></a></li>
-<li>On Nov 17 2017 <a class="reference internal" href="parmec/input_commands.html#parmec-input-commands"><span class="std std-ref">Parmec Input Commands</span></a></li>
 <li>On Oct 6 2017 <a class="reference internal" href="solfec/user.html#solfec-user"><span class="std std-ref">Solfec User Manual</span></a></li>
 <li>On Oct 6 2017 <a class="reference internal" href="solfec/user/fragmentation.html#solfec-user-fragmentation"><span class="std std-ref">Fragmentation</span></a></li>
 <li>On Oct 6 2017 <a class="reference internal" href="solfec/user/results.html#solfec-user-results"><span class="std std-ref">Results</span></a></li>
@@ -72,6 +72,18 @@
 </ul>
 <p>Recent blog posts:</p>
 <ul class="postlist-style-none postlist">
+<li><p class="first">January 15, 2018 - <a class="reference internal" href="blog/unspring_and_spring_state.html">UNSPRING and spring state in Parmec</a></p>
+<p><a class="reference external" href="../parmec/">PARMEC</a> includes a capability to model rigid body and <a class="reference internal" href="parmec/input_commands.html#parmec-command-spring"><span class="std std-ref">SPRING</span></a> systems.
+As a part of it an <a class="reference internal" href="parmec/input_commands.html#parmec-command-unspring"><span class="std std-ref">UNSPRING</span></a> command allows to deactivate selected springs
+when a total force of a set of “test springs” exceeds a prescribed bound. This facilitates modelling
+of simple failure scenarios. Spring states are outputted as scalar fields (in XDMF format) and can be
+viewed with <a class="reference external" href="http://www.paraview.org">ParaView</a> similar tools. The video clip below is based on <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/tests/unspring.py">this
+example</a>.  Spring states can be visualized
+by selecting the ‘SS’ entity and using “Coor Map Editor” in ParaView to “Interpret Values as Cathegories”
+(a checkbox at the top of the editor dialog box) and then adding the discrete values used by the ‘SS’ field
+(-3.0, -2.0, -1.0, …) as described in the <a class="reference internal" href="parmec/input_commands.html#parmec-command-output"><span class="std std-ref">OUTPUT command</span></a>.  Spring states
+can also be outputted as <a class="reference internal" href="parmec/input_commands.html#parmec-command-history"><span class="std std-ref">HISTORY</span></a> (as in the example).  (…)</p>
+</li>
 <li><p class="first">December 12, 2017 - <a class="reference internal" href="blog/pop_audit.html">Solfec POP audit report</a></p>
 <p>Solfec has been analysed by <a class="reference external" href="https://pop-coe.eu">POP</a> experts. The initial audit report is available for download: (…)</p>
 </li>
@@ -89,12 +101,6 @@ combined with a family of finite element formulations: (…)</p>
 of modeling non–smooth multi–body structures in Solfec (e.g. as fully resolved FE models) in conjunction with a lightweight
 rigid–body/nonlinear–spring approach implemented in <a class="reference internal" href="parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a>. A simple example of that can be
 seen in the video below:</p>
-</li>
-<li><p class="first">June 13, 2016 - <a class="reference internal" href="blog/about.html">About PARMES</a></p>
-<p>Hi. This website is an outlet for ideas and resources in the area of parallel computational mechanics
-and particulate media software. On and off, I have been working on one such software, <a class="reference internal" href="solfec/index.html#solfec-index"><span class="std std-ref">SOLFEC</span></a>,
-which you will find gradually better documented here. There are also other computational codes and libraries,
-that I would like to share and write about. Some of those are included in the Navigation area.</p>
 </li>
 </ul>
 <div class="toctree-wrapper compound">
@@ -165,6 +171,8 @@ that I would like to share and write about. Some of those are included in the Na
   <ul>
     
     
+      <li><a href="blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+    
       <li><a href="blog/pop_audit.html">Dec 12 - Solfec POP audit report</a></li>
     
       <li><a href="blog/cached_time_series.html">Aug 01 - Partially cached time series in Solfec</a></li>
@@ -172,8 +180,6 @@ that I would like to share and write about. Some of those are included in the Na
       <li><a href="blog/tr1_post.html">May 20 - TR1: Co-rotated and reduced order time integrators</a></li>
     
       <li><a href="blog/hybrid_solver.html">Apr 27 - Hybrid solver in Solfec</a></li>
-    
-      <li><a href="blog/about.html">Jun 13 - About PARMES</a></li>
     
   </ul>
 
@@ -192,11 +198,16 @@ that I would like to share and write about. Some of those are included in the Na
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="blog/tag/optimization.html">optimization</a></li>
+        <a href="blog/tag/failure.html">failure</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
+        <a href="blog/tag/optimization.html">optimization</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
         <a href="blog/tag/parmec.html">parmec</a></li>
       
     
@@ -220,10 +231,19 @@ that I would like to share and write about. Some of those are included in the Na
         <a href="blog/tag/solfec.html">solfec</a></li>
       
     
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="blog/tag/springs.html">springs</a></li>
+      
+    
   </ul>
 
   <h3><a href="blog/archive.html">Archives</a></h3>
   <ul>
+  
+    
+    <li><a href="blog/2018.html">2018 (1)</a></li>
+    
   
     
     <li><a href="blog/2017.html">2017 (4)</a></li>
@@ -240,7 +260,7 @@ that I would like to share and write about. Some of those are included in the Na
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2017 PARMES team.
+      &copy;2018 PARMES team.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>

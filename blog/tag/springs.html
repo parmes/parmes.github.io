@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Posts tagged reports &#8212; PARMES  documentation</title>
+    <title>Posts tagged springs &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
@@ -33,7 +33,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Posts tagged reports">
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Posts tagged springs">
   
   
   <style type="text/css">
@@ -60,19 +60,19 @@
       
       Posts tagged
       
-      reports
+      springs
       
     </h1>
     
     
 
     <div class="section">
-      <h2><a href="../tr1_post.html">TR1: Co-rotated and reduced order time integrators</a></h2>
+      <h2><a href="../unspring_and_spring_state.html">UNSPRING and spring state in Parmec</a></h2>
 
       <ul class="ablog-archive">
       <li>
       
-        May 20, 2017
+        Jan 15, 2018
       
       </li>
         
@@ -93,18 +93,35 @@
   
 
   
-  <li>Tag:
+  <li>Tags:
+      
     
       
-      <a href="#">reports</a>
+      <a href="parmec.html">parmec</a>,
+      
+    
+      
+      <a href="#">springs</a>,
+      
+    
+      
+      <a href="failure.html">failure</a>
       
     </li>
   
   </ul>
-      <p><a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">Technical Report 1</span></a> describes a linearly implicit time integration method
-combined with a family of finite element formulations: (…)</p>
+      <p><a class="reference external" href="../parmec/">PARMEC</a> includes a capability to model rigid body and <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-spring"><span class="std std-ref">SPRING</span></a> systems.
+As a part of it an <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-unspring"><span class="std std-ref">UNSPRING</span></a> command allows to deactivate selected springs
+when a total force of a set of “test springs” exceeds a prescribed bound. This facilitates modelling
+of simple failure scenarios. Spring states are outputted as scalar fields (in XDMF format) and can be
+viewed with <a class="reference external" href="http://www.paraview.org">ParaView</a> similar tools. The video clip below is based on <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/tests/unspring.py">this
+example</a>.  Spring states can be visualized
+by selecting the ‘SS’ entity and using “Coor Map Editor” in ParaView to “Interpret Values as Cathegories”
+(a checkbox at the top of the editor dialog box) and then adding the discrete values used by the ‘SS’ field
+(-3.0, -2.0, -1.0, …) as described in the <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-output"><span class="std std-ref">OUTPUT command</span></a>.  Spring states
+can also be outputted as <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-history"><span class="std std-ref">HISTORY</span></a> (as in the example).  (…)</p>
 
-      <p><a href="../tr1_post.html">Read more ...</a></p>
+      <p><a href="../unspring_and_spring_state.html">Read more ...</a></p>
       <hr>
     </div>
     
@@ -221,7 +238,7 @@ combined with a family of finite element formulations: (…)</p>
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="#">reports</a></li>
+        <a href="reports.html">reports</a></li>
       
     
       
@@ -231,7 +248,7 @@ combined with a family of finite element formulations: (…)</p>
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="springs.html">springs</a></li>
+        <a href="#">springs</a></li>
       
     
   </ul>
