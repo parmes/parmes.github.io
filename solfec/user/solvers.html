@@ -291,12 +291,14 @@ Currently only the the nonlinear Gauss–Seidel solver is enabled, making the SI
 library is shared memory parallel and in the MPI mode this part of modeling is executed on MPI rank 0 process, employing maximum available
 shared memory parallelism.</p>
 <div class="topic">
-<p class="topic-title first">obj = HYBRID_SOLVER (parmec_file, parmec_step, parmec2solfec, solfec_solver) <span class="red">(Under development)</span></p>
+<p class="topic-title first">obj = HYBRID_SOLVER (parmec_file, parmec_step, parmec2solfec, solfec_solver | parmec_argv) <span class="red">(Under development)</span></p>
 <ul class="simple">
 <li>obj – created HYBRID_SOLVER object</li>
+<li>parmec_file – PARMEC input file path</li>
 <li>parmec_step – an upper bound of the PARMEC time step</li>
 <li>parmec2solfec – Python dictionary based mapping of PARMEC particle numbers to SOLFEC body identifiers</li>
 <li>solfec_solver – SOLFEC constraint solver (e.g. NEWTON_SOLVER)</li>
+<li>parmec_argv – optional list of PARMEC arguments, retrieved by PARMEC command <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-argv"><span class="std std-ref">ARGV</span></a></li>
 </ul>
 <p>Notes:</p>
 <ul class="simple">
