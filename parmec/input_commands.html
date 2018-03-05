@@ -354,14 +354,15 @@ respectively, with the critical time step equal to
 </div>
 <div class="section" id="granular">
 <h2>GRANULAR<a class="headerlink" href="#granular" title="Permalink to this headline">¶</a></h2>
-<p>Define surface pairing for the granular contact interaction model.</p>
+<p>Define surface pairing for the granular contact interaction model. Default parameters, for unspecified pairings,
+are: spring = 0.0, damper = 1.0, friction = (0.0, 0.0), rolling = 0.0, drilling = 0.0, and kskn = 0.5.</p>
 <div class="topic">
 <p class="topic-title first">GRANULAR (color1, color2, spring | damper, friction, rolling, drilling, kskn)</p>
 <ul class="simple">
 <li><strong>color1</strong> - first color (positive, or color1 = 0 and color2 = 0 to
-redefine default parameters)</li>
+redefine default parameters for unspecified pairings)</li>
 <li><strong>color2</strong> - second color (positive, or color1 = 0 and color2 = 0 to
-redefine default parameters)</li>
+redefine default parameters for unspecified pairings)</li>
 <li><strong>spring</strong> - normal spring constant</li>
 <li><strong>damper</strong> - optional normal damping ratio; default: 1.0</li>
 <li><strong>friction</strong> - optional Coulomb’s friction coefficient; default: 0.0;
