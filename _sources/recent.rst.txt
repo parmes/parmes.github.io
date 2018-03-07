@@ -1,4 +1,6 @@
 
+* On Mar 7 2018 :ref:`trs-index`
+
 * On Mar 5 2018 :ref:`parmec-input_commands`
 
 * On Feb 12 2018 :ref:`solfec-user-solvers`
@@ -16,5 +18,3 @@
 * On Aug 21 2017 :ref:`solfec-running`
 
 * On Aug 15 2017 :ref:`solfec-user-simulation`
-
-* On Aug 2 2017 :ref:`solfec-user-geometry`

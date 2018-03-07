@@ -2,10 +2,27 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">PARMES/blog</title>
   <id>http://parmes.org/blog/atom.xml</id>
-  <updated>2018-01-15T00:00:00Z</updated>
+  <updated>2018-03-07T00:00:00Z</updated>
   <link href="http://parmes.org" />
   <link href="http://parmes.org/blog/atom.xml" rel="self" />
   <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="http://parmes.org/blog/atom.xml">
+    <title type="text">Parmec spring curve tests</title>
+    <id>http://parmes.org/blog/spring_curve_tests.html</id>
+    <updated>2018-03-07T00:00:00Z</updated>
+    <published>2018-03-07T00:00:00Z</published>
+    <link href="http://parmes.org/blog/spring_curve_tests.html" />
+    <author>
+      <name>Tomek</name>
+    </author>
+    <content type="html">&lt;p&gt;Thanks to user feedback, Parmec begins to be smoothed out. An automated spring curve correctness test has now been added
+as &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/tkoziara/parmec/blob/master/tests/spring_curve_tests.py&quot;&gt;tests/spring_curve_tests.py&lt;/a&gt;
+allowing to automatically generate a number of simulations with random spring curves within a stroke-force box [-1, -1, 1, 1].
+This test initiates what may become a suite of automated regression tests for Parmec. If &lt;a class=&quot;reference external&quot; href=&quot;https://matplotlib.org/&quot;&gt;matplotlib&lt;/a&gt;
+and &lt;a class=&quot;reference external&quot; href=&quot;https://www.imagemagick.org&quot;&gt;imagemagic&lt;/a&gt; are installed, it generates a juxtaposed image, comparing input and output curves.
+An example image is included below. (…)&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://parmes.org/blog/atom.xml">
     <title type="text">UNSPRING and spring state in Parmec</title>
     <id>http://parmes.org/blog/unspring_and_spring_state.html</id>
@@ -64,21 +81,6 @@ memory. To facilitate that an optional &lt;em&gt;cache&lt;/em&gt; argument has b
     </author>
     <content type="html">&lt;p&gt;&lt;a class=&quot;reference internal&quot; href=&quot;trs/index.html#tr1&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;Technical Report 1&lt;/span&gt;&lt;/a&gt; describes a linearly implicit time integration method
 combined with a family of finite element formulations: (…)&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://parmes.org/blog/atom.xml">
-    <title type="text">Hybrid solver in Solfec</title>
-    <id>http://parmes.org/blog/hybrid_solver.html</id>
-    <updated>2017-04-27T00:00:00Z</updated>
-    <published>2017-04-27T00:00:00Z</published>
-    <link href="http://parmes.org/blog/hybrid_solver.html" />
-    <author>
-      <name>Tomek</name>
-    </author>
-    <content type="html">&lt;p&gt;&lt;a class=&quot;reference internal&quot; href=&quot;solfec/user/solvers.html#solfec-command-hybrid-solver&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;Solfec’s hybrid solver&lt;/span&gt;&lt;/a&gt; is now ready for testing. This solver combines the ability
-of modeling non–smooth multi–body structures in Solfec (e.g. as fully resolved FE models) in conjunction with a lightweight
-rigid–body/nonlinear–spring approach implemented in &lt;a class=&quot;reference internal&quot; href=&quot;parmec/index.html#parmec-index&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;PARMEC&lt;/span&gt;&lt;/a&gt;. A simple example of that can be
-seen in the video below:&lt;/p&gt;
 </content>
   </entry>
 </feed>
