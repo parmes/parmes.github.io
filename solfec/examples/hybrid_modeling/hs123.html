@@ -415,7 +415,15 @@ description of <a class="reference internal" href="hs0.html#hs0-lst3"><span clas
 82
 83
 84
-85</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># must be same as in hs2-paremc.py</span>
+85
+86
+87
+88
+89
+90
+91
+92
+93</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># must be same as in hs2-paremc.py</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># must be same as in hs2-paremc.py</span>
 <span class="n">gap</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># must be same as in hs2-paremc.py</span>
 <span class="n">step</span> <span class="o">=</span> <span class="mf">5E-4</span> <span class="c1"># time step</span>
@@ -467,9 +475,17 @@ description of <a class="reference internal" href="hs0.html#hs0-lst3"><span clas
 	<span class="c1"># Solfec-Parmec boundary</span>
 	<span class="n">msh</span> <span class="o">=</span> <span class="n">HEX</span> <span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 	<span class="n">TRANSLATE</span> <span class="p">(</span><span class="n">msh</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">),</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
+	<span class="n">p1</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+	<span class="n">p2</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+	<span class="n">p3</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 	<span class="n">bod</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="s1">&#39;RIGID&#39;</span><span class="p">,</span> <span class="n">msh</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span>
+	<span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+	<span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+	<span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
         <span class="c1"># in parallel bod.id can be None for remote bodies, so</span>
-	<span class="k">if</span> <span class="n">HERE</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span><span class="n">bod</span><span class="p">):</span> <span class="n">parmec2solfec</span><span class="p">[</span><span class="n">iparmec</span><span class="p">]</span> <span class="o">=</span> <span class="n">bod</span><span class="o">.</span><span class="n">id</span>
+	<span class="k">if</span> <span class="n">HERE</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span><span class="n">bod</span><span class="p">):</span>
+	  <span class="n">bod</span><span class="o">.</span><span class="n">disable_rotation</span> <span class="o">=</span> <span class="s1">&#39;ON&#39;</span>
+	  <span class="n">parmec2solfec</span><span class="p">[</span><span class="n">iparmec</span><span class="p">]</span> <span class="o">=</span> <span class="n">bod</span><span class="o">.</span><span class="n">id</span>
       <span class="n">iparmec</span> <span class="o">=</span> <span class="n">iparmec</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># next parmec body</span>
 
 <span class="c1"># create Newton solver</span>
