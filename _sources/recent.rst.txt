@@ -1,7 +1,7 @@
 
-* On Mar 14 2018 :ref:`solfec-user-body`
+* On Mar 15 2018 :ref:`solfec-user-solvers`
 
-* On Mar 14 2018 :ref:`solfec-user-solvers`
+* On Mar 14 2018 :ref:`solfec-user-body`
 
 * On Mar 7 2018 :ref:`trs-index`
 
