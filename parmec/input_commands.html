@@ -74,7 +74,7 @@ indexing starts at 0 and increments on each call</strong>.</p>
 </div>
 </div>
 <div class="section" id="reset">
-<h2>RESET<a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h2>
+<span id="parmec-command-reset"></span><h2>RESET<a class="headerlink" href="#reset" title="Permalink to this headline">¶</a></h2>
 <p>Erase all data.</p>
 <div class="topic">
 <p class="topic-title first">RESET ()</p>
@@ -638,7 +638,8 @@ numbers can also be used, e.g.
 <span class="math">\(dt_{\text{history}}=\text{tmsnum}\)</span>, prescribing variable
 interval frequencies, depending on current time;</li>
 <li><strong>prefix</strong> - output file name prefix (default: input file name
-without the “.py” extension)</li>
+without the “.py” extension); Note: <strong>prefix</strong> can only change
+at time 0.0 or after <a class="reference internal" href="#parmec-command-reset"><span class="std std-ref">RESET()</span></a></li>
 <li><strong>adaptive</strong> - adaptive time step reduction factor; zero turns off
 adaptive time stepping, values <span class="math">\(&gt;0.0\)</span> and <span class="math">\(\le1.0\)</span> turn
 it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimental)</span></li>
