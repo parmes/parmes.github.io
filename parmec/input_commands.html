@@ -527,32 +527,26 @@ called; default: <em>False</em></li>
 included into the output file(s). PARMEC outputs:</p>
 <ul class="simple">
 <li>*.dump files for spherical particles</li>
-<li>*0.vtk.* <strong>and/or</strong> (*0.h5, *0.xmf) files for obstacles and mesh
-based particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT
-command</li>
-<li>*1.vtk.*, *2.vtk.*, … <strong>and/or</strong> (*1.h5, *1.xmf, *2.h5,
-*2.xmf, …) files for mesh based particles specified as subsets,
-where numbers 1, 2, … match consecutive OUTPUT calls</li>
-<li>*0rb.vtk.* <strong>and/or</strong> (*0rb.h5, *0rb.xmf) for rigid body data of
-particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT command</li>
-<li>*1rb.vtk.*, *2rb.vtk.*, … <strong>and/or</strong> (*1rb.h5, *1rb.xmf,
-*2rb.h5, *2rb.xmf, …) files for rigid body data of particles
-specified as subsets, where numbers 1, 2, … match consecutive
-OUTPUT calls</li>
-<li>*0cd.vtk.* <strong>and/or</strong> (*0cd.h5, *0cd.xmf) for contact data
-including particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT
-command</li>
-<li>*1cd.vtk.*, *2cd.vtk.*, … <strong>and/or</strong> (*1cd.h5, *1cd.xmf,
-*2cd.h5, *2cd.xmf, …) files for contact data including particles
-specified as subsets, where numbers 1, 2, … match consecutive
-OUTPUT calls</li>
-<li>*0sd.vtk.* <strong>and/or</strong> (*0sd.h5, *0sd.xmf) for spring data
-including particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT
-command</li>
-<li>*1sd.vtk.*, *2sd.vtk.*, … <strong>and/or</strong> (*1sd.h5, *1sd.xmf,
-*2sd.h5, *2sd.xmf, …) files for spring data including particles
-specified as subsets, where numbers 1, 2, … match consecutive
-OUTPUT calls</li>
+<li>*0.vtk.* <strong>and/or</strong> (*0.h5, *0.xmf) <strong>and/or</strong> (*0.med) files for obstacles and mesh
+based particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT command</li>
+<li>*1.vtk.*, *2.vtk.*, … <strong>and/or</strong> (*1.h5, *1.xmf, *2.h5, *2.xmf, …) <strong>and/or</strong>
+(*1.med, *2.med…) files for mesh based particles specified as subsets, where numbers
+1, 2, … match consecutive OUTPUT calls</li>
+<li>*0rb.vtk.* <strong>and/or</strong> (*0rb.h5, *0rb.xmf) <strong>and/or</strong> (*0rb.med) files for rigid body
+data of particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT command</li>
+<li>*1rb.vtk.*, *2rb.vtk.*, … <strong>and/or</strong> (*1rb.h5, *1rb.xmf, *2rb.h5, *2rb.xmf, …)
+<strong>and/or</strong> (*1rb.med, *2rb.med, …) files for rigid body data of particles specified as
+subsets, where numbers 1, 2, … match consecutive OUTPUT calls</li>
+<li>*0cd.vtk.* <strong>and/or</strong> (*0cd.h5, *0cd.xmf) <strong>and/or</strong> (*0cd.med) files  for contact data
+including particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT command</li>
+<li>*1cd.vtk.*, *2cd.vtk.*, … <strong>and/or</strong> (*1cd.h5, *1cd.xmf, *2cd.h5, *2cd.xmf, …)
+<strong>and/or</strong> (*1cd.med, *2cd.med, …) files for contact data including particles specified
+as subsets, where numbers 1, 2, … match consecutive OUTPUT calls</li>
+<li>*0sd.vtk.* <strong>and/or</strong> (*0sd.h5, *0sd.xmf) <strong>and/or</strong> (*0sd.med) files for spring data
+including particles <strong>not</strong> specified as <strong>a subset</strong> in the OUTPUT command</li>
+<li>*1sd.vtk.*, *2sd.vtk.*, … <strong>and/or</strong> (*1sd.h5, *1sd.xmf, *2sd.h5, *2sd.xmf, …)
+<strong>and/or</strong> (*1sd.med, *2sd.med, …) files for spring data including particles specified
+as subsets, where numbers 1, 2, … match consecutive OUTPUT calls</li>
 </ul>
 <div class="topic">
 <p class="topic-title first">OUTPUT ( | entities, subset, mode, format)</p>
@@ -610,12 +604,12 @@ down</li>
 sphere output, ’MESH’ for mesh output, ’RB’ for rigid body output,
 ’CD’ for contact data output, ’SD’ for spring data output; default:
 [’SPH’, ’MESH’, ’RB’, ’CD’, ’SD’]</li>
-<li><strong>format</strong> - optional output format, e.g. ’VTK’ or ’XDMF’, or list
-[’VTK’, ’XDMF’], where ’VTK’ is the text based legacy <a class="reference external" href="http://www.vtk.org/wp-content/uploads/2015/04/file-formats.pdf">VTK
-format</a>,
-’XDMF’ is the HDF5/XML based <a class="reference external" href="http://www.xdmf.org/index.php/XDMF_Model_and_Format">XDMF
-format</a>;
-default: ’XDMF’</li>
+<li><strong>format</strong> - optional output format, e.g. ’VTK’ or ’XDMF’ or ‘MED’ <span class="red">(experimental)</span>, or a list
+e.g. [’VTK’, ’XDMF’, ‘MED’], where ’VTK’ is the text based legacy
+<a class="reference external" href="http://www.vtk.org/wp-content/uploads/2015/04/file-formats.pdf">VTK format</a>,
+’XDMF’ is the HDF5/XML based <a class="reference external" href="http://www.xdmf.org/index.php/XDMF_Model_and_Format">XDMF format</a>,
+and ‘MED’ is the binary <a class="reference external" href="http://www.salome-platform.org/user-section/about/med">MED format</a>
+<span class="red">(experimental)</span>; default: ’XDMF’</li>
 </ul>
 </div>
 </div>
