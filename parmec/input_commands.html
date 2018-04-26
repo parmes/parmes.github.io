@@ -268,7 +268,7 @@ are ignored</li>
 used for both loading and unloading when the <strong>unload</strong> table and the <strong>yield</strong> limits are not given</li>
 <li><strong>dashpot</strong> - optional dashpot force lookup table
 <span class="math">\(\left[\text{velocity}_{1},\text{force}_{1},\text{velocity}_{2},\text{force}_{2},...,\text{velocity}_{m},\text{force}_{m}\right]\)</span>
-or a critical damping factor from interval <span class="math">\(\left[0,1\right]\)</span>; default: <span class="math">\(\left[-\infty,0,+\infty,0\right]\)</span></li>
+or a critical damping ratio from interval <span class="math">\(\left[0,+\infty\right)\)</span>; default: <span class="math">\(\left[-\infty,0,+\infty,0\right]\)</span></li>
 <li><strong>direction</strong> - optional constant direction
 <span class="math">\(\left(d_{x},d_{y},d_{z}\right)\)</span></li>
 <li><strong>planar</strong> - optional planar spring flag; when ’ON’ spring direction
@@ -475,11 +475,20 @@ velocity.</p>
 </div>
 <div class="section" id="critical">
 <h2>CRITICAL<a class="headerlink" href="#critical" title="Permalink to this headline">¶</a></h2>
-<p>Estimate critical time step.</p>
+<p>Estimate critical time step. By default this routine returns an estimate in the area of a practical stable step.
+When run with the optional parameter <span class="math">\(\text{perspring}=n\)</span> it will return a list of lowest estimates for
+<span class="math">\(n\)</span> individual springs. The actual stable time step may be a factor of <span class="math">\(\left[0.1,10\right]\)</span> away of
+the returned step, depending on the degree of nonlinearity of the system.
+<a class="reference external" href="https://www.dynasupport.com/tutorial/ls-dyna-users-guide/time-integration">See also</a>.</p>
 <div class="topic">
-<p class="topic-title first">h = CRITICAL ()</p>
+<p class="topic-title first">h = CRITICAL (| perspring)</p>
 <ul class="simple">
-<li><strong>h</strong> - critical time step</li>
+<li><strong>h</strong> - critical time step (when run without parameters), or a list
+<span class="math">\(\left[\left(h_{1},i_{1},\omega_{1},\xi_{1}\right),...,\left(h_{n},i_{n},\omega_{n},\xi_{n}\right)\right]\)</span>
+when <strong>perspring</strong> <span class="math">\(=n\)</span> is used, where <span class="math">\(h_{k}\)</span> is the per spring critical time step estimate,
+<span class="math">\(i_{k}\)</span> is the spring index, <span class="math">\(\omega_{k}\)</span> is the maximum spring circular frequency,
+and <span class="math">\(\xi_{k}\)</span> is the maximum spring damping ratio</li>
+<li><strong>perspring</strong> - optional integer <span class="math">\(n\)</span> indicating the number of lowest per-spring critical time step estimates; default: undefined</li>
 </ul>
 </div>
 </div>
