@@ -477,18 +477,25 @@ velocity.</p>
 <h2>CRITICAL<a class="headerlink" href="#critical" title="Permalink to this headline">¶</a></h2>
 <p>Estimate critical time step. By default this routine returns an estimate in the area of a practical stable step.
 When run with the optional parameter <span class="math">\(\text{perspring}=n\)</span> it will return a list of lowest estimates for
-<span class="math">\(n\)</span> individual springs. The actual stable time step may be a factor of <span class="math">\(\left[0.1,10\right]\)</span> away of
-the returned step, depending on the degree of nonlinearity of the system.
-<a class="reference external" href="https://www.dynasupport.com/tutorial/ls-dyna-users-guide/time-integration">See also</a>.</p>
+<span class="math">\(n\)</span> individual springs. Similarly, when run with the optional parameter <span class="math">\(\text{perparticle}=n\)</span> it
+will return a list of lowest estimates for <span class="math">\(n\)</span> individual particles. The actual stable time step may be
+a factor of <span class="math">\(\left[0.1,10\right]\)</span> away of the returned step (estimated), depending on the degree of nonlinearity
+of the system. <a class="reference external" href="https://www.dynasupport.com/tutorial/ls-dyna-users-guide/time-integration">See also</a>.</p>
 <div class="topic">
-<p class="topic-title first">h = CRITICAL (| perspring)</p>
+<p class="topic-title first">h = CRITICAL (| perspring, perparticle)</p>
 <ul class="simple">
 <li><strong>h</strong> - critical time step (when run without parameters), or a list
 <span class="math">\(\left[\left(h_{1},i_{1},\omega_{1},\xi_{1}\right),...,\left(h_{n},i_{n},\omega_{n},\xi_{n}\right)\right]\)</span>
-when <strong>perspring</strong> <span class="math">\(=n\)</span> is used, where <span class="math">\(h_{k}\)</span> is the per spring critical time step estimate,
-<span class="math">\(i_{k}\)</span> is the spring index, <span class="math">\(\omega_{k}\)</span> is the maximum spring circular frequency,
-and <span class="math">\(\xi_{k}\)</span> is the maximum spring damping ratio</li>
-<li><strong>perspring</strong> - optional integer <span class="math">\(n\)</span> indicating the number of lowest per-spring critical time step estimates; default: undefined</li>
+when <strong>perspring</strong> <span class="math">\(=n\)</span> or <strong>perparticle</strong> <span class="math">\(=n\)</span> is used, where <span class="math">\(h_{k}\)</span> is the per-spring/particle
+critical time step estimate, <span class="math">\(i_{k}\)</span> is the spring/particle index, <span class="math">\(\omega_{k}\)</span> is the maximum spring/particle
+circular frequency, and <span class="math">\(\xi_{k}\)</span> is the maximum spring/particle damping ratio; when both parameters <strong>perspring</strong>
+<span class="math">\(=n\)</span> and <strong>perparticle</strong> <span class="math">\(=m\)</span> are used, a tuple of two corresponding lists is returned
+(<span class="math">\(\left[\left(h_{1},i_{1},\omega_{1},\xi_{1}\right),...,\left(h_{n},i_{n},\omega_{n},\xi_{n}\right)\right]\)</span>,
+<span class="math">\(\left[\left(h_{1},i_{1},\omega_{1},\xi_{1}\right),...,\left(h_{m},i_{m},\omega_{m},\xi_{m}\right)\right]\)</span>)</li>
+<li><strong>perspring</strong> - optional integer <span class="math">\(n\)</span> indicating the number of lowest per-spring critical time step estimates;
+default: undefined</li>
+<li><strong>perparticle</strong> - optional integer <span class="math">\(n\)</span> indicating the number of lowest per-particle critical time step estimates;
+default: undefined</li>
 </ul>
 </div>
 </div>
