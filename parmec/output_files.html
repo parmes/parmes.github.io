@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Parmec Installation &#8212; PARMES  documentation</title>
+    <title>Output files &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Running Parmec" href="running.html" />
-    <link rel="prev" title="PARMEC" href="index.html" />
+    <link rel="next" title="Parmes VirtualBox Image" href="../vbox/index.html" />
+    <link rel="prev" title="Parmec Input Commands" href="input_commands.html" />
   
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -56,51 +56,35 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="parmec-installation">
-<span id="id1"></span><h1>Parmec Installation<a class="headerlink" href="#parmec-installation" title="Permalink to this headline">¶</a></h1>
-<p>Clone parmec sources from <a class="reference external" href="https://github.com/tkoziara/parmec">GitHub</a>:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">tkoziara</span><span class="o">/</span><span class="n">parmec</span>
-</pre></div>
+  <div class="section" id="output-files">
+<span id="parmec-output-files"></span><h1>Output files<a class="headerlink" href="#output-files" title="Permalink to this headline">¶</a></h1>
+<p>Currently Parmec supports for the following output file formats:</p>
+<ul class="simple">
+<li>For spherical and ellipsoidal particles:<ul>
+<li><a class="reference external" href="http://lammps.sandia.gov/doc/dump.html">LAMMPS</a> *.dump files <span class="red">(under development)</span>;
+can be viewed with <a class="reference external" href="https://ovito.org/">OVITO</a></li>
+</ul>
+</li>
+<li>For mesh based particles, for rigid bodies, for contact points, and for springs:<ul>
+<li><a class="reference external" href="http://www.vtk.org/wp-content/uploads/2015/04/file-formats.pdf">*.vtk</a> text files;
+can viewed with <a class="reference external" href="https://www.paraview.org/">ParaView</a>, <a class="reference external" href="https://ovito.org/">OVITO</a></li>
+<li><a class="reference external" href="http://www.xdmf.org/index.php/XDMF_Model_and_Format">*.xmf</a> binary files;
+can viewed with <a class="reference external" href="https://www.paraview.org/">ParaView</a></li>
+<li><a class="reference external" href="http://www.salome-platform.org/user-section/about/med">*.med</a> binary files <span class="red">(under development)</span>;
+can viewed with <a class="reference external" href="http://gmsh.info/">Gmsh</a>, <a class="reference external" href="http://www.salome-platform.org/">SALOME</a></li>
+</ul>
+</li>
+</ul>
+<p>See also the <a class="reference internal" href="input_commands.html#parmec-command-output"><span class="std std-ref">OUTPUT</span></a> command for details on outputted entities and file kinds.</p>
+<div class="line-block">
+<div class="line"><br /></div>
 </div>
-<p>Enter parmec directory:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">parmec</span>
-</pre></div>
-</div>
-<p>Edit Config.mak file variables:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># C++ compiler (ISPC is assumed to be in the PATH; http://ispc.github.io)</span>
-<span class="n">CXX</span><span class="o">=</span><span class="n">g</span><span class="o">++</span>
-
-<span class="c1"># Python paths</span>
-<span class="n">PYTHONINC</span><span class="o">=-</span><span class="n">I</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">python2</span><span class="o">.</span><span class="mi">7</span>
-<span class="n">PYTHONLIB</span><span class="o">=-</span><span class="n">L</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lpython2</span><span class="o">.</span><span class="mi">7</span>
-
-<span class="c1"># HDF5 paths</span>
-<span class="n">HDF5INC</span><span class="o">=-</span><span class="n">I</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">include</span>
-<span class="n">HDF5LIB</span><span class="o">=-</span><span class="n">L</span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lhdf5</span> <span class="o">-</span><span class="n">lhdf5_hl</span>
-
-<span class="c1"># Debug version</span>
-<span class="n">DEBUG</span><span class="o">=</span><span class="n">no</span>
-</pre></div>
-</div>
-<p>Compile sources:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span>
-</pre></div>
-</div>
-<p>Parmec executable files are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parmec4</span> <span class="p">(</span><span class="n">single</span> <span class="n">precision</span><span class="p">)</span>
-<span class="n">parmec8</span> <span class="p">(</span><span class="n">double</span> <span class="n">precision</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Parmec library files are:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">libparmec4</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">parmec4</span><span class="o">.</span><span class="n">h</span> <span class="p">(</span><span class="n">single</span> <span class="n">precision</span> <span class="n">library</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
-<span class="n">libparmec8</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">paremc8</span><span class="o">.</span><span class="n">h</span> <span class="p">(</span><span class="n">double</span> <span class="n">precision</span> <span class="n">library</span><span class="p">,</span> <span class="n">header</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>To update parmec type:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span>
-<span class="n">git</span> <span class="n">pull</span>
-<span class="n">make</span>
-</pre></div>
+<div class="topic">
+<p class="topic-title first">Status (as of commit <a class="reference external" href="https://github.com/tkoziara/parmec/tree/5ab402de99d7970abdb53c27b07d8c0bb4bd56d1">5ab402d</a>)</p>
+<p>The *.dump file format is not fully supported at this point: it can be used to view animated results for spheres,
+without any output entities. The *.vtk and *.xmf file formats are fairly complete and can be used to view motion
+of particles as well as time histories of all output fields and entities. The *.med file format currently supports
+only mesh data (it does not include output for rigid bodies, contact points, and springs).</p>
 </div>
 </div>
 
@@ -137,11 +121,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../solfec/index.html">SOLFEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">PARMEC</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html">Running</a></li>
 <li class="toctree-l2"><a class="reference internal" href="implementation_status.html">Implementation status</a></li>
 <li class="toctree-l2"><a class="reference internal" href="input_commands.html">Input commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_files.html">Output files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Output files</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../vbox/index.html">VBOX</a></li>
@@ -158,8 +142,8 @@
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
   <li><a href="index.html">PARMEC</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">PARMEC</a></li>
-      <li>Next: <a href="running.html" title="next chapter">Running Parmec</a></li>
+      <li>Previous: <a href="input_commands.html" title="previous chapter">Parmec Input Commands</a></li>
+      <li>Next: <a href="../vbox/index.html" title="next chapter">Parmes VirtualBox Image</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -279,7 +263,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="../_sources/parmec/installation.rst.txt"
+      <a href="../_sources/parmec/output_files.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
