@@ -1,9 +1,9 @@
 
+* On May 7 2018 :ref:`parmec-input_commands`
+
 * On May 7 2018 :ref:`parmec-output_files`
 
 * On May 2 2018 :ref:`parmec-index`
-
-* On May 1 2018 :ref:`parmec-input_commands`
 
 * On Mar 15 2018 :ref:`solfec-user-solvers`
 

@@ -61,7 +61,7 @@
 <p>Currently Parmec supports the following output file formats:</p>
 <ul class="simple">
 <li>For spherical particles:<ul>
-<li><a class="reference external" href="http://lammps.sandia.gov/doc/dump.html">LAMMPS</a> *.dump files <span class="red">(under development)</span>;
+<li><a class="reference external" href="http://lammps.sandia.gov/doc/dump.html">LAMMPS</a> *.dump files <span class="red">(experimental/under development)</span>;
 can be viewed with <a class="reference external" href="https://ovito.org/">OVITO</a></li>
 </ul>
 </li>
@@ -70,7 +70,7 @@ can be viewed with <a class="reference external" href="https://ovito.org/">OVITO
 can be viewed with <a class="reference external" href="https://www.paraview.org/">ParaView</a>, <a class="reference external" href="https://ovito.org/">OVITO</a></li>
 <li><a class="reference external" href="http://www.xdmf.org/index.php/XDMF_Model_and_Format">*.xmf</a> binary files;
 can be viewed with <a class="reference external" href="https://www.paraview.org/">ParaView</a></li>
-<li><a class="reference external" href="http://www.salome-platform.org/user-section/about/med">*.med</a> binary files <span class="red">(under development)</span>;
+<li><a class="reference external" href="http://www.salome-platform.org/user-section/about/med">*.med</a> binary files <span class="red">(experimental/under development)</span>;
 can be viewed with <a class="reference external" href="http://gmsh.info/">Gmsh</a>, <a class="reference external" href="http://www.salome-platform.org/">SALOME</a></li>
 </ul>
 </li>
@@ -81,10 +81,10 @@ can be viewed with <a class="reference external" href="http://gmsh.info/">Gmsh</
 </div>
 <div class="topic">
 <p class="topic-title first">Status (as of commit <a class="reference external" href="https://github.com/tkoziara/parmec/tree/5ab402de99d7970abdb53c27b07d8c0bb4bd56d1">5ab402d</a>)</p>
-<p>The *.dump file format is not fully supported at this point: it can be used to view animated results for spheres,
-without any output entities. The *.vtk and *.xmf file formats are fairly complete and can be used to view motion
-of particles as well as time histories of all output fields and entities. The *.med file format currently supports
-only mesh data (it does not include output for rigid bodies, contact points, and springs).</p>
+<p>The *.dump file format is partially supported at this point: it can be used to view animated results for spheres,
+including some of the output entities. The *.vtk and *.xmf file formats are fairly complete and can be used to
+view motion of particles as well as time histories of all output fields and entities. The *.med file format currently
+supports only mesh data (it does not include output for rigid bodies, contact points, and springs).</p>
 </div>
 </div>
 
