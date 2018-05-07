@@ -1,5 +1,5 @@
 
-* On May 2 2018 :ref:`parmec-output_files`
+* On May 7 2018 :ref:`parmec-output_files`
 
 * On May 2 2018 :ref:`parmec-index`
 
