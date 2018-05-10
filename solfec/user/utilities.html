@@ -160,7 +160,7 @@ they cannot be modified “in place” after creation).</li>
 Depending on the topological properties of the body shape and plane position this may or may not
 result in splitting of the body in two parts.</p>
 <div class="topic">
-<p class="topic-title first">(one, two) = SPLIT (shape, point, normal | surfid, topoadj, remesh) <span class="red">(Under development)</span></p>
+<p class="topic-title first">(one, two) = SPLIT (shape, point, normal | surfid, topoadj, remesh) <span class="red">(Experimental)</span></p>
 <ul class="simple">
 <li>one – objects placed below the splitting plane (<em>None</em> if no objects were placed below the plane)</li>
 <li>two – objects placed above the splitting plane (<em>None</em> if no objects were placed above the plane, or if the initial shape has not been fragmented in two parts)</li>
@@ -186,7 +186,7 @@ may encounter input/output errors.</p>
 <p>This routine splits a mesh object along internal element boundaries whose nodes belong to the given node or face set.
 Depending on the topological properties of the mesh this may or may not result in splitting of the mesh in multiple parts.</p>
 <div class="topic">
-<p class="topic-title first">[out1, out2, …] = MESH_SPLIT (mesh | nodeset, faceset, surfid1, surfid2) <span class="red">(Under development)</span></p>
+<p class="topic-title first">[out1, out2, …] = MESH_SPLIT (mesh | nodeset, faceset, surfid1, surfid2) <span class="red">(Experimental)</span></p>
 <ul class="simple">
 <li>[out1, out2, …] – a list of output meshes (<em>None</em> if no internal element boundaries in the input mesh were split)</li>
 <li>mesh – input MESH object (the input mesh is not modified by this routine)</li>
