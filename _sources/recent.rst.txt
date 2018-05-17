@@ -1,4 +1,8 @@
 
+* On May 17 2018 :ref:`solfec-user-materials`
+
+* On May 11 2018 :ref:`trs-index`
+
 * On May 10 2018 :ref:`solfec-user-body`
 
 * On May 10 2018 :ref:`solfec-user-constraints`
@@ -13,8 +17,4 @@
 
 * On May 2 2018 :ref:`parmec-index`
 
-* On Mar 7 2018 :ref:`trs-index`
-
 * On Oct 6 2017 :ref:`solfec-user`
-
-* On Oct 6 2017 :ref:`solfec-user-fragmentation`
