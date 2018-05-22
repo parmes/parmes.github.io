@@ -250,7 +250,7 @@ defined by means of lookup tables; <span class="math">\(\text{force}\left(t\righ
 <span class="math">\(-\text{force}\left(t\right)\)</span> is applied at <span class="math">\(\text{point1}\left(t\right)\)</span>; dashpot force is not applied when
 spring force is zero.</p>
 <div class="topic">
-<p class="topic-title first">sprnum = SPRING (part1, point1, part2, geom2, spring | dashpot, direction, planar, unload, ylim, inactive, offset) <span class="red">(experimental)</span></p>
+<p class="topic-title first">sprnum = SPRING (part1, point1, part2, geom2, spring | dashpot, direction, planar, unload, ylim, inactive, offset, friction, kskn) <span class="red">(experimental)</span></p>
 <ul class="simple">
 <li><strong>sprnum</strong> - spring number</li>
 <li><strong>part1</strong> - first particle number</li>
@@ -284,6 +284,8 @@ command; default: <em>False</em></li>
 <li><strong>offset</strong> - optional <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number representing a time dependent adjustment applied to all stroke values
 of the spring curve (dashpot unchanged) as in <a class="reference internal" href="#parmec-spring-stroke-offset"><span class="std std-numref">Fig. 79</span></a>; <strong>offset</strong> is applied only prior to yielding for springs
 with <strong>ylim</strong> and <strong>unload</strong> specified; default: unspecified</li>
+<li><strong>friction</strong> - optional tangential friction coefficient; default: 0.0</li>
+<li><strong>kskn</strong> - optional ratio of normal to tangential spring and dashpot parameters used when <strong>friction</strong> &gt; 0; default: 0.5</li>
 </ul>
 </div>
 <div class="figure align-center" id="id3">
