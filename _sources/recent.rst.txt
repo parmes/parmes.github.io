@@ -1,4 +1,6 @@
 
+* On May 22 2018 :ref:`parmec-input_commands`
+
 * On May 21 2018 :ref:`solfec-theory-dynamics`
 
 * On May 17 2018 :ref:`solfec-user-materials`
@@ -12,8 +14,6 @@
 * On May 10 2018 :ref:`solfec-user-solvers`
 
 * On May 10 2018 :ref:`solfec-user-utilities`
-
-* On May 7 2018 :ref:`parmec-input_commands`
 
 * On May 7 2018 :ref:`parmec-output_files`
 
