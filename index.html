@@ -59,7 +59,7 @@
 <h1>Parallel mechanics and particulate media software <a class="reference internal" href="blog/about.html#about-parmes"><span class="std std-ref">blog</span></a> <a href="blog/atom.xml"><img src="_static/icons/feed.png" title="Atom feeds" width="17" height="17" /></a><a class="headerlink" href="#parallel-mechanics-and-particulate-media-software-blog-feed" title="Permalink to this headline">¶</a></h1>
 <p>Recently modified pages:</p>
 <ul class="simple">
-<li>On May 22 2018 <a class="reference internal" href="parmec/input_commands.html#parmec-input-commands"><span class="std std-ref">Parmec Input Commands</span></a></li>
+<li>On May 23 2018 <a class="reference internal" href="parmec/input_commands.html#parmec-input-commands"><span class="std std-ref">Parmec Input Commands</span></a></li>
 <li>On May 21 2018 <a class="reference internal" href="solfec/theory/dynamics.html#solfec-theory-dynamics"><span class="std std-ref">Dynamics</span></a></li>
 <li>On May 17 2018 <a class="reference internal" href="solfec/user/materials.html#solfec-user-materials"><span class="std std-ref">Materials</span></a></li>
 <li>On May 11 2018 <a class="reference internal" href="trs/index.html#trs-index"><span class="std std-ref">Technical Reports</span></a></li>
@@ -72,6 +72,15 @@
 </ul>
 <p>Recent blog posts:</p>
 <ul class="postlist-style-none postlist">
+<li><p class="first">May 23, 2018 - <a class="reference internal" href="blog/parmec_spring_contact.html">Parmec spring contact</a></p>
+<p>Parmec includes a simple spring contact modeling capability, where a contact plane on one particle can be paired up
+with a contact point on another particle. Both particles can be analytical (need no geometry), while the contact spring
+and dashpot curves are user defined. Friction, including sticking and slip, can also be added. An example test of this
+capability is <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/tests/spring_contact_plane.py">tests/spring_contact_plane.py</a>.
+Parmec <a class="reference internal" href="parmec/input_commands.html#parmec-command-spring"><span class="std std-ref">SPRING command</span></a> is used to define the entire contact interactions (parameters
+<em>spring</em>, <em>dashpot</em> and <em>friction</em>). Upon running it generates time history figures <em>tests/spring_contact_plane_{z,f_ff}.png</em>
+and output files viewable with <a class="reference external" href="https://www.paraview.org/">ParaView</a>. An animation and the figures are included below. (…)</p>
+</li>
 <li><p class="first">March 07, 2018 - <a class="reference internal" href="blog/spring_curve_tests.html">Parmec spring curve tests</a></p>
 <p>Thanks to user feedback, Parmec begins to be smoothed out. An automated spring curve correctness test has now been added
 as <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/tests/spring_curve_tests.py">tests/spring_curve_tests.py</a>
@@ -99,10 +108,6 @@ can also be outputted as <a class="reference internal" href="parmec/input_comman
 <p>Motivated by user feedback a partially cached time series capability has been included into <a class="reference internal" href="solfec/index.html#solfec-index"><span class="std std-ref">SOLFEC</span></a>.
 This allows to use many large <a class="reference internal" href="solfec/user/times.html#solfec-user-times"><span class="std std-ref">TIME_SERIES</span></a> objects without running out of
 memory. To facilitate that an optional <em>cache</em> argument has been added – please see the <a class="reference internal" href="solfec/user/times.html#solfec-user-times"><span class="std std-ref">documentation</span></a> and <a class="reference internal" href="solfec/examples/time_series.html#solfec-examples-time-series"><span class="std std-ref">example</span></a>.</p>
-</li>
-<li><p class="first">May 20, 2017 - <a class="reference internal" href="blog/tr1_post.html">TR1: Co-rotated and reduced order time integrators</a></p>
-<p><a class="reference internal" href="trs/index.html#tr1"><span class="std std-ref">Technical Report 1</span></a> describes a linearly implicit time integration method
-combined with a family of finite element formulations: (…)</p>
 </li>
 </ul>
 <div class="toctree-wrapper compound">
@@ -173,6 +178,8 @@ combined with a family of finite element formulations: (…)</p>
   <ul>
     
     
+      <li><a href="blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+    
       <li><a href="blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
     
       <li><a href="blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
@@ -180,8 +187,6 @@ combined with a family of finite element formulations: (…)</p>
       <li><a href="blog/pop_audit.html">Dec 12 - Solfec POP audit report</a></li>
     
       <li><a href="blog/cached_time_series.html">Aug 01 - Partially cached time series in Solfec</a></li>
-    
-      <li><a href="blog/tr1_post.html">May 20 - TR1: Co-rotated and reduced order time integrators</a></li>
     
   </ul>
 
@@ -200,7 +205,17 @@ combined with a family of finite element formulations: (…)</p>
     
       
       <li class="ablog-cloud ablog-cloud-1">
+        <a href="blog/tag/contact.html">contact</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
         <a href="blog/tag/failure.html">failure</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="blog/tag/friction.html">friction</a></li>
       
     
       
@@ -229,7 +244,7 @@ combined with a family of finite element formulations: (…)</p>
       
     
       
-      <li class="ablog-cloud ablog-cloud-5">
+      <li class="ablog-cloud ablog-cloud-3">
         <a href="blog/tag/solfec.html">solfec</a></li>
       
     
@@ -239,7 +254,7 @@ combined with a family of finite element formulations: (…)</p>
       
     
       
-      <li class="ablog-cloud ablog-cloud-1">
+      <li class="ablog-cloud ablog-cloud-2">
         <a href="blog/tag/tests.html">tests</a></li>
       
     
@@ -249,7 +264,7 @@ combined with a family of finite element formulations: (…)</p>
   <ul>
   
     
-    <li><a href="blog/2018.html">2018 (2)</a></li>
+    <li><a href="blog/2018.html">2018 (3)</a></li>
     
   
     

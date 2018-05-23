@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Parmec spring curve tests &#8212; PARMES  documentation</title>
+    <title>Parmec spring contact &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
@@ -54,16 +54,20 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="parmec-spring-curve-tests">
-<span id="blog-paremc-spring-curve-tests"></span><h1>Parmec spring curve tests<a class="headerlink" href="#parmec-spring-curve-tests" title="Permalink to this headline">¶</a></h1>
-<p>Thanks to user feedback, Parmec begins to be smoothed out. An automated spring curve correctness test has now been added
-as <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/tests/spring_curve_tests.py">tests/spring_curve_tests.py</a>
-allowing to generate and run a number of simulations with random spring curves within a stroke-force box [-1, -1, 1, 1].
-This test initiates what may become a suite of automated regression tests for Parmec. If <a class="reference external" href="https://matplotlib.org/">matplotlib</a>
-and <a class="reference external" href="https://www.imagemagick.org">imagemagic</a> are installed, it generates a juxtaposed image, comparing input and output curves.
-An example image is included below. (…)</p>
+  <div class="section" id="parmec-spring-contact">
+<span id="blog-paremc-spring-contact"></span><h1>Parmec spring contact<a class="headerlink" href="#parmec-spring-contact" title="Permalink to this headline">¶</a></h1>
+<p>Parmec includes a simple spring contact modeling capability, where a contact plane on one particle can be paired up
+with a contact point on another particle. Both particles can be analytical (need no geometry), while the contact spring
+and dashpot curves are user defined. Friction, including sticking and slip, can also be added. An example test of this
+capability is <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/tests/spring_contact_plane.py">tests/spring_contact_plane.py</a>.
+Parmec <a class="reference internal" href="../parmec/input_commands.html#parmec-command-spring"><span class="std std-ref">SPRING command</span></a> is used to define the entire contact interactions (parameters
+<em>spring</em>, <em>dashpot</em> and <em>friction</em>). Upon running it generates time history figures <em>tests/spring_contact_plane_{z,f_ff}.png</em>
+and output files viewable with <a class="reference external" href="https://www.paraview.org/">ParaView</a>. An animation and the figures are included below. (…)</p>
+<p align="center"><iframe width="640" height="360" src="//www.youtube.com/embed/uYN1jMhOJn0?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/spring_contact_plane_z.png"><img alt="../_images/spring_contact_plane_z.png" src="../_images/spring_contact_plane_z.png" style="width: 70%;" /></a>
+</div>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="../_images/spring_curve_tests.png"><img alt="../_images/spring_curve_tests.png" src="../_images/spring_curve_tests.png" style="width: 90%;" /></a>
+<a class="reference internal image-reference" href="../_images/spring_contact_plane_f_ff.png"><img alt="../_images/spring_contact_plane_f_ff.png" src="../_images/spring_contact_plane_f_ff.png" style="width: 70%;" /></a>
 </div>
 </div>
 
@@ -76,21 +80,14 @@ An example image is included below. (…)</p>
   <span style="float: left;">
   
   Previous: 
-  <a href="unspring_and_spring_state.html">
+  <a href="spring_curve_tests.html">
     
-    UNSPRING and spring state in Parmec
+    Parmec spring curve tests
   </a>
   
   </span>
   <span>&nbsp;</span>
   <span style="float: right;">
-  
-  Next: 
-  <a href="parmec_spring_contact.html">
-    Parmec spring contact
-    
-  </a>
-  </span>
   
 </div>
 
@@ -101,9 +98,9 @@ An example image is included below. (…)</p>
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         var disqus_shortname = 'parmes';
-        var disqus_identifier = '/blog/spring_curve_tests/';
-        var disqus_title = 'Parmec spring curve tests';
-        var disqus_url = 'http://parmes.org/blog/spring_curve_tests';
+        var disqus_identifier = '/blog/parmec_spring_contact/';
+        var disqus_title = 'Parmec spring contact';
+        var disqus_url = 'http://parmes.org/blog/parmec_spring_contact';
 
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -175,7 +172,7 @@ An example image is included below. (…)</p>
   <ul>
     
     
-      <li><a href="parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
     
       <li><a href="unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
     
@@ -286,7 +283,7 @@ An example image is included below. (…)</p>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="../_sources/blog/spring_curve_tests.rst.txt"
+      <a href="../_sources/blog/parmec_spring_contact.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
