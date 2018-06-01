@@ -285,7 +285,9 @@ command; default: <em>False</em></li>
 of the spring curve (dashpot unchanged) as in <a class="reference internal" href="#parmec-spring-stroke-offset"><span class="std std-numref">Fig. 79</span></a>; <strong>offset</strong> is applied only prior to yielding for springs
 with <strong>ylim</strong> and <strong>unload</strong> specified; default: unspecified</li>
 <li><strong>friction</strong> - optional tangential friction coefficient; default: 0.0</li>
-<li><strong>kskn</strong> - optional ratio of normal to tangential spring and dashpot parameters used when <strong>friction</strong> &gt; 0; default: 0.5</li>
+<li><strong>kskn</strong> - optional <span class="math">\(\ge0\)</span> ratio of normal to tangential spring and dashpot parameters used when <strong>friction</strong> &gt; 0; using <strong>kskn</strong> = 0
+disables tangential springs/dampers and applies frictional force opposing tangential velocity (in this case frictional sticking and stick-slip
+transition are not modeled); default: 0.0</li>
 </ul>
 </div>
 <div class="figure align-center" id="id3">
