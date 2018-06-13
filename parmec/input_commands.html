@@ -295,6 +295,59 @@ transition are not modeled); default: 0.0</li>
 <p class="caption"><span class="caption-number">Fig. 79 </span><span class="caption-text">The concept of time dependent spring stroke offset.</span></p>
 </div>
 </div>
+<div class="section" id="torsion-spring">
+<span id="parmec-command-torsion-spring"></span><h2>TORSION_SPRING<a class="headerlink" href="#torsion-spring" title="Permalink to this headline">¶</a></h2>
+<p>Create a torsional spring constraint. The applied torque formula reads</p>
+<div class="math">
+\[\mathbf{t}\left(t\right)=\left(\text{kroll}\left(\psi\right)+\text{droll}\left(\dot{\psi}\right)\right)\mathbf{x}\left(t\right)
++\left(\text{kpitch}\left(\phi\right)+\text{dpitch}\left(\dot{\phi}\right)\right)\mathbf{y}\left(t\right)
++\left(\text{kyaw}\left(\theta\right)+\text{dyaw}\left(\dot{\theta}\right)\right)\mathbf{z}\left(t\right)\]</div>
+<p>where the angles <span class="math">\(\psi\)</span>, <span class="math">\(\phi\)</span>, <span class="math">\(\theta\)</span> are calculated withe the help of co-rotated unit directions
+<span class="math">\(\mathbf{x}\)</span>, <span class="math">\(\mathbf{y}\)</span>, <span class="math">\(\mathbf{z}\)</span> as follows</p>
+<div class="math">
+\[\mathbf{y}=\mathbf{z}\times\mathbf{x}\]</div>
+<div class="math">
+\[\begin{split}\left[\begin{array}{ccc}
+x_{1} &amp; y_{1} &amp; z_{1}\\
+x_{2} &amp; y_{2} &amp; z_{2}\\
+x_{3} &amp; y_{3} &amp; z_{3}
+\end{array}\right]\left(t\right)=\mathbf{\Lambda}_{1}\left(t\right)\left[\begin{array}{ccc}
+x_{1} &amp; y_{1} &amp; z_{1}\\
+x_{2} &amp; y_{2} &amp; z_{2}\\
+x_{3} &amp; y_{3} &amp; z_{3}
+\end{array}\right]\left(0\right)\end{split}\]</div>
+<div class="math">
+\[\dot{\psi}=\mathbf{x}\cdot\left(\mathbf{\omega}_{1}-\mathbf{\omega}_{2}\right)\]</div>
+<div class="math">
+\[\dot{\phi}=\mathbf{z}\cdot\left(\mathbf{\omega}_{1}-\mathbf{\omega}_{2}\right)\]</div>
+<div class="math">
+\[\dot{\theta}=\mathbf{y}\cdot\left(\mathbf{\omega}_{1}-\mathbf{\omega}_{2}\right)\]</div>
+<div class="math">
+\[\psi\left(t\right)=\int_{0}^{t}\dot{\psi}\left(t\right)dt,\,\,\phi\left(t\right)=\int_{0}^{t}
+\dot{\phi}\left(t\right)dt,\,\,\theta\left(t\right)=\int_{0}^{t}\dot{\theta}\left(t\right)dt\]</div>
+<p>and where <span class="math">\(\mathbf{\omega}_{i}\)</span> are the spatial angular velocities of particles 1 and 2,
+and <span class="math">\(\mathbf{\Lambda}_{1}\)</span> is the rigid rotation matrix of particle 1.</p>
+<div class="topic">
+<p class="topic-title first">trsnum = TORSION_SPRING (part1, part2, zdir, xdir | kroll, kpitch, kyaw, droll, dpitch, dyaw, cone) <span class="red">(experimental)</span></p>
+<ul class="simple">
+<li><strong>trsnum</strong> - torsion spring number</li>
+<li><strong>part1</strong> - first particle number</li>
+<li><strong>part2</strong> - second particle number; -1 can be used to indicate a single-particle constraint</li>
+<li><strong>zdir</strong>, <strong>xdir</strong> - reference direction tuples, <span class="math">\(\mathbf{z}=\left(z_{1},z_{2},z_{3}\right)\)</span> and
+<span class="math">\(\mathbf{x}=\left(x_{1},x_{2},x_{3}\right)\)</span>, co-rotated with the two particles, and used to determine
+the torsion angles <span class="math">\(\psi\)</span>, <span class="math">\(\theta\)</span>, <span class="math">\(\phi\)</span> as described above; these directions must be
+orthogonal</li>
+<li><strong>kyaw</strong>, <strong>kroll</strong>, <strong>kpitch</strong> - spring torque lookup tables <span class="math">\(\left[\text{angle}_{1},\text{torque}_{1},\text{angle}_{2},\text{torque}_{2},...\right]\)</span>,
+about the three torsion angles; default: <span class="math">\(\left[-\infty,0,+\infty,0\right]\)</span></li>
+<li><strong>dyaw</strong>, <strong>droll</strong>, <strong>dpitch</strong> - dashpot torque lookup tables <span class="math">\(\left[\text{angvel}_{1},\text{torque}_{1},\text{angvel}_{2},\text{torque}_{2},...\right]\)</span>
+or a critical damping ratio from interval <span class="math">\(\left[0,+\infty\right)\)</span>; default: <span class="math">\(\left[-\infty,0,+\infty,0\right]\)</span></li>
+<li><strong>cone</strong> - optional tuple (‘roll’, ‘yaw’), (‘roll’, ‘pitch’), (‘pitch’, ‘yaw’) or (‘roll’, ‘pitch’, ‘yaw’) denoting a cone
+constraint in the (roll, pitch, yaw) angle space; the spring/dashpot torque curves of the first in (roll, pitch, yaw) order
+coordinate are used (hence it makes sense to define at least one of these curves), e.g. both (‘roll’, ‘pitch’) and
+(‘pitch’, ‘roll’) result in torque formula <span class="math">\(\mathbf{t}=\left[\text{kroll}\left(\sqrt{\psi^{2}+\phi^{2}}\right)+\text{droll}\left(\frac{d}{dt}\sqrt{\psi^{2}+\phi^{2}}\right)\right]\left[\frac{\psi}{\sqrt{\psi^{2}+\phi^{2}}}\mathbf{x}+\frac{\phi}{\sqrt{\psi^{2}+\phi^{2}}}\mathbf{y}\right]\)</span>, etc.; default: not specified</li>
+</ul>
+</div>
+</div>
 <div class="section" id="unspring">
 <span id="parmec-command-unspring"></span><h2>UNSPRING<a class="headerlink" href="#unspring" title="Permalink to this headline">¶</a></h2>
 <p>Undoes user defined selection of springs (<strong>msprings</strong>) based on the value of spring entities experienced by a different user defined
@@ -713,6 +766,7 @@ it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimenta
 <li class="toctree-l3"><a class="reference internal" href="#analytical">ANALYTICAL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#obstacle">OBSTACLE</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spring">SPRING</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#torsion-spring">TORSION_SPRING</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#unspring">UNSPRING</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#eqm">EQM</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#granular">GRANULAR</a></li>
