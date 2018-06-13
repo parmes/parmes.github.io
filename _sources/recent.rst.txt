@@ -1,5 +1,5 @@
 
-* On Jun 1 2018 :ref:`parmec-input_commands`
+* On Jun 13 2018 :ref:`parmec-input_commands`
 
 * On May 21 2018 :ref:`solfec-theory-dynamics`
 
