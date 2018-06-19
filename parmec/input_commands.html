@@ -572,10 +572,17 @@ particle entities: (position) ’PX’, ’PY’, ’PZ’, ’|P|’,
 (displacement) ’DX’, ’DY’, ’DZ’, ’|D|’, (linear velocity) ’VX’,
 ’VY’, ’VZ’, ’|V|’, (angular velocity) ’OX’, ’OY’, ’OZ’, ’|O|’,
 (body force) ’FX’, ’FY’, ’FZ’, ’|F|’, (body torque) ’TX’, ’TY’,
-’TZ’, ’|T|’; spring entities: (spring length) ‘LENGTH’, (spring
-stroke) ’STROKE’, (spring total force) ’F’, (spring force without
-damping) ’SF’, (spring total friction force) ‘FF’, (spring state)
-‘SS’, cf. <a class="reference internal" href="#parmec-command-output"><span class="std std-ref">OUTPUT</span></a> for description;</li>
+’TZ’, ’|T|’; linear spring entities: (spring length) ‘LENGTH’,
+(spring stroke) ’STROKE’, (spring total force) ’F’, (spring force
+without damping) ’SF’, (spring total friction force) ‘FF’, (spring
+state) ‘SS’, cf. <a class="reference internal" href="#parmec-command-output"><span class="std std-ref">OUTPUT</span></a> for description;
+torsional spring entities: (spring local direction components:
+<span class="math">\(\mathbf{z}\)</span> - yaw, <span class="math">\(\mathbf{x}\)</span> - roll, and
+<span class="math">\(\mathbf{y}=\mathbf{z}\times\mathbf{x}\)</span> - pitch) ‘ZDIR_X’,
+‘ZDIR_Y’, ‘ZDIR_Z’, ‘XDIR_X’, ‘XDIR_Y’, ‘XDIR_Z’, (spring rotation
+angles) ‘ROLL’, ‘PITCH’, ‘YAW’, (spring total moment components:
+r - roll, p - pitch, y - yaw) ‘TRQTOT_R’, ‘TRQTOT_P’, ‘TRQTOT_Y’,
+(spring undamped moment components) ‘TRQSPR_R’, ‘TRQSPR_P’, ‘TRQSPR_Y’;</li>
 <li><strong>source</strong> - particle number <em>i</em>, or a list of particle numbers
 [<em>i, j, …</em>], or a spatial sphere defined as tuple
 <span class="math">\(\left(x,y,z,r\right)\)</span> <span class="red">(under development)</span>, or a spatial box defined as tuple
