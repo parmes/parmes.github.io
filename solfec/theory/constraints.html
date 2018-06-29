@@ -239,21 +239,32 @@ A constraint data structure, including the local frame <span class="math">\(\lef
 the spatial point <span class="math">\(\mathbf{x}\)</span>, the constraint velocity <span class="math">\(\mathbf{U}\)</span>,
 and rection <span class="math">\(\mathbf{R}\)</span>, is declared in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dom.h#L63">dom.h</a> as follows:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>63
-64
-65
-66</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">#define RIGLNK_LEN(Z)   ((Z)[3])   /* rigid link length */</span>
-<span class="c1">#define STRENGTH(Z)     ((Z)[4])   /* tensile strength */</span>
-<span class="c1">#define VELODIR(Z)      ((Z)[0])   /* prescribed velocity at (t+h) */</span>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">constraint</span>
+<span class="p">{</span>
+  <span class="n">double</span> <span class="n">R</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="o">/*</span> <span class="n">average</span> <span class="n">constraint</span> <span class="n">reaction</span> <span class="o">*/</span>
+	 <span class="n">U</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="o">/*</span> <span class="n">relative</span> <span class="n">velocity</span> <span class="o">*/</span>
+	 <span class="n">V</span> <span class="p">[</span><span class="mi">3</span><span class="p">];</span> <span class="o">/*</span> <span class="n">initial</span> <span class="n">relative</span> <span class="n">velocity</span> <span class="o">*/</span>
 
+  <span class="n">DIAB</span> <span class="o">*</span><span class="n">dia</span><span class="p">;</span> <span class="o">/*</span> <span class="n">diagonal</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">local</span> <span class="n">dynamical</span> <span class="n">system</span> <span class="o">*/</span>
+
+  <span class="n">double</span> <span class="n">point</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="o">/*</span> <span class="n">spatial</span> <span class="n">point</span> <span class="o">*/</span>
+         <span class="n">base</span> <span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="o">/*</span> <span class="n">local</span> <span class="n">orthogonal</span> <span class="n">base</span> <span class="o">*/</span>
+	 <span class="n">area</span><span class="p">,</span> <span class="o">/*</span> <span class="n">contact</span> <span class="n">area</span> <span class="o">*/</span>
+	 <span class="n">gap</span><span class="p">;</span> <span class="o">/*</span> <span class="n">contact</span> <span class="n">gap</span> <span class="o">*/</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>71
-72</pre></div></td><td class="code"><div class="highlight"><pre><span></span>	 <span class="n">V</span> <span class="p">[</span><span class="mi">3</span><span class="p">];</span> <span class="o">/*</span> <span class="n">initial</span> <span class="n">relative</span> <span class="n">velocity</span> <span class="o">*/</span>
-
-</pre></div>
-</td></tr></table></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>120</pre></div></td><td class="code"><div class="highlight"><pre><span></span>   <span class="o">*</span> <span class="n">the</span> <span class="n">data</span> <span class="n">layout</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">change</span> <span class="k">for</span> <span class="n">serial</span> <span class="n">code</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">dbs</span><span class="o">.</span><span class="n">c</span><span class="p">)</span> <span class="o">*/</span>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>124</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p">};</span>
 </pre></div>
 </td></tr></table></div>
 <p>Evaluation of <a class="reference internal" href="#equation-H">(2)</a> in accessed via <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1829">bod.c:BODY_Gen_To_Loc_Operator</a>. <br />
