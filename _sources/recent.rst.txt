@@ -1,4 +1,6 @@
 
+* On Jun 29 2018 :ref:`solfec-theory-constraints`
+
 * On Jun 19 2018 :ref:`parmec-input_commands`
 
 * On May 21 2018 :ref:`solfec-theory-dynamics`
@@ -16,5 +18,3 @@
 * On May 10 2018 :ref:`solfec-user-utilities`
 
 * On May 7 2018 :ref:`parmec-output_files`
-
-* On May 2 2018 :ref:`parmec-index`
