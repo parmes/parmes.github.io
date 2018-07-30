@@ -251,20 +251,20 @@ and find <span class="math">\(\xi_{1}\)</span>, <span class="math">\(\xi_{2}\)</
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>Kinematic models are implement in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo–rigid)
 and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite–element) files. Configuration and velocity
-vectors are declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L153">bod.h</a> as follows:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>139
-140</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">BODY_CHECK_FRACTURE</span>      <span class="o">=</span> <span class="mh">0x0002</span><span class="p">,</span> <span class="o">/*</span> <span class="n">enable</span> <span class="n">fracture</span> <span class="n">check</span> <span class="k">for</span> <span class="n">finite</span> <span class="n">element</span> <span class="n">bodies</span> <span class="o">*/</span>
-  <span class="n">BODY_DISABLE_ROTATION</span>    <span class="o">=</span> <span class="mh">0x0004</span><span class="p">,</span> <span class="o">/*</span> <span class="n">disable</span> <span class="n">integration</span> <span class="n">of</span> <span class="n">rotation</span> <span class="k">for</span> <span class="n">rigid</span> <span class="n">bodies</span> <span class="o">*/</span>
+vectors are declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L150">bod.h</a> as follows:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">general_body</span>
+<span class="p">{</span>
+  <span class="k">enum</span> <span class="p">{</span><span class="n">OBS</span><span class="p">,</span> <span class="n">RIG</span><span class="p">,</span> <span class="n">PRB</span><span class="p">,</span> <span class="n">FEM</span><span class="p">}</span> <span class="n">kind</span><span class="p">;</span> <span class="cm">/* obstacle, rigid, pseudo-rigid, finite element */</span>
+
+  <span class="cm">/* ... */</span>
+
+  <span class="kt">double</span> <span class="o">*</span><span class="n">conf</span><span class="p">,</span>    <span class="cm">/* configuration */</span>
+         <span class="o">*</span><span class="n">velo</span><span class="p">;</span>    <span class="cm">/* velocity */</span>
+
+  <span class="cm">/* ... */</span>
+<span class="p">}</span>
 </pre></div>
-</td></tr></table></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>153
-154</pre></div></td><td class="code"><div class="highlight"><pre><span></span>
-  <span class="n">unsigned</span> <span class="nb">int</span> <span class="nb">id</span><span class="p">;</span>  <span class="o">/*</span> <span class="n">unique</span> <span class="n">identifier</span> <span class="p">(</span><span class="k">for</span> <span class="n">serialization</span> <span class="o">&amp;</span> <span class="n">parallel</span> <span class="n">processing</span><span class="p">)</span> <span class="o">*/</span>
-</pre></div>
-</td></tr></table></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>214</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">FEMFORM</span> <span class="n">form</span><span class="p">;</span> <span class="o">/*</span> <span class="n">FEM</span> <span class="n">formulation</span> <span class="o">*/</span>
-</pre></div>
-</td></tr></table></div>
+</div>
 </div>
 </div>
 

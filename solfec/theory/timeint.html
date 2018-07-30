@@ -122,18 +122,17 @@ out of a 3-vector <span class="math">\(\mathbf{\Psi}\)</span>, and <span class="
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>Time integration is implement in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo–rigid)
 and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite–element) files. Inverse generalized
-inertia matrix <span class="math">\(\mathbf{A}^{-1}\)</span> is declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L176">bod.h</a> as follows:</p>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>139
-140</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">BODY_CHECK_FRACTURE</span>      <span class="o">=</span> <span class="mh">0x0002</span><span class="p">,</span> <span class="o">/*</span> <span class="n">enable</span> <span class="n">fracture</span> <span class="n">check</span> <span class="k">for</span> <span class="n">finite</span> <span class="n">element</span> <span class="n">bodies</span> <span class="o">*/</span>
-  <span class="n">BODY_DISABLE_ROTATION</span>    <span class="o">=</span> <span class="mh">0x0004</span><span class="p">,</span> <span class="o">/*</span> <span class="n">disable</span> <span class="n">integration</span> <span class="n">of</span> <span class="n">rotation</span> <span class="k">for</span> <span class="n">rigid</span> <span class="n">bodies</span> <span class="o">*/</span>
+inertia matrix <span class="math">\(\mathbf{A}^{-1}\)</span> is declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L191">bod.h</a> as follows:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">general_body</span>
+<span class="p">{</span>
+  <span class="cm">/* ... */</span>
+
+  <span class="n">MX</span> <span class="o">*</span><span class="n">inverse</span><span class="p">;</span>      <span class="cm">/* generalized inverse inertia oprator */</span>
+
+  <span class="cm">/* ... */</span>
+<span class="p">}</span>
 </pre></div>
-</td></tr></table></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>176</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  
-</pre></div>
-</td></tr></table></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>214</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">FEMFORM</span> <span class="n">form</span><span class="p">;</span> <span class="o">/*</span> <span class="n">FEM</span> <span class="n">formulation</span> <span class="o">*/</span>
-</pre></div>
-</td></tr></table></div>
+</div>
 <p>Rigid integration formulae <a class="reference internal" href="#equation-R(t+h/2)">(1)</a>-<a class="reference internal" href="#equation-W1(t+h)">(4)</a> are in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1296">bod.c:BODY_Dynamic_Step_Begin</a>. <br />
 Rigid integration formulae <a class="reference internal" href="#equation-R1(t+h)">(5)</a>-<a class="reference internal" href="#equation-R2(t+h)">(8)</a> are in
