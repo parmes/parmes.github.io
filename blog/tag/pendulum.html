@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Posts tagged friction &#8212; PARMES  documentation</title>
+    <title>Posts tagged pendulum &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
@@ -33,7 +33,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Posts tagged friction">
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Posts tagged pendulum">
   
   
   <style type="text/css">
@@ -60,19 +60,19 @@
       
       Posts tagged
       
-      friction
+      pendulum
       
     </h1>
     
     
 
     <div class="section">
-      <h2><a href="../parmec_spring_contact.html">Parmec spring contact</a></h2>
+      <h2><a href="../parmec_ball_joint.html">Parmec ball joint and articulated pendulum example</a></h2>
 
       <ul class="ablog-archive">
       <li>
       
-        May 23, 2018
+        Jul 31, 2018
       
       </li>
         
@@ -101,28 +101,33 @@
       
     
       
-      <a href="tests.html">tests</a>,
+      <a href="joints.html">joints</a>,
       
     
       
-      <a href="contact.html">contact</a>,
+      <a href="algebraic.html">algebraic</a>,
       
     
       
-      <a href="#">friction</a>
+      <a href="#">pendulum</a>,
+      
+    
+      
+      <a href="torsion.html">torsion</a>
       
     </li>
   
   </ul>
-      <p>Parmec includes a simple spring contact modeling capability, where a contact plane on one particle can be paired up
-with a contact point on another particle. Both particles can be analytical (need no geometry), while the contact spring
-and dashpot curves are user defined. Friction, including sticking and slip, can also be added. An example test of this
-capability is <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/tests/spring_contact_plane.py">tests/spring_contact_plane.py</a>.
-Parmec <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-spring"><span class="std std-ref">SPRING command</span></a> is used to define the entire contact interactions (parameters
-<em>spring</em>, <em>dashpot</em> and <em>friction</em>). Upon running it generates time history figures <em>tests/spring_contact_plane_{z,f_ff}.png</em>
-and output files viewable with <a class="reference external" href="https://www.paraview.org/">ParaView</a>. An animation and the figures are included below. (…)</p>
+      <p>PARMEC includes its first algebraic joint – a ball joint – which is realised by nullifying relative velocity
+of a coincident point between two particles. <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-ball-joint"><span class="std std-ref">BALL_JOINT command</span></a> is used to define
+a pair of particles and the point. Since joints are realised as algebraic constraints they do not influence the
+stable time step. Instead a linear system is solved at every time step. Any number of joints can be added to the system,
+although linear dependence should be avoided (QR solver can be used in such case, see the <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/Config.mak">Config.mak</a>
+file). The <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/examples/articulated_pendulum.py">articulated pendulum example</a>
+demonstrates performance of the ball joint, also in conjunction with the <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-torsion-spring"><span class="std std-ref">torsional spring</span></a>.
+The example is summarised below. (…)</p>
 
-      <p><a href="../parmec_spring_contact.html">Read more ...</a></p>
+      <p><a href="../parmec_ball_joint.html">Read more ...</a></p>
       <hr>
     </div>
     
@@ -229,7 +234,7 @@ and output files viewable with <a class="reference external" href="https://www.p
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="#">friction</a></li>
+        <a href="friction.html">friction</a></li>
       
     
       
@@ -254,7 +259,7 @@ and output files viewable with <a class="reference external" href="https://www.p
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="pendulum.html">pendulum</a></li>
+        <a href="#">pendulum</a></li>
       
     
       

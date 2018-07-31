@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>UNSPRING and spring state in Parmec &#8212; PARMES  documentation</title>
+    <title>Parmec ball joint and articulated pendulum example &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
@@ -54,19 +54,43 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="unspring-and-spring-state-in-parmec">
-<span id="blog-unspring-and-spring-state"></span><h1>UNSPRING and spring state in Parmec<a class="headerlink" href="#unspring-and-spring-state-in-parmec" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="../parmec/">PARMEC</a> includes a capability to model rigid body and <a class="reference internal" href="../parmec/input_commands.html#parmec-command-spring"><span class="std std-ref">SPRING</span></a> systems.
-As a part of it an <a class="reference internal" href="../parmec/input_commands.html#parmec-command-unspring"><span class="std std-ref">UNSPRING</span></a> command allows to deactivate selected springs
-when a total force of a set of “test springs” exceeds a prescribed bound. This facilitates modelling
-of simple failure scenarios. Spring states are outputted as scalar fields (in XDMF format) and can be
-viewed with <a class="reference external" href="http://www.paraview.org">ParaView</a> or similar tools. The video clip below is based on <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/tests/unspring.py">this
-example</a>.  Spring states can be visualized
-by selecting the ‘SS’ entity and using “Coor Map Editor” in ParaView to “Interpret Values as Cathegories”
-(checkbox at the top of the editor dialog box) and then adding the discrete values used by the ‘SS’ field
-(-3.0, -2.0, -1.0, …) as described for the <a class="reference internal" href="../parmec/input_commands.html#parmec-command-output"><span class="std std-ref">OUTPUT command</span></a>. Spring states
-can also be outputted as <a class="reference internal" href="../parmec/input_commands.html#parmec-command-history"><span class="std std-ref">HISTORY</span></a> (as in the example).  (…)</p>
-<p align="center"><iframe width="640" height="360" src="//www.youtube.com/embed/DlGXRKHxOv8?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p></div>
+  <div class="section" id="parmec-ball-joint-and-articulated-pendulum-example">
+<h1>Parmec ball joint and articulated pendulum example<a class="headerlink" href="#parmec-ball-joint-and-articulated-pendulum-example" title="Permalink to this headline">¶</a></h1>
+<p>PARMEC includes its first algebraic joint – a ball joint – which is realised by nullifying relative velocity
+of a coincident point between two particles. <a class="reference internal" href="../parmec/input_commands.html#parmec-command-ball-joint"><span class="std std-ref">BALL_JOINT command</span></a> is used to define
+a pair of particles and the point. Since joints are realised as algebraic constraints they do not influence the
+stable time step. Instead a linear system is solved at every time step. Any number of joints can be added to the system,
+although linear dependence should be avoided (QR solver can be used in such case, see the <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/Config.mak">Config.mak</a>
+file). The <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/examples/articulated_pendulum.py">articulated pendulum example</a>
+demonstrates performance of the ball joint, also in conjunction with the <a class="reference internal" href="../parmec/input_commands.html#parmec-command-torsion-spring"><span class="std std-ref">torsional spring</span></a>.
+The example is summarised below. (…)</p>
+<p align="center"><iframe width="640" height="360" src="//www.youtube.com/embed/5ITLIV_tkT8?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p>The above animation depicts a two-element articulated pendulum in two variants: the model on the left includes only
+algebraic ball joints, the model on the right includes also damped torsion springs. One can see that the amount of
+joint flexing is limited by the torsion spring.</p>
+<p>The following two figures illustrate the time history of the distance between the coincident points of the ball
+joint between the two bars, during the 10 second long simulation. The amount of joint leeway is controlled by the
+time step and it remains bounded during the simulation (it is O(1E-6) in this case).</p>
+<div class="figure align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/articulated_pendulum_dp_n2_t0.png"><img alt="../_images/articulated_pendulum_dp_n2_t0.png" src="../_images/articulated_pendulum_dp_n2_t0.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Ball joint only variant of the example.</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/articulated_pendulum_dp_n2_t1.png"><img alt="../_images/articulated_pendulum_dp_n2_t1.png" src="../_images/articulated_pendulum_dp_n2_t1.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Ball joint and torsion spring variant.</span></p>
+</div>
+<p>The final two figures illustrate the time histories of the torques of the torsional spring between the two articulated
+bodies. The first figure below depicts the norm of the torque in the roll-pitch plane, responsible for controlling flexing.
+There is a time-dependent pattern of a non-negligible torque magnitude. The second figure shows the yaw component of the
+torsion spring – and since twisting motion has not been initiated in this example, the torque remains near numerical zero.</p>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/articulated_pendulum_trp.png"><img alt="../_images/articulated_pendulum_trp.png" src="../_images/articulated_pendulum_trp.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Roll-pitch plane torque norm.</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/articulated_pendulum_tyaw.png"><img alt="../_images/articulated_pendulum_tyaw.png" src="../_images/articulated_pendulum_tyaw.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-text">Twisting torque value.</span></p>
+</div>
+</div>
 
   <div class="section">
   
@@ -77,21 +101,14 @@ can also be outputted as <a class="reference internal" href="../parmec/input_com
   <span style="float: left;">
   
   Previous: 
-  <a href="pop_audit.html">
+  <a href="parmec_spherical_joint.html">
     
-    Solfec POP audit report
+    Parmec spherical joint
   </a>
   
   </span>
   <span>&nbsp;</span>
   <span style="float: right;">
-  
-  Next: 
-  <a href="spring_curve_tests.html">
-    Parmec spring curve tests
-    
-  </a>
-  </span>
   
 </div>
 
@@ -102,9 +119,9 @@ can also be outputted as <a class="reference internal" href="../parmec/input_com
     <div id="disqus_thread"></div>
     <script type="text/javascript">
         var disqus_shortname = 'parmes';
-        var disqus_identifier = '/blog/unspring_and_spring_state/';
-        var disqus_title = 'UNSPRING and spring state in Parmec';
-        var disqus_url = 'http://parmes.org/blog/unspring_and_spring_state';
+        var disqus_identifier = '/blog/parmec_ball_joint/';
+        var disqus_title = 'Parmec ball joint and articulated pendulum example';
+        var disqus_url = 'http://parmes.org/blog/parmec_ball_joint';
 
         (function() {
             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -176,13 +193,13 @@ can also be outputted as <a class="reference internal" href="../parmec/input_com
   <ul>
     
     
-      <li><a href="parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
-    
       <li><a href="parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
     
       <li><a href="parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
     
       <li><a href="spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+    
+      <li><a href="unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
     
       <li><a href="pop_audit.html">Dec 12 - Solfec POP audit report</a></li>
     
@@ -307,7 +324,7 @@ can also be outputted as <a class="reference internal" href="../parmec/input_com
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="../_sources/blog/unspring_and_spring_state.rst.txt"
+      <a href="../_sources/blog/parmec_ball_joint.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

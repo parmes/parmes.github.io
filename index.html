@@ -59,19 +59,29 @@
 <h1>Parallel mechanics and particulate media software <a class="reference internal" href="blog/about.html#about-parmes"><span class="std std-ref">blog</span></a> <a href="blog/atom.xml"><img src="_static/icons/feed.png" title="Atom feeds" width="17" height="17" /></a><a class="headerlink" href="#parallel-mechanics-and-particulate-media-software-blog-feed" title="Permalink to this headline">¶</a></h1>
 <p>Recently modified pages:</p>
 <ul class="simple">
+<li>On Jul 30 2018 <a class="reference internal" href="solfec/theory/dynamics.html#solfec-theory-dynamics"><span class="std std-ref">Dynamics</span></a></li>
+<li>On Jul 30 2018 <a class="reference internal" href="solfec/theory/kinematics.html#solfec-theory-kinematics"><span class="std std-ref">Kinematics</span></a></li>
+<li>On Jul 30 2018 <a class="reference internal" href="solfec/theory/timeint.html#solfec-theory-timeint"><span class="std std-ref">Time integration</span></a></li>
 <li>On Jul 26 2018 <a class="reference internal" href="parmec/input_commands.html#parmec-input-commands"><span class="std std-ref">Parmec Input Commands</span></a></li>
 <li>On Jun 29 2018 <a class="reference internal" href="solfec/theory/constraints.html#solfec-theory-constraints"><span class="std std-ref">Constraints</span></a></li>
-<li>On May 21 2018 <a class="reference internal" href="solfec/theory/dynamics.html#solfec-theory-dynamics"><span class="std std-ref">Dynamics</span></a></li>
 <li>On May 17 2018 <a class="reference internal" href="solfec/user/materials.html#solfec-user-materials"><span class="std std-ref">Materials</span></a></li>
 <li>On May 11 2018 <a class="reference internal" href="trs/index.html#trs-index"><span class="std std-ref">Technical Reports</span></a></li>
 <li>On May 10 2018 <a class="reference internal" href="solfec/user/body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a></li>
 <li>On May 10 2018 <a class="reference internal" href="solfec/user/constraints.html#solfec-user-constraints"><span class="std std-ref">Constraints</span></a></li>
 <li>On May 10 2018 <a class="reference internal" href="solfec/user/solvers.html#solfec-user-solvers"><span class="std std-ref">Solvers</span></a></li>
-<li>On May 10 2018 <a class="reference internal" href="solfec/user/utilities.html#solfec-user-utilities"><span class="std std-ref">Utilities</span></a></li>
-<li>On May 7 2018 <a class="reference internal" href="parmec/output_files.html#parmec-output-files"><span class="std std-ref">Output files</span></a></li>
 </ul>
 <p>Recent blog posts:</p>
 <ul class="postlist-style-none postlist">
+<li><p class="first">July 31, 2018 - <a class="reference internal" href="blog/parmec_ball_joint.html">Parmec ball joint and articulated pendulum example</a></p>
+<p>PARMEC includes its first algebraic joint – a ball joint – which is realised by nullifying relative velocity
+of a coincident point between two particles. <a class="reference internal" href="parmec/input_commands.html#parmec-command-ball-joint"><span class="std std-ref">BALL_JOINT command</span></a> is used to define
+a pair of particles and the point. Since joints are realised as algebraic constraints they do not influence the
+stable time step. Instead a linear system is solved at every time step. Any number of joints can be added to the system,
+although linear dependence should be avoided (QR solver can be used in such case, see the <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/Config.mak">Config.mak</a>
+file). The <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/examples/articulated_pendulum.py">articulated pendulum example</a>
+demonstrates performance of the ball joint, also in conjunction with the <a class="reference internal" href="parmec/input_commands.html#parmec-command-torsion-spring"><span class="std std-ref">torsional spring</span></a>.
+The example is summarised below. (…)</p>
+</li>
 <li><p class="first">June 13, 2018 - <a class="reference internal" href="blog/parmec_spherical_joint.html">Parmec spherical joint</a></p>
 <p>Torsion spring has now been added to PARMEC, allowing to model angular hinges with rotational limits and spherical joints.
 <a class="reference internal" href="parmec/input_commands.html#parmec-command-torsion-spring"><span class="std std-ref">TORSION_SPRING command</span></a> is used to define an angle–torque relationship for three
@@ -108,9 +118,6 @@ by selecting the ‘SS’ entity and using “Coor Map Editor” in ParaView to 
 (checkbox at the top of the editor dialog box) and then adding the discrete values used by the ‘SS’ field
 (-3.0, -2.0, -1.0, …) as described for the <a class="reference internal" href="parmec/input_commands.html#parmec-command-output"><span class="std std-ref">OUTPUT command</span></a>. Spring states
 can also be outputted as <a class="reference internal" href="parmec/input_commands.html#parmec-command-history"><span class="std std-ref">HISTORY</span></a> (as in the example).  (…)</p>
-</li>
-<li><p class="first">December 12, 2017 - <a class="reference internal" href="blog/pop_audit.html">Solfec POP audit report</a></p>
-<p>Solfec has been analysed by <a class="reference external" href="https://pop-coe.eu">POP</a> experts. The initial audit report is available for download: (…)</p>
 </li>
 </ul>
 <div class="toctree-wrapper compound">
@@ -181,6 +188,8 @@ can also be outputted as <a class="reference internal" href="parmec/input_comman
   <ul>
     
     
+      <li><a href="blog/parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+    
       <li><a href="blog/parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
     
       <li><a href="blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
@@ -188,8 +197,6 @@ can also be outputted as <a class="reference internal" href="parmec/input_comman
       <li><a href="blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
     
       <li><a href="blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
-    
-      <li><a href="blog/pop_audit.html">Dec 12 - Solfec POP audit report</a></li>
     
   </ul>
 
@@ -205,6 +212,11 @@ can also be outputted as <a class="reference internal" href="parmec/input_comman
     li.ablog-cloud-5{font-size: 140%;}
   </style>
   <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="blog/tag/algebraic.html">algebraic</a></li>
+      
     
       
       <li class="ablog-cloud ablog-cloud-1">
@@ -243,6 +255,11 @@ can also be outputted as <a class="reference internal" href="parmec/input_comman
     
       
       <li class="ablog-cloud ablog-cloud-1">
+        <a href="blog/tag/pendulum.html">pendulum</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
         <a href="blog/tag/performance.html">performance</a></li>
       
     
@@ -252,7 +269,7 @@ can also be outputted as <a class="reference internal" href="parmec/input_comman
       
     
       
-      <li class="ablog-cloud ablog-cloud-3">
+      <li class="ablog-cloud ablog-cloud-2">
         <a href="blog/tag/solfec.html">solfec</a></li>
       
     
@@ -262,7 +279,7 @@ can also be outputted as <a class="reference internal" href="parmec/input_comman
       
     
       
-      <li class="ablog-cloud ablog-cloud-3">
+      <li class="ablog-cloud ablog-cloud-2">
         <a href="blog/tag/tests.html">tests</a></li>
       
     
@@ -277,7 +294,7 @@ can also be outputted as <a class="reference internal" href="parmec/input_comman
   <ul>
   
     
-    <li><a href="blog/2018.html">2018 (4)</a></li>
+    <li><a href="blog/2018.html">2018 (5)</a></li>
     
   
     
