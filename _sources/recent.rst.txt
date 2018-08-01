@@ -1,11 +1,11 @@
 
+* On Jul 31 2018 :ref:`parmec-input_commands`
+
 * On Jul 30 2018 :ref:`solfec-theory-dynamics`
 
 * On Jul 30 2018 :ref:`solfec-theory-kinematics`
 
 * On Jul 30 2018 :ref:`solfec-theory-timeint`
-
-* On Jul 26 2018 :ref:`parmec-input_commands`
 
 * On Jun 29 2018 :ref:`solfec-theory-constraints`
 
