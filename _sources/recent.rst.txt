@@ -1,4 +1,6 @@
 
+* On Aug 21 2018 :ref:`solfec-examples-hybrid_modeling-hs123`
+
 * On Jul 31 2018 :ref:`parmec-input_commands`
 
 * On Jul 30 2018 :ref:`solfec-theory-dynamics`
@@ -16,5 +18,3 @@
 * On May 10 2018 :ref:`solfec-user-body`
 
 * On May 10 2018 :ref:`solfec-user-constraints`
-
-* On May 10 2018 :ref:`solfec-user-solvers`

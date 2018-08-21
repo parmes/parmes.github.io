@@ -143,7 +143,7 @@ the first element, <em>n1, n2, …, ne1</em> enumerate the element nodes,
 and <em>me1</em> is the material number. Similarly for the second and all
 remaining elements. Supported numbers of nodes per element are <em>4, 5,
 6, and 8</em> for respectively <em>tetrahedron, pyramid, wedge, and
-hexahedron</em>, cf. <a class="reference internal" href="#parmec-mesh-elements"><span class="std std-numref">Fig. 78</span></a></li>
+hexahedron</em>, cf. <a class="reference internal" href="#parmec-mesh-elements"><span class="std std-numref">Fig. 80</span></a></li>
 <li><strong>material</strong> - material number</li>
 <li><strong>colors</strong> - list of positive integer face colors: [<em>gcolor, f1,
 n1, n2, …, nf1, c1, f2, n1, n2, …, nf2, c2, …</em>], where
@@ -157,7 +157,7 @@ alone.</li>
 </div>
 <div class="figure align-center" id="id2">
 <span id="parmec-mesh-elements"></span><a class="reference internal image-reference" href="../_images/elements.png"><img alt="../_images/elements.png" src="../_images/elements.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 78 </span><span class="caption-text">Mesh element types in Parmec.</span></p>
+<p class="caption"><span class="caption-number">Fig. 80 </span><span class="caption-text">Mesh element types in Parmec.</span></p>
 </div>
 </div>
 <div class="section" id="analytical">
@@ -282,7 +282,7 @@ limits; the unloading curve begins to be used once either of these limits is cro
 <li><strong>inactive</strong> - optional boolean flag: if <em>True</em> create an inactive spring, that can be activated by the <a class="reference internal" href="#parmec-command-unspring"><span class="std std-ref">UNSPRING</span></a>
 command; default: <em>False</em></li>
 <li><strong>offset</strong> - optional <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number representing a time dependent adjustment applied to all stroke values
-of the spring curve (dashpot unchanged) as in <a class="reference internal" href="#parmec-spring-stroke-offset"><span class="std std-numref">Fig. 79</span></a>; <strong>offset</strong> is applied only prior to yielding for springs
+of the spring curve (dashpot unchanged) as in <a class="reference internal" href="#parmec-spring-stroke-offset"><span class="std std-numref">Fig. 81</span></a>; <strong>offset</strong> is applied only prior to yielding for springs
 with <strong>ylim</strong> and <strong>unload</strong> specified; default: unspecified</li>
 <li><strong>friction</strong> - optional tangential friction coefficient; default: 0.0</li>
 <li><strong>kskn</strong> - optional <span class="math">\(\ge0\)</span> ratio of normal to tangential spring and dashpot parameters used when <strong>friction</strong> &gt; 0; using <strong>kskn</strong> = 0
@@ -292,7 +292,7 @@ transition are not modeled); default: 0.0</li>
 </div>
 <div class="figure align-center" id="id3">
 <span id="parmec-spring-stroke-offset"></span><a class="reference internal image-reference" href="../_images/spring-stroke-offset.png"><img alt="../_images/spring-stroke-offset.png" src="../_images/spring-stroke-offset.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 79 </span><span class="caption-text">The concept of time dependent spring stroke offset.</span></p>
+<p class="caption"><span class="caption-number">Fig. 81 </span><span class="caption-text">The concept of time dependent spring stroke offset.</span></p>
 </div>
 </div>
 <div class="section" id="torsion-spring">

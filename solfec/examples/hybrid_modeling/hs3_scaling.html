@@ -105,13 +105,13 @@ is hidden so that the inner 20x20x20 Solfec array can be seen; this also helps t
 the Parmec and Solfec submodels.</td></tr>
 </tbody>
 </table>
-<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/yt-r9cIkEzA?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference internal" href="#hs3-runtimes"><span class="std std-numref">Table 27</span></a> summarises the parallel runtimes. Total speedup of 3.87 was achieved using 192 CPU cores,
+<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/yt-r9cIkEzA?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference internal" href="#hs3-runtimes"><span class="std std-numref">Table 28</span></a> summarises the parallel runtimes. Total speedup of 3.87 was achieved using 192 CPU cores,
 versus the baseline single cluster node run on 24 CPU cores. Intel Xeon E5–2600 CPU based nodes were used,
 with 24 cores per node and InfiniBand 1 x 56 Gb/s FDR interconnect. We note, that only the inner <span class="math">\(20\times20\times20\)</span>
 Solfec array was parallelized using MPI; the entire Parmec model (the remaining 19000 bodies) was run on MPI rank 0 process,
 utilising task based parallelism (in all cases all 24 cores of the single node were used).</p>
 <span id="hs3-runtimes"></span><table border="1" class="docutils" id="id17">
-<caption><span class="caption-number">Table 27 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): runtime scaling.</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 28 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): runtime scaling.</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="21%" />
 <col width="19%" />
@@ -135,14 +135,14 @@ utilising task based parallelism (in all cases all 24 cores of the single node w
 </tbody>
 </table>
 <p>Animation <a class="footnote-reference" href="#id16" id="id15">[4]</a> depicts load balancing of contact points within Solfec submodel. The inner <span class="math">\(20\times20\times20\)</span>
-array generates up to 100k contact points on average, as seen in <a class="reference internal" href="#hs3-fig1"><span class="std std-numref">Fig. 57</span></a>. <a class="reference internal" href="#hs3-stats-1"><span class="std std-numref">Table 28</span></a> summarises
+array generates up to 100k contact points on average, as seen in <a class="reference internal" href="#hs3-fig1"><span class="std std-numref">Fig. 59</span></a>. <a class="reference internal" href="#hs3-stats-1"><span class="std std-numref">Table 29</span></a> summarises
 the minimum, average and maximum numbers of bodies and contact points for 24–192 MPI rank (CPU cores) runs. Solfec
 utilizes a single geometrical partitioning in order to balance together the bodies and the contact points. Contact
 points are favoured in the load balancing due to the higher computational work related to their processing.
-<a class="reference internal" href="#hs3-stats-2"><span class="std std-numref">Table 29</span></a> shows that contact update, detection, solution and assembling of the <a class="reference internal" href="../../theory/locdyn.html#solfec-theory-locdyn"><span class="std std-ref">local dynamics</span></a>
+<a class="reference internal" href="#hs3-stats-2"><span class="std std-numref">Table 30</span></a> shows that contact update, detection, solution and assembling of the <a class="reference internal" href="../../theory/locdyn.html#solfec-theory-locdyn"><span class="std std-ref">local dynamics</span></a>
 take up the majority of the computational time. The remaining time is spent in load balancing. In this example,
 Solfec <a class="reference internal" href="../../theory/solvers.html#solfec-theory-solvers"><span class="std std-ref">solves an implicit frictional contact problem</span></a> of varying size at every time step.
-<a class="reference internal" href="#hs3-fig1"><span class="std std-numref">Fig. 57</span></a> depicts the time history of the number of contact points over the one second duration of the simulation.</p>
+<a class="reference internal" href="#hs3-fig1"><span class="std std-numref">Fig. 59</span></a> depicts the time history of the number of contact points over the one second duration of the simulation.</p>
 <table class="docutils footnote" frame="void" id="id16" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -152,7 +152,7 @@ Contact points are colored according to processor rank for the 48 CPU cores base
 </tbody>
 </table>
 <p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/D6Q9iQSl3Bo?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><span id="hs3-stats-1"></span><table border="1" class="docutils" id="id18">
-<caption><span class="caption-number">Table 28 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): body and contact point count statistics per MPI rank.</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 29 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): body and contact point count statistics per MPI rank.</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="21%" />
 <col width="19%" />
@@ -209,7 +209,7 @@ Contact points are colored according to processor rank for the 48 CPU cores base
 <div class="line"><br /></div>
 </div>
 <span id="hs3-stats-2"></span><table border="1" class="docutils" id="id19">
-<caption><span class="caption-number">Table 29 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): average computational task share percentage (%).</span><a class="headerlink" href="#id19" title="Permalink to this table">¶</a></caption>
+<caption><span class="caption-number">Table 30 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): average computational task share percentage (%).</span><a class="headerlink" href="#id19" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="26%" />
 <col width="18%" />
@@ -267,7 +267,7 @@ Contact points are colored according to processor rank for the 48 CPU cores base
 </div>
 <div class="figure align-center" id="id20">
 <span id="hs3-fig1"></span><a class="reference internal image-reference" href="../../../_images/hs3_ncon_hist.png"><img alt="../../../_images/hs3_ncon_hist.png" src="../../../_images/hs3_ncon_hist.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 57 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): time history of the contact points count.</span></p>
+<p class="caption"><span class="caption-number">Fig. 59 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">hybrid-solver3</a> (M=5,N=20): time history of the contact points count.</span></p>
 </div>
 </div>
 

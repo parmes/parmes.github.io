@@ -72,13 +72,17 @@ are located in:</p>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/README">README</a> – a text based specification of the problem</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec.py">hs2–parmec.py</a> – including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py">hs2–solfec.py</a> – including the <a class="reference internal" href="../../index.html#solfec-index"><span class="std std-ref">Solfec</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2–state–1.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id10" id="id2">[1]</a></li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2–state–2.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id13" id="id4">[2]</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec-only.py">hs2–parmec–only.py</a> – including the Parmec-only version of the example</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec-only.py">hs2–solfec–only.py</a> – including the Solfec-only version of the example</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2–state–1.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id12" id="id2">[1]</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2–state–2.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id15" id="id4">[2]</a></li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-3.pvsm">hs2–state–3.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig3"><span class="std std-numref">Fig. 55</span></a></li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-4.pvsm">hs2–state–4.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig4"><span class="std std-numref">Fig. 56</span></a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-5.pvsm">hs2–state–5.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig5"><span class="std std-numref">Fig. 57</span></a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-6.pvsm">hs2–state–6.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig6"><span class="std std-numref">Fig. 58</span></a></li>
 </ul>
 <p><a class="reference internal" href="#hs2-fig1"><span class="std std-numref">Fig. 53</span></a> states the problem and describes the hybrid model.</p>
-<div class="figure align-center" id="id16">
+<div class="figure align-center" id="id18">
 <span id="hs2-fig1"></span><a class="reference internal image-reference" href="../../../_images/hs2.png"><img alt="../../../_images/hs2.png" src="../../../_images/hs2.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 53 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: a 2–dimensional cube array acceleration dwell hybrid model</span></p>
 </div>
@@ -89,7 +93,7 @@ are located in:</p>
 <li>green – the boundary Parmec–Solfec bodies, modeled in both codes</li>
 <li>grey – the inner Solfec bodies, interacting via a non–smooth contact law</li>
 </ul>
-<div class="figure align-center" id="id17">
+<div class="figure align-center" id="id19">
 <span id="hs2-fig2"></span><a class="reference internal image-reference" href="../../../_images/hs2-geometry.png"><img alt="../../../_images/hs2-geometry.png" src="../../../_images/hs2-geometry.png" style="width: 60%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 54 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: initial geometry.</span></p>
 </div>
@@ -104,116 +108,108 @@ Finally, between the lines 78 and 98 contact spring–dashpot elements are defin
 step estimation for the model is printed out in line 101.</p>
 <div class="literal-block-wrapper docutils container" id="hs2-lst1">
 <div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">Listing of hs2–parmec.py</span><a class="headerlink" href="#hs2-lst1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>  1
-  2
-  3
-  4
-  5
-  6
-  7
-  8
-  9
- 10
- 11
- 12
- 13
- 14
- 15
- 16
- 17
- 18
- 19
- 20
- 21
- 22
- 23
- 24
- 25
- 26
- 27
- 28
- 29
- 30
- 31
- 32
- 33
- 34
- 35
- 36
- 37
- 38
- 39
- 40
- 41
- 42
- 43
- 44
- 45
- 46
- 47
- 48
- 49
- 50
- 51
- 52
- 53
- 54
- 55
- 56
- 57
- 58
- 59
- 60
- 61
- 62
- 63
- 64
- 65
- 66
- 67
- 68
- 69
- 70
- 71
- 72
- 73
- 74
- 75
- 76
- 77
- 78
- 79
- 80
- 81
- 82
- 83
- 84
- 85
- 86
- 87
- 88
- 89
- 90
- 91
- 92
- 93
- 94
- 95
- 96
- 97
- 98
- 99
-100
-101
-102
-103</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># must be same as in hs2-solfec.py</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># must be same as in hs2-solfec.py</span>
-<span class="n">gap</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># must be same as in hs2-solfec.py</span>
+<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># inherited from SOLFEC: M, N, gap, step, stop</span>
 <span class="n">lofq</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># low excitation frequency</span>
 <span class="n">hifq</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># high excitation freqency</span>
 <span class="n">amag</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># acceleration magnitude</span>
-<span class="n">step</span> <span class="o">=</span> <span class="mf">1E-4</span> <span class="c1"># time step</span>
-<span class="n">stop</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># must be &gt;= stop in hs2-solfec.py</span>
 
 <span class="c1"># find path to parmec source directory in order</span>
 <span class="c1"># to load the acceleration sweep signal script</span>
@@ -423,11 +419,14 @@ description of <a class="reference internal" href="hs0.html#hs0-lst3"><span clas
 90
 91
 92
-93</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># must be same as in hs2-paremc.py</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># must be same as in hs2-paremc.py</span>
-<span class="n">gap</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># must be same as in hs2-paremc.py</span>
+93
+94
+95
+96</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># outer layers</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># inner layers</span>
+<span class="n">gap</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># betweeb bodies</span>
 <span class="n">step</span> <span class="o">=</span> <span class="mf">5E-4</span> <span class="c1"># time step</span>
-<span class="n">stop</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># must be &lt;= stop in hs2-parmec.py</span>
+<span class="n">stop</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># duration</span>
 
 <span class="c1"># create solfec object</span>
 <span class="n">sol</span> <span class="o">=</span> <span class="n">SOLFEC</span> <span class="p">(</span><span class="s1">&#39;DYNAMIC&#39;</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="s1">&#39;out/hybrid-solver2&#39;</span><span class="p">)</span>
@@ -510,7 +509,10 @@ description of <a class="reference internal" href="hs0.html#hs0-lst3"><span clas
 <span class="n">solfec</span><span class="o">.</span><span class="n">OUTPUT</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">)</span> <span class="c1"># collides with &#39;OUTPUT&#39; in Parmec</span>
 
 <span class="c1"># run simulation</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="n">RUN</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">hs</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">RANK</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
 
 <span class="c1"># XDMF export</span>
 <span class="k">if</span> <span class="n">sol</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;READ&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">VIEWER</span><span class="p">():</span>
@@ -534,14 +536,14 @@ without depending on the exported XDMF files, <a class="reference external" href
 The application of ParaView can be simplified by utilising the two state .pvsm files distributed with the example: by selecting
 “File/Load State…” menu choice in ParaView one can load a pre–set post–processing state. The videos included below depict the
 forced motion of the hybrid system, visualised using the two enclosed states files.</p>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
+<table class="docutils footnote" frame="void" id="id12" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2–state–1.pvsm</a>.</td></tr>
 </tbody>
 </table>
-<p align="center"><iframe width="648" height="432" src="//www.youtube.com/embed/Eg_Qm2tOtIY?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><table class="docutils footnote" frame="void" id="id13" rules="none">
+<p align="center"><iframe width="648" height="432" src="//www.youtube.com/embed/Eg_Qm2tOtIY?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><table class="docutils footnote" frame="void" id="id15" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label"><a class="fn-backref" href="#id4">[2]</a></td><td><a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
@@ -551,14 +553,59 @@ forced motion of the hybrid system, visualised using the two enclosed states fil
 <p align="center"><iframe width="648" height="432" src="//www.youtube.com/embed/EzyFSkX7lLM?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference internal" href="#hs2-fig3"><span class="std std-numref">Fig. 55</span></a> and <a class="reference internal" href="#hs2-fig4"><span class="std std-numref">Fig. 56</span></a> respectively show the linear velocity magnitude time history and the displacement magnitude
 time history, at points A (Parmec) and B (Solfec), marked out in <a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>. These plots were generated using ParaView’s “Plot
 Selection Over Time” feature.</p>
-<div class="figure align-center" id="id18">
+<div class="figure align-center" id="id20">
 <span id="hs2-fig3"></span><a class="reference internal image-reference" href="../../../_images/hs2-linvel-mag.png"><img alt="../../../_images/hs2-linvel-mag.png" src="../../../_images/hs2-linvel-mag.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 55 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Linear velocity magnitude history at points A and B (<a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>).</span></p>
 </div>
-<div class="figure align-center" id="id19">
+<div class="figure align-center" id="id21">
 <span id="hs2-fig4"></span><a class="reference internal image-reference" href="../../../_images/hs2-disp-mag.png"><img alt="../../../_images/hs2-disp-mag.png" src="../../../_images/hs2-disp-mag.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 56 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Displacement magnitude history at points A and B (<a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>).</span></p>
 </div>
+<p>Our current presentation is oriented at demonstrating the capability and performance aspects of the proposed framework. Therefore we
+did not attempt to consistently model a uniform physical system by means of the three approaches: Solfec-only, Parmec-only and hybrid.
+The physical parameters of the finite element (FE) Solfec-only model do not match those of the simplified Parmec-only model: the FE
+model is stiffer then the mass-and-spring model. The hybrid model thus represents a stiff inclusion surrounded by a softer surrounding
+material, rather than a uniform material modeled by means of two approaches. We did not attempt to fine-tune the physical parameters
+of the three models, apart from choosing parameters that resulted in stable simulations at a practical time step size. Below, in
+<a class="reference internal" href="#hs2-fig5"><span class="std std-numref">Fig. 57</span></a> and <a class="reference internal" href="#hs2-fig6"><span class="std std-numref">Fig. 58</span></a>, we include comparisons of linear velocity magnitude and displacement magnitude, between
+the three approaches, recorded at point B of the geometry depicted in <a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>. It is quite clear that finite element based
+Solfec-only model has quite different dynamic response when compared with the latter two approaches. The Parmec-only and hybrid approaches
+have similar responses because the softer surrounding material dominates the hybrid model and determines the motion of the stiffer inclusion.</p>
+<div class="figure align-center" id="id22">
+<span id="hs2-fig5"></span><a class="reference internal image-reference" href="../../../_images/hs2-velo-comp.png"><img alt="../../../_images/hs2-velo-comp.png" src="../../../_images/hs2-velo-comp.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 57 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Velocity magnitude time history, at point B, for the three modeling approaches.</span></p>
+</div>
+<div class="figure align-center" id="id23">
+<span id="hs2-fig6"></span><a class="reference internal image-reference" href="../../../_images/hs2-disp-comp.png"><img alt="../../../_images/hs2-disp-comp.png" src="../../../_images/hs2-disp-comp.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 58 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Displacement magnitude time history, at point B, for the three modeling approaches.</span></p>
+</div>
+<p>Finally, the most basic comparison of the practical advantage of simplified modeling is depicted in <a class="reference internal" href="#hs2-runtimes"><span class="std std-numref">Table 27</span></a>.
+The Solfec-only approach takes about 38 minutes to complete calculations. The most simplified Parmec-only approach takes only
+10 seconds and is 230 times faster. The hybrid approach, on the other hard, which includes both rigid bodies (modeled in Parmec)
+and finite element bodies (modeled in Solfec) takes 6.7 seconds to complete. This is 5.7 times faster than the Solfec-only case,
+and 40 times slower than Parmec-only. All Solfec calculations were done in sequential mode, while Parmec calculations took full
+advantage of a 4-core 2.3 GHz Intel Core i7 CPU on a MacBook Pro laptop (mid 2012 model).</p>
+<span id="hs2-runtimes"></span><table border="1" class="docutils" id="id24">
+<caption><span class="caption-number">Table 27 </span><span class="caption-text">2D array runtime comparison, between the NSCD (Solfec), DEM (Parmec) and hybrid approaches.</span><a class="headerlink" href="#id24" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="27%" />
+<col width="23%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Approach</td>
+<td>Solfec-only</td>
+<td>Parmec-only</td>
+<td>Hybrid</td>
+</tr>
+<tr class="row-even"><td>Runtime [sec]</td>
+<td>2300</td>
+<td>10</td>
+<td>402</td>
+</tr>
+</tbody>
+</table>
 </div>
 
   <div class="section">
