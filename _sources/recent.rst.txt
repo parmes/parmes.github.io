@@ -1,5 +1,5 @@
 
-* On Aug 21 2018 :ref:`solfec-examples-hybrid_modeling-hs123`
+* On Aug 24 2018 :ref:`solfec-examples-hybrid_modeling-hs123`
 
 * On Jul 31 2018 :ref:`parmec-input_commands`
 
