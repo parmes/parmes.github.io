@@ -4,21 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Double pendulum impacting a rigid wall &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
@@ -47,13 +39,14 @@
     ul.postlist-style-circle {list-style-type: circle;}
   </style>
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="double-pendulum-impacting-a-rigid-wall">
@@ -92,42 +85,42 @@ configuration of the pendulum was shifted by the sphere radius.</p>
 <col width="64%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>Mass <span class="math">\(\left(kg\right)\)</span></td>
-<td><span class="math">\(m_{1}=m_{2}=1\)</span></td>
+<tr class="row-odd"><td>Mass <span class="math notranslate nohighlight">\(\left(kg\right)\)</span></td>
+<td><span class="math notranslate nohighlight">\(m_{1}=m_{2}=1\)</span></td>
 </tr>
-<tr class="row-even"><td>Length <span class="math">\(\left(m\right)\)</span></td>
-<td><span class="math">\(l_{1}=l_{2}=1\)</span></td>
+<tr class="row-even"><td>Length <span class="math notranslate nohighlight">\(\left(m\right)\)</span></td>
+<td><span class="math notranslate nohighlight">\(l_{1}=l_{2}=1\)</span></td>
 </tr>
-<tr class="row-odd"><td>Point <span class="math">\(\mathbf{x}_{0} \left(m\right)\)</span></td>
-<td><span class="math">\(\mathbf{x}_{0}=\left[0,0,2\right]\)</span></td>
+<tr class="row-odd"><td>Point <span class="math notranslate nohighlight">\(\mathbf{x}_{0} \left(m\right)\)</span></td>
+<td><span class="math notranslate nohighlight">\(\mathbf{x}_{0}=\left[0,0,2\right]\)</span></td>
 </tr>
-<tr class="row-even"><td>Point <span class="math">\(\mathbf{x}_{1} \left(m\right)\)</span></td>
-<td><span class="math">\(\mathbf{x}_{1}=\left[\sin\left(\frac{\pi}{3}\right),
+<tr class="row-even"><td>Point <span class="math notranslate nohighlight">\(\mathbf{x}_{1} \left(m\right)\)</span></td>
+<td><span class="math notranslate nohighlight">\(\mathbf{x}_{1}=\left[\sin\left(\frac{\pi}{3}\right),
 0,2-\cos\left(\frac{\pi}{3}\right)\right]\)</span></td>
 </tr>
-<tr class="row-odd"><td>Point <span class="math">\(\mathbf{x}_{2} \left(m\right)\)</span></td>
-<td><span class="math">\(\mathbf{x}_{2}=\left[\sin\left(\frac{\pi}{3}\right)+\sin\left(\frac{\pi}{5}\right),
+<tr class="row-odd"><td>Point <span class="math notranslate nohighlight">\(\mathbf{x}_{2} \left(m\right)\)</span></td>
+<td><span class="math notranslate nohighlight">\(\mathbf{x}_{2}=\left[\sin\left(\frac{\pi}{3}\right)+\sin\left(\frac{\pi}{5}\right),
 0,2-\cos\left(\frac{\pi}{3}\right)-\cos\left(\frac{\pi}{5}\right)\right]\)</span></td>
 </tr>
-<tr class="row-even"><td>Initial velocities <span class="math">\(\left(m/s\right)\)</span></td>
+<tr class="row-even"><td>Initial velocities <span class="math notranslate nohighlight">\(\left(m/s\right)\)</span></td>
 <td>all zero</td>
 </tr>
-<tr class="row-odd"><td>Gravity acceleration <span class="math">\(\left(m/s^{2}\right)\)</span></td>
-<td><span class="math">\(\mathbf{g}=\left[0,0,-9.81\right]\)</span></td>
+<tr class="row-odd"><td>Gravity acceleration <span class="math notranslate nohighlight">\(\left(m/s^{2}\right)\)</span></td>
+<td><span class="math notranslate nohighlight">\(\mathbf{g}=\left[0,0,-9.81\right]\)</span></td>
 </tr>
 <tr class="row-even"><td>Velocity restitution</td>
-<td><span class="math">\(\epsilon=0.1\)</span></td>
+<td><span class="math notranslate nohighlight">\(\epsilon=0.1\)</span></td>
 </tr>
 <tr class="row-odd"><td>Coulomb friction coefficient</td>
-<td><span class="math">\(\mu=0\)</span></td>
+<td><span class="math notranslate nohighlight">\(\mu=0\)</span></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
-<p>Simulation over the time interval <span class="math">\(\left[0,2.5\right]\)</span> was performed with the time step <span class="math">\(h=0.001\)</span>. As the reference <a class="footnote-reference" href="#id4" id="id3">[1]</a> does
-not specify numerical values of the results, a visual comparison of the total energy and the <span class="math">\(x\)</span>-coordinate histories of the mass
+<p>Simulation over the time interval <span class="math notranslate nohighlight">\(\left[0,2.5\right]\)</span> was performed with the time step <span class="math notranslate nohighlight">\(h=0.001\)</span>. As the reference <a class="footnote-reference" href="#id4" id="id3">[1]</a> does
+not specify numerical values of the results, a visual comparison of the total energy and the <span class="math notranslate nohighlight">\(x\)</span>-coordinate histories of the mass
 points is provided in <a class="reference internal" href="#double-pendulum1"><span class="std std-numref">Fig. 19</span></a> and <a class="reference internal" href="#double-pendulum2"><span class="std std-numref">Fig. 20</span></a>.</p>
 <div class="figure align-center" id="id7">
 <span id="double-pendulum1"></span><a class="reference internal image-reference" href="../../_images/double-compare-energy.png"><img alt="../../_images/double-compare-energy.png" src="../../_images/double-compare-energy.png" style="width: 100%;" /></a>
@@ -135,7 +128,7 @@ points is provided in <a class="reference internal" href="#double-pendulum1"><sp
 </div>
 <div class="figure align-center" id="id8">
 <span id="double-pendulum2"></span><a class="reference internal image-reference" href="../../_images/double-compare-x.png"><img alt="../../_images/double-compare-x.png" src="../../_images/double-compare-x.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Comparison of the <span class="math">\(x\)</span>-coordinate plots (<span class="math">\(x_{i}\left(t\right)\)</span> stands for the <span class="math">\(i\)</span>-th mass point <span class="math">\(x\)</span>-coordinate).</span></p>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text">Comparison of the <span class="math notranslate nohighlight">\(x\)</span>-coordinate plots (<span class="math notranslate nohighlight">\(x_{i}\left(t\right)\)</span> stands for the <span class="math notranslate nohighlight">\(i\)</span>-th mass point <span class="math notranslate nohighlight">\(x\)</span>-coordinate).</span></p>
 </div>
 <div class="figure align-center" id="id9">
 <span id="double-pendulum3"></span><a class="reference internal image-reference" href="../../_images/double-pendulum.gif"><img alt="../../_images/double-pendulum.gif" src="../../_images/double-pendulum.gif" style="width: 50%;" /></a>
@@ -164,6 +157,7 @@ Physical and Engineering Sciences (2001), 2385–2404.</a></td></tr>
   </div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -238,27 +232,29 @@ Physical and Engineering Sciences (2001), 2385–2404.</a></td></tr>
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../../blog.html">Recent Posts</a></h3>
   <ul>
     
     
-      <li><a href="../../blog/parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="../../blog/parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
+      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="../../blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="../../blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+      <li><a href="../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
-      <li><a href="../../blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+      <li><a href="../../blog/unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -377,8 +373,8 @@ Physical and Engineering Sciences (2001), 2385–2404.</a></td></tr>
       &copy;2018 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="../../_sources/solfec/validation/double_pendulum.rst.txt"

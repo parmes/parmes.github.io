@@ -4,21 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Kinematics &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
@@ -47,13 +39,14 @@
     ul.postlist-style-circle {list-style-type: circle;}
   </style>
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="kinematics">
@@ -68,35 +61,35 @@
 <div class="section" id="rigid-body">
 <h2>Rigid body<a class="headerlink" href="#rigid-body" title="Permalink to this headline">¶</a></h2>
 <p>The motion of a rigid body reads</p>
-<div class="math" id="equation-rigmot">
-<span class="eqno">(1)<a class="headerlink" href="#equation-rigmot" title="Permalink to this equation">¶</a></span>\[\mathbf{x}\left(\mathbf{X},t\right)=\mathbf{\Lambda}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\bar{\mathbf{x}}\left(t\right)\]</div>
-<p>where <span class="math">\(\mathbf{\Lambda}\left(t\right)\)</span> is a <span class="math">\(3\times3\)</span> rotation matrix, <span class="math">\(\bar{\mathbf{X}}\)</span> is a selected referential point,
-and <span class="math">\(\bar{\mathbf{x}}\left(t\right)\)</span> is a spatial point. Hence <span class="math">\(\bar{\mathbf{x}}\left(t\right)=\mathbf{x}\left(\bar{\mathbf{X}},t\right)\)</span>
-is the motion of the selected point <span class="math">\(\bar{\mathbf{X}}\)</span>. The term <span class="math">\(\mathbf{\Lambda}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)\)</span>
-represents the rotation of <span class="math">\(\mathbf{X}\)</span> about the point <span class="math">\(\bar{\mathbf{X}}\)</span>. Representing rotations, <span class="math">\(\mathbf{\Lambda}\)</span>
-must be orthogonal: <span class="math">\(\mathbf{\Lambda}^{T}\mathbf{\Lambda}=\mathbf{I}\)</span>, where <span class="math">\(\mathbf{I}\)</span> is the <span class="math">\(3\times3\)</span> identity matrix.
-Thus, the rigidity condition follows <span class="math">\(\left\Vert \mathbf{x}-\bar{\mathbf{x}}\right\Vert =\left\Vert \mathbf{X}-\bar{\mathbf{X}}\right\Vert\)</span>,
+<div class="math notranslate nohighlight" id="equation-rigmot">
+<span class="eqno">(12)<a class="headerlink" href="#equation-rigmot" title="Permalink to this equation">¶</a></span>\[\mathbf{x}\left(\mathbf{X},t\right)=\mathbf{\Lambda}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\bar{\mathbf{x}}\left(t\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{\Lambda}\left(t\right)\)</span> is a <span class="math notranslate nohighlight">\(3\times3\)</span> rotation matrix, <span class="math notranslate nohighlight">\(\bar{\mathbf{X}}\)</span> is a selected referential point,
+and <span class="math notranslate nohighlight">\(\bar{\mathbf{x}}\left(t\right)\)</span> is a spatial point. Hence <span class="math notranslate nohighlight">\(\bar{\mathbf{x}}\left(t\right)=\mathbf{x}\left(\bar{\mathbf{X}},t\right)\)</span>
+is the motion of the selected point <span class="math notranslate nohighlight">\(\bar{\mathbf{X}}\)</span>. The term <span class="math notranslate nohighlight">\(\mathbf{\Lambda}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)\)</span>
+represents the rotation of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> about the point <span class="math notranslate nohighlight">\(\bar{\mathbf{X}}\)</span>. Representing rotations, <span class="math notranslate nohighlight">\(\mathbf{\Lambda}\)</span>
+must be orthogonal: <span class="math notranslate nohighlight">\(\mathbf{\Lambda}^{T}\mathbf{\Lambda}=\mathbf{I}\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is the <span class="math notranslate nohighlight">\(3\times3\)</span> identity matrix.
+Thus, the rigidity condition follows <span class="math notranslate nohighlight">\(\left\Vert \mathbf{x}-\bar{\mathbf{x}}\right\Vert =\left\Vert \mathbf{X}-\bar{\mathbf{X}}\right\Vert\)</span>,
 that is the length of a line segment before and after rotation is preserved.</p>
 <p>The velocity of the spatial point reads</p>
-<div class="math" id="equation-rigvel">
-<span class="eqno">(2)<a class="headerlink" href="#equation-rigvel" title="Permalink to this equation">¶</a></span>\[\dot{\mathbf{x}}\left(\mathbf{X},t\right)=\mathbf{\Lambda}\left(t\right)\hat{\mathbf{\Omega}}\left(t\right)
+<div class="math notranslate nohighlight" id="equation-rigvel">
+<span class="eqno">(13)<a class="headerlink" href="#equation-rigvel" title="Permalink to this equation">¶</a></span>\[\dot{\mathbf{x}}\left(\mathbf{X},t\right)=\mathbf{\Lambda}\left(t\right)\hat{\mathbf{\Omega}}\left(t\right)
 \left(\mathbf{X}-\bar{\mathbf{X}}\right)+\dot{\bar{\mathbf{x}}}\left(t\right)=\hat{\mathbf{\omega}}\left(t\right)
 \mathbf{\Lambda}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\dot{\bar{\mathbf{x}}}\left(t\right)\]</div>
-<p>where <span class="math">\(\mathbf{\omega}\)</span> is the spatial angular velocity vector, <span class="math">\(\mathbf{\Omega}\)</span> is the referential
-angular velocity vector, and <span class="math">\(\dot{\bar{\mathbf{x}}}\)</span> is the velocity of the spatial image of <span class="math">\(\bar{\mathbf{X}}\)</span>.
+<p>where <span class="math notranslate nohighlight">\(\mathbf{\omega}\)</span> is the spatial angular velocity vector, <span class="math notranslate nohighlight">\(\mathbf{\Omega}\)</span> is the referential
+angular velocity vector, and <span class="math notranslate nohighlight">\(\dot{\bar{\mathbf{x}}}\)</span> is the velocity of the spatial image of <span class="math notranslate nohighlight">\(\bar{\mathbf{X}}\)</span>.
 W note that</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mathbf{\omega}=\mathbf{\Lambda}\mathbf{\Omega}\]</div>
-<p>The hat operator <span class="math">\(\hat{\mathbf{y}}\)</span> creates an anti–symmetric <span class="math">\(3\times3\)</span> matrix out of a 3–vector as follows</p>
-<div class="math" id="hat">
+<p>The hat operator <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}\)</span> creates an anti–symmetric <span class="math notranslate nohighlight">\(3\times3\)</span> matrix out of a 3–vector as follows</p>
+<div class="math notranslate nohighlight" id="hat">
 \[\begin{split}\hat{\mathbf{y}}=\left[\begin{array}{ccc}
 0 &amp; -y_{3} &amp; y_{2}\\
 y_{3} &amp; 0 &amp; -y_{1}\\
 -y_{2} &amp; y_{1} &amp; 0
 \end{array}\right]\end{split}\]</div>
-<p>In vector notation the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity <span class="math">\(\mathbf{u}\)</span> can be expressed as</p>
-<div class="math" id="equation-qurig">
-<span id="qurig"></span><span class="eqno">(3)<a class="headerlink" href="#equation-qurig" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
+<p>In vector notation the configuration <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> and the velocity <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> can be expressed as</p>
+<div class="math notranslate nohighlight" id="equation-qurig">
+<span id="qurig"></span><span class="eqno">(15)<a class="headerlink" href="#equation-qurig" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
 \Lambda_{11}\\
 \Lambda_{21}\\
 ...\\
@@ -111,25 +104,25 @@ y_{3} &amp; 0 &amp; -y_{1}\\
 \dot{\bar{x}}_{2}\\
 \dot{\bar{x}}_{3}
 \end{array}\right]\end{split}\]</div>
-<p>The configuration <span class="math">\(\mathbf{q}\)</span> has 12 components and the velocity <span class="math">\(\mathbf{u}\)</span> has 6 components.</p>
+<p>The configuration <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> has 12 components and the velocity <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> has 6 components.</p>
 </div>
 <div class="section" id="pseudo-rigid-body">
 <h2>Pseudo–rigid body<a class="headerlink" href="#pseudo-rigid-body" title="Permalink to this headline">¶</a></h2>
 <p>The motion of a pseudo–rigid body reads</p>
-<div class="math" id="equation-prbmot">
-<span class="eqno">(4)<a class="headerlink" href="#equation-prbmot" title="Permalink to this equation">¶</a></span>\[\mathbf{x}\left(t\right)=\mathbf{F}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\bar{\mathbf{x}}\left(t\right)\]</div>
-<p>where <span class="math">\(\mathbf{x}\)</span> is the current image of a referential point <span class="math">\(\mathbf{X}\)</span>, <span class="math">\(\mathbf{F}\)</span> is a spatially homogeneous
-deformation gradient <span class="math">\(\left(\mathbf{F}=\partial\mathbf{x}/\partial\mathbf{X}\right), \bar{\mathbf{X}}\)</span> is a selected referential point
-and <span class="math">\(\bar{\mathbf{x}}=\bar{\mathbf{x}}\left(t\right)\)</span> is the current image of <span class="math">\(\bar{\mathbf{X}}\)</span>. Deformation gradient
-<span class="math">\(\mathbf{F}\)</span> is an invertible and orientation preserving <span class="math">\(\left(\det\left(\mathbf{F}\right)&gt;0\right)\)</span> <span class="math">\(3\times3\)</span> matrix.</p>
+<div class="math notranslate nohighlight" id="equation-prbmot">
+<span class="eqno">(16)<a class="headerlink" href="#equation-prbmot" title="Permalink to this equation">¶</a></span>\[\mathbf{x}\left(t\right)=\mathbf{F}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\bar{\mathbf{x}}\left(t\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is the current image of a referential point <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{F}\)</span> is a spatially homogeneous
+deformation gradient <span class="math notranslate nohighlight">\(\left(\mathbf{F}=\partial\mathbf{x}/\partial\mathbf{X}\right), \bar{\mathbf{X}}\)</span> is a selected referential point
+and <span class="math notranslate nohighlight">\(\bar{\mathbf{x}}=\bar{\mathbf{x}}\left(t\right)\)</span> is the current image of <span class="math notranslate nohighlight">\(\bar{\mathbf{X}}\)</span>. Deformation gradient
+<span class="math notranslate nohighlight">\(\mathbf{F}\)</span> is an invertible and orientation preserving <span class="math notranslate nohighlight">\(\left(\det\left(\mathbf{F}\right)&gt;0\right)\)</span> <span class="math notranslate nohighlight">\(3\times3\)</span> matrix.</p>
 <p>The velocity of the spatial point reads</p>
-<div class="math" id="equation-prbvel">
-<span class="eqno">(5)<a class="headerlink" href="#equation-prbvel" title="Permalink to this equation">¶</a></span>\[\dot{\mathbf{x}}\left(t\right)=\dot{\mathbf{F}}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\dot{\bar{\mathbf{x}}}\left(t\right)\]</div>
-<p>where <span class="math">\(\dot{\mathbf{F}}\)</span> is the velocity of the deformation gradient and <span class="math">\(\dot{\bar{\mathbf{x}}}\)</span> is the velocity of the spatial
-image of <span class="math">\(\bar{\mathbf{X}}\)</span>.</p>
-<p id="pseudo-rigid-vectors">In vector notation the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity <span class="math">\(\mathbf{u}\)</span> can be expressed as</p>
-<div class="math" id="equation-quprb">
-<span id="quprb"></span><span class="eqno">(6)<a class="headerlink" href="#equation-quprb" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
+<div class="math notranslate nohighlight" id="equation-prbvel">
+<span class="eqno">(17)<a class="headerlink" href="#equation-prbvel" title="Permalink to this equation">¶</a></span>\[\dot{\mathbf{x}}\left(t\right)=\dot{\mathbf{F}}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\dot{\bar{\mathbf{x}}}\left(t\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\dot{\mathbf{F}}\)</span> is the velocity of the deformation gradient and <span class="math notranslate nohighlight">\(\dot{\bar{\mathbf{x}}}\)</span> is the velocity of the spatial
+image of <span class="math notranslate nohighlight">\(\bar{\mathbf{X}}\)</span>.</p>
+<p id="pseudo-rigid-vectors">In vector notation the configuration <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> and the velocity <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> can be expressed as</p>
+<div class="math notranslate nohighlight" id="equation-quprb">
+<span id="quprb"></span><span class="eqno">(18)<a class="headerlink" href="#equation-quprb" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
 F_{11}\\
 F_{12}\\
 ...\\
@@ -144,22 +137,22 @@ F_{12}\\
 \dot{\bar{x}}_{2}\\
 \dot{\bar{x}}_{3}
 \end{array}\right]\end{split}\]</div>
-<p>Both, the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity <span class="math">\(\mathbf{u}\)</span> are 12–component vectors.</p>
+<p>Both, the configuration <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> and the velocity <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> are 12–component vectors.</p>
 </div>
 <div class="section" id="finite-element-body">
 <h2>Finite–element body<a class="headerlink" href="#finite-element-body" title="Permalink to this headline">¶</a></h2>
 <p>The finite–element motion reads</p>
-<div class="math" id="equation-femmot">
-<span class="eqno">(7)<a class="headerlink" href="#equation-femmot" title="Permalink to this equation">¶</a></span>\[\mathbf{x}\left(\mathbf{X},t\right)=\mathbf{X}+\mathbf{N}\left(\mathbf{X}\right)\mathbf{q}\left(t\right)\]</div>
-<p>where <span class="math">\(\mathbf{x}\)</span> is the current image of the referential point <span class="math">\(\mathbf{X}\)</span>, <span class="math">\(\mathbf{N}\left(\mathbf{X}\right)\)</span>
-is a matrix of shape functions, and <span class="math">\(\mathbf{q}\left(t\right)\)</span> is a vector of nodal displacements.</p>
+<div class="math notranslate nohighlight" id="equation-femmot">
+<span class="eqno">(19)<a class="headerlink" href="#equation-femmot" title="Permalink to this equation">¶</a></span>\[\mathbf{x}\left(\mathbf{X},t\right)=\mathbf{X}+\mathbf{N}\left(\mathbf{X}\right)\mathbf{q}\left(t\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is the current image of the referential point <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{N}\left(\mathbf{X}\right)\)</span>
+is a matrix of shape functions, and <span class="math notranslate nohighlight">\(\mathbf{q}\left(t\right)\)</span> is a vector of nodal displacements.</p>
 <p>The velocity of the spatial point reads</p>
-<div class="math" id="equation-femvel">
-<span class="eqno">(8)<a class="headerlink" href="#equation-femvel" title="Permalink to this equation">¶</a></span>\[\dot{\mathbf{x}}\left(\mathbf{X},t\right)=\mathbf{N}\left(\mathbf{X}\right)\dot{\mathbf{q}}\left(t\right)\]</div>
-<p>where <span class="math">\(\dot{\mathbf{q}}\)</span> is the vector of nodal <span class="math">\(x,y,z\)</span> velocities.</p>
-<p>In vector notation, the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity <span class="math">\(\mathbf{u}\)</span> can be expressed as</p>
-<div class="math" id="equation-qufem">
-<span id="qufem"></span><span class="eqno">(9)<a class="headerlink" href="#equation-qufem" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
+<div class="math notranslate nohighlight" id="equation-femvel">
+<span class="eqno">(20)<a class="headerlink" href="#equation-femvel" title="Permalink to this equation">¶</a></span>\[\dot{\mathbf{x}}\left(\mathbf{X},t\right)=\mathbf{N}\left(\mathbf{X}\right)\dot{\mathbf{q}}\left(t\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\dot{\mathbf{q}}\)</span> is the vector of nodal <span class="math notranslate nohighlight">\(x,y,z\)</span> velocities.</p>
+<p>In vector notation, the configuration <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> and the velocity <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> can be expressed as</p>
+<div class="math notranslate nohighlight" id="equation-qufem">
+<span id="qufem"></span><span class="eqno">(21)<a class="headerlink" href="#equation-qufem" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{q}=\left[\begin{array}{c}
 q_{1x}\\
 q_{1y}\\
 q_{1z}\\
@@ -168,15 +161,15 @@ q_{nx}\\
 q_{ny}\\
 q_{nz}
 \end{array}\right],\,\,\,\mathbf{u}=\dot{\mathbf{q}}\end{split}\]</div>
-<p>Both, the configuration <span class="math">\(\mathbf{q}\)</span> and the velocity <span class="math">\(\mathbf{u}\)</span> have size <span class="math">\(3\times n\)</span>, where <span class="math">\(n\)</span> is the number of nodes in a finite–element mesh.</p>
-<p>The matrix <span class="math">\(\mathbf{N}\)</span> in <a class="reference internal" href="#equation-femmot">(7)</a> and <a class="reference internal" href="#equation-femvel">(8)</a> has the following form</p>
-<div class="math">
+<p>Both, the configuration <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> and the velocity <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> have size <span class="math notranslate nohighlight">\(3\times n\)</span>, where <span class="math notranslate nohighlight">\(n\)</span> is the number of nodes in a finite–element mesh.</p>
+<p>The matrix <span class="math notranslate nohighlight">\(\mathbf{N}\)</span> in <a class="reference internal" href="#equation-femmot">(19)</a> and <a class="reference internal" href="#equation-femvel">(20)</a> has the following form</p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{N}=\left[\begin{array}{ccccccc}
 N_{1} &amp;  &amp;  &amp; ... &amp; N_{n}\\
  &amp; N_{1} &amp;  &amp; ... &amp;  &amp; N_{n}\\
   &amp;  &amp; N_{1} &amp; ... &amp;  &amp;  &amp; N_{n}
   \end{array}\right]\end{split}\]</div>
-<p>where <span class="math">\(N_{i}\)</span> are nodal shape functions, juxtaposed from element shape functions meeting at coincident mesh nodes.</p>
+<p>where <span class="math notranslate nohighlight">\(N_{i}\)</span> are nodal shape functions, juxtaposed from element shape functions meeting at coincident mesh nodes.</p>
 <div class="section" id="shape-functions">
 <h3>Shape functions<a class="headerlink" href="#shape-functions" title="Permalink to this headline">¶</a></h3>
 <div class="figure align-center" id="id1">
@@ -185,21 +178,21 @@ N_{1} &amp;  &amp;  &amp; ... &amp; N_{n}\\
 </div>
 <p>Finite–element types available in Solfec are depicted in <a class="reference internal" href="#element-types"><span class="std std-numref">Fig. 4</span></a>. Shape functions for those
 elements are summarised in <a class="reference internal" href="#element-shapes"><span class="std std-numref">Table 25</span></a>.</p>
-<p>Isoparametric mapping is used to go back and forth between the natural element coordinates <span class="math">\(\xi_{1}\)</span>,
-<span class="math">\(\xi_{2}\)</span>, <span class="math">\(\xi_{3}\)</span>, local to individual element domains, and the referential mesh coordinates
-<span class="math">\(\mathbf{Y}\)</span></p>
-<div class="math">
+<p>Isoparametric mapping is used to go back and forth between the natural element coordinates <span class="math notranslate nohighlight">\(\xi_{1}\)</span>,
+<span class="math notranslate nohighlight">\(\xi_{2}\)</span>, <span class="math notranslate nohighlight">\(\xi_{3}\)</span>, local to individual element domains, and the referential mesh coordinates
+<span class="math notranslate nohighlight">\(\mathbf{Y}\)</span></p>
+<div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{Y}\left(\xi_{1},\xi_{2},\xi_{3}\right)=\mathbf{N}\left(\xi_{1},\xi_{2},\xi_{3}\right)\left[\begin{array}{c}
 \mathbf{Y}_{1}\\
 ...\\
 \mathbf{Y}_{n}
 \end{array}\right]\end{split}\]</div>
-<p>where <span class="math">\(\mathbf{Y}_{i}\)</span> are referential coordinates of mesh nodes. The function <span class="math">\(\mathbf{N}\left(\mathbf{X}\right)\)</span>
-in <a class="reference internal" href="#equation-femmot">(7)</a> and <a class="reference internal" href="#equation-femvel">(8)</a> has the following form</p>
-<div class="math">
+<p>where <span class="math notranslate nohighlight">\(\mathbf{Y}_{i}\)</span> are referential coordinates of mesh nodes. The function <span class="math notranslate nohighlight">\(\mathbf{N}\left(\mathbf{X}\right)\)</span>
+in <a class="reference internal" href="#equation-femmot">(19)</a> and <a class="reference internal" href="#equation-femvel">(20)</a> has the following form</p>
+<div class="math notranslate nohighlight">
 \[\mathbf{N}\left(\mathbf{X}\right)=\mathbf{N}\left(\mathbf{Y}^{-1}\left(\mathbf{X}\right)\right)\]</div>
-<p>Newton iterations are required to solve <span class="math">\(\mathbf{X}=\mathbf{Y}\left(\xi_{1},\xi_{2},\xi_{3}\right)\)</span>
-and find <span class="math">\(\xi_{1}\)</span>, <span class="math">\(\xi_{2}\)</span>, <span class="math">\(\xi_{3}\)</span> for a given referential point <span class="math">\(\mathbf{X}\)</span>.</p>
+<p>Newton iterations are required to solve <span class="math notranslate nohighlight">\(\mathbf{X}=\mathbf{Y}\left(\xi_{1},\xi_{2},\xi_{3}\right)\)</span>
+and find <span class="math notranslate nohighlight">\(\xi_{1}\)</span>, <span class="math notranslate nohighlight">\(\xi_{2}\)</span>, <span class="math notranslate nohighlight">\(\xi_{3}\)</span> for a given referential point <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>.</p>
 <span id="element-shapes"></span><table border="1" class="docutils" id="id2">
 <caption><span class="caption-number">Table 25 </span><span class="caption-text">Finite–element shape functions.</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
@@ -208,40 +201,40 @@ and find <span class="math">\(\xi_{1}\)</span>, <span class="math">\(\xi_{2}\)</
 <tbody valign="top">
 <tr class="row-odd"><td><strong>Tetrahedron</strong></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(N_{1}=1-\left(\xi_{1}+\xi_{2}+\xi_{3}\right)\)</span> <br />
-<span class="math">\(N_{2}=\xi_{1}\)</span> <br />
-<span class="math">\(N_{3}=\xi_{2}\)</span> <br />
-<span class="math">\(N_{4}=\xi_{3}\)</span> <br /></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(N_{1}=1-\left(\xi_{1}+\xi_{2}+\xi_{3}\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{2}=\xi_{1}\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{3}=\xi_{2}\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{4}=\xi_{3}\)</span> <br /></td>
 </tr>
 <tr class="row-odd"><td><strong>Pyramid</strong></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(r=
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(r=
 \xi_{1}\xi_{2}\xi_{3}/\left(1-\xi_{3}\right)\text{ if }\xi_{3}\ne1\text{ or }0\text{ otherwise}\)</span> <br />
-<span class="math">\(N_{1}=0.25\left(\left(1+\xi_{1}\right)\left(1+\xi_{2}\right)-\xi_{3}+r\right)\)</span> <br />
-<span class="math">\(N_{2}=0.25\left(\left(1-\xi_{1}\right)\left(1+\xi_{2}\right)-\xi_{3}-r\right)\)</span> <br />
-<span class="math">\(N_{3}=0.25\left(\left(1-\xi_{1}\right)\left(1-\xi_{2}\right)-\xi_{3}+r\right)\)</span> <br />
-<span class="math">\(N_{4}=0.25\left(\left(1+\xi_{1}\right)\left(1-\xi_{2}\right)-\xi_{3}-r\right)\)</span> <br />
-<span class="math">\(N_{5}=\xi_{3}\)</span> <br /></td>
+<span class="math notranslate nohighlight">\(N_{1}=0.25\left(\left(1+\xi_{1}\right)\left(1+\xi_{2}\right)-\xi_{3}+r\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{2}=0.25\left(\left(1-\xi_{1}\right)\left(1+\xi_{2}\right)-\xi_{3}-r\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{3}=0.25\left(\left(1-\xi_{1}\right)\left(1-\xi_{2}\right)-\xi_{3}+r\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{4}=0.25\left(\left(1+\xi_{1}\right)\left(1-\xi_{2}\right)-\xi_{3}-r\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{5}=\xi_{3}\)</span> <br /></td>
 </tr>
 <tr class="row-odd"><td><strong>Wedge</strong></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(N_{1}=0.5\left(1-\xi_{1}-\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
-<span class="math">\(N_{2}=0.5\xi_{1}\left(1-\xi_{3}\right)\)</span> <br />
-<span class="math">\(N_{3}=0.5\xi_{2}\left(1-\xi_{3}\right)\)</span> <br />
-<span class="math">\(N_{4}=0.5\left(1-\xi_{1}-\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br />
-<span class="math">\(N_{5}=0.5\xi_{1}\left(1+\xi_{3}\right)\)</span> <br />
-<span class="math">\(N_{6}=0.5\xi_{2}\left(1+\xi_{3}\right)\)</span> <br /></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(N_{1}=0.5\left(1-\xi_{1}-\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{2}=0.5\xi_{1}\left(1-\xi_{3}\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{3}=0.5\xi_{2}\left(1-\xi_{3}\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{4}=0.5\left(1-\xi_{1}-\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{5}=0.5\xi_{1}\left(1+\xi_{3}\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{6}=0.5\xi_{2}\left(1+\xi_{3}\right)\)</span> <br /></td>
 </tr>
 <tr class="row-odd"><td><strong>Hexahedron</strong></td>
 </tr>
-<tr class="row-even"><td><span class="math">\(N_{1}=0.125\left(1-\xi_{1}\right)\left(1-\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
-<span class="math">\(N_{2}=0.125\left(1+\xi_{1}\right)\left(1-\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
-<span class="math">\(N_{3}=0.125\left(1+\xi_{1}\right)\left(1+\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
-<span class="math">\(N_{4}=0.125\left(1-\xi_{1}\right)\left(1+\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
-<span class="math">\(N_{5}=0.125\left(1-\xi_{1}\right)\left(1-\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br />
-<span class="math">\(N_{6}=0.125\left(1+\xi_{1}\right)\left(1-\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br />
-<span class="math">\(N_{7}=0.125\left(1+\xi_{1}\right)\left(1+\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br />
-<span class="math">\(N_{8}=0.125\left(1-\xi_{1}\right)\left(1+\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br /></td>
+<tr class="row-even"><td><span class="math notranslate nohighlight">\(N_{1}=0.125\left(1-\xi_{1}\right)\left(1-\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{2}=0.125\left(1+\xi_{1}\right)\left(1-\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{3}=0.125\left(1+\xi_{1}\right)\left(1+\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{4}=0.125\left(1-\xi_{1}\right)\left(1+\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{5}=0.125\left(1-\xi_{1}\right)\left(1-\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{6}=0.125\left(1+\xi_{1}\right)\left(1-\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{7}=0.125\left(1+\xi_{1}\right)\left(1+\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br />
+<span class="math notranslate nohighlight">\(N_{8}=0.125\left(1-\xi_{1}\right)\left(1+\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br /></td>
 </tr>
 </tbody>
 </table>
@@ -252,7 +245,7 @@ and find <span class="math">\(\xi_{1}\)</span>, <span class="math">\(\xi_{2}\)</
 <p>Kinematic models are implement in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo–rigid)
 and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite–element) files. Configuration and velocity
 vectors are declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L150">bod.h</a> as follows:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">general_body</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">general_body</span>
 <span class="p">{</span>
   <span class="k">enum</span> <span class="p">{</span><span class="n">OBS</span><span class="p">,</span> <span class="n">RIG</span><span class="p">,</span> <span class="n">PRB</span><span class="p">,</span> <span class="n">FEM</span><span class="p">}</span> <span class="n">kind</span><span class="p">;</span> <span class="cm">/* obstacle, rigid, pseudo-rigid, finite element */</span>
 
@@ -274,6 +267,7 @@ vectors are declared in <a class="reference external" href="https://github.com/t
   </div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -357,27 +351,29 @@ vectors are declared in <a class="reference external" href="https://github.com/t
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../../blog.html">Recent Posts</a></h3>
   <ul>
     
     
-      <li><a href="../../blog/parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="../../blog/parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
+      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="../../blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="../../blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+      <li><a href="../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
-      <li><a href="../../blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+      <li><a href="../../blog/unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -496,8 +492,8 @@ vectors are declared in <a class="reference external" href="https://github.com/t
       &copy;2018 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="../../_sources/solfec/theory/kinematics.rst.txt"

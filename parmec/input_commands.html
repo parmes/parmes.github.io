@@ -4,21 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Parmec Input Commands &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -47,13 +39,14 @@
     ul.postlist-style-circle {list-style-type: circle;}
   </style>
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="parmec-input-commands">
@@ -122,7 +115,7 @@ t2&nbsp;v2 <br />
 <p class="topic-title first">parnum = SPHERE (center, radius, material, color)</p>
 <ul class="simple">
 <li><strong>parnum</strong> - particle number</li>
-<li><strong>center</strong> - tuple <span class="math">\(\left(x,y,z\right)\)</span> defining the center</li>
+<li><strong>center</strong> - tuple <span class="math notranslate nohighlight">\(\left(x,y,z\right)\)</span> defining the center</li>
 <li><strong>radius</strong> - radius</li>
 <li><strong>material</strong> - material number</li>
 <li><strong>color</strong> - positive integer surface color</li>
@@ -202,11 +195,11 @@ t2x3, t2y3, t2z3), …</em>] defining the obstacle</li>
 color2, …</em>] of colors for each individual triangle</li>
 <li><strong>point</strong> - spatial reference point</li>
 <li><strong>linear</strong> - linear velocity history callback:
-<span class="math">\(\left(v_{x},v_{y},v_{z}\right)=\)</span> <strong>linear</strong>
-<span class="math">\(\left(t\right)\)</span></li>
+<span class="math notranslate nohighlight">\(\left(v_{x},v_{y},v_{z}\right)=\)</span> <strong>linear</strong>
+<span class="math notranslate nohighlight">\(\left(t\right)\)</span></li>
 <li><strong>angular</strong> - spatial angular velocity history callback:
-<span class="math">\(\left(\omega_{x},\omega_{y},\omega_{z}\right)=\)</span> <strong>angular</strong>
-<span class="math">\(\left(t\right)\)</span></li>
+<span class="math notranslate nohighlight">\(\left(\omega_{x},\omega_{y},\omega_{z}\right)=\)</span> <strong>angular</strong>
+<span class="math notranslate nohighlight">\(\left(t\right)\)</span></li>
 </ul>
 </div>
 </div>
@@ -214,12 +207,12 @@ color2, …</em>] of colors for each individual triangle</li>
 <span id="parmec-command-spring"></span><h2>SPRING<a class="headerlink" href="#spring" title="Permalink to this headline">¶</a></h2>
 <p>Create a translational spring constraint. The applied force formula
 reads</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\text{force}\left(t\right)=\text{direction}\left(t\right)\cdot\left[\text{spring}
 \left(\text{stroke}\left(t\right)\right)+\text{dashpot}\left(\text{velocity}\left(t\right)\right)
 \cdot\left|\text{sign}\left(\text{spring}\left(\text{stroke}\left(t\right)\right)\right)\right|\right]\]</div>
 <p>where</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\text{direction}\left(t\right)=\left\{ \begin{array}{c}
 \text{d1}\left(t\right)=\left(\text{point2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|
 \text{point2}\left(t\right)-\text{point1}\left(t\right)\right|\mathbf{\,if\,}\text{geom2}=\text{point2}\\
@@ -227,57 +220,57 @@ reads</p>
 \text{constant }\mathbf{direction}=\left(d_{x},d_{y},d_{z}\right)\\
 \text{d1}\left(t\right)-\text{d1}\left(t\right)\cdot\left(d_{x},d_{y},d_{z}\right)\text{if }\mathbf{planar}\text{ is enabled}
 \end{array}\right.\end{split}\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\text{stroke0}=\text{direction}\left(0\right)\cdot\left[\text{point2}\left(0\right)-\text{point1}\left(0\right)\right]\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\text{stroke}\left(t\right)=\left\{ \begin{array}{c}
 \text{direction}\left(t\right)\cdot\left[\text{point2}\left(t\right)-\text{point1}\left(t\right)\right]-
 \text{stroke0}\mathbf{\,\,\,if\,}\text{geom2}=\text{point2}\\
 \text{normal2}\left(t\right)\cdot\left[\text{point1}\left(t\right)-
 \text{point2}\left(t\right)\right]\mathbf{\,\,\,if\,}\text{ geom2 =[point2, normal2]}
 \end{array}\right.\end{split}\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\text{velocity}\left(t\right)=\text{direction}\left(t\right)\cdot\frac{d}{dt}
 \left[\text{point2}\left(t\right)-\text{point1}\left(t\right)\right]\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\text{sign}\left(x\right)=\left\{ \begin{array}{c}
 -1\text{ if }x&lt;0\\
 0\text{ if }x=0\\
 1\text{ if }x&gt;0
 \end{array}\right.\end{split}\]</div>
-<p>The <span class="math">\(\text{spring}\left(\text{stroke}\right)\)</span> and <span class="math">\(\text{dashpot}\left(\text{velocity}\right)\)</span> relationships are
-defined by means of lookup tables; <span class="math">\(\text{force}\left(t\right)\)</span> is applied at <span class="math">\(\text{point2}\left(t\right)\)</span>, and
-<span class="math">\(-\text{force}\left(t\right)\)</span> is applied at <span class="math">\(\text{point1}\left(t\right)\)</span>; dashpot force is not applied when
+<p>The <span class="math notranslate nohighlight">\(\text{spring}\left(\text{stroke}\right)\)</span> and <span class="math notranslate nohighlight">\(\text{dashpot}\left(\text{velocity}\right)\)</span> relationships are
+defined by means of lookup tables; <span class="math notranslate nohighlight">\(\text{force}\left(t\right)\)</span> is applied at <span class="math notranslate nohighlight">\(\text{point2}\left(t\right)\)</span>, and
+<span class="math notranslate nohighlight">\(-\text{force}\left(t\right)\)</span> is applied at <span class="math notranslate nohighlight">\(\text{point1}\left(t\right)\)</span>; dashpot force is not applied when
 spring force is zero.</p>
 <div class="topic">
 <p class="topic-title first">sprnum = SPRING (part1, point1, part2, geom2, spring | dashpot, direction, planar, unload, ylim, inactive, offset, friction, kskn) <span class="red">(experimental)</span></p>
 <ul class="simple">
 <li><strong>sprnum</strong> - spring number</li>
 <li><strong>part1</strong> - first particle number</li>
-<li><strong>point1</strong> - tuple <span class="math">\(\left(x,y,z\right)\)</span> defining a point moving
+<li><strong>point1</strong> - tuple <span class="math notranslate nohighlight">\(\left(x,y,z\right)\)</span> defining a point moving
 with the first particle</li>
-<li><strong>part2</strong> - second particle number; <span class="math">\(-1\)</span> can be used to
+<li><strong>part2</strong> - second particle number; <span class="math notranslate nohighlight">\(-1\)</span> can be used to
 indicate a single-particle constraint</li>
-<li><strong>geom2</strong> - tuple <span class="math">\(\left(x,y,z\right)\)</span> defining a second point, either moving with the second particle, or a spatial point;
-alternatively a list storing a point and a normal [<span class="math">\(\left(p_{x},p_{y},p_{z}\right)\)</span>, <span class="math">\(\left(n_{x},n_{y},n_{z}\right)\)</span>]
+<li><strong>geom2</strong> - tuple <span class="math notranslate nohighlight">\(\left(x,y,z\right)\)</span> defining a second point, either moving with the second particle, or a spatial point;
+alternatively a list storing a point and a normal [<span class="math notranslate nohighlight">\(\left(p_{x},p_{y},p_{z}\right)\)</span>, <span class="math notranslate nohighlight">\(\left(n_{x},n_{y},n_{z}\right)\)</span>]
 defining a referential plane, moving with the second particle or spatially fixed; when a plane is defined the spring direction and
 stroke are calculated from a projection of <strong>point1</strong> onto this plane: in this case the input arguments <strong>direction</strong> and <strong>planar</strong>
 are ignored</li>
 <li><strong>spring</strong> - spring force lookup table
-<span class="math">\(\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]\)</span>;
+<span class="math notranslate nohighlight">\(\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]\)</span>;
 used for both loading and unloading when the <strong>unload</strong> table and the <strong>yield</strong> limits are not given</li>
 <li><strong>dashpot</strong> - optional dashpot force lookup table
-<span class="math">\(\left[\text{velocity}_{1},\text{force}_{1},\text{velocity}_{2},\text{force}_{2},...,\text{velocity}_{m},\text{force}_{m}\right]\)</span>
-or a critical damping ratio from interval <span class="math">\(\left[0,+\infty\right)\)</span>; default: <span class="math">\(\left[-\infty,0,+\infty,0\right]\)</span></li>
+<span class="math notranslate nohighlight">\(\left[\text{velocity}_{1},\text{force}_{1},\text{velocity}_{2},\text{force}_{2},...,\text{velocity}_{m},\text{force}_{m}\right]\)</span>
+or a critical damping ratio from interval <span class="math notranslate nohighlight">\(\left[0,+\infty\right)\)</span>; default: <span class="math notranslate nohighlight">\(\left[-\infty,0,+\infty,0\right]\)</span></li>
 <li><strong>direction</strong> - optional constant direction
-<span class="math">\(\left(d_{x},d_{y},d_{z}\right)\)</span></li>
+<span class="math notranslate nohighlight">\(\left(d_{x},d_{y},d_{z}\right)\)</span></li>
 <li><strong>planar</strong> - optional planar spring flag; when ’ON’ spring direction
-<span class="math">\(\left(\text{point2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|\text{point2}\left(t\right)-\text{point1}\left(t\right)\right|\)</span>
-is projected onto a plane orthogonal to <span class="math">\(\left(d_{x},d_{y},d_{z}\right)\)</span>; default: ’OFF’</li>
+<span class="math notranslate nohighlight">\(\left(\text{point2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|\text{point2}\left(t\right)-\text{point1}\left(t\right)\right|\)</span>
+is projected onto a plane orthogonal to <span class="math notranslate nohighlight">\(\left(d_{x},d_{y},d_{z}\right)\)</span>; default: ’OFF’</li>
 <li><strong>unload</strong> - optional spring unloading lookup table
-<span class="math">\(\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]\)</span>;
+<span class="math notranslate nohighlight">\(\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]\)</span>;
 must be monotonically increasing; default: unspecified</li>
-<li><strong>ylim</strong> - optional tuple <span class="math">\(\left(f_{yc},f_{yt}\right)\)</span> defining the compression, <span class="math">\(f_{yc}&lt;0\)</span>, and tension, <span class="math">\(f_{yt}&gt;0\)</span>, yield
+<li><strong>ylim</strong> - optional tuple <span class="math notranslate nohighlight">\(\left(f_{yc},f_{yt}\right)\)</span> defining the compression, <span class="math notranslate nohighlight">\(f_{yc}&lt;0\)</span>, and tension, <span class="math notranslate nohighlight">\(f_{yt}&gt;0\)</span>, yield
 limits; the unloading curve begins to be used once either of these limits is crossed; default: (0, 0)</li>
 <li><strong>inactive</strong> - optional boolean flag: if <em>True</em> create an inactive spring, that can be activated by the <a class="reference internal" href="#parmec-command-unspring"><span class="std std-ref">UNSPRING</span></a>
 command; default: <em>False</em></li>
@@ -285,7 +278,7 @@ command; default: <em>False</em></li>
 of the spring curve (dashpot unchanged) as in <a class="reference internal" href="#parmec-spring-stroke-offset"><span class="std std-numref">Fig. 81</span></a>; <strong>offset</strong> is applied only prior to yielding for springs
 with <strong>ylim</strong> and <strong>unload</strong> specified; default: unspecified</li>
 <li><strong>friction</strong> - optional tangential friction coefficient; default: 0.0</li>
-<li><strong>kskn</strong> - optional <span class="math">\(\ge0\)</span> ratio of normal to tangential spring and dashpot parameters used when <strong>friction</strong> &gt; 0; using <strong>kskn</strong> = 0
+<li><strong>kskn</strong> - optional <span class="math notranslate nohighlight">\(\ge0\)</span> ratio of normal to tangential spring and dashpot parameters used when <strong>friction</strong> &gt; 0; using <strong>kskn</strong> = 0
 disables tangential springs/dampers and applies frictional force opposing tangential velocity (in this case frictional sticking and stick-slip
 transition are not modeled); default: 0.0</li>
 </ul>
@@ -298,15 +291,15 @@ transition are not modeled); default: 0.0</li>
 <div class="section" id="torsion-spring">
 <span id="parmec-command-torsion-spring"></span><h2>TORSION_SPRING<a class="headerlink" href="#torsion-spring" title="Permalink to this headline">¶</a></h2>
 <p>Create a torsional spring constraint. The applied torque formula reads</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mathbf{t}\left(t\right)=\left(\text{kroll}\left(\psi\right)+\text{droll}\left(\dot{\psi}\right)\right)\mathbf{x}\left(t\right)
 +\left(\text{kpitch}\left(\phi\right)+\text{dpitch}\left(\dot{\phi}\right)\right)\mathbf{y}\left(t\right)
 +\left(\text{kyaw}\left(\theta\right)+\text{dyaw}\left(\dot{\theta}\right)\right)\mathbf{z}\left(t\right)\]</div>
-<p>where the angles <span class="math">\(\psi\)</span>, <span class="math">\(\phi\)</span>, <span class="math">\(\theta\)</span> are calculated withe the help of co-rotated unit directions
-<span class="math">\(\mathbf{x}\)</span>, <span class="math">\(\mathbf{y}\)</span>, <span class="math">\(\mathbf{z}\)</span> as follows</p>
-<div class="math">
+<p>where the angles <span class="math notranslate nohighlight">\(\psi\)</span>, <span class="math notranslate nohighlight">\(\phi\)</span>, <span class="math notranslate nohighlight">\(\theta\)</span> are calculated withe the help of co-rotated unit directions
+<span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{z}\)</span> as follows</p>
+<div class="math notranslate nohighlight">
 \[\mathbf{y}=\mathbf{z}\times\mathbf{x}\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\left[\begin{array}{ccc}
 x_{1} &amp; y_{1} &amp; z_{1}\\
 x_{2} &amp; y_{2} &amp; z_{2}\\
@@ -316,38 +309,38 @@ x_{1} &amp; y_{1} &amp; z_{1}\\
 x_{2} &amp; y_{2} &amp; z_{2}\\
 x_{3} &amp; y_{3} &amp; z_{3}
 \end{array}\right]\left(0\right)\end{split}\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\dot{\psi}=\mathbf{x}\cdot\left(\mathbf{\omega}_{1}-\mathbf{\omega}_{2}\right)\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\dot{\phi}=\mathbf{z}\cdot\left(\mathbf{\omega}_{1}-\mathbf{\omega}_{2}\right)\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\dot{\theta}=\mathbf{y}\cdot\left(\mathbf{\omega}_{1}-\mathbf{\omega}_{2}\right)\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\psi\left(t\right)=\int_{0}^{t}\dot{\psi}\left(t\right)dt,\,\,\phi\left(t\right)=\int_{0}^{t}
 \dot{\phi}\left(t\right)dt,\,\,\theta\left(t\right)=\int_{0}^{t}\dot{\theta}\left(t\right)dt\]</div>
-<p>and where <span class="math">\(\mathbf{\omega}_{i}\)</span> are the spatial angular velocities of particles 1 and 2,
-and <span class="math">\(\mathbf{\Lambda}_{1}\)</span> is the rigid rotation matrix of particle 1.</p>
+<p>and where <span class="math notranslate nohighlight">\(\mathbf{\omega}_{i}\)</span> are the spatial angular velocities of particles 1 and 2,
+and <span class="math notranslate nohighlight">\(\mathbf{\Lambda}_{1}\)</span> is the rigid rotation matrix of particle 1.</p>
 <div class="topic">
 <p class="topic-title first">trsnum = TORSION_SPRING (part1, part2, zdir, xdir | kroll, kpitch, kyaw, droll, dpitch, dyaw, cone, refpnt) <span class="red">(experimental)</span></p>
 <ul class="simple">
 <li><strong>trsnum</strong> - torsion spring number</li>
 <li><strong>part1</strong> - first particle number</li>
 <li><strong>part2</strong> - second particle number; -1 can be used to indicate a single-particle constraint</li>
-<li><strong>zdir</strong>, <strong>xdir</strong> - reference direction tuples, <span class="math">\(\mathbf{z}=\left(z_{1},z_{2},z_{3}\right)\)</span> and
-<span class="math">\(\mathbf{x}=\left(x_{1},x_{2},x_{3}\right)\)</span>, co-rotated with the two particles, and used to determine
-the torsion angles <span class="math">\(\psi\)</span>, <span class="math">\(\theta\)</span>, <span class="math">\(\phi\)</span> as described above; these directions must be
+<li><strong>zdir</strong>, <strong>xdir</strong> - reference direction tuples, <span class="math notranslate nohighlight">\(\mathbf{z}=\left(z_{1},z_{2},z_{3}\right)\)</span> and
+<span class="math notranslate nohighlight">\(\mathbf{x}=\left(x_{1},x_{2},x_{3}\right)\)</span>, co-rotated with the two particles, and used to determine
+the torsion angles <span class="math notranslate nohighlight">\(\psi\)</span>, <span class="math notranslate nohighlight">\(\theta\)</span>, <span class="math notranslate nohighlight">\(\phi\)</span> as described above; these directions must be
 orthogonal</li>
-<li><strong>kyaw</strong>, <strong>kroll</strong>, <strong>kpitch</strong> - spring torque lookup tables <span class="math">\(\left[\text{angle}_{1},\text{torque}_{1},\text{angle}_{2},\text{torque}_{2},...\right]\)</span>,
-about the three torsion angles; default: <span class="math">\(\left[-\infty,0,+\infty,0\right]\)</span></li>
-<li><strong>dyaw</strong>, <strong>droll</strong>, <strong>dpitch</strong> - dashpot torque lookup tables <span class="math">\(\left[\text{angvel}_{1},\text{torque}_{1},\text{angvel}_{2},\text{torque}_{2},...\right]\)</span>
-or a critical damping ratio from interval <span class="math">\(\left[0,+\infty\right)\)</span>; default: <span class="math">\(\left[-\infty,0,+\infty,0\right]\)</span></li>
+<li><strong>kyaw</strong>, <strong>kroll</strong>, <strong>kpitch</strong> - spring torque lookup tables <span class="math notranslate nohighlight">\(\left[\text{angle}_{1},\text{torque}_{1},\text{angle}_{2},\text{torque}_{2},...\right]\)</span>,
+about the three torsion angles; default: <span class="math notranslate nohighlight">\(\left[-\infty,0,+\infty,0\right]\)</span></li>
+<li><strong>dyaw</strong>, <strong>droll</strong>, <strong>dpitch</strong> - dashpot torque lookup tables <span class="math notranslate nohighlight">\(\left[\text{angvel}_{1},\text{torque}_{1},\text{angvel}_{2},\text{torque}_{2},...\right]\)</span>
+or a critical damping ratio from interval <span class="math notranslate nohighlight">\(\left[0,+\infty\right)\)</span>; default: <span class="math notranslate nohighlight">\(\left[-\infty,0,+\infty,0\right]\)</span></li>
 <li><strong>cone</strong> - optional tuple (‘roll’, ‘yaw’), (‘roll’, ‘pitch’), (‘pitch’, ‘yaw’) or (‘roll’, ‘pitch’, ‘yaw’) denoting a cone
 constraint in the (roll, pitch, yaw) angle space; the spring/dashpot torque curves of the first in (roll, pitch, yaw) order
 coordinate are used (hence it makes sense to define at least one of these curves), e.g. both (‘roll’, ‘pitch’) and
-(‘pitch’, ‘roll’) result in torque formula <span class="math">\(\mathbf{t}=\left[\text{kroll}\left(\sqrt{\psi^{2}+\phi^{2}}\right)+\text{droll}\left(\frac{d}{dt}\sqrt{\psi^{2}+\phi^{2}}\right)\right]\left[\frac{\psi}{\sqrt{\psi^{2}+\phi^{2}}}\mathbf{x}+\frac{\phi}{\sqrt{\psi^{2}+\phi^{2}}}\mathbf{y}\right]\)</span>, etc.; default: not specified</li>
+(‘pitch’, ‘roll’) result in torque formula <span class="math notranslate nohighlight">\(\mathbf{t}=\left[\text{kroll}\left(\sqrt{\psi^{2}+\phi^{2}}\right)+\text{droll}\left(\frac{d}{dt}\sqrt{\psi^{2}+\phi^{2}}\right)\right]\left[\frac{\psi}{\sqrt{\psi^{2}+\phi^{2}}}\mathbf{x}+\frac{\phi}{\sqrt{\psi^{2}+\phi^{2}}}\mathbf{y}\right]\)</span>, etc.; default: not specified</li>
 <li><strong>refpnt</strong> - a reference point moving with <strong>part1</strong>, used to position in space the <a class="reference internal" href="#parmec-command-output"><span class="std std-ref">OUTPUT</span></a> vector fields;
-default: <span class="math">\(0.5\left(\text{centre}\left(\text{part1}\right)+\text{centre}\left(\text{part2}\right)\right)\)</span> or
-<span class="math">\(\text{centre}\left(\text{part1}\right)\)</span> when part2 = -1</li>
+default: <span class="math notranslate nohighlight">\(0.5\left(\text{centre}\left(\text{part1}\right)+\text{centre}\left(\text{part2}\right)\right)\)</span> or
+<span class="math notranslate nohighlight">\(\text{centre}\left(\text{part1}\right)\)</span> when part2 = -1</li>
 </ul>
 </div>
 </div>
@@ -382,7 +375,7 @@ to zero total force</li>
 <p>By default, modification of <strong>msprings</strong> is based on the sum of the elastic spring force values across all spring numbers defined in tsprings. This is a sum
 of absolute values if <strong>abs</strong> = <em>True</em>. Forces in all <strong>tsprings</strong> must exceed the specific min/max values defined in <strong>limits</strong> for the spring curves to be
 modified (i.e. spring curve modification is an <em>and</em> operation, not <em>or</em>). For example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">tsprings</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tsprings</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">msprings</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">limits</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 <span class="n">UNSPRING</span><span class="p">(</span><span class="n">tsprings</span><span class="p">,</span> <span class="n">msprings</span><span class="p">,</span> <span class="n">limits</span><span class="p">)</span>
@@ -401,7 +394,7 @@ system is solved at every time step to calculate joint forces.</p>
 <ul class="simple">
 <li><strong>jnum</strong> - joint number</li>
 <li><strong>part1</strong> - first particle number</li>
-<li><strong>point</strong> - coincident point <span class="math">\(\left(x,y,z\right)\)</span></li>
+<li><strong>point</strong> - coincident point <span class="math notranslate nohighlight">\(\left(x,y,z\right)\)</span></li>
 <li><strong>part2</strong> - optional second particle number; default: not specified (in this case <strong>part1</strong> is fixed in space at <strong>point</strong>)</li>
 </ul>
 </div>
@@ -410,11 +403,11 @@ system is solved at every time step to calculate joint forces.</p>
 <h2>EQM<a class="headerlink" href="#eqm" title="Permalink to this headline">¶</a></h2>
 <p>Calculate equivalent point mass from particle inertia and mass properties. Two particles can be passed for relative motion mass.
 This subroutine can be used to calculate linear stiffness and damping properties for spring based constraints, e.g.
-<span class="math">\(\text{stiffness}=\text{acceleration}\cdot\text{EQM}/\text{leeway}\)</span> and
-<span class="math">\(\text{damper}=\text{damping ratio}\cdot2\cdot\sqrt{\text{mass}\cdot\text{stiffness}}\)</span> can be used to define
-spring and dashpot curves as <span class="math">\(\left[-1,-\text{spring},1,\text{spring}\right]\)</span> and <span class="math">\(\left[-1,-\text{damper},1,\text{damper}\right]\)</span>
+<span class="math notranslate nohighlight">\(\text{stiffness}=\text{acceleration}\cdot\text{EQM}/\text{leeway}\)</span> and
+<span class="math notranslate nohighlight">\(\text{damper}=\text{damping ratio}\cdot2\cdot\sqrt{\text{mass}\cdot\text{stiffness}}\)</span> can be used to define
+spring and dashpot curves as <span class="math notranslate nohighlight">\(\left[-1,-\text{spring},1,\text{spring}\right]\)</span> and <span class="math notranslate nohighlight">\(\left[-1,-\text{damper},1,\text{damper}\right]\)</span>
 respectively, with the critical time step equal to
-<span class="math">\(\left(2/\sqrt{\text{stiffness}\cdot\text{mass}}\right)\cdot\left(\sqrt{1+\text{damper}^{2}}-\text{damper}\right)\)</span>.</p>
+<span class="math notranslate nohighlight">\(\left(2/\sqrt{\text{stiffness}\cdot\text{mass}}\right)\cdot\left(\sqrt{1+\text{damper}^{2}}-\text{damper}\right)\)</span>.</p>
 <div class="topic">
 <p class="topic-title first">mass = EQM (part1, point1 | part2, point2, direction) <span class="red">(experimental)</span></p>
 <ul class="simple">
@@ -441,7 +434,7 @@ redefine default parameters for unspecified pairings)</li>
 <li><strong>spring</strong> - normal spring constant</li>
 <li><strong>damper</strong> - optional normal damping ratio; default: 1.0</li>
 <li><strong>friction</strong> - optional Coulomb’s friction coefficient; default: 0.0;
-tuple <span class="math">\(\left(\mu_{s},\mu_{d}\right)\)</span> can be used to specify
+tuple <span class="math notranslate nohighlight">\(\left(\mu_{s},\mu_{d}\right)\)</span> can be used to specify
 respectively static and dynamic friction coefficients; <span class="red">(experimental)</span></li>
 <li><strong>rolling</strong> - optional rolling friction coefficient; default: 0.0; <span class="red">(under development)</span></li>
 <li><strong>drilling</strong> - optional drilling friction coefficient; default: 0.0; <span class="red">(under development)</span></li>
@@ -457,16 +450,16 @@ parameters; default: 0.5</li>
 <p class="topic-title first">RESTRAIN (parnum | linear, angular)</p>
 <ul class="simple">
 <li><strong>parnum</strong> - particle number</li>
-<li><strong>linear</strong> - list <span class="math">\(\left[x_{1},y_{1},z_{1}\right]\)</span>,
-<span class="math">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2}\right]\)</span>, or
-<span class="math">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2},x_{3},y_{3},z_{3}\right]\)</span>
+<li><strong>linear</strong> - list <span class="math notranslate nohighlight">\(\left[x_{1},y_{1},z_{1}\right]\)</span>,
+<span class="math notranslate nohighlight">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2}\right]\)</span>, or
+<span class="math notranslate nohighlight">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2},x_{3},y_{3},z_{3}\right]\)</span>
 defining directions of restrained linear motion; default:
-<span class="math">\(\left[0,0,0\right]\)</span></li>
-<li><strong>angular</strong> - list <span class="math">\(\left[x_{1},y_{1},z_{1}\right]\)</span>,
-<span class="math">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2}\right]\)</span>, or
-<span class="math">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2},x_{3},y_{3},z_{3}\right]\)</span>
+<span class="math notranslate nohighlight">\(\left[0,0,0\right]\)</span></li>
+<li><strong>angular</strong> - list <span class="math notranslate nohighlight">\(\left[x_{1},y_{1},z_{1}\right]\)</span>,
+<span class="math notranslate nohighlight">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2}\right]\)</span>, or
+<span class="math notranslate nohighlight">\(\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2},x_{3},y_{3},z_{3}\right]\)</span>
 defining directions of restrained spatial rotation; default:
-<span class="math">\(\left[0,0,0\right]\)</span></li>
+<span class="math notranslate nohighlight">\(\left[0,0,0\right]\)</span></li>
 </ul>
 </div>
 </div>
@@ -478,11 +471,11 @@ from dynamics and restraints.</p>
 <p class="topic-title first">PRESCRIBE (parnum | linear, angular, kind)</p>
 <ul class="simple">
 <li><strong>parnum</strong> - particle number</li>
-<li><strong>linear</strong> - a tuple <span class="math">\((i,j,k)\)</span> of <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> numbers,
-or a callback: <span class="math">\(\left(v_{x},v_{y},v_{z}\right)=\)</span> <strong>linear</strong> <span class="math">\(\left(t\right)\)</span>,
+<li><strong>linear</strong> - a tuple <span class="math notranslate nohighlight">\((i,j,k)\)</span> of <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> numbers,
+or a callback: <span class="math notranslate nohighlight">\(\left(v_{x},v_{y},v_{z}\right)=\)</span> <strong>linear</strong> <span class="math notranslate nohighlight">\(\left(t\right)\)</span>,
 defining linear velocity or acceleration history; default: <em>not prescribed</em></li>
-<li><strong>angular</strong> - a tuple <span class="math">\((i,j,k)\)</span> of <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> numbers,
-or a callback: <span class="math">\(\left(\omega_{x},\omega_{y},\omega_{z}\right)=\)</span> <strong>angular</strong> <span class="math">\(\left(t\right)\)</span>,
+<li><strong>angular</strong> - a tuple <span class="math notranslate nohighlight">\((i,j,k)\)</span> of <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> numbers,
+or a callback: <span class="math notranslate nohighlight">\(\left(\omega_{x},\omega_{y},\omega_{z}\right)=\)</span> <strong>angular</strong> <span class="math notranslate nohighlight">\(\left(t\right)\)</span>,
 defining spatial angular velocity or acceleration history; default: <em>not prescribed</em></li>
 <li><strong>kind</strong> - string ’vv’, ’va’, ’av’, or ’aa’ indicating interpretation
 of respectively <strong>linear</strong> and <strong>angular</strong> time histories as either
@@ -498,11 +491,11 @@ velocity or acceleration; default: ’vv’</li>
 <ul class="simple">
 <li><strong>parnum</strong> - particle number</li>
 <li><strong>linear</strong> - linear velocity tuple
-<span class="math">\(\left(v_{x},v_{y},v_{z}\right)\)</span>; default:
-<span class="math">\(\left(0,0,0\right)\)</span> at <span class="math">\(t=0\)</span></li>
+<span class="math notranslate nohighlight">\(\left(v_{x},v_{y},v_{z}\right)\)</span>; default:
+<span class="math notranslate nohighlight">\(\left(0,0,0\right)\)</span> at <span class="math notranslate nohighlight">\(t=0\)</span></li>
 <li><strong>angular</strong> - angular velocity tuple
-<span class="math">\(\left(\omega_{x},\omega_{y},\omega_{z}\right)\)</span>; default:
-<span class="math">\(\left(0,0,0\right)\)</span> at <span class="math">\(t=0\)</span></li>
+<span class="math notranslate nohighlight">\(\left(\omega_{x},\omega_{y},\omega_{z}\right)\)</span>; default:
+<span class="math notranslate nohighlight">\(\left(0,0,0\right)\)</span> at <span class="math notranslate nohighlight">\(t=0\)</span></li>
 </ul>
 </div>
 </div>
@@ -512,19 +505,19 @@ velocity or acceleration; default: ’vv’</li>
 <div class="topic">
 <p class="topic-title first">GRAVITY (gx, gy, gz)</p>
 <ul class="simple">
-<li><strong>gx</strong> - constant <span class="math">\(x\)</span> float number, or callback
-<strong>gx</strong><span class="math">\((t)\)</span>, or <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number</li>
-<li><strong>gy</strong> - constant <span class="math">\(y\)</span> float number, or callback
-<strong>gy</strong><span class="math">\((t)\)</span>, or <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number</li>
-<li><strong>gz</strong> - constant <span class="math">\(z\)</span> float number, or callback
-<strong>gz</strong><span class="math">\((t)\)</span>, or <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number</li>
+<li><strong>gx</strong> - constant <span class="math notranslate nohighlight">\(x\)</span> float number, or callback
+<strong>gx</strong><span class="math notranslate nohighlight">\((t)\)</span>, or <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number</li>
+<li><strong>gy</strong> - constant <span class="math notranslate nohighlight">\(y\)</span> float number, or callback
+<strong>gy</strong><span class="math notranslate nohighlight">\((t)\)</span>, or <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number</li>
+<li><strong>gz</strong> - constant <span class="math notranslate nohighlight">\(z\)</span> float number, or callback
+<strong>gz</strong><span class="math notranslate nohighlight">\((t)\)</span>, or <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number</li>
 </ul>
 </div>
 </div>
 <div class="section" id="damping">
 <h2>DAMPING<a class="headerlink" href="#damping" title="Permalink to this headline">¶</a></h2>
 <p>Set global damping, applied as</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\begin{split}\text{force}=-m\left[\begin{array}{c}
 -d_{vx}v_{x}\\
 -d_{vy}v_{y}\\
@@ -534,42 +527,42 @@ velocity or acceleration; default: ’vv’</li>
 -d_{\omega y}\omega_{y}\\
 -d_{\omega z}\omega_{z}
 \end{array}\right]\end{split}\]</div>
-<p>where <span class="math">\(m\)</span> is scalar mass, <span class="math">\(v\)</span> is linear velocity,
-<span class="math">\(\mathbf{\Lambda}\)</span> is the rotation matrix, <span class="math">\(\mathbf{J}\)</span> is
-the referential inertia matrix, and <span class="math">\(\omega\)</span> is spatial angular
+<p>where <span class="math notranslate nohighlight">\(m\)</span> is scalar mass, <span class="math notranslate nohighlight">\(v\)</span> is linear velocity,
+<span class="math notranslate nohighlight">\(\mathbf{\Lambda}\)</span> is the rotation matrix, <span class="math notranslate nohighlight">\(\mathbf{J}\)</span> is
+the referential inertia matrix, and <span class="math notranslate nohighlight">\(\omega\)</span> is spatial angular
 velocity.</p>
 <div class="topic">
 <p class="topic-title first">DAMPING (linear, angular)</p>
 <ul class="simple">
-<li><strong>linear</strong> - linear damping curve callback <span class="math">\(\left(d_{vx},d_{vy},d_{vz}\right)=\)</span> <strong>linear</strong>
-<span class="math">\(\left(t\right)\)</span>, or a tuple <span class="math">\((i,j,k)\)</span> of <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> numbers</li>
-<li><strong>angular</strong> - angular damping curve callback <span class="math">\(\left(d_{\omega x},d_{\omega y},d_{\omega z}\right)=\)</span>
-<strong>angular</strong> <span class="math">\(\left(t\right)\)</span>, or a tuple <span class="math">\((i,j,k)\)</span> of <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> numbers</li>
+<li><strong>linear</strong> - linear damping curve callback <span class="math notranslate nohighlight">\(\left(d_{vx},d_{vy},d_{vz}\right)=\)</span> <strong>linear</strong>
+<span class="math notranslate nohighlight">\(\left(t\right)\)</span>, or a tuple <span class="math notranslate nohighlight">\((i,j,k)\)</span> of <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> numbers</li>
+<li><strong>angular</strong> - angular damping curve callback <span class="math notranslate nohighlight">\(\left(d_{\omega x},d_{\omega y},d_{\omega z}\right)=\)</span>
+<strong>angular</strong> <span class="math notranslate nohighlight">\(\left(t\right)\)</span>, or a tuple <span class="math notranslate nohighlight">\((i,j,k)\)</span> of <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> numbers</li>
 </ul>
 </div>
 </div>
 <div class="section" id="critical">
 <h2>CRITICAL<a class="headerlink" href="#critical" title="Permalink to this headline">¶</a></h2>
 <p>Estimate critical time step. By default this routine returns an estimate in the area of a practical stable step.
-When run with the optional parameter <span class="math">\(\text{perspring}=n\)</span> it will return a list of lowest estimates for
-<span class="math">\(n\)</span> individual springs. Similarly, when run with the optional parameter <span class="math">\(\text{perparticle}=n\)</span> it
-will return a list of lowest estimates for <span class="math">\(n\)</span> individual particles. The actual stable time step may be
-a factor of <span class="math">\(\left[0.1,10\right]\)</span> away of the returned step (estimated), depending on the degree of nonlinearity
+When run with the optional parameter <span class="math notranslate nohighlight">\(\text{perspring}=n\)</span> it will return a list of lowest estimates for
+<span class="math notranslate nohighlight">\(n\)</span> individual springs. Similarly, when run with the optional parameter <span class="math notranslate nohighlight">\(\text{perparticle}=n\)</span> it
+will return a list of lowest estimates for <span class="math notranslate nohighlight">\(n\)</span> individual particles. The actual stable time step may be
+a factor of <span class="math notranslate nohighlight">\(\left[0.1,10\right]\)</span> away of the returned step (estimated), depending on the degree of nonlinearity
 of the system. <a class="reference external" href="https://www.dynasupport.com/tutorial/ls-dyna-users-guide/time-integration">See also</a>.</p>
 <div class="topic">
 <p class="topic-title first">h = CRITICAL (| perspring, perparticle)</p>
 <ul class="simple">
 <li><strong>h</strong> - critical time step (when run without parameters), or a list
-<span class="math">\(\left[\left(h_{1},i_{1},\omega_{1},\xi_{1}\right),...,\left(h_{n},i_{n},\omega_{n},\xi_{n}\right)\right]\)</span>
-when <strong>perspring</strong> <span class="math">\(=n\)</span> or <strong>perparticle</strong> <span class="math">\(=n\)</span> is used, where <span class="math">\(h_{k}\)</span> is the per-spring/particle
-critical time step estimate, <span class="math">\(i_{k}\)</span> is the spring/particle index, <span class="math">\(\omega_{k}\)</span> is the maximum spring/particle
-circular frequency, and <span class="math">\(\xi_{k}\)</span> is the maximum spring/particle damping ratio; when both parameters <strong>perspring</strong>
-<span class="math">\(=n\)</span> and <strong>perparticle</strong> <span class="math">\(=m\)</span> are used, a tuple of two corresponding lists is returned
-(<span class="math">\(\left[\left(h_{1},i_{1},\omega_{1},\xi_{1}\right),...,\left(h_{n},i_{n},\omega_{n},\xi_{n}\right)\right]\)</span>,
-<span class="math">\(\left[\left(h_{1},i_{1},\omega_{1},\xi_{1}\right),...,\left(h_{m},i_{m},\omega_{m},\xi_{m}\right)\right]\)</span>)</li>
-<li><strong>perspring</strong> - optional integer <span class="math">\(n\)</span> indicating the number of lowest per-spring critical time step estimates;
+<span class="math notranslate nohighlight">\(\left[\left(h_{1},i_{1},\omega_{1},\xi_{1}\right),...,\left(h_{n},i_{n},\omega_{n},\xi_{n}\right)\right]\)</span>
+when <strong>perspring</strong> <span class="math notranslate nohighlight">\(=n\)</span> or <strong>perparticle</strong> <span class="math notranslate nohighlight">\(=n\)</span> is used, where <span class="math notranslate nohighlight">\(h_{k}\)</span> is the per-spring/particle
+critical time step estimate, <span class="math notranslate nohighlight">\(i_{k}\)</span> is the spring/particle index, <span class="math notranslate nohighlight">\(\omega_{k}\)</span> is the maximum spring/particle
+circular frequency, and <span class="math notranslate nohighlight">\(\xi_{k}\)</span> is the maximum spring/particle damping ratio; when both parameters <strong>perspring</strong>
+<span class="math notranslate nohighlight">\(=n\)</span> and <strong>perparticle</strong> <span class="math notranslate nohighlight">\(=m\)</span> are used, a tuple of two corresponding lists is returned
+(<span class="math notranslate nohighlight">\(\left[\left(h_{1},i_{1},\omega_{1},\xi_{1}\right),...,\left(h_{n},i_{n},\omega_{n},\xi_{n}\right)\right]\)</span>,
+<span class="math notranslate nohighlight">\(\left[\left(h_{1},i_{1},\omega_{1},\xi_{1}\right),...,\left(h_{m},i_{m},\omega_{m},\xi_{m}\right)\right]\)</span>)</li>
+<li><strong>perspring</strong> - optional integer <span class="math notranslate nohighlight">\(n\)</span> indicating the number of lowest per-spring critical time step estimates;
 default: undefined</li>
-<li><strong>perparticle</strong> - optional integer <span class="math">\(n\)</span> indicating the number of lowest per-particle critical time step estimates;
+<li><strong>perparticle</strong> - optional integer <span class="math notranslate nohighlight">\(n\)</span> indicating the number of lowest per-particle critical time step estimates;
 default: undefined</li>
 </ul>
 </div>
@@ -592,8 +585,8 @@ particle entities: (position) ’PX’, ’PY’, ’PZ’, ’|P|’,
 without damping) ’SF’, (spring total friction force) ‘FF’, (spring
 state) ‘SS’, cf. <a class="reference internal" href="#parmec-command-output"><span class="std std-ref">OUTPUT</span></a> for description;
 torsional spring entities: (spring local direction components:
-<span class="math">\(\mathbf{z}\)</span> - yaw, <span class="math">\(\mathbf{x}\)</span> - roll, and
-<span class="math">\(\mathbf{y}=\mathbf{z}\times\mathbf{x}\)</span> - pitch) ‘ZDIR_X’,
+<span class="math notranslate nohighlight">\(\mathbf{z}\)</span> - yaw, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> - roll, and
+<span class="math notranslate nohighlight">\(\mathbf{y}=\mathbf{z}\times\mathbf{x}\)</span> - pitch) ‘ZDIR_X’,
 ‘ZDIR_Y’, ‘ZDIR_Z’, ‘XDIR_X’, ‘XDIR_Y’, ‘XDIR_Z’, (spring rotation
 angles) ‘ROLL’, ‘PITCH’, ‘YAW’, (spring total moment components:
 r - roll, p - pitch, y - yaw) ‘TRQTOT_R’, ‘TRQTOT_P’, ‘TRQTOT_Y’,
@@ -601,8 +594,8 @@ r - roll, p - pitch, y - yaw) ‘TRQTOT_R’, ‘TRQTOT_P’, ‘TRQTOT_Y’,
 joint entities: ‘(joint reaction) ‘JREAC_X’, ‘JREAC_Y’, ‘JREAC_Z’, ‘|JREAC|’</li>
 <li><strong>source</strong> - particle number <em>i</em>, or a list of particle numbers
 [<em>i, j, …</em>], or a spatial sphere defined as tuple
-<span class="math">\(\left(x,y,z,r\right)\)</span> <span class="red">(under development)</span>, or a spatial box defined as tuple
-<span class="math">\(\left(x_{\text{min}},y_{\text{min}},z_{\text{min}},x_{\text{max}},y_{\text{max}},z_{\text{max}}\right)\)</span>
+<span class="math notranslate nohighlight">\(\left(x,y,z,r\right)\)</span> <span class="red">(under development)</span>, or a spatial box defined as tuple
+<span class="math notranslate nohighlight">\(\left(x_{\text{min}},y_{\text{min}},z_{\text{min}},x_{\text{max}},y_{\text{max}},z_{\text{max}}\right)\)</span>
 <span class="red">(under development)</span>; in case of a list of particle numbers the output entity is averaged
 over the set of particles; in case of a spatial sphere or box the output entity is averaged over
 the set of particles passing through it <span class="red">(under development)</span>; default: 0 (useful when entity is ’TIME’);
@@ -700,7 +693,7 @@ contribution (modes: ’CD’, ’SL’)</li>
 <li><dl class="first docutils">
 <dt>‘SS’ - scalar field of spring states, where -3.0 denotes a regular spring (always active),</dt>
 <dd>-2.0 denotes an active spring, -1.0 denotes a deactivated spring (zero force), and values
-<span class="math">\(\ge0\)</span> denote a spring currently being unloaded (the number itself denotes
+<span class="math notranslate nohighlight">\(\ge0\)</span> denote a spring currently being unloaded (the number itself denotes
 <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> used as an unloading curve) (modes: ‘SL’)</dd>
 </dl>
 </li>
@@ -710,13 +703,13 @@ contribution (modes: ’CD’, ’SL’)</li>
 <li>‘YDIR’ - 3-component vector field of y-directions (pitch rotation) for torsion springs (modes: ‘TS’)</li>
 <li>‘ZDIR’ - 3-component vector field of z-directions (yaw rotation) for torsion springs (modes: ‘TS’)</li>
 <li>‘TRQROT’ - 3-component vector field of a relative rotation of torsion springs in global coordinates (modes: ‘TS’);
-use dot products to retrieve local rotation angles, e.g. <span class="math">\(\text{TRQROT}\cdot\text{XDIR}\)</span> will give roll, etc.</li>
+use dot products to retrieve local rotation angles, e.g. <span class="math notranslate nohighlight">\(\text{TRQROT}\cdot\text{XDIR}\)</span> will give roll, etc.</li>
 <li>‘TRQTOT’ - 3-component vector field of total torques of torsion springs in global coordinates (modes: ‘TS’); use dot
-products to retrieve components conjugate to (roll, pitch, yaw) angles, e.g. <span class="math">\(\text{TRQROT}\cdot\text{YDIR}\)</span>
+products to retrieve components conjugate to (roll, pitch, yaw) angles, e.g. <span class="math notranslate nohighlight">\(\text{TRQROT}\cdot\text{YDIR}\)</span>
 will give the pitch-conjugate component, etc.</li>
 <li>‘TRQSPR’ - 3-component vector field of spring torques (without dampers) of torsion springs in global
 coordinates (modes: ‘TS’); use dot products to retrieve components conjugate to (roll, pitch, yaw) angles,
-e.g. <span class="math">\(\text{TRQSPR}\cdot\text{ZDIR}\)</span> will give the yaw-conjugate component, etc.</li>
+e.g. <span class="math notranslate nohighlight">\(\text{TRQSPR}\cdot\text{ZDIR}\)</span> will give the yaw-conjugate component, etc.</li>
 <li>‘JREAC’ - 3-component vector field of joint reactions (modes: ‘JT’)</li>
 </ul>
 </li>
@@ -748,19 +741,19 @@ and ‘MED’ is the binary <a class="reference external" href="http://www.salom
 <li><strong>step</strong> - time step; initial if <strong>adaptive</strong> is used or constant
 otherwise</li>
 <li><strong>interval</strong> - output interval (default: time step); tuple
-<span class="math">\(\left(dt_{\text{files}},dt_{\text{history}}\right)\)</span> can be
+<span class="math notranslate nohighlight">\(\left(dt_{\text{files}},dt_{\text{history}}\right)\)</span> can be
 used to indicate different output frequencies of output files and
 time histories, respectively; callback functions or <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a>
 numbers can also be used, e.g.
-<span class="math">\(dt_{\text{files}}=\text{dt_fiels}\left(t\right)\)</span> and
-<span class="math">\(dt_{\text{history}}=\text{tmsnum}\)</span>, prescribing variable
+<span class="math notranslate nohighlight">\(dt_{\text{files}}=\text{dt_fiels}\left(t\right)\)</span> and
+<span class="math notranslate nohighlight">\(dt_{\text{history}}=\text{tmsnum}\)</span>, prescribing variable
 interval frequencies, depending on current time;</li>
 <li><strong>prefix</strong> - output file name prefix (default: input file name
 without the “.py” extension); Note: <strong>prefix</strong> can only change
 at time 0.0 or after <a class="reference internal" href="#parmec-command-reset"><span class="std std-ref">RESET()</span></a></li>
 <li><strong>adaptive</strong> - adaptive time step reduction factor; zero turns off
-adaptive time stepping, values <span class="math">\(&gt;0.0\)</span> and <span class="math">\(\le1.0\)</span> turn
-it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimental)</span></li>
+adaptive time stepping, values <span class="math notranslate nohighlight">\(&gt;0.0\)</span> and <span class="math notranslate nohighlight">\(\le1.0\)</span> turn
+it on; default: <span class="math notranslate nohighlight">\(0.0\)</span> <span class="red">(experimental)</span></li>
 </ul>
 </div>
 </div>
@@ -772,6 +765,7 @@ it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimenta
   </div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -853,27 +847,29 @@ it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimenta
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../blog.html">Recent Posts</a></h3>
   <ul>
     
     
-      <li><a href="../blog/parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="../blog/parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
+      <li><a href="../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="../blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="../blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+      <li><a href="../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
-      <li><a href="../blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+      <li><a href="../blog/unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -992,8 +988,8 @@ it on; default: <span class="math">\(0.0\)</span> <span class="red">(experimenta
       &copy;2018 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="../_sources/parmec/input_commands.rst.txt"

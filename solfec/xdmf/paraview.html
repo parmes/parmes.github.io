@@ -4,21 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Paraview session example &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
@@ -47,13 +39,14 @@
     ul.postlist-style-circle {list-style-type: circle;}
   </style>
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="paraview-session-example">
@@ -66,7 +59,7 @@ expand on the minimalist exposition provided here.</p>
 <h2>Viewing basic geometry<a class="headerlink" href="#viewing-basic-geometry" title="Permalink to this headline">¶</a></h2>
 <p>Let’s start by viewing the results saved into the <em>out/xmftest0</em> directory. These were generated in the ‘WRITE’
 mode <a class="footnote-reference" href="#id2" id="id1">[1]</a> prior to any calculations. Consequently, <em>out/xmftest0</em> only stores the initial geometry
-of the problem. Let’s open the <em>*.xmf</em> files found inside of this directory by using File <span class="math">\(\to\)</span> Open and
+of the problem. Let’s open the <em>*.xmf</em> files found inside of this directory by using File <span class="math notranslate nohighlight">\(\to\)</span> Open and
 selecting <em>xmftest0_grids.xmf</em> and <em>xmftest0_spheres.xmf</em> files. When opening a first of those files you will
 be prompted to sellect an XDMF reader. Use any of the <em>Xdmf3</em> options, cf. <a class="reference internal" href="#paraview-0"><span class="std std-numref">Fig. 30</span></a>.</p>
 <div class="figure align-center" id="id3">
@@ -154,7 +147,7 @@ a video playback control panel. This is what they essentially are. You can press
 in order to rewind the simulation back to its initial frame. To close our tutorial we are going create and a video clip,
 animating the reaction forces, rendered as explained in the <a class="reference internal" href="#paraview-reactions"><span class="std std-ref">note above</span></a>. First,
 you can simply press play, <a class="reference internal" href="../../_images/paraview-play.png"><img alt="play" src="../../_images/paraview-play.png" style="width: 16px;" /></a>, in order to play the animated results within Paraview. To export the
-same animation as a video clip use <em>File</em> <span class="math">\(\to\)</span> <em>Save Animation</em> and then follow the instructions.</p>
+same animation as a video clip use <em>File</em> <span class="math notranslate nohighlight">\(\to\)</span> <em>Save Animation</em> and then follow the instructions.</p>
 <p>The first clip below demonstrates an animation of the domino toppling with the domino velocity and contact gap magnitudes juxtaposed as color maps:</p>
 <p align="center"><iframe width="360" height="343" src="//www.youtube.com/embed/F8dyb3Ay2D4?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p>This second clip depicts the animated contact forces:</p>
 <p align="center"><iframe width="360" height="314" src="//www.youtube.com/embed/MvQuHUG_FTs?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><table class="docutils footnote" frame="void" id="id2" rules="none">
@@ -172,6 +165,7 @@ same animation as a video clip use <em>File</em> <span class="math">\(\to\)</spa
   </div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -243,27 +237,29 @@ same animation as a video clip use <em>File</em> <span class="math">\(\to\)</spa
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../../blog.html">Recent Posts</a></h3>
   <ul>
     
     
-      <li><a href="../../blog/parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="../../blog/parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
+      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="../../blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="../../blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+      <li><a href="../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
-      <li><a href="../../blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+      <li><a href="../../blog/unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -382,8 +378,8 @@ same animation as a video clip use <em>File</em> <span class="math">\(\to\)</spa
       &copy;2018 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="../../_sources/solfec/xdmf/paraview.rst.txt"

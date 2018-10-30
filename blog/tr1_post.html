@@ -4,21 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>TR1: Co-rotated and reduced order time integrators &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -45,13 +37,14 @@
     ul.postlist-style-circle {list-style-type: circle;}
   </style>
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="tr1-co-rotated-and-reduced-order-time-integrators">
@@ -68,7 +61,7 @@ combined with a family of finite element formulations: (…)</p>
 expressed by a finite element mesh and facilitate saving computational time and storage. They may be helpful in the context
 of multibody modeling.</p>
 <p>The methods described in <a class="reference internal" href="../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> can be accessed by creating a <a class="reference internal" href="../solfec/user/body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a> as follows</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bdTL</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;TL&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdTL</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;TL&#39;</span><span class="p">)</span>
 <span class="n">bdTL</span><span class="o">.</span><span class="n">scheme</span> <span class="o">=</span> <span class="s1">&#39;DEF_LIM&#39;</span>
 
 <span class="n">bdBC</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;BC&#39;</span><span class="p">)</span>
@@ -85,7 +78,7 @@ of multibody modeling.</p>
 For ‘TL’ and ‘BC’ the default time integration scheme is ‘DEF_EXP’ (<a class="reference internal" href="../solfec/user/body.html#solfec-body-scheme"><span class="std std-numref">Table 7</span></a>);
 we change it to ‘DEF_LIM’ after body creation.</p>
 <p>The <em>base</em> format is a tuple of two lists</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="p">([</span><span class="n">eval1</span><span class="p">,</span> <span class="n">eval2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">evaln</span><span class="p">],</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="p">([</span><span class="n">eval1</span><span class="p">,</span> <span class="n">eval2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">evaln</span><span class="p">],</span>
         <span class="p">[</span><span class="n">evec11</span><span class="p">,</span> <span class="n">evec12</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">evec1m</span><span class="p">,</span>
          <span class="n">evec21</span><span class="p">,</span> <span class="n">evec22</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">evec2m</span><span class="p">,</span>
          <span class="o">...</span><span class="p">,</span> <span class="n">evecnm</span><span class="p">])</span>
@@ -157,6 +150,7 @@ can be respectively found in</p>
   </div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -202,27 +196,29 @@ can be respectively found in</p>
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../blog.html">Recent Posts</a></h3>
   <ul>
     
     
-      <li><a href="parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
+      <li><a href="parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+      <li><a href="spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
-      <li><a href="unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+      <li><a href="unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -341,8 +337,8 @@ can be respectively found in</p>
       &copy;2018 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="../_sources/blog/tr1_post.rst.txt"

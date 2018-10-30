@@ -4,21 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Pipe impact &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/parmes.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
@@ -47,13 +39,14 @@
     ul.postlist-style-circle {list-style-type: circle;}
   </style>
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="pipe-impact">
@@ -81,11 +74,11 @@ These are:</p>
 The inner pipe radius is 0.01 m, its thickness is 0.005 m, and its length is 0.1 m. The pipe lowest point is initially located
 0.025 m above the top surface of the block. <a class="reference internal" href="#ro1-fig2"><span class="std std-numref">Fig. 66</span></a> shows the characteristic points, used to extract results. Point
 p0 impacts the geometrical center of the block. Points p0, p1, p2, p3 are 0.025 m away from p4, when measuring along the pipe
-length. The pipe is made of <span class="math">\(36\times36\times4\)</span> fully integrated trilinear hexahedral elements. The elastic properties
-of the pipe are <span class="math">\(E=1\mbox{E7 Pa}\)</span>, <span class="math">\(\nu=0.25\)</span> and its density is <span class="math">\(\rho=1\mbox{E3 kg /}\mbox{m}^{3}\)</span>. The
-obstacle has dimensions <span class="math">\(0.01\times0.1\times0.01\mbox{ m}\)</span> and it is modeled as a geometrical boundary which does not
-contribute mass. The gravity along the z–direction is <span class="math">\(-10\text{ m/s}^{2}\)</span>. The simulation time step is 0.001 s, the
-duration is 0.1 s, and the amount of damping is <span class="math">\(\eta=1\text{E-4}\)</span>. Schemes TL, BC, and BC–RO are compared. 100 co–rotated
+length. The pipe is made of <span class="math notranslate nohighlight">\(36\times36\times4\)</span> fully integrated trilinear hexahedral elements. The elastic properties
+of the pipe are <span class="math notranslate nohighlight">\(E=1\mbox{E7 Pa}\)</span>, <span class="math notranslate nohighlight">\(\nu=0.25\)</span> and its density is <span class="math notranslate nohighlight">\(\rho=1\mbox{E3 kg /}\mbox{m}^{3}\)</span>. The
+obstacle has dimensions <span class="math notranslate nohighlight">\(0.01\times0.1\times0.01\mbox{ m}\)</span> and it is modeled as a geometrical boundary which does not
+contribute mass. The gravity along the z–direction is <span class="math notranslate nohighlight">\(-10\text{ m/s}^{2}\)</span>. The simulation time step is 0.001 s, the
+duration is 0.1 s, and the amount of damping is <span class="math notranslate nohighlight">\(\eta=1\text{E-4}\)</span>. Schemes TL, BC, and BC–RO are compared. 100 co–rotated
 displacement samples from the Total Lagrangian solution and 6 rigid motion modes are used as input for the <a class="reference external" href="http://pythonhosted.org/modred/">Python modred package</a>, to produce 18 Proper Orthogonal Decomposition modes for the BC–RO approach.</p>
 <div class="figure align-center" id="id8">
 <span id="ro1-fig2"></span><a class="reference internal image-reference" href="../../../_images/ro1_points.png"><img alt="../../../_images/ro1_points.png" src="../../../_images/ro1_points.png" style="width: 60%;" /></a>
@@ -96,28 +89,28 @@ follows the Total Lagrangian approach (TL), the reduced order BC–RO approach s
 Similar general response characteristic can be seen in <a class="reference internal" href="#ro1-fig4"><span class="std std-numref">Fig. 68</span></a>, <a class="reference internal" href="#ro1-fig5"><span class="std std-numref">Fig. 69</span></a>, <a class="reference internal" href="#ro1-fig6"><span class="std std-numref">Fig. 70</span></a>, where other
 types of results are compared: we have some variation in the post–impact response, while overall the results match. We note,
 that the rotation angle in <a class="reference internal" href="#ro1-fig4"><span class="std std-numref">Fig. 68</span></a> was calculated using</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\text{angle}=\arcsin\left(\left|\frac{\text{p5}-\text{p4}}{\left|\text{p5}-\text{p4}\right|}\times\left(-1,0,0\right)\right|\right)\text{.}\]</div>
 <p><a class="reference internal" href="#ro1-tab1"><span class="std std-numref">Table 31</span></a> illustrates the runtime and storage statistics. The body co–rotational (BC) approach is about 6 times faster than
 TL; the reduced order (BC–RO) approach is about 50 time faster and requires about 50 times less storage. The animated output of this
 example can be seen in video <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
 <div class="figure align-center" id="id9">
 <span id="ro1-fig3"></span><a class="reference internal image-reference" href="../../../_images/ro1_energy.png"><img alt="../../../_images/ro1_energy.png" src="../../../_images/ro1_energy.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 67 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: kinetic (left), and internal energy between <span class="math">\(t=0.05\text{s}\)</span> and <span class="math">\(t=0.1\text{s}\)</span>.</span></p>
+<p class="caption"><span class="caption-number">Fig. 67 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: kinetic (left), and internal energy between <span class="math notranslate nohighlight">\(t=0.05\text{s}\)</span> and <span class="math notranslate nohighlight">\(t=0.1\text{s}\)</span>.</span></p>
 </div>
 <div class="figure align-center" id="id10">
 <span id="ro1-fig4"></span><a class="reference internal image-reference" href="../../../_images/ro1_p4zp5z_rot.png"><img alt="../../../_images/ro1_p4zp5z_rot.png" src="../../../_images/ro1_p4zp5z_rot.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 68 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: z–coordinates of points p4, p5 (left), and pipe rotation angle (about y)
-between <span class="math">\(t=0.05\text{s}\)</span> and <span class="math">\(t=0.1\text{s}\)</span>.</span></p>
+between <span class="math notranslate nohighlight">\(t=0.05\text{s}\)</span> and <span class="math notranslate nohighlight">\(t=0.1\text{s}\)</span>.</span></p>
 </div>
 <div class="figure align-center" id="id11">
 <span id="ro1-fig5"></span><a class="reference internal image-reference" href="../../../_images/ro1_diameters.png"><img alt="../../../_images/ro1_diameters.png" src="../../../_images/ro1_diameters.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 69 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: inner <span class="math">\(\left|\text{p2}-\text{p3}\right|\)</span> (left), and outer <span class="math">\(\left|\text{p0}-\text{p1}\right|\)</span>
-pipe diameter in the contact area between <span class="math">\(t=0.05\text{s}\)</span> and <span class="math">\(t=0.1\text{s}\)</span>.</span></p>
+<p class="caption"><span class="caption-number">Fig. 69 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: inner <span class="math notranslate nohighlight">\(\left|\text{p2}-\text{p3}\right|\)</span> (left), and outer <span class="math notranslate nohighlight">\(\left|\text{p0}-\text{p1}\right|\)</span>
+pipe diameter in the contact area between <span class="math notranslate nohighlight">\(t=0.05\text{s}\)</span> and <span class="math notranslate nohighlight">\(t=0.1\text{s}\)</span>.</span></p>
 </div>
 <div class="figure align-center" id="id12">
 <span id="ro1-fig6"></span><a class="reference internal image-reference" href="../../../_images/ro1_p0p2_mises.png"><img alt="../../../_images/ro1_p0p2_mises.png" src="../../../_images/ro1_p0p2_mises.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 70 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: inner point p0 (left), and outer point p2 MISES stress between <span class="math">\(t=0.05\text{s}\)</span> and <span class="math">\(t=0.1\text{s}\)</span>.</span></p>
+<p class="caption"><span class="caption-number">Fig. 70 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: inner point p0 (left), and outer point p2 MISES stress between <span class="math notranslate nohighlight">\(t=0.05\text{s}\)</span> and <span class="math notranslate nohighlight">\(t=0.1\text{s}\)</span>.</span></p>
 </div>
 <span id="ro1-tab1"></span><table border="1" class="docutils" id="id13">
 <caption><span class="caption-number">Table 31 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: runtime and storage comparison.</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
@@ -153,7 +146,7 @@ pipe diameter in the contact area between <span class="math">\(t=0.05\text{s}\)<
 </table>
 <p align="center"><iframe width="640" height="360" src="//www.youtube.com/embed/RoSfE7-7ZH8?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><div class="literal-block-wrapper docutils container" id="ro1-lst1">
 <div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">Listing of ro1–fem–tl.py</span><a class="headerlink" href="#ro1-lst1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -214,11 +207,11 @@ pipe diameter in the contact area between <span class="math">\(t=0.05\text{s}\)<
 <p><a class="reference internal" href="#ro1-lst1"><span class="std std-numref">Listing 8</span></a> exemplifies the Total Lagrangian analysis input file. The simulation creation code
 is hidden inside of the library subroutine <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py#L10">ro1_simulation</a>,
 which returns the <a class="reference internal" href="../../user/solfec.html#solfec-user-solfec"><span class="std std-ref">SOLFEC object</span></a>, the pipe <a class="reference internal" href="../../user/body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a>
-and the duration of the analysis, <code class="docutils literal"><span class="pre">stop</span></code>, in line 6. When Solfec is opened in <code class="docutils literal"><span class="pre">'WIRITE'</span></code> mode (no results exist)
+and the duration of the analysis, <code class="docutils literal notranslate"><span class="pre">stop</span></code>, in line 6. When Solfec is opened in <code class="docutils literal notranslate"><span class="pre">'WIRITE'</span></code> mode (no results exist)
 and without the graphical viewer (–v switch not used), we sample co–rotated deformable and rigid displacements in lines 10 and 11.
 <a class="reference internal" href="../../user/utilities.html#solfec-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> and <a class="reference internal" href="../../user/utilities.html#solfec-command-rigid-displacements"><span class="std std-ref">RIGID_DISPLACEMENTS</span></a>
 commands are respectively used. Further, the simulation is run and the sampled displacements saved in lines 14–24. In case Solfec is opened
-in <code class="docutils literal"><span class="pre">'READ'</span></code> mode, in line 28, existing results are processed and time histories are extracted using a library routine
+in <code class="docutils literal notranslate"><span class="pre">'READ'</span></code> mode, in line 28, existing results are processed and time histories are extracted using a library routine
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py#L61">ro1_read_histories</a>. For comparison
 <a class="reference internal" href="#ro1-lst2"><span class="std std-numref">Listing 9</span></a> includes the BC–RO analysis input code. Since most of the input code is inside
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py">ro1–lib.py</a> this file is even shorter.
@@ -227,7 +220,7 @@ invoked internally from within <a class="reference external" href="https://githu
 when creating the reduced order model of the pipe body. This is depicted in lines 34–49 of <a class="reference internal" href="#ro1-lst3"><span class="std std-numref">Listing 10</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="ro1-lst2">
 <div class="code-block-caption"><span class="caption-number">Listing 9 </span><span class="caption-text">Listing of ro1–reduced.py</span><a class="headerlink" href="#ro1-lst2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -267,7 +260,7 @@ when creating the reduced order model of the pipe body. This is depicted in line
 </div>
 <div class="literal-block-wrapper docutils container" id="ro1-lst3">
 <div class="code-block-caption"><span class="caption-number">Listing 10 </span><span class="caption-text">Listing of a portion of ro1–lib.py responsible for creation of the pipe body.</span><a class="headerlink" href="#ro1-lst3" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>30
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>30
 31
 32
 33
@@ -310,16 +303,16 @@ when creating the reduced order model of the pipe body. This is depicted in line
 </td></tr></table></div>
 </div>
 <p>To run this example and generate figures presented here, enter Solfec source directory and type</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">reduced</span><span class="o">-</span><span class="n">order1</span><span class="o">/</span><span class="n">ro1</span><span class="o">-</span><span class="n">run</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">reduced</span><span class="o">-</span><span class="n">order1</span><span class="o">/</span><span class="n">ro1</span><span class="o">-</span><span class="n">run</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>After all progress messages cease, figures are saved as <code class="docutils literal"><span class="pre">out/reduced-order1/*.png</span></code> files.
+<p>After all progress messages cease, figures are saved as <code class="docutils literal notranslate"><span class="pre">out/reduced-order1/*.png</span></code> files.
 To interactively view the animated bar, as in video <a class="footnote-reference" href="#id2" id="id6">[1]</a>, call</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="o">-</span><span class="n">v</span> <span class="n">examples</span><span class="o">/</span><span class="n">reduced</span><span class="o">-</span><span class="n">order1</span><span class="o">/</span><span class="n">ro1</span><span class="o">-</span><span class="n">view</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="o">-</span><span class="n">v</span> <span class="n">examples</span><span class="o">/</span><span class="n">reduced</span><span class="o">-</span><span class="n">order1</span><span class="o">/</span><span class="n">ro1</span><span class="o">-</span><span class="n">view</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>You can type <code class="docutils literal"><span class="pre">o</span></code> in order to highlight the output path in the viewer and see which model you are currently looking at.
-You can switch between models using <code class="docutils literal"><span class="pre">&lt;</span></code> and <code class="docutils literal"><span class="pre">&gt;</span></code>. Right–click the mouse button to activate a drop–down menu and see
+<p>You can type <code class="docutils literal notranslate"><span class="pre">o</span></code> in order to highlight the output path in the viewer and see which model you are currently looking at.
+You can switch between models using <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>. Right–click the mouse button to activate a drop–down menu and see
 other available options and keyboard shortcuts.</p>
 </div>
 
@@ -329,6 +322,7 @@ other available options and keyboard shortcuts.</p>
   </div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -402,27 +396,29 @@ other available options and keyboard shortcuts.</p>
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../../../blog.html">Recent Posts</a></h3>
   <ul>
     
     
-      <li><a href="../../../blog/parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="../../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="../../../blog/parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
+      <li><a href="../../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="../../../blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="../../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="../../../blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+      <li><a href="../../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
-      <li><a href="../../../blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+      <li><a href="../../../blog/unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -541,8 +537,8 @@ other available options and keyboard shortcuts.</p>
       &copy;2018 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="../../../_sources/solfec/examples/reduced_order/ro1.rst.txt"

@@ -1,4 +1,10 @@
 
+* On Oct 28 2018 :ref:`dynlb-index`
+
+* On Oct 28 2018 :ref:`parmec-index`
+
+* On Oct 28 2018 :ref:`solfec-index`
+
 * On Oct 27 2018 :ref:`parmec-input_commands`
 
 * On Aug 24 2018 :ref:`solfec-examples-hybrid_modeling-hs123`
@@ -12,9 +18,3 @@
 * On Jun 29 2018 :ref:`solfec-theory-constraints`
 
 * On May 17 2018 :ref:`solfec-user-materials`
-
-* On May 11 2018 :ref:`trs-index`
-
-* On May 10 2018 :ref:`solfec-user-body`
-
-* On May 10 2018 :ref:`solfec-user-constraints`

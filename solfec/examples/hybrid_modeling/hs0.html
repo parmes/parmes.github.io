@@ -4,21 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>A two–body impact problem &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/parmes.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
@@ -47,13 +39,14 @@
     ul.postlist-style-circle {list-style-type: circle;}
   </style>
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="a-two-body-impact-problem">
@@ -81,7 +74,7 @@ The cube’s motion is <a class="reference internal" href="../../../parmec/input
 <a class="reference internal" href="../../../parmec/input_commands.html#parmec-command-gravity"><span class="std std-ref">Gravity</span></a> is applied in line 23. This concludes the input file.</p>
 <div class="literal-block-wrapper docutils container" id="hs0-lst1">
 <div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Listing of hs0–parmec.py</span><a class="headerlink" href="#hs0-lst1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -134,7 +127,7 @@ The cube’s motion is <a class="reference internal" href="../../../parmec/input
 </td></tr></table></div>
 </div>
 <p>The “DEM” command in line 25 can be uncommented to run parmec standalone and test this example:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">parmec4</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solver0</span><span class="o">/</span><span class="n">hs0</span><span class="o">-</span><span class="n">parmec</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parmec4</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solver0</span><span class="o">/</span><span class="n">hs0</span><span class="o">-</span><span class="n">parmec</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>This is useful at a stage of creating and testing of an input file: the output files generated into the hybrid–solver0
@@ -153,7 +146,7 @@ forces between Solfec and Parmec, and its motion will be driven by the Parmec mo
 <a class="reference internal" href="../../user/geometry.html#solfec-command-mesh"><span class="std std-ref">MESH</span></a> object is used to define geometry.</p>
 <div class="literal-block-wrapper docutils container" id="hs0-lst2">
 <div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Listing of hs0–solfec–1.py</span><a class="headerlink" href="#hs0-lst2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -256,11 +249,11 @@ simulation. In lines 35 and 36 we define the Solfec output interval. Because the
 in both codes, we need to explicitly call the Solfec command in this case. The input file is concluded with the <a class="reference internal" href="../../user/simulation.html#solfec-command-run"><span class="std std-ref">“RUN” command</span></a> (line 38),
 which executes a 10 second long simulation of the hybrid model.</p>
 <p>The example is run by calling</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solver0</span><span class="o">/</span><span class="n">hs0</span><span class="o">-</span><span class="n">solfec</span><span class="o">-</span><span class="mf">1.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solver0</span><span class="o">/</span><span class="n">hs0</span><span class="o">-</span><span class="n">solfec</span><span class="o">-</span><span class="mf">1.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>from within the solfec source directory. After calculations are finished, this can be followed by viewing the animated results by invoking</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="o">-</span><span class="n">v</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solver0</span><span class="o">/</span><span class="n">hs0</span><span class="o">-</span><span class="n">solfec</span><span class="o">-</span><span class="mf">1.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="o">-</span><span class="n">v</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solver0</span><span class="o">/</span><span class="n">hs0</span><span class="o">-</span><span class="n">solfec</span><span class="o">-</span><span class="mf">1.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>An example animation is included below:</p>
@@ -277,7 +270,7 @@ This input file demonstrates several more elaborate features of the <a class="re
 </div></blockquote>
 <div class="literal-block-wrapper docutils container" id="hs0-lst3">
 <div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Listing of hs0–solfec–2.py</span><a class="headerlink" href="#hs0-lst3" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -471,7 +464,7 @@ versa. The amount of this numerical dissipation decreases with time step size.</
 </div>
 <p><a class="reference internal" href="../../xdmf.html#solfec-xdmf"><span class="std std-ref">XDMF export</span></a> is demonstrated in lines 75–80. We note, that Solfec needs to be run for the second time,
 without the viewer -v parameter, in order for the actual export to occur:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solver0</span><span class="o">/</span><span class="n">hs0</span><span class="o">-</span><span class="n">solfec</span><span class="o">-</span><span class="mf">1.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solver0</span><span class="o">/</span><span class="n">hs0</span><span class="o">-</span><span class="n">solfec</span><span class="o">-</span><span class="mf">1.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>While Parmec output files, also in the <a class="reference external" href="http://www.xdmf.org">XDMF format</a>, are located in the ‘out/hybrid–solver0’ directory,
@@ -489,6 +482,7 @@ can be viewed using <a class="reference external" href="http://www.paraview.org"
   </div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -562,27 +556,29 @@ can be viewed using <a class="reference external" href="http://www.paraview.org"
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../../../blog.html">Recent Posts</a></h3>
   <ul>
     
     
-      <li><a href="../../../blog/parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="../../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="../../../blog/parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
+      <li><a href="../../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="../../../blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="../../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="../../../blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+      <li><a href="../../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
-      <li><a href="../../../blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+      <li><a href="../../../blog/unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -701,8 +697,8 @@ can be viewed using <a class="reference external" href="http://www.paraview.org"
       &copy;2018 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="../../../_sources/solfec/examples/hybrid_modeling/hs0.rst.txt"

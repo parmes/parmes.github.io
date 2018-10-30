@@ -4,21 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Solfec XDMF export &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
@@ -47,23 +39,24 @@
     ul.postlist-style-circle {list-style-type: circle;}
   </style>
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="solfec-xdmf-export">
 <span id="solfec-xdmf"></span><h1>Solfec XDMF export<a class="headerlink" href="#solfec-xdmf-export" title="Permalink to this headline">¶</a></h1>
 <p>XDMF export allows Solfec results to be saved in <a class="reference external" href="http://www.xdmf.org">XDMF format</a> and viewed in <a class="reference external" href="http://www.paraview.org">ParaView</a>
 and other post–processors. A quick example of Python syntax is provided below:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">XDMF_EXPORT</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="s1">&#39;/tmp/sim0&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">XDMF_EXPORT</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span> <span class="s1">&#39;/tmp/sim0&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>where results from the time interval <span class="math">\([0.0, 1.0]\)</span> are exported into the ‘/tmp/sim0’ directory. A typical Solfec workflow including XDMF export could be:</p>
+<p>where results from the time interval <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span> are exported into the ‘/tmp/sim0’ directory. A typical Solfec workflow including XDMF export could be:</p>
 <ol class="arabic simple">
 <li>Prepare and run an input deck (e.g. submit a batch job onto a HPC cluster).</li>
 <li>Run Solfec again and export a subset of results by calling XDMF_EXPORT from within your input deck (Solfec needs to be in the ‘READ’ mode).</li>
@@ -97,6 +90,7 @@ from there using an interactive ssh session.</p>
   </div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -161,27 +155,29 @@ from there using an interactive ssh session.</p>
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../blog.html">Recent Posts</a></h3>
   <ul>
     
     
-      <li><a href="../blog/parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="../blog/parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
+      <li><a href="../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="../blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="../blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+      <li><a href="../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
-      <li><a href="../blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+      <li><a href="../blog/unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -300,8 +296,8 @@ from there using an interactive ssh session.</p>
       &copy;2018 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="../_sources/solfec/xdmf.rst.txt"

@@ -4,21 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>3–dimensional cube array parallel scaling &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/parmes.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
@@ -47,13 +39,14 @@
     ul.postlist-style-circle {list-style-type: circle;}
   </style>
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="dimensional-cube-array-parallel-scaling">
@@ -90,11 +83,11 @@ Parmec spring forces are visualised on the left hand side. On the right hand sid
 the spheres symbolizse detected contact points, while their colors depict the magnitudes of the contact forces.</td></tr>
 </tbody>
 </table>
-<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/FfPGKxlr5kQ?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p>Animations <a class="footnote-reference" href="#id5" id="id10">[1]</a> and <a class="footnote-reference" href="#id8" id="id11">[2]</a> are based on <span class="math">\((M+N+M)\times(M+N+M)\times(M+N+M)\)</span> arrays, where <span class="math">\(M = 5\)</span> and <span class="math">\(N = 3\)</span>.
-To test parallel scaling, a larger model, with <span class="math">\(M = 5\)</span> and <span class="math">\(N = 20\)</span>, was used. This resulted in the total number of
-27000 bodies, of which the inner 8000 was modeled using <span class="math">\(2\times2\times2\)</span> finite element meshes in Solfec. The total number
+<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/FfPGKxlr5kQ?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p>Animations <a class="footnote-reference" href="#id5" id="id10">[1]</a> and <a class="footnote-reference" href="#id8" id="id11">[2]</a> are based on <span class="math notranslate nohighlight">\((M+N+M)\times(M+N+M)\times(M+N+M)\)</span> arrays, where <span class="math notranslate nohighlight">\(M = 5\)</span> and <span class="math notranslate nohighlight">\(N = 3\)</span>.
+To test parallel scaling, a larger model, with <span class="math notranslate nohighlight">\(M = 5\)</span> and <span class="math notranslate nohighlight">\(N = 20\)</span>, was used. This resulted in the total number of
+27000 bodies, of which the inner 8000 was modeled using <span class="math notranslate nohighlight">\(2\times2\times2\)</span> finite element meshes in Solfec. The total number
 of Solfec bodies was 10408, which includes the additional layer of 2408 rigid bodies, providing an overlap with the Parmec submodel.
-In order to provide a stiffer support for the larger, <span class="math">\(20\times20\times20\)</span>, inner array of bodies, the spring stifness and
+In order to provide a stiffer support for the larger, <span class="math notranslate nohighlight">\(20\times20\times20\)</span>, inner array of bodies, the spring stifness and
 damping coefficients in the Parmec submodel were multiplied by 10. One second runs with time step of 5E-4s were performed. None
 of the remaining parameters of the model were changed. Animation <a class="footnote-reference" href="#id13" id="id12">[3]</a> depicts the motion of this larger model.</p>
 <table class="docutils footnote" frame="void" id="id13" rules="none">
@@ -107,7 +100,7 @@ the Parmec and Solfec submodels.</td></tr>
 </table>
 <p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/yt-r9cIkEzA?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference internal" href="#hs3-runtimes"><span class="std std-numref">Table 28</span></a> summarises the parallel runtimes. Total speedup of 3.87 was achieved using 192 CPU cores,
 versus the baseline single cluster node run on 24 CPU cores. Intel Xeon E5–2600 CPU based nodes were used,
-with 24 cores per node and InfiniBand 1 x 56 Gb/s FDR interconnect. We note, that only the inner <span class="math">\(20\times20\times20\)</span>
+with 24 cores per node and InfiniBand 1 x 56 Gb/s FDR interconnect. We note, that only the inner <span class="math notranslate nohighlight">\(20\times20\times20\)</span>
 Solfec array was parallelized using MPI; the entire Parmec model (the remaining 19000 bodies) was run on MPI rank 0 process,
 utilising task based parallelism (in all cases all 24 cores of the single node were used).</p>
 <span id="hs3-runtimes"></span><table border="1" class="docutils" id="id17">
@@ -134,7 +127,7 @@ utilising task based parallelism (in all cases all 24 cores of the single node w
 </tr>
 </tbody>
 </table>
-<p>Animation <a class="footnote-reference" href="#id16" id="id15">[4]</a> depicts load balancing of contact points within Solfec submodel. The inner <span class="math">\(20\times20\times20\)</span>
+<p>Animation <a class="footnote-reference" href="#id16" id="id15">[4]</a> depicts load balancing of contact points within Solfec submodel. The inner <span class="math notranslate nohighlight">\(20\times20\times20\)</span>
 array generates up to 100k contact points on average, as seen in <a class="reference internal" href="#hs3-fig1"><span class="std std-numref">Fig. 59</span></a>. <a class="reference internal" href="#hs3-stats-1"><span class="std std-numref">Table 29</span></a> summarises
 the minimum, average and maximum numbers of bodies and contact points for 24–192 MPI rank (CPU cores) runs. Solfec
 utilizes a single geometrical partitioning in order to balance together the bodies and the contact points. Contact
@@ -277,6 +270,7 @@ Contact points are colored according to processor rank for the 48 CPU cores base
   </div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -350,27 +344,29 @@ Contact points are colored according to processor rank for the 48 CPU cores base
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../../../blog.html">Recent Posts</a></h3>
   <ul>
     
     
-      <li><a href="../../../blog/parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="../../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="../../../blog/parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
+      <li><a href="../../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="../../../blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="../../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="../../../blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+      <li><a href="../../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
-      <li><a href="../../../blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+      <li><a href="../../../blog/unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -489,8 +485,8 @@ Contact points are colored according to processor rank for the 48 CPU cores base
       &copy;2018 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="../../../_sources/solfec/examples/hybrid_modeling/hs3_scaling.rst.txt"

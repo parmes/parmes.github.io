@@ -4,21 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Results &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
@@ -47,13 +39,14 @@
     ul.postlist-style-circle {list-style-type: circle;}
   </style>
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="results">
@@ -203,11 +196,11 @@ values other than ‘GSITERS’ are non-zero only for parallel runs</li>
 <li>a string ‘MERIT’ for the time history of the constraints satisfaction merit function</li>
 <li>a string ‘NTITERS’ for the NEWTON_SOLVER iterations count</li>
 <li>a tuple (object, entity) or (object, direction, pair, entity) where object is a SOLFEC object,
-a BODY object or a list of BODY objects, direction is a tuple <span class="math">\(\left(d_{x},d_{y},d_{z}\right)\)</span>
+a BODY object or a list of BODY objects, direction is a tuple <span class="math notranslate nohighlight">\(\left(d_{x},d_{y},d_{z}\right)\)</span>
 storing a direction (use None if the normal direction is preferred), pair is a tuple (surf1, surf2)
 defining a surface pair (use None if no surface pair is preferred), and entity is:<ul>
 <li>‘GAP’ for the time history of the minimal contact gap among constraints attached to given bodies (negative gap corresponds to the penetration depth)</li>
-<li>‘R’ for the time history of the resultant (and average over time step <span class="math">\(\left[t,t+h\right]\)</span>) constraint reactions along the directions: normal or given by the direction</li>
+<li>‘R’ for the time history of the resultant (and average over time step <span class="math notranslate nohighlight">\(\left[t,t+h\right]\)</span>) constraint reactions along the directions: normal or given by the direction</li>
 <li>‘U’ for the time history of the average constraint velocities along the directions: normal or given by the direction</li>
 <li>‘CR’ for time histories like in the ‘R’ case, but for contact constraints only</li>
 <li>‘CU’ for time histories like in the ‘U’ case, but for contact constraints only</li>
@@ -224,7 +217,7 @@ defining a surface pair (use None if no surface pair is preferred), and entity i
 </div>
 <div class="section" id="xdmf-export">
 <h2>XDMF_EXPORT<a class="headerlink" href="#xdmf-export" title="Permalink to this headline">¶</a></h2>
-<p>Export results in XDMF format. In ‘WRITE’ mode only the geometry at time <span class="math">\(t=0\)</span> is saved,
+<p>Export results in XDMF format. In ‘WRITE’ mode only the geometry at time <span class="math notranslate nohighlight">\(t=0\)</span> is saved,
 while arguments <em>time</em> and <em>attributes</em> are ignored. See also <a class="reference internal" href="../xdmf.html#solfec-xdmf"><span class="std std-ref">XDMF export manual</span></a>.</p>
 <div class="topic">
 <p class="topic-title first">XDMF_EXPORT (solfec, time, path | subset, attributes)</p>
@@ -264,6 +257,7 @@ a non-optional scalar attribute ‘BID’ (body identifier) is always included w
   </div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -352,27 +346,29 @@ a non-optional scalar attribute ‘BID’ (body identifier) is always included w
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../../blog.html">Recent Posts</a></h3>
   <ul>
     
     
-      <li><a href="../../blog/parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="../../blog/parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
+      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="../../blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="../../blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+      <li><a href="../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
-      <li><a href="../../blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+      <li><a href="../../blog/unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -491,8 +487,8 @@ a non-optional scalar attribute ‘BID’ (body identifier) is always included w
       &copy;2018 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="../../_sources/solfec/user/results.rst.txt"

@@ -4,21 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Rotating bar &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/parmes.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
@@ -47,13 +39,14 @@
     ul.postlist-style-circle {list-style-type: circle;}
   </style>
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="rotating-bar">
@@ -75,23 +68,23 @@ These are:</p>
 </ul>
 <div class="figure align-center" id="id13">
 <span id="ro0-fig1"></span><a class="reference internal image-reference" href="../../../_images/ro0_mesh.png"><img alt="../../../_images/ro0_mesh.png" src="../../../_images/ro0_mesh.png" style="width: 20%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 60 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: geometry of the <span class="math">\(2\times2\times20\)</span> mesh.</span></p>
+<p class="caption"><span class="caption-number">Fig. 60 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: geometry of the <span class="math notranslate nohighlight">\(2\times2\times20\)</span> mesh.</span></p>
 </div>
-<p>A prismatic bar with <span class="math">\(x,y,z\)</span> dimensions <span class="math">\(0.1\times0.1\times1\mbox{ m}\)</span> and material parameters
-<span class="math">\(E\in\left\{ 200\mbox{E4 Pa},200\mbox{E9 Pa}\right\}\)</span>, <span class="math">\(\nu=0.26,\rho=7.8\mbox{E3 kg /}\mbox{m}^{3}\)</span>
-is rotating about the <span class="math">\(x\)</span>–axis with an initial angular velocity of <span class="math">\(1\mbox{ rad/s}\)</span>. We use the
+<p>A prismatic bar with <span class="math notranslate nohighlight">\(x,y,z\)</span> dimensions <span class="math notranslate nohighlight">\(0.1\times0.1\times1\mbox{ m}\)</span> and material parameters
+<span class="math notranslate nohighlight">\(E\in\left\{ 200\mbox{E4 Pa},200\mbox{E9 Pa}\right\}\)</span>, <span class="math notranslate nohighlight">\(\nu=0.26,\rho=7.8\mbox{E3 kg /}\mbox{m}^{3}\)</span>
+is rotating about the <span class="math notranslate nohighlight">\(x\)</span>–axis with an initial angular velocity of <span class="math notranslate nohighlight">\(1\mbox{ rad/s}\)</span>. We use the
 smaller Young’s modulus in most demonstrations since in this case the time scales of the rigid and deformable
-motions are not far apart. For <span class="math">\(E=200\mbox{E9 Pa}\)</span> the material parameters correspond to steel. In this
+motions are not far apart. For <span class="math notranslate nohighlight">\(E=200\mbox{E9 Pa}\)</span> the material parameters correspond to steel. In this
 case the time scale of elastic deformations is much faster then that of the rigid rotation. We use this material
 to test performance of the proposed integrators when applied with large time steps. In what follows, unless stated
-otherwise, the value <span class="math">\(E=200\mbox{E4}\)</span> is used by default.</p>
+otherwise, the value <span class="math notranslate nohighlight">\(E=200\mbox{E4}\)</span> is used by default.</p>
 <table class="docutils footnote" frame="void" id="id1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id11">2</a>)</em> An animation of the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a> rotating bar example.</td></tr>
 </tbody>
 </table>
-<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/c136dWHwWNU?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p>The bar is discretized with <span class="math">\(2\times2\times20\)</span> fully integrated trilinear hexahedral elements, <a class="reference internal" href="#ro0-fig1"><span class="std std-numref">Fig. 60</span></a>
+<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/c136dWHwWNU?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p>The bar is discretized with <span class="math notranslate nohighlight">\(2\times2\times20\)</span> fully integrated trilinear hexahedral elements, <a class="reference internal" href="#ro0-fig1"><span class="std std-numref">Fig. 60</span></a>
 and animation <a class="footnote-reference" href="#id1" id="id2">[1]</a>. This results in 576 degrees of freedom for the full order model. For the reduced order
 BC–RO approach we used 100 co–rotated displacement samples from the Total Lagrangian solution (with rigid rotation
 factored out) and 6 rigid motion modes (generated algebraically) as input for the <a class="reference external" href="http://pythonhosted.org/modred">Python modred package</a>
@@ -100,23 +93,23 @@ for which the 6 rigid modes where combined with deformable modes 14, 19, 26, 34,
 as visually corresponding to the predominantly longitudinal deformation of the bar. Hence, the BC–MODAL case also had 11 degrees of freedom.</p>
 <div class="figure align-center" id="id14">
 <span id="ro0-fig2"></span><a class="reference internal image-reference" href="../../../_images/ro0_elongation_d0.png"><img alt="../../../_images/ro0_elongation_d0.png" src="../../../_images/ro0_elongation_d0.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 61 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of the elongation for <span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span> and <span class="math">\(1\mbox{s}\)</span> runs.</span></p>
+<p class="caption"><span class="caption-number">Fig. 61 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of the elongation for <span class="math notranslate nohighlight">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span> and <span class="math notranslate nohighlight">\(1\mbox{s}\)</span> runs.</span></p>
 </div>
 <div class="figure align-center" id="id15">
 <span id="ro0-fig3"></span><a class="reference internal image-reference" href="../../../_images/ro0_elongation_d0.05.png"><img alt="../../../_images/ro0_elongation_d0.05.png" src="../../../_images/ro0_elongation_d0.05.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 62 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of the elongation for <span class="math">\(h=1/64\mbox{s}, \eta\in\left\{ 0.01,0.05\right\}\)</span> and <span class="math">\(1\mbox{s}\)</span> runs.</span></p>
+<p class="caption"><span class="caption-number">Fig. 62 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of the elongation for <span class="math notranslate nohighlight">\(h=1/64\mbox{s}, \eta\in\left\{ 0.01,0.05\right\}\)</span> and <span class="math notranslate nohighlight">\(1\mbox{s}\)</span> runs.</span></p>
 </div>
 <p>We first compare the solutions for damped and undamped cases. <a class="reference internal" href="#ro0-fig2"><span class="std std-numref">Fig. 61</span></a> illustrates the time history of the elongation
-of the bar, measured between the top and bottom center nodes, for undamped <span class="math">\(1\mbox{s}\)</span> runs with time steps
-<span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>. It can be seen that the results compare well between the formulations
+of the bar, measured between the top and bottom center nodes, for undamped <span class="math notranslate nohighlight">\(1\mbox{s}\)</span> runs with time steps
+<span class="math notranslate nohighlight">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>. It can be seen that the results compare well between the formulations
 proposed here and the Total Lagrangian approach integrated in an analogous manner. A damped case is illustrated in <a class="reference internal" href="#ro0-fig3"><span class="std std-numref">Fig. 62</span></a>
-for the large time step of <span class="math">\(h=1/64\mbox{s}\)</span>. Also in this case the agreement is good. The Total Lagrangian based solution
+for the large time step of <span class="math notranslate nohighlight">\(h=1/64\mbox{s}\)</span>. Also in this case the agreement is good. The Total Lagrangian based solution
 deviates from the co–rotational solution since for the TL the stiffness matrix magnitude changes with configuration, which affects
 the stiffness proportional damping. We can conclude the 5 deformable modes used by the BC–RO and BC–MODAL approaches represent
 well the longitudinal oscillation accompanying the rotational motion of the bar.</p>
 <div class="literal-block-wrapper docutils container" id="ro0-lst1">
 <div class="code-block-caption"><span class="caption-number">Listing 6 </span><span class="caption-text">Listing of a portion of ro0–elong.py responsible for creation of <a class="reference internal" href="#ro0-fig2"><span class="std std-numref">Fig. 61</span></a></span><a class="headerlink" href="#ro0-lst1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 9
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 9
 10
 11
 12
@@ -216,21 +209,21 @@ well the longitudinal oscillation accompanying the rotational motion of the bar.
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-elong.py">ro0–elong.py</a>. <a class="reference internal" href="#ro0-lst1"><span class="std std-numref">Listing 6</span></a>
 includes a portion of this file responsible for generating <a class="reference internal" href="#ro0-fig2"><span class="std std-numref">Fig. 61</span></a>. In line 9 we execute the
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-gen-bases.py">ro0–gen–bases.py</a> file
-which generates reduced order and modal bases variables <code class="docutils literal"><span class="pre">pod_base</span></code> and <code class="docutils literal"><span class="pre">modal_base</span></code>, used in lines  40 and 42.
+which generates reduced order and modal bases variables <code class="docutils literal notranslate"><span class="pre">pod_base</span></code> and <code class="docutils literal notranslate"><span class="pre">modal_base</span></code>, used in lines  40 and 42.
 We then use a library routine <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L9">ro0_path_extension</a>
-to include into the output directory path an extension specific to the elongation history tests. All library <code class="docutils literal"><span class="pre">ro0_*</span></code> subroutines are included in
+to include into the output directory path an extension specific to the elongation history tests. All library <code class="docutils literal notranslate"><span class="pre">ro0_*</span></code> subroutines are included in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py">ro0–lib.py</a> file, executed at the start,
 not shown here. In line 20 we start a loop over two time steps: 1/64s and 1/256s. For each time step, we run 1.0s long simulations
-using <code class="docutils literal"><span class="pre">'TL'</span></code>, <code class="docutils literal"><span class="pre">'BC'</span></code>, <code class="docutils literal"><span class="pre">'BC-RO</span></code>, <code class="docutils literal"><span class="pre">'BC-MODAL'</span></code> formulations, in lines 23–33, and then read the resulting time histories
+using <code class="docutils literal notranslate"><span class="pre">'TL'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BC'</span></code>, <code class="docutils literal notranslate"><span class="pre">'BC-RO</span></code>, <code class="docutils literal notranslate"><span class="pre">'BC-MODAL'</span></code> formulations, in lines 23–33, and then read the resulting time histories
 in lines 36–42. The <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L14">ro0_model</a> function
 creates a rotating bar model, runs the analysis, or reads the results, depending on parameters.
 The <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L180">ro0_times</a> function returners
 the time history of time itself. The <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L186">ro0_elongation</a>
-function reads and returns the time history of bar elongation, given a <a class="reference internal" href="../../user/solfec.html#solfec-user-solfec"><span class="std std-ref">SOLFEC object</span></a> in <code class="docutils literal"><span class="pre">'READ'</span></code> mode as an input.
+function reads and returns the time history of bar elongation, given a <a class="reference internal" href="../../user/solfec.html#solfec-user-solfec"><span class="std std-ref">SOLFEC object</span></a> in <code class="docutils literal notranslate"><span class="pre">'READ'</span></code> mode as an input.
 Finally, in lines 44–55, we use <a class="reference external" href="https://matplotlib.org">matplotlib</a> to generate figures that contribute to <a class="reference internal" href="#ro0-fig2"><span class="std std-numref">Fig. 61</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="ro0-lst2">
 <div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">Listing of ro0–gen–bases.py</span><a class="headerlink" href="#ro0-lst2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -294,19 +287,19 @@ Finally, in lines 44–55, we use <a class="reference external" href="https://ma
 file. Because this code is used by multiple tests, in lines 9–10 we first attempt to read existing bases: one of the input files could have
 been called already and those bases may have been saved. If this is not the case, in lines 12–29 we generate and save the reduced order
 and modal bases. To generate the proper orthogonal decomposition reduced order base, we first create a Total Lagrangian model, in line 16,
-but do not run it yet (the <code class="docutils literal"><span class="pre">runduration</span></code> parameter of <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L14">ro0_model</a>
+but do not run it yet (the <code class="docutils literal notranslate"><span class="pre">runduration</span></code> parameter of <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L14">ro0_model</a>
 is not used). Instead, we used the <a class="reference internal" href="../../user/utilities.html#solfec-command-rigid-displacements"><span class="std std-ref">RIGID_DISPLACEMENTS</span></a>
 and <a class="reference internal" href="../../user/utilities.html#solfec-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> commands in order to sample rigid and co–rotated deformable displacements,
-and then run the analysis in line 20. The rigid displacements <code class="docutils literal"><span class="pre">rig</span></code> and the sampled deformable displacements <code class="docutils literal"><span class="pre">defo</span></code> are then passed to the library
+and then run the analysis in line 20. The rigid displacements <code class="docutils literal notranslate"><span class="pre">rig</span></code> and the sampled deformable displacements <code class="docutils literal notranslate"><span class="pre">defo</span></code> are then passed to the library
 routine <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L100">ro0_POD_base</a> which employs the <a class="reference external" href="https://pypi.python.org/pypi/modred">modred package</a> to calculate the reduced base. Following this, in line 24, the modal base is generated using library call
 to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L69">ro0_modal_base</a>, which employs Solfec’s utility
 function <a class="reference internal" href="../../user/utilities.html#solfec-command-modal-analysis"><span class="std std-ref">MODAL_ANALYSIS</span></a> in order to calculate the modal base.  Finally, the results are saved in lines 28 and 29.</p>
 <div class="figure align-center" id="id16">
 <span id="ro0-fig4"></span><a class="reference internal image-reference" href="../../../_images/ro0_energy_d0_100s.png"><img alt="../../../_images/ro0_energy_d0_100s.png" src="../../../_images/ro0_energy_d0_100s.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 63 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of total energy for <span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>  and <span class="math">\(100\mbox{s}\)</span> runs.</span></p>
+<p class="caption"><span class="caption-number">Fig. 63 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of total energy for <span class="math notranslate nohighlight">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>  and <span class="math notranslate nohighlight">\(100\mbox{s}\)</span> runs.</span></p>
 </div>
 <p><a class="reference internal" href="#ro0-fig4"><span class="std std-numref">Fig. 63</span></a> illustrates the time history of the total energy of the bar for 100s runs with time steps
-<span class="math">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>. For all but the BC–RO approach, the small oscillation of energy remains
+<span class="math notranslate nohighlight">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>. For all but the BC–RO approach, the small oscillation of energy remains
 bounded with time. The full space co–rotational BC approach is better behaved than BC–MODAL: in nearly coincides with the
 Total Lagrangian approach. The relatively small oscillation of energy, present in TL, BC, and BC–MODAL cases, is characteristic
 for the adopted time stepping and it has been also demonstrated <a class="footnote-reference" href="#id12" id="id8">[2]</a> on simpler model problems. The larger oscillation and dissipation
@@ -315,28 +308,28 @@ We note, that the <a class="reference external" href="https://github.com/tkoziar
 was used to generate <a class="reference internal" href="#ro0-fig4"><span class="std std-numref">Fig. 63</span></a>.</p>
 <div class="figure align-center" id="id17">
 <span id="ro0-fig5"></span><a class="reference internal image-reference" href="../../../_images/ro0_convtest.png"><img alt="../../../_images/ro0_convtest.png" src="../../../_images/ro0_convtest.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 64 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: second order convergence of displacements for soft undamped (<span class="math">\(E=200\mbox{E4, }\eta=0\)</span>) and
-stiff damped (<span class="math">\(E=200\mbox{E9, }\eta=1/10^{6}\)</span>) materials.</span></p>
+<p class="caption"><span class="caption-number">Fig. 64 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: second order convergence of displacements for soft undamped (<span class="math notranslate nohighlight">\(E=200\mbox{E4, }\eta=0\)</span>) and
+stiff damped (<span class="math notranslate nohighlight">\(E=200\mbox{E9, }\eta=1/10^{6}\)</span>) materials.</span></p>
 </div>
 <p>The second order convergence rate is illustrated in <a class="reference internal" href="#ro0-fig5"><span class="std std-numref">Fig. 64</span></a>. Two cases are considered: undamped motion
-of a soft bar <span class="math">\(E=200\mbox{E4}\)</span> and damped motion of stiff bar <span class="math">\(E=200\mbox{E9}\)</span>. In both cases the
-reference solution <span class="math">\(q_{ref}\)</span> was obtained at time <span class="math">\(t=1/2^{4}\mbox{s}\)</span> with time step <span class="math">\(h=1/2^{16}\mbox{s}\)</span>.
+of a soft bar <span class="math notranslate nohighlight">\(E=200\mbox{E4}\)</span> and damped motion of stiff bar <span class="math notranslate nohighlight">\(E=200\mbox{E9}\)</span>. In both cases the
+reference solution <span class="math notranslate nohighlight">\(q_{ref}\)</span> was obtained at time <span class="math notranslate nohighlight">\(t=1/2^{4}\mbox{s}\)</span> with time step <span class="math notranslate nohighlight">\(h=1/2^{16}\mbox{s}\)</span>.
 For the softer material the time scales of the rigid and deformable motion are not far apart and hence it is easier
-to observe the second order convergence for larger time steps. For the stiffer model we used damping <span class="math">\(\eta=1/10^{6}\)</span>
+to observe the second order convergence for larger time steps. For the stiffer model we used damping <span class="math notranslate nohighlight">\(\eta=1/10^{6}\)</span>
 in order to damp out the high frequency oscillations that could not be well represented for the large time steps used here.
 <a class="reference internal" href="#ro0-fig5"><span class="std std-numref">Fig. 64</span></a> was generated using the
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-convtest.py">ro0–convtest.py</a> input file.</p>
 <p>To run this example and generate figures presented here, enter Solfec source directory and type</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">reduced</span><span class="o">-</span><span class="n">order0</span><span class="o">/</span><span class="n">ro0</span><span class="o">-</span><span class="n">run</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">reduced</span><span class="o">-</span><span class="n">order0</span><span class="o">/</span><span class="n">ro0</span><span class="o">-</span><span class="n">run</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>After several minutes, when progress messages cease, figures are saved as <code class="docutils literal"><span class="pre">out/reduced-order0/*.png</span></code> files.
+<p>After several minutes, when progress messages cease, figures are saved as <code class="docutils literal notranslate"><span class="pre">out/reduced-order0/*.png</span></code> files.
 To interactively view the animated bar, as in video <a class="footnote-reference" href="#id1" id="id11">[1]</a>, call</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="o">-</span><span class="n">v</span> <span class="n">examples</span><span class="o">/</span><span class="n">reduced</span><span class="o">-</span><span class="n">order0</span><span class="o">/</span><span class="n">ro0</span><span class="o">-</span><span class="n">view</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="o">-</span><span class="n">v</span> <span class="n">examples</span><span class="o">/</span><span class="n">reduced</span><span class="o">-</span><span class="n">order0</span><span class="o">/</span><span class="n">ro0</span><span class="o">-</span><span class="n">view</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>You can type <code class="docutils literal"><span class="pre">o</span></code> in order to highlight the output path in the viewer and see which model you are currently looking at.
-You can switch between models using <code class="docutils literal"><span class="pre">&lt;</span></code> and <code class="docutils literal"><span class="pre">&gt;</span></code>. Right–click the mouse button to activate a drop–down menu and see
+<p>You can type <code class="docutils literal notranslate"><span class="pre">o</span></code> in order to highlight the output path in the viewer and see which model you are currently looking at.
+You can switch between models using <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>. Right–click the mouse button to activate a drop–down menu and see
 other available options and keyboard shortcuts.</p>
 <table class="docutils footnote" frame="void" id="id12" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -352,6 +345,7 @@ other available options and keyboard shortcuts.</p>
   </div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -425,27 +419,29 @@ other available options and keyboard shortcuts.</p>
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../../../blog.html">Recent Posts</a></h3>
   <ul>
     
     
-      <li><a href="../../../blog/parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="../../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="../../../blog/parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
+      <li><a href="../../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="../../../blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="../../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="../../../blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+      <li><a href="../../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
-      <li><a href="../../../blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+      <li><a href="../../../blog/unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -564,8 +560,8 @@ other available options and keyboard shortcuts.</p>
       &copy;2018 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="../../../_sources/solfec/examples/reduced_order/ro0.rst.txt"

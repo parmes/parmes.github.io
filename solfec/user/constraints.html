@@ -4,21 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Constraints &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
@@ -47,13 +39,14 @@
     ul.postlist-style-circle {list-style-type: circle;}
   </style>
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="constraints">
@@ -172,17 +165,17 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 </li>
 <li><p class="first">function – Python function callback returning the value of force as the function of stroke:</p>
 <p><strong>force = function (stroke, velocity)</strong></p>
-<p>where <span class="math">\(\text{stroke=}\mathbf{n}\cdot\text{current}\left(\text{point2}-\text{point1}\right)-\text{initial}\left(\left|\text{point2}-\text{point1}\right|\right)\)</span>
-and <em>velocity</em> is the current relative velocity along the spring direction <span class="math">\(\mathbf{n}\)</span> (positive if stroke increases)</p>
+<p>where <span class="math notranslate nohighlight">\(\text{stroke=}\mathbf{n}\cdot\text{current}\left(\text{point2}-\text{point1}\right)-\text{initial}\left(\left|\text{point2}-\text{point1}\right|\right)\)</span>
+and <em>velocity</em> is the current relative velocity along the spring direction <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> (positive if stroke increases)</p>
 </li>
-<li><p class="first">limits – (smin, smax) tuple defining stroke limits (smin <span class="math">\(\le\)</span> 0 and smax <span class="math">\(\ge\)</span> 0)</p>
+<li><p class="first">limits – (smin, smax) tuple defining stroke limits (smin <span class="math notranslate nohighlight">\(\le\)</span> 0 and smax <span class="math notranslate nohighlight">\(\ge\)</span> 0)</p>
 </li>
-<li><p class="first">direction – (nx, ny, nz) tuple storing spring direction <span class="math">\(\mathbf{n}\)</span>.
-Default: <span class="math">\(\mathbf{n}=\text{normalized}\left(\text{current}\left(\text{point2}-\text{point1}\right)\right)\)</span> resulting in a follower type spring.
-When specified, <span class="math">\(\mathbf{n}\)</span> will be updated according to the value of update.</p>
+<li><p class="first">direction – (nx, ny, nz) tuple storing spring direction <span class="math notranslate nohighlight">\(\mathbf{n}\)</span>.
+Default: <span class="math notranslate nohighlight">\(\mathbf{n}=\text{normalized}\left(\text{current}\left(\text{point2}-\text{point1}\right)\right)\)</span> resulting in a follower type spring.
+When specified, <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> will be updated according to the value of update.</p>
 </li>
-<li><p class="first">update – direction update kind (default: ‘FIXED’); one of: ‘FIXED’ where <span class="math">\(\mathbf{n}\)</span> is kept fixed,
-or ‘CONV1’ where <span class="math">\(\mathbf{n}\)</span> is convected with body1, or ‘CONV2’ where <span class="math">\(\mathbf{n}\)</span> is convected with body2.</p>
+<li><p class="first">update – direction update kind (default: ‘FIXED’); one of: ‘FIXED’ where <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> is kept fixed,
+or ‘CONV1’ where <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> is convected with body1, or ‘CONV2’ where <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> is convected with body2.</p>
 </li>
 </ul>
 </div>
@@ -199,7 +192,7 @@ or ‘CONV1’ where <span class="math">\(\mathbf{n}\)</span> is convected with 
 ‘VELODIR’ (prescribed velocity; note that prescribed displacement and acceleration are converted into
 this case), ‘RIGLNK’ (rigid link)</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.R</strong> – current average (over time step <span class="math">\(\left[t,t+h\right]\)</span>) constraint reaction in a form
+<tr class="row-odd"><td><strong>obj.R</strong> – current average (over time step <span class="math notranslate nohighlight">\(\left[t,t+h\right]\)</span>) constraint reaction in a form
 of a tuple: (RT1, RT2, RN) given with respect to a local base stored at <em>obj.base</em></td>
 </tr>
 <tr class="row-even"><td><strong>obj.U</strong> – constraint output relative velocity tuple: (UT1, UT2, UN) given with respect to a local
@@ -240,6 +233,7 @@ returned by <em>obj.adjbod</em></td>
   </div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -324,27 +318,29 @@ returned by <em>obj.adjbod</em></td>
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../../blog.html">Recent Posts</a></h3>
   <ul>
     
     
-      <li><a href="../../blog/parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="../../blog/parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
+      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="../../blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="../../blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+      <li><a href="../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
-      <li><a href="../../blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+      <li><a href="../../blog/unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -463,8 +459,8 @@ returned by <em>obj.adjbod</em></td>
       &copy;2018 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="../../_sources/solfec/user/constraints.rst.txt"

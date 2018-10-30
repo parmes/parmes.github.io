@@ -4,21 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Dynamics &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../../',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
@@ -47,64 +39,65 @@
     ul.postlist-style-circle {list-style-type: circle;}
   </style>
 
-  </head>
-  <body>
+  </head><body>
   
 
     <div class="document">
       <div class="documentwrapper">
         <div class="bodywrapper">
+          
+
           <div class="body" role="main">
             
   <div class="section" id="dynamics">
 <span id="solfec-theory-dynamics"></span><h1>Dynamics<a class="headerlink" href="#dynamics" title="Permalink to this headline">¶</a></h1>
-<p>For a body <span class="math">\(\mathcal{B}\)</span>, the conservation of linear and angular momentum respectively read</p>
-<div class="math">
+<p>For a body <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>, the conservation of linear and angular momentum respectively read</p>
+<div class="math notranslate nohighlight">
 \[\frac{d}{dt}\int_{\mathcal{B}}\rho\dot{\mathbf{x}}dv=\int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\frac{d}{dt}\int_{\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\rho\dot{\mathbf{x}}dv=
 \int_{\partial\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\mathbf{t}da+
 \int_{\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\rho\mathbf{b}dv\]</div>
-<p>where <span class="math">\(t\)</span> is time, <span class="math">\(\rho\)</span> is the mass density, <span class="math">\(\dot{\mathbf{x}}\)</span> is the point velocity,
-<span class="math">\(\mathbf{t}\)</span> is the surface traction, <span class="math">\(\mathbf{b}\)</span> is the body force, and <span class="math">\(\bar{\mathbf{x}}\)</span>
+<p>where <span class="math notranslate nohighlight">\(t\)</span> is time, <span class="math notranslate nohighlight">\(\rho\)</span> is the mass density, <span class="math notranslate nohighlight">\(\dot{\mathbf{x}}\)</span> is the point velocity,
+<span class="math notranslate nohighlight">\(\mathbf{t}\)</span> is the surface traction, <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is the body force, and <span class="math notranslate nohighlight">\(\bar{\mathbf{x}}\)</span>
 is a selected point. All of the mentioned quantities are spatial and so is the integration domain
-<span class="math">\(\mathcal{B}\)</span>, being the current configuration of the body. Sections below rephrase these balance
+<span class="math notranslate nohighlight">\(\mathcal{B}\)</span>, being the current configuration of the body. Sections below rephrase these balance
 principles, as required, for each of the kinematic models available in Solfec.</p>
 <div class="section" id="rigid-dynamics">
 <h2>Rigid dynamics<a class="headerlink" href="#rigid-dynamics" title="Permalink to this headline">¶</a></h2>
 <p>Linear momentum balance reads</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[m\ddot{\bar{\mathbf{x}}}=\int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv\]</div>
 <p>The spatial angular momentum balance reads</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\frac{d}{dt}\left(\mathbf{j}\mathbf{\omega}\right)=\mathbf{j}\dot{\mathbf{\omega}}+\mathbf{\omega}\times\mathbf{j}\mathbf{\omega}=\mathbf{m}\]</div>
 <p>The referential angular momentum balance reads</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mathbf{J}\dot{\mathbf{\Omega}}+\mathbf{\Omega}\times\mathbf{J}\mathbf{\Omega}=\mathbf{\Lambda}^{T}\mathbf{m}\]</div>
-<p>where <span class="math">\(\mathbf{m}\)</span> is the torque</p>
-<div class="math">
+<p>where <span class="math notranslate nohighlight">\(\mathbf{m}\)</span> is the torque</p>
+<div class="math notranslate nohighlight">
 \[\mathbf{m}=\int_{\partial\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\mathbf{t}da+\int_{\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\rho\mathbf{b}dv\]</div>
-<p>and <span class="math">\(\mathbf{j}\)</span> and <span class="math">\(\mathbf{J}\)</span> are</p>
-<div class="math">
+<p>and <span class="math notranslate nohighlight">\(\mathbf{j}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{J}\)</span> are</p>
+<div class="math notranslate nohighlight">
 \[\mathbf{j}=\mathbf{\Lambda}\mathbf{J}\mathbf{\Lambda}^{T},\,\,\,\mathbf{J}=\mbox{tr}\left(\mathbf{E}_{0}\right)\mathbf{I}-\mathbf{E}_{0}\]</div>
-<p>the spatial and the referential inertia tensors, respectively. <span class="math">\(\mathbf{I}\)</span> is the <span class="math">\(3\times3\)</span> identity matrix. <span class="math">\(\mathbf{E}_{0}\)</span> is the referential Euler tensor</p>
-<div class="math" id="equation-E0">
-<span class="eqno">(1)<a class="headerlink" href="#equation-E0" title="Permalink to this equation">¶</a></span>\[\mathbf{E}_{0}=\int_{\mathcal{B}_{0}}\left(\mathbf{X}-\bar{\mathbf{X}}\right)\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)\rho_{0}dV\]</div>
-<p>where <span class="math">\(\mathcal{B}_{0}\)</span> is the reference configuration, <span class="math">\(\rho_{0}\)</span> is the referential mass density,
-and the tensor product operator <span class="math">\(\otimes\)</span> makes a <span class="math">\(3\times3\)</span> matrix out of two 3-vectors, e.g.
-<span class="math">\(\mathbf{a}=\mathbf{b}\otimes\mathbf{c}\)</span> means <span class="math">\(a_{ij}=b_{i}c_{j}\)</span>.</p>
+<p>the spatial and the referential inertia tensors, respectively. <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is the <span class="math notranslate nohighlight">\(3\times3\)</span> identity matrix. <span class="math notranslate nohighlight">\(\mathbf{E}_{0}\)</span> is the referential Euler tensor</p>
+<div class="math notranslate nohighlight" id="equation-e0">
+<span class="eqno">(22)<a class="headerlink" href="#equation-e0" title="Permalink to this equation">¶</a></span>\[\mathbf{E}_{0}=\int_{\mathcal{B}_{0}}\left(\mathbf{X}-\bar{\mathbf{X}}\right)\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)\rho_{0}dV\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{B}_{0}\)</span> is the reference configuration, <span class="math notranslate nohighlight">\(\rho_{0}\)</span> is the referential mass density,
+and the tensor product operator <span class="math notranslate nohighlight">\(\otimes\)</span> makes a <span class="math notranslate nohighlight">\(3\times3\)</span> matrix out of two 3-vectors, e.g.
+<span class="math notranslate nohighlight">\(\mathbf{a}=\mathbf{b}\otimes\mathbf{c}\)</span> means <span class="math notranslate nohighlight">\(a_{ij}=b_{i}c_{j}\)</span>.</p>
 <p>In matrix notation these balance principles read</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}\]</div>
 <p>where</p>
-<div class="math" id="equation-mrig">
-<span class="eqno">(2)<a class="headerlink" href="#equation-mrig" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{M}=\left[\begin{array}{cc}
+<div class="math notranslate nohighlight" id="equation-mrig">
+<span class="eqno">(23)<a class="headerlink" href="#equation-mrig" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{M}=\left[\begin{array}{cc}
 \mathbf{J}\\
  &amp; m\mathbf{I}
  \end{array}\right]\end{split}\]</div>
 <p>and</p>
-<div class="math" id="equation-frig">
-<span class="eqno">(3)<a class="headerlink" href="#equation-frig" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{f}=\left[\begin{array}{c}
+<div class="math notranslate nohighlight" id="equation-frig">
+<span class="eqno">(24)<a class="headerlink" href="#equation-frig" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{f}=\left[\begin{array}{c}
 \mathbf{\Lambda}^{T}\int_{\partial\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\mathbf{t}da+
 \mathbf{\Lambda}^{T}\int_{\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\rho\mathbf{b}dv-\mathbf{\Omega}\times\mathbf{J}\mathbf{\Omega}\\
 \int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv
@@ -113,84 +106,84 @@ and the tensor product operator <span class="math">\(\otimes\)</span> makes a <s
 <div class="section" id="pseudo-rigid-dynamics">
 <h2>Pseudo–rigid dynamics<a class="headerlink" href="#pseudo-rigid-dynamics" title="Permalink to this headline">¶</a></h2>
 <p>Linear momentum balance reads</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[m\ddot{\bar{\mathbf{x}}}=\int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv\]</div>
 <p>The referential angular momentum balance reads</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\ddot{\mathbf{F}}\mathbf{E}_{0}+V\bar{\mathbf{P}}=\int_{\partial\mathcal{B}_{0}}\mathbf{t}\otimes
 \left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(
 \mathbf{X}-\bar{\mathbf{X}}\right)dV\]</div>
-<p>where <span class="math">\(\mathbf{E}_{0}\)</span> is defined in <a class="reference internal" href="#equation-E0">(1)</a>, <span class="math">\(V\)</span> is the volume of the domain, and <span class="math">\(\bar{\mathbf{P}}\)</span> is the average referential first Piola stress, defined as</p>
-<div class="math">
+<p>where <span class="math notranslate nohighlight">\(\mathbf{E}_{0}\)</span> is defined in <a class="reference internal" href="#equation-e0">(22)</a>, <span class="math notranslate nohighlight">\(V\)</span> is the volume of the domain, and <span class="math notranslate nohighlight">\(\bar{\mathbf{P}}\)</span> is the average referential first Piola stress, defined as</p>
+<div class="math notranslate nohighlight">
 \[\bar{\mathbf{P}}=\partial_{\mathbf{F}}\Psi\left(\mathbf{F}\right)\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\Psi=\frac{1}{4}\left[\mathbf{F}^{T}\mathbf{F}-\mathbf{I}\right]:\mathbf{C}:\left[\mathbf{F}^{T}\mathbf{F}-\mathbf{I}\right]\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[C_{ijkl}=\lambda\delta_{ij}\delta_{kl}+\mu\left[\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk}\right]\]</div>
-<p>where the hyperelastic Saint Venant – Kirchhoff material is adopted. In the above <span class="math">\(\lambda\)</span> and <span class="math">\(\mu\)</span> are Lam’e constants, while <span class="math">\(\delta_{ij}\)</span> is the Kronecker delta.
-The Lam’e constants can be expressed in terms of the Young modulus <span class="math">\(E\)</span> and the Poisson ratio <span class="math">\(\nu\)</span> as</p>
-<div class="math">
+<p>where the hyperelastic Saint Venant – Kirchhoff material is adopted. In the above <span class="math notranslate nohighlight">\(\lambda\)</span> and <span class="math notranslate nohighlight">\(\mu\)</span> are Lam’e constants, while <span class="math notranslate nohighlight">\(\delta_{ij}\)</span> is the Kronecker delta.
+The Lam’e constants can be expressed in terms of the Young modulus <span class="math notranslate nohighlight">\(E\)</span> and the Poisson ratio <span class="math notranslate nohighlight">\(\nu\)</span> as</p>
+<div class="math notranslate nohighlight">
 \[\lambda=\frac{E\nu}{\left(1+\nu\right)\left(1-2\nu\right)}\]</div>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mu=\frac{E}{2+2\nu}\]</div>
 <p>In matrix notation these balance principles read</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}\]</div>
 <p>where</p>
-<div class="math" id="equation-mprb">
-<span class="eqno">(4)<a class="headerlink" href="#equation-mprb" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{M}=\left[\begin{array}{cccc}
+<div class="math notranslate nohighlight" id="equation-mprb">
+<span class="eqno">(25)<a class="headerlink" href="#equation-mprb" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{M}=\left[\begin{array}{cccc}
 \mathbf{E}_{0}\\
 &amp; \mathbf{E}_{0}\\
 &amp;  &amp; \mathbf{E}_{0}\\
 &amp;  &amp;  &amp; m\mathbf{I}
 \end{array}\right]\end{split}\]</div>
 <p>and</p>
-<div class="math" id="equation-fprb">
-<span class="eqno">(5)<a class="headerlink" href="#equation-fprb" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{f}=\left[\begin{array}{c}
+<div class="math notranslate nohighlight" id="equation-fprb">
+<span class="eqno">(26)<a class="headerlink" href="#equation-fprb" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{f}=\left[\begin{array}{c}
 \int_{\partial\mathcal{B}_{0}}\mathbf{t}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dV-V\bar{\mathbf{P}}\\
 \int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv
 \end{array}\right]\end{split}\]</div>
-<p>It should be noted, that it is the row–wise composition of <span class="math">\(\dot{\mathbf{F}}\)</span> in <span class="math">\(\mathbf{u}\)</span> (cf. <a class="reference internal" href="kinematics.html#pseudo-rigid-vectors"><span class="std std-ref">Kinematics</span></a>),
-which allows us to use the computationally convenient block–diagonal form of <span class="math">\(\mathbf{M}\)</span> for pseudo–rigid bodies.</p>
+<p>It should be noted, that it is the row–wise composition of <span class="math notranslate nohighlight">\(\dot{\mathbf{F}}\)</span> in <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> (cf. <a class="reference internal" href="kinematics.html#pseudo-rigid-vectors"><span class="std std-ref">Kinematics</span></a>),
+which allows us to use the computationally convenient block–diagonal form of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> for pseudo–rigid bodies.</p>
 </div>
 <div class="section" id="finite-element-dynamics">
 <h2>Finite–element dynamics<a class="headerlink" href="#finite-element-dynamics" title="Permalink to this headline">¶</a></h2>
 <p>The linear momentum balance reads</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mathbf{M}\dot{\mathbf{u}}+\mathbf{f}_{\text{int}}\left(\mathbf{q}\right)+
 \mathbf{f}_{\text{damp}}\left(\mathbf{q},\mathbf{u}\right)=\mathbf{f}_{\text{ext}}\left(\mathbf{q}\right)\]</div>
-<p>where <span class="math">\(\mathbf{M}\)</span> is the mass matrix, <span class="math">\(\mathbf{f}_{\text{int}}\)</span> is a vector of internal forces,
-<span class="math">\(\mathbf{f}_{\text{damp}}\)</span> is a vector of damping forces, and <span class="math">\(\mathbf{f}_{\text{ext}}\)</span> is a vector
+<p>where <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> is the mass matrix, <span class="math notranslate nohighlight">\(\mathbf{f}_{\text{int}}\)</span> is a vector of internal forces,
+<span class="math notranslate nohighlight">\(\mathbf{f}_{\text{damp}}\)</span> is a vector of damping forces, and <span class="math notranslate nohighlight">\(\mathbf{f}_{\text{ext}}\)</span> is a vector
 of external forces. These matrices and vectors are defined as follows</p>
-<div class="math" id="equation-mfem">
-<span class="eqno">(6)<a class="headerlink" href="#equation-mfem" title="Permalink to this equation">¶</a></span>\[\mathbf{M}=\int_{\mathcal{B}_{0}}\rho_{0}\mathbf{N}^{T}\mathbf{N}dV\]</div>
-<div class="math" id="equation-fint">
-<span class="eqno">(7)<a class="headerlink" href="#equation-fint" title="Permalink to this equation">¶</a></span>\[\mathbf{f}_{\text{int}}=\int_{\mathcal{B}_{0}}\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\} ^{T}\colon\mathbf{P}dV\]</div>
-<div class="math" id="equation-kfem">
-<span class="eqno">(8)<a class="headerlink" href="#equation-kfem" title="Permalink to this equation">¶</a></span>\[\mathbf{K}=\partial\mathbf{f}_{\text{int}}/\partial\mathbf{q}\]</div>
-<div class="math">
+<div class="math notranslate nohighlight" id="equation-mfem">
+<span class="eqno">(27)<a class="headerlink" href="#equation-mfem" title="Permalink to this equation">¶</a></span>\[\mathbf{M}=\int_{\mathcal{B}_{0}}\rho_{0}\mathbf{N}^{T}\mathbf{N}dV\]</div>
+<div class="math notranslate nohighlight" id="equation-fint">
+<span class="eqno">(28)<a class="headerlink" href="#equation-fint" title="Permalink to this equation">¶</a></span>\[\mathbf{f}_{\text{int}}=\int_{\mathcal{B}_{0}}\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\} ^{T}\colon\mathbf{P}dV\]</div>
+<div class="math notranslate nohighlight" id="equation-kfem">
+<span class="eqno">(29)<a class="headerlink" href="#equation-kfem" title="Permalink to this equation">¶</a></span>\[\mathbf{K}=\partial\mathbf{f}_{\text{int}}/\partial\mathbf{q}\]</div>
+<div class="math notranslate nohighlight">
 \[\mathbf{f}_{\text{damp}}=\eta\mathbf{K}\]</div>
-<div class="math" id="equation-fext">
-<span class="eqno">(9)<a class="headerlink" href="#equation-fext" title="Permalink to this equation">¶</a></span>\[\mathbf{f}_{\text{ext}}=\int_{\mathcal{B}}\rho\mathbf{N}^{T}\mathbf{b}dv+\int_{\partial\mathcal{B}}\mathbf{N}^{T}\mathbf{t}da\]</div>
-<p>where, except for <span class="math">\(\mathbf{f}_{\text{ext}}\)</span>, the so called total Lagrangian notation was used. The contraction of the strain matrix
-<span class="math">\(\mathbf{B}=\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\}^{T}\)</span> with the first Piola stress tensor, <span class="math">\(\mathbf{B}:\mathbf{P}=\sum_{ij}B_{ij}P_{ij}\)</span>,
+<div class="math notranslate nohighlight" id="equation-fext">
+<span class="eqno">(30)<a class="headerlink" href="#equation-fext" title="Permalink to this equation">¶</a></span>\[\mathbf{f}_{\text{ext}}=\int_{\mathcal{B}}\rho\mathbf{N}^{T}\mathbf{b}dv+\int_{\partial\mathcal{B}}\mathbf{N}^{T}\mathbf{t}da\]</div>
+<p>where, except for <span class="math notranslate nohighlight">\(\mathbf{f}_{\text{ext}}\)</span>, the so called total Lagrangian notation was used. The contraction of the strain matrix
+<span class="math notranslate nohighlight">\(\mathbf{B}=\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\}^{T}\)</span> with the first Piola stress tensor, <span class="math notranslate nohighlight">\(\mathbf{B}:\mathbf{P}=\sum_{ij}B_{ij}P_{ij}\)</span>,
 creates the nodal components of the internal force vector. The derivative of the internal force with respect to displacements,
-<span class="math">\(\partial\mathbf{f}_{\text{int}}/\partial\mathbf{q}\)</span>, is customarily called the stiffness matrix, <span class="math">\(\mathbf{K}\)</span>. Stiffness proportional damping
-is used in Solfec, hence <span class="math">\(\mathbf{f}_{\text{damp}}=\eta\mathbf{K}\)</span>, where <span class="math">\(\eta\ge0\)</span>.</p>
+<span class="math notranslate nohighlight">\(\partial\mathbf{f}_{\text{int}}/\partial\mathbf{q}\)</span>, is customarily called the stiffness matrix, <span class="math notranslate nohighlight">\(\mathbf{K}\)</span>. Stiffness proportional damping
+is used in Solfec, hence <span class="math notranslate nohighlight">\(\mathbf{f}_{\text{damp}}=\eta\mathbf{K}\)</span>, where <span class="math notranslate nohighlight">\(\eta\ge0\)</span>.</p>
 <p>In matrix notation we simply have</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}\]</div>
 <p>where</p>
-<div class="math">
+<div class="math notranslate nohighlight">
 \[\mathbf{f}=\mathbf{f}_{\text{ext}}-\mathbf{f}_{\text{int}}-\mathbf{f}_{\text{damp}}\]</div>
 </div>
 <div class="section" id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>Dynamics is implement in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo–rigid)
 and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite–element) files. Mass and stiffness
-matrices <span class="math">\(\mathbf{M}\)</span> and <span class="math">\(\mathbf{K}\)</span>, and the damping factor <span class="math">\(\eta\)</span>, are declared in
+matrices <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{K}\)</span>, and the damping factor <span class="math notranslate nohighlight">\(\eta\)</span>, are declared in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L193">bod.h</a> as follows:</p>
-<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">general_body</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">general_body</span>
 <span class="p">{</span>
   <span class="cm">/* ... */</span>
 
@@ -204,14 +197,14 @@ matrices <span class="math">\(\mathbf{M}\)</span> and <span class="math">\(\math
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Assembling of <a class="reference internal" href="#equation-mrig">(2)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L232">bod.c:rig_dynamic_inverse</a>. <br />
-Evaluation of <a class="reference internal" href="#equation-frig">(3)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L345">bod.c:rig_static_force</a>. <br />
-Assembling of <a class="reference internal" href="#equation-mprb">(4)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L479">bod.c:prb_dynamic_explicit_inverse</a>. <br />
-Evaluation of <a class="reference internal" href="#equation-fprb">(5)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L647">bod.c:prb_dynamic_force</a>. <br />
-Assembling of diagonalized <a class="reference internal" href="#equation-mfem">(6)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1697">fem.c:diagonal_inertia</a>. <br />
-Evaluation of <a class="reference internal" href="#equation-fint">(7)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1398">fem.c:internal_force</a>. <br />
-Assembling of <a class="reference internal" href="#equation-kfem">(8)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1577">fem.c:tangent_stiffness</a>. <br />
-Evaluation of <a class="reference internal" href="#equation-fext">(9)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1506">fem.c:external_force</a>. <br /></p>
+<p>Assembling of <a class="reference internal" href="#equation-mrig">(23)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L232">bod.c:rig_dynamic_inverse</a>. <br />
+Evaluation of <a class="reference internal" href="#equation-frig">(24)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L345">bod.c:rig_static_force</a>. <br />
+Assembling of <a class="reference internal" href="#equation-mprb">(25)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L479">bod.c:prb_dynamic_explicit_inverse</a>. <br />
+Evaluation of <a class="reference internal" href="#equation-fprb">(26)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L647">bod.c:prb_dynamic_force</a>. <br />
+Assembling of diagonalized <a class="reference internal" href="#equation-mfem">(27)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1697">fem.c:diagonal_inertia</a>. <br />
+Evaluation of <a class="reference internal" href="#equation-fint">(28)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1398">fem.c:internal_force</a>. <br />
+Assembling of <a class="reference internal" href="#equation-kfem">(29)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1577">fem.c:tangent_stiffness</a>. <br />
+Evaluation of <a class="reference internal" href="#equation-fext">(30)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1506">fem.c:external_force</a>. <br /></p>
 </div>
 </div>
 
@@ -221,6 +214,7 @@ Evaluation of <a class="reference internal" href="#equation-fext">(9)</a> is in 
   </div>
 
           </div>
+          
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
@@ -301,27 +295,29 @@ Evaluation of <a class="reference internal" href="#equation-fext">(9)</a> is in 
 </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="../../blog.html">Recent Posts</a></h3>
   <ul>
     
     
-      <li><a href="../../blog/parmec_ball_joint.html">Jul 31 - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="../../blog/parmec_spherical_joint.html">Jun 13 - Parmec spherical joint</a></li>
+      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="../../blog/parmec_spring_contact.html">May 23 - Parmec spring contact</a></li>
+      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="../../blog/spring_curve_tests.html">Mar 07 - Parmec spring curve tests</a></li>
+      <li><a href="../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
-      <li><a href="../../blog/unspring_and_spring_state.html">Jan 15 - UNSPRING and spring state in Parmec</a></li>
+      <li><a href="../../blog/unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -440,8 +436,8 @@ Evaluation of <a class="reference internal" href="#equation-fext">(9)</a> is in 
       &copy;2018 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
       |
       <a href="../../_sources/solfec/theory/dynamics.rst.txt"
