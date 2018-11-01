@@ -1,9 +1,9 @@
 
-* On Oct 28 2018 :ref:`dynlb-index`
+* On Nov 1 2018 :ref:`dynlb-index`
 
-* On Oct 28 2018 :ref:`parmec-index`
+* On Nov 1 2018 :ref:`parmec-index`
 
-* On Oct 28 2018 :ref:`solfec-index`
+* On Nov 1 2018 :ref:`solfec-index`
 
 * On Oct 27 2018 :ref:`parmec-input_commands`
 
