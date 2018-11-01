@@ -5,7 +5,7 @@ SOLFEC
 
 .. raw:: html
   
-  <iframe src="https://ghbtns.com/github-btn.html?user=tkoziara&repo=solfec&type=watch&count=true&size=large&v=2"
+  <iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=solfec&type=watch&count=true&size=large&v=2"
   allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
 
 Solfec implements instances of the Non--Smooth `Contact Dynamics <https://en.wikipedia.org/wiki/Contact_dynamics>`_
