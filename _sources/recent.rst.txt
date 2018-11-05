@@ -1,9 +1,11 @@
 
-* On Nov 1 2018 :ref:`dynlb-index`
+* On Nov 5 2018 :ref:`dynlb-index`
 
-* On Nov 1 2018 :ref:`parmec-index`
+* On Nov 5 2018 :ref:`parmec-pro-index`
 
-* On Nov 1 2018 :ref:`solfec-index`
+* On Nov 5 2018 :ref:`parmec-index`
+
+* On Nov 5 2018 :ref:`solfec-index`
 
 * On Oct 27 2018 :ref:`parmec-input_commands`
 
@@ -16,5 +18,3 @@
 * On Jul 30 2018 :ref:`solfec-theory-timeint`
 
 * On Jun 29 2018 :ref:`solfec-theory-constraints`
-
-* On May 17 2018 :ref:`solfec-user-materials`
