@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Search &#8212; PARMES  documentation</title>
+    <title>How to join? &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/parmes.css" type="text/css" />
@@ -15,14 +15,9 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/javascript" src="_static/searchtools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="#" />
-  <script type="text/javascript">
-    jQuery(function() { Search.loadIndex("searchindex.js"); });
-  </script>
-  
-  <script type="text/javascript" id="searchindexloader"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Authors" href="authors.html" />
   
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -30,6 +25,18 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
+  
+  <link rel="alternate" type="application/atom+xml"  href="blog/atom.xml" title="PARMES/blog">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
 
   </head><body>
   
@@ -41,27 +48,51 @@
 
           <div class="body" role="main">
             
-  <h1 id="search-documentation">Search</h1>
-  <div id="fallback" class="admonition warning">
-  <script type="text/javascript">$('#fallback').hide();</script>
-  <p>
-    Please activate JavaScript to enable the search
-    functionality.
-  </p>
-  </div>
-  <p>
-    From here you can search these documents. Enter your search
-    words into the box below and click "search". Note that the search
-    function will automatically search for all of the words. Pages
-    containing fewer words won't appear in the result list.
-  </p>
-  <form action="" method="get">
-    <input type="text" name="q" value="" />
-    <input type="submit" value="search" />
-    <span id="search-progress" style="padding-left: 10px"></span>
-  </form>
+  <div class="section" id="how-to-join">
+<h1>How to join?<a class="headerlink" href="#how-to-join" title="Permalink to this headline">¶</a></h1>
+<p>To join this blog as an author you will need:</p>
+<blockquote>
+<div><ul class="simple">
+<li>an installation of <a class="reference external" href="https://www.python.org/">Python</a>, including:<ul>
+<li><a class="reference external" href="https://pillow.readthedocs.io/en/5.3.x/">Pillow</a> library</li>
+<li><a class="reference external" href="http://www.sphinx-doc.org">Sphinx</a> generator</li>
+<li><a class="reference external" href="http://alabaster.readthedocs.io">alabaster</a> theme</li>
+<li>and <a class="reference external" href="http://ablog.readthedocs.io">ablog</a> extension,</li>
+</ul>
+</li>
+<li>an installation of <a class="reference external" href="https://git-scm.com/">Git</a>,</li>
+<li>and a <a class="reference external" href="https://github.com/">GitHub</a> account.</li>
+</ul>
+</div></blockquote>
+<p>Once all this is set up:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Fork <a class="reference external" href="https://github.com/parmes/parmes/">PARMES repository</a> on GitHub
+(<a class="reference external" href="https://guides.github.com/activities/forking/">guide page one</a>
+and <a class="reference external" href="https://help.github.com/articles/fork-a-repo/">two</a>).</li>
+<li>Learn <a class="reference external" href="http://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html">basics of reStructuredText</a>.</li>
+<li>Write a page summarising the software package that you would like to share about
+(e.g. in analogy to <a class="reference external" href="./solfec">parmes.org/solfec</a>; <a class="reference external" href="./_sources/solfec/index.rst.txt">see page source</a>).</li>
+<li>Include yourself on the <a class="reference external" href="./authors.html">authors page</a> (<a class="reference external" href="./_sources/authors.rst.txt">see page source</a>).</li>
+<li>Write a blog post (<a class="reference external" href="https://github.com/parmes/parmes/tree/master/blog">see existing examples</a>).</li>
+<li>Type <em>make</em> in the root directory of your cloned PARMES sources. This compiles the website
+and generates html code inside of the <em>_build/html</em> subdirectory. You can view the results
+using your web browers by opening <em>_build/html/index.html</em> file. Typically you will make
+many edits and recompile the sources several times before you are satisfied with the result.
+Once you are satisfied:</li>
+</ol>
+<ol class="arabic simple" start="6">
+<li>Submit a <a class="reference external" href="https://help.github.com/articles/about-pull-requests/">pull request</a>
+(<a class="reference external" href="https://help.github.com/articles/creating-a-pull-request/">guide page</a>).</li>
+</ol>
+</div></blockquote>
+<p>Later you will be able to edit and improve your posts and pages. The whole process becomes
+smooth and habituated with time. I will be there with you, communicating via GitHub messages
+and emails, in case you needed assistance:)</p>
+</div>
+
+  <div class="section">
   
-  <div id="search-results">
   
   </div>
 
@@ -90,7 +121,7 @@
 
 
 <h3>Navigation</h3>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="solfec/index.html">SOLFEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="parmec/index.html">PARMEC</a></li>
@@ -100,16 +131,29 @@
 <li class="toctree-l1"><a class="reference internal" href="blog/about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contact.html">Contact</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howtojoin.html">How to join?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to join?</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="authors.html" title="previous chapter">Authors</a></li>
   </ul></li>
 </ul>
 </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
   <h3><a href="blog.html">Recent Posts</a></h3>
   <ul>
     
@@ -244,6 +288,9 @@
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
+      |
+      <a href="_sources/howtojoin.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     
