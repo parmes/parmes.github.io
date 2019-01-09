@@ -52,6 +52,12 @@
 <h1>Parallel mechanics and particulate media software <a class="reference internal" href="blog/about.html#about-parmes"><span class="std std-ref">blog</span></a> <a href="blog/atom.xml"><img src="_static/icons/feed.png" title="Atom feeds" width="17" height="17" /></a><a class="headerlink" href="#parallel-mechanics-and-particulate-media-software-blog-feed" title="Permalink to this headline">¶</a></h1>
 <p>Recent blog posts:</p>
 <ul class="postlist-style-none postlist">
+<li><p class="first">January 09, 2019 - <a class="reference internal" href="blog/solfec_export_command.html">SOLFEC_EXPORT command</a></p>
+<p>In analogy to Solfec’s <a class="reference internal" href="solfec/xdmf.html#solfec-xdmf"><span class="std std-ref">XDMF_EXPORT</span></a> command, a new <a class="reference internal" href="solfec/user/results.html#solfec-command-solfec-export"><span class="std std-ref">SOLFEC_EXPORT</span></a>
+command has been added. This allows to save a subset of results into a separate directory and view them using Solfec’s
+viewer. Within Solfec sources example <a class="reference external" href="https://github.com/parmes/solfec/blob/master/inp/devel/solfec-export.py">inp/devel/solfec-export.py</a>
+depicts an application of this idea. (…)</p>
+</li>
 <li><p class="first">July 31, 2018 - <a class="reference internal" href="blog/parmec_ball_joint.html">Parmec ball joint and articulated pendulum example</a></p>
 <p>PARMEC includes its first algebraic joint – a ball joint – which is realised by nullifying relative velocity
 of a coincident point between two particles. <a class="reference internal" href="parmec/input_commands.html#parmec-command-ball-joint"><span class="std std-ref">BALL_JOINT command</span></a> is used to define
@@ -87,26 +93,14 @@ This test initiates what may become a suite of automated regression tests for Pa
 and <a class="reference external" href="https://www.imagemagick.org">imagemagic</a> are installed, it generates a juxtaposed image, comparing input and output curves.
 An example image is included below. (…)</p>
 </li>
-<li><p class="first">January 15, 2018 - <a class="reference internal" href="blog/unspring_and_spring_state.html">UNSPRING and spring state in Parmec</a></p>
-<p><a class="reference external" href="../parmec/">PARMEC</a> includes a capability to model rigid body and <a class="reference internal" href="parmec/input_commands.html#parmec-command-spring"><span class="std std-ref">SPRING</span></a> systems.
-As a part of it an <a class="reference internal" href="parmec/input_commands.html#parmec-command-unspring"><span class="std std-ref">UNSPRING</span></a> command allows to deactivate selected springs
-when a total force of a set of “test springs” exceeds a prescribed bound. This facilitates modelling
-of simple failure scenarios. Spring states are outputted as scalar fields (in XDMF format) and can be
-viewed with <a class="reference external" href="http://www.paraview.org">ParaView</a> or similar tools. The video clip below is based on <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/tests/unspring.py">this
-example</a>.  Spring states can be visualized
-by selecting the ‘SS’ entity and using “Coor Map Editor” in ParaView to “Interpret Values as Cathegories”
-(checkbox at the top of the editor dialog box) and then adding the discrete values used by the ‘SS’ field
-(-3.0, -2.0, -1.0, …) as described for the <a class="reference internal" href="parmec/input_commands.html#parmec-command-output"><span class="std std-ref">OUTPUT command</span></a>. Spring states
-can also be outputted as <a class="reference internal" href="parmec/input_commands.html#parmec-command-history"><span class="std std-ref">HISTORY</span></a> (as in the example).  (…)</p>
-</li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <p>Recently modified pages:</p>
 <ul class="simple">
-<li>On Nov 6 2018 <a class="reference internal" href="parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a></li>
-<li>On Nov 5 2018 <a class="reference internal" href="dynlb/index.html#dynlb-index"><span class="std std-ref">DYNLB</span></a></li>
-<li>On Nov 5 2018 <a class="reference internal" href="solfec/index.html#solfec-index"><span class="std std-ref">SOLFEC</span></a></li>
+<li>On Dec 3 2018 <a class="reference internal" href="dynlb/index.html#dynlb-index"><span class="std std-ref">DYNLB</span></a></li>
+<li>On Dec 3 2018 <a class="reference internal" href="parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a></li>
+<li>On Dec 3 2018 <a class="reference internal" href="solfec/index.html#solfec-index"><span class="std std-ref">SOLFEC</span></a></li>
 <li>On Oct 27 2018 <a class="reference internal" href="parmec/input_commands.html#parmec-input-commands"><span class="std std-ref">Parmec Input Commands</span></a></li>
 <li>On Aug 24 2018 <a class="reference internal" href="solfec/examples/hybrid_modeling/hs123.html#solfec-examples-hybrid-modeling-hs123"><span class="std std-ref">1,2,3–dimensional cube array acceleration dwell</span></a></li>
 <li>On Jul 30 2018 <a class="reference internal" href="solfec/theory/dynamics.html#solfec-theory-dynamics"><span class="std std-ref">Dynamics</span></a></li>
@@ -182,6 +176,8 @@ can also be outputted as <a class="reference internal" href="parmec/input_comman
   <ul>
     
     
+      <li><a href="blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
+    
       <li><a href="blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
       <li><a href="blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
@@ -189,8 +185,6 @@ can also be outputted as <a class="reference internal" href="parmec/input_comman
       <li><a href="blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
       <li><a href="blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
-    
-      <li><a href="blog/unspring_and_spring_state.html">15 January - UNSPRING and spring state in Parmec</a></li>
     
   </ul>
 
@@ -263,7 +257,7 @@ can also be outputted as <a class="reference internal" href="parmec/input_comman
       
     
       
-      <li class="ablog-cloud ablog-cloud-2">
+      <li class="ablog-cloud ablog-cloud-3">
         <a href="blog/tag/solfec.html">solfec</a></li>
       
     
@@ -288,6 +282,10 @@ can also be outputted as <a class="reference internal" href="parmec/input_comman
   <ul>
   
     
+    <li><a href="blog/2019.html">2019 (1)</a></li>
+    
+  
+    
     <li><a href="blog/2018.html">2018 (5)</a></li>
     
   
@@ -306,7 +304,7 @@ can also be outputted as <a class="reference internal" href="parmec/input_comman
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2018 PARMES team.
+      &copy;2019 PARMES team.
       
       |
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>

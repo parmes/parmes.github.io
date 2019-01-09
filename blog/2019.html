@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Parmec Implementation Status &#8212; PARMES  documentation</title>
+    <title>Posted in 2019 &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/parmes.css" type="text/css" />
@@ -17,8 +17,6 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Parmec Input Commands" href="input_commands.html" />
-    <link rel="prev" title="Running Parmec" href="running.html" />
   
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -27,7 +25,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   
-  <link rel="alternate" type="application/atom+xml"  href="../blog/atom.xml" title="PARMES/blog">
+  <link rel="alternate" type="application/atom+xml"  href="../blog/atom.xml" title="Posted in 2019">
   
   
   <style type="text/css">
@@ -49,49 +47,63 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="parmec-implementation-status">
-<span id="id1"></span><h1>Parmec Implementation Status<a class="headerlink" href="#parmec-implementation-status" title="Permalink to this headline">¶</a></h1>
-<p>Individual features of parmec which are not implemented yet are marked as <span class="red">(under development)</span>.
-Relatively complex features that have seen little testing are marked as <span class="red">(experimental)</span>.
-<a class="reference internal" href="#status-of-contact-detection"><span class="std std-numref">Table 36</span></a> summarizes current status of automatic contact detection.</p>
-<span id="status-of-contact-detection"></span><table border="1" class="docutils" id="id2">
-<caption><span class="caption-number">Table 36 </span><span class="caption-text">Current status of automatic contact detection.</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col width="29%" />
-<col width="24%" />
-<col width="19%" />
-<col width="29%" />
-</colgroup>
-<thead valign="bottom">
-<tr class="row-odd"><th class="head">&#160;</th>
-<th class="head">SPHERE</th>
-<th class="head">MESH</th>
-<th class="head">OBSTACLE</th>
-</tr>
-</thead>
-<tbody valign="top">
-<tr class="row-even"><td>SPHERE</td>
-<td>OK</td>
-<td>N/A</td>
-<td>OK</td>
-</tr>
-<tr class="row-odd"><td>MESH</td>
-<td>&#160;</td>
-<td>N/A</td>
-<td>N/A</td>
-</tr>
-<tr class="row-even"><td>OBSTACLE</td>
-<td>&#160;</td>
-<td>&#160;</td>
-<td>N/A</td>
-</tr>
-</tbody>
-</table>
-</div>
-
   <div class="section">
+
+    <h1>
+      
+      Posted in
+      
+      2019
+      
+    </h1>
+    
+    
+
+    <div class="section">
+      <h2><a href="solfec_export_command.html">SOLFEC_EXPORT command</a></h2>
+
+      <ul class="ablog-archive">
+      <li>
+      
+        09 January 2019
+      
+      </li>
+        
+
   
+  <li id="author"><span>Author:</span>
+    
+      
+      <a href="author/tomek.html">Tomek</a>
+      
+    </li>
   
+
+  
+
+  
+
+  
+
+  
+  <li id="tags"><span>Tag:</span>
+    
+      
+      <a href="tag/solfec.html">solfec</a>
+      
+    </li>
+  
+  </ul>
+      <p>In analogy to Solfec’s <a class="reference internal" href="../solfec/xdmf.html#solfec-xdmf"><span class="std std-ref">XDMF_EXPORT</span></a> command, a new <a class="reference internal" href="../solfec/user/results.html#solfec-command-solfec-export"><span class="std std-ref">SOLFEC_EXPORT</span></a>
+command has been added. This allows to save a subset of results into a separate directory and view them using Solfec’s
+viewer. Within Solfec sources example <a class="reference external" href="https://github.com/parmes/solfec/blob/master/inp/devel/solfec-export.py">inp/devel/solfec-export.py</a>
+depicts an application of this idea. (…)</p>
+
+      <p><a href="solfec_export_command.html">Read more ...</a></p>
+      <hr>
+    </div>
+    
+    
   </div>
 
           </div>
@@ -119,23 +131,14 @@ Relatively complex features that have seen little testing are marked as <span cl
 
 
 <h3>Navigation</h3>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../solfec/index.html">SOLFEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dynlb/index.html">DYNLB</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">PARMEC</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html">Running</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Implementation status</a></li>
-<li class="toctree-l2"><a class="reference internal" href="input_commands.html">Input commands</a></li>
-<li class="toctree-l2"><a class="reference internal" href="output_files.html">Output files</a></li>
-<li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/parmec">Google group</a></li>
-<li class="toctree-l2"><a class="reference external" href="https://liberapay.com/PARMEC/">Liberapay team</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vbox/index.html">VBOX</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../tgz/index.html">TGZ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../trs/index.html">TRs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../blog/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../contact.html">Contact</a></li>
 </ul>
 
@@ -143,10 +146,6 @@ Relatively complex features that have seen little testing are marked as <span cl
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="index.html">PARMEC</a><ul>
-      <li>Previous: <a href="running.html" title="previous chapter">Running Parmec</a></li>
-      <li>Next: <a href="input_commands.html" title="next chapter">Parmec Input Commands</a></li>
-  </ul></li>
   </ul></li>
 </ul>
 </div>
@@ -166,19 +165,19 @@ Relatively complex features that have seen little testing are marked as <span cl
   <ul>
     
     
-      <li><a href="../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
+      <li><a href="solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
     
-      <li><a href="../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
+      <li><a href="parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
     
-      <li><a href="../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
+      <li><a href="parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
-      <li><a href="../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
+      <li><a href="parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
     
-      <li><a href="../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
+      <li><a href="spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
   </ul>
 
-  <h3><a href="../blog/tag.html">Tags</a></h3>
+  <h3><a href="tag.html">Tags</a></h3>
   <style type="text/css">
     ul.ablog-cloud {list-style: none; overflow: auto;}
     ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
@@ -193,98 +192,98 @@ Relatively complex features that have seen little testing are marked as <span cl
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/algebraic.html">algebraic</a></li>
+        <a href="tag/algebraic.html">algebraic</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/contact.html">contact</a></li>
+        <a href="tag/contact.html">contact</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/failure.html">failure</a></li>
+        <a href="tag/failure.html">failure</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/friction.html">friction</a></li>
+        <a href="tag/friction.html">friction</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/joints.html">joints</a></li>
+        <a href="tag/joints.html">joints</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/optimization.html">optimization</a></li>
+        <a href="tag/optimization.html">optimization</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-5">
-        <a href="../blog/tag/parmec.html">parmec</a></li>
+        <a href="tag/parmec.html">parmec</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/parmes.html">parmes</a></li>
+        <a href="tag/parmes.html">parmes</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/pendulum.html">pendulum</a></li>
+        <a href="tag/pendulum.html">pendulum</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/performance.html">performance</a></li>
+        <a href="tag/performance.html">performance</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/reports.html">reports</a></li>
+        <a href="tag/reports.html">reports</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-3">
-        <a href="../blog/tag/solfec.html">solfec</a></li>
+        <a href="tag/solfec.html">solfec</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/springs.html">springs</a></li>
+        <a href="tag/springs.html">springs</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-2">
-        <a href="../blog/tag/tests.html">tests</a></li>
+        <a href="tag/tests.html">tests</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/torsion.html">torsion</a></li>
+        <a href="tag/torsion.html">torsion</a></li>
       
     
   </ul>
 
-  <h3><a href="../blog/archive.html">Archives</a></h3>
+  <h3><a href="archive.html">Archives</a></h3>
   <ul>
   
     
-    <li><a href="../blog/2019.html">2019 (1)</a></li>
+    <li><a href="#">2019 (1)</a></li>
     
   
     
-    <li><a href="../blog/2018.html">2018 (5)</a></li>
+    <li><a href="2018.html">2018 (5)</a></li>
     
   
     
-    <li><a href="../blog/2017.html">2017 (4)</a></li>
+    <li><a href="2017.html">2017 (4)</a></li>
     
   
     
-    <li><a href="../blog/2016.html">2016 (1)</a></li>
+    <li><a href="2016.html">2016 (1)</a></li>
     
   
   </ul>
@@ -300,9 +299,6 @@ Relatively complex features that have seen little testing are marked as <span cl
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
       
-      |
-      <a href="../_sources/parmec/implementation_status.rst.txt"
-          rel="nofollow">Page source</a>
     </div>
 
     
