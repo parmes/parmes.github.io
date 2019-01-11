@@ -70,7 +70,9 @@ t2 v2 <br />
 </li>
 <li><p class="first">label – optional label string; if a label is provided than the TIME_SERIES object is stored in
 memory just once; this facilitates more optimal memory usage in cases where many identical
-TIME_SERIES objects are used in multiple constraints (for example); the label should be unique</p>
+TIME_SERIES objects are used in multiple constraints (for example); the label should be unique;
+<strong>Note:</strong> labeled time series should be declared globally on all MPI ranks and must not be defined
+within if blocks dependent on the <a class="reference internal" href="simulation.html#solfec-command-here"><span class="std std-ref">HERE(…)</span></a> command</p>
 </li>
 <li><p class="first">cache – optional partial cache size; if <strong>points</strong> = file path and <strong>cache</strong> &gt; 0 then only the
 cache size of points is stored in memory at any given time; this helps to save memory in case of
