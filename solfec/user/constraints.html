@@ -166,7 +166,8 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 <li><p class="first">function – Python function callback returning the value of force as the function of stroke:</p>
 <p><strong>force = function (stroke, velocity)</strong></p>
 <p>where <span class="math notranslate nohighlight">\(\text{stroke=}\mathbf{n}\cdot\text{current}\left(\text{point2}-\text{point1}\right)-\text{initial}\left(\left|\text{point2}-\text{point1}\right|\right)\)</span>
-and <em>velocity</em> is the current relative velocity along the spring direction <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> (positive if stroke increases)</p>
+and <em>velocity</em> is the current relative velocity along the spring direction <span class="math notranslate nohighlight">\(\mathbf{n}\)</span> (positive if stroke increases).
+See also: <a class="reference internal" href="utilities.html#solfec-command-register-callback"><span class="std std-ref">REGISTER_CALLBACK</span></a>.</p>
 </li>
 <li><p class="first">limits – (smin, smax) tuple defining stroke limits (smin <span class="math notranslate nohighlight">\(\le\)</span> 0 and smax <span class="math notranslate nohighlight">\(\ge\)</span> 0)</p>
 </li>

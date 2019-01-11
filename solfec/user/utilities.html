@@ -52,6 +52,18 @@
   <div class="section" id="utilities">
 <span id="solfec-user-utilities"></span><h1>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h1>
 <p>Various utility routines are listed below.</p>
+<div class="section" id="register-callback">
+<span id="solfec-command-register-callback"></span><h2>REGISTER_CALLBACK<a class="headerlink" href="#register-callback" title="Permalink to this headline">¶</a></h2>
+<p>This routine registers a Python callback later used by Solfec. All callback and data pairs must be registered
+in the same order on all MPI ranks, when Solfec is run in parallel. This function is ignored in sequential mode.</p>
+<div class="topic">
+<p class="topic-title first">REGISTER_CALLBACK (callback | data)</p>
+<ul class="simple">
+<li>callback – callback function of form: <em>value = callback (data)</em></li>
+<li>data – data passed to the callback function</li>
+</ul>
+</div>
+</div>
 <div class="section" id="viewer">
 <h2>VIEWER<a class="headerlink" href="#viewer" title="Permalink to this headline">¶</a></h2>
 <p>This routine tests whether the viewer is enabled.</p>
@@ -473,6 +485,7 @@ a reduced order or modal base saves memory when multiple instances of bodies emp
 <li class="toctree-l3"><a class="reference internal" href="fragmentation.html">Fragmentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="results.html">Results</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#register-callback">REGISTER_CALLBACK</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#viewer">VIEWER</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#subdir">SUBDIR</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#body-chars">BODY_CHARS</a></li>

@@ -1,4 +1,6 @@
 
+* On Jan 11 2019 :ref:`solfec-user-times`
+
 * On Jan 9 2019 :ref:`solfec-user-results`
 
 * On Jan 9 2019 :ref:`solfec-xdmf-paraview`
@@ -16,5 +18,3 @@
 * On Jul 30 2018 :ref:`solfec-theory-dynamics`
 
 * On Jul 30 2018 :ref:`solfec-theory-kinematics`
-
-* On Jul 30 2018 :ref:`solfec-theory-timeint`
