@@ -1,4 +1,16 @@
 
+* On Jan 11 2019 :ref:`solfec-user-constraints`
+
+* On Jan 11 2019 :ref:`solfec-user-loads`
+
+* On Jan 11 2019 :ref:`solfec-user-materials`
+
+* On Jan 11 2019 :ref:`solfec-user-simulation`
+
+* On Jan 11 2019 :ref:`solfec-user-solvers`
+
+* On Jan 11 2019 :ref:`solfec-user-utilities`
+
 * On Jan 11 2019 :ref:`solfec-user-times`
 
 * On Jan 9 2019 :ref:`solfec-user-results`
@@ -6,15 +18,3 @@
 * On Jan 9 2019 :ref:`solfec-xdmf-paraview`
 
 * On Dec 3 2018 :ref:`dynlb-index`
-
-* On Dec 3 2018 :ref:`parmec-index`
-
-* On Dec 3 2018 :ref:`solfec-index`
-
-* On Oct 27 2018 :ref:`parmec-input_commands`
-
-* On Aug 24 2018 :ref:`solfec-examples-hybrid_modeling-hs123`
-
-* On Jul 30 2018 :ref:`solfec-theory-dynamics`
-
-* On Jul 30 2018 :ref:`solfec-theory-kinematics`

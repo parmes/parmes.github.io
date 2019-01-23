@@ -156,6 +156,14 @@ The file <em>solfec/Config.mak</em> needs to be modified in order to set up libr
 <span class="n">PYTHONLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lpython2</span><span class="o">.</span><span class="mi">7</span>
 
 <span class="c1">#</span>
+<span class="c1"># FLTK (an alternative OpenGL GUI)</span>
+<span class="c1"># </span>
+
+<span class="n">FLTK</span> <span class="o">=</span> <span class="n">yes</span>
+<span class="n">FLINC</span> <span class="o">=</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">include</span>
+<span class="n">FLLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">Wl</span><span class="p">,</span><span class="o">-</span><span class="n">headerpad_max_install_names</span> <span class="o">-</span><span class="n">Wl</span><span class="p">,</span><span class="o">-</span><span class="n">syslibroot</span><span class="p">,</span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="o">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="o">.</span><span class="mf">14.</span><span class="n">sdk</span> <span class="o">-</span><span class="n">lfltk_gl</span> <span class="o">-</span><span class="n">framework</span> <span class="n">OpenGL</span> <span class="o">-</span><span class="n">lfltk</span> <span class="o">-</span><span class="n">lpthread</span> <span class="o">-</span><span class="n">framework</span> <span class="n">Cocoa</span>
+
+<span class="c1">#</span>
 <span class="c1"># OpenGL (yes/no)</span>
 <span class="c1">#</span>
 
