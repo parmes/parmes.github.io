@@ -1,4 +1,6 @@
 
+* On Feb 4 2019 :ref:`parmec-index`
+
 * On Jan 24 2019 :ref:`solfec-user-solfec`
 
 * On Jan 23 2019 :ref:`solfec-user-body`
@@ -16,5 +18,3 @@
 * On Jan 11 2019 :ref:`solfec-user-utilities`
 
 * On Jan 11 2019 :ref:`solfec-user-times`
-
-* On Jan 9 2019 :ref:`solfec-user-results`

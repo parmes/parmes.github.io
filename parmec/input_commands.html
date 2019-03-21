@@ -269,13 +269,13 @@ or a critical damping ratio from interval <span class="math notranslate nohighli
 is projected onto a plane orthogonal to <span class="math notranslate nohighlight">\(\left(d_{x},d_{y},d_{z}\right)\)</span>; default: ’OFF’</li>
 <li><strong>unload</strong> - optional spring unloading lookup table
 <span class="math notranslate nohighlight">\(\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]\)</span>;
-must be monotonically increasing; default: unspecified</li>
-<li><strong>ylim</strong> - optional tuple <span class="math notranslate nohighlight">\(\left(f_{yc},f_{yt}\right)\)</span> defining the compression, <span class="math notranslate nohighlight">\(f_{yc}&lt;0\)</span>, and tension, <span class="math notranslate nohighlight">\(f_{yt}&gt;0\)</span>, yield
-limits; the unloading curve begins to be used once either of these limits is crossed; default: (0, 0)</li>
+must be monotonically increasing; see also <a class="reference internal" href="#parmec-spring-nonlin-cycles"><span class="std std-numref">Fig. 81</span></a>; default: unspecified</li>
+<li><strong>ylim</strong> - optional tuple <span class="math notranslate nohighlight">\(\left(f_{yc},f_{yt}\right)\)</span> defining the compression, <span class="math notranslate nohighlight">\(f_{yc}\le0\)</span>, and tension, <span class="math notranslate nohighlight">\(f_{yt}\ge0\)</span>, yield
+limits; the unloading curve begins to be used once either of these limits is crossed; see also <a class="reference internal" href="#parmec-spring-nonlin-cycles"><span class="std std-numref">Fig. 81</span></a>; default: (0, 0)</li>
 <li><strong>inactive</strong> - optional boolean flag: if <em>True</em> create an inactive spring, that can be activated by the <a class="reference internal" href="#parmec-command-unspring"><span class="std std-ref">UNSPRING</span></a>
 command; default: <em>False</em></li>
 <li><strong>offset</strong> - optional <a class="reference internal" href="#parmec-command-tseries"><span class="std std-ref">TSERIES</span></a> number representing a time dependent adjustment applied to all stroke values
-of the spring curve (dashpot unchanged) as in <a class="reference internal" href="#parmec-spring-stroke-offset"><span class="std std-numref">Fig. 81</span></a>; <strong>offset</strong> is applied only prior to yielding for springs
+of the spring curve (dashpot unchanged) as in <a class="reference internal" href="#parmec-spring-stroke-offset"><span class="std std-numref">Fig. 82</span></a>; <strong>offset</strong> is applied only prior to yielding for springs
 with <strong>ylim</strong> and <strong>unload</strong> specified; default: unspecified</li>
 <li><strong>friction</strong> - optional tangential friction coefficient; default: 0.0</li>
 <li><strong>kskn</strong> - optional <span class="math notranslate nohighlight">\(\ge0\)</span> ratio of normal to tangential spring and dashpot parameters used when <strong>friction</strong> &gt; 0; using <strong>kskn</strong> = 0
@@ -284,8 +284,16 @@ transition are not modeled); default: 0.0</li>
 </ul>
 </div>
 <div class="figure align-center" id="id3">
+<span id="parmec-spring-nonlin-cycles"></span><a class="reference internal image-reference" href="../_images/nonlinear-spring-cycles.png"><img alt="../_images/nonlinear-spring-cycles.png" src="../_images/nonlinear-spring-cycles.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 81 </span><span class="caption-text">The type of nonlinear cycles that can be realized using the spring model. Note, that the yield limits do not
+determine the post-yield behavior: crossing them only activates the unloading curve. Prior to their crossing
+unloading happens along the original loading curve. Unloading continues until the latest point on the tension
+or compression path has been reached. Then, this path is continued until the next unloading. During unloading,
+any path reversals within the latest compression-tension bounds remain on the unloading curve.</span></p>
+</div>
+<div class="figure align-center" id="id4">
 <span id="parmec-spring-stroke-offset"></span><a class="reference internal image-reference" href="../_images/spring-stroke-offset.png"><img alt="../_images/spring-stroke-offset.png" src="../_images/spring-stroke-offset.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 81 </span><span class="caption-text">The concept of time dependent spring stroke offset.</span></p>
+<p class="caption"><span class="caption-number">Fig. 82 </span><span class="caption-text">The concept of time dependent spring stroke offset.</span></p>
 </div>
 </div>
 <div class="section" id="torsion-spring">
