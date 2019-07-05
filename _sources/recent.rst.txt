@@ -1,4 +1,6 @@
 
+* On Jun 3 2019 :ref:`solfec-user-simulation`
+
 * On Mar 21 2019 :ref:`parmec-input_commands`
 
 * On Feb 4 2019 :ref:`parmec-index`
@@ -12,8 +14,6 @@
 * On Jan 11 2019 :ref:`solfec-user-constraints`
 
 * On Jan 11 2019 :ref:`solfec-user-loads`
-
-* On Jan 11 2019 :ref:`solfec-user-simulation`
 
 * On Jan 11 2019 :ref:`solfec-user-solvers`
 
