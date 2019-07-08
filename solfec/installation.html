@@ -18,7 +18,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Running Solfec" href="running.html" />
-    <link rel="prev" title="SOLFEC" href="index.html" />
+    <link rel="prev" title="SOLFEC-1.0" href="index.html" />
   
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
@@ -61,7 +61,7 @@ Once the git command is available at your command line, type</p>
 development environment at your command line. Users of Unix type systems (e.g. Linux, FreeBSD, Mac OS X) may use a package
 manager to install those tools. Windows users can install <a class="reference external" href="http://www.cygwin.com/">Cygwin</a> or <a class="reference external" href="http://mingw-w64.org">Mingw</a> instead.
 Solfec is written in C and it uses a simple makefile to get compiled.
-The file <em>solfec/Config.mak</em> needs to be modified in order to set up library paths and compilation flags. Here is an example:</p>
+The file <em>solfec-1.0/Config.mak</em> needs to be modified in order to set up library paths and compilation flags. Here is an example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#</span>
 <span class="c1"># Operating System (WIN32, SOLARIS, LINUX, AIX, IRIX, OSX, FREEBSD)</span>
 <span class="c1">#</span>
@@ -247,7 +247,7 @@ and <a class="reference internal" href="examples/hybrid_modeling.html#solfec-exa
 <span class="n">make</span> <span class="nb">all</span>
 </pre></div>
 </div>
-<p>This will create files <em>solfec/solfec</em> and <em>solec/solfec-mpi</em>, that is, the serial and the parallel versions of the code.
+<p>This will create files <em>solfec-1.0/solfec</em> and <em>solec/solfec-mpi</em>, that is, the serial and the parallel versions of the code.
 For every subsequent update and compilation you may like to do the following</p>
 <ul class="simple">
 <li>Back up your Config.mak file. For example</li>
@@ -278,7 +278,7 @@ For every subsequent update and compilation you may like to do the following</p>
 <p>Use “DEBUG = no” most of the time: this will make Solfec about 40% faster.
 Nonetheless, when you experience trouble with running the code, recompile it with “DEBUG = yes”
 (this is slower but outputs more information) and run it again.
-The solfec/inp directory contains example input files. If you haven’t used the “POSIX = yes” flag,
+The solfec-1.0/inp directory contains example input files. If you haven’t used the “POSIX = yes” flag,
 you will need to create output directories yourself, before running calculations (on systems where “POSIX = yes” works,
 this is done automatically). It may be convenient to modify the PATH variable to point to the <em>solfec</em> directory,
 making it easier to run Solfec form any location within your filesystem.
@@ -316,7 +316,7 @@ You can ask for help, using the <a class="reference external" href="http://group
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">SOLFEC</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">SOLFEC-1.0</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html">Running</a></li>
 <li class="toctree-l2"><a class="reference internal" href="user.html">User Manual</a></li>
@@ -325,7 +325,7 @@ You can ask for help, using the <a class="reference external" href="http://group
 <li class="toctree-l2"><a class="reference internal" href="xdmf.html">XDMF export</a></li>
 <li class="toctree-l2"><a class="reference internal" href="applications.html">Applications</a></li>
 <li class="toctree-l2"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec">Google group</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../dynlb/index.html">DYNLB</a></li>
@@ -341,8 +341,8 @@ You can ask for help, using the <a class="reference external" href="http://group
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="index.html">SOLFEC</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">SOLFEC</a></li>
+  <li><a href="index.html">SOLFEC-1.0</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">SOLFEC-1.0</a></li>
       <li>Next: <a href="running.html" title="next chapter">Running Solfec</a></li>
   </ul></li>
   </ul></li>

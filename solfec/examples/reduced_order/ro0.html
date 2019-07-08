@@ -53,7 +53,7 @@
 <span id="solfec-examples-reduced-order-ro0"></span><h1>Rotating bar<a class="headerlink" href="#rotating-bar" title="Permalink to this headline">¶</a></h1>
 <p>This is a simplest application of the reduced order modeling functionality. This example is also included in <a class="reference internal" href="../../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>:
 having a look into this technical report may be helpful. The input files for this example are located in the
-<a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">solfec/examples/reduced–order0</a> directory.
+<a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">solfec-1.0/examples/reduced–order0</a> directory.
 These are:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/README">README</a> – a text based specification of the problem</li>
@@ -91,6 +91,11 @@ factored out) and 6 rigid motion modes (generated algebraically) as input for th
 and calculated 11 Proper Orthogonal Decomposition modes. In the current example, we also include the BC–MODAL approach,
 for which the 6 rigid modes where combined with deformable modes 14, 19, 26, 34, 39 (of the initial linearized system), picked by hand
 as visually corresponding to the predominantly longitudinal deformation of the bar. Hence, the BC–MODAL case also had 11 degrees of freedom.</p>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p>Unable to execute python code at ro0.rst:61:</p>
+<p class="last">[Errno 2] No such file or directory: ‘solfec-1.0/examples/reduced_order/ro0_elongation_d0.png’</p>
+</div>
 <div class="figure align-center" id="id14">
 <span id="ro0-fig2"></span><a class="reference internal image-reference" href="../../../_images/ro0_elongation_d0.png"><img alt="../../../_images/ro0_elongation_d0.png" src="../../../_images/ro0_elongation_d0.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 61 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of the elongation for <span class="math notranslate nohighlight">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span> and <span class="math notranslate nohighlight">\(1\mbox{s}\)</span> runs.</span></p>
@@ -370,7 +375,7 @@ other available options and keyboard shortcuts.</p>
 
 <h3>Navigation</h3>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">SOLFEC</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">SOLFEC-1.0</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../running.html">Running</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../user.html">User Manual</a></li>
@@ -389,7 +394,7 @@ other available options and keyboard shortcuts.</p>
 <li class="toctree-l3"><a class="reference internal" href="../time_series.html">Time series</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec">Google group</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../dynlb/index.html">DYNLB</a></li>
@@ -405,7 +410,7 @@ other available options and keyboard shortcuts.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../../index.html">Documentation overview</a><ul>
-  <li><a href="../../index.html">SOLFEC</a><ul>
+  <li><a href="../../index.html">SOLFEC-1.0</a><ul>
   <li><a href="../../examples.html">Solfec Examples</a><ul>
   <li><a href="../reduced_order.html">Reduced order modeling</a><ul>
       <li>Previous: <a href="../reduced_order.html" title="previous chapter">Reduced order modeling</a></li>
