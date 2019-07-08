@@ -50,8 +50,8 @@
           <div class="body" role="main">
             
   <div class="section" id="dimensional-cube-array-acceleration-dwell">
-<span id="solfec-examples-hybrid-modeling-hs123"></span><h1>1,2,3–dimensional cube array acceleration dwell<a class="headerlink" href="#dimensional-cube-array-acceleration-dwell" title="Permalink to this headline">¶</a></h1>
-<p>This is a family of 1,2 and 3–dismenional examples demonstrating applications of the <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>
+<span id="solfec-1-0-examples-hybrid-modeling-hs123"></span><h1>1,2,3–dimensional cube array acceleration dwell<a class="headerlink" href="#dimensional-cube-array-acceleration-dwell" title="Permalink to this headline">¶</a></h1>
+<p>This is a family of 1,2 and 3–dismenional examples demonstrating applications of the <a class="reference internal" href="../../user/solvers.html#solfec-1-0-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>
 on an array of cubes subject to a constant amplitude and frequency acceleration since dwell signal. The input files for these examples
 are located in:</p>
 <ul class="simple">
@@ -64,7 +64,7 @@ are located in:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/README">README</a> – a text based specification of the problem</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec.py">hs2–parmec.py</a> – including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py">hs2–solfec.py</a> – including the <a class="reference internal" href="../../index.html#solfec-1-index"><span class="std std-ref">Solfec-1.0</span></a> input code</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py">hs2–solfec.py</a> – including the <a class="reference internal" href="../../index.html#solfec-1-0-index"><span class="std std-ref">Solfec-1.0</span></a> input code</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec-only.py">hs2–parmec–only.py</a> – including the Parmec-only version of the example</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec-only.py">hs2–solfec–only.py</a> – including the Solfec-1.0-only version of the example</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2–state–1.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id12" id="id2">[1]</a></li>
@@ -302,22 +302,22 @@ step estimation for the model is printed out in line 101.</p>
 </td></tr></table></div>
 </div>
 <p><a class="reference internal" href="#hs2-lst2"><span class="std std-numref">Listing 5</span></a> includes the Solfec-1.0 file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py">hs2–solfec.py</a>.
-Lines 1–5 define the global model parameters. Lines 7–24 set up the <a class="reference internal" href="../../user/solfec.html#solfec-user-solfec"><span class="std std-ref">SOLFEC object</span></a>,
-<a class="reference internal" href="../../user/materials.html#solfec-command-bulk-material"><span class="std std-ref">bulk</span></a> and <a class="reference internal" href="../../user/materials.html#solfec-command-surface-material"><span class="std std-ref">surface</span></a> materials, and a unit
+Lines 1–5 define the global model parameters. Lines 7–24 set up the <a class="reference internal" href="../../user/solfec.html#solfec-1-0-user-solfec"><span class="std std-ref">SOLFEC object</span></a>,
+<a class="reference internal" href="../../user/materials.html#solfec-1-0-command-bulk-material"><span class="std std-ref">bulk</span></a> and <a class="reference internal" href="../../user/materials.html#solfec-1-0-command-surface-material"><span class="std std-ref">surface</span></a> materials, and a unit
 cube template. Lines 26–56 contain code creating the array of Solfec-1.0 bodies as well as the mapping between the
 Parmec and the Solfec-1.0 body numbers. The double loop starting in line 30 of <a class="reference internal" href="#hs2-lst2"><span class="std std-numref">Listing 5</span></a> mimics the double loop
 starting in line 62 of <a class="reference internal" href="#hs2-lst1"><span class="std std-numref">Listing 4</span></a>. This way, it is easy to recreate the exact sequence of creation of Parmec
 bodies within the Solfec-1.0 input file. Hence, it is easy to construct the <em>parmec2solfec</em> dictionary mapping of body numbers,
 on the fly, while creating the Solfec-1.0 model. The inner Solfec-1.0 bodies (grey in <a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>) are created in lines 33–45.
 This same range of i, j indices is skipped in the Parmec input file (line 65 in <a class="reference internal" href="#hs2-lst1"><span class="std std-numref">Listing 4</span></a>). Here, finite element
-bodies are created, based on a 2x2x2 <a class="reference internal" href="../../user/geometry.html#solfec-command-hex"><span class="std std-ref">hexahedral mesh</span></a>. The z–direction of the bodies is <a class="reference internal" href="../../user/constraints.html#solfec-command-fix-direction"><span class="std std-ref">fixed</span></a>
+bodies are created, based on a 2x2x2 <a class="reference internal" href="../../user/geometry.html#solfec-1-0-command-hex"><span class="std std-ref">hexahedral mesh</span></a>. The z–direction of the bodies is <a class="reference internal" href="../../user/constraints.html#solfec-1-0-command-fix-direction"><span class="std std-ref">fixed</span></a>
 to keep them in plane. The rigid “boundary” bodies for the Solfec-1.0–Parmec overlap interface are created in lines 50–53. We note,
 that when a Solfec-1.0 input file is run in parallel (using <em>solfec-mpi</em>) some of the bodies that are created in the loop may actually
-reside on other processor ranks. Hence we test this using the <a class="reference internal" href="../../user/simulation.html#solfec-command-here"><span class="std std-ref">HERE command</span></a> and accordingly create
+reside on other processor ranks. Hence we test this using the <a class="reference internal" href="../../user/simulation.html#solfec-1-0-command-here"><span class="std std-ref">HERE command</span></a> and accordingly create
 valid fragments of the parmec2solfec mapping on each MPI rank. Such fragmentary mappings are brought together during initialization
-of the <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>. In line 56 the Parmec body index is advanced, as this line corresponds
+of the <a class="reference internal" href="../../user/solvers.html#solfec-1-0-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>. In line 56 the Parmec body index is advanced, as this line corresponds
 to line 67 in <a class="reference internal" href="#hs2-lst1"><span class="std std-numref">Listing 4</span></a>, where Parmec bodies are created. The rest of the file is similar to that already detailed in the
-description of <a class="reference internal" href="hs0.html#hs0-lst3"><span class="std std-numref">Listing 3</span></a>, in the context of the <a class="reference internal" href="hs0.html#solfec-examples-hybrid-modeling-hs0"><span class="std std-ref">two body impact example</span></a>.</p>
+description of <a class="reference internal" href="hs0.html#hs0-lst3"><span class="std std-numref">Listing 3</span></a>, in the context of the <a class="reference internal" href="hs0.html#solfec-1-0-examples-hybrid-modeling-hs0"><span class="std std-ref">two body impact example</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="hs2-lst2">
 <div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Listing of hs2–solfec.py</span><a class="headerlink" href="#hs2-lst2" title="Permalink to this code">¶</a></div>
 <div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1

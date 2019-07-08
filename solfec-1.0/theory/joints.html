@@ -50,11 +50,11 @@
           <div class="body" role="main">
             
   <div class="section" id="joints">
-<span id="solfec-theory-joints"></span><h1>Joints<a class="headerlink" href="#joints" title="Permalink to this headline">¶</a></h1>
-<p>Joints in  Solfec-1.0 are defined by <a class="reference internal" href="../user/constraints.html#solfec-command-fix-point"><span class="std std-ref">FIX_POINT</span></a>, <a class="reference internal" href="../user/constraints.html#solfec-command-fix-direction"><span class="std std-ref">FIX_DIRECTION</span></a>,
-<a class="reference internal" href="../user/constraints.html#solfec-command-set-displacement"><span class="std std-ref">SET_DISPLACEMENT</span></a>, <a class="reference internal" href="../user/constraints.html#solfec-command-set-velocity"><span class="std std-ref">SET_VELOCITY</span></a>,
-<a class="reference internal" href="../user/constraints.html#solfec-command-set-acceleration"><span class="std std-ref">SET_ACCELERATION</span></a>, <a class="reference internal" href="../user/constraints.html#solfec-command-put-rigid-link"><span class="std std-ref">PUT_RIGID_LINK</span></a>, and
-<a class="reference internal" href="../user/constraints.html#solfec-command-put-spring"><span class="std std-ref">PUT_SPRING</span></a> commands. Joints are also called bilateral constraints. They restrain absolute motion
+<span id="solfec-1-0-theory-joints"></span><h1>Joints<a class="headerlink" href="#joints" title="Permalink to this headline">¶</a></h1>
+<p>Joints in  Solfec-1.0 are defined by <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-fix-point"><span class="std std-ref">FIX_POINT</span></a>, <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-fix-direction"><span class="std std-ref">FIX_DIRECTION</span></a>,
+<a class="reference internal" href="../user/constraints.html#solfec-1-0-command-set-displacement"><span class="std std-ref">SET_DISPLACEMENT</span></a>, <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-set-velocity"><span class="std std-ref">SET_VELOCITY</span></a>,
+<a class="reference internal" href="../user/constraints.html#solfec-1-0-command-set-acceleration"><span class="std std-ref">SET_ACCELERATION</span></a>, <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-put-rigid-link"><span class="std std-ref">PUT_RIGID_LINK</span></a>, and
+<a class="reference internal" href="../user/constraints.html#solfec-1-0-command-put-spring"><span class="std std-ref">PUT_SPRING</span></a> commands. Joints are also called bilateral constraints. They restrain absolute motion
 of individual points of individual bodies, or relative motion of pairs of points between two bodies.</p>
 <p>Joints are implemented via suitably setting values of components of relative constraint velocities or
 constraint reactions. That is to say, the general implicit relation</p>
@@ -68,7 +68,7 @@ We also assume, that these vectors are mutually perpendicular: <span class="math
 With this convenetion at hand, below we define particular versions of relation <a class="reference internal" href="#equation-cal">(65)</a> for joint types available in Solfec-1.0.</p>
 <div class="section" id="fixed-point">
 <span id="id1"></span><h2>Fixed point<a class="headerlink" href="#fixed-point" title="Permalink to this headline">¶</a></h2>
-<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-command-fix-point"><span class="std std-ref">FIX_POINT</span></a> command is realized by defining</p>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-fix-point"><span class="std std-ref">FIX_POINT</span></a> command is realized by defining</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{U}\]</div>
 <p>and hence</p>
@@ -78,7 +78,7 @@ With this convenetion at hand, below we define particular versions of relation <
 </div>
 <div class="section" id="fixed-direction">
 <span id="id2"></span><h2>Fixed direction<a class="headerlink" href="#fixed-direction" title="Permalink to this headline">¶</a></h2>
-<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-command-fix-direction"><span class="std std-ref">FIX_DIRECTION</span></a> command is realized by defining</p>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-fix-direction"><span class="std std-ref">FIX_DIRECTION</span></a> command is realized by defining</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
 R_{T1}\\
@@ -94,7 +94,7 @@ while the tangential plane is unused (hence zero tangential reaction,
 </div>
 <div class="section" id="prescribed-displacement">
 <span id="id3"></span><h2>Prescribed displacement<a class="headerlink" href="#prescribed-displacement" title="Permalink to this headline">¶</a></h2>
-<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-command-set-displacement"><span class="std std-ref">SET_DISPLACEMENT</span></a> command is realized by defining</p>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-set-displacement"><span class="std std-ref">SET_DISPLACEMENT</span></a> command is realized by defining</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
 R_{T1}\\
@@ -109,7 +109,7 @@ differentiated numerically to obtain velocity. The tangential plane is unused, h
 </div>
 <div class="section" id="prescribed-velocity">
 <span id="id4"></span><h2>Prescribed velocity<a class="headerlink" href="#prescribed-velocity" title="Permalink to this headline">¶</a></h2>
-<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-command-set-velocity"><span class="std std-ref">SET_VELOCITY</span></a> command is realized by defining</p>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-set-velocity"><span class="std std-ref">SET_VELOCITY</span></a> command is realized by defining</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
 R_{T1}\\
@@ -124,7 +124,7 @@ The tangential plane is unused, hence zero tangential reaction.</p>
 </div>
 <div class="section" id="prescribed-acceleration">
 <span id="id5"></span><h2>Prescribed acceleration<a class="headerlink" href="#prescribed-acceleration" title="Permalink to this headline">¶</a></h2>
-<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-command-set-acceleration"><span class="std std-ref">SET_ACCELERATION</span></a> command is realized by defining</p>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-set-acceleration"><span class="std std-ref">SET_ACCELERATION</span></a> command is realized by defining</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
 R_{T1}\\
@@ -139,7 +139,7 @@ integrated numerically to obtain velocity. The tangential plane is unused, hence
 </div>
 <div class="section" id="rigid-link-constraint">
 <span id="rigid-link"></span><h2>Rigid link constraint<a class="headerlink" href="#rigid-link-constraint" title="Permalink to this headline">¶</a></h2>
-<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-command-put-rigid-link"><span class="std std-ref">PUT_RIGID_LINK</span></a> command is realized by defining a normal direction</p>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-put-rigid-link"><span class="std std-ref">PUT_RIGID_LINK</span></a> command is realized by defining a normal direction</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{a}_{N}=\frac{\mathbf{x}_{1}\left(\mathbf{X}_{1},t\right)-\mathbf{x}_{2}\left(\mathbf{X}_{2},t\right)}{\left\Vert \mathbf{x}_{1}-\mathbf{x}_{2}\right\Vert }\]</div>
 <p>and tangential plane as orthogonal to this direction <span class="math notranslate nohighlight">\(\mathbf{a}_{T1}\perp\mathbf{a}_{T2}\perp\mathbf{a}_{N}\)</span>, followed by imposing</p>
@@ -157,7 +157,7 @@ The tangential plane is unused, hence zero tangential reaction.</p>
 </div>
 <div class="section" id="spring-constraint">
 <span id="simple-spring"></span><h2>Spring constraint<a class="headerlink" href="#spring-constraint" title="Permalink to this headline">¶</a></h2>
-<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-command-put-spring"><span class="std std-ref">PUT_SPRING</span></a> command is realized by defining a stretch</p>
+<p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-put-spring"><span class="std std-ref">PUT_SPRING</span></a> command is realized by defining a stretch</p>
 <div class="math notranslate nohighlight">
 \[d=\left\Vert \mathbf{x}_{1}\left(\mathbf{X}_{1},t\right)-\mathbf{x}_{2}\left(\mathbf{X}_{2},t\right)\right\Vert -\left\Vert \mathbf{X}_{1}-\mathbf{X}_{2}\right\Vert\]</div>
 <p>a normal direction</p>
@@ -180,9 +180,9 @@ The tangential plane is unused, hence zero tangential reaction.</p>
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>Joints are implemented as a part of constraint solvers. For example, function
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L483">dbs.c:DIAGONAL_BLOCK_Solver</a> is a driver
-routine for all joint types solved within the <a class="reference internal" href="../user/solvers.html#solfec-command-gauss-seidel-solver"><span class="std std-ref">Gauss–Seidel</span></a> solver,
+routine for all joint types solved within the <a class="reference internal" href="../user/solvers.html#solfec-1-0-command-gauss-seidel-solver"><span class="std std-ref">Gauss–Seidel</span></a> solver,
 invoked from within <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bgs.c#L901">bgs.c:GAUSS_SEIDEL_Solve</a>.
-Within the <a class="reference internal" href="../user/solvers.html#solfec-command-newton-solver"><span class="std std-ref">Projected Newton</span></a> solver the routine
+Within the <a class="reference internal" href="../user/solvers.html#solfec-1-0-command-newton-solver"><span class="std std-ref">Projected Newton</span></a> solver the routine
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/nts.c#L939">nts.c:solve</a> implements all joint types.</p>
 </div>
 </div>

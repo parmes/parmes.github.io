@@ -50,7 +50,7 @@
           <div class="body" role="main">
             
   <div class="section" id="pipe-impact">
-<span id="solfec-examples-reduced-order-ro1"></span><h1>Pipe impact<a class="headerlink" href="#pipe-impact" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-1-0-examples-reduced-order-ro1"></span><h1>Pipe impact<a class="headerlink" href="#pipe-impact" title="Permalink to this headline">¶</a></h1>
 <p>This example, also included in <a class="reference internal" href="../../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>, illustrates the reduced order modeling functionality on a pipe impact problem. The input files for
 this example are located in the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">solfec-1.0/examples/reduced–order1</a> directory.
 These are:</p>
@@ -64,7 +64,7 @@ These are:</p>
 <a class="reference external" href="https://en.wikipedia.org/wiki/Principal_component_analysis">POD</a> base</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-postp.py">ro1–postp.py</a> – post–processing script</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-run-all.py">ro1–run–all.py</a> – input file that runs all tests and generates all plots</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-view.py">ro1–view.py</a> – input file suitable for use with Solfec-1.0 <a class="reference internal" href="../../running.html#solfec-running"><span class="std std-ref">viewer</span></a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-view.py">ro1–view.py</a> – input file suitable for use with Solfec-1.0 <a class="reference internal" href="../../running.html#solfec-1-0-running"><span class="std std-ref">viewer</span></a></li>
 </ul>
 <div class="figure align-center" id="id7">
 <span id="ro1-fig1"></span><a class="reference internal image-reference" href="../../../_images/ro1_pipe.png"><img alt="../../../_images/ro1_pipe.png" src="../../../_images/ro1_pipe.png" style="width: 100%;" /></a>
@@ -206,10 +206,10 @@ pipe diameter in the contact area between <span class="math notranslate nohighli
 </div>
 <p><a class="reference internal" href="#ro1-lst1"><span class="std std-numref">Listing 8</span></a> exemplifies the Total Lagrangian analysis input file. The simulation creation code
 is hidden inside of the library subroutine <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py#L10">ro1_simulation</a>,
-which returns the <a class="reference internal" href="../../user/solfec.html#solfec-user-solfec"><span class="std std-ref">SOLFEC object</span></a>, the pipe <a class="reference internal" href="../../user/body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a>
+which returns the <a class="reference internal" href="../../user/solfec.html#solfec-1-0-user-solfec"><span class="std std-ref">SOLFEC object</span></a>, the pipe <a class="reference internal" href="../../user/body.html#solfec-1-0-user-body"><span class="std std-ref">BODY object</span></a>
 and the duration of the analysis, <code class="docutils literal notranslate"><span class="pre">stop</span></code>, in line 6. When Solfec-1.0 is opened in <code class="docutils literal notranslate"><span class="pre">'WIRITE'</span></code> mode (no results exist)
 and without the graphical viewer (–v switch not used), we sample co–rotated deformable and rigid displacements in lines 10 and 11.
-<a class="reference internal" href="../../user/utilities.html#solfec-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> and <a class="reference internal" href="../../user/utilities.html#solfec-command-rigid-displacements"><span class="std std-ref">RIGID_DISPLACEMENTS</span></a>
+<a class="reference internal" href="../../user/utilities.html#solfec-1-0-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> and <a class="reference internal" href="../../user/utilities.html#solfec-1-0-command-rigid-displacements"><span class="std std-ref">RIGID_DISPLACEMENTS</span></a>
 commands are respectively used. Further, the simulation is run and the sampled displacements saved in lines 14–24. In case Solfec-1.0 is opened
 in <code class="docutils literal notranslate"><span class="pre">'READ'</span></code> mode, in line 28, existing results are processed and time histories are extracted using a library routine
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py#L61">ro1_read_histories</a>. For comparison

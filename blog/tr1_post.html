@@ -57,10 +57,10 @@ combined with a family of finite element formulations: (…)</p>
 <li>body co–rotational reduced order (BC–RO)</li>
 <li>body co–rotational modal (BC–MODAL)</li>
 </ul>
-<p>as they are implemented in <a class="reference internal" href="../solfec-1.0/index.html#solfec-1-index"><span class="std std-ref">SOLFEC-1.0</span></a>. These formulations allow to vary the amount of deformation
+<p>as they are implemented in <a class="reference internal" href="../solfec-1.0/index.html#solfec-1-0-index"><span class="std std-ref">SOLFEC-1.0</span></a>. These formulations allow to vary the amount of deformation
 expressed by a finite element mesh and facilitate saving computational time and storage. They may be helpful in the context
 of multibody modeling.</p>
-<p>The methods described in <a class="reference internal" href="../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> can be accessed by creating a <a class="reference internal" href="../solfec-1.0/user/body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a> as follows</p>
+<p>The methods described in <a class="reference internal" href="../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> can be accessed by creating a <a class="reference internal" href="../solfec-1.0/user/body.html#solfec-1-0-user-body"><span class="std std-ref">BODY object</span></a> as follows</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bdTL</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">solfec</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">material</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;TL&#39;</span><span class="p">)</span>
 <span class="n">bdTL</span><span class="o">.</span><span class="n">scheme</span> <span class="o">=</span> <span class="s1">&#39;DEF_LIM&#39;</span>
 
@@ -75,7 +75,7 @@ of multibody modeling.</p>
 </pre></div>
 </div>
 <p>In case of the ‘BC–RO’ and ‘BC–MODAL’ the linearly implicit integrator is default.
-For ‘TL’ and ‘BC’ the default time integration scheme is ‘DEF_EXP’ (<a class="reference internal" href="../solfec-1.0/user/body.html#solfec-body-scheme"><span class="std std-numref">Table 7</span></a>);
+For ‘TL’ and ‘BC’ the default time integration scheme is ‘DEF_EXP’ (<a class="reference internal" href="../solfec-1.0/user/body.html#solfec-1-0-body-scheme"><span class="std std-numref">Table 7</span></a>);
 we change it to ‘DEF_LIM’ after body creation.</p>
 <p>The <em>base</em> format is a tuple of two lists</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">base</span> <span class="o">=</span> <span class="p">([</span><span class="n">eval1</span><span class="p">,</span> <span class="n">eval2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">evaln</span><span class="p">],</span>
@@ -85,10 +85,10 @@ we change it to ‘DEF_LIM’ after body creation.</p>
 </pre></div>
 </div>
 <p>where we assumed <em>n</em> base vectors of size <em>m</em>. The first list stores eigenvalues and the second list stores
-eigenvectors. <a class="reference internal" href="../solfec-1.0/user/utilities.html#solfec-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> and
-<a class="reference internal" href="../solfec-1.0/user/utilities.html#solfec-command-rigid-displacements"><span class="std std-ref">RIGID_DISPLACEMENTS</span></a> commands can be used together to sample
+eigenvectors. <a class="reference internal" href="../solfec-1.0/user/utilities.html#solfec-1-0-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> and
+<a class="reference internal" href="../solfec-1.0/user/utilities.html#solfec-1-0-command-rigid-displacements"><span class="std std-ref">RIGID_DISPLACEMENTS</span></a> commands can be used together to sample
 displacements and generate a reduced base using <a class="reference external" href="https://pypi.python.org/pypi/modred">Python’s modred package</a>.
-<a class="reference internal" href="../solfec-1.0/user/utilities.html#solfec-command-modal-analysis"><span class="std std-ref">MODAL_ANALYSIS</span></a> command can be used to generate a modal base.</p>
+<a class="reference internal" href="../solfec-1.0/user/utilities.html#solfec-1-0-command-modal-analysis"><span class="std std-ref">MODAL_ANALYSIS</span></a> command can be used to generate a modal base.</p>
 <p>Input decks for the rotating bar, pipe impact, and array excitation examples from <a class="reference internal" href="../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>
 can be respectively found in</p>
 <ul class="simple">
@@ -96,7 +96,7 @@ can be respectively found in</p>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">solfec/example/reduced–order1</a></li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">solfec/example/81array</a></li>
 </ul>
-<p>directories. See also <a class="reference internal" href="../solfec-1.0/examples/reduced_order.html#solfec-examples-reduced-order"><span class="std std-ref">the online version of these examples</span></a>.</p>
+<p>directories. See also <a class="reference internal" href="../solfec-1.0/examples/reduced_order.html#solfec-1-0-examples-reduced-order"><span class="std std-ref">the online version of these examples</span></a>.</p>
 </div>
 
   <div class="section">

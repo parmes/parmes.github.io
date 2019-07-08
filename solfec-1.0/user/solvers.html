@@ -50,12 +50,12 @@
           <div class="body" role="main">
             
   <div class="section" id="solvers">
-<span id="solfec-user-solvers"></span><h1>Solvers<a class="headerlink" href="#solvers" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-1-0-user-solvers"></span><h1>Solvers<a class="headerlink" href="#solvers" title="Permalink to this headline">¶</a></h1>
 <p>Solver objects represent a constraint solution scheme applied at every time step
 of a simulation in order to resolve the equality and inequality constraints. User defined
 constraints and contact constraints are handled together as one nonlinear root finding problem.</p>
 <div class="section" id="gauss-seidel">
-<span id="solfec-command-gauss-seidel-solver"></span><h2>Gauss–Seidel<a class="headerlink" href="#gauss-seidel" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-1-0-command-gauss-seidel-solver"></span><h2>Gauss–Seidel<a class="headerlink" href="#gauss-seidel" title="Permalink to this headline">¶</a></h2>
 <p>An object of type GAUSS_SEIDEL_SOLVER represents a nonlinear block Gauss–Seidel solver,
 employed for the calculation of constraint reactions.</p>
 <div class="topic">
@@ -77,7 +77,7 @@ In all cases <em>obj.error</em> variable is set up, cf. <a class="reference inte
 <li>data – data passed to the failure callback function (if this is a tuple it will
 accordingly expand the parameter list of the callback routine)</li>
 <li>callback – failure callback function of form: <strong>value = callback (obj, data)</strong>,
-where for the returned value equal zero Solfec-1.0 run is stopped. See also: <a class="reference internal" href="utilities.html#solfec-command-register-callback"><span class="std std-ref">REGISTER_CALLBACK</span></a>.</li>
+where for the returned value equal zero Solfec-1.0 run is stopped. See also: <a class="reference internal" href="utilities.html#solfec-1-0-command-register-callback"><span class="std std-ref">REGISTER_CALLBACK</span></a>.</li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a GAUSS_SEIDEL_SOLVER object, cf. <a class="reference internal" href="#gauss-seidel-params"><span class="std std-numref">Table 19</span></a>.</p>
@@ -170,7 +170,7 @@ most cases. It servers as illustration.</td>
 </table>
 </div>
 <div class="section" id="projected-newton">
-<span id="solfec-command-newton-solver"></span><h2>Projected Newton<a class="headerlink" href="#projected-newton" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-1-0-command-newton-solver"></span><h2>Projected Newton<a class="headerlink" href="#projected-newton" title="Permalink to this headline">¶</a></h2>
 <p>Object of type NEWTON_SOLVER represents a projected quasi–Newton constraints solver.
 If local dynamics is enabled (locdyn = ‘ON’) and iterations fail to converge,
 the Gauss–Seidel solver will be invoked, starting from the previous time step solution.
@@ -199,7 +199,7 @@ for these parameters, please experiment before settling on specific values for a
 default: 0.25); smaller initial theta may improve overall convergence behavior</li>
 <li>omega – positive equation smoothing omega (default: <span class="math notranslate nohighlight">\(\mbox{meritval}\cdot0.01\)</span>)</li>
 <li>gsflag – ‘ON’ or ‘OFF’ deciding whether to us Gauss-Seidel iterations in case of failure (default: ‘ON’)</li>
-<li>reldelta – make <strong>delta</strong> relative to the <a class="reference internal" href="../theory/locdyn.html#solfec-theory-locdyn"><span class="std std-ref">generalized inverse inertia</span></a> <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> operator;
+<li>reldelta – make <strong>delta</strong> relative to the <a class="reference internal" href="../theory/locdyn.html#solfec-1-0-theory-locdyn"><span class="std std-ref">generalized inverse inertia</span></a> <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> operator;
 possible choices are: ‘OFF’ - delta is regarded as an absolute value, ‘avgWii’ - delta is relative to the average of the diagonal
 entries of <span class="math notranslate nohighlight">\(\mathbf{W}\)</span>, ‘minWii’ - delta is relative to the minimum of the diagonal entries of <span class="math notranslate nohighlight">\(\mathbf{W}\)</span>,
 ‘maxWii’ - delta is relative to the maximum of the diagonal entries of <span class="math notranslate nohighlight">\(\mathbf{W}\)</span>; (default: ‘OFF’)</li>
@@ -278,9 +278,9 @@ Currently only the the nonlinear Gauss–Seidel solver is enabled, making the SI
 </table>
 </div>
 <div class="section" id="hybrid-solver">
-<span id="solfec-command-hybrid-solver"></span><h2>Hybrid solver<a class="headerlink" href="#hybrid-solver" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-1-0-command-hybrid-solver"></span><h2>Hybrid solver<a class="headerlink" href="#hybrid-solver" title="Permalink to this headline">¶</a></h2>
 <p>Hybrid solver allows to combine smooth rigid body nonlinear spring based <a class="reference internal" href="../../parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a> models with non–smooth SOLFEC models
-(see <a class="reference internal" href="../examples/hybrid_modeling.html#solfec-examples-hybrid-modeling"><span class="std std-ref">examples</span></a>). The solver is supported both in the serial and MPI version of Solfec-1.0. The Parmec
+(see <a class="reference internal" href="../examples/hybrid_modeling.html#solfec-1-0-examples-hybrid-modeling"><span class="std std-ref">examples</span></a>). The solver is supported both in the serial and MPI version of Solfec-1.0. The Parmec
 library is shared memory parallel and in the MPI mode this part of modeling is executed on MPI rank 0 process, employing maximum available
 shared memory parallelism.</p>
 <div class="topic">

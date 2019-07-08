@@ -50,9 +50,9 @@
           <div class="body" role="main">
             
   <div class="section" id="geometry">
-<span id="solfec-user-geometry"></span><h1>Geometry<a class="headerlink" href="#geometry" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-1-0-user-geometry"></span><h1>Geometry<a class="headerlink" href="#geometry" title="Permalink to this headline">¶</a></h1>
 <p>Shapes of bodies can be defined by means of the routines defined below.
-Note, that for rigid and pseudo-rigid body types, cf. <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY</span></a>,
+Note, that for rigid and pseudo-rigid body types, cf. <a class="reference internal" href="body.html#solfec-1-0-user-body"><span class="std std-ref">BODY</span></a>,
 a shape can comprise a list combining all possible geometry types.
 For finite element type bodies, a single MESH object is used to define shape,
 or a list of CONVEX objects can be used in combination with a background MESH.</p>
@@ -108,7 +108,7 @@ and s1 is the surface identifier of the face. Similarly for the second face and 
 <p>This routine converts a MESH object into a list of CONVEX objects.
 It can be useful for containing one MESH defining a body shape inside of
 another background mesh defining deformability
-(see the background mesh parameters of the <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a>).</p>
+(see the background mesh parameters of the <a class="reference internal" href="body.html#solfec-1-0-user-body"><span class="std std-ref">BODY object</span></a>).</p>
 <div class="topic">
 <p class="topic-title first">obj = MESH2CONVEX (mesh)</p>
 <ul class="simple">
@@ -118,7 +118,7 @@ another background mesh defining deformability
 </div>
 </div>
 <div class="section" id="mesh">
-<span id="solfec-command-mesh"></span><h2>MESH<a class="headerlink" href="#mesh" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-1-0-command-mesh"></span><h2>MESH<a class="headerlink" href="#mesh" title="Permalink to this headline">¶</a></h2>
 <p>An object of type MESH describes an arbitrary volumetric mesh, comprising tetrahedrons,
 pyramids, wedges, and hexahedrons (<a class="reference internal" href="#mesh-elems"><span class="std std-numref">Fig. 2</span></a>). First order elements are currently supported.</p>
 <div class="figure align-center" id="id2">
@@ -170,7 +170,7 @@ e.g. [[n0, n1, n2], [n0, n1, n2, n3], …]</td>
 indices of inter–element faces on a plane, e.g. [[n0, n1, n2], [n0, n1, n2, n3], …], where <strong>point</strong>,
 <strong>normal</strong> define the plane, <strong>ref</strong> can be <em>True</em> or <em>False</em> and determines whether the plane is in
 the reference or current configuration (default: <em>True</em>), <strong>eps</strong> determines the tolerance for the
-“on plane” test (default: <a class="reference internal" href="simulation.html#solfec-command-geometric-epsilon"><span class="std std-ref">geometric epsilon</span></a>)</td>
+“on plane” test (default: <a class="reference internal" href="simulation.html#solfec-1-0-command-geometric-epsilon"><span class="std std-ref">geometric epsilon</span></a>)</td>
 </tr>
 <tr class="row-even"><td><strong>Read-write members and methods:</strong></td>
 </tr>
@@ -188,7 +188,7 @@ menu <span class="math notranslate nohighlight">\(\to\)</span> kinds of <span cl
 </table>
 </div>
 <div class="section" id="hex">
-<span id="solfec-command-hex"></span><h2>HEX<a class="headerlink" href="#hex" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-1-0-command-hex"></span><h2>HEX<a class="headerlink" href="#hex" title="Permalink to this headline">¶</a></h2>
 <p>This routine creates a MESH object corresponding to a hexahedral shape (hexahedral elements are used).</p>
 <div class="topic">
 <p class="topic-title first">obj = HEX (nodes, i, j, k, volid, surfids | dx, dy, dz)</p>

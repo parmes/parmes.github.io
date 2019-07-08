@@ -50,7 +50,7 @@
           <div class="body" role="main">
             
   <div class="section" id="solfec-object">
-<span id="solfec-user-solfec"></span><h1>SOLFEC object<a class="headerlink" href="#solfec-object" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-1-0-user-solfec"></span><h1>SOLFEC object<a class="headerlink" href="#solfec-object" title="Permalink to this headline">¶</a></h1>
 <p>An object of type SOLFEC represents the Solfec-1.0 algorithm. One can use several SOLFEC objects to run several analyses from a single input file.</p>
 <div class="topic">
 <p class="topic-title first">obj = SOLFEC (analysis, step, output)</p>
@@ -64,8 +64,8 @@ and contains valid output data SOLFEC is created in ‘READ’ mode,
 otherwise SOLFEC is created in ‘WRITE’ mode)</li>
 </ul>
 </div>
-<p>Some parameters can be accessed as members of a SOLFEC object, cf. <a class="reference internal" href="#solfec-params"><span class="std std-numref">Table 1</span></a>.</p>
-<span id="solfec-params"></span><table border="1" class="docutils" id="id1">
+<p>Some parameters can be accessed as members of a SOLFEC object, cf. <a class="reference internal" href="#solfec-1-0-params"><span class="std std-numref">Table 1</span></a>.</p>
+<span id="solfec-1-0-params"></span><table border="1" class="docutils" id="id1">
 <caption><span class="caption-number">Table 1 </span><span class="caption-text">SOLFEC object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col width="100%" />
@@ -79,11 +79,11 @@ otherwise SOLFEC is created in ‘WRITE’ mode)</li>
 </tr>
 <tr class="row-even"><td><strong>obj.mode</strong> – either ‘READ’ or ‘WRITE’ as described above</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.constraints</strong> – list of constraints (cf. <a class="reference internal" href="constraints.html#solfec-user-constraints"><span class="std std-ref">Constraints</span></a>)</td>
+<tr class="row-odd"><td><strong>obj.constraints</strong> – list of constraints (cf. <a class="reference internal" href="constraints.html#solfec-1-0-user-constraints"><span class="std std-ref">Constraints</span></a>)</td>
 </tr>
 <tr class="row-even"><td><strong>obj.ncon</strong> – number of constraints</td>
 </tr>
-<tr class="row-odd"><td><strong>obj.bodies</strong> – list of bodies (cf. <a class="reference internal" href="body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a>)</td>
+<tr class="row-odd"><td><strong>obj.bodies</strong> – list of bodies (cf. <a class="reference internal" href="body.html#solfec-1-0-user-body"><span class="std std-ref">BODY object</span></a>)</td>
 </tr>
 <tr class="row-even"><td><strong>obj.nbod</strong> – number of bodies</td>
 </tr>
@@ -94,8 +94,8 @@ has been passed</td>
 </tr>
 <tr class="row-odd"><td><em>obj.step</em></td>
 </tr>
-<tr class="row-even"><td><strong>obj.verbose</strong> – ‘ON’ or ‘OFF’ enabling or disabling writing to standard output (default: ‘ON’);
-‘%’ can also be used to enable plain percentage printout per individual <a class="reference internal" href="simulation.html#solfec-command-run"><span class="std std-ref">RUN</span></a>;
+<tr class="row-even"><td><strong>obj.verbose</strong> – ‘ON’ or ‘OFF’ enabling or disabling writing to standard output (default: ‘ON’); ‘%’
+can also be used to enable plain percentage printout per individual <a class="reference internal" href="simulation.html#solfec-1-0-command-run"><span class="std std-ref">RUN</span></a>;
 ‘%n’ can be used for the same purpose with a newline inserted after finished calculations</td>
 </tr>
 <tr class="row-odd"><td><strong>obj.cleanup</strong> – either ‘ON’ or ‘OFF’ enabling or disabling removal of the output directory in ‘WRITE’

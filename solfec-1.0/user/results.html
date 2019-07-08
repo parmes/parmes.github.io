@@ -50,7 +50,7 @@
           <div class="body" role="main">
             
   <div class="section" id="results">
-<span id="solfec-user-results"></span><h1>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-1-0-user-results"></span><h1>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h1>
 <p>Results can be accessed either in the ‘READ’ mode of a SOLFEC object, or in the ‘WRITE’ mode
 once some analysis has been run. Routines listed in this section facilitate access to results.</p>
 <div class="section" id="duration">
@@ -65,7 +65,7 @@ once some analysis has been run. Routines listed in this section facilitate acce
 </div>
 </div>
 <div class="section" id="forward">
-<span id="solfec-command-forward"></span><h2>FORWARD<a class="headerlink" href="#forward" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-1-0-command-forward"></span><h2>FORWARD<a class="headerlink" href="#forward" title="Permalink to this headline">¶</a></h2>
 <p>This routine steps forward within the simulation output file. Ignored in SOLFEC’s ‘WRITE’ mode.</p>
 <div class="topic">
 <p class="topic-title first">FORWARD (solfec, steps | corotated_displacements)</p>
@@ -73,7 +73,7 @@ once some analysis has been run. Routines listed in this section facilitate acce
 <li>solfec – SOLFEC object</li>
 <li>steps – numbers of steps forward</li>
 <li>corotated_displacements – optional co–rotated displacements sampling flag; if ‘TRUE’ and a call or multiple
-calls to <a class="reference internal" href="utilities.html#solfec-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> was/were made prior to FORWARD,
+calls to <a class="reference internal" href="utilities.html#solfec-1-0-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> was/were made prior to FORWARD,
 co-rotated displacements will be sampled for every time instant visited by FORWARD (the original sampling interval
 will be ignored); default: ‘FALSE’</li>
 </ul>
@@ -218,7 +218,7 @@ defining a surface pair (use None if no surface pair is preferred), and entity i
 <div class="section" id="xdmf-export">
 <h2>XDMF_EXPORT<a class="headerlink" href="#xdmf-export" title="Permalink to this headline">¶</a></h2>
 <p>Export results in XDMF format. In ‘WRITE’ mode only the geometry at time <span class="math notranslate nohighlight">\(t=0\)</span> is saved,
-while arguments <em>time</em> and <em>attributes</em> are ignored. See also <a class="reference internal" href="../xdmf.html#solfec-xdmf"><span class="std std-ref">XDMF export manual</span></a>.</p>
+while arguments <em>time</em> and <em>attributes</em> are ignored. See also <a class="reference internal" href="../xdmf.html#solfec-1-0-xdmf"><span class="std std-ref">XDMF export manual</span></a>.</p>
 <div class="topic">
 <p class="topic-title first">XDMF_EXPORT (solfec, time, path | subset, attributes)</p>
 <ul class="simple">
@@ -244,7 +244,7 @@ a non-optional scalar attribute ‘BID’ (body identifier) is always included w
 </div>
 </div>
 <div class="section" id="solfec-export">
-<span id="solfec-command-solfec-export"></span><h2>SOLFEC_EXPORT<a class="headerlink" href="#solfec-export" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-1-0-command-solfec-export"></span><h2>SOLFEC_EXPORT<a class="headerlink" href="#solfec-export" title="Permalink to this headline">¶</a></h2>
 <p>Export results in XDMF format. In ‘WRITE’ mode only the geometry at time <span class="math notranslate nohighlight">\(t=0\)</span> is saved,
 while the argument <em>time</em> is ignored.</p>
 <div class="topic">

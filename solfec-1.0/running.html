@@ -50,17 +50,23 @@
           <div class="body" role="main">
             
   <div class="section" id="running-solfec-1-0">
-<span id="solfec-running"></span><h1>Running Solfec-1.0<a class="headerlink" href="#running-solfec-1-0" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-1-0-running"></span><h1>Running Solfec-1.0<a class="headerlink" href="#running-solfec-1-0" title="Permalink to this headline">¶</a></h1>
 <p>Solfec-1.0 is a command line program. It can be run sequentially (command: solfec) or in parallel
 using an MPI runtime environment (command: solfec–mpi). Running it without parameters</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">solfec</span>
 </pre></div>
 </div>
 <p>results in the hint</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SYNOPSIS</span><span class="p">:</span> <span class="n">solfec</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">w</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">g</span> <span class="n">WIDTHxHEIGHT</span><span class="p">]</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">VERSION</span><span class="p">:</span> <span class="mf">1.04</span><span class="n">a53f2</span> <span class="p">(</span><span class="mi">2019</span><span class="o">-</span><span class="mi">07</span><span class="o">-</span><span class="mi">05</span><span class="p">)</span>
+<span class="n">SYNOPSIS</span><span class="p">:</span> <span class="n">solfec</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">w</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">c</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">g</span> <span class="n">WIDTHxHEIGHT</span><span class="p">]</span>
                  <span class="p">[</span><span class="o">-</span><span class="n">s</span> <span class="n">sub</span><span class="o">-</span><span class="n">directory</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">i</span> <span class="n">verbosity</span> <span class="n">interval</span><span class="p">]</span> <span class="n">path</span>
 </pre></div>
 </div>
+<p>The version string has syntax “1.” (denoting Solfec-1.0’s primary version number) followed by a shorthand
+hexadecimal number (<a class="reference external" href="https://github.com/parmes/solfec-1.0/commit/04a53f2d54128413d617f84df6f701c4242eb95d">“04a53f2”</a>
+in this case) of a <a class="reference external" href="https://github.com/parmes/solfec-1.0/commits/master">GitHub commit</a> that most
+recently modified Solfec-1.0’s source code. This is followed by the date of that most recent modification
+of the source code.</p>
 <p><strong>The –v switch</strong> opens the interactive graphical viewer (cf. <a class="reference internal" href="#viewer-1"><span class="std std-numref">Fig. 1</span></a>). In this mode the user
 can view the geometrical model, run or step through analysis, and view results.
 The right mouse click on the viewer window expands the menu.</p>

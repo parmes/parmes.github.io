@@ -50,22 +50,22 @@
           <div class="body" role="main">
             
   <div class="section" id="constraint-solvers">
-<span id="solfec-theory-solvers"></span><h1>Constraint solvers<a class="headerlink" href="#constraint-solvers" title="Permalink to this headline">¶</a></h1>
-<p>Constraint solvers are used to find approximate a solution to the <a class="reference internal" href="constraints.html#solfec-theory-constraints"><span class="std std-ref">constraints</span></a> equations</p>
+<span id="solfec-1-0-theory-solvers"></span><h1>Constraint solvers<a class="headerlink" href="#constraint-solvers" title="Permalink to this headline">¶</a></h1>
+<p>Constraint solvers are used to find approximate a solution to the <a class="reference internal" href="constraints.html#solfec-1-0-theory-constraints"><span class="std std-ref">constraints</span></a> equations</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\]</div>
-<p>expressing <a class="reference internal" href="joints.html#solfec-theory-joints"><span class="std std-ref">joints</span></a> and <a class="reference internal" href="conform.html#solfec-theory-conform"><span class="std std-ref">contact conditions</span></a>, together with
-the <a class="reference internal" href="locdyn.html#solfec-theory-locdyn"><span class="std std-ref">local dynamics</span></a> equations</p>
+<p>expressing <a class="reference internal" href="joints.html#solfec-1-0-theory-joints"><span class="std std-ref">joints</span></a> and <a class="reference internal" href="conform.html#solfec-1-0-theory-conform"><span class="std std-ref">contact conditions</span></a>, together with
+the <a class="reference internal" href="locdyn.html#solfec-1-0-theory-locdyn"><span class="std std-ref">local dynamics</span></a> equations</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{U}=\mathbf{B}+\mathbf{WR}\]</div>
 <p>The merit function used as one of the termination conditions by all solvers, and the algorithms of the Solfec-1.0 solvers themselves,
 are described in sections below.</p>
 <div class="section" id="merit-function">
 <h2>Merit function<a class="headerlink" href="#merit-function" title="Permalink to this headline">¶</a></h2>
-<p>As discussed on the <a class="reference internal" href="basics.html#solfec-theory-basics"><span class="std std-ref">basics page</span></a>, at every time step an implicit equation
+<p>As discussed on the <a class="reference internal" href="basics.html#solfec-1-0-theory-basics"><span class="std std-ref">basics page</span></a>, at every time step an implicit equation
 <span class="math notranslate nohighlight">\(\mathbf{C}\left(\mathbf{R}\right)=\mathbf{0}\)</span> is solved. This solution is approximate. In order to express its accuracy
 as a scalar value, we formulate <span class="math notranslate nohighlight">\(\mathbf{C}\left(\mathbf{R}\right)\)</span> in terms of velocity
-(see <a class="reference internal" href="conform.html#solfec-theory-conform-nsveq"><span class="std std-ref">the non-smooth velocity equation formulation</span></a>) and use</p>
+(see <a class="reference internal" href="conform.html#solfec-1-0-theory-conform-nsveq"><span class="std std-ref">the non-smooth velocity equation formulation</span></a>) and use</p>
 <div class="math notranslate nohighlight">
 \[g\left(\mathbf{R}\right)=\sum_{\alpha}\left\langle \mathbf{W}_{\alpha\alpha}^{-1}\mathbf{C}_{\alpha}\left(\mathbf{R}\right),
 \mathbf{C}_{\alpha}\left(\mathbf{R}\right)\right\rangle /\sum_{\alpha}\left\langle \mathbf{W}_{\alpha\alpha}^{-1}\mathbf{B}_{\alpha},
@@ -79,8 +79,8 @@ we only use the diagonal blocks, which are always positive definite. To recapitu
 <p>Such merit function is used as one of the stopping criterions for the solvers described below.</p>
 </div>
 <div class="section" id="gauss-seidel-solver">
-<span id="solfec-theory-solvers-gs"></span><h2>Gauss–Seidel solver<a class="headerlink" href="#gauss-seidel-solver" title="Permalink to this headline">¶</a></h2>
-<p>The equations of <a class="reference internal" href="locdyn.html#solfec-theory-locdyn"><span class="std std-ref">local dynamics</span></a> read</p>
+<span id="solfec-1-0-theory-solvers-gs"></span><h2>Gauss–Seidel solver<a class="headerlink" href="#gauss-seidel-solver" title="Permalink to this headline">¶</a></h2>
+<p>The equations of <a class="reference internal" href="locdyn.html#solfec-1-0-theory-locdyn"><span class="std std-ref">local dynamics</span></a> read</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{U}_{\alpha}=\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{U}_{\alpha}\)</span> are relative velocities and <span class="math notranslate nohighlight">\(\mathbf{R}_{\alpha}\)</span> are reactions at constraint points. <span class="math notranslate nohighlight">\(\mathbf{U}_{\alpha}\)</span>,
@@ -180,7 +180,7 @@ we need to receive all remaining reactions that have been sent in line 7 of <str
 process the <span class="math notranslate nohighlight">\(Bottom_{i}\)</span> and <span class="math notranslate nohighlight">\(Inner1_{i}\)</span> sets in the same way as we did with the <span class="math notranslate nohighlight">\(Top_{i}\)</span> and <span class="math notranslate nohighlight">\(Inner2_{i}\)</span> sets. The condition <a class="reference internal" href="#equation-gsbalcnd">(83)</a>
 attempts to balance the amount of computations needed to hide the communication (e.g. the larger the <span class="math notranslate nohighlight">\(Top_{i}\)</span> set is, the larger the <span class="math notranslate nohighlight">\(Inner2_{i}\)</span> set becomes).
 It should be noted that the convergence criterion in line 13 is global across all processors.</p>
-<p>In <a class="reference internal" href="../user/solvers.html#solfec-user-solvers"><span class="std std-ref">User Manual Solvers Section</span></a> several variants of the parallel Gauss–Seidel algorithm are listed. Algorithm <strong>PARALLEL_GS</strong> corresponds to
+<p>In <a class="reference internal" href="../user/solvers.html#solfec-1-0-user-solvers"><span class="std std-ref">User Manual Solvers Section</span></a> several variants of the parallel Gauss–Seidel algorithm are listed. Algorithm <strong>PARALLEL_GS</strong> corresponds to
 the FULL variant. We might like to relax the bottleneck of <strong>LOOP</strong> in line 8 of <strong>PARALLEL_GS</strong> by replacing it with</p>
 <p>8.1 <span class="math notranslate nohighlight">\(\,\,\)</span> SWEEP <span class="math notranslate nohighlight">\(\left(Middle_{i}\right)\)</span> <br />
 8.2 <span class="math notranslate nohighlight">\(\,\,\)</span> send <span class="math notranslate nohighlight">\(\left(Middle_{i}\right)\)</span> <br />
@@ -198,8 +198,8 @@ gross inconsistency: something usually called “a processor Gauss-Seidel method
 <p>Although this kind of approach does work as a multigrid smoother, it has little use in our context. Nevertheless, we use it for illustration sake and name the BOUNDARY_JACOBI.</p>
 </div>
 <div class="section" id="projected-newton-solver">
-<span id="solfec-theory-solvers-pqn"></span><h2>Projected Newton solver<a class="headerlink" href="#projected-newton-solver" title="Permalink to this headline">¶</a></h2>
-<p>Using the <a class="reference internal" href="conform.html#solfec-theory-conform-nsveq"><span class="std std-ref">non–smooth velocity equation formulation</span></a> let us rewrite the frictional contact problem as</p>
+<span id="solfec-1-0-theory-solvers-pqn"></span><h2>Projected Newton solver<a class="headerlink" href="#projected-newton-solver" title="Permalink to this headline">¶</a></h2>
+<p>Using the <a class="reference internal" href="conform.html#solfec-1-0-theory-conform-nsveq"><span class="std std-ref">non–smooth velocity equation formulation</span></a> let us rewrite the frictional contact problem as</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{C}\left(\mathbf{R}\right)=\mathbf{F}\left(\mathbf{R}\right)+\mathbf{m}\left(\mathbf{R}-\mathbf{F}\left(\mathbf{R}\right)\right)=\mathbf{0}\mbox{ and }\mathbf{R}\in K\]</div>
 <p>where <span class="math notranslate nohighlight">\(K\)</span> is the direct sum of friction cones at all contact points. Since <span class="math notranslate nohighlight">\(\mathbf{C}\left(\mathbf{R}\right)\)</span> is not smooth, to compute <span class="math notranslate nohighlight">\(\nabla\mathbf{C}\)</span> we
@@ -239,14 +239,14 @@ needs to be adjusted “by hand”. The automatic update formulas that can be fo
 For ill–conditioned problems one should pick <span class="math notranslate nohighlight">\(\delta\)</span> that delivers an overall best convergence behavior. Large values will slow down convergence, but stabilize it;
 small values may destabilize convergence for ill–conditioned problems; <span class="math notranslate nohighlight">\(\delta\)</span> (typically <span class="math notranslate nohighlight">\(\ll1\)</span>) should be tuned together with <span class="math notranslate nohighlight">\(\epsilon\)</span> and <span class="math notranslate nohighlight">\(m\)</span>
 (e.g. find a suitably small <span class="math notranslate nohighlight">\(\delta\)</span> first, then tweak <span class="math notranslate nohighlight">\(\epsilon\)</span>). Since rigorous analysis is still missing for these parameters, please experiment before settling
-on specific values for a specific problem. Use linver = ‘GMRES’ in <a class="reference internal" href="../user/solvers.html#solfec-command-newton-solver"><span class="std std-ref">NEWTON_SOLVER</span></a> to enable this variant (this is also the default).</p>
+on specific values for a specific problem. Use linver = ‘GMRES’ in <a class="reference internal" href="../user/solvers.html#solfec-1-0-command-newton-solver"><span class="std std-ref">NEWTON_SOLVER</span></a> to enable this variant (this is also the default).</p>
 <ol class="arabic simple" start="2">
 <li>PQN2:</li>
 </ol>
 <div class="math notranslate nohighlight">
 \[\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\left(1-\theta\right)\triangle\mathbf{R}^{k}-\theta\left(\mbox{diag}_{3\times3}\left[\nabla_{\omega}\mathbf{C}^{k}\right]\right)^{-1}\mathbf{C}^{k}\right]\]</div>
 <p>where <span class="math notranslate nohighlight">\(\theta\in\left[0,1\right]\)</span> and the diagonal <span class="math notranslate nohighlight">\(3\times3\)</span> blocks of <span class="math notranslate nohighlight">\(\nabla_{\omega}\mathbf{C}^{k}\)</span> are directly inverted. This simple scheme is interesting
-because it converges for a sufficiently small <span class="math notranslate nohighlight">\(\theta\)</span>, while it is essentially a nonlinear Jacobi–type method. Use linver = ‘DIAG’ in <a class="reference internal" href="../user/solvers.html#solfec-command-newton-solver"><span class="std std-ref">NEWTON_SOLVER</span></a>
+because it converges for a sufficiently small <span class="math notranslate nohighlight">\(\theta\)</span>, while it is essentially a nonlinear Jacobi–type method. Use linver = ‘DIAG’ in <a class="reference internal" href="../user/solvers.html#solfec-1-0-command-newton-solver"><span class="std std-ref">NEWTON_SOLVER</span></a>
 to enable this variant.</p>
 <p>Both variants are summarized as algorithms below.</p>
 <p><strong>PQN1</strong> <span class="math notranslate nohighlight">\(\left(\mathbf{R},\gamma,n,\omega,\delta,m,\epsilon\right)\)</span> <br />
@@ -269,7 +269,7 @@ to enable this variant.</p>
 8 <span class="math notranslate nohighlight">\(\,\,\)</span> while <span class="math notranslate nohighlight">\(g\left(\mathbf{R}^{k}\right)\ge\gamma\)</span> and <span class="math notranslate nohighlight">\(k&lt;n\)</span> <br /></p>
 </div>
 <div class="section" id="penalty-solver">
-<span id="solfec-theory-solvers-penalty"></span><h2>Penalty Solver<a class="headerlink" href="#penalty-solver" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-1-0-theory-solvers-penalty"></span><h2>Penalty Solver<a class="headerlink" href="#penalty-solver" title="Permalink to this headline">¶</a></h2>
 <p>The penalty solver is quite straightforward. On each processor we split the constraints into <span class="math notranslate nohighlight">\(Contacts_{i}\)</span> and <span class="math notranslate nohighlight">\(Others_{i}\)</span>,
 hence we separate contact constraints from bilateral ones. We then update the contacts using the spring–dashpot model and calculate reactions
 of bilateral constraints using the Gauss–Seidel solver (fixed accuracy <span class="math notranslate nohighlight">\(\mbox{epsilon=1E-4, maxiter = 1000}\)</span> is used). We use the

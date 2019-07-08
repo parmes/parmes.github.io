@@ -50,10 +50,10 @@
           <div class="body" role="main">
             
   <div class="section" id="simulation">
-<span id="solfec-user-simulation"></span><h1>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-1-0-user-simulation"></span><h1>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h1>
 <p>Routines listed in this section control the solution process.
 A simulation can be run be invoking the RUN command, documented below.</p>
-<div class="topic" id="solfec-command-run">
+<div class="topic" id="solfec-1-0-command-run">
 <p class="topic-title first">RUN (solfec, solver, duration)</p>
 <p>This routine runs a simulation.</p>
 <ul class="simple">
@@ -112,7 +112,7 @@ possible subsets made of labels such as ‘BODY123A’, ‘BODY_anything_B’, e
 <div class="section" id="runtime-utilities">
 <h2>Runtime utilities<a class="headerlink" href="#runtime-utilities" title="Permalink to this headline">¶</a></h2>
 <p>Routines below help control runtime behaviour.</p>
-<div class="topic" id="solfec-command-output">
+<div class="topic" id="solfec-1-0-command-output">
 <p class="topic-title first">OUTPUT (solfec, interval | compression)</p>
 <p>This routine specifies the frequency of writing to the output file.</p>
 <ul class="simple">
@@ -130,7 +130,7 @@ Compressed output files are smaller, although they might not be portable between
 <li>extents – (xmin, ymin, zmin, xmax, ymax, zmax) tuple</li>
 </ul>
 </div>
-<div class="topic" id="solfec-command-callback">
+<div class="topic" id="solfec-1-0-command-callback">
 <p class="topic-title first">CALLBACK (solfec, interval, data, callback)</p>
 <p>This routine defines a callback function, invoked during a run of Solfec-1.0 every interval of time.
 A callback routine can interrupt the course of RUN command by returning 0.</p>
@@ -139,7 +139,7 @@ A callback routine can interrupt the course of RUN command by returning 0.</p>
 <li>interval – length of the time interval elapsing before consecutive callback calls</li>
 <li>data – data passed to the callback function</li>
 <li>callback – callback function of form: value = callback (data), where for the returned value equal zero Solfec-1.0 run is stopped.
-See also: <a class="reference internal" href="utilities.html#solfec-command-register-callback"><span class="std std-ref">REGISTER_CALLBACK</span></a>.</li>
+See also: <a class="reference internal" href="utilities.html#solfec-1-0-command-register-callback"><span class="std std-ref">REGISTER_CALLBACK</span></a>.</li>
 </ul>
 </div>
 <div class="topic">
@@ -154,11 +154,11 @@ warnings enabled and only switch them off after making sure, that they can be ig
 <div class="section" id="contact-handling">
 <h2>Contact handling<a class="headerlink" href="#contact-handling" title="Permalink to this headline">¶</a></h2>
 <p>Routines listed below affect contact detection and contact handling.</p>
-<div class="topic" id="solfec-command-geometric-epsilon">
+<div class="topic" id="solfec-1-0-command-geometric-epsilon">
 <p class="topic-title first">GEOMETRIC_EPSILON (epsilon)</p>
 <p>This routine sets a numerical tolerance for geometric tests performed within Solfec-1.0.
 The tolerance is a characteristic distance between two distinct points below which they can be regarded as one.
-See also <a class="reference internal" href="../theory/conpnt.html#geometric-epsilon-section"><span class="std std-ref">this comment</span></a> in the <a class="reference internal" href="../theory.html#solfec-theory"><span class="std std-ref">Theory Manual</span></a>.</p>
+See also <a class="reference internal" href="../theory/conpnt.html#geometric-epsilon-section"><span class="std std-ref">this comment</span></a> in the <a class="reference internal" href="../theory.html#solfec-1-0-theory"><span class="std std-ref">Theory Manual</span></a>.</p>
 <ul class="simple">
 <li>epsilon – geometrical tolerance (default: 1E-6)</li>
 </ul>
@@ -191,7 +191,7 @@ is enabled for all possible surface pairs. Must be called on MPI rank 0 process 
 <li>surf2 – second BODY object</li>
 </ul>
 </div>
-<div class="topic" id="solfec-command-contact-sparsify">
+<div class="topic" id="solfec-1-0-command-contact-sparsify">
 <p class="topic-title first">CONTACT_SPARSIFY (solfec | threshold, minarea, mindist)</p>
 <p>This routine modifies contact filtering (sparsification) behaviour. Generally speaking, some contact points
 are filtered out in order to avoid unnecessary dense contact point clusters. If a pair of bodies is connected
@@ -251,7 +251,7 @@ meet at it before they can continue). It is ignored in the serial mode.</p>
 <li>solfec – optional SOLFEC object (useful in ‘READ’ mode)</li>
 </ul>
 </div>
-<div class="topic" id="solfec-command-here">
+<div class="topic" id="solfec-1-0-command-here">
 <p class="topic-title first">ret = HERE (solfec, object)</p>
 <p>This routine tests whether an object is located on the current processor. During parallel runs
 objects migrate between processors. When calling a function (or a member) for an object not present

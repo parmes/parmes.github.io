@@ -50,7 +50,7 @@
           <div class="body" role="main">
             
   <div class="section" id="rotating-bar">
-<span id="solfec-examples-reduced-order-ro0"></span><h1>Rotating bar<a class="headerlink" href="#rotating-bar" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-1-0-examples-reduced-order-ro0"></span><h1>Rotating bar<a class="headerlink" href="#rotating-bar" title="Permalink to this headline">¶</a></h1>
 <p>This is a simplest application of the reduced order modeling functionality. This example is also included in <a class="reference internal" href="../../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>:
 having a look into this technical report may be helpful. The input files for this example are located in the
 <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">solfec-1.0/examples/reduced–order0</a> directory.
@@ -64,7 +64,7 @@ These are:</p>
 <a class="reference external" href="https://en.wikipedia.org/wiki/Principal_component_analysis">POD</a> base</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py">ro0–lib.py</a> – library functions used by other input files</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-run-all.py">ro0–run–all.py</a> – input file that runs all tests and generates all plots</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-view.py">ro0–view.py</a> – input file suitable for use with Solfec-1.0 <a class="reference internal" href="../../running.html#solfec-running"><span class="std std-ref">viewer</span></a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-view.py">ro0–view.py</a> – input file suitable for use with Solfec-1.0 <a class="reference internal" href="../../running.html#solfec-1-0-running"><span class="std std-ref">viewer</span></a></li>
 </ul>
 <div class="figure align-center" id="id13">
 <span id="ro0-fig1"></span><a class="reference internal image-reference" href="../../../_images/ro0_mesh.png"><img alt="../../../_images/ro0_mesh.png" src="../../../_images/ro0_mesh.png" style="width: 20%;" /></a>
@@ -219,7 +219,7 @@ in lines 36–42. The <a class="reference external" href="https://github.com/tko
 creates a rotating bar model, runs the analysis, or reads the results, depending on parameters.
 The <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L180">ro0_times</a> function returners
 the time history of time itself. The <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L186">ro0_elongation</a>
-function reads and returns the time history of bar elongation, given a <a class="reference internal" href="../../user/solfec.html#solfec-user-solfec"><span class="std std-ref">SOLFEC object</span></a> in <code class="docutils literal notranslate"><span class="pre">'READ'</span></code> mode as an input.
+function reads and returns the time history of bar elongation, given a <a class="reference internal" href="../../user/solfec.html#solfec-1-0-user-solfec"><span class="std std-ref">SOLFEC object</span></a> in <code class="docutils literal notranslate"><span class="pre">'READ'</span></code> mode as an input.
 Finally, in lines 44–55, we use <a class="reference external" href="https://matplotlib.org">matplotlib</a> to generate figures that contribute to <a class="reference internal" href="#ro0-fig2"><span class="std std-numref">Fig. 61</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="ro0-lst2">
 <div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">Listing of ro0–gen–bases.py</span><a class="headerlink" href="#ro0-lst2" title="Permalink to this code">¶</a></div>
@@ -288,12 +288,12 @@ file. Because this code is used by multiple tests, in lines 9–10 we first atte
 been called already and those bases may have been saved. If this is not the case, in lines 12–29 we generate and save the reduced order
 and modal bases. To generate the proper orthogonal decomposition reduced order base, we first create a Total Lagrangian model, in line 16,
 but do not run it yet (the <code class="docutils literal notranslate"><span class="pre">runduration</span></code> parameter of <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L14">ro0_model</a>
-is not used). Instead, we used the <a class="reference internal" href="../../user/utilities.html#solfec-command-rigid-displacements"><span class="std std-ref">RIGID_DISPLACEMENTS</span></a>
-and <a class="reference internal" href="../../user/utilities.html#solfec-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> commands in order to sample rigid and co–rotated deformable displacements,
+is not used). Instead, we used the <a class="reference internal" href="../../user/utilities.html#solfec-1-0-command-rigid-displacements"><span class="std std-ref">RIGID_DISPLACEMENTS</span></a>
+and <a class="reference internal" href="../../user/utilities.html#solfec-1-0-command-corotated-displacements"><span class="std std-ref">COROTATED_DISPLACEMENTS</span></a> commands in order to sample rigid and co–rotated deformable displacements,
 and then run the analysis in line 20. The rigid displacements <code class="docutils literal notranslate"><span class="pre">rig</span></code> and the sampled deformable displacements <code class="docutils literal notranslate"><span class="pre">defo</span></code> are then passed to the library
 routine <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L100">ro0_POD_base</a> which employs the <a class="reference external" href="https://pypi.python.org/pypi/modred">modred package</a> to calculate the reduced base. Following this, in line 24, the modal base is generated using library call
 to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L69">ro0_modal_base</a>, which employs Solfec-1.0’s utility
-function <a class="reference internal" href="../../user/utilities.html#solfec-command-modal-analysis"><span class="std std-ref">MODAL_ANALYSIS</span></a> in order to calculate the modal base.  Finally, the results are saved in lines 28 and 29.</p>
+function <a class="reference internal" href="../../user/utilities.html#solfec-1-0-command-modal-analysis"><span class="std std-ref">MODAL_ANALYSIS</span></a> in order to calculate the modal base.  Finally, the results are saved in lines 28 and 29.</p>
 <div class="figure align-center" id="id16">
 <span id="ro0-fig4"></span><a class="reference internal image-reference" href="../../../_images/ro0_energy_d0_100s.png"><img alt="../../../_images/ro0_energy_d0_100s.png" src="../../../_images/ro0_energy_d0_100s.png" style="width: 100%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 63 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0">reduced-order0</a>: time history of total energy for <span class="math notranslate nohighlight">\(h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\}\)</span>  and <span class="math notranslate nohighlight">\(100\mbox{s}\)</span> runs.</span></p>

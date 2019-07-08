@@ -50,7 +50,7 @@
           <div class="body" role="main">
             
   <div class="section" id="constraints">
-<span id="solfec-theory-constraints"></span><h1>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-1-0-theory-constraints"></span><h1>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h1>
 <p>Constraints allow to limit kinematic freedom of bodies, e.g. control displacements or prevent interpenetration.
 This is reflected on the level of dynamics via reaction forces, which are used to produce desired kinematic effects.
 Solfec-1.0 includes equality constraints, or joints, and contact constraints applied at individual contact points.
@@ -206,7 +206,7 @@ into a multi–body system, by saying</p>
 <p>where the relation <span class="math notranslate nohighlight">\(\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\)</span>
 implicitly expresses a control over local velocities <span class="math notranslate nohighlight">\(\mathbf{U}_{\alpha}\)</span>,
 exerted using reaction forces <span class="math notranslate nohighlight">\(\mathbf{R}_{\alpha}\)</span>. Now, including
-constraints, we can modify the <a class="reference internal" href="timeint.html#solfec-theory-timeint"><span class="std std-ref">previously introduced time stepping</span></a> as follows</p>
+constraints, we can modify the <a class="reference internal" href="timeint.html#solfec-1-0-theory-timeint"><span class="std std-ref">previously introduced time stepping</span></a> as follows</p>
 <div class="math notranslate nohighlight" id="equation-q1">
 <span id="timestepping1"></span><span class="eqno">(49)<a class="headerlink" href="#equation-q1" title="Permalink to this equation">¶</a></span>\[\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\]</div>
 <div class="math notranslate nohighlight" id="equation-u2">

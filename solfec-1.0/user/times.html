@@ -50,7 +50,7 @@
           <div class="body" role="main">
             
   <div class="section" id="time-series">
-<span id="solfec-user-times"></span><h1>Time series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-1-0-user-times"></span><h1>Time series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h1>
 <p>An object of type TIME_SERIES is a linear spline based on a series of 2-points.</p>
 <div class="topic">
 <p class="topic-title first">obj = TIME_SERIES (points | label, cache)</p>
@@ -72,7 +72,7 @@ t2 v2 <br />
 memory just once; this facilitates more optimal memory usage in cases where many identical
 TIME_SERIES objects are used in multiple constraints (for example); the label should be unique;
 <strong>Note:</strong> labeled time series should be declared globally on all MPI ranks and must not be defined
-within if blocks dependent on the <a class="reference internal" href="simulation.html#solfec-command-here"><span class="std std-ref">HERE(…)</span></a> command</p>
+within if blocks dependent on the <a class="reference internal" href="simulation.html#solfec-1-0-command-here"><span class="std std-ref">HERE(…)</span></a> command</p>
 </li>
 <li><p class="first">cache – optional partial cache size; if <strong>points</strong> = file path and <strong>cache</strong> &gt; 0 then only the
 cache size of points is stored in memory at any given time; this helps to save memory in case of

@@ -50,11 +50,11 @@
           <div class="body" role="main">
             
   <div class="section" id="contact-formulations">
-<span id="solfec-theory-conform"></span><h1>Contact formulations<a class="headerlink" href="#contact-formulations" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-1-0-theory-conform"></span><h1>Contact formulations<a class="headerlink" href="#contact-formulations" title="Permalink to this headline">¶</a></h1>
 <p>Contact formulations are used in Solfec-1.0 to facilitate solution of the constraints equation</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\]</div>
-<p>once contact points are detected between bodies and included into the <a class="reference internal" href="constraints.html#solfec-theory-constraints"><span class="std std-ref">constraints</span></a>.
+<p>once contact points are detected between bodies and included into the <a class="reference internal" href="constraints.html#solfec-1-0-theory-constraints"><span class="std std-ref">constraints</span></a>.
 Depending on a solver type a contact formulation can be either used locally (on a single contact point level) or globally
 (on the level of a all contact points simultaneously). This however does not affect the mathematics of a contact formulation
 itself. Sections below describe the formulations employed by Solfec-1.0 and point to references, source code sections, and
@@ -81,7 +81,7 @@ to the slip velocity.</p>
 <div class="section" id="projected-gradient-formulation">
 <h2>Projected gradient formulation<a class="headerlink" href="#projected-gradient-formulation" title="Permalink to this headline">¶</a></h2>
 <p>This is an implicit formulation based on <a class="footnote-reference" href="#id8" id="id1">[1]</a> and it is optionally used on an individual contact point level within the
-<a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss–Seidel solver</span></a>. On the point level this formulation is implemented in
+<a class="reference internal" href="solvers.html#solfec-1-0-theory-solvers-gs"><span class="std std-ref">Gauss–Seidel solver</span></a>. On the point level this formulation is implemented in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L35">dbs.c:35</a>.  The Signorini condition <a class="reference internal" href="#equation-signorini">(66)</a> is expressed
 as a projection</p>
 <div class="math notranslate nohighlight" id="equation-rnproj">
@@ -97,7 +97,7 @@ a derivative of an objective function with respect to <span class="math notransl
 <div class="section" id="de-saxce-and-feng-formulation">
 <h2>De Saxcé and Feng formulation<a class="headerlink" href="#de-saxce-and-feng-formulation" title="Permalink to this headline">¶</a></h2>
 <p>This is an implicit formulation based on <a class="footnote-reference" href="#id9" id="id2">[2]</a> and it is optionally used on an individual contact point level within the
-<a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss–Seidel solver</span></a>. On the point level this formulation is implemented in
+<a class="reference internal" href="solvers.html#solfec-1-0-theory-solvers-gs"><span class="std std-ref">Gauss–Seidel solver</span></a>. On the point level this formulation is implemented in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L96">dbs.c:96</a>. We express the Signorini–Coulomb law <a class="reference internal" href="#equation-signorini">(66)</a> and <a class="reference internal" href="#equation-coulomb">(67)</a>
 as an inclusion. The friction cone <span class="math notranslate nohighlight">\(K_{\alpha}\)</span> is defined as</p>
 <div class="math notranslate nohighlight" id="equation-kalpha">
@@ -125,7 +125,7 @@ in formulating solution strategies based on already existing approaches.</p>
 <div class="section" id="non-smooth-force-equation-formulation">
 <h2>Non–smooth force equation formulation<a class="headerlink" href="#non-smooth-force-equation-formulation" title="Permalink to this headline">¶</a></h2>
 <p>This is an implicit formulation based on <a class="footnote-reference" href="#id10" id="id5">[3]</a> and it is used by default on an individual contact point level within the
-<a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss–Seidel solver</span></a>. On the point level this formulation is implemented in
+<a class="reference internal" href="solvers.html#solfec-1-0-theory-solvers-gs"><span class="std std-ref">Gauss–Seidel solver</span></a>. On the point level this formulation is implemented in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L142">dbs.c:142</a>. The authors of <a class="footnote-reference" href="#id10" id="id6">[3]</a> propose to express the Signorini and Coulomb
 conditions <a class="reference internal" href="#equation-signorini">(66)</a> and <a class="reference internal" href="#equation-coulomb">(67)</a> as a non–smooth equation <span class="math notranslate nohighlight">\(\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\)</span>, where</p>
 <div class="math notranslate nohighlight" id="equation-nsfeq">
@@ -142,11 +142,11 @@ R_{N}-\max\left(0,d_{N}\right)
 as a basis for Newton type solution schemes in the finite–element context.</p>
 </div>
 <div class="section" id="non-smooth-velocity-equation-formulation">
-<span id="solfec-theory-conform-nsveq"></span><h2>Non–smooth velocity equation formulation<a class="headerlink" href="#non-smooth-velocity-equation-formulation" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-1-0-theory-conform-nsveq"></span><h2>Non–smooth velocity equation formulation<a class="headerlink" href="#non-smooth-velocity-equation-formulation" title="Permalink to this headline">¶</a></h2>
 <p>This is an implicit formulation developed specifically for Solfec-1.0 based on formula <a class="reference internal" href="#equation-dsf">(71)</a> from <a class="footnote-reference" href="#id9" id="id7">[2]</a>. It is optionally used on an individual
-contact point level within the <a class="reference internal" href="solvers.html#solfec-theory-solvers-gs"><span class="std std-ref">Gauss–Seidel solver</span></a>. It is also the basis of contact linearization within the
-<a class="reference internal" href="solvers.html#solfec-theory-solvers-pqn"><span class="std std-ref">projected Newton solver</span></a>. On the point level this formulation is implemented in
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/scf.c#L28">scf.c</a>. Using the <a class="reference internal" href="locdyn.html#solfec-theory-locdyn"><span class="std std-ref">local dynamics</span></a> relationship</p>
+contact point level within the <a class="reference internal" href="solvers.html#solfec-1-0-theory-solvers-gs"><span class="std std-ref">Gauss–Seidel solver</span></a>. It is also the basis of contact linearization within the
+<a class="reference internal" href="solvers.html#solfec-1-0-theory-solvers-pqn"><span class="std std-ref">projected Newton solver</span></a>. On the point level this formulation is implemented in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/scf.c#L28">scf.c</a>. Using the <a class="reference internal" href="locdyn.html#solfec-1-0-theory-locdyn"><span class="std std-ref">local dynamics</span></a> relationship</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{U_{\alpha}}=\mathbf{B_{\alpha}}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}\]</div>
 <p>let us define a function</p>
@@ -192,14 +192,14 @@ Equation <a class="reference internal" href="#equation-nsveq">(78)</a> expresses
 <div class="section" id="semi-explicit-penalty-formulation">
 <h2>Semi–explicit penalty formulation<a class="headerlink" href="#semi-explicit-penalty-formulation" title="Permalink to this headline">¶</a></h2>
 <p>This is a simple penalty based formulation developed specifically for Solfec-1.0 and used within the
-<a class="reference internal" href="solvers.html#solfec-theory-solvers-penalty"><span class="std std-ref">penalty solver</span></a>. On the point level this formulation is implemented
+<a class="reference internal" href="solvers.html#solfec-1-0-theory-solvers-penalty"><span class="std std-ref">penalty solver</span></a>. On the point level this formulation is implemented
 in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/pes.c#L33">pes.c</a>. Let</p>
 <div class="math notranslate nohighlight">
 \[s=spring\mbox{ and }d=dashpot\mbox{ and }g=gap\mbox{ and }m=hpow\]</div>
 <p>where <span class="math notranslate nohighlight">\(hpow\)</span> stands for the “Hertz power”. The normal reaction is computed as follows</p>
 <div class="math notranslate nohighlight" id="equation-spring-dashpot-1">
 <span class="eqno">(79)<a class="headerlink" href="#equation-spring-dashpot-1" title="Permalink to this equation">¶</a></span>\[R_{N}=-s\cdot\frac{g^{t+h}+g^{t}}{2}-d\cdot\frac{U_{N}^{t+h}+U_{N}^{t}}{2}\]</div>
-<p>where <span class="math notranslate nohighlight">\(U_{N}\)</span> is the normal relative velocity. <a class="reference internal" href="basics.html#solfec-theory-basics"><span class="std std-ref">Recall</span></a>, that the gap function is computed for the configuration
+<p>where <span class="math notranslate nohighlight">\(U_{N}\)</span> is the normal relative velocity. <a class="reference internal" href="basics.html#solfec-1-0-theory-basics"><span class="std std-ref">Recall</span></a>, that the gap function is computed for the configuration
 <span class="math notranslate nohighlight">\(\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\)</span>, so that the gap function value computed during geometrical contact detection reads</p>
 <div class="math notranslate nohighlight">
 \[g=g^{t}+\frac{h}{2}U_{N}^{t}\]</div>

@@ -50,17 +50,17 @@
           <div class="body" role="main">
             
   <div class="section" id="dimensional-cube-array-parallel-scaling">
-<span id="solfec-examples-hybrid-modeling-hs3-scaling"></span><h1>3–dimensional cube array parallel scaling<a class="headerlink" href="#dimensional-cube-array-parallel-scaling" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-1-0-examples-hybrid-modeling-hs3-scaling"></span><h1>3–dimensional cube array parallel scaling<a class="headerlink" href="#dimensional-cube-array-parallel-scaling" title="Permalink to this headline">¶</a></h1>
 <p>This is a 3–dimensional case, <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">solfec/examples/hybrid–solver3</a>,
-of the family of <a class="reference internal" href="hs123.html#solfec-examples-hybrid-modeling-hs123"><span class="std std-ref">1,2 and 3–dismenional examples</span></a>, demonstrating applications of
-the <a class="reference internal" href="../../user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a> to hybrid, <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a>–<a class="reference internal" href="../../index.html#solfec-1-index"><span class="std std-ref">Solfec-1.0</span></a> based, arrays of cubes
+of the family of <a class="reference internal" href="hs123.html#solfec-1-0-examples-hybrid-modeling-hs123"><span class="std std-ref">1,2 and 3–dismenional examples</span></a>, demonstrating applications of
+the <a class="reference internal" href="../../user/solvers.html#solfec-1-0-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a> to hybrid, <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a>–<a class="reference internal" href="../../index.html#solfec-1-0-index"><span class="std std-ref">Solfec-1.0</span></a> based, arrays of cubes
 subject to an acceleration sine dwell signal. The specifcation of geomery and material data are exactly generalized from
-<a class="reference internal" href="hs123.html#solfec-examples-hybrid-modeling-hs123"><span class="std std-ref">the 2–dimensional counterpart</span></a>.
+<a class="reference internal" href="hs123.html#solfec-1-0-examples-hybrid-modeling-hs123"><span class="std std-ref">the 2–dimensional counterpart</span></a>.
 The <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">solfec/examples/hybrid–solver3</a> directory contains:</p>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/README">README</a> – a text based specification of the problem</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-parmec.py">hs3–parmec.py</a> – including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-solfec.py">hs3–solfec.py</a> – including the <a class="reference internal" href="../../index.html#solfec-1-index"><span class="std std-ref">Solfec-1.0</span></a> input code</li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-solfec.py">hs3–solfec.py</a> – including the <a class="reference internal" href="../../index.html#solfec-1-0-index"><span class="std std-ref">Solfec-1.0</span></a> input code</li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-1.pvsm">hs3–state–1.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id5" id="id2">[1]</a></li>
 <li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-2.pvsm">hs3–state–2.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id8" id="id4">[2]</a></li>
 </ul>
@@ -71,7 +71,7 @@ The <a class="reference external" href="https://github.com/tkoziara/solfec/tree/
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-1.pvsm">hs3–state–1.pvsm</a>.
 The see–through array is modeled in Parmec: rotations are restrained and spring–dashpot elements, emulating contact,
 are insered at the centres of faces of neighbouring cubes. The solid 3x3 inner arrays is modeled in Solfec-1.0: hexahedral
-finite elements are used and contact interactions are modeled via <a class="reference internal" href="../../theory/conform.html#solfec-theory-conform"><span class="std std-ref">a non–smooth Signorini–Coulomb law</span></a></td></tr>
+finite elements are used and contact interactions are modeled via <a class="reference internal" href="../../theory/conform.html#solfec-1-0-theory-conform"><span class="std std-ref">a non–smooth Signorini–Coulomb law</span></a></td></tr>
 </tbody>
 </table>
 <p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/7ED5jDdhrtI?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><table class="docutils footnote" frame="void" id="id8" rules="none">
@@ -132,14 +132,14 @@ array generates up to 100k contact points on average, as seen in <a class="refer
 the minimum, average and maximum numbers of bodies and contact points for 24–192 MPI rank (CPU cores) runs. Solfec-1.0
 utilizes a single geometrical partitioning in order to balance together the bodies and the contact points. Contact
 points are favoured in the load balancing due to the higher computational work related to their processing.
-<a class="reference internal" href="#hs3-stats-2"><span class="std std-numref">Table 30</span></a> shows that contact update, detection, solution and assembling of the <a class="reference internal" href="../../theory/locdyn.html#solfec-theory-locdyn"><span class="std std-ref">local dynamics</span></a>
+<a class="reference internal" href="#hs3-stats-2"><span class="std std-numref">Table 30</span></a> shows that contact update, detection, solution and assembling of the <a class="reference internal" href="../../theory/locdyn.html#solfec-1-0-theory-locdyn"><span class="std std-ref">local dynamics</span></a>
 take up the majority of the computational time. The remaining time is spent in load balancing. In this example,
-Solfec-1.0 <a class="reference internal" href="../../theory/solvers.html#solfec-theory-solvers"><span class="std std-ref">solves an implicit frictional contact problem</span></a> of varying size at every time step.
+Solfec-1.0 <a class="reference internal" href="../../theory/solvers.html#solfec-1-0-theory-solvers"><span class="std std-ref">solves an implicit frictional contact problem</span></a> of varying size at every time step.
 <a class="reference internal" href="#hs3-fig1"><span class="std std-numref">Fig. 59</span></a> depicts the time history of the number of contact points over the one second duration of the simulation.</p>
 <table class="docutils footnote" frame="void" id="id16" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id15">[4]</a></td><td><a class="reference internal" href="../../running.html#solfec-running"><span class="std std-ref">Solfec-1.0 viewer</span></a> based animation of load balancing for the 30x30x30 model with N=20.
+<tr><td class="label"><a class="fn-backref" href="#id15">[4]</a></td><td><a class="reference internal" href="../../running.html#solfec-1-0-running"><span class="std std-ref">Solfec-1.0 viewer</span></a> based animation of load balancing for the 30x30x30 model with N=20.
 Contact points are colored according to processor rank for the 48 CPU cores based parallel run. Solfec-1.0 utilizes
 <a class="reference internal" href="../../../dynlb/index.html#dynlb-index"><span class="std std-ref">dynamic load balancing</span></a> in order maintain parallel balance.</td></tr>
 </tbody>

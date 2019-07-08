@@ -50,7 +50,7 @@
           <div class="body" role="main">
             
   <div class="section" id="materials">
-<span id="solfec-user-materials"></span><h1>Materials<a class="headerlink" href="#materials" title="Permalink to this headline">¶</a></h1>
+<span id="solfec-1-0-user-materials"></span><h1>Materials<a class="headerlink" href="#materials" title="Permalink to this headline">¶</a></h1>
 <p>Routines and objects described below allow to define bulk and surface materials.</p>
 <div class="section" id="field">
 <h2>FIELD<a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
@@ -68,7 +68,7 @@
 <p>where <em>data</em> is the optional user data passed to FIELD routine (if data is a tuple it will expand
 the list of parameters to the callback), <em>x, y, z</em> are the point coordinates, and <em>t</em> is time.
 The function should return a numeric value of the scalar field at given point and instant of time.
-See also: <a class="reference internal" href="utilities.html#solfec-command-register-callback"><span class="std std-ref">REGISTER_CALLBACK</span></a>.</p>
+See also: <a class="reference internal" href="utilities.html#solfec-1-0-command-register-callback"><span class="std std-ref">REGISTER_CALLBACK</span></a>.</p>
 </li>
 <li><p class="first">label – label string (default: ‘FIELD_i’, where i is incremented for each call)</p>
 </li>
@@ -91,7 +91,7 @@ See also: <a class="reference internal" href="utilities.html#solfec-command-regi
 </table>
 </div>
 <div class="section" id="bulk-material">
-<span id="solfec-command-bulk-material"></span><h2>BULK_MATERIAL<a class="headerlink" href="#bulk-material" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-1-0-command-bulk-material"></span><h2>BULK_MATERIAL<a class="headerlink" href="#bulk-material" title="Permalink to this headline">¶</a></h2>
 <p>An object of type BULK_MATERIAL represents material properties of a volume.</p>
 <div class="topic">
 <p class="topic-title first">obj = BULK_MATERIAL (solfec| model, label, young, poisson, density, tensile, fields, fracene)</p>
@@ -146,7 +146,7 @@ See also: <a class="reference internal" href="utilities.html#solfec-command-regi
 </table>
 </div>
 <div class="section" id="apply-bulkmat">
-<span id="solfec-command-apply-bulkmat"></span><h2>APPLY_BULKMAT<a class="headerlink" href="#apply-bulkmat" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-1-0-command-apply-bulkmat"></span><h2>APPLY_BULKMAT<a class="headerlink" href="#apply-bulkmat" title="Permalink to this headline">¶</a></h2>
 <p>This routine applies bulk material to a subset of geometric objects with the given volume identifier.</p>
 <div class="topic">
 <p class="topic-title first">APPLY_BULKMAT (solfec, body, volid, material)</p>
@@ -159,7 +159,7 @@ See also: <a class="reference internal" href="utilities.html#solfec-command-regi
 </div>
 </div>
 <div class="section" id="surface-material">
-<span id="solfec-command-surface-material"></span><h2>SURFACE_MATERIAL<a class="headerlink" href="#surface-material" title="Permalink to this headline">¶</a></h2>
+<span id="solfec-1-0-command-surface-material"></span><h2>SURFACE_MATERIAL<a class="headerlink" href="#surface-material" title="Permalink to this headline">¶</a></h2>
 <p>An object of type SURFACE_MATERIAL represents material properties on the interface between two surfaces.
 Surfaces identifiers are included in definitions of all geometric objects.</p>
 <div class="topic">
