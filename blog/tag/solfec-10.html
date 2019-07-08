@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Posts tagged springs &#8212; PARMES  documentation</title>
+    <title>Posts tagged solfec-1.0 &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
@@ -25,7 +25,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Posts tagged springs">
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Posts tagged solfec-1.0">
   
   
   <style type="text/css">
@@ -53,19 +53,64 @@
       
       Posts tagged
       
-      springs
+      solfec-1.0
       
     </h1>
     
     
 
     <div class="section">
-      <h2><a href="../unspring_and_spring_state.html">UNSPRING and spring state in Parmec</a></h2>
+      <h2><a href="../solfec_export_command.html">SOLFEC_EXPORT command</a></h2>
 
       <ul class="ablog-archive">
       <li>
       
-        15 January 2018
+        09 January 2019
+      
+      </li>
+        
+
+  
+  <li id="author"><span>Author:</span>
+    
+      
+      <a href="../author/tomek.html">Tomek</a>
+      
+    </li>
+  
+
+  
+
+  
+
+  
+
+  
+  <li id="tags"><span>Tag:</span>
+    
+      
+      <a href="#">solfec-1.0</a>
+      
+    </li>
+  
+  </ul>
+      <p>In analogy to Solfec’s <a class="reference internal" href="../../solfec-1.0/xdmf.html#solfec-xdmf"><span class="std std-ref">XDMF_EXPORT</span></a> command, a new <a class="reference internal" href="../../solfec-1.0/user/results.html#solfec-command-solfec-export"><span class="std std-ref">SOLFEC_EXPORT</span></a>
+command has been added. This allows to save a subset of results into a separate directory and view them using Solfec’s
+viewer. Within Solfec sources example <a class="reference external" href="https://github.com/parmes/solfec/blob/master/inp/devel/solfec-export.py">inp/devel/solfec-export.py</a>
+depicts an application of this idea. (…)</p>
+
+      <p><a href="../solfec_export_command.html">Read more ...</a></p>
+      <hr>
+    </div>
+    
+
+    <div class="section">
+      <h2><a href="../pop_audit.html">Solfec POP audit report</a></h2>
+
+      <ul class="ablog-archive">
+      <li>
+      
+        12 December 2017
       
       </li>
         
@@ -90,31 +135,116 @@
       </span>
     
       
-      <a href="parmec.html">parmec</a>
+      <a href="#">solfec-1.0</a>
       
     
       
-      <a href="#">springs</a>
+      <a href="performance.html">performance</a>
       
     
       
-      <a href="failure.html">failure</a>
+      <a href="optimization.html">optimization</a>
       
     </li>
   
   </ul>
-      <p><a class="reference external" href="../parmec/">PARMEC</a> includes a capability to model rigid body and <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-spring"><span class="std std-ref">SPRING</span></a> systems.
-As a part of it an <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-unspring"><span class="std std-ref">UNSPRING</span></a> command allows to deactivate selected springs
-when a total force of a set of “test springs” exceeds a prescribed bound. This facilitates modelling
-of simple failure scenarios. Spring states are outputted as scalar fields (in XDMF format) and can be
-viewed with <a class="reference external" href="http://www.paraview.org">ParaView</a> or similar tools. The video clip below is based on <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/tests/unspring.py">this
-example</a>.  Spring states can be visualized
-by selecting the ‘SS’ entity and using “Coor Map Editor” in ParaView to “Interpret Values as Cathegories”
-(checkbox at the top of the editor dialog box) and then adding the discrete values used by the ‘SS’ field
-(-3.0, -2.0, -1.0, …) as described for the <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-output"><span class="std std-ref">OUTPUT command</span></a>. Spring states
-can also be outputted as <a class="reference internal" href="../../parmec/input_commands.html#parmec-command-history"><span class="std std-ref">HISTORY</span></a> (as in the example).  (…)</p>
+      <p>Solfec has been analysed by <a class="reference external" href="https://pop-coe.eu">POP</a> experts. The initial audit report is available for download: (…)</p>
 
-      <p><a href="../unspring_and_spring_state.html">Read more ...</a></p>
+      <p><a href="../pop_audit.html">Read more ...</a></p>
+      <hr>
+    </div>
+    
+
+    <div class="section">
+      <h2><a href="../cached_time_series.html">Partially cached time series in Solfec</a></h2>
+
+      <ul class="ablog-archive">
+      <li>
+      
+        01 August 2017
+      
+      </li>
+        
+
+  
+  <li id="author"><span>Author:</span>
+    
+      
+      <a href="../author/tomek.html">Tomek</a>
+      
+    </li>
+  
+
+  
+
+  
+
+  
+
+  
+  <li id="tags"><span>Tag:</span>
+    
+      
+      <a href="#">solfec-1.0</a>
+      
+    </li>
+  
+  </ul>
+      <p>Motivated by user feedback a partially cached time series capability has been included into <a class="reference internal" href="../../solfec-1.0/index.html#solfec-index"><span class="std std-ref">SOLFEC</span></a>.
+This allows to use many large <a class="reference internal" href="../../solfec-1.0/user/times.html#solfec-user-times"><span class="std std-ref">TIME_SERIES</span></a> objects without running out of
+memory. To facilitate that an optional <em>cache</em> argument has been added – please see the <a class="reference internal" href="../../solfec-1.0/user/times.html#solfec-user-times"><span class="std std-ref">documentation</span></a> and <a class="reference internal" href="../../solfec-1.0/examples/time_series.html#solfec-examples-time-series"><span class="std std-ref">example</span></a>.</p>
+
+      <p><a href="../cached_time_series.html">Read more ...</a></p>
+      <hr>
+    </div>
+    
+
+    <div class="section">
+      <h2><a href="../hybrid_solver.html">Hybrid solver in Solfec</a></h2>
+
+      <ul class="ablog-archive">
+      <li>
+      
+        27 April 2017
+      
+      </li>
+        
+
+  
+  <li id="author"><span>Author:</span>
+    
+      
+      <a href="../author/tomek.html">Tomek</a>
+      
+    </li>
+  
+
+  
+
+  
+
+  
+
+  
+  <li id="tags"><span>Tags:
+      </span>
+    
+      
+      <a href="#">solfec-1.0</a>
+      
+    
+      
+      <a href="parmec.html">parmec</a>
+      
+    </li>
+  
+  </ul>
+      <p><a class="reference internal" href="../../solfec-1.0/user/solvers.html#solfec-command-hybrid-solver"><span class="std std-ref">Solfec’s hybrid solver</span></a> is now ready for testing. This solver combines the ability
+of modeling non–smooth multi–body structures in Solfec (e.g. as fully resolved FE models) in conjunction with a lightweight
+rigid–body/nonlinear–spring approach implemented in <a class="reference internal" href="../../parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a>. A simple example of that can be
+seen in the video below:</p>
+
+      <p><a href="../hybrid_solver.html">Read more ...</a></p>
       <hr>
     </div>
     
@@ -262,12 +392,12 @@ can also be outputted as <a class="reference internal" href="../../parmec/input_
     
       
       <li class="ablog-cloud ablog-cloud-3">
-        <a href="solfec-10.html">solfec-1.0</a></li>
+        <a href="#">solfec-1.0</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="#">springs</a></li>
+        <a href="springs.html">springs</a></li>
       
     
       
