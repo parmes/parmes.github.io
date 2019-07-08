@@ -1,0 +1,564 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Contact points &#8212; PARMES  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Contact formulations" href="conform.html" />
+    <link rel="prev" title="Joints" href="joints.html" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="contact-points">
+<span id="solfec-theory-conpnt"></span><h1>Contact points<a class="headerlink" href="#contact-points" title="Permalink to this headline">¶</a></h1>
+<p>In Solfec-1.0 contact points are generated from volumetric intersections of convex primitive shapes.
+For example, in case of finite elements, a single contact point is generated as a result of an
+intersection of two elements. Once an intersection is calculated, a contact point is obtained as
+a centroid of the intersection surface; a contact normal is calculated by averaging normal directions
+of the constituent surfaces. This is illustrated in Figure <a class="reference internal" href="#conpnt"><span class="std std-numref">Fig. 7</span></a>.</p>
+<div class="figure align-center" id="id12">
+<span id="conpnt"></span><a class="reference internal image-reference" href="../../_images/conpnt.png"><img alt="../../_images/conpnt.png" src="../../_images/conpnt.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Contact points and normals obtained from volumetric intersections of convex primitives.</span></p>
+</div>
+<div class="section" id="calculating-volumetric-intersection">
+<h2>Calculating volumetric intersection<a class="headerlink" href="#calculating-volumetric-intersection" title="Permalink to this headline">¶</a></h2>
+<p>Intersection of two convex polyhedra is a convex polyhedron. The convex intersection algorithm,
+based on <a class="footnote-reference" href="#id7" id="id1">[1]</a>, is implemented in cvi.c and it can be summarized as follows. Let vectors</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{v}=\left[\begin{array}{c}
+\mathbf{v}_{1}\\
+...\\
+\mathbf{v}_{n}
+\end{array}\right],\,\,\,\mathbf{p}=\left[\begin{array}{c}
+\mathbf{p}_{1}\\
+...\\
+\mathbf{p}_{m}
+\end{array}\right]\end{split}\]</div>
+<p>store vertices and face planes of a polyhedron. Vertices are made of triplets of coordinates</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{v}_{i}=\left[\begin{array}{c}
+v_{x}\\
+v_{y}\\
+v_{z}
+\end{array}\right]_{i}\end{split}\]</div>
+<p>Planes are made of four components</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{p}_{i}=\left[\begin{array}{c}
+n_{x}\\
+n_{y}\\
+n_{z}\\
+d
+\end{array}\right]_{i}\end{split}\]</div>
+<p>The plane equation reads</p>
+<div class="math notranslate nohighlight">
+\[n_{x}\cdot x+n_{y}\cdot y+n_{z}\cdot z+d=0\]</div>
+<p>where <span class="math notranslate nohighlight">\(\left[n_{x},n_{y},n_{z}\right]^{T}\)</span> can be interpreted as a direction normal to the plane. The convex intersection takes as input</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>va - vertices of polyhedron &#39;a&#39;
+pa - face planes of polyhedron &#39;a&#39;
+vb, pb - vertices and planes of polyhedron &#39;b&#39;
+</pre></div>
+</div>
+<p>as seen in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L118">cvi.c:118</a>.
+The algorithm begins by finding a distance between, and a pair closest points in ‘a’ and ‘b’</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1  d,p,q = gjk(va, vb)
+2  if d &gt; 0 return NULL
+3  else x = p
+</pre></div>
+</div>
+<p>which maps to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L132">cvi.c:132</a>.
+The GJK algorithm <a class="footnote-reference" href="#id9" id="id2">[3]</a>, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/gjk.c#L342">gjk.c:342</a>, is used.
+In case there is a positive separating distance between the input polyhedrons, null intersection is returned.
+For the intersection algorithm to work we need a point <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, that is inside of both input polyhedrons.
+GJK will at best return a common point on the surfaces of both polyhedra. In the next step</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>4  x = refine_point(x)
+</pre></div>
+</div>
+<p>point <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is refined by pushing it deeper inside of polyhedrons ‘a’ and ‘b’.
+This maps to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L136">cvi.c:136</a>.
+Once <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> has been refined, we transform the input plane definitions</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>5  transform(pa)
+6  transform(pb)
+</pre></div>
+</div>
+<p>so that <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> acts as an origin of the coordinate system <span class="math notranslate nohighlight">\(\left[0,0,0\right]^{T}\)</span>.
+In the course of this transformation we also scale the normal direction components so that <span class="math notranslate nohighlight">\(d_{i}=-1\)</span>.
+This maps to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L143L159">cvi.c:143-159</a>.
+In the next step</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>7  h = quickhull(normals(pa+pb))
+</pre></div>
+</div>
+<p>we calculate the convex hull of the transformed normal directions of ‘a’ and ‘b’
+(<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L163">cvi.c:163</a>).
+The quickhull algorithm <a class="footnote-reference" href="#id8" id="id3">[2]</a>, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/hul.c#L555">hul.c:555</a>,
+is used. The result can be interpreted as a <em>dual polyhedron</em> of the intersection polyhedron of ‘a’ and ‘b’:
+for a convex polyhedron <span class="math notranslate nohighlight">\(\left(\mathbf{v},\mathbf{p}\right)\)</span>, its dual (or <em>polar</em>) polyhedron is made
+by reinterpreting vertices as planes, and planes as vertices, as follows</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{c}
+v_{x}\\
+v_{y}\\
+v_{z}
+\end{array}\right]_{i}\rightarrow\left[\begin{array}{c}
+v_{x}\\
+v_{y}\\
+v_{z}\\
+-1
+\end{array}\right]_{i},\,\,\,l_{v}=\sqrt{v_{x}^{2}+v_{y}^{2}+v_{z}^{2}}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left[\begin{array}{c}
+n_{x}\\
+n_{y}\\
+n_{z}\\
+-1
+\end{array}\right]_{i}\rightarrow\left[\begin{array}{c}
+n_{x}\\
+n_{y}\\
+n_{z}
+\end{array}\right]_{i},\,\,\,l_{n}=\sqrt{n_{x}^{2}+n_{y}^{2}+n_{z}^{2}}\end{split}\]</div>
+<p>where vertices at distance <span class="math notranslate nohighlight">\(l_{v}\)</span> from the origin become planes at distance <span class="math notranslate nohighlight">\(1/l_{v}\)</span> from the origin,
+while planes at distance <span class="math notranslate nohighlight">\(1/l_{n}\)</span> from the origin become vertices at distance <span class="math notranslate nohighlight">\(l_{n}\)</span>. In order to obtain
+vertices of the intersection polyhedron we then calculate the polar set</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>8  v = polarize(h)
+</pre></div>
+</div>
+<p>which maps to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L164">cvi.c:164</a> and is implemented in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/tri.c#L351">tri.c:351</a>. The vertices <span class="math notranslate nohighlight">\(\mathbf{v}\)</span> of
+the dual intersection polyhedron are translated back, <span class="math notranslate nohighlight">\(\mathbf{v}+\mathbf{x}\)</span>, into the input coordinate
+system, and triangulated</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>9  t = triangulate(v+x)
+</pre></div>
+</div>
+<p>which maps to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L170L220">cvi.c:170-220</a>. The triangulation is then returned</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>10 return t
+</pre></div>
+</div>
+<p>at <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c#L231">cvi.c:231</a>.</p>
+</div>
+<div class="section" id="deriving-contact-points-and-normals">
+<h2>Deriving contact points and normals<a class="headerlink" href="#deriving-contact-points-and-normals" title="Permalink to this headline">¶</a></h2>
+<p>Contact points and contact normals are calculated based on the intersection surfaces obtained in the previous step.
+For various pairing of geometrical objects, calculation of contact points and contact normals is implemented in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c">goc.c</a>. For the pairing of two convex polyhedral surfaces
+contact detection is implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L257">goc.c:detect_convex_convex</a>,
+where fist at <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L272">goc.c:272</a>, triangulation of the intersection of
+the input surfaces is obtained, and next at <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L274">goc.c:274</a> a contact
+point and contact normal are obtained out of this triangulation. Implementation of this calculation is found at
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L130">goc.c:130</a> and it can be summarized as follows. Let <span class="math notranslate nohighlight">\(\partial A\)</span>
+and <span class="math notranslate nohighlight">\(\partial B\)</span> be the surfaces of the input polytopes <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>. Let <span class="math notranslate nohighlight">\(\left\{ t_{i}\right\}\)</span>  and
+<span class="math notranslate nohighlight">\(\left\{ \mathbf{v}_{i}\right\}\)</span>  be the sets of triangles and vertices of the intersection surface of <span class="math notranslate nohighlight">\(A\cap B\)</span>. Then</p>
+<p>1 <span class="math notranslate nohighlight">\(\,\,\)</span> <span class="math notranslate nohighlight">\(\mathbf{p}=\mathbf{0}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{n}=\mathbf{0}\)</span>, <span class="math notranslate nohighlight">\(area = 0\)</span> <br />
+2 <span class="math notranslate nohighlight">\(\,\,\)</span> for each <span class="math notranslate nohighlight">\(t_{i}\in\left\{ t_{i}\right\}\)</span>  do <br />
+3 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\)</span> <span class="math notranslate nohighlight">\(a = area \left(t_{i}\right)\)</span>, <span class="math notranslate nohighlight">\(b = a^{2}\)</span> <br />
+4 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\)</span> if <span class="math notranslate nohighlight">\(t_{i}\in\partial A\)</span> then <span class="math notranslate nohighlight">\(\mathbf{n}=\mathbf{n}+b\cdot\text{normal}\left(t_{i}\right)\)</span> <br />
+5 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\)</span> else <span class="math notranslate nohighlight">\(\mathbf{n}=\mathbf{n}-b\cdot\text{normal}\left(t_{i}\right)\)</span> <br />
+6 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\)</span> <span class="math notranslate nohighlight">\(\mathbf{p}=\mathbf{p}+a\cdot\text{centroid}\left(t_{i}\right)\)</span> <br />
+7 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\)</span> <span class="math notranslate nohighlight">\(area=area+a\)</span> <br />
+8 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\)</span> <span class="math notranslate nohighlight">\(\mathbf{p}=\mathbf{p}/area\)</span>, <span class="math notranslate nohighlight">\(\mathbf{n}=\mathbf{n}/\left\Vert \mathbf{n}\right\Vert\)</span> , <span class="math notranslate nohighlight">\(area=0.5\cdot area\)</span> <br />
+9 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\)</span> if <span class="math notranslate nohighlight">\(\mathbf{p}\)</span> outside of <span class="math notranslate nohighlight">\(A\)</span> or <span class="math notranslate nohighlight">\(B\)</span> return NULL <br />
+10 <span class="math notranslate nohighlight">\(\,\,\,\,\,\)</span> <span class="math notranslate nohighlight">\(spair_{0}=\text{nearest_surface_id}\left(\mathbf{p},\partial A\right)\)</span> <br />
+11 <span class="math notranslate nohighlight">\(\,\,\,\,\,\)</span> <span class="math notranslate nohighlight">\(spair_{1}=\text{nearest_surface_id}\left(\mathbf{p},\partial B\right)\)</span> <br />
+12 <span class="math notranslate nohighlight">\(\,\,\,\,\,\)</span> <span class="math notranslate nohighlight">\(gap=\underset{\mathbf{v}_{i}\in\left\{ \mathbf{v}_{i}\right\} }{\min}\mathbf{n}\cdot\mathbf{v}_{i}-
+\underset{\mathbf{v}_{i}\in\left\{ \mathbf{v}_{i}\right\} }{\max}\mathbf{n}\cdot\mathbf{v}_{i}\)</span> <br />
+13 <span class="math notranslate nohighlight">\(\,\,\,\,\,\)</span> if <span class="math notranslate nohighlight">\(\left|gap\right|\)</span> seems too large <br />
+14 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\,\,\,\)</span> <span class="math notranslate nohighlight">\(A^{\prime}=A+\mathbf{n}\cdot\left|gap\right|\)</span>, <span class="math notranslate nohighlight">\(B^{\prime}=B-\mathbf{n}\cdot\left|gap\right|\)</span> <br />
+15 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\,\,\,\)</span> <span class="math notranslate nohighlight">\(gap=\min\left(\text{gjk}\left(A^{\prime},B^{\prime}\right)-2\left|gap\right|,0\right)\)</span> <br />
+16 <span class="math notranslate nohighlight">\(\,\,\)</span> return <span class="math notranslate nohighlight">\(\mathbf{p}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{n}\)</span>, <span class="math notranslate nohighlight">\(area\)</span>, <span class="math notranslate nohighlight">\(spair\)</span>, <span class="math notranslate nohighlight">\(gap\)</span></p>
+<p>Lines 1-8 above map to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L141L158">goc.c:141-158</a>.
+Line 9 corresponds to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L160">goc.c:160</a> .
+Lines 10-11 map to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L163L172">goc.c:163-172</a> .
+Lines 12-15 map to <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L214L243">goc.c:214-243</a>.
+The extra check in line 13-15 is added to improve robustness of gap calculation. We note that, apart from the contact point,
+the contact normal, and the gap, we also calculate contact area, and surface pairing spair, storing identifiers of the input
+surfaces that are nearest to the contact point. In line 4, accumulated normal directions are scaled by square area of triangles,
+weighting down the influence of triangles with small areas. In line 9, we terminate in case the contact point fell outside of
+the input surfaces due to roundoff.</p>
+</div>
+<div class="section" id="contact-sparsification">
+<span id="id4"></span><h2>Contact sparsification<a class="headerlink" href="#contact-sparsification" title="Permalink to this headline">¶</a></h2>
+<p>Contact geometries made of many individual convex objects often generate many contact points. Some of these contact points
+are ill–conditioned, in the sense that their corresponding contact normals do not necessarily represent a most natural
+direction of contact resolution. This frequently happens near corners or sharp edges, due to roundoff error. Also, for
+contact problems among bodies represented by simple kinematic models (e.g. rigid or pseudo-rigid) complex geometries may
+give rise to the number of contact points far exceeding the available kinematic freedom. This renders the <span class="math notranslate nohighlight">\(\mathbf{W}\)</span>
+matrix ill-conditioned, as already explained in <a class="reference internal" href="locdyn.html#w-matrix"><span class="std std-ref">the section on local dynamics</span></a>. For the above
+reasons, a heuristic method of refining contact points, or <em>sparsification</em>, has been implemented in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dom.c#L2808">dom.c:sparsify_contacts</a>.
+The result of application of this routine is seen in <a class="reference internal" href="#sparsification"><span class="std std-numref">Fig. 8</span></a>.</p>
+<div class="figure align-center" id="id13">
+<span id="sparsification"></span><a class="reference internal image-reference" href="../../_images/sparsification.png"><img alt="../../_images/sparsification.png" src="../../_images/sparsification.png" style="width: 100%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Heuristic filtering of redundant contact points (736 to 168).</span></p>
+</div>
+<p>The sparsification approach can be summarized as follows. Let <span class="math notranslate nohighlight">\(\left\{ c_{i}\right\}\)</span>  be a set of all contact points
+and let <span class="math notranslate nohighlight">\(threshold\)</span>, <span class="math notranslate nohighlight">\(minarea\)</span> and <span class="math notranslate nohighlight">\(mindist\)</span> be given. Then</p>
+<p>1 <span class="math notranslate nohighlight">\(\,\,\)</span> for all newly detected <span class="math notranslate nohighlight">\(c_{i}\in\left\{ c_{i}\right\}\)</span> do <br />
+2 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\)</span> if <span class="math notranslate nohighlight">\(\text{area}\left(c_{i}\right)&lt;minarea\)</span> then <span class="math notranslate nohighlight">\(\text{delete}\left(c_{i}\right)\)</span> <br />
+3 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\)</span>  for all <span class="math notranslate nohighlight">\(c_{j}\in\text{adjacency}\left(c_{i}\right)\)</span> do <br />
+4 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\,\,\,\,\)</span> if <span class="math notranslate nohighlight">\(\text{area}\left(c_{i}\right)&lt;threshold\cdot\text{area}\left(c_{j}\right)\)</span> and <br />
+<span class="math notranslate nohighlight">\(\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\)</span> <span class="math notranslate nohighlight">\(c_{i}\text{ and }c_{j}\text{ are topologically adjacent}\)</span> then <span class="math notranslate nohighlight">\(\text{delete}\left(c_{i}\right)\)</span> <br />
+5 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\,\,\,\,\)</span> else if <span class="math notranslate nohighlight">\(\left\Vert \mathbf{p}\left(c_{i}\right)-\mathbf{p}\left(c_{j}\right)\right\Vert &lt;mindist\)</span> then <span class="math notranslate nohighlight">\(\text{delete}\left(c_{i}\right)\)</span></p>
+<p>Contact points are “topologically adjacent” if they are generated by geometrical primitives which themselves are topologically adjacent
+(e.g. finite elements that share element faces). We note, that parameters <span class="math notranslate nohighlight">\(threshold\)</span>, <span class="math notranslate nohighlight">\(minarea\)</span> and <span class="math notranslate nohighlight">\(mindist\)</span> can be
+adjusted by using the <a class="reference internal" href="../user/simulation.html#solfec-command-contact-sparsify"><span class="std std-ref">CONTACT_SPARSIFY</span></a> input command.</p>
+</div>
+<div class="section" id="broad-phase-contact-detection">
+<h2>Broad phase contact detection<a class="headerlink" href="#broad-phase-contact-detection" title="Permalink to this headline">¶</a></h2>
+<p>Broad phase contact detection precedes the detailed pairwise checks, one of which is described above.
+During the broad phase we only intend to find a likely candidates for the detailed pairwise overlap tests
+and for this reason axis aligned bounding boxes are used to represent geometrical primitives. For example,
+each finite element is represented by a corresponding bounding box, and so are spheres and ellipsoids present
+in a simulation. A number of box overlap test algorithms are implemented, as seen in <a class="reference internal" href="#boxtest"><span class="std std-numref">Fig. 9</span></a>, where
+a test program, implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/tst/boxtest.c">tst/boxtest.c</a>,
+is shown. All these algorithms are detailed in thesis <a class="footnote-reference" href="#id11" id="id5">[5]</a>. The driver interface for various box overlap algorithms
+is implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/box.c">box.c</a> and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/box.h">box.h</a>.
+The hybrid algorithm <a class="footnote-reference" href="#id10" id="id6">[4]</a> is currently used in Solfec-1.0 as a fixed choice, cf. <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dom.c#L114">dom.c:114</a>.
+The <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/box.c#L379">box.c:AABB_Update</a> routine is called inside of the time
+integration loop in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dom.c#L3595">dom.c:3595</a>. When box overlaps are
+detected the callback <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dom.c#L344">dom.c:overal_create</a> is invoked,
+from within which the <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/goc.c#L1339">goc.c:gobjcontact</a> pairwise overlap
+detection routined is called. Should an overlap occur, an individual contact point is created as a result,
+in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dom.c#L384L402">dom.c:384-402</a>.</p>
+<div class="figure align-center" id="id14">
+<span id="boxtest"></span><a class="reference internal image-reference" href="../../_images/boxtest.png"><img alt="../../_images/boxtest.png" src="../../_images/boxtest.png" style="width: 75%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Box test program illustrating various box overlap detection algorithms.</span></p>
+</div>
+</div>
+<div class="section" id="geometric-epsilon">
+<span id="geometric-epsilon-section"></span><h2>Geometric epsilon<a class="headerlink" href="#geometric-epsilon" title="Permalink to this headline">¶</a></h2>
+<p>It is important to note that GEOMETRIC_EPSILON, defined in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/alg.c#L24">alg.c:24</a>,
+has significant effect on the behavior of most of the geometrical calculations in Solfec-1.0. For example, often points are regarded as
+coincident if they are closer than this value. The input command <a class="reference internal" href="../user/simulation.html#solfec-command-geometric-epsilon"><span class="std std-ref">GEOMETRIC_EPSILON</span></a> allows
+to change the default value of 1E-6.  It is recommended to use about 0.0001 to 0.01 times the dimension of a smallest significant
+geometrical feature in a model.</p>
+</div>
+<div class="section" id="other-implementation-aspects">
+<h2>Other implementation aspects<a class="headerlink" href="#other-implementation-aspects" title="Permalink to this headline">¶</a></h2>
+<p>Test examples</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/tst/cvitest.c">tst/cvitest.c</a> for convex intersection implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/cvi.c">cvi.c</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/tst/gjktest.c">tst/gjktest.c</a> for GJK proximity query implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/gjk.c">gjk.c</a></li>
+<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/tst/hultest.c">tst/hultest.c</a> for convex hull calculation implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/hul.c">hul.c</a></li>
+</ul>
+<p>can be used to improve understanding of the pairwise overlap test described above.</p>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>D. E. Muller and F. P. Preparata, Finding the intersection of two convex polyhedra,
+Theoretical Computer Science, 7, 217-236, 1978.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>C. B. Barber, D. P. Dobkin, and H. Huhdanpaa, The Quickhull Algorithm for Convex Hulls,
+ACM Transactions on Mathematical Software, 22 (4), 469-483, 1996.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[3]</a></td><td>E. G. Gilbert, and D. W. Johnson, and S. S. Keerthi, Fast procedure for computing the distance between complex
+bjects in three-dimensional space, IEEE journal of robotics and automation, 4 (2), 193-203, 1988.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[4]</a></td><td>A. Zomorodian and H. Edelsbrunner, Fast software for box intersections, International Journal
+of Computational Geometry and Applications, 12 (1-2), 143-172, 2002.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[5]</a></td><td><a class="reference external" href="http://theses.gla.ac.uk/429/">Koziara, PhD thesis, 2008.</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">SOLFEC-1.0</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../theory.html">Theory Manual</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basics.html">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kinematics.html">Kinematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html">Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeint.html">Time integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="locdyn.html">Local dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="joints.html">Joints</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Contact points</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#calculating-volumetric-intersection">Calculating volumetric intersection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deriving-contact-points-and-normals">Deriving contact points and normals</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contact-sparsification">Contact sparsification</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#broad-phase-contact-detection">Broad phase contact detection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#geometric-epsilon">Geometric epsilon</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-implementation-aspects">Other implementation aspects</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="conform.html">Contact formulations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solvers.html">Constraint solvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bulkmat.html">Bulk materials</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../validation.html">Validation Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tgz/index.html">TGZ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trs/index.html">TRs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blog/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">SOLFEC-1.0</a><ul>
+  <li><a href="../theory.html">Solfec-1.0 Theory Manual</a><ul>
+      <li>Previous: <a href="joints.html" title="previous chapter">Joints</a></li>
+      <li>Next: <a href="conform.html" title="next chapter">Contact formulations</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
+    
+      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
+    
+      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
+    
+      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
+    
+      <li><a href="../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/contact.html">contact</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/failure.html">failure</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/friction.html">friction</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/joints.html">joints</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/optimization.html">optimization</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/parmec.html">parmec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/parmes.html">parmes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/performance.html">performance</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/reports.html">reports</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/solfec.html">solfec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/springs.html">springs</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/tests.html">tests</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/torsion.html">torsion</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2019.html">2019 (1)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2018.html">2018 (5)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2017.html">2017 (4)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../../_sources/solfec-1.0/theory/conpnt.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

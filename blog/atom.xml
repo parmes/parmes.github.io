@@ -15,7 +15,7 @@
     <author>
       <name>Tomek</name>
     </author>
-    <content type="html">&lt;p&gt;In analogy to Solfec’s &lt;a class=&quot;reference internal&quot; href=&quot;solfec/xdmf.html#solfec-xdmf&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;XDMF_EXPORT&lt;/span&gt;&lt;/a&gt; command, a new &lt;a class=&quot;reference internal&quot; href=&quot;solfec/user/results.html#solfec-command-solfec-export&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;SOLFEC_EXPORT&lt;/span&gt;&lt;/a&gt;
+    <content type="html">&lt;p&gt;In analogy to Solfec’s &lt;a class=&quot;reference internal&quot; href=&quot;solfec-1.0/xdmf.html#solfec-xdmf&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;XDMF_EXPORT&lt;/span&gt;&lt;/a&gt; command, a new &lt;a class=&quot;reference internal&quot; href=&quot;solfec-1.0/user/results.html#solfec-command-solfec-export&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;SOLFEC_EXPORT&lt;/span&gt;&lt;/a&gt;
 command has been added. This allows to save a subset of results into a separate directory and view them using Solfec’s
 viewer. Within Solfec sources example &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/parmes/solfec/blob/master/inp/devel/solfec-export.py&quot;&gt;inp/devel/solfec-export.py&lt;/a&gt;
 depicts an application of this idea. (…)&lt;/p&gt;

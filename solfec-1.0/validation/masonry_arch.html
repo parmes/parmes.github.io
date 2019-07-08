@@ -1,0 +1,412 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Masonry arch &#8212; PARMES  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Solfec-1.0 XDMF export" href="../xdmf.html" />
+    <link rel="prev" title="Block sliding on a frictional table" href="block_sliding.html" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="masonry-arch">
+<span id="solfec-validation-masonry-arch"></span><h1>Masonry arch<a class="headerlink" href="#masonry-arch" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Reference:</strong> <a class="reference external" href="http://dx.doi.org/10.1016/j.compstruc.2006.02.005">Gilbert, M. and Casapulla, C. and Ahmed, H. M., Limit analysis of masonry block structures with non-associative
+frictional joints using linear programming, Computers and Structures, vol. 84, pp. 873-887, 2006.</a>
+<br />
+<strong>Analysis:</strong> Explicit dynamics, frictional contact.
+<br />
+<strong>Purpose:</strong> Examine applicability of the dynamic scheme to the limit-state analysis of frictional block structures.
+<br />
+<strong>Summary:</strong> A semicircular arch is composed of 27 blocks, subjected to the uniform gravitational field. The dynamic stability
+of the arch is investigated for varying ratios of the thickness to centreline radius <span class="math notranslate nohighlight">\(h/r\)</span>. The results are compared
+against the available findings based on the limit-state analysis.</td>
+</tr>
+</tbody>
+</table>
+<p>Gilbert et al. <a class="footnote-reference" href="#id11" id="id1">[1]</a> present a numerical solution to the classical problem of the stability of a semicircular arch under gravity load.
+The analysis provided in <a class="footnote-reference" href="#id11" id="id2">[1]</a> spans friction coefficients from the interval <span class="math notranslate nohighlight">\(\left[0.2,0.8\right]\)</span> and identifies three geometrical
+failure modes (<a class="reference internal" href="#masonry-arch0"><span class="std std-numref">Fig. 26</span></a>). The classical analysis provided by Heyman <a class="footnote-reference" href="#id13" id="id3">[2]</a> assumes no frictional slip, and therefore covers
+only one case of mechanism formation (mode I – typical for large friction).</p>
+<div class="figure align-center" id="id14">
+<span id="masonry-arch0"></span><a class="reference internal image-reference" href="../../_images/arch-modes.png"><img alt="../../_images/arch-modes.png" src="../../_images/arch-modes.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">Symmetrical arch problem: influence of friction coefficient on minimum arch thickness (after Gilbert et al. <a class="footnote-reference" href="#id11" id="id4">[1]</a>).</span></p>
+</div>
+<p>Several factors need to be taken into account when considering reproduction of the results presented in <a class="reference internal" href="#masonry-arch0"><span class="std std-numref">Fig. 26</span></a>:</p>
+<ol class="arabic simple">
+<li>A linear programming based limit–state formulation is employed in <a class="footnote-reference" href="#id11" id="id5">[1]</a>, whereas the dynamic contact algorithm is used in Solfec-1.0.</li>
+<li>The analysis provided in <a class="footnote-reference" href="#id11" id="id6">[1]</a> is two–dimensional, whereas Solfec-1.0 deals with a three–dimensional model.</li>
+<li>A node to face contact model is employed in <a class="footnote-reference" href="#id11" id="id7">[1]</a>, whereas the face to face (or more generally element to element) contact model is employed in Solfec-1.0.</li>
+</ol>
+<p>Due to the modeling differences (inertial effects, contact resolution) is it reasonable to accept a margin of discrepancy between the results
+obtained by both methods. The dynamic stability analysis will be based on the observation of the kinetic energy histories, calculated for
+arches with thicknesses varying around the documented in <a class="footnote-reference" href="#id11" id="id8">[1]</a> stability limits. <a class="reference internal" href="#masonry-arch1"><span class="std std-numref">Fig. 27</span></a> summarizes the geometry and discretization
+adopted in the Solfec-1.0 model. In order to geometrically capture the hinging effect from the first moments of simulation, the subdivision along the block
+thickness comprises two narrow elements at the extrados and intrados of the arch.</p>
+<div class="figure align-center" id="id15">
+<span id="masonry-arch1"></span><a class="reference internal image-reference" href="../../_images/arch-model.png"><img alt="../../_images/arch-model.png" src="../../_images/arch-model.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">The three–dimensional arch model in Solfec-1.0. Each of the 27 blocks is composed of 6 elements: two along the width <span class="math notranslate nohighlight">\(w\)</span>,
+and three along the thickness <span class="math notranslate nohighlight">\(h\)</span>. Thus six contact points are established initially between a pair of blocks.</span></p>
+</div>
+<div class="section" id="input-parameters">
+<h2>Input parameters<a class="headerlink" href="#input-parameters" title="Permalink to this headline">¶</a></h2>
+<p>Under the assumptions discussed by Heyman <a class="footnote-reference" href="#id13" id="id9">[2]</a>, formation of a failure mechanism is of purely geometrical nature.
+Therefore the material parameters can be chosen arbitrary (none have been reported in <a class="footnote-reference" href="#id11" id="id10">[1]</a>). The table below summarizes
+the assumed parameters.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="51%" />
+<col width="49%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Mass density <span class="math notranslate nohighlight">\(\left(kg/m^{3}\right)\)</span></td>
+<td><span class="math notranslate nohighlight">\(\rho=1\)</span></td>
+</tr>
+<tr class="row-even"><td>Centreline radius <span class="math notranslate nohighlight">\(\left(m\right)\)</span></td>
+<td><span class="math notranslate nohighlight">\(r=10\)</span></td>
+</tr>
+<tr class="row-odd"><td>Arch width <span class="math notranslate nohighlight">\(\left(m\right)\)</span></td>
+<td><span class="math notranslate nohighlight">\(w=5\)</span></td>
+</tr>
+<tr class="row-even"><td>Number of blocks</td>
+<td>27</td>
+</tr>
+<tr class="row-odd"><td>Initial velocities <span class="math notranslate nohighlight">\(\left(m/s\right)\)</span></td>
+<td>all zero</td>
+</tr>
+<tr class="row-even"><td>Gravity acceleration <span class="math notranslate nohighlight">\(\left(m/s^{2}\right)\)</span></td>
+<td><span class="math notranslate nohighlight">\(\mathbf{g}=\left[0,0,-9.81\right]\)</span></td>
+</tr>
+<tr class="row-odd"><td>Velocity restitution</td>
+<td><span class="math notranslate nohighlight">\(\epsilon=0\)</span></td>
+</tr>
+<tr class="row-even"><td>Time step <span class="math notranslate nohighlight">\(\left(s\right)\)</span></td>
+<td><span class="math notranslate nohighlight">\(h=0.001\)</span></td>
+</tr>
+<tr class="row-odd"><td>Simulated duration <span class="math notranslate nohighlight">\(\left(s\right)\)</span></td>
+<td><span class="math notranslate nohighlight">\(0.1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#masonry-arch2"><span class="std std-numref">Fig. 28</span></a> illustrates the kinetic energy of the arch model at the end of the 0.1s simulated duration.
+A range of values of the coefficient of friction and arch thickness to radius ratios <span class="math notranslate nohighlight">\(h/r\)</span> was used. The region
+above the 0.001–level contour line corresponds to the “numerical zero” level of kinetic energy, where the arch remains
+stable. For the parameters below this level curve the arch begins to collapse.</p>
+<div class="figure align-center" id="id16">
+<span id="masonry-arch2"></span><a class="reference internal image-reference" href="../../_images/masonry-arch-energy.png"><img alt="../../_images/masonry-arch-energy.png" src="../../_images/masonry-arch-energy.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">Kinetic energy map at the end of the 0.1s simulations over a grid of friction coefficients and <span class="math notranslate nohighlight">\(h/r\)</span> ratios.</span></p>
+</div>
+<p><a class="reference internal" href="#masonry-arch3"><span class="std std-numref">Fig. 29</span></a> superimposes <a class="reference internal" href="#masonry-arch0"><span class="std std-numref">Fig. 26</span></a> from [1] with <a class="reference internal" href="#masonry-arch2"><span class="std std-numref">Fig. 28</span></a>. We can see that the transition
+lines coincide. <a class="reference internal" href="#masonry-arch3"><span class="std std-numref">Fig. 29</span></a> also includes the failure modes I, II, and III reproduced from three longer Solfec-1.0 simulations
+(to allow for more deformation). It is seen that the six–hinge mechanism is exactly formed for large friction (mode I). The mode II
+mechanism is qualitatively well captured in <a class="reference internal" href="#masonry-arch3"><span class="std std-numref">Fig. 29</span></a>. The four–hinge mechanism does form in the initial phase of the
+dynamic solution, yet, due to the sensitivity of the dynamic simulation, one of the top hinges “takes over” at a later stage (no deformation
+scaling was applied in the figures). Also the the qualitative nature of mode III deformation in <a class="reference internal" href="#masonry-arch3"><span class="std std-numref">Fig. 29</span></a> reflects the
+corresponding mode in <a class="reference internal" href="#masonry-arch0"><span class="std std-numref">Fig. 26</span></a>. Small differences owe to the modeling discrepancies.</p>
+<div class="figure align-center" id="id17">
+<span id="masonry-arch3"></span><a class="reference internal image-reference" href="../../_images/arch-energy-compare.png"><img alt="../../_images/arch-energy-compare.png" src="../../_images/arch-energy-compare.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 29 </span><span class="caption-text">Level curves from <a class="reference internal" href="#masonry-arch2"><span class="std std-numref">Fig. 28</span></a> obtained from Solfec-1.0 superimposed with <a class="reference internal" href="#masonry-arch0"><span class="std std-numref">Fig. 26</span></a> from [1].
+The corresponding three modeled failure modes are included.</span></p>
+</div>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id4">3</a>, <a class="fn-backref" href="#id5">4</a>, <a class="fn-backref" href="#id6">5</a>, <a class="fn-backref" href="#id7">6</a>, <a class="fn-backref" href="#id8">7</a>, <a class="fn-backref" href="#id10">8</a>)</em> <a class="reference external" href="http://dx.doi.org/10.1016/j.compstruc.2006.02.005">Gilbert, M. and Casapulla, C. and Ahmed, H. M., Limit analysis of masonry block structures with non-associative
+frictional joints using linear programming, Computers and Structures, vol. 84, pp. 873-887, 2006.</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[2]</td><td><em>(<a class="fn-backref" href="#id3">1</a>, <a class="fn-backref" href="#id9">2</a>)</em> Heyman, Jacques, “Equilibrium of Shell Structures”, Clarendon Press (1977).</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">SOLFEC-1.0</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theory.html">Theory Manual</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../validation.html">Validation Manual</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="heavy_symmetrical_top.html">Heavy symmetrical top</a></li>
+<li class="toctree-l3"><a class="reference internal" href="projectile.html">Projectile in a ballistic motion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pinned_bar.html">Pinned bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pendulum.html">Pendulum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="double_pendulum.html">Double pendulum impacting a rigid wall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="block_sliding.html">Block sliding on a frictional table</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Masonry arch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#input-parameters">Input parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results">Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tgz/index.html">TGZ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trs/index.html">TRs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blog/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">SOLFEC-1.0</a><ul>
+  <li><a href="../validation.html">Solfec-1.0 Validation Manual</a><ul>
+      <li>Previous: <a href="block_sliding.html" title="previous chapter">Block sliding on a frictional table</a></li>
+      <li>Next: <a href="../xdmf.html" title="next chapter">Solfec-1.0 XDMF export</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
+    
+      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
+    
+      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
+    
+      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
+    
+      <li><a href="../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/contact.html">contact</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/failure.html">failure</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/friction.html">friction</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/joints.html">joints</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/optimization.html">optimization</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/parmec.html">parmec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/parmes.html">parmes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/performance.html">performance</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/reports.html">reports</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/solfec.html">solfec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/springs.html">springs</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/tests.html">tests</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/torsion.html">torsion</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2019.html">2019 (1)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2018.html">2018 (5)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2017.html">2017 (4)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../../_sources/solfec-1.0/validation/masonry_arch.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

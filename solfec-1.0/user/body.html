@@ -1,0 +1,569 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>BODY object &#8212; PARMES  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Geometry" href="geometry.html" />
+    <link rel="prev" title="SOLFEC object" href="solfec.html" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="body-object">
+<span id="solfec-user-body"></span><h1>BODY object<a class="headerlink" href="#body-object" title="Permalink to this headline">¶</a></h1>
+<p>An object of type BODY represents a solid body.</p>
+<div class="topic">
+<p class="topic-title first">obj = BODY (solfec, kind, shape, material | label, form, mesh, base)</p>
+<p>This routine creates a body.</p>
+<ul class="simple">
+<li>obj – created BODY object</li>
+<li>solfec – obj is created for this SOLFEC object</li>
+<li>kind – a string: ‘RIGID’, ‘PSEUDO_RIGID’, ‘FINITE_ELEMENT’ or
+‘OBSTACLE’ describing the kinematic model. See <a class="reference internal" href="#body-kind"><span class="std std-numref">Table 3</span></a>
+and the <a class="reference internal" href="../theory/kinematics.html#solfec-theory-kinematics"><span class="std std-ref">Kinematics manual page</span></a>.</li>
+<li>shape (emptied) - this is can be a CONVEX/MESH/SPHERE/ELLIP object, or a list [obj1, obj2, …],
+where each object is of type CONVEX/MESH/SPHERE/ELLIP. If the kind is ‘FINITE_ELEMENT’,
+then two cases are possible:<ul>
+<li>shape is a single MESH object: the mesh describes both
+the shape and the discretisation of the motion of a body</li>
+<li>shape is solely composed of CONVEX objects: here a separate mesh must
+be given to discretise motion of a body (see the mesh argument below)</li>
+</ul>
+</li>
+<li>material – a <a class="reference internal" href="materials.html#solfec-command-bulk-material"><span class="std std-ref">BULK_MATERIAL</span></a> object or a label of a bulk material;
+specifies an initial body–wise material, see also <a class="reference internal" href="materials.html#solfec-command-apply-bulkmat"><span class="std std-ref">APPLY_BULKMAT</span></a></li>
+<li>label – a label string (no label is assigned by default)</li>
+<li>form – valid when kind equals ‘FINITE_ELEMENT’, ignored otherwise (default: ‘TL’).
+This argument specifies a formulation of the finite element method. See <a class="reference internal" href="#fem-form"><span class="std std-numref">Table 4</span></a>.</li>
+<li>mesh – optional when kind equals ‘FINITE_ELEMENT’, ignored otherwise. This variable must be a MESH object
+describing a finite element mesh properly containing the shape composed solely of CONVEX objects. This way
+the ‘FINITE_ELEMENT’ model allows to handle complicated shapes with less finite elements,
+e.g. an arbitrary shape could be contained in just one hexahedron.</li>
+<li>base – optional reduced order or modal base definition, or a string label of a <a class="reference internal" href="utilities.html#solfec-command-register-base"><span class="std std-ref">registered base</span></a>;
+when <strong>form</strong> = ‘BC–MODAL’, results of <a class="reference internal" href="utilities.html#solfec-command-modal-analysis"><span class="std std-ref">the MODAL_ANALYSIS command</span></a>, or equivalent user data,
+can be used; the same format is used for the ‘BC–RO’ formulation; This argument must be passed if <strong>form</strong> = ‘BC–MODAL’ or ‘BC–RO’,
+see Table <a class="reference internal" href="#fem-form"><span class="std std-numref">Table 4</span></a>.</li>
+</ul>
+</div>
+<p>Some parameters can also be accessed as members of a BODY object, cf. <a class="reference internal" href="#body-params"><span class="std std-numref">Table 2</span></a>.</p>
+<span id="body-params"></span><table border="1" class="docutils" id="id9">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">BODY object parameters.</span><a class="headerlink" href="#id9" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Read only members:</strong></td>
+</tr>
+<tr class="row-even"><td><em>obj.kind, obj.label, obj.material</em></td>
+</tr>
+<tr class="row-odd"><td><strong>obj.mass</strong> – referential mass of the body</td>
+</tr>
+<tr class="row-even"><td><strong>obj.volume</strong> – referential volume of the body</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.center</strong> – referential mass center of the body</td>
+</tr>
+<tr class="row-even"><td><strong>obj.tensor</strong> – referential Euler (pseudo-rigid, finite element kinematics)
+or inertia tensor (rigid kinematics) of the body</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.constraints</strong> – list of constraints attached to the body
+(cf. <a class="reference internal" href="constraints.html#solfec-user-constraints"><span class="std std-ref">Constraints</span></a>)</td>
+</tr>
+<tr class="row-even"><td><strong>obj.ncon</strong> – number of constraints attached to the body</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.id</strong> – unique identifier</td>
+</tr>
+<tr class="row-even"><td><strong>obj.display_points</strong> – list of tuples of display point labels and coordinates:
+[(‘label’, (x, y, z)), (‘label’, (x, y, z)), …]</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.mesh</strong> – returns computational MESH associated with a ‘FINITE_ELEMENT’ body; for other body
+kinds a MESH or a list of MESH objects is returned if such are present as components of the body shape</td>
+</tr>
+<tr class="row-even"><td><strong>Read/write members:</strong></td>
+</tr>
+<tr class="row-odd"><td><strong>obj.conf</strong> – tuple (q1, q2, …, qN) storing configuration of the body. See <a class="reference internal" href="#body-conf"><span class="std std-numref">Table 5</span></a>.</td>
+</tr>
+<tr class="row-even"><td><strong>obj.velo</strong> – tuple (u1, u2, …, uN) storing velocity of the body. See <a class="reference internal" href="#body-velo"><span class="std std-numref">Table 6</span></a>.</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.selfcontact</strong> – self-contact detection flag (default: ‘OFF”) taking values ‘ON’ or ‘OFF’</td>
+</tr>
+<tr class="row-even"><td><strong>obj.scheme</strong> – time integration scheme (default: ‘DEFAULT’) used to integrate motion.
+See <a class="reference internal" href="#solfec-body-scheme"><span class="std std-numref">Table 7</span></a> and the <a class="reference internal" href="../theory/timeint.html#solfec-theory-timeint"><span class="std std-ref">Time integration manual page</span></a>.</td>
+</tr>
+<tr class="row-odd"><td><strong>obj.damping</strong> – stiffness proportional damping coefficient (default: 0.0) for the dynamic case
+(ignored for rigid bodies).</td>
+</tr>
+<tr class="row-even"><td><strong>obj.fracturecheck</strong> – check fracture criterion for FEM bodies (‘ON’, or default: ‘OFF’).
+<span class="red">(Under development)</span></td>
+</tr>
+<tr class="row-odd"><td><strong>obj.disable_rotation</strong> – for rigid bodies disable integration of rotation (‘ON’, or default: ‘OFF’)</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<span id="body-kind"></span><table border="1" class="docutils" id="id10">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">Body kinds. See also the <a class="reference internal" href="../theory/kinematics.html#solfec-theory-kinematics"><span class="std std-ref">Kinematics manual page</span></a>.</span><a class="headerlink" href="#id10" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Body kind</td>
+<td>Remarks</td>
+</tr>
+<tr class="row-even"><td>‘OBSTACLE’</td>
+<td>A rigid body ignoring external loads and not contributing to contact constraints.
+Motion of an obstacle can be controlled through single-body constraints.
+An obstacle–to–obstacle contact is ignored. Moving obstacles will not correctly
+work in the quasi–static case (use rigid bodies instead). Obstacle bodies do
+generate contact constraints with other non-obstacle bodies.</td>
+</tr>
+<tr class="row-odd"><td>‘RIGID’</td>
+<td>A rigid body</td>
+</tr>
+<tr class="row-even"><td>‘PSEUDO_RIGID’</td>
+<td>A body with global linear deformation state</td>
+</tr>
+<tr class="row-odd"><td>‘FINITE_ELEMENT’</td>
+<td>A body discretised with finite elements.
+Only first order elements are supported at present.</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<span id="fem-form"></span><table border="1" class="docutils" id="id11">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">Finite element formulations.</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Formulation</td>
+<td>Remarks</td>
+</tr>
+<tr class="row-even"><td>‘TL’</td>
+<td>Total Lagrangian (default)</td>
+</tr>
+<tr class="row-odd"><td>‘BC’</td>
+<td>Body co–rotational (one co–rotated frame per body, suitable for stiff bodies);
+See <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> for technical details</td>
+</tr>
+<tr class="row-even"><td>‘BC–MODAL’</td>
+<td>Body co–rotational, modal approach; ‘DEF_LIM’ integration scheme is always used for
+this formulation (there is no computational advantage in using ‘DEF_EXP’ since all
+system matrices are diagonal); <em>Note:</em> the <strong>base</strong> argument must be passed;
+See <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> for technical details; <span class="red">(Experimental)</span></td>
+</tr>
+<tr class="row-odd"><td>‘BC–RO ‘</td>
+<td>Body co–rotational, reduced order approach; ‘DEF_LIM’ integration scheme is always
+used for this formulation (there is no computational advantage in using ‘DEF_EXP’
+since all system matrices are dense); <em>Note:*</em> the <strong>base</strong> argument must be
+passed; See <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> for technical details; <span class="red">(Experimental)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<span id="body-conf"></span><table border="1" class="docutils" id="id12">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Types of configurations.</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Body kind</td>
+<td>Configuration description</td>
+</tr>
+<tr class="row-even"><td>‘OBSTACLE’</td>
+<td>Column–wise rotation matrix followed by the current mass center</td>
+</tr>
+<tr class="row-odd"><td>‘RIGID’</td>
+<td>Column–wise rotation matrix followed by the current mass center</td>
+</tr>
+<tr class="row-even"><td>‘PSEUDO_RIGID’</td>
+<td>Column–wise deformation gradient followed by the current mass center</td>
+</tr>
+<tr class="row-odd"><td>‘FINITE_ELEMENT’</td>
+<td>Current coordinates x, y, z of mesh nodes</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<span id="body-velo"></span><table border="1" class="docutils" id="id13">
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">Types of velocities.</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Body kind</td>
+<td>Velocity description</td>
+</tr>
+<tr class="row-even"><td>‘OBSTACLE’</td>
+<td>Referential angular velocity followed by the spatial velocity of mass center</td>
+</tr>
+<tr class="row-odd"><td>‘RIGID’</td>
+<td>Referential angular velocity followed by the spatial velocity of mass center</td>
+</tr>
+<tr class="row-even"><td>‘PSEUDO_RIGID’</td>
+<td>Deformation gradient velocity followed by the spatial velocity of mass center</td>
+</tr>
+<tr class="row-odd"><td>‘FINITE_ELEMENT’</td>
+<td>Components x, y, z of spatial velocities of mesh nodes</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<span id="solfec-body-scheme"></span><table border="1" class="docutils" id="id14">
+<caption><span class="caption-number">Table 7 </span><span class="caption-text">Time integration schema. See also the <a class="reference internal" href="../theory/timeint.html#solfec-theory-timeint"><span class="std std-ref">Time integration manual page</span></a>.</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="11%" />
+<col width="16%" />
+<col width="74%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Scheme</td>
+<td>Kinematics</td>
+<td>Remarks</td>
+</tr>
+<tr class="row-even"><td>‘DEFAULT’</td>
+<td>all</td>
+<td>Use a default time integrator regardless of underlying kinematics</td>
+</tr>
+<tr class="row-odd"><td>‘RIG_POS’</td>
+<td>rigid</td>
+<td>NEW1 in <a class="footnote-reference" href="#id6" id="id1">[1]</a>: explicit, positive energy drift, no momentum conservation</td>
+</tr>
+<tr class="row-even"><td>‘RIG_NEG’</td>
+<td>rigid</td>
+<td>NEW2 in <a class="footnote-reference" href="#id6" id="id2">[1]</a>: explicit, negative energy drift, exact momentum conservation;
+<strong>default</strong> for rigid kinematics</td>
+</tr>
+<tr class="row-odd"><td>‘RIG_IMP’</td>
+<td>rigid</td>
+<td>NEW3 in <a class="footnote-reference" href="#id6" id="id3">[1]</a>: semi-explicit, no energy drift and exact momentum
+conservation</td>
+</tr>
+<tr class="row-even"><td>‘DEF_EXP’</td>
+<td>pseudo–rigid,
+finite element</td>
+<td>Explicit scheme described in Chapter 5 of <a class="footnote-reference" href="#id7" id="id4">[2]</a>; <strong>default</strong> for deformable
+kinematics, energy and momentum conserving, conditionally stable</td>
+</tr>
+<tr class="row-odd"><td>‘DEF_LIM’</td>
+<td>pseudo–rigid,
+finite element</td>
+<td>Linearly implicit scheme similar to <a class="footnote-reference" href="#id8" id="id5">[3]</a>; energy and momentum conserving,
+stable for moderate to large steps; See <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> for technical
+details</td>
+</tr>
+</tbody>
+</table>
+<p>References:</p>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.2711/full">IJNME, 81(9):1073–1092, 2010.</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[2]</a></td><td><a class="reference external" href="http://theses.gla.ac.uk/429/">Koziara, PhD thesis, 2008.</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0168927497000664">ANM, 25(2–3): 297–302, 1997.</a></td></tr>
+</tbody>
+</table>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">SOLFEC-1.0</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../user.html">User Manual</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="solfec.html">SOLFEC object</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">BODY object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="geometry.html">Geometry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="materials.html">Materials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="times.html">Time series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="loads.html">Loads</a></li>
+<li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solvers.html">Solvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="simulation.html">Simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fragmentation.html">Fragmentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="results.html">Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utilities.html">Utilities</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../theory.html">Theory Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../validation.html">Validation Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tgz/index.html">TGZ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trs/index.html">TRs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blog/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">SOLFEC-1.0</a><ul>
+  <li><a href="../user.html">Solfec-1.0 User Manual</a><ul>
+      <li>Previous: <a href="solfec.html" title="previous chapter">SOLFEC object</a></li>
+      <li>Next: <a href="geometry.html" title="next chapter">Geometry</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
+    
+      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
+    
+      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
+    
+      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
+    
+      <li><a href="../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/contact.html">contact</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/failure.html">failure</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/friction.html">friction</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/joints.html">joints</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/optimization.html">optimization</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/parmec.html">parmec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/parmes.html">parmes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/performance.html">performance</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/reports.html">reports</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/solfec.html">solfec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/springs.html">springs</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/tests.html">tests</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/torsion.html">torsion</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2019.html">2019 (1)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2018.html">2018 (5)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2017.html">2017 (4)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../../_sources/solfec-1.0/user/body.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

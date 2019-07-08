@@ -1,0 +1,387 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Heavy symmetrical top &#8212; PARMES  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Projectile in a ballistic motion" href="projectile.html" />
+    <link rel="prev" title="Solfec-1.0 Validation Manual" href="../validation.html" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="heavy-symmetrical-top">
+<span id="solfec-validation-heavy-symmetrical-top"></span><h1>Heavy symmetrical top<a class="headerlink" href="#heavy-symmetrical-top" title="Permalink to this headline">¶</a></h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="100%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Reference:</strong> <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.1620310103/abstract">J. C. Simo, K.K. Wong, Unconditionally stable algorithms for rigid body dynamics that exactly preserve
+energy and momentum, International Journal for Numerical Methods in Engineering, vol. 31, pp. 19–52, 1991.</a>
+<br />
+<strong>Analysis:</strong> Explicit dynamics, forced, unconstrained rotation.
+<br />
+<strong>Purpose:</strong> Examine stability and accuracy of the integration scheme in the presence of severe geometrical nonlinearity.
+<br />
+<strong>Summary:</strong> The heavy symmetrical top is spinning around the fixed point mathbf{O}. In this example the applied torque depends
+on the configuration, introducing additional source of nonlinearity. As the torque does not depend on the time step, the second
+order accuracy can be exemplified.</td>
+</tr>
+</tbody>
+</table>
+<p>The top of mass <span class="math notranslate nohighlight">\(M\)</span> and the referential axis of symmetry <span class="math notranslate nohighlight">\(\mathbf{E}_{3}\)</span> rotates in the uniform gravitational
+field <span class="math notranslate nohighlight">\(-g\mathbf{e}_{3}\)</span>. The spatial torque reads</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{t}=-Mg\mathbf{r}\times\mathbf{e}_{3},\,\,\,\mathbf{r}=l\mathbf{\Lambda}\mathbf{E}_{3}=\mathbf{\Lambda}_{i3},\,\,\,i\in\left\{ 1,2,3\right\}\]</div>
+<p>where the assumed values are <span class="math notranslate nohighlight">\(M=20\)</span>, <span class="math notranslate nohighlight">\(g=1\)</span>, <span class="math notranslate nohighlight">\(l=1\)</span>. As pointed out in <a class="footnote-reference" href="#id2" id="id1">[1]</a>, the heavy top model conserves the Hamiltonian</p>
+<div class="math notranslate nohighlight">
+\[H=\frac{1}{2}\pi\cdot\mathbf{j}^{-1}\pi+Mg\mathbf{e}_{3}\cdot\mathbf{r}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\pi=\mathbf{j}\mathbf{w}\)</span> is the spatial angular momentum, <span class="math notranslate nohighlight">\(\mathbf{j}=\mathbf{\Lambda}\mathbf{J}\Lambda^{T}\)</span> is the spatial tensor
+of inertia, <span class="math notranslate nohighlight">\(\mathbf{J}\)</span> is the referential inertia tensor, <span class="math notranslate nohighlight">\(\Lambda\)</span> is the rotation operator, and <span class="math notranslate nohighlight">\(\mathbf{w}=\Lambda\mathbf{W}\)</span> is
+the spatial angular velocity.</p>
+<div class="figure align-center" id="id3">
+<a class="reference internal image-reference" href="../../_images/heavy-top.png"><img alt="../../_images/heavy-top.png" src="../../_images/heavy-top.png" style="width: 30%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Heavy symmetrical top with one point fixed.</span></p>
+</div>
+<div class="section" id="input-parameters">
+<h2>Input parameters<a class="headerlink" href="#input-parameters" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Referential inertia tensor</td>
+<td><span class="math notranslate nohighlight">\(\mathbf{J}=\mbox{diag}\left[5,5,1\right]\)</span></td>
+</tr>
+<tr class="row-even"><td>Spatial torque</td>
+<td><span class="math notranslate nohighlight">\(\mathbf{t}=-20\Lambda\left(:,3\right)\times\left[0,0,1\right]\)</span></td>
+</tr>
+<tr class="row-odd"><td>Initial rotation</td>
+<td><span class="math notranslate nohighlight">\(\Lambda\left(0\right)=\exp\left[\mbox{skew}\left(\left[0.05,0,0\right]\right)\right]\)</span></td>
+</tr>
+<tr class="row-even"><td>Initial angular velocity</td>
+<td><span class="math notranslate nohighlight">\(\mathbf{W}\left(0\right)=\left[0,0,50\right]\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="results">
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<p>Taking the fact that</p>
+<div class="math notranslate nohighlight">
+\[\pi\cdot\mathbf{j}^{-1}\mathbf{\pi}=\left(\mathbf{j}\mathbf{w}\right)^{T}\mathbf{j}^{-1}\left(\mathbf{j}
+\mathbf{w}\right)=\mathbf{w}^{T}\mathbf{j}\mathbf{w}=\left(\Lambda\mathbf{W}\right)^{T}\Lambda\mathbf{J}
+\Lambda^{T}\mathbf{\Lambda}\mathbf{W}=\mathbf{W}^{T}\mathbf{J}\mathbf{W}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\Lambda_{33}\left(0\right)\simeq0.99875\]</div>
+<p>the value of the Hamiltonian reads</p>
+<div class="math notranslate nohighlight">
+\[H=\frac{1}{2}50^{2}+20\Lambda_{33}\left(0\right)\simeq1269.975\]</div>
+<p><a class="reference internal" href="#rig-pos"><span class="std std-numref">Fig. 11</span></a>, <a class="reference internal" href="#rig-neg"><span class="std std-numref">Fig. 12</span></a> and <a class="reference internal" href="#rig-imp"><span class="std std-numref">Fig. 13</span></a> show the Hamiltonian plots over the time interval <span class="math notranslate nohighlight">\(\left[0,10\right]\)</span>
+for time steps <span class="math notranslate nohighlight">\(h\in\left\{ 0.001,0.003,0.009\right\}\)</span>.  It is seen that for the largest step the decay of the Hamiltonian is
+smaller than <span class="math notranslate nohighlight">\(0.1\%\)</span>, while it should be noted that the corresponding amount of the rotation per time step is about <span class="math notranslate nohighlight">\(26\deg\)</span>.
+This amount of the relative rotation per time step is generally too large for the contact analysis. It is seen that for smaller steps
+the conservation of the Hamiltonian rapidly improves and becomes nearly exact for <span class="math notranslate nohighlight">\(h=0.001\)</span>, where the amount of the relative
+rotation is about <span class="math notranslate nohighlight">\(3\deg\)</span> per step.</p>
+<div class="figure align-center" id="id4">
+<span id="rig-pos"></span><a class="reference internal image-reference" href="../../_images/rig_pos.png"><img alt="../../_images/rig_pos.png" src="../../_images/rig_pos.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Hamiltonian plots for several time steps and the RIG_POS integration scheme.</span></p>
+</div>
+<div class="figure align-center" id="id5">
+<span id="rig-neg"></span><a class="reference internal image-reference" href="../../_images/rig_neg.png"><img alt="../../_images/rig_neg.png" src="../../_images/rig_neg.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Hamiltonian plots for several time steps and the RIG_NEG integration scheme.</span></p>
+</div>
+<div class="figure align-center" id="id6">
+<span id="rig-imp"></span><a class="reference internal image-reference" href="../../_images/rig_imp.png"><img alt="../../_images/rig_imp.png" src="../../_images/rig_imp.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Hamiltonian plots for several time steps and the RIG_IMP integration scheme.</span></p>
+</div>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.1361/abstract">P. Krysl, Explicit momentum-conserving integrator for dynamics of rigid bodies approximating the midpoint Lie algorithm,
+International Journal for Numerical Methods in Engineering (2005), 2171-2193.</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">SOLFEC-1.0</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../theory.html">Theory Manual</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../validation.html">Validation Manual</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Heavy symmetrical top</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#input-parameters">Input parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#results">Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="projectile.html">Projectile in a ballistic motion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pinned_bar.html">Pinned bar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pendulum.html">Pendulum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="double_pendulum.html">Double pendulum impacting a rigid wall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="block_sliding.html">Block sliding on a frictional table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="masonry_arch.html">Masonry arch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tgz/index.html">TGZ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trs/index.html">TRs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blog/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">SOLFEC-1.0</a><ul>
+  <li><a href="../validation.html">Solfec-1.0 Validation Manual</a><ul>
+      <li>Previous: <a href="../validation.html" title="previous chapter">Solfec-1.0 Validation Manual</a></li>
+      <li>Next: <a href="projectile.html" title="next chapter">Projectile in a ballistic motion</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
+    
+      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
+    
+      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
+    
+      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
+    
+      <li><a href="../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/contact.html">contact</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/failure.html">failure</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/friction.html">friction</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/joints.html">joints</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/optimization.html">optimization</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/parmec.html">parmec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/parmes.html">parmes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/performance.html">performance</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/reports.html">reports</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/solfec.html">solfec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/springs.html">springs</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/tests.html">tests</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/torsion.html">torsion</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2019.html">2019 (1)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2018.html">2018 (5)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2017.html">2017 (4)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../../_sources/solfec-1.0/validation/heavy_symmetrical_top.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,403 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Time integration &#8212; PARMES  documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Constraints" href="constraints.html" />
+    <link rel="prev" title="Dynamics" href="dynamics.html" />
+  
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="time-integration">
+<span id="solfec-theory-timeint"></span><h1>Time integration<a class="headerlink" href="#time-integration" title="Permalink to this headline">¶</a></h1>
+<p>Solfec-1.0 implements three variants of time integration of rigid body kinematics:</p>
+<ul class="simple">
+<li>RIG_POS – a semi–explicit scheme with a positive energy drift, cf. NEW1 in <a class="footnote-reference" href="#id7" id="id1">[1]</a></li>
+<li>RIG_NEG – a semi–explicit scheme with a negative energy drift, cf. NEW2 in <a class="footnote-reference" href="#id7" id="id2">[1]</a></li>
+<li>RIG_IMP – a semi–implicit without energy drift (but rather, oscillation), cf. NEW3 in <a class="footnote-reference" href="#id7" id="id3">[1]</a></li>
+</ul>
+<p>And two variants of time integration for pseudo–rigid and finite–element kinematics:</p>
+<ul class="simple">
+<li>DEF_EXP – an explicit leap–frog scheme, cf. Section 5.1 in <a class="footnote-reference" href="#id8" id="id4">[2]</a></li>
+<li>DEF_LIM – a linearly implicit leap–frog scheme, <a class="footnote-reference" href="#id9" id="id5">[3]</a> and <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a></li>
+</ul>
+<p>A time integration scheme is selected by modifying the <em>scheme</em> parameter of the <a class="reference internal" href="../user/body.html#solfec-user-body"><span class="std std-ref">BODY object</span></a>.</p>
+<div class="section" id="rigid-integration">
+<h2>Rigid integration<a class="headerlink" href="#rigid-integration" title="Permalink to this headline">¶</a></h2>
+<p>Linear motion is integrated like <a class="reference internal" href="#deformable-integration"><span class="std std-ref">deformable motion</span></a>. Rigid rotations are integrated as follows</p>
+<div class="math notranslate nohighlight" id="equation-r-t-h-2">
+<span class="eqno">(31)<a class="headerlink" href="#equation-r-t-h-2" title="Permalink to this equation">¶</a></span>\[\mathbf{\Lambda}^{t+\frac{h}{2}}=\mathbf{\Lambda}^{t}\exp\left[\frac{h}{2}\mathbf{\Omega}^{t}\right]\]</div>
+<div class="math notranslate nohighlight" id="equation-t-t-h-2">
+<span class="eqno">(32)<a class="headerlink" href="#equation-t-t-h-2" title="Permalink to this equation">¶</a></span>\[\mathbf{T}^{t+\frac{h}{2}}=\left(\mathbf{\Lambda}^{t+\frac{h}{2}}\right)^{T}\mathbf{t}^{t+\frac{h}{2}}\]</div>
+<div class="math notranslate nohighlight" id="equation-w-t-h-2">
+<span class="eqno">(33)<a class="headerlink" href="#equation-w-t-h-2" title="Permalink to this equation">¶</a></span>\[\mathbf{\Omega}^{t+\frac{h}{2}}=\mathbf{J}^{-1}\left[\exp\left[-\frac{h}{2}\mathbf{\Omega}^{t}\right]\mathbf{J}\mathbf{\Omega}^{t}+\frac{h}{2}\mathbf{T}^{t+\frac{h}{2}}\right]\]</div>
+<div class="math notranslate nohighlight" id="equation-w1-t-h">
+<span class="eqno">(34)<a class="headerlink" href="#equation-w1-t-h" title="Permalink to this equation">¶</a></span>\[\mathbf{\Omega}_{1}^{t+h}=\mathbf{\Omega}^{t}+\mathbf{J}^{-1}h\left[\mathbf{T}^{t+\frac{h}{2}}-\mathbf{\Omega}^{t+\frac{h}{2}}\times\mathbf{J}\mathbf{\Omega}^{t+\frac{h}{2}}\right]\]</div>
+<p>If explicit</p>
+<div class="math notranslate nohighlight" id="equation-r1-t-h">
+<span class="eqno">(35)<a class="headerlink" href="#equation-r1-t-h" title="Permalink to this equation">¶</a></span>\[\mathbf{\Lambda}^{t+h}=\mathbf{\Lambda}^{t+\frac{h}{2}}\exp\left[\frac{h}{2}\mathbf{\Omega}_{1}^{t+h}\right]\]</div>
+<div class="math notranslate nohighlight" id="equation-w2-t-h">
+<span class="eqno">(36)<a class="headerlink" href="#equation-w2-t-h" title="Permalink to this equation">¶</a></span>\[\mathbf{\Omega}_{2}^{t+h}=\mathbf{J}^{-1}\exp\left[-\frac{h}{2}\mathbf{\Omega}_{1}^{t+h}\right]\left[\exp\left
+[-\frac{h}{2}\mathbf{\Omega}^{t}\right]\mathbf{J}\mathbf{\Omega}^{t}+h\mathbf{T}^{t+\frac{h}{2}}\right]\]</div>
+<p>otherwise</p>
+<div class="math notranslate nohighlight" id="equation-w3-t-h">
+<span class="eqno">(37)<a class="headerlink" href="#equation-w3-t-h" title="Permalink to this equation">¶</a></span>\[\textbf{solve} \left(\exp\left[\frac{h}{2}\mathbf{\Omega}_{3}^{t+h}\right]\mathbf{J}\mathbf{\Omega}_{3}^{t+h}=
+\exp\left[-\frac{h}{2}\mathbf{\Omega}^{t}\right]\mathbf{J}\mathbf{\Omega}^{t}+h\mathbf{T}^{t+\frac{h}{2}}\right)\]</div>
+<div class="math notranslate nohighlight" id="equation-r2-t-h">
+<span class="eqno">(38)<a class="headerlink" href="#equation-r2-t-h" title="Permalink to this equation">¶</a></span>\[\mathbf{\Lambda}^{t+h}=\mathbf{\Lambda}^{t+\frac{h}{2}}\exp\left[\frac{h}{2}\mathbf{\Omega}_{3}^{t+h}\right]\]</div>
+<p>The scheme ending at <a class="reference internal" href="#equation-r1-t-h">(35)</a> is DEF_POS, ending at <a class="reference internal" href="#equation-w2-t-h">(36)</a> is DEF_NEG, and using instead <a class="reference internal" href="#equation-w3-t-h">(37)</a> and <a class="reference internal" href="#equation-r2-t-h">(38)</a> is DEF_IMP.
+Above, <span class="math notranslate nohighlight">\(\exp\left[\cdot\right]\)</span> is the exponential map defined by the Rodrigues formula</p>
+<div class="math notranslate nohighlight">
+\[\exp\left[\mathbf{\Psi}\right]=\mathbf{I}+\frac{\sin\left\Vert \mathbf{\Psi}\right\Vert }{\left\Vert \mathbf{\Psi}\right\Vert }
+\hat{\mathbf{\Psi}}+\frac{1-\cos\left\Vert \mathbf{\Psi}\right\Vert }{\left\Vert \mathbf{\Psi}\right\Vert ^{2}}\hat{\mathbf{\Psi}}^{2}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is the <span class="math notranslate nohighlight">\(3\times3\)</span> identity operator, <span class="math notranslate nohighlight">\(\hat{\mathbf{\Psi}}\)</span> creates the skew symmetric matrix
+out of a 3-vector <span class="math notranslate nohighlight">\(\mathbf{\Psi}\)</span>, and <span class="math notranslate nohighlight">\(\left\Vert \cdot\right\Vert\)</span> stands for the Euclidean norm. The time step is denoted as <span class="math notranslate nohighlight">\(h\)</span>.</p>
+</div>
+<div class="section" id="deformable-integration">
+<span id="id6"></span><h2>Deformable integration<a class="headerlink" href="#deformable-integration" title="Permalink to this headline">¶</a></h2>
+<p>Deformable time integrator reads</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\left(\mathbf{q}^{t+\frac{h}{2}},\mathbf{u}^{t}\right)\]</div>
+<div class="math notranslate nohighlight">
+\[\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\]</div>
+<p>where in the explicit case</p>
+<div class="math notranslate nohighlight" id="equation-aexp">
+<span class="eqno">(39)<a class="headerlink" href="#equation-aexp" title="Permalink to this equation">¶</a></span>\[\mathbf{A}=\mathbf{M}\text{ for DEF_EXP}\]</div>
+<p>and in the linearly implicit case</p>
+<div class="math notranslate nohighlight" id="equation-aimp">
+<span class="eqno">(40)<a class="headerlink" href="#equation-aimp" title="Permalink to this equation">¶</a></span>\[\mathbf{A}=\mathbf{M}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\mathbf{K}\left(\mathbf{q}^{t+h/2}\right)\text{ for DEF_LIM}\]</div>
+<p>The time step is denoted as <span class="math notranslate nohighlight">\(h\)</span>. See <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a> for technical details.</p>
+</div>
+<div class="section" id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
+<p>Time integration is implement in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo–rigid)
+and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite–element) files. Inverse generalized
+inertia matrix <span class="math notranslate nohighlight">\(\mathbf{A}^{-1}\)</span> is declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L191">bod.h</a> as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">general_body</span>
+<span class="p">{</span>
+  <span class="cm">/* ... */</span>
+
+  <span class="n">MX</span> <span class="o">*</span><span class="n">inverse</span><span class="p">;</span>      <span class="cm">/* generalized inverse inertia oprator */</span>
+
+  <span class="cm">/* ... */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Rigid integration formulae <a class="reference internal" href="#equation-r-t-h-2">(31)</a>-<a class="reference internal" href="#equation-w1-t-h">(34)</a> are in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1296">bod.c:BODY_Dynamic_Step_Begin</a>. <br />
+Rigid integration formulae <a class="reference internal" href="#equation-r1-t-h">(35)</a>-<a class="reference internal" href="#equation-r2-t-h">(38)</a> are in
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1403">bod.c:BODY_Dynamic_Step_End</a>. <br />
+Pseudo–rigid integration is included in the same routines:
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1353">first half–step</a> and
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1467">second half–step</a>. <br />
+Finite–element, total Lagrangian formulation based, integration formulae <a class="reference internal" href="basics.html#equation-q-t-h-2">(5)</a> and <a class="reference internal" href="basics.html#equation-u-t-h">(6)</a>
+are in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1879">fem.c:TL_dynamic_step_begin</a>. <br />
+Finite–element, total Lagrangian formulation based, integration formula <a class="reference internal" href="basics.html#equation-q-t-h">(7)</a>
+is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L1930">fem.c:TL_dynamic_step_end</a>. <br /></p>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>, <a class="fn-backref" href="#id3">3</a>)</em> <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.2711/full">IJNME, 81(9):1073–1092, 2010.</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[2]</a></td><td><a class="reference external" href="http://theses.gla.ac.uk/429/">Koziara, PhD thesis, 2008.</a></td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[3]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0168927497000664">ANM, 25(2–3): 297–302, 1997.</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+  <div class="section">
+  
+  
+  </div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">PARMES</a></h1>
+
+
+
+<p class="blurb">Parallel mechanics and particulate media software blog</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmes&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">SOLFEC-1.0</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../running.html">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user.html">User Manual</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../theory.html">Theory Manual</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basics.html">Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kinematics.html">Kinematics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamics.html">Dynamics</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Time integration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rigid-integration">Rigid integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deformable-integration">Deformable integration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="locdyn.html">Local dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="joints.html">Joints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conpnt.html">Contact points</a></li>
+<li class="toctree-l3"><a class="reference internal" href="conform.html">Contact formulations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="solvers.html">Constraint solvers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bulkmat.html">Bulk materials</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../validation.html">Validation Manual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../xdmf.html">XDMF export</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../applications.html">Applications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tgz/index.html">TGZ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../trs/index.html">TRs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../blog/about.html">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contact.html">Contact</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">SOLFEC-1.0</a><ul>
+  <li><a href="../theory.html">Solfec-1.0 Theory Manual</a><ul>
+      <li>Previous: <a href="dynamics.html" title="previous chapter">Dynamics</a></li>
+      <li>Next: <a href="constraints.html" title="next chapter">Constraints</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+  <h3><a href="../../blog.html">Recent Posts</a></h3>
+  <ul>
+    
+    
+      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
+    
+      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
+    
+      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
+    
+      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
+    
+      <li><a href="../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
+    
+  </ul>
+
+  <h3><a href="../../blog/tag.html">Tags</a></h3>
+  <style type="text/css">
+    ul.ablog-cloud {list-style: none; overflow: auto;}
+    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
+    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
+    li.ablog-cloud-1{font-size: 80%;}
+    li.ablog-cloud-2{font-size: 95%;}
+    li.ablog-cloud-3{font-size: 110%;}
+    li.ablog-cloud-4{font-size: 125%;}
+    li.ablog-cloud-5{font-size: 140%;}
+  </style>
+  <ul class="ablog-cloud">
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/contact.html">contact</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/failure.html">failure</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/friction.html">friction</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/joints.html">joints</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/optimization.html">optimization</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-5">
+        <a href="../../blog/tag/parmec.html">parmec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/parmes.html">parmes</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/performance.html">performance</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/reports.html">reports</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-3">
+        <a href="../../blog/tag/solfec.html">solfec</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/springs.html">springs</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-2">
+        <a href="../../blog/tag/tests.html">tests</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/torsion.html">torsion</a></li>
+      
+    
+  </ul>
+
+  <h3><a href="../../blog/archive.html">Archives</a></h3>
+  <ul>
+  
+    
+    <li><a href="../../blog/2019.html">2019 (1)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2018.html">2018 (5)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2017.html">2017 (4)</a></li>
+    
+  
+    
+    <li><a href="../../blog/2016.html">2016 (1)</a></li>
+    
+  
+  </ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019 PARMES team.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      
+      |
+      <a href="../../_sources/solfec-1.0/theory/timeint.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
