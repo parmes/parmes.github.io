@@ -1,20 +1,20 @@
 
 * On Jul 8 2019 :ref:`dynlb-index`
 
-* On Jul 8 2019 :ref:`solfec-1.0-examples-hybrid_modeling-hs0`
+* On Jul 8 2019 :ref:`solfec-1.0-abaqus`
 
-* On Jul 8 2019 :ref:`solfec-1.0-examples-hybrid_modeling-hs123`
+* On Jul 8 2019 :ref:`solfec-1.0-applications`
 
-* On Jul 8 2019 :ref:`solfec-1.0-examples-hybrid_modeling-hs3_scaling`
+* On Jul 8 2019 :ref:`solfec-1.0-applications-kinematic_flow_patterns`
 
-* On Jul 8 2019 :ref:`solfec-1.0-index`
+* On Jul 8 2019 :ref:`solfec-1.0-applications-multibody_pattern_formation`
 
-* On Jul 8 2019 :ref:`solfec-2.0-index`
+* On Jul 8 2019 :ref:`solfec-1.0-applications-overturning_block_stacks`
 
-* On Jul 8 2019 :ref:`vbox-index`
+* On Jul 8 2019 :ref:`solfec-1.0-applications-suspended_sediment_propagation`
 
-* On Mar 21 2019 :ref:`parmec-input_commands`
+* On Jul 8 2019 :ref:`solfec-1.0-examples`
 
-* On Feb 4 2019 :ref:`parmec-index`
+* On Jul 8 2019 :ref:`solfec-1.0-examples-81array`
 
-* On May 11 2018 :ref:`trs-index`
+* On Jul 8 2019 :ref:`solfec-1.0-examples-hybrid_modeling`

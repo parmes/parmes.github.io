@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>All posts &#8212; PARMES  documentation</title>
+    <title>Solfec-2.0 update 0 &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/parmes.css" />
@@ -48,183 +48,74 @@
 
           <div class="body" role="main">
             
-  
-  
-  <div class="section">
+  <div class="section" id="solfec-2-0-update-0">
+<span id="blog-solver-2-0-update-0"></span><h1>Solfec-2.0 update 0<a class="headerlink" href="#solfec-2-0-update-0" title="Permalink to this headline">¶</a></h1>
+<p>Just a little note to say that work on <a class="reference external" href="https://github.com/parmes/solfec-2.0/">Solfec-2.0</a> is underway:)
+Currently the code cannot do much: I am ironing out a basic parallel data layout. I am using a simple global
+array based approach, utilising MPI-3.0 RDMA (remote direct memory access). It’s based on the implementation
+suggested in the book <a class="reference external" href="https://mitpress.mit.edu/books/using-advanced-mpi">“Using Advanced MPI”</a>. The current
+version of the array code is here: <a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/ga.hpp#L38">ga.hpp</a>
+and <a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/ga.cpp#L37">ga.cpp</a>.
+The way the arrays are used to store computational data can be viewed in <a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/compute.hpp#L37">compute.hpp</a>.
+Since the arrays are of fixed size – there is a little bit of book keeping that needs to be implemented – in
+order to allow for arbitrary sequences of insertions and deletions of computational data. This is the aspect
+of the code, which I am currently implementing and smoothing out. Only MPI rank-0 process is interpreting the
+input Python file – the remaining processes join in during the computation loop – which can be invoked multiple
+times from the input file – with insertions and deletions of computational data in between. (…)</p>
+<p>So the basic idea is to use the global arrays as the sole mechanism of distributed memory access (with exceptions
+– e.g. when using linear solvers). And then locally, on each MPI rank, use tasks that pull data from arrays
+and compute what needed using SIMD-accelerated kernels. I am using <a class="reference external" href="https://github.com/cpp-taskflow/cpp-taskflow">cpp-taskflow</a>
+and <a class="reference external" href="https://ispc.github.io">ISPC</a> as the supporting tools for these aspects. The results will also be stored
+back into the arrays in a concurrent way. And I will try to use a single-task graph to represent the entire
+computational step. So the computational loop will simply invoke this task graph multiple times:) Initially,
+I am intending to transfer <a class="reference internal" href="../solfec-1.0/index.html#solfec-1-0-index"><span class="std std-ref">Solfec-1.0’s</span></a> functionality into this framework: copy the
+existing finite elements and other aspects of the code, while readjusting them for SIMD parallelism. Only after
+this basic functionality is transferred and sufficiently tested, I will begin to look into updating the FE
+technology itself. That’s the overall idea a this moment:)</p>
+</div>
 
-    <h2>
-      Posted in
-      <a href="2019.html">2019</a>
-    </h2>
-    
-    <div class="section">
-      <p>
-      
-      
-        09 September 2019
-      
-      - <a href="solfec-2.0-update-0.html">Solfec-2.0 update 0</a>
-      </p>
-      
-    </div>
-    
-    <div class="section">
-      <p>
-      
-      
-        09 January 2019
-      
-      - <a href="solfec_export_command.html">SOLFEC_EXPORT command</a>
-      </p>
-      
-    </div>
-    
-  </div>
-  
-  
-  
   <div class="section">
+  
+    
 
-    <h2>
-      Posted in
-      <a href="2018.html">2018</a>
-    </h2>
-    
-    <div class="section">
-      <p>
-      
-      
-        31 July 2018
-      
-      - <a href="parmec_ball_joint.html">Parmec ball joint and articulated pendulum example</a>
-      </p>
-      
-    </div>
-    
-    <div class="section">
-      <p>
-      
-      
-        13 June 2018
-      
-      - <a href="parmec_spherical_joint.html">Parmec spherical joint</a>
-      </p>
-      
-    </div>
-    
-    <div class="section">
-      <p>
-      
-      
-        23 May 2018
-      
-      - <a href="parmec_spring_contact.html">Parmec spring contact</a>
-      </p>
-      
-    </div>
-    
-    <div class="section">
-      <p>
-      
-      
-        07 March 2018
-      
-      - <a href="spring_curve_tests.html">Parmec spring curve tests</a>
-      </p>
-      
-    </div>
-    
-    <div class="section">
-      <p>
-      
-      
-        15 January 2018
-      
-      - <a href="unspring_and_spring_state.html">UNSPRING and spring state in Parmec</a>
-      </p>
-      
-    </div>
-    
-  </div>
-  
-  
-  
-  <div class="section">
 
-    <h2>
-      Posted in
-      <a href="2017.html">2017</a>
-    </h2>
-    
-    <div class="section">
-      <p>
-      
-      
-        12 December 2017
-      
-      - <a href="pop_audit.html">Solfec POP audit report</a>
-      </p>
-      
-    </div>
-    
-    <div class="section">
-      <p>
-      
-      
-        01 August 2017
-      
-      - <a href="cached_time_series.html">Partially cached time series in Solfec</a>
-      </p>
-      
-    </div>
-    
-    <div class="section">
-      <p>
-      
-      
-        20 May 2017
-      
-      - <a href="tr1_post.html">TR1: Co-rotated and reduced order time integrators</a>
-      </p>
-      
-    </div>
-    
-    <div class="section">
-      <p>
-      
-      
-        27 April 2017
-      
-      - <a href="hybrid_solver.html">Hybrid solver in Solfec</a>
-      </p>
-      
-    </div>
-    
-  </div>
+<div class="section">
+  <span style="float: left;">
   
+  Previous: 
+  <a href="solfec_export_command.html">
+    
+    SOLFEC_EXPORT command
+  </a>
   
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
   
-  <div class="section">
+</div>
 
-    <h2>
-      Posted in
-      <a href="2016.html">2016</a>
-    </h2>
-    
+  
+  
     <div class="section">
-      <p>
-      
-      
-        13 June 2016
-      
-      - <a href="about.html">About PARMES</a>
-      </p>
-      
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'parmes';
+        var disqus_identifier = '/blog/solfec-2.0-update-0/';
+        var disqus_title = 'Solfec-2.0 update 0';
+        var disqus_url = 'http://parmes.org/blog/solfec-2.0-update-0';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
-    
+  
   </div>
-  
-  
 
           </div>
           
@@ -286,8 +177,6 @@
   <ul>
     
     
-      <li><a href="solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
       <li><a href="solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
     
       <li><a href="parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
@@ -295,6 +184,8 @@
       <li><a href="parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
       <li><a href="parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
+    
+      <li><a href="spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
   </ul>
 
@@ -393,7 +284,7 @@
     
   </ul>
 
-  <h3><a href="#">Archives</a></h3>
+  <h3><a href="archive.html">Archives</a></h3>
   <ul>
   
     
@@ -433,6 +324,9 @@
       Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
+      |
+      <a href="../_sources/blog/solfec-2.0-update-0.rst.txt"
+          rel="nofollow">Page source</a>
     </div>
 
     

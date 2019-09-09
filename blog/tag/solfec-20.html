@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Posts tagged solfec-1.0 &#8212; PARMES  documentation</title>
+    <title>Posts tagged solfec-2.0 &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
@@ -26,7 +26,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Posts tagged solfec-1.0">
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Posts tagged solfec-2.0">
   
   
   <style type="text/css">
@@ -54,19 +54,19 @@
       
       Posts tagged
       
-      solfec-1.0
+      solfec-2.0
       
     </h1>
     
     
 
     <div class="section">
-      <h2><a href="../solfec_export_command.html">SOLFEC_EXPORT command</a></h2>
+      <h2><a href="../solfec-2.0-update-0.html">Solfec-2.0 update 0</a></h2>
 
       <ul class="ablog-archive">
       <li>
       
-        09 January 2019
+        09 September 2019
       
       </li>
         
@@ -90,162 +90,25 @@
   <li id="tags"><span>Tag:</span>
     
       
-      <a href="#">solfec-1.0</a>
+      <a href="#">solfec-2.0</a>
       
     </li>
   
   </ul>
-      <p>In analogy to Solfec’s <a class="reference internal" href="../../solfec-1.0/xdmf.html#solfec-1-0-xdmf"><span class="std std-ref">XDMF_EXPORT</span></a> command, a new <a class="reference internal" href="../../solfec-1.0/user/results.html#solfec-1-0-command-solfec-export"><span class="std std-ref">SOLFEC_EXPORT</span></a>
-command has been added. This allows to save a subset of results into a separate directory and view them using Solfec’s
-viewer. Within Solfec sources example <a class="reference external" href="https://github.com/parmes/solfec/blob/master/inp/devel/solfec-export.py">inp/devel/solfec-export.py</a>
-depicts an application of this idea. (…)</p>
+      <p>Just a little note to say that work on <a class="reference external" href="https://github.com/parmes/solfec-2.0/">Solfec-2.0</a> is underway:)
+Currently the code cannot do much: I am ironing out a basic parallel data layout. I am using a simple global
+array based approach, utilising MPI-3.0 RDMA (remote direct memory access). It’s based on the implementation
+suggested in the book <a class="reference external" href="https://mitpress.mit.edu/books/using-advanced-mpi">“Using Advanced MPI”</a>. The current
+version of the array code is here: <a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/ga.hpp#L38">ga.hpp</a>
+and <a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/ga.cpp#L37">ga.cpp</a>.
+The way the arrays are used to store computational data can be viewed in <a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/compute.hpp#L37">compute.hpp</a>.
+Since the arrays are of fixed size – there is a little bit of book keeping that needs to be implemented – in
+order to allow for arbitrary sequences of insertions and deletions of computational data. This is the aspect
+of the code, which I am currently implementing and smoothing out. Only MPI rank-0 process is interpreting the
+input Python file – the remaining processes join in during the computation loop – which can be invoked multiple
+times from the input file – with insertions and deletions of computational data in between. (…)</p>
 
-      <p><a href="../solfec_export_command.html">Read more ...</a></p>
-      <hr>
-    </div>
-    
-
-    <div class="section">
-      <h2><a href="../pop_audit.html">Solfec POP audit report</a></h2>
-
-      <ul class="ablog-archive">
-      <li>
-      
-        12 December 2017
-      
-      </li>
-        
-
-  
-  <li id="author"><span>Author:</span>
-    
-      
-      <a href="../author/tomek.html">Tomek</a>
-      
-    </li>
-  
-
-  
-
-  
-
-  
-
-  
-  <li id="tags"><span>Tags:
-      </span>
-    
-      
-      <a href="#">solfec-1.0</a>
-      
-    
-      
-      <a href="performance.html">performance</a>
-      
-    
-      
-      <a href="optimization.html">optimization</a>
-      
-    </li>
-  
-  </ul>
-      <p>Duplicate explicit target name: “pop”.</p>
-
-      <p><a href="../pop_audit.html">Read more ...</a></p>
-      <hr>
-    </div>
-    
-
-    <div class="section">
-      <h2><a href="../cached_time_series.html">Partially cached time series in Solfec</a></h2>
-
-      <ul class="ablog-archive">
-      <li>
-      
-        01 August 2017
-      
-      </li>
-        
-
-  
-  <li id="author"><span>Author:</span>
-    
-      
-      <a href="../author/tomek.html">Tomek</a>
-      
-    </li>
-  
-
-  
-
-  
-
-  
-
-  
-  <li id="tags"><span>Tag:</span>
-    
-      
-      <a href="#">solfec-1.0</a>
-      
-    </li>
-  
-  </ul>
-      <p>Motivated by user feedback a partially cached time series capability has been included into <a class="reference internal" href="../../solfec-1.0/index.html#solfec-1-0-index"><span class="std std-ref">SOLFEC-1.0</span></a>.
-This allows to use many large <a class="reference internal" href="../../solfec-1.0/user/times.html#solfec-1-0-user-times"><span class="std std-ref">TIME_SERIES</span></a> objects without running out of
-memory. To facilitate that an optional <em>cache</em> argument has been added – please see the <a class="reference internal" href="../../solfec-1.0/user/times.html#solfec-1-0-user-times"><span class="std std-ref">documentation</span></a> and <a class="reference internal" href="../../solfec-1.0/examples/time_series.html#solfec-1-0-examples-time-series"><span class="std std-ref">example</span></a>.</p>
-
-      <p><a href="../cached_time_series.html">Read more ...</a></p>
-      <hr>
-    </div>
-    
-
-    <div class="section">
-      <h2><a href="../hybrid_solver.html">Hybrid solver in Solfec</a></h2>
-
-      <ul class="ablog-archive">
-      <li>
-      
-        27 April 2017
-      
-      </li>
-        
-
-  
-  <li id="author"><span>Author:</span>
-    
-      
-      <a href="../author/tomek.html">Tomek</a>
-      
-    </li>
-  
-
-  
-
-  
-
-  
-
-  
-  <li id="tags"><span>Tags:
-      </span>
-    
-      
-      <a href="#">solfec-1.0</a>
-      
-    
-      
-      <a href="parmec.html">parmec</a>
-      
-    </li>
-  
-  </ul>
-      <p><a class="reference internal" href="../../solfec-1.0/user/solvers.html#solfec-1-0-command-hybrid-solver"><span class="std std-ref">Solfec’s hybrid solver</span></a> is now ready for testing. This solver combines the ability
-of modeling non–smooth multi–body structures in Solfec (e.g. as fully resolved FE models) in conjunction with a lightweight
-rigid–body/nonlinear–spring approach implemented in <a class="reference internal" href="../../parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a>. A simple example of that can be
-seen in the video below:</p>
-
-      <p><a href="../hybrid_solver.html">Read more ...</a></p>
+      <p><a href="../solfec-2.0-update-0.html">Read more ...</a></p>
       <hr>
     </div>
     
@@ -394,12 +257,12 @@ seen in the video below:</p>
     
       
       <li class="ablog-cloud ablog-cloud-3">
-        <a href="#">solfec-1.0</a></li>
+        <a href="solfec-10.html">solfec-1.0</a></li>
       
     
       
       <li class="ablog-cloud ablog-cloud-1">
-        <a href="solfec-20.html">solfec-2.0</a></li>
+        <a href="#">solfec-2.0</a></li>
       
     
       

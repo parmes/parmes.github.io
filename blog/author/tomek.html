@@ -9,12 +9,13 @@
     <title>Posts by Tomek &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   
@@ -57,6 +58,59 @@
       
     </h1>
     
+    
+
+    <div class="section">
+      <h2><a href="../solfec-2.0-update-0.html">Solfec-2.0 update 0</a></h2>
+
+      <ul class="ablog-archive">
+      <li>
+      
+        09 September 2019
+      
+      </li>
+        
+
+  
+  <li id="author"><span>Author:</span>
+    
+      
+      <a href="#">Tomek</a>
+      
+    </li>
+  
+
+  
+
+  
+
+  
+
+  
+  <li id="tags"><span>Tag:</span>
+    
+      
+      <a href="../tag/solfec-20.html">solfec-2.0</a>
+      
+    </li>
+  
+  </ul>
+      <p>Just a little note to say that work on <a class="reference external" href="https://github.com/parmes/solfec-2.0/">Solfec-2.0</a> is underway:)
+Currently the code cannot do much: I am ironing out a basic parallel data layout. I am using a simple global
+array based approach, utilising MPI-3.0 RDMA (remote direct memory access). It’s based on the implementation
+suggested in the book <a class="reference external" href="https://mitpress.mit.edu/books/using-advanced-mpi">“Using Advanced MPI”</a>. The current
+version of the array code is here: <a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/ga.hpp#L38">ga.hpp</a>
+and <a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/ga.cpp#L37">ga.cpp</a>.
+The way the arrays are used to store computational data can be viewed in <a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/compute.hpp#L37">compute.hpp</a>.
+Since the arrays are of fixed size – there is a little bit of book keeping that needs to be implemented – in
+order to allow for arbitrary sequences of insertions and deletions of computational data. This is the aspect
+of the code, which I am currently implementing and smoothing out. Only MPI rank-0 process is interpreting the
+input Python file – the remaining processes join in during the computation loop – which can be invoked multiple
+times from the input file – with insertions and deletions of computational data in between. (…)</p>
+
+      <p><a href="../solfec-2.0-update-0.html">Read more ...</a></p>
+      <hr>
+    </div>
     
 
     <div class="section">
@@ -447,7 +501,7 @@ can also be outputted as <a class="reference internal" href="../../parmec/input_
     </li>
   
   </ul>
-      <p>Solfec has been analysed by <a class="reference external" href="https://pop-coe.eu">POP</a> experts. The initial audit report is available for download: (…)</p>
+      <p>Duplicate explicit target name: “pop”.</p>
 
       <p><a href="../pop_audit.html">Read more ...</a></p>
       <hr>
@@ -700,6 +754,8 @@ Tomek:)</p>
   <ul>
     
     
+      <li><a href="../solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
+    
       <li><a href="../solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
     
       <li><a href="../parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
@@ -707,8 +763,6 @@ Tomek:)</p>
       <li><a href="../parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
       <li><a href="../parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-      <li><a href="../spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
   </ul>
 
@@ -787,6 +841,11 @@ Tomek:)</p>
     
       
       <li class="ablog-cloud ablog-cloud-1">
+        <a href="../tag/solfec-20.html">solfec-2.0</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
         <a href="../tag/springs.html">springs</a></li>
       
     
@@ -806,7 +865,7 @@ Tomek:)</p>
   <ul>
   
     
-    <li><a href="../2019.html">2019 (1)</a></li>
+    <li><a href="../2019.html">2019 (2)</a></li>
     
   
     
@@ -823,6 +882,14 @@ Tomek:)</p>
   
   </ul>
 
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
@@ -831,8 +898,8 @@ Tomek:)</p>
       &copy;2019 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
     </div>
 

@@ -9,12 +9,13 @@
     <title>Local dynamics &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/parmes.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Joints" href="joints.html" />
@@ -163,8 +164,8 @@ of the global <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> o
 \[\mathbf{H}_{k\alpha}=\mathbf{H}\left(\left\{ \mathbf{a}^{i}\right\} \in\mathcal{C}_{\alpha},\mathbf{X}\in\mathcal{B}_{k}\right)\]</div>
 <p>is evaluated according to one of the specific formulas <a class="reference internal" href="constraints.html#solfec-1-0-theory-constraints"><span class="std std-ref">introduced in the section on constraints</span></a>.</p>
 </div>
-<div class="section" id="the-matrix">
-<span id="w-matrix"></span><h2>The <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> matrix<a class="headerlink" href="#the-matrix" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="the-mathbf-w-matrix">
+<span id="w-matrix"></span><h2>The <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> matrix<a class="headerlink" href="#the-mathbf-w-matrix" title="Permalink to this headline">¶</a></h2>
 <p><span class="math notranslate nohighlight">\(\mathbf{W}\)</span> maps local forces into local relative velocities.
 Algebraically, it is represented by a sparse matrix, composed of dense
 <span class="math notranslate nohighlight">\(3\times3\)</span> blocks <span class="math notranslate nohighlight">\(\mathbf{W}_{\alpha\beta}\)</span>. The sparsity pattern
@@ -336,7 +337,7 @@ Assembling of <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> a
 <li class="toctree-l3"><a class="reference internal" href="constraints.html">Constraints</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Local dynamics</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#detailed-multi-body-notation">Detailed multi–body notation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#the-matrix">The <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> matrix</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-mathbf-w-matrix">The <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> matrix</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a></li>
 </ul>
 </li>
@@ -393,6 +394,8 @@ Assembling of <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> a
   <ul>
     
     
+      <li><a href="../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
+    
       <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
     
       <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
@@ -400,8 +403,6 @@ Assembling of <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> a
       <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
       <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-      <li><a href="../../blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
   </ul>
 
@@ -480,6 +481,11 @@ Assembling of <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> a
     
       
       <li class="ablog-cloud ablog-cloud-1">
+        <a href="../../blog/tag/solfec-20.html">solfec-2.0</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
         <a href="../../blog/tag/springs.html">springs</a></li>
       
     
@@ -499,7 +505,7 @@ Assembling of <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> a
   <ul>
   
     
-    <li><a href="../../blog/2019.html">2019 (1)</a></li>
+    <li><a href="../../blog/2019.html">2019 (2)</a></li>
     
   
     
@@ -516,6 +522,14 @@ Assembling of <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> a
   
   </ul>
 
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
@@ -524,8 +538,8 @@ Assembling of <span class="math notranslate nohighlight">\(\mathbf{W}\)</span> a
       &copy;2019 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="../../_sources/solfec-1.0/theory/locdyn.rst.txt"

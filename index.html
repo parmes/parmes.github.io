@@ -9,12 +9,13 @@
     <title>Parallel mechanics and particulate media software blog &#8212; PARMES  documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/parmes.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/parmes.css" />
     <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="SOLFEC-1.0" href="solfec-1.0/index.html" />
@@ -52,6 +53,20 @@
 <h1>Parallel mechanics and particulate media software <a class="reference internal" href="blog/about.html#about-parmes"><span class="std std-ref">blog</span></a> <a href="blog/atom.xml"><img src="_static/icons/feed.png" title="Atom feeds" width="17" height="17" /></a><a class="headerlink" href="#parallel-mechanics-and-particulate-media-software-blog-feed" title="Permalink to this headline">¶</a></h1>
 <p>Recent blog posts:</p>
 <ul class="postlist-style-none postlist">
+<li><p class="first">September 09, 2019 - <a class="reference internal" href="blog/solfec-2.0-update-0.html">Solfec-2.0 update 0</a></p>
+<p>Just a little note to say that work on <a class="reference external" href="https://github.com/parmes/solfec-2.0/">Solfec-2.0</a> is underway:)
+Currently the code cannot do much: I am ironing out a basic parallel data layout. I am using a simple global
+array based approach, utilising MPI-3.0 RDMA (remote direct memory access). It’s based on the implementation
+suggested in the book <a class="reference external" href="https://mitpress.mit.edu/books/using-advanced-mpi">“Using Advanced MPI”</a>. The current
+version of the array code is here: <a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/ga.hpp#L38">ga.hpp</a>
+and <a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/ga.cpp#L37">ga.cpp</a>.
+The way the arrays are used to store computational data can be viewed in <a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/compute.hpp#L37">compute.hpp</a>.
+Since the arrays are of fixed size – there is a little bit of book keeping that needs to be implemented – in
+order to allow for arbitrary sequences of insertions and deletions of computational data. This is the aspect
+of the code, which I am currently implementing and smoothing out. Only MPI rank-0 process is interpreting the
+input Python file – the remaining processes join in during the computation loop – which can be invoked multiple
+times from the input file – with insertions and deletions of computational data in between. (…)</p>
+</li>
 <li><p class="first">January 09, 2019 - <a class="reference internal" href="blog/solfec_export_command.html">SOLFEC_EXPORT command</a></p>
 <p>In analogy to Solfec’s <a class="reference internal" href="solfec-1.0/xdmf.html#solfec-1-0-xdmf"><span class="std std-ref">XDMF_EXPORT</span></a> command, a new <a class="reference internal" href="solfec-1.0/user/results.html#solfec-1-0-command-solfec-export"><span class="std std-ref">SOLFEC_EXPORT</span></a>
 command has been added. This allows to save a subset of results into a separate directory and view them using Solfec’s
@@ -85,29 +100,21 @@ Parmec <a class="reference internal" href="parmec/input_commands.html#parmec-com
 <em>spring</em>, <em>dashpot</em> and <em>friction</em>). Upon running it generates time history figures <em>tests/spring_contact_plane_{z,f_ff}.png</em>
 and output files viewable with <a class="reference external" href="https://www.paraview.org/">ParaView</a>. An animation and the figures are included below. (…)</p>
 </li>
-<li><p class="first">March 07, 2018 - <a class="reference internal" href="blog/spring_curve_tests.html">Parmec spring curve tests</a></p>
-<p>Thanks to user feedback, Parmec begins to be smoothed out. An automated spring curve correctness test has now been added
-as <a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/tests/spring_curve_tests.py">tests/spring_curve_tests.py</a>
-allowing to generate and run a number of simulations with random spring curves within a stroke-force box [-1, -1, 1, 1].
-This test initiates what may become a suite of automated regression tests for Parmec. If <a class="reference external" href="https://matplotlib.org/">matplotlib</a>
-and <a class="reference external" href="https://www.imagemagick.org">imagemagic</a> are installed, it generates a juxtaposed image, comparing input and output curves.
-An example image is included below. (…)</p>
-</li>
 </ul>
 <div class="toctree-wrapper compound">
 </div>
 <p>Recently modified pages:</p>
 <ul class="simple">
 <li>On Jul 8 2019 <a class="reference internal" href="dynlb/index.html#dynlb-index"><span class="std std-ref">DYNLB</span></a></li>
-<li>On Jul 8 2019 <a class="reference internal" href="solfec-1.0/examples/hybrid_modeling/hs0.html#solfec-1-0-examples-hybrid-modeling-hs0"><span class="std std-ref">A two–body impact problem</span></a></li>
-<li>On Jul 8 2019 <a class="reference internal" href="solfec-1.0/examples/hybrid_modeling/hs123.html#solfec-1-0-examples-hybrid-modeling-hs123"><span class="std std-ref">1,2,3–dimensional cube array acceleration dwell</span></a></li>
-<li>On Jul 8 2019 <a class="reference internal" href="solfec-1.0/examples/hybrid_modeling/hs3_scaling.html#solfec-1-0-examples-hybrid-modeling-hs3-scaling"><span class="std std-ref">3–dimensional cube array parallel scaling</span></a></li>
-<li>On Jul 8 2019 <a class="reference internal" href="solfec-1.0/index.html#solfec-1-0-index"><span class="std std-ref">SOLFEC-1.0</span></a></li>
-<li>On Jul 8 2019 <a class="reference internal" href="solfec-2.0/index.html#solfec-2-0-index"><span class="std std-ref">SOLFEC-2.0</span></a></li>
-<li>On Jul 8 2019 <a class="reference internal" href="vbox/index.html#vbox-index"><span class="std std-ref">Parmes VirtualBox Image</span></a></li>
-<li>On Mar 21 2019 <a class="reference internal" href="parmec/input_commands.html#parmec-input-commands"><span class="std std-ref">Parmec Input Commands</span></a></li>
-<li>On Feb 4 2019 <a class="reference internal" href="parmec/index.html#parmec-index"><span class="std std-ref">PARMEC</span></a></li>
-<li>On May 11 2018 <a class="reference internal" href="trs/index.html#trs-index"><span class="std std-ref">Technical Reports</span></a></li>
+<li>On Jul 8 2019 <a class="reference internal" href="solfec-1.0/abaqus.html#solfec-1-0-abaqus"><span class="std std-ref">Solfec-1.0 ABAQUS import</span></a></li>
+<li>On Jul 8 2019 <a class="reference internal" href="solfec-1.0/applications.html#solfec-1-0-applications"><span class="std std-ref">Solfec-1.0 Applications</span></a></li>
+<li>On Jul 8 2019 <a class="reference internal" href="solfec-1.0/applications/kinematic_flow_patterns.html#solfec-1-0-applications-kinematic-flow-patterns"><span class="std std-ref">Kinematic flow patterns</span></a></li>
+<li>On Jul 8 2019 <a class="reference internal" href="solfec-1.0/applications/multibody_pattern_formation.html#solfec-1-0-applications-multibody-pattern-formation"><span class="std std-ref">Multibody pattern formation</span></a></li>
+<li>On Jul 8 2019 <a class="reference internal" href="solfec-1.0/applications/overturning_block_stacks.html#solfec-1-0-applications-overturning-block-stacks"><span class="std std-ref">Overturning of multiple–block stacks</span></a></li>
+<li>On Jul 8 2019 <a class="reference internal" href="solfec-1.0/applications/suspended_sediment_propagation.html#solfec-1-0-applications-suspended-sediment-propagation"><span class="std std-ref">Suspended sediment propagation</span></a></li>
+<li>On Jul 8 2019 <a class="reference internal" href="solfec-1.0/examples.html#solfec-1-0-examples"><span class="std std-ref">Solfec-1.0 Examples</span></a></li>
+<li>On Jul 8 2019 <a class="reference internal" href="solfec-1.0/examples/81array.html#solfec-1-0-examples-81array"><span class="std std-ref">81 bricks array</span></a></li>
+<li>On Jul 8 2019 <a class="reference internal" href="solfec-1.0/examples/hybrid_modeling.html#solfec-1-0-examples-hybrid-modeling"><span class="std std-ref">Hybrid modeling</span></a></li>
 </ul>
 </div>
 
@@ -177,6 +184,8 @@ An example image is included below. (…)</p>
   <ul>
     
     
+      <li><a href="blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
+    
       <li><a href="blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
     
       <li><a href="blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
@@ -184,8 +193,6 @@ An example image is included below. (…)</p>
       <li><a href="blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
     
       <li><a href="blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-      <li><a href="blog/spring_curve_tests.html">07 March - Parmec spring curve tests</a></li>
     
   </ul>
 
@@ -264,6 +271,11 @@ An example image is included below. (…)</p>
     
       
       <li class="ablog-cloud ablog-cloud-1">
+        <a href="blog/tag/solfec-20.html">solfec-2.0</a></li>
+      
+    
+      
+      <li class="ablog-cloud ablog-cloud-1">
         <a href="blog/tag/springs.html">springs</a></li>
       
     
@@ -283,7 +295,7 @@ An example image is included below. (…)</p>
   <ul>
   
     
-    <li><a href="blog/2019.html">2019 (1)</a></li>
+    <li><a href="blog/2019.html">2019 (2)</a></li>
     
   
     
@@ -300,6 +312,14 @@ An example image is included below. (…)</p>
   
   </ul>
 
+
+
+
+
+
+
+
+
         </div>
       </div>
       <div class="clearer"></div>
@@ -308,8 +328,8 @@ An example image is included below. (…)</p>
       &copy;2019 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.9</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.11</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
       <a href="_sources/index.rst.txt"
