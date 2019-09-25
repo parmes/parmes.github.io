@@ -244,7 +244,10 @@ and rection <span class="math notranslate nohighlight">\(\mathbf{R}\)</span>, is
 75
 76
 77
-78</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="n">constraint_state</span>
+78</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">#define VELODIR1(Z)     ((Z)[1])   /* prescribed velocity at (t+h) */</span>
+<span class="c1">#define VELODIR2(Z)     ((Z)[2])   /* prescribed velocity at (t+h) */</span>
+
+<span class="n">enum</span> <span class="n">constraint_state</span>
      <span class="p">{</span><span class="n">CON_COHESIVE</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">,</span>
       <span class="n">CON_NEW</span>      <span class="o">=</span> <span class="mh">0x02</span><span class="p">,</span>  <span class="o">/*</span> <span class="n">newly</span> <span class="n">inserted</span> <span class="n">constraint</span> <span class="o">*/</span>
       <span class="n">CON_IDLOCK</span>   <span class="o">=</span> <span class="mh">0x04</span><span class="p">,</span>  <span class="o">/*</span> <span class="n">locked</span> <span class="n">ID</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">freed</span> <span class="n">to</span> <span class="n">the</span> <span class="n">pool</span> <span class="o">*/</span>
@@ -253,12 +256,9 @@ and rection <span class="math notranslate nohighlight">\(\mathbf{R}\)</span>, is
 
 <span class="n">struct</span> <span class="n">constraint</span>
 <span class="p">{</span>
-  <span class="n">double</span> <span class="n">R</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="o">/*</span> <span class="n">average</span> <span class="n">constraint</span> <span class="n">reaction</span> <span class="o">*/</span>
-	 <span class="n">U</span> <span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="o">/*</span> <span class="n">relative</span> <span class="n">velocity</span> <span class="o">*/</span>
-	 <span class="n">V</span> <span class="p">[</span><span class="mi">3</span><span class="p">];</span> <span class="o">/*</span> <span class="n">initial</span> <span class="n">relative</span> <span class="n">velocity</span> <span class="o">*/</span>
 </pre></div>
 </td></tr></table></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>124</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="n">SET</span> <span class="o">*</span><span class="n">ext</span><span class="p">;</span> <span class="o">/*</span> <span class="n">ranks</span> <span class="n">of</span> <span class="n">remote</span> <span class="n">external</span> <span class="n">images</span> <span class="n">of</span> <span class="n">this</span> <span class="n">constraint</span> <span class="o">*/</span>
+<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>124</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="o">/*</span> <span class="n">put</span> <span class="n">parallel</span> <span class="n">data</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">structutre</span> <span class="n">so</span> <span class="n">that</span>
 </pre></div>
 </td></tr></table></div>
 <p>Evaluation of <a class="reference internal" href="#equation-h">(42)</a> in accessed via <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1829">bod.c:BODY_Gen_To_Loc_Operator</a>. <br />

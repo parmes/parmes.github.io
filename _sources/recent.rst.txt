@@ -1,4 +1,6 @@
 
+* On Sep 24 2019 :ref:`solfec-1.0-user-utilities`
+
 * On Jul 8 2019 :ref:`dynlb-index`
 
 * On Jul 8 2019 :ref:`solfec-1.0-abaqus`
@@ -16,5 +18,3 @@
 * On Jul 8 2019 :ref:`solfec-1.0-examples`
 
 * On Jul 8 2019 :ref:`solfec-1.0-examples-81array`
-
-* On Jul 8 2019 :ref:`solfec-1.0-examples-hybrid_modeling`

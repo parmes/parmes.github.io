@@ -100,6 +100,20 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 </ul>
 </div>
 </div>
+<div class="section" id="set-displacement3">
+<span id="solfec-1-0-command-set-displacement3"></span><h2>SET_DISPLACEMENT3<a class="headerlink" href="#set-displacement3" title="Permalink to this headline">¶</a></h2>
+<p>This routine prescribes a displacement history of a referential point along all directions at a local orthogonal base.</p>
+<div class="topic">
+<p class="topic-title first">obj = SET_DISPLACEMENT3 (body, point, base, tms)</p>
+<ul class="simple">
+<li>obj – created CONSTRAINT object</li>
+<li>body – BODY object whose motion is constrained</li>
+<li>point – (x, y, z) tuple with referential point coordinates</li>
+<li>base – (ux, uy, yz, vx, vy, vz, wx, wy, wz) tuple with the local orthogonal base components</li>
+<li>tms – (ts0, ts1, ts2) tuple of TIME_SERIES objects with the displacement histories</li>
+</ul>
+</div>
+</div>
 <div class="section" id="set-velocity">
 <span id="solfec-1-0-command-set-velocity"></span><h2>SET_VELOCITY<a class="headerlink" href="#set-velocity" title="Permalink to this headline">¶</a></h2>
 <p>This routine prescribes a velocity history of a referential point along a specified spacial direction.
@@ -115,6 +129,20 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 </ul>
 </div>
 </div>
+<div class="section" id="set-velocity3">
+<span id="solfec-1-0-command-set-velocity3"></span><h2>SET_VELOCITY3<a class="headerlink" href="#set-velocity3" title="Permalink to this headline">¶</a></h2>
+<p>This routine prescribes a velocity history of a referential point along all directions at a local orthogonal base.</p>
+<div class="topic">
+<p class="topic-title first">obj = SET_VELOCITY3 (body, point, base, tms)</p>
+<ul class="simple">
+<li>obj – created CONSTRAINT object</li>
+<li>body – BODY object whose motion is constrained</li>
+<li>point – (x, y, z) tuple with referential point coordinates</li>
+<li>base – (ux, uy, yz, vx, vy, vz, wx, wy, wz) tuple with the local orthogonal base components</li>
+<li>tms – (ts0, ts1, ts2) tuple of TIME_SERIES objects with the velocity histories</li>
+</ul>
+</div>
+</div>
 <div class="section" id="set-acceleration">
 <span id="solfec-1-0-command-set-acceleration"></span><h2>SET_ACCELERATION<a class="headerlink" href="#set-acceleration" title="Permalink to this headline">¶</a></h2>
 <p>This routine prescribes an acceleration history of a referential point along a specified spacial direction.
@@ -127,6 +155,20 @@ See also, formulation of the <a class="reference internal" href="../theory/joint
 <li>point – (x, y, z) tuple with referential point coordinates</li>
 <li>direction – (vx, vy, vz) tuple with spatial direction components</li>
 <li>tms – TIME_SERIES object with the acceleration history</li>
+</ul>
+</div>
+</div>
+<div class="section" id="set-acceleration3">
+<span id="solfec-1-0-command-set-acceleration3"></span><h2>SET_ACCELERATION3<a class="headerlink" href="#set-acceleration3" title="Permalink to this headline">¶</a></h2>
+<p>This routine prescribes an acceleration history of a referential point along all directions at a local orthogonal base.</p>
+<div class="topic">
+<p class="topic-title first">obj = SET_ACCELERATION3 (body, point, base, tms)</p>
+<ul class="simple">
+<li>obj – created CONSTRAINT object</li>
+<li>body – BODY object whose motion is constrained</li>
+<li>point – (x, y, z) tuple with referential point coordinates</li>
+<li>base – (ux, uy, yz, vx, vy, vz, wx, wy, wz) tuple with the local orthogonal base components</li>
+<li>tms – (ts0, ts1, ts2) tuple of TIME_SERIES objects with the acceleration histories</li>
 </ul>
 </div>
 </div>
@@ -274,8 +316,11 @@ returned by <em>obj.adjbod</em></td>
 <li class="toctree-l4"><a class="reference internal" href="#fix-point">FIX_POINT</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#fix-direction">FIX_DIRECTION</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#set-displacement">SET_DISPLACEMENT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-displacement3">SET_DISPLACEMENT3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#set-velocity">SET_VELOCITY</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-velocity3">SET_VELOCITY3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#set-acceleration">SET_ACCELERATION</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-acceleration3">SET_ACCELERATION3</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#put-rigid-link">PUT_RIGID_LINK</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#put-spring">PUT_SPRING</a></li>
 </ul>
