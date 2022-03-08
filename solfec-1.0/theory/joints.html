@@ -1,44 +1,61 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Joints &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Contact points" href="conpnt.html" />
-    <link rel="prev" title="Local dynamics" href="locdyn.html" />
-  
+    <link rel="prev" title="Local dynamics" href="locdyn.html" /> 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,8 +66,7 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="joints">
+             <section id="joints">
 <span id="solfec-1-0-theory-joints"></span><h1>Joints<a class="headerlink" href="#joints" title="Permalink to this headline">¶</a></h1>
 <p>Joints in  Solfec-1.0 are defined by <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-fix-point"><span class="std std-ref">FIX_POINT</span></a>, <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-fix-direction"><span class="std std-ref">FIX_DIRECTION</span></a>,
 <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-set-displacement"><span class="std std-ref">SET_DISPLACEMENT</span></a>, <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-set-velocity"><span class="std std-ref">SET_VELOCITY</span></a>,
@@ -60,14 +76,14 @@ of individual points of individual bodies, or relative motion of pairs of points
 <p>Joints are implemented via suitably setting values of components of relative constraint velocities or
 constraint reactions. That is to say, the general implicit relation</p>
 <div class="math notranslate nohighlight" id="equation-cal">
-<span class="eqno">(65)<a class="headerlink" href="#equation-cal" title="Permalink to this equation">¶</a></span>\[\mathbf{C}_{\alpha}\left(\mathbf{U}_{\alpha},\mathbf{R}_{\alpha}\right)=\mathbf{0}\]</div>
+<span class="eqno">(73)<a class="headerlink" href="#equation-cal" title="Permalink to this equation">¶</a></span>\[\mathbf{C}_{\alpha}\left(\mathbf{U}_{\alpha},\mathbf{R}_{\alpha}\right)=\mathbf{0}\]</div>
 <p>for a bilateral constraint with index <span class="math notranslate nohighlight">\(\alpha\)</span> takes a particular shape. In order to work with components
 of relative velocities and forces it is convenient to introduce the following naming convention. Let every local
 frame be defined by a matrix <span class="math notranslate nohighlight">\(\left\{ \mathbf{a}_{T1},\mathbf{a}_{T2},\mathbf{a}_{N}\right\}\)</span>  made of juxtaposed
 column vectors: <span class="math notranslate nohighlight">\(\mathbf{a}_{T1}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{a}_{T2}\)</span>, called <em>tangent</em>, and <span class="math notranslate nohighlight">\(\mathbf{a}_{N}\)</span>, called <em>normal</em>.
 We also assume, that these vectors are mutually perpendicular: <span class="math notranslate nohighlight">\(\mathbf{a}_{T1}\perp\mathbf{a}_{T2}\perp\mathbf{a}_{N}\)</span>.
-With this convenetion at hand, below we define particular versions of relation <a class="reference internal" href="#equation-cal">(65)</a> for joint types available in Solfec-1.0.</p>
-<div class="section" id="fixed-point">
+With this convenetion at hand, below we define particular versions of relation <a class="reference internal" href="#equation-cal">(73)</a> for joint types available in Solfec-1.0.</p>
+<section id="fixed-point">
 <span id="id1"></span><h2>Fixed point<a class="headerlink" href="#fixed-point" title="Permalink to this headline">¶</a></h2>
 <p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-fix-point"><span class="std std-ref">FIX_POINT</span></a> command is realized by defining</p>
 <div class="math notranslate nohighlight">
@@ -76,8 +92,8 @@ With this convenetion at hand, below we define particular versions of relation <
 <div class="math notranslate nohighlight">
 \[\mathbf{U}=\mathbf{0}\]</div>
 <p>imposes the fixed point constraint.</p>
-</div>
-<div class="section" id="fixed-direction">
+</section>
+<section id="fixed-direction">
 <span id="id2"></span><h2>Fixed direction<a class="headerlink" href="#fixed-direction" title="Permalink to this headline">¶</a></h2>
 <p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-fix-direction"><span class="std std-ref">FIX_DIRECTION</span></a> command is realized by defining</p>
 <div class="math notranslate nohighlight">
@@ -92,8 +108,8 @@ U_{N}
 <p>imposes the fixed direction constraint. In this case the normal direction is taken to be the fixed direction,
 while the tangential plane is unused (hence zero tangential reaction,
 <span class="math notranslate nohighlight">\(\mathbf{R}_{T}=\left[\begin{array}{c} R_{T1}\\ R_{T2} \end{array}\right]\)</span>)</p>
-</div>
-<div class="section" id="prescribed-displacement">
+</section>
+<section id="prescribed-displacement">
 <span id="id3"></span><h2>Prescribed displacement<a class="headerlink" href="#prescribed-displacement" title="Permalink to this headline">¶</a></h2>
 <p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-set-displacement"><span class="std std-ref">SET_DISPLACEMENT</span></a> command is realized by defining</p>
 <div class="math notranslate nohighlight">
@@ -107,8 +123,8 @@ U_{N}-\frac{d}{dt}\text{disp}\left(t\right)
 \[\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=\frac{d}{dt}\text{disp}\left(t\right)\]</div>
 <p>where the displacement signal <span class="math notranslate nohighlight">\(\text{disp}\left(t\right)\)</span> is provided by the user as a linear spline and
 differentiated numerically to obtain velocity. The tangential plane is unused, hence zero tangential reaction.</p>
-</div>
-<div class="section" id="prescribed-velocity">
+</section>
+<section id="prescribed-velocity">
 <span id="id4"></span><h2>Prescribed velocity<a class="headerlink" href="#prescribed-velocity" title="Permalink to this headline">¶</a></h2>
 <p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-set-velocity"><span class="std std-ref">SET_VELOCITY</span></a> command is realized by defining</p>
 <div class="math notranslate nohighlight">
@@ -122,8 +138,8 @@ U_{N}-\text{velo}\left(t\right)
 \[\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=\text{velo}\left(t\right)\]</div>
 <p>where the velocity signal <span class="math notranslate nohighlight">\(\text{velo}\left(t\right)\)</span> is provided by the user as a linear spline.
 The tangential plane is unused, hence zero tangential reaction.</p>
-</div>
-<div class="section" id="prescribed-acceleration">
+</section>
+<section id="prescribed-acceleration">
 <span id="id5"></span><h2>Prescribed acceleration<a class="headerlink" href="#prescribed-acceleration" title="Permalink to this headline">¶</a></h2>
 <p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-set-acceleration"><span class="std std-ref">SET_ACCELERATION</span></a> command is realized by defining</p>
 <div class="math notranslate nohighlight">
@@ -137,8 +153,8 @@ U_{N}-\int_{0}^{t}\text{acc}\left(t\right)
 \[\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=\int_{0}^{t}\text{acc}\left(t\right)\]</div>
 <p>where the acceleration signal <span class="math notranslate nohighlight">\(\text{acc}\left(t\right)\)</span> is provided by the user as a linear spline and
 integrated numerically to obtain velocity. The tangential plane is unused, hence zero tangential reaction.</p>
-</div>
-<div class="section" id="rigid-link-constraint">
+</section>
+<section id="rigid-link-constraint">
 <span id="rigid-link"></span><h2>Rigid link constraint<a class="headerlink" href="#rigid-link-constraint" title="Permalink to this headline">¶</a></h2>
 <p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-put-rigid-link"><span class="std std-ref">PUT_RIGID_LINK</span></a> command is realized by defining a normal direction</p>
 <div class="math notranslate nohighlight">
@@ -155,8 +171,8 @@ U_{N}
 \[\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=0\]</div>
 <p>which fixes the relative motion of points <span class="math notranslate nohighlight">\(\mathbf{x}_{1}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_{2}\)</span> along the normal direction.
 The tangential plane is unused, hence zero tangential reaction.</p>
-</div>
-<div class="section" id="spring-constraint">
+</section>
+<section id="spring-constraint">
 <span id="simple-spring"></span><h2>Spring constraint<a class="headerlink" href="#spring-constraint" title="Permalink to this headline">¶</a></h2>
 <p>Joint corresponding to the <a class="reference internal" href="../user/constraints.html#solfec-1-0-command-put-spring"><span class="std std-ref">PUT_SPRING</span></a> command is realized by defining a stretch</p>
 <div class="math notranslate nohighlight">
@@ -176,8 +192,8 @@ R_{N}=\text{user_force}\left(d,\dot{d}\right)
 \[\mathbf{R}_{T}=\mathbf{0},\,\,\,R_{N}=\text{user_force}\left(d,\dot{d}\right)\]</div>
 <p>where the user force is prescribed as a Python subroutine.
 The tangential plane is unused, hence zero tangential reaction.</p>
-</div>
-<div class="section" id="implementation">
+</section>
+<section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>Joints are implemented as a part of constraint solvers. For example, function
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dbs.c#L483">dbs.c:DIAGONAL_BLOCK_Solver</a> is a driver
@@ -185,13 +201,12 @@ routine for all joint types solved within the <a class="reference internal" href
 invoked from within <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bgs.c#L901">bgs.c:GAUSS_SEIDEL_Solve</a>.
 Within the <a class="reference internal" href="../user/solvers.html#solfec-1-0-command-newton-solver"><span class="std std-ref">Projected Newton</span></a> solver the routine
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/nts.c#L939">nts.c:solve</a> implements all joint types.</p>
-</div>
-</div>
+</section>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -254,7 +269,6 @@ Within the <a class="reference internal" href="../user/solvers.html#solfec-1-0-c
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
@@ -278,148 +292,174 @@ Within the <a class="reference internal" href="../user/solvers.html#solfec-1-0-c
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -434,10 +474,10 @@ Within the <a class="reference internal" href="../user/solvers.html#solfec-1-0-c
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

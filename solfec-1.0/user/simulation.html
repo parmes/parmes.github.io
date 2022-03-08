@@ -1,44 +1,61 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Simulation &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Fragmentation" href="fragmentation.html" />
-    <link rel="prev" title="Solvers" href="solvers.html" />
-  
+    <link rel="prev" title="Solvers" href="solvers.html" /> 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,234 +66,231 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="simulation">
+             <section id="simulation">
 <span id="solfec-1-0-user-simulation"></span><h1>Simulation<a class="headerlink" href="#simulation" title="Permalink to this headline">¶</a></h1>
 <p>Routines listed in this section control the solution process.
 A simulation can be run be invoking the RUN command, documented below.</p>
 <div class="topic" id="solfec-1-0-command-run">
-<p class="topic-title first">RUN (solfec, solver, duration)</p>
+<p class="topic-title">RUN (solfec, solver, duration)</p>
 <p>This routine runs a simulation.</p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>solver – constraint solver object (e.g. GAUSS_SEIDEL_SOLVER, NEWTON_SOLVER, PENALTY_SOLVER)</li>
-<li>duration – duration of analysis. <em>Note:</em> this parameter is ignored when an analysis is run in the viewer mode (with –v switch).</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>solver – constraint solver object (e.g. GAUSS_SEIDEL_SOLVER, NEWTON_SOLVER, PENALTY_SOLVER)</p></li>
+<li><p>duration – duration of analysis. <em>Note:</em> this parameter is ignored when an analysis is run in the viewer mode (with –v switch).</p></li>
 </ul>
 </div>
-<div class="section" id="initialization">
+<section id="initialization">
 <h2>Initialization<a class="headerlink" href="#initialization" title="Permalink to this headline">¶</a></h2>
 <p>Prior to running, a simulation may also require initialization.
 Below we list subroutines providing per–body or per–simulation initialization functionality.</p>
 <div class="topic">
-<p class="topic-title first">INITIAL_VELOCITY (body, linear, angular)</p>
+<p class="topic-title">INITIAL_VELOCITY (body, linear, angular)</p>
 <p>This routine applies initial (at time zero) linear and angular (in the sense of rigid motion) velocity to a body.</p>
 <ul class="simple">
-<li>body – BODY object</li>
-<li>linear – linear velocity <span class="math notranslate nohighlight">\((v_{x},v_{y},v_{z})\)</span></li>
-<li>angular – angular velocity <span class="math notranslate nohighlight">\((\omega_{x},\omega_{y},\omega_{z} )\)</span></li>
+<li><p>body – BODY object</p></li>
+<li><p>linear – linear velocity <span class="math notranslate nohighlight">\((v_{x},v_{y},v_{z})\)</span></p></li>
+<li><p>angular – angular velocity <span class="math notranslate nohighlight">\((\omega_{x},\omega_{y},\omega_{z} )\)</span></p></li>
 </ul>
 </div>
 <div class="topic">
-<p class="topic-title first">INITIALIZE_STATE (solfec, path, time | subset)</p>
+<p class="topic-title">INITIALIZE_STATE (solfec, path, time | subset)</p>
 <p>This routine initializes the state of a Solfec-1.0 object with the state red from an output
 directory at a given time. It is ignored in the ‘READ’ mode. <em>Note</em>: constraint reactions
 are initialized with zeros and recalculated at the next time step.</p>
 <ul class="simple">
-<li>solfec – Solfec-1.0 object in the ‘WRITE’ mode</li>
-<li>path – path to the output directory containing matching analysis results (note: this cannot be the same output directory as for the solfec object)</li>
-<li>time – time at which the state should be red from the output files</li>
-<li>subset – defines a subset of initialized bodies; a string can be used to define a POSIX regular expression <a class="footnote-reference" href="#id3" id="id1">[1]</a> that will be matched against body labels;
+<li><p>solfec – Solfec-1.0 object in the ‘WRITE’ mode</p></li>
+<li><p>path – path to the output directory containing matching analysis results (note: this cannot be the same output directory as for the solfec object)</p></li>
+<li><p>time – time at which the state should be red from the output files</p></li>
+<li><p>subset – defines a subset of initialized bodies; a string can be used to define a POSIX regular expression <a class="footnote-reference brackets" href="#id3" id="id1">1</a> that will be matched against body labels;
 a list of such strings can also be passed; e.g. [‘^BOD.*A$’, ‘^BODY1$’, ‘^BODY2$’, ‘^BOD.*B$’] defines two direct labels ‘BODY1’ and ‘BODY2’ and two
-possible subsets made of labels such as ‘BODY123A’, ‘BODY_anything_B’, etc.</li>
+possible subsets made of labels such as ‘BODY123A’, ‘BODY_anything_B’, etc.</p></li>
 </ul>
 </div>
 <div class="topic">
-<p class="topic-title first">RIGID_TO_FEM (path, time, solfec | subset)</p>
+<p class="topic-title">RIGID_TO_FEM (path, time, solfec | subset)</p>
 <p>This routine initializes the state of FEM bodies within the Solfec-1.0 object with the state of rigid bodies
 red from an output directory at a given time. It is ignored in the ‘READ’ mode. <em>Note:</em> rigid displacements
 are applied to the finite element bodies; this implies that when you add boundary conditions to finite element
 bodies, after their state was updated with RIGID_TO_FEM, you still use the original referential point coordinates
 as the locations of the constraints (e.g. when using SET_DISPLACEMENT or SET_VELOCITY).</p>
 <ul class="simple">
-<li>path – path to the output directory containing matching rigid body analysis results;
+<li><p>path – path to the output directory containing matching rigid body analysis results;
 the number of rigid bodies in this analysis must match the number of FEM bodies in the Solfec-1.0 object;
 the identifiers of rigid bodies must match the identifiers of FEM bodies;
-this is guaranteed if the input files for both analyses differ only by the prescribed body kinds;</li>
-<li>time – time at which the state should be red from the output files</li>
-<li>solfec – Solfec-1.0 object in the ‘WRITE’ mode</li>
-<li>subset – defines a subset of initialized bodies; a string can be used to define a POSIX regular expression <a class="footnote-reference" href="#id3" id="id2">[1]</a> that will be matched against body labels;
+this is guaranteed if the input files for both analyses differ only by the prescribed body kinds;</p></li>
+<li><p>time – time at which the state should be red from the output files</p></li>
+<li><p>solfec – Solfec-1.0 object in the ‘WRITE’ mode</p></li>
+<li><p>subset – defines a subset of initialized bodies; a string can be used to define a POSIX regular expression <a class="footnote-reference brackets" href="#id3" id="id2">1</a> that will be matched against body labels;
 a list of such strings can also be passed; e.g. [‘^BOD.*A$’, ‘^BODY1$’, ‘^BODY2$’, ‘^BOD.*B$’] defines two direct labels ‘BODY1’ and ‘BODY2’ and two
-possible subsets made of labels such as ‘BODY123A’, ‘BODY_anything_B’, etc.</li>
+possible subsets made of labels such as ‘BODY123A’, ‘BODY_anything_B’, etc.</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="runtime-utilities">
+</section>
+<section id="runtime-utilities">
 <h2>Runtime utilities<a class="headerlink" href="#runtime-utilities" title="Permalink to this headline">¶</a></h2>
 <p>Routines below help control runtime behaviour.</p>
 <div class="topic" id="solfec-1-0-command-output">
-<p class="topic-title first">OUTPUT (solfec, interval | compression)</p>
+<p class="topic-title">OUTPUT (solfec, interval | compression)</p>
 <p>This routine specifies the frequency of writing to the output file.</p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>interval – length of the time interval elapsing before consecutive output file writes</li>
-<li>compression – output compression mode: ‘OFF’ (default) or ‘ON’.
-Compressed output files are smaller, although they might not be portable between hardware platforms.</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>interval – length of the time interval elapsing before consecutive output file writes</p></li>
+<li><p>compression – output compression mode: ‘OFF’ (default) or ‘ON’.
+Compressed output files are smaller, although they might not be portable between hardware platforms.</p></li>
 </ul>
 </div>
 <div class="topic">
-<p class="topic-title first">EXTENTS (solfec, extents)</p>
+<p class="topic-title">EXTENTS (solfec, extents)</p>
 <p>This routine bounds the simulation space. Bodies falling outside of the extents are deleted from the simulation.</p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>extents – (xmin, ymin, zmin, xmax, ymax, zmax) tuple</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>extents – (xmin, ymin, zmin, xmax, ymax, zmax) tuple</p></li>
 </ul>
 </div>
 <div class="topic" id="solfec-1-0-command-callback">
-<p class="topic-title first">CALLBACK (solfec, interval, data, callback)</p>
+<p class="topic-title">CALLBACK (solfec, interval, data, callback)</p>
 <p>This routine defines a callback function, invoked during a run of Solfec-1.0 every interval of time.
 A callback routine can interrupt the course of RUN command by returning 0.</p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>interval – length of the time interval elapsing before consecutive callback calls</li>
-<li>data – data passed to the callback function</li>
-<li>callback – callback function of form: value = callback (data), where for the returned value equal zero Solfec-1.0 run is stopped.
-See also: <a class="reference internal" href="utilities.html#solfec-1-0-command-register-callback"><span class="std std-ref">REGISTER_CALLBACK</span></a>.</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>interval – length of the time interval elapsing before consecutive callback calls</p></li>
+<li><p>data – data passed to the callback function</p></li>
+<li><p>callback – callback function of form: value = callback (data), where for the returned value equal zero Solfec-1.0 run is stopped.
+See also: <a class="reference internal" href="utilities.html#solfec-1-0-command-register-callback"><span class="std std-ref">REGISTER_CALLBACK</span></a>.</p></li>
 </ul>
 </div>
 <div class="topic">
-<p class="topic-title first">WARNINGS (state)</p>
+<p class="topic-title">WARNINGS (state)</p>
 <p>This routine disables or enables Solfec-1.0 warnings. It is a good practice to have the
 warnings enabled and only switch them off after making sure, that they can be ignored.</p>
 <ul class="simple">
-<li>state – ‘ON’ or ‘OFF’ (default: ‘ON’)</li>
+<li><p>state – ‘ON’ or ‘OFF’ (default: ‘ON’)</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="contact-handling">
+</section>
+<section id="contact-handling">
 <h2>Contact handling<a class="headerlink" href="#contact-handling" title="Permalink to this headline">¶</a></h2>
 <p>Routines listed below affect contact detection and contact handling.</p>
 <div class="topic" id="solfec-1-0-command-geometric-epsilon">
-<p class="topic-title first">GEOMETRIC_EPSILON (epsilon)</p>
+<p class="topic-title">GEOMETRIC_EPSILON (epsilon)</p>
 <p>This routine sets a numerical tolerance for geometric tests performed within Solfec-1.0.
 The tolerance is a characteristic distance between two distinct points below which they can be regarded as one.
 See also <a class="reference internal" href="../theory/conpnt.html#geometric-epsilon-section"><span class="std std-ref">this comment</span></a> in the <a class="reference internal" href="../theory.html#solfec-1-0-theory"><span class="std std-ref">Theory Manual</span></a>.</p>
 <ul class="simple">
-<li>epsilon – geometrical tolerance (default: 1E-6)</li>
+<li><p>epsilon – geometrical tolerance (default: 1E-6)</p></li>
 </ul>
 </div>
 <div class="topic">
-<p class="topic-title first">UNPHYSICAL_PENETRATION (solfec, depth)</p>
+<p class="topic-title">UNPHYSICAL_PENETRATION (solfec, depth)</p>
 <p>This routine sets a depth of allowed an unphysical interpenetration.
 Once it is exceeded, the simulation is stopped and a suitable error message printed out.</p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>depth – interpenetration depth bound (default: <span class="math notranslate nohighlight">\(\infty\)</span>)</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>depth – interpenetration depth bound (default: <span class="math notranslate nohighlight">\(\infty\)</span>)</p></li>
 </ul>
 </div>
 <div class="topic">
-<p class="topic-title first">CONTACT_EXCLUDE_BODIES (body1, body2)</p>
+<p class="topic-title">CONTACT_EXCLUDE_BODIES (body1, body2)</p>
 <p>This routine disables contact detection for a specific pair of bodies. By default contact detection
 is enabled for all possible body pairs. Must be called on MPI rank 0 process to take effect.</p>
 <ul class="simple">
-<li>body1 – first BODY object</li>
-<li>body2 – second BODY object</li>
+<li><p>body1 – first BODY object</p></li>
+<li><p>body2 – second BODY object</p></li>
 </ul>
 </div>
 <div class="topic">
-<p class="topic-title first">CONTACT_EXCLUDE_SURFACES (solfec, surf1, surf2)</p>
+<p class="topic-title">CONTACT_EXCLUDE_SURFACES (solfec, surf1, surf2)</p>
 <p>This routine disables contact detection for a specific pair of surfaces. By default contact detection
 is enabled for all possible surface pairs. Must be called on MPI rank 0 process to take effect.</p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>surf1 – first BODY object</li>
-<li>surf2 – second BODY object</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>surf1 – first BODY object</p></li>
+<li><p>surf2 – second BODY object</p></li>
 </ul>
 </div>
 <div class="topic" id="solfec-1-0-command-contact-sparsify">
-<p class="topic-title first">CONTACT_SPARSIFY (solfec | threshold, minarea, mindist)</p>
+<p class="topic-title">CONTACT_SPARSIFY (solfec | threshold, minarea, mindist)</p>
 <p>This routine modifies contact filtering (sparsification) behaviour. Generally speaking, some contact points
 are filtered out in order to avoid unnecessary dense contact point clusters. If a pair of bodies is connected
 by two or more contact points, one of the points generated by topologically adjacent entities (elements,
 convices) will be removed (sparsified) if the ratio of contact areas of the contact points is smaller than
 the prescribed threshold. See also <a class="reference internal" href="../theory/conpnt.html#contact-sparsification"><span class="std std-ref">contact sparsification</span></a>.</p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>threshold – sparsification threshold (default: 0.01) from within the interval [0, 1]. Zero corresponds to the lack of sparsification.</li>
-<li>minarea – minimal contact area (default: 0.0). Contact points with area smaller then minarea are dropped.</li>
-<li>mindist – minimal distance between distinct contact points (default: GEOMETRIC_EPSILON).</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>threshold – sparsification threshold (default: 0.01) from within the interval [0, 1]. Zero corresponds to the lack of sparsification.</p></li>
+<li><p>minarea – minimal contact area (default: 0.0). Contact points with area smaller then minarea are dropped.</p></li>
+<li><p>mindist – minimal distance between distinct contact points (default: GEOMETRIC_EPSILON).</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="parallel-runtime">
+</section>
+<section id="parallel-runtime">
 <h2>Parallel runtime<a class="headerlink" href="#parallel-runtime" title="Permalink to this headline">¶</a></h2>
 <p>Routines listed below are related to prallel runtime and performance.</p>
 <div class="topic">
-<p class="topic-title first">IMBALANCE_TOLERANCE (solfec, tolerance | weightfactor, updatefreq)</p>
+<p class="topic-title">IMBALANCE_TOLERANCE (solfec, tolerance | weightfactor, updatefreq)</p>
 <p>This routine sets the imbalance tolerance for parallel balancing of Solfec-1.0 data. A ratio of maximal to minimal
 per processor count of objects used. Hence, 1.0 indicates perfect balance, while any ratio &gt; 1.0 indicates an
 imbalance. Initially imbalance tolerance is set to 1.1. This routine is ignored during sequential runs.</p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>tolerance – data imbalance tolerance (default: 1.1)</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>tolerance – data imbalance tolerance (default: 1.1)</p></li>
 </ul>
 <ul class="simple">
-<li>weightfactor – a local dynamics weight factor between 0.0 and 1.0 (default: 1.0). Computational load of
+<li><p>weightfactor – a local dynamics weight factor between 0.0 and 1.0 (default: 1.0). Computational load of
 local dynamics assembling is best balanced when weightfactor equals 1.0. This however can sometimes result
 in a poor load balance for contact detection or time integration. Making it smaller than 1.0 can improve
 the overall balance in such cases.
 <em>Note:</em> This parameter is ignored if DYNLB load balancer is used; in this case, on a per-rank basis, body
 centroids are used to guide load balancing if there is more bodies than constrains on a given rank at
-given time; otherwise contact/constraint points are used to guide load balancing.</li>
+given time; otherwise contact/constraint points are used to guide load balancing.</p></li>
 </ul>
 <ul class="simple">
-<li>updatefreq – geometrical domain partitioning is updated every updatefreq time steps (default: 10)</li>
+<li><p>updatefreq – geometrical domain partitioning is updated every updatefreq time steps (default: 10)</p></li>
 </ul>
 </div>
 <div class="topic">
-<p class="topic-title first">num = RANK ()</p>
+<p class="topic-title">num = RANK ()</p>
 <p>This routine returns the rank of the CPU that runs the current copy of Solfec-1.0.</p>
 <ul class="simple">
-<li>num – the CPU rank</li>
+<li><p>num – the CPU rank</p></li>
 </ul>
 </div>
 <div class="topic">
-<p class="topic-title first">BARRIER ()</p>
+<p class="topic-title">BARRIER ()</p>
 <p>This routine sets up a parallel barrier in the MPI mode (all processes need to
 meet at it before they can continue). It is ignored in the serial mode.</p>
 </div>
 <div class="topic">
-<p class="topic-title first">num = NCPU (| solfec)</p>
+<p class="topic-title">num = NCPU (| solfec)</p>
 <p>This routine returns the number CPUs used in the analysis.</p>
 <ul class="simple">
-<li>num – the number of CPUs</li>
-<li>solfec – optional SOLFEC object (useful in ‘READ’ mode)</li>
+<li><p>num – the number of CPUs</p></li>
+<li><p>solfec – optional SOLFEC object (useful in ‘READ’ mode)</p></li>
 </ul>
 </div>
 <div class="topic" id="solfec-1-0-command-here">
-<p class="topic-title first">ret = HERE (solfec, object)</p>
+<p class="topic-title">ret = HERE (solfec, object)</p>
 <p>This routine tests whether an object is located on the current processor. During parallel runs
 objects migrate between processors. When calling a function (or a member) for an object not present
 on the current processor, the call will usually return None or be ignored. Hence, it is convenient
 to check whether an object resides on the current processor.</p>
 <ul class="simple">
-<li>ret – True or False</li>
-<li>solfec – SOLFEC object</li>
-<li>object – BODY or CONSTRAINT object</li>
+<li><p>ret – True or False</p></li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>object – BODY or CONSTRAINT object</p></li>
 </ul>
 </div>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="https://en.wikibooks.org/wiki/Regular_Expressions/POSIX_Basic_Regular_Expressions">POSIX regular expressions</a></td></tr>
-</tbody>
-</table>
-</div>
-</div>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dd><p><a class="reference external" href="https://en.wikibooks.org/wiki/Regular_Expressions/POSIX_Basic_Regular_Expressions">POSIX regular expressions</a></p>
+</dd>
+</dl>
+</section>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -336,7 +350,6 @@ to check whether an object resides on the current processor.</p>
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
@@ -360,148 +373,174 @@ to check whether an object resides on the current processor.</p>
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -516,10 +555,10 @@ to check whether an object resides on the current processor.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

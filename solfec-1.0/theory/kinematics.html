@@ -1,44 +1,61 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Kinematics &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Dynamics" href="dynamics.html" />
-    <link rel="prev" title="Basics" href="basics.html" />
-  
+    <link rel="prev" title="Basics" href="basics.html" /> 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,17 +66,16 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="kinematics">
+             <section id="kinematics">
 <span id="solfec-1-0-theory-kinematics"></span><h1>Kinematics<a class="headerlink" href="#kinematics" title="Permalink to this headline">¶</a></h1>
 <p>A kinematic model defines an allowed type of deformation for an individual body. Solfec-1.0 includes three kinematic models:</p>
 <ul class="simple">
-<li>rigid body</li>
-<li>pseudo–rigid body</li>
-<li>finite–element body</li>
+<li><p>rigid body</p></li>
+<li><p>pseudo–rigid body</p></li>
+<li><p>finite–element body</p></li>
 </ul>
 <p>A kinematic model is selected by specifying the <em>kind</em> paramter of the <a class="reference internal" href="../user/body.html#solfec-1-0-user-body"><span class="std std-ref">BODY command</span></a>.</p>
-<div class="section" id="rigid-body">
+<section id="rigid-body">
 <h2>Rigid body<a class="headerlink" href="#rigid-body" title="Permalink to this headline">¶</a></h2>
 <p>The motion of a rigid body reads</p>
 <div class="math notranslate nohighlight" id="equation-rigmot">
@@ -106,8 +122,8 @@ y_{3} &amp; 0 &amp; -y_{1}\\
 \dot{\bar{x}}_{3}
 \end{array}\right]\end{split}\]</div>
 <p>The configuration <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> has 12 components and the velocity <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> has 6 components.</p>
-</div>
-<div class="section" id="pseudo-rigid-body">
+</section>
+<section id="pseudo-rigid-body">
 <h2>Pseudo–rigid body<a class="headerlink" href="#pseudo-rigid-body" title="Permalink to this headline">¶</a></h2>
 <p>The motion of a pseudo–rigid body reads</p>
 <div class="math notranslate nohighlight" id="equation-prbmot">
@@ -139,8 +155,8 @@ F_{12}\\
 \dot{\bar{x}}_{3}
 \end{array}\right]\end{split}\]</div>
 <p>Both, the configuration <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> and the velocity <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> are 12–component vectors.</p>
-</div>
-<div class="section" id="finite-element-body">
+</section>
+<section id="finite-element-body">
 <h2>Finite–element body<a class="headerlink" href="#finite-element-body" title="Permalink to this headline">¶</a></h2>
 <p>The finite–element motion reads</p>
 <div class="math notranslate nohighlight" id="equation-femmot">
@@ -171,12 +187,14 @@ N_{1} &amp;  &amp;  &amp; ... &amp; N_{n}\\
   &amp;  &amp; N_{1} &amp; ... &amp;  &amp;  &amp; N_{n}
   \end{array}\right]\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(N_{i}\)</span> are nodal shape functions, juxtaposed from element shape functions meeting at coincident mesh nodes.</p>
-<div class="section" id="shape-functions">
+<section id="shape-functions">
 <h3>Shape functions<a class="headerlink" href="#shape-functions" title="Permalink to this headline">¶</a></h3>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <span id="element-types"></span><a class="reference internal image-reference" href="../../_images/elements1.png"><img alt="../../_images/elements1.png" src="../../_images/elements1.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Element types in Solfec-1.0: tetrahedron, pyramid, wedge, hexahedron.</span></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Element types in Solfec-1.0: tetrahedron, pyramid, wedge, hexahedron.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Finite–element types available in Solfec-1.0 are depicted in <a class="reference internal" href="#element-types"><span class="std std-numref">Fig. 4</span></a>. Shape functions for those
 elements are summarised in <a class="reference internal" href="#element-shapes"><span class="std std-numref">Table 25</span></a>.</p>
 <p>Isoparametric mapping is used to go back and forth between the natural element coordinates <span class="math notranslate nohighlight">\(\xi_{1}\)</span>,
@@ -194,78 +212,77 @@ in <a class="reference internal" href="#equation-femmot">(19)</a> and <a class="
 \[\mathbf{N}\left(\mathbf{X}\right)=\mathbf{N}\left(\mathbf{Y}^{-1}\left(\mathbf{X}\right)\right)\]</div>
 <p>Newton iterations are required to solve <span class="math notranslate nohighlight">\(\mathbf{X}=\mathbf{Y}\left(\xi_{1},\xi_{2},\xi_{3}\right)\)</span>
 and find <span class="math notranslate nohighlight">\(\xi_{1}\)</span>, <span class="math notranslate nohighlight">\(\xi_{2}\)</span>, <span class="math notranslate nohighlight">\(\xi_{3}\)</span> for a given referential point <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>.</p>
-<span id="element-shapes"></span><table border="1" class="docutils" id="id2">
+<span id="element-shapes"></span><table class="docutils align-default" id="id2">
 <caption><span class="caption-number">Table 25 </span><span class="caption-text">Finite–element shape functions.</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Tetrahedron</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Tetrahedron</strong></p></td>
 </tr>
-<tr class="row-even"><td><span class="math notranslate nohighlight">\(N_{1}=1-\left(\xi_{1}+\xi_{2}+\xi_{3}\right)\)</span> <br />
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(N_{1}=1-\left(\xi_{1}+\xi_{2}+\xi_{3}\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{2}=\xi_{1}\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{3}=\xi_{2}\)</span> <br />
-<span class="math notranslate nohighlight">\(N_{4}=\xi_{3}\)</span> <br /></td>
+<span class="math notranslate nohighlight">\(N_{4}=\xi_{3}\)</span> <br /></p></td>
 </tr>
-<tr class="row-odd"><td><strong>Pyramid</strong></td>
+<tr class="row-odd"><td><p><strong>Pyramid</strong></p></td>
 </tr>
-<tr class="row-even"><td><span class="math notranslate nohighlight">\(r=
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(r=
 \xi_{1}\xi_{2}\xi_{3}/\left(1-\xi_{3}\right)\text{ if }\xi_{3}\ne1\text{ or }0\text{ otherwise}\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{1}=0.25\left(\left(1+\xi_{1}\right)\left(1+\xi_{2}\right)-\xi_{3}+r\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{2}=0.25\left(\left(1-\xi_{1}\right)\left(1+\xi_{2}\right)-\xi_{3}-r\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{3}=0.25\left(\left(1-\xi_{1}\right)\left(1-\xi_{2}\right)-\xi_{3}+r\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{4}=0.25\left(\left(1+\xi_{1}\right)\left(1-\xi_{2}\right)-\xi_{3}-r\right)\)</span> <br />
-<span class="math notranslate nohighlight">\(N_{5}=\xi_{3}\)</span> <br /></td>
+<span class="math notranslate nohighlight">\(N_{5}=\xi_{3}\)</span> <br /></p></td>
 </tr>
-<tr class="row-odd"><td><strong>Wedge</strong></td>
+<tr class="row-odd"><td><p><strong>Wedge</strong></p></td>
 </tr>
-<tr class="row-even"><td><span class="math notranslate nohighlight">\(N_{1}=0.5\left(1-\xi_{1}-\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(N_{1}=0.5\left(1-\xi_{1}-\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{2}=0.5\xi_{1}\left(1-\xi_{3}\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{3}=0.5\xi_{2}\left(1-\xi_{3}\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{4}=0.5\left(1-\xi_{1}-\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{5}=0.5\xi_{1}\left(1+\xi_{3}\right)\)</span> <br />
-<span class="math notranslate nohighlight">\(N_{6}=0.5\xi_{2}\left(1+\xi_{3}\right)\)</span> <br /></td>
+<span class="math notranslate nohighlight">\(N_{6}=0.5\xi_{2}\left(1+\xi_{3}\right)\)</span> <br /></p></td>
 </tr>
-<tr class="row-odd"><td><strong>Hexahedron</strong></td>
+<tr class="row-odd"><td><p><strong>Hexahedron</strong></p></td>
 </tr>
-<tr class="row-even"><td><span class="math notranslate nohighlight">\(N_{1}=0.125\left(1-\xi_{1}\right)\left(1-\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(N_{1}=0.125\left(1-\xi_{1}\right)\left(1-\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{2}=0.125\left(1+\xi_{1}\right)\left(1-\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{3}=0.125\left(1+\xi_{1}\right)\left(1+\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{4}=0.125\left(1-\xi_{1}\right)\left(1+\xi_{2}\right)\left(1-\xi_{3}\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{5}=0.125\left(1-\xi_{1}\right)\left(1-\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{6}=0.125\left(1+\xi_{1}\right)\left(1-\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br />
 <span class="math notranslate nohighlight">\(N_{7}=0.125\left(1+\xi_{1}\right)\left(1+\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br />
-<span class="math notranslate nohighlight">\(N_{8}=0.125\left(1-\xi_{1}\right)\left(1+\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br /></td>
+<span class="math notranslate nohighlight">\(N_{8}=0.125\left(1-\xi_{1}\right)\left(1+\xi_{2}\right)\left(1+\xi_{3}\right)\)</span> <br /></p></td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="implementation">
+</section>
+</section>
+<section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>Kinematic models are implement in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo–rigid)
 and <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">fem.c</a> (finite–element) files. Configuration and velocity
 vectors are declared in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.h#L150">bod.h</a> as follows:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">general_body</span>
-<span class="p">{</span>
-  <span class="k">enum</span> <span class="p">{</span><span class="n">OBS</span><span class="p">,</span> <span class="n">RIG</span><span class="p">,</span> <span class="n">PRB</span><span class="p">,</span> <span class="n">FEM</span><span class="p">}</span> <span class="n">kind</span><span class="p">;</span> <span class="cm">/* obstacle, rigid, pseudo-rigid, finite element */</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">general_body</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="n">OBS</span><span class="p">,</span><span class="w"> </span><span class="n">RIG</span><span class="p">,</span><span class="w"> </span><span class="n">PRB</span><span class="p">,</span><span class="w"> </span><span class="n">FEM</span><span class="p">}</span><span class="w"> </span><span class="n">kind</span><span class="p">;</span><span class="w"> </span><span class="cm">/* obstacle, rigid, pseudo-rigid, finite element */</span><span class="w"></span>
 
-  <span class="cm">/* ... */</span>
+<span class="w">  </span><span class="cm">/* ... */</span><span class="w"></span>
 
-  <span class="kt">double</span> <span class="o">*</span><span class="n">conf</span><span class="p">,</span>    <span class="cm">/* configuration */</span>
-         <span class="o">*</span><span class="n">velo</span><span class="p">;</span>    <span class="cm">/* velocity */</span>
+<span class="w">  </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="n">conf</span><span class="p">,</span><span class="w">    </span><span class="cm">/* configuration */</span><span class="w"></span>
+<span class="w">         </span><span class="o">*</span><span class="n">velo</span><span class="p">;</span><span class="w">    </span><span class="cm">/* velocity */</span><span class="w"></span>
 
-  <span class="cm">/* ... */</span>
-<span class="p">}</span>
+<span class="w">  </span><span class="cm">/* ... */</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -327,7 +344,6 @@ vectors are declared in <a class="reference external" href="https://github.com/t
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
@@ -351,148 +367,174 @@ vectors are declared in <a class="reference external" href="https://github.com/t
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -507,10 +549,10 @@ vectors are declared in <a class="reference external" href="https://github.com/t
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

@@ -1,44 +1,61 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Utilities &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Solfec-1.0 Theory Manual" href="../theory.html" />
-    <link rel="prev" title="Results" href="results.html" />
-  
+    <link rel="prev" title="Results" href="results.html" /> 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,172 +66,171 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="utilities">
+             <section id="utilities">
 <span id="solfec-1-0-user-utilities"></span><h1>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline">¶</a></h1>
 <p>Various utility routines are listed below.</p>
-<div class="section" id="register-callback">
+<section id="register-callback">
 <span id="solfec-1-0-command-register-callback"></span><h2>REGISTER_CALLBACK<a class="headerlink" href="#register-callback" title="Permalink to this headline">¶</a></h2>
 <p>This routine registers a Python callback later used by Solfec-1.0. All callback and data pairs must be registered
 in the same order on all MPI ranks, when Solfec-1.0 is run in parallel. This function is ignored in sequential mode.</p>
 <div class="topic">
-<p class="topic-title first">REGISTER_CALLBACK (callback | data)</p>
+<p class="topic-title">REGISTER_CALLBACK (callback | data)</p>
 <ul class="simple">
-<li>callback – callback function of form: <em>value = callback (data)</em></li>
-<li>data – data passed to the callback function</li>
+<li><p>callback – callback function of form: <em>value = callback (data)</em></p></li>
+<li><p>data – data passed to the callback function</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="viewer">
+</section>
+<section id="viewer">
 <h2>VIEWER<a class="headerlink" href="#viewer" title="Permalink to this headline">¶</a></h2>
 <p>This routine tests whether the viewer is enabled.</p>
 <div class="topic">
-<p class="topic-title first">obj = VIEWER ()</p>
+<p class="topic-title">obj = VIEWER ()</p>
 <ul class="simple">
-<li>obj – True or False depending on whether the viewer (–v command line option) was enabled</li>
+<li><p>obj – True or False depending on whether the viewer (–v command line option) was enabled</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="subdir">
+</section>
+<section id="subdir">
 <h2>SUBDIR<a class="headerlink" href="#subdir" title="Permalink to this headline">¶</a></h2>
 <p>This routine returns the optional output subdirectory.</p>
 <div class="topic">
-<p class="topic-title first">obj = SUBDIR ()</p>
+<p class="topic-title">obj = SUBDIR ()</p>
 <ul class="simple">
-<li>obj – None object or subdirectory string depending on whether the –s command line option was used</li>
+<li><p>obj – None object or subdirectory string depending on whether the –s command line option was used</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="body-chars">
+</section>
+<section id="body-chars">
 <h2>BODY_CHARS<a class="headerlink" href="#body-chars" title="Permalink to this headline">¶</a></h2>
 <p>This routine overwrites referential characteristics of a body.</p>
 <div class="topic">
-<p class="topic-title first">BODY_CHARS (body, mass, volume, center, tensor)</p>
+<p class="topic-title">BODY_CHARS (body, mass, volume, center, tensor)</p>
 <ul class="simple">
-<li>body – BODY object</li>
-<li>mass – body mass</li>
-<li>volume – body volume</li>
-<li>center – (x, y, z) mass center</li>
-<li>tensor – <span class="math notranslate nohighlight">\(\left(t_{11},t_{21},\,...\,,t_{33}\right)\)</span> column-wise inertia tensor for a rigid body or Euler tensor otherwise</li>
+<li><p>body – BODY object</p></li>
+<li><p>mass – body mass</p></li>
+<li><p>volume – body volume</p></li>
+<li><p>center – (x, y, z) mass center</p></li>
+<li><p>tensor – <span class="math notranslate nohighlight">\(\left(t_{11},t_{21},\,...\,,t_{33}\right)\)</span> column-wise inertia tensor for a rigid body or Euler tensor otherwise</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="delete">
+</section>
+<section id="delete">
 <h2>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
 <p>This routine deletes a BODY object or a CONSTRAINT object from a SOLFEC object.</p>
 <div class="topic">
-<p class="topic-title first">DELETE (solfec, object)</p>
+<p class="topic-title">DELETE (solfec, object)</p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>object (emptied) – BODY or CONSTRAINT object</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>object (emptied) – BODY or CONSTRAINT object</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="scale">
+</section>
+<section id="scale">
 <h2>SCALE<a class="headerlink" href="#scale" title="Permalink to this headline">¶</a></h2>
 <p>This routine scales a geometrical object or a collection of such objects.</p>
 <div class="topic">
-<p class="topic-title first">obj = SCALE (shape, coefs)</p>
+<p class="topic-title">obj = SCALE (shape, coefs)</p>
 <ul class="simple">
-<li>obj – when shape is not (x, y, z) tuple: same as shape, returned for convenience.
-Otherwise the (x <span class="math notranslate nohighlight">\(\cdot\)</span> coefs[0], y <span class="math notranslate nohighlight">\(\cdot\)</span> coefs[1], z <span class="math notranslate nohighlight">\(\cdot\)</span> coefs[2]) tuple.</li>
-<li>shape – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH,
+<li><p>obj – when shape is not (x, y, z) tuple: same as shape, returned for convenience.
+Otherwise the (x <span class="math notranslate nohighlight">\(\cdot\)</span> coefs[0], y <span class="math notranslate nohighlight">\(\cdot\)</span> coefs[1], z <span class="math notranslate nohighlight">\(\cdot\)</span> coefs[2]) tuple.</p></li>
+<li><p>shape – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH,
 SPHERE, ELLIP. Alternately this can be a single (x, y, z) tuple, but then one must use
 point = SCALE (point, coefs) in order to modify the point (Python tuples are immutable –
-they cannot be modified “in place” after creation).</li>
-<li>coefs – (cx, cy, cz) tuple of scaling factors along each axis</li>
+they cannot be modified “in place” after creation).</p></li>
+<li><p>coefs – (cx, cy, cz) tuple of scaling factors along each axis</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="translate">
+</section>
+<section id="translate">
 <h2>TRANSLATE<a class="headerlink" href="#translate" title="Permalink to this headline">¶</a></h2>
 <p>This routine translates a geometrical object or a collection of such objects.</p>
 <div class="topic">
-<p class="topic-title first">obj = TRANSLATE (shape, vector)</p>
+<p class="topic-title">obj = TRANSLATE (shape, vector)</p>
 <ul class="simple">
-<li>obj – when shape is not (x, y, z) tuple: same as shape, returned for convenience.
-Otherwise the (x+vector[0], y+vector[1], z+vector[2]) tuple.</li>
-<li>shape – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH,
+<li><p>obj – when shape is not (x, y, z) tuple: same as shape, returned for convenience.
+Otherwise the (x+vector[0], y+vector[1], z+vector[2]) tuple.</p></li>
+<li><p>shape – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH,
 SPHERE, ELLIP. Alternately this can be a single (x, y, z) tuple, but then one must use
 point = TRANSLATE (point, vector) in order to modify the point (Python tuples are immutable –
-they cannot be modified “in place” after creation).</li>
-<li>vector – (vx, vy, vz) tuple defining the translation</li>
+they cannot be modified “in place” after creation).</p></li>
+<li><p>vector – (vx, vy, vz) tuple defining the translation</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="rotate">
+</section>
+<section id="rotate">
 <h2>ROTATE<a class="headerlink" href="#rotate" title="Permalink to this headline">¶</a></h2>
 <p>This routine rotates a geometrical object or a collection of such objects.</p>
 <div class="topic">
-<p class="topic-title first">obj = ROTATE (shape, point, vector, angle)</p>
+<p class="topic-title">obj = ROTATE (shape, point, vector, angle)</p>
 <ul class="simple">
-<li>obj – when shape is not (x, y, z) tuple: same as shape, returned for convenience.
-Otherwise the rotated (x1, y1, z1) image of (x, y, z).</li>
-<li>shape – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH,
+<li><p>obj – when shape is not (x, y, z) tuple: same as shape, returned for convenience.
+Otherwise the rotated (x1, y1, z1) image of (x, y, z).</p></li>
+<li><p>shape – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH,
 SPHERE, ELLIP. Alternately this can be a single (x, y, z) tuple, but then one must use
 point1 = ROTATE (point1, point2, vector, angle) in order to modify point1 (Python tuples are immutable –
-they cannot be modified “in place” after creation).</li>
-<li>point – (px, py, pz) tuple defining a point passed by the rotation axis</li>
-<li>vector – (vx, vy, vz) tuple defining a direction of the rotation axis</li>
-<li>angle – rotation angle in degrees</li>
+they cannot be modified “in place” after creation).</p></li>
+<li><p>point – (px, py, pz) tuple defining a point passed by the rotation axis</p></li>
+<li><p>vector – (vx, vy, vz) tuple defining a direction of the rotation axis</p></li>
+<li><p>angle – rotation angle in degrees</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="split">
+</section>
+<section id="split">
 <h2>SPLIT<a class="headerlink" href="#split" title="Permalink to this headline">¶</a></h2>
 <p>This routine splits a geometrical object (or a collection of objects) by a plane passing by a point.
 Depending on the topological properties of the body shape and plane position this may or may not
 result in splitting of the body in two parts.</p>
 <div class="topic">
-<p class="topic-title first">(one, two) = SPLIT (shape, point, normal | surfid, topoadj, remesh) <span class="red">(Experimental)</span></p>
+<p class="topic-title">(one, two) = SPLIT (shape, point, normal | surfid, topoadj, remesh) <span class="red">(Experimental)</span></p>
 <ul class="simple">
-<li>one – objects placed below the splitting plane (<em>None</em> if no objects were placed below the plane)</li>
-<li>two – objects placed above the splitting plane (<em>None</em> if no objects were placed above the plane, or if the initial shape has not been fragmented in two parts)</li>
-<li>shape (emptied) – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, SPHERE, ELLIP or MESH</li>
-<li>point – (px, py, pz) tuple defining a point passed by the splitting plane</li>
-<li>normal – (nx, ny, nz) tuple defining the splitting plane normal</li>
-<li>surfid – (surf1, surf2) tuple defining a pair of surface identifier for the two newly created
-surfaces (default: 0,0). Surface surf1 has the outward normal (nx, ny, nz).</li>
-<li>topoadj – ‘ON’ or ‘OFF’ (default: ‘OFF’); when ‘OFF’ the splitting will always propagate across
+<li><p>one – objects placed below the splitting plane (<em>None</em> if no objects were placed below the plane)</p></li>
+<li><p>two – objects placed above the splitting plane (<em>None</em> if no objects were placed above the plane, or if the initial shape has not been fragmented in two parts)</p></li>
+<li><p>shape (emptied) – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, SPHERE, ELLIP or MESH</p></li>
+<li><p>point – (px, py, pz) tuple defining a point passed by the splitting plane</p></li>
+<li><p>normal – (nx, ny, nz) tuple defining the splitting plane normal</p></li>
+<li><p>surfid – (surf1, surf2) tuple defining a pair of surface identifier for the two newly created
+surfaces (default: 0,0). Surface surf1 has the outward normal (nx, ny, nz).</p></li>
+<li><p>topoadj – ‘ON’ or ‘OFF’ (default: ‘OFF’); when ‘OFF’ the splitting will always propagate across
 the whole body and result in two body fragments; when ‘ON’ the splitting will propagate from the
-input point through the topologically adjacent elements, which may not produce fragmentation;</li>
-<li>remesh – ‘ON’ or ‘OFF’ (default: ‘ON’) flag used only for MESH based shapes; when ‘ON’ mesh splitting
-away from inter–element boundaries will lead to tetrahedral re–meshing; when ‘OFF’ it will raise an error.</li>
+input point through the topologically adjacent elements, which may not produce fragmentation;</p></li>
+<li><p>remesh – ‘ON’ or ‘OFF’ (default: ‘ON’) flag used only for MESH based shapes; when ‘ON’ mesh splitting
+away from inter–element boundaries will lead to tetrahedral re–meshing; when ‘OFF’ it will raise an error.</p></li>
 </ul>
 </div>
 <p><em>WARNING:</em> Mesh splitting generates tetrahedral mesh in place of the input one if the splitting plane
 is not aligned with element boundaries. The meshing is randomized and it may generate different results
 for the same input. Use TETRAHEDRALIZE in order to refine and save the generated mesh parts. Otherwise
 may encounter input/output errors.</p>
-</div>
-<div class="section" id="mesh-split">
+</section>
+<section id="mesh-split">
 <h2>MESH_SPLIT<a class="headerlink" href="#mesh-split" title="Permalink to this headline">¶</a></h2>
 <p>This routine splits a mesh object along internal element boundaries whose nodes belong to the given node or face set.
 Depending on the topological properties of the mesh this may or may not result in splitting of the mesh in multiple parts.</p>
 <div class="topic">
-<p class="topic-title first">[out1, out2, …] = MESH_SPLIT (mesh | nodeset, faceset, surfid1, surfid2) <span class="red">(Experimental)</span></p>
+<p class="topic-title">[out1, out2, …] = MESH_SPLIT (mesh | nodeset, faceset, surfid1, surfid2) <span class="red">(Experimental)</span></p>
 <ul class="simple">
-<li>[out1, out2, …] – a list of output meshes (<em>None</em> if no internal element boundaries in the input mesh were split)</li>
-<li>mesh – input MESH object (the input mesh is not modified by this routine)</li>
-<li>nodeset – a list of nodes [n0, n1, n2, …] defining the splitting surface (zero based indexing); ignored when <strong>faceset</strong> is passed</li>
-<li>faceset – a list of lists face nodes [[n0, n1, n2], [n3, n4, n5, n6], …] defining the splitting surface (zero based indexing)</li>
-<li>surfid1 – surface identifier for the newly created surfaces (default: 0); used with <strong>nodeset</strong> or outward–counter–clockwise–normal aligned with <strong>faceset</strong></li>
-<li>surfid2 – surface identifier for the newly created surfaces (default: 0); inward–counter–clockwise–normal aligned with <strong>faceset</strong></li>
+<li><p>[out1, out2, …] – a list of output meshes (<em>None</em> if no internal element boundaries in the input mesh were split)</p></li>
+<li><p>mesh – input MESH object (the input mesh is not modified by this routine)</p></li>
+<li><p>nodeset – a list of nodes [n0, n1, n2, …] defining the splitting surface (zero based indexing); ignored when <strong>faceset</strong> is passed</p></li>
+<li><p>faceset – a list of lists face nodes [[n0, n1, n2], [n3, n4, n5, n6], …] defining the splitting surface (zero based indexing)</p></li>
+<li><p>surfid1 – surface identifier for the newly created surfaces (default: 0); used with <strong>nodeset</strong> or outward–counter–clockwise–normal aligned with <strong>faceset</strong></p></li>
+<li><p>surfid2 – surface identifier for the newly created surfaces (default: 0); inward–counter–clockwise–normal aligned with <strong>faceset</strong></p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="copy">
+</section>
+<section id="copy">
 <h2>COPY<a class="headerlink" href="#copy" title="Permalink to this headline">¶</a></h2>
 <p>This routine makes a copy of input objects.</p>
 <div class="topic">
-<p class="topic-title first">obj = COPY (shape)</p>
+<p class="topic-title">obj = COPY (shape)</p>
 <ul class="simple">
-<li>obj – created collection of copied objects</li>
-<li>shape – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH, SPHERE, ELLIP</li>
+<li><p>obj – created collection of copied objects</p></li>
+<li><p>shape – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH, SPHERE, ELLIP</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="bend">
+</section>
+<section id="bend">
 <h2>BEND<a class="headerlink" href="#bend" title="Permalink to this headline">¶</a></h2>
 <p>This routine bends a shape around an axis. The bending is performed from the section of the shape
 closest to the axis onward. The orientation of the axis direction determines the orientation of the
@@ -224,115 +240,115 @@ where <span class="math notranslate nohighlight">\(\mathbf{d}\)</span> is the ax
 projects a point onto the axis. Bending starts from the section containing <span class="math notranslate nohighlight">\(\mathbf{q}\)</span> and proceeds
 in the direction of <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>.</p>
 <div class="topic">
-<p class="topic-title first">obj = BEND (shape, point, direction, angle)</p>
+<p class="topic-title">obj = BEND (shape, point, direction, angle)</p>
 <ul class="simple">
-<li>obj – same as shape</li>
-<li>shape – object of type MESH</li>
-<li>point – axis point</li>
-<li>direction – axis direction</li>
-<li>angle – positive bending angle in degrees</li>
+<li><p>obj – same as shape</p></li>
+<li><p>shape – object of type MESH</p></li>
+<li><p>point – axis point</p></li>
+<li><p>direction – axis direction</p></li>
+<li><p>angle – positive bending angle in degrees</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="bylabel">
+</section>
+<section id="bylabel">
 <h2>BYLABEL<a class="headerlink" href="#bylabel" title="Permalink to this headline">¶</a></h2>
 <p>This routine finds a labelled object inside of a SOLFEC object.</p>
 <div class="topic">
-<p class="topic-title first">obj = BYLABEL (solfec, kind, label)</p>
+<p class="topic-title">obj = BYLABEL (solfec, kind, label)</p>
 <ul class="simple">
-<li>obj – returned object (<em>None</em> if a labelled object was not found)</li>
-<li>solfec – SOLFEC object</li>
-<li>kind – labelled object: ‘SURFACE_MATERIAL’, ‘BULK_MATERIAL’, ‘BODY’, ‘FIELD’</li>
-<li>label – the label string</li>
+<li><p>obj – returned object (<em>None</em> if a labelled object was not found)</p></li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>kind – labelled object: ‘SURFACE_MATERIAL’, ‘BULK_MATERIAL’, ‘BODY’, ‘FIELD’</p></li>
+<li><p>label – the label string</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="mass-center">
+</section>
+<section id="mass-center">
 <h2>MASS_CENTER<a class="headerlink" href="#mass-center" title="Permalink to this headline">¶</a></h2>
 <p>This routine calculates the mass center of a geometrical object or a collection of such objects.</p>
 <div class="topic">
-<p class="topic-title first">obj = MASS_CENTER (shape)</p>
+<p class="topic-title">obj = MASS_CENTER (shape)</p>
 <ul class="simple">
-<li>obj – (x, y, z) tuple storing the mass center</li>
-<li>shape – object, collection of objects, or a list [a, b, c, …] of objects of type
-CONVEX, MESH, SPHERE, ELLIP. Alternately this can be a single BODY object.</li>
+<li><p>obj – (x, y, z) tuple storing the mass center</p></li>
+<li><p>shape – object, collection of objects, or a list [a, b, c, …] of objects of type
+CONVEX, MESH, SPHERE, ELLIP. Alternately this can be a single BODY object.</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="locdyn-dump">
+</section>
+<section id="locdyn-dump">
 <h2>LOCDYN_DUMP<a class="headerlink" href="#locdyn-dump" title="Permalink to this headline">¶</a></h2>
 <p>This routine dumps into a file the most recent state of local dynamics. It is meant for debugging and test purposes,
 e.g. comparing local dynamics between runs on various processor counts. There is a Python script in Solfec-1.0
 source tree: <a class="reference external" href="https://github.com/parmes/solfec-1.0/blob/master/scripts/locdyn_compare">solfec-1.0/scripts/locdyn_compare</a>
 which can be used to compare local dynamics dumps.</p>
 <div class="topic">
-<p class="topic-title first">LOCDYN_DUMP (solfec, path)</p>
+<p class="topic-title">LOCDYN_DUMP (solfec, path)</p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>path – file path</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>path – file path</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="overlapping">
+</section>
+<section id="overlapping">
 <h2>OVERLAPPING<a class="headerlink" href="#overlapping" title="Permalink to this headline">¶</a></h2>
 <p>This routine looks for shapes (not) overlapping the obstacles.</p>
 <div class="topic">
-<p class="topic-title first">obj = OVERLAPPING (obstacles, shapes | not, gap)</p>
+<p class="topic-title">obj = OVERLAPPING (obstacles, shapes | not, gap)</p>
 <ul class="simple">
-<li>obj – list of shapes (not) ovrelapping the obstacles</li>
-<li>obstacles – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH, SPHERE, ELLIP</li>
-<li>shapes (emptied) – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH, SPHERE, ELLIP</li>
-<li>not – ‘NOT’ string</li>
-<li>gap – maximal negative gap</li>
+<li><p>obj – list of shapes (not) ovrelapping the obstacles</p></li>
+<li><p>obstacles – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH, SPHERE, ELLIP</p></li>
+<li><p>shapes (emptied) – object, collection of objects, or a list [a, b, c, …] of objects of type CONVEX, MESH, SPHERE, ELLIP</p></li>
+<li><p>not – ‘NOT’ string</p></li>
+<li><p>gap – maximal negative gap</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="mbfcp-export">
+</section>
+<section id="mbfcp-export">
 <h2>MBFCP_EXPORT<a class="headerlink" href="#mbfcp-export" title="Permalink to this headline">¶</a></h2>
 <p>This routine exports Solfec-1.0 model into the MBFCP problem definition format. See <a class="reference external" href="http://code.google.com/p/mbfcp/">this link</a> for details.</p>
 <div class="topic">
-<p class="topic-title first">MBFCP_EXPORT (solfec, path)</p>
+<p class="topic-title">MBFCP_EXPORT (solfec, path)</p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>path – output path</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>path – output path</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="non-solfec-argv">
+</section>
+<section id="non-solfec-argv">
 <h2>NON_SOLFEC_ARGV<a class="headerlink" href="#non-solfec-argv" title="Permalink to this headline">¶</a></h2>
 <p>This routine returns all command line arguments (in the form of a list of strings)
 that have been passed to ‘solfec’ or ‘solfec–mpi’ application and has not been identified
 as valid Solfec-1.0 arguments. This way the user can pass some arguments to the input scripts.</p>
 <div class="topic">
-<p class="topic-title first">argv = NON_SOLFEC_ARGV ()</p>
+<p class="topic-title">argv = NON_SOLFEC_ARGV ()</p>
 <ul class="simple">
-<li>argv – list of non–solfec specific arguments passed to ‘solfec’ or ‘solfec–mpi’ command</li>
+<li><p>argv – list of non–solfec specific arguments passed to ‘solfec’ or ‘solfec–mpi’ command</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="modal-analysis">
+</section>
+<section id="modal-analysis">
 <span id="solfec-1-0-command-modal-analysis"></span><h2>MODAL_ANALYSIS<a class="headerlink" href="#modal-analysis" title="Permalink to this headline">¶</a></h2>
 <p>This routine performs modal analysis of FEM bodies.
 The modal analysis results are stored with bodies and can be viewed.</p>
 <div class="topic">
-<p class="topic-title first">obj = MODAL_ANALYSIS (body, num, path | abstol, maxiter, verbose)</p>
+<p class="topic-title">obj = MODAL_ANALYSIS (body, num, path | abstol, maxiter, verbose)</p>
 <ul class="simple">
-<li>obj = (val, vec) – the returned tuple of: val = obj[0] list of eigenvalues and
-vec = obj[1] list of eigen vectors (stored contiguously one after another)</li>
-<li>body – input FEM body; the model analysis results are stored with this body</li>
-<li>num – number of lowest modes to extract</li>
-<li>path – path to file where the results will be stored (to avoid recomputing if possible).
+<li><p>obj = (val, vec) – the returned tuple of: val = obj[0] list of eigenvalues and
+vec = obj[1] list of eigen vectors (stored contiguously one after another)</p></li>
+<li><p>body – input FEM body; the model analysis results are stored with this body</p></li>
+<li><p>num – number of lowest modes to extract</p></li>
+<li><p>path – path to file where the results will be stored (to avoid recomputing if possible).
 Note, that if previous modal analysis results are found they are used rather then recomputed
 if the number of modes and num are the same. If num is different from the previous modes count,
 then new num modes is computed from scratch. <em>Note:</em> “.h5” extension is automatically added to
-the stored path;</li>
-<li>abstol – residual tolerance for the eigenvalue solver (default: 1E-11)</li>
-<li>maxiter – iterations bound for the eigenvalue solver (default: 100)</li>
-<li>verbose – ‘ON’ or ‘OFF’ verbosity flag for the eigenvalue solver (default: ‘OFF’)</li>
+the stored path;</p></li>
+<li><p>abstol – residual tolerance for the eigenvalue solver (default: 1E-11)</p></li>
+<li><p>maxiter – iterations bound for the eigenvalue solver (default: 100)</p></li>
+<li><p>verbose – ‘ON’ or ‘OFF’ verbosity flag for the eigenvalue solver (default: ‘OFF’)</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="corotated-displacements">
+</section>
+<section id="corotated-displacements">
 <span id="solfec-1-0-command-corotated-displacements"></span><h2>COROTATED_DISPLACEMENTS<a class="headerlink" href="#corotated-displacements" title="Permalink to this headline">¶</a></h2>
 <p>This routine extracts snapshots of co–rotated displacements of FEM bodies. Co–rotated displacements factor out
 the rigid body rotation, only including deformational motion about the initial configuration of the body. Multiple
@@ -343,55 +359,55 @@ and <a class="reference external" href="https://pypi.python.org/pypi/modred">Pyt
 before being passed to the <a class="reference external" href="https://pypi.python.org/pypi/modred">modred package</a> the outputted displacements
 snapshots need to be complemented by the six rigid displacements generated by the RIGID_DISPLACEMENTS command (defined below);</p>
 <div class="topic">
-<p class="topic-title first">obj = COROTATED_DISPLACEMENTS (solfec, subset | sampling)  <span class="red">(Experimental)</span></p>
+<p class="topic-title">obj = COROTATED_DISPLACEMENTS (solfec, subset | sampling)  <span class="red">(Experimental)</span></p>
 <ul class="simple">
-<li>obj – upon termination of all <a class="reference internal" href="simulation.html#solfec-1-0-command-run"><span class="std std-ref">RUN</span></a> commands, a list of lists of displacement snapshots;
+<li><p>obj – upon termination of all <a class="reference internal" href="simulation.html#solfec-1-0-command-run"><span class="std std-ref">RUN</span></a> commands, a list of lists of displacement snapshots;
 this works both in ‘WRITE’ and ‘READ’ modes; MPI–parallel extraction of co–rotated displacement snapshots is
 enabled in the ‘WRITE’ mode: in this case only MPI rank 0 process will store a valid output list (None is returned
 for ranks &gt; 0); in ‘READ’ mode enable the corotated_displacements flag of the <a class="reference internal" href="results.html#solfec-1-0-command-forward"><span class="std std-ref">FORWARD command</span></a>
-in order to sample displacements while skipping forward through results;</li>
-<li>solfec – SOLFEC object</li>
-<li>subset – specification of a subset of bodies for which co-rotated displacements are to be extracted; a string can be used to
-define a POSIX regular expression <a class="footnote-reference" href="#id3" id="id1">[1]</a> that will be matched against body labels; a list of body objects or integer body identifiers
+in order to sample displacements while skipping forward through results;</p></li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>subset – specification of a subset of bodies for which co-rotated displacements are to be extracted; a string can be used to
+define a POSIX regular expression <a class="footnote-reference brackets" href="#id3" id="id1">1</a> that will be matched against body labels; a list of body objects or integer body identifiers
 can be used [body1, body2, id3, id4, body5, …] mixed up in an arbitrary manner; or a tuple specifying extents of a bounding box
 can be used (xlow, ylow, zlow, xhigh, yhigh, zhigh), which the bounding boxes of exported bodies will overlapped at time t=0;
 also a list of an arbitrary combination of those can be used, e.g. [‘BOD*A’, 123, body1, body2, 256, (0, 0, 0, 1, 1, 1), ‘KEY??7’,
 (3, 3, 3, 4, 4, 4)] defines two labels, two integer body ids, two body objects, and two bounding boxes, that together define a subset
-of bodies that will be used during snapshot extraction; Note:* meshes of all bodies in the subset must have the same number of nodes;</li>
-<li>sampling – optional collection of time instants, e.g. [t0, t1, t2, …, tN], or a time interval, e.g. dt0, at which the displacement
-snapshots are to be sampled; default: same as the output interval, see <a class="reference internal" href="simulation.html#solfec-1-0-command-output"><span class="std std-ref">OUTPUT</span></a></li>
+of bodies that will be used during snapshot extraction; Note:* meshes of all bodies in the subset must have the same number of nodes;</p></li>
+<li><p>sampling – optional collection of time instants, e.g. [t0, t1, t2, …, tN], or a time interval, e.g. dt0, at which the displacement
+snapshots are to be sampled; default: same as the output interval, see <a class="reference internal" href="simulation.html#solfec-1-0-command-output"><span class="std std-ref">OUTPUT</span></a></p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="rigid-displacements">
+</section>
+<section id="rigid-displacements">
 <span id="solfec-1-0-command-rigid-displacements"></span><h2>RIGID_DISPLACEMENTS<a class="headerlink" href="#rigid-displacements" title="Permalink to this headline">¶</a></h2>
 <p>This routine outputs six unit vectors of rigid displacements of a FEM body (three translations and three rotations).
 <em>Note:</em> this routine is relevant in the context of the ‘BC–RO’ FEM formulation, see <a class="reference internal" href="body.html#solfec-1-0-user-body"><span class="std std-ref">BODY page</span></a>
 and <a class="reference internal" href="body.html#fem-form"><span class="std std-numref">Table 4</span></a>, and <a class="reference external" href="https://pypi.python.org/pypi/modred">Python’s modred package</a> which can be used to
 calculate a reduced base; see also the COROTATED_DISPLACEMENTS command (defined above);</p>
 <div class="topic">
-<p class="topic-title first">obj = RIGID_DISPLACEMENTS (body) <span class="red">(Experimental)</span></p>
+<p class="topic-title">obj = RIGID_DISPLACEMENTS (body) <span class="red">(Experimental)</span></p>
 <ul class="simple">
-<li>obj – a list comprising six lists representing the unit displacement vectors</li>
-<li>body – a finite element BODY object</li>
+<li><p>obj – a list comprising six lists representing the unit displacement vectors</p></li>
+<li><p>body – a finite element BODY object</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="body-mm-export">
+</section>
+<section id="body-mm-export">
 <h2>BODY_MM_EXPORT<a class="headerlink" href="#body-mm-export" title="Permalink to this headline">¶</a></h2>
 <p>Export body matrices in the MatrixMarket sparse format.</p>
 <div class="topic">
-<p class="topic-title first">BODY_MM_EXPORT (body, pathM, pathK | spdM, spdK)</p>
+<p class="topic-title">BODY_MM_EXPORT (body, pathM, pathK | spdM, spdK)</p>
 <ul class="simple">
-<li>body – BODY object of ‘FINITE_ELEMENT’ kind</li>
-<li>pathM – output path for mass matrix M</li>
-<li>pathK – output path for stiffness matrix K</li>
-<li>spdM – symmetric positive definite flag M; ‘ON’ or ‘OFF’ (default: ‘ON’); only lower triangle is exported when ‘ON’</li>
-<li>spdK – symmetric positive definite flag K; ‘ON’ or ‘OFF’ (default: ‘ON’); only lower triangle is exported when ‘ON’</li>
+<li><p>body – BODY object of ‘FINITE_ELEMENT’ kind</p></li>
+<li><p>pathM – output path for mass matrix M</p></li>
+<li><p>pathK – output path for stiffness matrix K</p></li>
+<li><p>spdM – symmetric positive definite flag M; ‘ON’ or ‘OFF’ (default: ‘ON’); only lower triangle is exported when ‘ON’</p></li>
+<li><p>spdK – symmetric positive definite flag K; ‘ON’ or ‘OFF’ (default: ‘ON’); only lower triangle is exported when ‘ON’</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="display-point">
+</section>
+<section id="display-point">
 <h2>DISPLAY_POINT<a class="headerlink" href="#display-point" title="Permalink to this headline">¶</a></h2>
 <p>Attach a display point to a body. Display points are defined in reference
 configuration and convected with bodies. Display points can be visualised by
@@ -399,51 +415,49 @@ selecting ‘display points on/off’ in the ‘tools’ viewer menu. They serve
 auxiliary purpose, for example allowing to make sure that the results are read
 from correct locations.</p>
 <div class="topic">
-<p class="topic-title first">DISPLAY_POINT (body, point | label)</p>
+<p class="topic-title">DISPLAY_POINT (body, point | label)</p>
 <ul class="simple">
-<li>body – BODY object</li>
-<li>point – referential (x, y, z) point</li>
-<li>label – optional label</li>
+<li><p>body – BODY object</p></li>
+<li><p>point – referential (x, y, z) point</p></li>
+<li><p>label – optional label</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="render">
+</section>
+<section id="render">
 <h2>RENDER<a class="headerlink" href="#render" title="Permalink to this headline">¶</a></h2>
 <p>Render selected bodies in the Viewer. <em>Note:</em> This <em>cannot</em> be used from within a normal analysis script,
 but only from a Viewer script by selecting ‘run python script’ in the ‘tools’ viewer menu.</p>
 <div class="topic">
-<p class="topic-title first">RENDER(solfec, object) <span class="red">(Experimental)</span></p>
+<p class="topic-title">RENDER(solfec, object) <span class="red">(Experimental)</span></p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>object – BODY object or a list of BODY objects</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>object – BODY object or a list of BODY objects</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="register-base">
+</section>
+<section id="register-base">
 <span id="solfec-1-0-command-register-base"></span><h2>REGISTER_BASE<a class="headerlink" href="#register-base" title="Permalink to this headline">¶</a></h2>
 <p>Register ‘BC–RO’ or ‘BC–MODAL’ base for the finite element <a class="reference internal" href="body.html#solfec-1-0-user-body"><span class="std std-ref">BODY formulation</span></a>. Registering
 a reduced order or modal base saves memory when multiple instances of bodies employing the same base are used.</p>
 <div class="topic">
-<p class="topic-title first">REGISTER_BASE (solfec, base, label) <span class="red">(Experimental)</span></p>
+<p class="topic-title">REGISTER_BASE (solfec, base, label) <span class="red">(Experimental)</span></p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>base – base definition: <em>(val, vec)</em> where <em>val</em> is a list of eigenvalues and <em>vec</em> is a list of eigenvectors (stored contiguously one after another)</li>
-<li>label – unique string label</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>base – base definition: <em>(val, vec)</em> where <em>val</em> is a list of eigenvalues and <em>vec</em> is a list of eigenvectors (stored contiguously one after another)</p></li>
+<li><p>label – unique string label</p></li>
 </ul>
 </div>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><a class="reference external" href="https://en.wikibooks.org/wiki/Regular_Expressions/POSIX_Basic_Regular_Expressions">POSIX regular expressions</a></td></tr>
-</tbody>
-</table>
-</div>
-</div>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><a class="reference external" href="https://en.wikibooks.org/wiki/Regular_Expressions/POSIX_Basic_Regular_Expressions">POSIX regular expressions</a></p>
+</dd>
+</dl>
+</section>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -524,7 +538,6 @@ a reduced order or modal base saves memory when multiple instances of bodies emp
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
@@ -548,148 +561,174 @@ a reduced order or modal base saves memory when multiple instances of bodies emp
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -704,10 +743,10 @@ a reduced order or modal base saves memory when multiple instances of bodies emp
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

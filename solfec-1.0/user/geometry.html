@@ -1,44 +1,61 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Geometry &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Materials" href="materials.html" />
-    <link rel="prev" title="BODY object" href="body.html" />
-  
+    <link rel="prev" title="BODY object" href="body.html" /> 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,300 +66,301 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="geometry">
+             <section id="geometry">
 <span id="solfec-1-0-user-geometry"></span><h1>Geometry<a class="headerlink" href="#geometry" title="Permalink to this headline">¶</a></h1>
 <p>Shapes of bodies can be defined by means of the routines defined below.
 Note, that for rigid and pseudo-rigid body types, cf. <a class="reference internal" href="body.html#solfec-1-0-user-body"><span class="std std-ref">BODY</span></a>,
 a shape can comprise a list combining all possible geometry types.
 For finite element type bodies, a single MESH object is used to define shape,
 or a list of CONVEX objects can be used in combination with a background MESH.</p>
-<div class="section" id="convex">
+<section id="convex">
 <h2>CONVEX<a class="headerlink" href="#convex" title="Permalink to this headline">¶</a></h2>
 <p>An object of type CONVEX is either an arbitrary convex polyhedron, or it is a collection of such polyhedrons.</p>
 <div class="topic">
-<p class="topic-title first">obj = CONVEX (vertices, faces, volid | convex)</p>
+<p class="topic-title">obj = CONVEX (vertices, faces, volid | convex)</p>
 <p>This routine creates a CONVEX object from a detailed input data.</p>
 <ul class="simple">
-<li>obj – created CONVEX object</li>
-<li>vertices – list of vertices: [x0, y0, z0, x1, y1, z1, …]</li>
-<li>faces – list of faces: [n1, v1, v2, …, vn1, s1, n2, v1, v2, …, vn2, s2, …],
+<li><p>obj – created CONVEX object</p></li>
+<li><p>vertices – list of vertices: [x0, y0, z0, x1, y1, z1, …]</p></li>
+<li><p>faces – list of faces: [n1, v1, v2, …, vn1, s1, n2, v1, v2, …, vn2, s2, …],
 where n1 is the number of vertices of the first face, v1, v2, …,
 vn1 enumerate the vertices in the CCW order when looking from the outside,
-and s1 is the surface identifier of the face. Similarly for the second face and so on.</li>
-<li>volid – volume identifier</li>
-<li>convex (emptied) – collection of CONVEX objects appending obj</li>
+and s1 is the surface identifier of the face. Similarly for the second face and so on.</p></li>
+<li><p>volid – volume identifier</p></li>
+<li><p>convex (emptied) – collection of CONVEX objects appending obj</p></li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members and methods of a CONVEX object, cf. <a class="reference internal" href="#convex-params"><span class="std std-numref">Table 8</span></a>.</p>
-<span id="convex-params"></span><table border="1" class="docutils" id="id1">
+<span id="convex-params"></span><table class="docutils align-default" id="id1">
 <caption><span class="caption-number">Table 8 </span><span class="caption-text">CONVEX object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Read only members and methods:</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Read only members and methods:</strong></p></td>
 </tr>
-<tr class="row-even"><td><strong>obj.nver</strong> – number of convex vertices</td>
+<tr class="row-even"><td><p><strong>obj.nver</strong> – number of convex vertices</p></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.vertex (n)</strong> – returns a (x, y, z) tuple storing coordinates of nth vertex</td>
+<tr class="row-odd"><td><p><strong>obj.vertex (n)</strong> – returns a (x, y, z) tuple storing coordinates of nth vertex</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="hull">
+</section>
+<section id="hull">
 <h2>HULL<a class="headerlink" href="#hull" title="Permalink to this headline">¶</a></h2>
 <p>This routine creates a CONVEX object as a convex hull of a point set.</p>
 <div class="topic">
-<p class="topic-title first">obj = HULL (points, volid, surfid | convex)</p>
+<p class="topic-title">obj = HULL (points, volid, surfid | convex)</p>
 <ul class="simple">
-<li>obj – created CONVEX object</li>
-<li>points – list of points: [x0, y0, z0, x1, y1, z1, …]</li>
-<li>volid – volume identifier</li>
-<li>surfid – surface identifier common to all faces</li>
-<li>convex (emptied) – collection of CONVEX objects appending obj</li>
+<li><p>obj – created CONVEX object</p></li>
+<li><p>points – list of points: [x0, y0, z0, x1, y1, z1, …]</p></li>
+<li><p>volid – volume identifier</p></li>
+<li><p>surfid – surface identifier common to all faces</p></li>
+<li><p>convex (emptied) – collection of CONVEX objects appending obj</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="mesh2convex">
+</section>
+<section id="mesh2convex">
 <h2>MESH2CONVEX<a class="headerlink" href="#mesh2convex" title="Permalink to this headline">¶</a></h2>
 <p>This routine converts a MESH object into a list of CONVEX objects.
 It can be useful for containing one MESH defining a body shape inside of
 another background mesh defining deformability
 (see the background mesh parameters of the <a class="reference internal" href="body.html#solfec-1-0-user-body"><span class="std std-ref">BODY object</span></a>).</p>
 <div class="topic">
-<p class="topic-title first">obj = MESH2CONVEX (mesh)</p>
+<p class="topic-title">obj = MESH2CONVEX (mesh)</p>
 <ul class="simple">
-<li>obj – created CONVEX object</li>
-<li>mesh – input mesh</li>
+<li><p>obj – created CONVEX object</p></li>
+<li><p>mesh – input mesh</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="mesh">
+</section>
+<section id="mesh">
 <span id="solfec-1-0-command-mesh"></span><h2>MESH<a class="headerlink" href="#mesh" title="Permalink to this headline">¶</a></h2>
 <p>An object of type MESH describes an arbitrary volumetric mesh, comprising tetrahedrons,
 pyramids, wedges, and hexahedrons (<a class="reference internal" href="#mesh-elems"><span class="std std-numref">Fig. 2</span></a>). First order elements are currently supported.</p>
-<div class="figure align-center" id="id2">
-<span id="mesh-elems"></span><a class="reference internal image-reference" href="../../_images/elements2.png"><img alt="../../_images/elements2.png" src="../../_images/elements2.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Element types in Solfec-1.0.</span></p>
-</div>
+<figure class="align-center" id="id2">
+<span id="mesh-elems"></span><a class="reference internal image-reference" href="../../_images/elements1.png"><img alt="../../_images/elements1.png" src="../../_images/elements1.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Element types in Solfec-1.0.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="topic">
-<p class="topic-title first">obj = MESH (nodes, elements, surfids)</p>
+<p class="topic-title">obj = MESH (nodes, elements, surfids)</p>
 <p>This routine creates a MESH object from a detailed input data.</p>
 <ul class="simple">
-<li>obj – created MESH object</li>
-<li>nodes – list of nodes: [x0, y0, z0, x1, y1, z1, …]</li>
-<li>elements – list of elements: [e1, n1, n2, …, ne1, v1, e2, n1, n2, …, ne2, v2, …],
+<li><p>obj – created MESH object</p></li>
+<li><p>nodes – list of nodes: [x0, y0, z0, x1, y1, z1, …]</p></li>
+<li><p>elements – list of elements: [e1, n1, n2, …, ne1, v1, e2, n1, n2, …, ne2, v2, …],
 where e1 is the number of nodes of the first element, n1, n2, …, ne1 enumerate the element nodes,
-and v1 is the volume identifier of the element. Similarly for the second element and so on.</li>
-<li>surfids – list of surface identifiers: [gid, f1, n1, n2, …, nf1, s1, f2, n1, n2, …, nf2, s2, …],
+and v1 is the volume identifier of the element. Similarly for the second element and so on.</p></li>
+<li><p>surfids – list of surface identifiers: [gid, f1, n1, n2, …, nf1, s1, f2, n1, n2, …, nf2, s2, …],
 where gid is the global surface identifier for all not specified faces, f1 is the number of nodes in
 the first specified face, n1, n2, …, nf1 enumerate the face nodes, and s1 is the surface identifier
 of the face. Similarly for other specified faces. If only the gid is given, this can be done either
-as [gid] or as gid alone.</li>
+as [gid] or as gid alone.</p></li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members and methods of a MESH object, cf. <a class="reference internal" href="#mesh-params"><span class="std std-numref">Table 9</span></a>.</p>
-<span id="mesh-params"></span><table border="1" class="docutils" id="id3">
+<span id="mesh-params"></span><table class="docutils align-default" id="id3">
 <caption><span class="caption-number">Table 9 </span><span class="caption-text">MESH object parameters.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Read only members and methods:</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Read only members and methods:</strong></p></td>
 </tr>
-<tr class="row-even"><td><strong>obj.nnod</strong> – number of mesh nodes</td>
+<tr class="row-even"><td><p><strong>obj.nnod</strong> – number of mesh nodes</p></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.get_data()</strong> – return a tuple (nodes, elements, surfids), in the same format as for MESH().
-Note these are read-only - changing the returned lists does not affect the mesh.</td>
+<tr class="row-odd"><td><p><strong>obj.get_data()</strong> – return a tuple (nodes, elements, surfids), in the same format as for MESH().
+Note these are read-only - changing the returned lists does not affect the mesh.</p></td>
 </tr>
-<tr class="row-even"><td><strong>obj.surface_integration_points( | surfid)</strong> – returns surface integration points as a list of tuples
+<tr class="row-even"><td><p><strong>obj.surface_integration_points( | surfid)</strong> – returns surface integration points as a list of tuples
 [(x0, y0, z0), (x1, y1, z1), …]; if <strong>surfid</strong> is passed, integration points only fort that surface
-identifier are returned</td>
+identifier are returned</p></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.volume_integration_points( | volid)</strong> – returns volume integration points as a list of tuples
+<tr class="row-odd"><td><p><strong>obj.volume_integration_points( | volid)</strong> – returns volume integration points as a list of tuples
 [(x0, y0, z0), (x1, y1, z1), …]; if <strong>volid</strong> is passed, integration points only fort that volume
-identifier are returned</td>
+identifier are returned</p></td>
 </tr>
-<tr class="row-even"><td><strong>obj.inter_element_faces()</strong> – returns a list of lists of node indices of inter–element faces,
-e.g. [[n0, n1, n2], [n0, n1, n2, n3], …]</td>
+<tr class="row-even"><td><p><strong>obj.inter_element_faces()</strong> – returns a list of lists of node indices of inter–element faces,
+e.g. [[n0, n1, n2], [n0, n1, n2, n3], …]</p></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.inter_element_faces_on_plane(point, normal | ref, eps)</strong> – returns a list of lists of node
+<tr class="row-odd"><td><p><strong>obj.inter_element_faces_on_plane(point, normal | ref, eps)</strong> – returns a list of lists of node
 indices of inter–element faces on a plane, e.g. [[n0, n1, n2], [n0, n1, n2, n3], …], where <strong>point</strong>,
 <strong>normal</strong> define the plane, <strong>ref</strong> can be <em>True</em> or <em>False</em> and determines whether the plane is in
 the reference or current configuration (default: <em>True</em>), <strong>eps</strong> determines the tolerance for the
-“on plane” test (default: <a class="reference internal" href="simulation.html#solfec-1-0-command-geometric-epsilon"><span class="std std-ref">geometric epsilon</span></a>)</td>
+“on plane” test (default: <a class="reference internal" href="simulation.html#solfec-1-0-command-geometric-epsilon"><span class="std std-ref">geometric epsilon</span></a>)</p></td>
 </tr>
-<tr class="row-even"><td><strong>Read-write members and methods:</strong></td>
+<tr class="row-even"><td><p><strong>Read-write members and methods:</strong></p></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.node (n | x, y, z)</strong> – returns a (x, y, z) tuple storing coordinates of nth node;
-if x, y or z are given the current coordinates are overwritten</td>
+<tr class="row-odd"><td><p><strong>obj.node (n | x, y, z)</strong> – returns a (x, y, z) tuple storing coordinates of nth node;
+if x, y or z are given the current coordinates are overwritten</p></td>
 </tr>
-<tr class="row-even"><td><strong>obj.nodes_on_surface (surfid)</strong> – returns a list of node numbers belonging to the given surface;
-<em>None</em> object is returned if the list is empty.</td>
+<tr class="row-even"><td><p><strong>obj.nodes_on_surface (surfid)</strong> – returns a list of node numbers belonging to the given surface;
+<em>None</em> object is returned if the list is empty.</p></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.set_volid(volid)</strong> – set all elements to have the given volume ID. Returns the volid set.
+<tr class="row-odd"><td><p><strong>obj.set_volid(volid)</strong> – set all elements to have the given volume ID. Returns the volid set.
 This is mostly useful for being able to distinguish bodies in the Viewer, using
-menu <span class="math notranslate nohighlight">\(\to\)</span> kinds of <span class="math notranslate nohighlight">\(\to\)</span> volumes. Note that materials are also assigned by volume id.</td>
+menu <span class="math notranslate nohighlight">\(\to\)</span> kinds of <span class="math notranslate nohighlight">\(\to\)</span> volumes. Note that materials are also assigned by volume id.</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="hex">
+</section>
+<section id="hex">
 <span id="solfec-1-0-command-hex"></span><h2>HEX<a class="headerlink" href="#hex" title="Permalink to this headline">¶</a></h2>
 <p>This routine creates a MESH object corresponding to a hexahedral shape (hexahedral elements are used).</p>
 <div class="topic">
-<p class="topic-title first">obj = HEX (nodes, i, j, k, volid, surfids | dx, dy, dz)</p>
+<p class="topic-title">obj = HEX (nodes, i, j, k, volid, surfids | dx, dy, dz)</p>
 <ul class="simple">
-<li>obj – created MESH object</li>
-<li>nodes – list of 8 nodes: [x0, y0, z0, x1, y1, z1, …, x7, y7, z7].
-The hexahedral shape will be stretched between those nodes using a linear interpolation.</li>
-<li>i, j, k – numbers of subdivisions along the local x, y, z directions</li>
-<li>volid – volume identifier</li>
-<li>surfids – list of six surface identifiers: [s1, s2, …, s6], corresponding to the faces of the hexahedral shape</li>
-<li>dx, dy, dz – lists of subdivision schemes along local x, y, z directions. By default a subdivision is uniform.
+<li><p>obj – created MESH object</p></li>
+<li><p>nodes – list of 8 nodes: [x0, y0, z0, x1, y1, z1, …, x7, y7, z7].
+The hexahedral shape will be stretched between those nodes using a linear interpolation.</p></li>
+<li><p>i, j, k – numbers of subdivisions along the local x, y, z directions</p></li>
+<li><p>volid – volume identifier</p></li>
+<li><p>surfids – list of six surface identifiers: [s1, s2, …, s6], corresponding to the faces of the hexahedral shape</p></li>
+<li><p>dx, dy, dz – lists of subdivision schemes along local x, y, z directions. By default a subdivision is uniform.
 When dx = [1, 1, 5, 5, 1, 1] is present, then this scheme will be normalised (actual numbers do not matter,
-but their ratios) and applied to the local x direction of the generated shape.</li>
+but their ratios) and applied to the local x direction of the generated shape.</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="rough-hex">
+</section>
+<section id="rough-hex">
 <h2>ROUGH_HEX<a class="headerlink" href="#rough-hex" title="Permalink to this headline">¶</a></h2>
 <p>This routine creates a hexahedral MESH object corresponding to a given shape.
 The resultant mesh properly contains the input shape and with its orientation (which is based on the inertia properties of the shape).</p>
 <div class="topic">
-<p class="topic-title first">obj = ROUGH_HEX (shape, i, j, k | dx, dy, dz)</p>
+<p class="topic-title">obj = ROUGH_HEX (shape, i, j, k | dx, dy, dz)</p>
 <ul class="simple">
-<li>obj – created MESH object</li>
-<li>shape – an input shape defined by a collection of CONVEX objects;
-a list of CONVEX objects (or their collections) [cvx1, cvx2, cvx3, ….] is as well accepted.</li>
-<li>i, j, k – numbers of subdivisions along the local x, y, z directions of the principal inertia axes</li>
-<li>dx, dy, dz – lists of subdivision schemes along local x, y, z directions. By default a subdivision is uniform.
+<li><p>obj – created MESH object</p></li>
+<li><p>shape – an input shape defined by a collection of CONVEX objects;
+a list of CONVEX objects (or their collections) [cvx1, cvx2, cvx3, ….] is as well accepted.</p></li>
+<li><p>i, j, k – numbers of subdivisions along the local x, y, z directions of the principal inertia axes</p></li>
+<li><p>dx, dy, dz – lists of subdivision schemes along local x, y, z directions. By default a subdivision is uniform.
 When dx = [1, 1, 5, 5, 1, 1] is present, then this scheme will be normalised (actual numbers do not matter,
-but their ratios) and applied to the local x direction of the generated shape.</li>
+but their ratios) and applied to the local x direction of the generated shape.</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="pipe">
+</section>
+<section id="pipe">
 <h2>PIPE<a class="headerlink" href="#pipe" title="Permalink to this headline">¶</a></h2>
 <p>This routine creates a MESH object corresponding to a pipe (hexahedral elements are used).</p>
 <div class="topic">
-<p class="topic-title first">obj = PIPE (pnt, dir, rin, thi, ndir, nrad, nthi, volid, surfids)</p>
+<p class="topic-title">obj = PIPE (pnt, dir, rin, thi, ndir, nrad, nthi, volid, surfids)</p>
 <ul class="simple">
-<li>obj – created MESH object</li>
-<li>pnt – base point tuple (x, y, z)</li>
-<li>dir – direction tuple (dx, dy, dz); length of the pipe equals to the length of the direction</li>
-<li>rin – inner radius</li>
-<li>thi – thickness</li>
-<li>ndir, nrad, nthi – number of subdivisions along the direction, radius and thickness</li>
-<li>volid – volume identifier</li>
-<li>surfids – list of four surface identifiers [s1, s2, s3, s4] corresponding to the faces of the pipe</li>
+<li><p>obj – created MESH object</p></li>
+<li><p>pnt – base point tuple (x, y, z)</p></li>
+<li><p>dir – direction tuple (dx, dy, dz); length of the pipe equals to the length of the direction</p></li>
+<li><p>rin – inner radius</p></li>
+<li><p>thi – thickness</p></li>
+<li><p>ndir, nrad, nthi – number of subdivisions along the direction, radius and thickness</p></li>
+<li><p>volid – volume identifier</p></li>
+<li><p>surfids – list of four surface identifiers [s1, s2, s3, s4] corresponding to the faces of the pipe</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="ellip-mesh">
+</section>
+<section id="ellip-mesh">
 <h2>ELLIP_MESH<a class="headerlink" href="#ellip-mesh" title="Permalink to this headline">¶</a></h2>
 <p>This routine creates a MESH object corresponding to an ellipsoid (tetrahedral elements are used).</p>
 <div class="topic">
-<p class="topic-title first">obj = ELLIP_MESH (center, radii, error, volid, surfid) <span class="red">(Under development)</span></p>
+<p class="topic-title">obj = ELLIP_MESH (center, radii, error, volid, surfid) <span class="red">(Under development)</span></p>
 <ul class="simple">
-<li>obj – created MESH object</li>
-<li>center – tuple (x, y, z) defining the center</li>
-<li>radii – tuple (rx, ry, rz) of ellipsoid radii</li>
-<li>error – surface mesh error size (measured as distance from ellipsoid)</li>
-<li>volid – volume identifier</li>
-<li>surfid – surface identifier</li>
+<li><p>obj – created MESH object</p></li>
+<li><p>center – tuple (x, y, z) defining the center</p></li>
+<li><p>radii – tuple (rx, ry, rz) of ellipsoid radii</p></li>
+<li><p>error – surface mesh error size (measured as distance from ellipsoid)</p></li>
+<li><p>volid – volume identifier</p></li>
+<li><p>surfid – surface identifier</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="tetrahedralize">
+</section>
+<section id="tetrahedralize">
 <h2>TETRAHEDRALIZE<a class="headerlink" href="#tetrahedralize" title="Permalink to this headline">¶</a></h2>
 <p>This routine creates a tetrahedral mesh. <a class="reference external" href="http://wias-berlin.de/software/tetgen/">Tetgen</a> is invoked internally.</p>
 <div class="topic">
-<p class="topic-title first">obj = TETRAHEDRALIZE (shape, path | volume, quality, volid, surfid)</p>
+<p class="topic-title">obj = TETRAHEDRALIZE (shape, path | volume, quality, volid, surfid)</p>
 <ul class="simple">
-<li>obj – created MESH object</li>
-<li>shape – an input shape can be:<ul>
-<li>another MESH object</li>
-<li>a path (e.g. ‘path/to/file.stl’) to an input <a class="reference external" href="http://wias-berlin.de/software/tetgen/1.5/doc/manual/manual006.html">file supported by Tetgen</a></li>
+<li><p>obj – created MESH object</p></li>
+<li><p>shape – an input shape can be:</p>
+<ul>
+<li><p>another MESH object</p></li>
+<li><p>a path (e.g. ‘path/to/file.stl’) to an input <a class="reference external" href="http://wias-berlin.de/software/tetgen/1.5/doc/manual/manual006.html">file supported by Tetgen</a></p></li>
 </ul>
 </li>
-<li>path – path to the output file that will store the mesh;
-when called again and this file is found the mesh will be red from the file rather than generated</li>
-<li>volume – maximum element volume (default: not enforced)</li>
-<li>quality – value &gt; 1.0 indicating element quality (default: not enforced);
-values close to 1.0 result in better mesh quality (mesh generation may fail for small values)</li>
-<li>volid – volume identifier (default: 0); if only possible it is inherited from the input</li>
-<li>surfid – surface identifier (default: 0); if only possible it is inherited from the input</li>
+<li><p>path – path to the output file that will store the mesh;
+when called again and this file is found the mesh will be red from the file rather than generated</p></li>
+<li><p>volume – maximum element volume (default: not enforced)</p></li>
+<li><p>quality – value &gt; 1.0 indicating element quality (default: not enforced);
+values close to 1.0 result in better mesh quality (mesh generation may fail for small values)</p></li>
+<li><p>volid – volume identifier (default: 0); if only possible it is inherited from the input</p></li>
+<li><p>surfid – surface identifier (default: 0); if only possible it is inherited from the input</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="sphere">
+</section>
+<section id="sphere">
 <h2>SPHERE<a class="headerlink" href="#sphere" title="Permalink to this headline">¶</a></h2>
 <p>An object of type SPHERE represents a single sphere.</p>
 <div class="topic">
-<p class="topic-title first">obj = SPHERE (center, radius, volid, surfid)</p>
+<p class="topic-title">obj = SPHERE (center, radius, volid, surfid)</p>
 <p>This routine creates a SPHERE object.</p>
 <ul class="simple">
-<li>obj – created SPHERE object</li>
-<li>center – tuple (x, y, z) defining the center</li>
-<li>radius – sphere radius</li>
-<li>volid – volume identifier</li>
-<li>surfid – surface identifier</li>
+<li><p>obj – created SPHERE object</p></li>
+<li><p>center – tuple (x, y, z) defining the center</p></li>
+<li><p>radius – sphere radius</p></li>
+<li><p>volid – volume identifier</p></li>
+<li><p>surfid – surface identifier</p></li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a SPHERE objec, cf. <a class="reference internal" href="#sphere-params"><span class="std std-numref">Table 10</span></a>.</p>
-<span id="sphere-params"></span><table border="1" class="docutils" id="id4">
+<span id="sphere-params"></span><table class="docutils align-default" id="id4">
 <caption><span class="caption-number">Table 10 </span><span class="caption-text">SPHERE object parameters.</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Read only members:</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Read only members:</strong></p></td>
 </tr>
-<tr class="row-even"><td><em>obj.center, obj.radius</em></td>
+<tr class="row-even"><td><p><em>obj.center, obj.radius</em></p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="ellip">
+</section>
+<section id="ellip">
 <h2>ELLIP<a class="headerlink" href="#ellip" title="Permalink to this headline">¶</a></h2>
 <p>An object of type ELLIP represents a single ellipsoid.</p>
 <div class="topic">
-<p class="topic-title first">obj = ELLIP (center, radii, volid, surfid)</p>
+<p class="topic-title">obj = ELLIP (center, radii, volid, surfid)</p>
 <p>This routine creates an ELLIP object.</p>
 <ul class="simple">
-<li>obj – created ELLIP object</li>
-<li>center – tuple (x, y, z) defining the center</li>
-<li>radii – tuple (rx, ry, rz) of ellipsoid radii</li>
-<li>volid – volume identifier</li>
-<li>surfid – surface identifier</li>
+<li><p>obj – created ELLIP object</p></li>
+<li><p>center – tuple (x, y, z) defining the center</p></li>
+<li><p>radii – tuple (rx, ry, rz) of ellipsoid radii</p></li>
+<li><p>volid – volume identifier</p></li>
+<li><p>surfid – surface identifier</p></li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a ELLIP object, cf. <a class="reference internal" href="#ellip-params"><span class="std std-numref">Table 11</span></a>.</p>
-<span id="ellip-params"></span><table border="1" class="docutils" id="id5">
+<span id="ellip-params"></span><table class="docutils align-default" id="id5">
 <caption><span class="caption-number">Table 11 </span><span class="caption-text">ELLIP object parameters.</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Read only members:</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Read only members:</strong></p></td>
 </tr>
-<tr class="row-even"><td><em>obj.center, obj.radii</em></td>
+<tr class="row-even"><td><p><em>obj.center, obj.radii</em></p></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.rot</strong> – tuple <span class="math notranslate nohighlight">\(\left(v_{1x},v_{1y},v_{1z},v_{2x},v_{2y},v_{2z},v_{3x},v_{3y},v_{3z}\right)\)</span>
+<tr class="row-odd"><td><p><strong>obj.rot</strong> – tuple <span class="math notranslate nohighlight">\(\left(v_{1x},v_{1y},v_{1z},v_{2x},v_{2y},v_{2z},v_{3x},v_{3y},v_{3z}\right)\)</span>
 representing a rotation operator from the ellipsoid natural coordinaet (aligned with principal axes)
-system to the global cooridinate system</td>
+system to the global cooridinate system</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</section>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -409,7 +427,6 @@ system to the global cooridinate system</td>
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
@@ -433,148 +450,174 @@ system to the global cooridinate system</td>
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -589,10 +632,10 @@ system to the global cooridinate system</td>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

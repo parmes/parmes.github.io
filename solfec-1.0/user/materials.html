@@ -1,44 +1,61 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Materials &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Time series" href="times.html" />
-    <link rel="prev" title="Geometry" href="geometry.html" />
-  
+    <link rel="prev" title="Geometry" href="geometry.html" /> 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,186 +66,180 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="materials">
+             <section id="materials">
 <span id="solfec-1-0-user-materials"></span><h1>Materials<a class="headerlink" href="#materials" title="Permalink to this headline">¶</a></h1>
 <p>Routines and objects described below allow to define bulk and surface materials.</p>
-<div class="section" id="field">
+<section id="field">
 <h2>FIELD<a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h2>
 <p>An object of type FIELD represents a three–dimensional, scalar, time dependent field.</p>
 <div class="topic">
-<p class="topic-title first">obj = FIELD (solfec, field_callback | label, data)</p>
+<p class="topic-title">obj = FIELD (solfec, field_callback | label, data)</p>
 <p>This routine creates a FIELD object.</p>
 <ul>
-<li><p class="first">obj – created FIELD object</p>
-</li>
-<li><p class="first">solfec – obj is created for this SOLFEC object</p>
-</li>
-<li><p class="first">field_callback – the Python function defining the scalar field:</p>
+<li><p>obj – created FIELD object</p></li>
+<li><p>solfec – obj is created for this SOLFEC object</p></li>
+<li><p>field_callback – the Python function defining the scalar field:</p>
 <p><strong>value = field_callback (data, x, y, z, t)</strong></p>
 <p>where <em>data</em> is the optional user data passed to FIELD routine (if data is a tuple it will expand
 the list of parameters to the callback), <em>x, y, z</em> are the point coordinates, and <em>t</em> is time.
 The function should return a numeric value of the scalar field at given point and instant of time.
 See also: <a class="reference internal" href="utilities.html#solfec-1-0-command-register-callback"><span class="std std-ref">REGISTER_CALLBACK</span></a>.</p>
 </li>
-<li><p class="first">label – label string (default: ‘FIELD_i’, where i is incremented for each call)</p>
-</li>
-<li><p class="first">data – callback routine user data</p>
-</li>
+<li><p>label – label string (default: ‘FIELD_i’, where i is incremented for each call)</p></li>
+<li><p>data – callback routine user data</p></li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a FIELD object, cf. <a class="reference internal" href="#field-params"><span class="std std-numref">Table 12</span></a>.</p>
-<span id="field-params"></span><table border="1" class="docutils" id="id1">
+<span id="field-params"></span><table class="docutils align-default" id="id1">
 <caption><span class="caption-number">Table 12 </span><span class="caption-text">FIELD object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Read only members:</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Read only members:</strong></p></td>
 </tr>
-<tr class="row-even"><td><em>obj.label</em></td>
+<tr class="row-even"><td><p><em>obj.label</em></p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="bulk-material">
+</section>
+<section id="bulk-material">
 <span id="solfec-1-0-command-bulk-material"></span><h2>BULK_MATERIAL<a class="headerlink" href="#bulk-material" title="Permalink to this headline">¶</a></h2>
 <p>An object of type BULK_MATERIAL represents material properties of a volume.</p>
 <div class="topic">
-<p class="topic-title first">obj = BULK_MATERIAL (solfec| model, label, young, poisson, density, tensile, fields, fracene)</p>
+<p class="topic-title">obj = BULK_MATERIAL (solfec| model, label, young, poisson, density, tensile, fields, fracene)</p>
 <p>This routine creates a BULK_MATERIAL object.</p>
 <ul class="simple">
-<li>obj – created BULK_MATERIAL object</li>
-<li>solfec – obj is created for this SOLFEC object</li>
-<li>model – material model name (default: ‘KIRCHHOFF’), see <a class="reference internal" href="#bulk-materials"><span class="std std-numref">Table 14</span></a></li>
-<li>label – label string (default: ‘BULK_MATERIAL_i’, where i is incremented for each call)</li>
-<li>young – Young’s modulus (default: 1E9)</li>
-<li>poisson – Poisson’s coefficient (default: 0.25)</li>
-<li>density – material density (default: 1E3)</li>
-<li>tensile – tensile strength for fracture check (default: <span class="math notranslate nohighlight">\(\infty\)</span>)</li>
-<li>fields – list [field1, field1, …, fieldN] of FIELD objects (or FIELD object labels) needed by the material model</li>
-<li>fracene – fracture energy threshold (default: <span class="math notranslate nohighlight">\(\infty\)</span>)</li>
+<li><p>obj – created BULK_MATERIAL object</p></li>
+<li><p>solfec – obj is created for this SOLFEC object</p></li>
+<li><p>model – material model name (default: ‘KIRCHHOFF’), see <a class="reference internal" href="#bulk-materials"><span class="std std-numref">Table 14</span></a></p></li>
+<li><p>label – label string (default: ‘BULK_MATERIAL_i’, where i is incremented for each call)</p></li>
+<li><p>young – Young’s modulus (default: 1E9)</p></li>
+<li><p>poisson – Poisson’s coefficient (default: 0.25)</p></li>
+<li><p>density – material density (default: 1E3)</p></li>
+<li><p>tensile – tensile strength for fracture check (default: <span class="math notranslate nohighlight">\(\infty\)</span>)</p></li>
+<li><p>fields – list [field1, field1, …, fieldN] of FIELD objects (or FIELD object labels) needed by the material model</p></li>
+<li><p>fracene – fracture energy threshold (default: <span class="math notranslate nohighlight">\(\infty\)</span>)</p></li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a BULK_MATERIAL object, cf. <a class="reference internal" href="#bulk-params"><span class="std std-numref">Table 13</span></a>.</p>
-<span id="bulk-params"></span><table border="1" class="docutils" id="id2">
+<span id="bulk-params"></span><table class="docutils align-default" id="id2">
 <caption><span class="caption-number">Table 13 </span><span class="caption-text">BULK_MATERIAL object parameters.</span><a class="headerlink" href="#id2" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Read only members:</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Read only members:</strong></p></td>
 </tr>
-<tr class="row-even"><td><em>obj.model, obj.label</em></td>
+<tr class="row-even"><td><p><em>obj.model, obj.label</em></p></td>
 </tr>
-<tr class="row-odd"><td><strong>Read/write members:</strong></td>
+<tr class="row-odd"><td><p><strong>Read/write members:</strong></p></td>
 </tr>
-<tr class="row-even"><td><em>obj.young, obj.poisson, obj.density</em></td>
+<tr class="row-even"><td><p><em>obj.young, obj.poisson, obj.density</em></p></td>
 </tr>
 </tbody>
 </table>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<span id="bulk-materials"></span><table border="1" class="docutils" id="id3">
+<span id="bulk-materials"></span><table class="docutils align-default" id="id3">
 <caption><span class="caption-number">Table 14 </span><span class="caption-text">Bulk material models.</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="31%" />
-<col width="69%" />
+<col style="width: 31%" />
+<col style="width: 69%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Model name</td>
-<td>Employs variables</td>
+<tbody>
+<tr class="row-odd"><td><p>Model name</p></td>
+<td><p>Employs variables</p></td>
 </tr>
-<tr class="row-even"><td>‘KIRCHHOFF’</td>
-<td>young, poisson, density</td>
+<tr class="row-even"><td><p>‘KIRCHHOFF’</p></td>
+<td><p>young, poisson, density</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="apply-bulkmat">
+</section>
+<section id="apply-bulkmat">
 <span id="solfec-1-0-command-apply-bulkmat"></span><h2>APPLY_BULKMAT<a class="headerlink" href="#apply-bulkmat" title="Permalink to this headline">¶</a></h2>
 <p>This routine applies bulk material to a subset of geometric objects with the given volume identifier.</p>
 <div class="topic">
-<p class="topic-title first">APPLY_BULKMAT (solfec, body, volid, material)</p>
+<p class="topic-title">APPLY_BULKMAT (solfec, body, volid, material)</p>
 <ul class="simple">
-<li>solfec – SOLFEC object</li>
-<li>body – BODY object</li>
-<li>volid – volume identifier</li>
-<li>material – MATERIAL object or material label</li>
+<li><p>solfec – SOLFEC object</p></li>
+<li><p>body – BODY object</p></li>
+<li><p>volid – volume identifier</p></li>
+<li><p>material – MATERIAL object or material label</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="surface-material">
+</section>
+<section id="surface-material">
 <span id="solfec-1-0-command-surface-material"></span><h2>SURFACE_MATERIAL<a class="headerlink" href="#surface-material" title="Permalink to this headline">¶</a></h2>
 <p>An object of type SURFACE_MATERIAL represents material properties on the interface between two surfaces.
 Surfaces identifiers are included in definitions of all geometric objects.</p>
 <div class="topic">
-<p class="topic-title first">obj = SURFACE_MATERIAL (solfec | surf1, surf2, model, label, friction, cohesion, restitution, spring, dashpot, hpow)</p>
+<p class="topic-title">obj = SURFACE_MATERIAL (solfec | surf1, surf2, model, label, friction, cohesion, restitution, spring, dashpot, hpow)</p>
 <p>This routine creates a SURFACE_MATERIAL object.</p>
 <ul class="simple">
-<li>obj – created SURFACE_MATERIAL object</li>
-<li>solfec – obj is created for this SOLFEC object</li>
-<li>surf1 – first surface identifier</li>
-<li>surf2 – second surface identifier; If only surf1 is specified,
+<li><p>obj – created SURFACE_MATERIAL object</p></li>
+<li><p>solfec – obj is created for this SOLFEC object</p></li>
+<li><p>surf1 – first surface identifier</p></li>
+<li><p>surf2 – second surface identifier; If only surf1 is specified,
 the surface material is used for all contacts with the specified surface;
 If neither surf1 or surf2 are specified, the surface material is used for
-any contacts where a more-specific pairing cannot be found.</li>
-<li>model – material model name (default: ‘SIGNORINI_COULOMB’), see <a class="reference internal" href="#surf-materials"><span class="std std-numref">Table 16</span></a></li>
-<li>label – label string (default: ‘SURFACE_MATERIAL_i’, where i is incremented for each call)</li>
-<li>friction – friction coefficient (default: 0.0)</li>
-<li>cohesion – cohesion per unit area (default: 0.0)</li>
-<li>restitution – velocity restitution (default: 0.0)</li>
-<li>spring – spring stiffness (default: 0.0)</li>
-<li>dashpot – dashpot stiffness (default: 0.0); any negative value indicates critical damping</li>
-<li>hpow – Hertz’s law power (default: 1.0)</li>
+any contacts where a more-specific pairing cannot be found.</p></li>
+<li><p>model – material model name (default: ‘SIGNORINI_COULOMB’), see <a class="reference internal" href="#surf-materials"><span class="std std-numref">Table 16</span></a></p></li>
+<li><p>label – label string (default: ‘SURFACE_MATERIAL_i’, where i is incremented for each call)</p></li>
+<li><p>friction – friction coefficient (default: 0.0)</p></li>
+<li><p>cohesion – cohesion per unit area (default: 0.0)</p></li>
+<li><p>restitution – velocity restitution (default: 0.0)</p></li>
+<li><p>spring – spring stiffness (default: 0.0)</p></li>
+<li><p>dashpot – dashpot stiffness (default: 0.0); any negative value indicates critical damping</p></li>
+<li><p>hpow – Hertz’s law power (default: 1.0)</p></li>
 </ul>
 </div>
 <p>Some parameters can also be accessed as members of a SURFACE_MATERIAL object, cf. <a class="reference internal" href="#surf-params"><span class="std std-numref">Table 15</span></a>.</p>
-<span id="surf-params"></span><table border="1" class="docutils" id="id4">
+<span id="surf-params"></span><table class="docutils align-default" id="id4">
 <caption><span class="caption-number">Table 15 </span><span class="caption-text">SURFACE_MATERIAL object parameters.</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Read only members:</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Read only members:</strong></p></td>
 </tr>
-<tr class="row-even"><td><em>obj.surf1, obj.surf2, obj.label</em></td>
+<tr class="row-even"><td><p><em>obj.surf1, obj.surf2, obj.label</em></p></td>
 </tr>
-<tr class="row-odd"><td><strong>Read/write members:</strong></td>
+<tr class="row-odd"><td><p><strong>Read/write members:</strong></p></td>
 </tr>
-<tr class="row-even"><td><em>obj.model,obj.friction, obj.cohesion, obj.restitution, obj.spring, obj.dashpot, obj.hpow</em></td>
+<tr class="row-even"><td><p><em>obj.model,obj.friction, obj.cohesion, obj.restitution, obj.spring, obj.dashpot, obj.hpow</em></p></td>
 </tr>
 </tbody>
 </table>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<span id="surf-materials"></span><table border="1" class="docutils" id="id5">
+<span id="surf-materials"></span><table class="docutils align-default" id="id5">
 <caption><span class="caption-number">Table 16 </span><span class="caption-text">Surface material models.</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="31%" />
-<col width="69%" />
+<col style="width: 31%" />
+<col style="width: 69%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Model name</td>
-<td>Employs variables</td>
+<tbody>
+<tr class="row-odd"><td><p>Model name</p></td>
+<td><p>Employs variables</p></td>
 </tr>
-<tr class="row-even"><td>‘SIGNORINI_COULOMB’</td>
-<td>friction, cohesion, restitution</td>
+<tr class="row-even"><td><p>‘SIGNORINI_COULOMB’</p></td>
+<td><p>friction, cohesion, restitution</p></td>
 </tr>
-<tr class="row-odd"><td>‘SPRING_DASHPOT’</td>
-<td>spring, dashpot, friction, cohesion, hpow</td>
+<tr class="row-odd"><td><p>‘SPRING_DASHPOT’</p></td>
+<td><p>spring, dashpot, friction, cohesion, hpow</p></td>
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</section>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -288,7 +299,6 @@ any contacts where a more-specific pairing cannot be found.</li>
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
@@ -312,148 +322,174 @@ any contacts where a more-specific pairing cannot be found.</li>
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -468,10 +504,10 @@ any contacts where a more-specific pairing cannot be found.</li>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

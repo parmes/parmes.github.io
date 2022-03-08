@@ -1,44 +1,61 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Pipe impact &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="81 bricks array" href="../81array.html" />
-    <link rel="prev" title="Rotating bar" href="ro0.html" />
-  
+    <link rel="prev" title="Rotating bar" href="ro0.html" /> 
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,28 +66,29 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="pipe-impact">
+             <section id="pipe-impact">
 <span id="solfec-1-0-examples-reduced-order-ro1"></span><h1>Pipe impact<a class="headerlink" href="#pipe-impact" title="Permalink to this headline">¶</a></h1>
 <p>This example, also included in <a class="reference internal" href="../../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>, illustrates the reduced order modeling functionality on a pipe impact problem. The input files for
 this example are located in the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">solfec-1.0/examples/reduced–order1</a> directory.
 These are:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/README">README</a> – a text based specification of the problem</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-fem-bc.py">ro1–fem–bc.py</a> – finite element body co–rotated model</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-fem-tl.py">ro1–fem–tl.py</a> – finite element Total Lagrangian model</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-reduced.py">ro1–reduced.py</a> – finite element reduced order model</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py">ro1–lib.py</a> – library functions used by other input files</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-modred.py">ro1–modred.py</a> – calculation of a reduced
-<a class="reference external" href="https://en.wikipedia.org/wiki/Principal_component_analysis">POD</a> base</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-postp.py">ro1–postp.py</a> – post–processing script</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-run-all.py">ro1–run–all.py</a> – input file that runs all tests and generates all plots</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-view.py">ro1–view.py</a> – input file suitable for use with Solfec-1.0 <a class="reference internal" href="../../running.html#solfec-1-0-running"><span class="std std-ref">viewer</span></a></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/README">README</a> – a text based specification of the problem</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-fem-bc.py">ro1–fem–bc.py</a> – finite element body co–rotated model</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-fem-tl.py">ro1–fem–tl.py</a> – finite element Total Lagrangian model</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-reduced.py">ro1–reduced.py</a> – finite element reduced order model</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py">ro1–lib.py</a> – library functions used by other input files</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-modred.py">ro1–modred.py</a> – calculation of a reduced
+<a class="reference external" href="https://en.wikipedia.org/wiki/Principal_component_analysis">POD</a> base</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-postp.py">ro1–postp.py</a> – post–processing script</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-run-all.py">ro1–run–all.py</a> – input file that runs all tests and generates all plots</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-view.py">ro1–view.py</a> – input file suitable for use with Solfec-1.0 <a class="reference internal" href="../../running.html#solfec-1-0-running"><span class="std std-ref">viewer</span></a></p></li>
 </ul>
-<div class="figure align-center" id="id7">
+<figure class="align-center" id="id7">
 <span id="ro1-fig1"></span><a class="reference internal image-reference" href="../../../_images/ro1_pipe.png"><img alt="../../../_images/ro1_pipe.png" src="../../../_images/ro1_pipe.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 65 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: initial, impact, and final configurations (left to right).</span></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: initial, impact, and final configurations (left to right).</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>An elastic pipe free falls onto a block obstacle. <a class="reference internal" href="#ro1-fig1"><span class="std std-numref">Fig. 65</span></a> illustrates the initial, impact and final configurations.
 The inner pipe radius is 0.01 m, its thickness is 0.005 m, and its length is 0.1 m. The pipe lowest point is initially located
 0.025 m above the top surface of the block. <a class="reference internal" href="#ro1-fig2"><span class="std std-numref">Fig. 66</span></a> shows the characteristic points, used to extract results. Point
@@ -81,10 +99,12 @@ obstacle has dimensions <span class="math notranslate nohighlight">\(0.01\times0
 contribute mass. The gravity along the z–direction is <span class="math notranslate nohighlight">\(-10\text{ m/s}^{2}\)</span>. The simulation time step is 0.001 s, the
 duration is 0.1 s, and the amount of damping is <span class="math notranslate nohighlight">\(\eta=1\text{E-4}\)</span>. Schemes TL, BC, and BC–RO are compared. 100 co–rotated
 displacement samples from the Total Lagrangian solution and 6 rigid motion modes are used as input for the <a class="reference external" href="http://pythonhosted.org/modred/">Python modred package</a>, to produce 18 Proper Orthogonal Decomposition modes for the BC–RO approach.</p>
-<div class="figure align-center" id="id8">
+<figure class="align-center" id="id8">
 <span id="ro1-fig2"></span><a class="reference internal image-reference" href="../../../_images/ro1_points.png"><img alt="../../../_images/ro1_points.png" src="../../../_images/ro1_points.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 66 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: mesh characteristic points.</span></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: mesh characteristic points.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p><a class="reference internal" href="#ro1-fig3"><span class="std std-numref">Fig. 67</span></a> illustrates the energy balance: in all cases the graphs coincide relatively well. While the BC approach closely
 follows the Total Lagrangian approach (TL), the reduced order BC–RO approach slightly deviates in its post-impact response.
 Similar general response characteristic can be seen in <a class="reference internal" href="#ro1-fig4"><span class="std std-numref">Fig. 68</span></a>, <a class="reference internal" href="#ro1-fig5"><span class="std std-numref">Fig. 69</span></a>, <a class="reference internal" href="#ro1-fig6"><span class="std std-numref">Fig. 70</span></a>, where other
@@ -94,116 +114,96 @@ that the rotation angle in <a class="reference internal" href="#ro1-fig4"><span 
 \[\text{angle}=\arcsin\left(\left|\frac{\text{p5}-\text{p4}}{\left|\text{p5}-\text{p4}\right|}\times\left(-1,0,0\right)\right|\right)\text{.}\]</div>
 <p><a class="reference internal" href="#ro1-tab1"><span class="std std-numref">Table 31</span></a> illustrates the runtime and storage statistics. The body co–rotational (BC) approach is about 6 times faster than
 TL; the reduced order (BC–RO) approach is about 50 time faster and requires about 50 times less storage. The animated output of this
-example can be seen in video <a class="footnote-reference" href="#id2" id="id1">[1]</a>.</p>
-<div class="figure align-center" id="id9">
+example can be seen in video <a class="footnote-reference brackets" href="#id2" id="id1">1</a>.</p>
+<figure class="align-center" id="id9">
 <span id="ro1-fig3"></span><a class="reference internal image-reference" href="../../../_images/ro1_energy.png"><img alt="../../../_images/ro1_energy.png" src="../../../_images/ro1_energy.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 67 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: kinetic (left), and internal energy between <span class="math notranslate nohighlight">\(t=0.05\text{s}\)</span> and <span class="math notranslate nohighlight">\(t=0.1\text{s}\)</span>.</span></p>
-</div>
-<div class="figure align-center" id="id10">
+<figcaption>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: kinetic (left), and internal energy between <span class="math notranslate nohighlight">\(t=0.05\text{s}\)</span> and <span class="math notranslate nohighlight">\(t=0.1\text{s}\)</span>.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id10">
 <span id="ro1-fig4"></span><a class="reference internal image-reference" href="../../../_images/ro1_p4zp5z_rot.png"><img alt="../../../_images/ro1_p4zp5z_rot.png" src="../../../_images/ro1_p4zp5z_rot.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 68 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: z–coordinates of points p4, p5 (left), and pipe rotation angle (about y)
-between <span class="math notranslate nohighlight">\(t=0.05\text{s}\)</span> and <span class="math notranslate nohighlight">\(t=0.1\text{s}\)</span>.</span></p>
-</div>
-<div class="figure align-center" id="id11">
+<figcaption>
+<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: z–coordinates of points p4, p5 (left), and pipe rotation angle (about y)
+between <span class="math notranslate nohighlight">\(t=0.05\text{s}\)</span> and <span class="math notranslate nohighlight">\(t=0.1\text{s}\)</span>.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id11">
 <span id="ro1-fig5"></span><a class="reference internal image-reference" href="../../../_images/ro1_diameters.png"><img alt="../../../_images/ro1_diameters.png" src="../../../_images/ro1_diameters.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 69 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: inner <span class="math notranslate nohighlight">\(\left|\text{p2}-\text{p3}\right|\)</span> (left), and outer <span class="math notranslate nohighlight">\(\left|\text{p0}-\text{p1}\right|\)</span>
-pipe diameter in the contact area between <span class="math notranslate nohighlight">\(t=0.05\text{s}\)</span> and <span class="math notranslate nohighlight">\(t=0.1\text{s}\)</span>.</span></p>
-</div>
-<div class="figure align-center" id="id12">
+<figcaption>
+<p><span class="caption-number">Fig. 69 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: inner <span class="math notranslate nohighlight">\(\left|\text{p2}-\text{p3}\right|\)</span> (left), and outer <span class="math notranslate nohighlight">\(\left|\text{p0}-\text{p1}\right|\)</span>
+pipe diameter in the contact area between <span class="math notranslate nohighlight">\(t=0.05\text{s}\)</span> and <span class="math notranslate nohighlight">\(t=0.1\text{s}\)</span>.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id12">
 <span id="ro1-fig6"></span><a class="reference internal image-reference" href="../../../_images/ro1_p0p2_mises.png"><img alt="../../../_images/ro1_p0p2_mises.png" src="../../../_images/ro1_p0p2_mises.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 70 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: inner point p0 (left), and outer point p2 MISES stress between <span class="math notranslate nohighlight">\(t=0.05\text{s}\)</span> and <span class="math notranslate nohighlight">\(t=0.1\text{s}\)</span>.</span></p>
-</div>
-<span id="ro1-tab1"></span><table border="1" class="docutils" id="id13">
+<figcaption>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: inner point p0 (left), and outer point p2 MISES stress between <span class="math notranslate nohighlight">\(t=0.05\text{s}\)</span> and <span class="math notranslate nohighlight">\(t=0.1\text{s}\)</span>.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<span id="ro1-tab1"></span><table class="docutils align-default" id="id13">
 <caption><span class="caption-number">Table 31 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a>: runtime and storage comparison.</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="32%" />
-<col width="22%" />
-<col width="23%" />
-<col width="23%" />
+<col style="width: 32%" />
+<col style="width: 22%" />
+<col style="width: 23%" />
+<col style="width: 23%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Formulation</td>
-<td>TL</td>
-<td>BC</td>
-<td>BC–RO</td>
+<tbody>
+<tr class="row-odd"><td><p>Formulation</p></td>
+<td><p>TL</p></td>
+<td><p>BC</p></td>
+<td><p>BC–RO</p></td>
 </tr>
-<tr class="row-even"><td>Runtime [s]</td>
-<td>101</td>
-<td>16.2</td>
-<td>2.0</td>
+<tr class="row-even"><td><p>Runtime [s]</p></td>
+<td><p>101</p></td>
+<td><p>16.2</p></td>
+<td><p>2.0</p></td>
 </tr>
-<tr class="row-odd"><td>Storage [MB]</td>
-<td>13</td>
-<td>13</td>
-<td>0.264</td>
+<tr class="row-odd"><td><p>Storage [MB]</p></td>
+<td><p>13</p></td>
+<td><p>13</p></td>
+<td><p>0.264</p></td>
 </tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id6">2</a>)</em> An animation of the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a> pipe impact example.</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="id2"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id6">2</a>)</span></dt>
+<dd><p>An animation of the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1">reduced-order1</a> pipe impact example.</p>
+</dd>
+</dl>
 <p align="center"><iframe width="640" height="360" src="//www.youtube.com/embed/RoSfE7-7ZH8?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><div class="literal-block-wrapper docutils container" id="ro1-lst1">
 <div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">Listing of ro1–fem–tl.py</span><a class="headerlink" href="#ro1-lst1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
-<span class="n">dirpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
-<span class="n">execfile</span> <span class="p">(</span><span class="n">dirpath</span> <span class="o">+</span> <span class="s1">&#39;/ro1-lib.py&#39;</span><span class="p">)</span> <span class="c1"># import library</span>
-
-<span class="c1"># set up simulation</span>
-<span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">bod</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span> <span class="o">=</span> <span class="n">ro1_simulation</span> <span class="p">(</span><span class="s1">&#39;fem-tl&#39;</span><span class="p">)</span>
-
-<span class="c1"># collect displacement samples</span>
-<span class="k">if</span> <span class="n">sol</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;WRITE&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">VIEWER</span><span class="p">():</span>
-  <span class="n">dsp</span> <span class="o">=</span> <span class="n">COROTATED_DISPLACEMENTS</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">bod</span><span class="p">)</span>
-  <span class="n">rig</span> <span class="o">=</span> <span class="n">RIGID_DISPLACEMENTS</span> <span class="p">(</span><span class="n">bod</span><span class="p">)</span>
-
-<span class="c1"># run simulation and save displacemement samples</span>
-<span class="k">if</span> <span class="n">sol</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;WRITE&#39;</span><span class="p">:</span>
-  <span class="kn">import</span> <span class="nn">time</span>
-  <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-  <span class="n">RUN</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">NEWTON_SOLVER</span><span class="p">(),</span> <span class="n">stop</span><span class="p">)</span>
-  <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-  <span class="nb">print</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">FEM-TL runtime: </span><span class="si">%.3f</span><span class="s1"> seconds&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span>
-  <span class="k">if</span> <span class="ow">not</span> <span class="n">VIEWER</span><span class="p">():</span>
-    <span class="nb">print</span> <span class="s1">&#39;Saving displacement snapshots ...&#39;</span>
-    <span class="kn">import</span> <span class="nn">pickle</span>
-    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dsp</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;out/reduced-order1/dsp.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">))</span> 
-    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">rig</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;out/reduced-order1/rig.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">))</span> 
-
-<span class="c1"># read and save time histories</span>
-<span class="k">if</span> <span class="n">sol</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;READ&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">VIEWER</span><span class="p">():</span>
-  <span class="n">ro1_read_histories</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">bod</span><span class="p">,</span> <span class="s1">&#39;fem-tl&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="linenos"> 2</span><span class="n">dirpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="linenos"> 3</span><span class="n">execfile</span> <span class="p">(</span><span class="n">dirpath</span> <span class="o">+</span> <span class="s1">&#39;/ro1-lib.py&#39;</span><span class="p">)</span> <span class="c1"># import library</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1"># set up simulation</span>
+<span class="linenos"> 6</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">bod</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span> <span class="o">=</span> <span class="n">ro1_simulation</span> <span class="p">(</span><span class="s1">&#39;fem-tl&#39;</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1"># collect displacement samples</span>
+<span class="linenos"> 9</span><span class="k">if</span> <span class="n">sol</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;WRITE&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">VIEWER</span><span class="p">():</span>
+<span class="linenos">10</span>  <span class="n">dsp</span> <span class="o">=</span> <span class="n">COROTATED_DISPLACEMENTS</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">bod</span><span class="p">)</span>
+<span class="linenos">11</span>  <span class="n">rig</span> <span class="o">=</span> <span class="n">RIGID_DISPLACEMENTS</span> <span class="p">(</span><span class="n">bod</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="c1"># run simulation and save displacemement samples</span>
+<span class="linenos">14</span><span class="k">if</span> <span class="n">sol</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;WRITE&#39;</span><span class="p">:</span>
+<span class="linenos">15</span>  <span class="kn">import</span> <span class="nn">time</span>
+<span class="linenos">16</span>  <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="linenos">17</span>  <span class="n">RUN</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">NEWTON_SOLVER</span><span class="p">(),</span> <span class="n">stop</span><span class="p">)</span>
+<span class="linenos">18</span>  <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="linenos">19</span>  <span class="nb">print</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">FEM-TL runtime: </span><span class="si">%.3f</span><span class="s1"> seconds&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span>
+<span class="linenos">20</span>  <span class="k">if</span> <span class="ow">not</span> <span class="n">VIEWER</span><span class="p">():</span>
+<span class="linenos">21</span>    <span class="nb">print</span> <span class="s1">&#39;Saving displacement snapshots ...&#39;</span>
+<span class="linenos">22</span>    <span class="kn">import</span> <span class="nn">pickle</span>
+<span class="linenos">23</span>    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">dsp</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;out/reduced-order1/dsp.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">))</span> 
+<span class="linenos">24</span>    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">rig</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;out/reduced-order1/rig.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">))</span> 
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="c1"># read and save time histories</span>
+<span class="linenos">27</span><span class="k">if</span> <span class="n">sol</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;READ&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">VIEWER</span><span class="p">():</span>
+<span class="linenos">28</span>  <span class="n">ro1_read_histories</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">bod</span><span class="p">,</span> <span class="s1">&#39;fem-tl&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 </div>
 <p><a class="reference internal" href="#ro1-lst1"><span class="std std-numref">Listing 8</span></a> exemplifies the Total Lagrangian analysis input file. The simulation creation code
 is hidden inside of the library subroutine <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py#L10">ro1_simulation</a>,
@@ -221,106 +221,69 @@ invoked internally from within <a class="reference external" href="https://githu
 when creating the reduced order model of the pipe body. This is depicted in lines 34–49 of <a class="reference internal" href="#ro1-lst3"><span class="std std-numref">Listing 10</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="ro1-lst2">
 <div class="code-block-caption"><span class="caption-number">Listing 9 </span><span class="caption-text">Listing of ro1–reduced.py</span><a class="headerlink" href="#ro1-lst2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
-<span class="n">dirpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
-<span class="n">execfile</span> <span class="p">(</span><span class="n">dirpath</span> <span class="o">+</span> <span class="s1">&#39;/ro1-lib.py&#39;</span><span class="p">)</span> <span class="c1"># import library</span>
-
-<span class="c1"># set up simulation</span>
-<span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">bod</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span> <span class="o">=</span> <span class="n">ro1_simulation</span> <span class="p">(</span><span class="s1">&#39;reduced&#39;</span><span class="p">)</span>
-
-<span class="c1"># run simulation</span>
-<span class="k">if</span> <span class="n">sol</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;WRITE&#39;</span><span class="p">:</span>
-  <span class="kn">import</span> <span class="nn">time</span>
-  <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-  <span class="n">RUN</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">NEWTON_SOLVER</span><span class="p">(),</span> <span class="n">stop</span><span class="p">)</span>
-  <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-  <span class="nb">print</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">BC-RO runtime: </span><span class="si">%.3f</span><span class="s1"> seconds&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span>
-
-<span class="c1"># read and save time histories</span>
-<span class="k">if</span> <span class="n">sol</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;READ&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">VIEWER</span><span class="p">():</span>
-  <span class="n">ro1_read_histories</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">bod</span><span class="p">,</span> <span class="s1">&#39;reduced&#39;</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="linenos"> 2</span><span class="n">dirpath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">realpath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="linenos"> 3</span><span class="n">execfile</span> <span class="p">(</span><span class="n">dirpath</span> <span class="o">+</span> <span class="s1">&#39;/ro1-lib.py&#39;</span><span class="p">)</span> <span class="c1"># import library</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="c1"># set up simulation</span>
+<span class="linenos"> 6</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">bod</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span> <span class="o">=</span> <span class="n">ro1_simulation</span> <span class="p">(</span><span class="s1">&#39;reduced&#39;</span><span class="p">)</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c1"># run simulation</span>
+<span class="linenos"> 9</span><span class="k">if</span> <span class="n">sol</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;WRITE&#39;</span><span class="p">:</span>
+<span class="linenos">10</span>  <span class="kn">import</span> <span class="nn">time</span>
+<span class="linenos">11</span>  <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="linenos">12</span>  <span class="n">RUN</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">NEWTON_SOLVER</span><span class="p">(),</span> <span class="n">stop</span><span class="p">)</span>
+<span class="linenos">13</span>  <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="linenos">14</span>  <span class="nb">print</span> <span class="s1">&#39;</span><span class="se">\b</span><span class="s1">BC-RO runtime: </span><span class="si">%.3f</span><span class="s1"> seconds&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c1"># read and save time histories</span>
+<span class="linenos">17</span><span class="k">if</span> <span class="n">sol</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;READ&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">VIEWER</span><span class="p">():</span>
+<span class="linenos">18</span>  <span class="n">ro1_read_histories</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">bod</span><span class="p">,</span> <span class="s1">&#39;reduced&#39;</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 </div>
 <div class="literal-block-wrapper docutils container" id="ro1-lst3">
 <div class="code-block-caption"><span class="caption-number">Listing 10 </span><span class="caption-text">Listing of a portion of ro1–lib.py responsible for creation of the pipe body.</span><a class="headerlink" href="#ro1-lst3" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="k">if</span> <span class="n">path_string</span> <span class="o">==</span> <span class="s1">&#39;fem-tl&#39;</span><span class="p">:</span>
-    <span class="n">bod</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">msh</span><span class="p">,</span> <span class="n">mat</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;TL&#39;</span><span class="p">)</span>
-  <span class="k">elif</span> <span class="n">path_string</span> <span class="o">==</span> <span class="s1">&#39;fem-bc&#39;</span><span class="p">:</span>
-    <span class="n">bod</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">msh</span><span class="p">,</span> <span class="n">mat</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;BC&#39;</span><span class="p">)</span>
-  <span class="k">else</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-      <span class="kn">import</span> <span class="nn">pickle</span>
-      <span class="n">podbase</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;out/reduced-order1/podbase.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
-    <span class="k">except</span><span class="p">:</span>
-      <span class="nb">print</span> <span class="s1">&#39;File out/reduced-order1/podbase.pickle not found&#39;</span><span class="p">,</span>
-      <span class="nb">print</span> <span class="s1">&#39;--&gt; running ro0-modred.py ...&#39;</span>
-      <span class="n">execfile</span> <span class="p">(</span><span class="n">dirpath</span> <span class="o">+</span> <span class="s1">&#39;/ro1-modred.py&#39;</span><span class="p">)</span>
-      <span class="k">try</span><span class="p">:</span>
-	<span class="kn">import</span> <span class="nn">pickle</span>
-	<span class="n">podbase</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;out/reduced-order1/podbase.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
-      <span class="k">except</span><span class="p">:</span>
-        <span class="nb">print</span> <span class="s1">&#39;Running ro0-modred.py has failed --&gt; report a bug!&#39;</span> 
-	<span class="kn">import</span> <span class="nn">sys</span>
-	<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">bod</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">msh</span><span class="p">,</span> <span class="n">mat</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;BC-RO&#39;</span><span class="p">,</span> <span class="n">base</span> <span class="o">=</span> <span class="n">podbase</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">30</span>  <span class="k">if</span> <span class="n">path_string</span> <span class="o">==</span> <span class="s1">&#39;fem-tl&#39;</span><span class="p">:</span>
+<span class="linenos">31</span>    <span class="n">bod</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">msh</span><span class="p">,</span> <span class="n">mat</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;TL&#39;</span><span class="p">)</span>
+<span class="linenos">32</span>  <span class="k">elif</span> <span class="n">path_string</span> <span class="o">==</span> <span class="s1">&#39;fem-bc&#39;</span><span class="p">:</span>
+<span class="linenos">33</span>    <span class="n">bod</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">msh</span><span class="p">,</span> <span class="n">mat</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;BC&#39;</span><span class="p">)</span>
+<span class="linenos">34</span>  <span class="k">else</span><span class="p">:</span>
+<span class="linenos">35</span>    <span class="k">try</span><span class="p">:</span>
+<span class="linenos">36</span>      <span class="kn">import</span> <span class="nn">pickle</span>
+<span class="linenos">37</span>      <span class="n">podbase</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;out/reduced-order1/podbase.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+<span class="linenos">38</span>    <span class="k">except</span><span class="p">:</span>
+<span class="linenos">39</span>      <span class="nb">print</span> <span class="s1">&#39;File out/reduced-order1/podbase.pickle not found&#39;</span><span class="p">,</span>
+<span class="linenos">40</span>      <span class="nb">print</span> <span class="s1">&#39;--&gt; running ro0-modred.py ...&#39;</span>
+<span class="linenos">41</span>      <span class="n">execfile</span> <span class="p">(</span><span class="n">dirpath</span> <span class="o">+</span> <span class="s1">&#39;/ro1-modred.py&#39;</span><span class="p">)</span>
+<span class="linenos">42</span>      <span class="k">try</span><span class="p">:</span>
+<span class="linenos">43</span>	<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="linenos">44</span>	<span class="n">podbase</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;out/reduced-order1/podbase.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+<span class="linenos">45</span>      <span class="k">except</span><span class="p">:</span>
+<span class="linenos">46</span>        <span class="nb">print</span> <span class="s1">&#39;Running ro0-modred.py has failed --&gt; report a bug!&#39;</span> 
+<span class="linenos">47</span>	<span class="kn">import</span> <span class="nn">sys</span>
+<span class="linenos">48</span>	<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">49</span>    <span class="n">bod</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">msh</span><span class="p">,</span> <span class="n">mat</span><span class="p">,</span> <span class="n">form</span> <span class="o">=</span> <span class="s1">&#39;BC-RO&#39;</span><span class="p">,</span> <span class="n">base</span> <span class="o">=</span> <span class="n">podbase</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 </div>
 <p>To run this example and generate figures presented here, enter Solfec-1.0 source directory and type</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">reduced</span><span class="o">-</span><span class="n">order1</span><span class="o">/</span><span class="n">ro1</span><span class="o">-</span><span class="n">run</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>After all progress messages cease, figures are saved as <code class="docutils literal notranslate"><span class="pre">out/reduced-order1/*.png</span></code> files.
-To interactively view the animated bar, as in video <a class="footnote-reference" href="#id2" id="id6">[1]</a>, call</p>
+To interactively view the animated bar, as in video <a class="footnote-reference brackets" href="#id2" id="id6">1</a>, call</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="o">-</span><span class="n">v</span> <span class="n">examples</span><span class="o">/</span><span class="n">reduced</span><span class="o">-</span><span class="n">order1</span><span class="o">/</span><span class="n">ro1</span><span class="o">-</span><span class="n">view</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>You can type <code class="docutils literal notranslate"><span class="pre">o</span></code> in order to highlight the output path in the viewer and see which model you are currently looking at.
 You can switch between models using <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>. Right–click the mouse button to activate a drop–down menu and see
 other available options and keyboard shortcuts.</p>
-</div>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -370,7 +333,6 @@ other available options and keyboard shortcuts.</p>
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../vbox/index.html">VBOX</a></li>
@@ -396,148 +358,174 @@ other available options and keyboard shortcuts.</p>
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../../../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../../../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../../../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../../../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../../../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../../../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../../../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../../../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../../../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../../../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../../../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -552,10 +540,10 @@ other available options and keyboard shortcuts.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

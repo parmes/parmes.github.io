@@ -1,44 +1,60 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Solfec-1.0 Installation &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Running Solfec-1.0" href="running.html" />
-    <link rel="prev" title="SOLFEC-1.0" href="index.html" />
-  
+    <link rel="prev" title="SOLFEC-1.0" href="index.html" /> 
    
   <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,8 +65,7 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="solfec-1-0-installation">
+             <section id="solfec-1-0-installation">
 <span id="id1"></span><h1>Solfec-1.0 Installation<a class="headerlink" href="#solfec-1-0-installation" title="Permalink to this headline">¶</a></h1>
 <p>Solfec-1.0 is hosted on <a class="reference external" href="https://github.com/tkoziara/solfec">GitHub</a> and you will need the <em>git</em> command
 installed in order to download its source code. Have a look at <a class="reference external" href="https://git-scm.com">https://git-scm.com</a> for instructions.
@@ -153,8 +168,8 @@ The file <em>solfec-1.0/Config.mak</em> needs to be modified in order to set up 
 <span class="c1"># Python</span>
 <span class="c1">#</span>
 
-<span class="n">PYTHON</span> <span class="o">=</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Frameworks</span><span class="o">/</span><span class="n">Python</span><span class="o">.</span><span class="n">framework</span><span class="o">/</span><span class="n">Versions</span><span class="o">/</span><span class="mf">2.7</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">python2</span><span class="o">.</span><span class="mi">7</span>
-<span class="n">PYTHONLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lpython2</span><span class="o">.</span><span class="mi">7</span>
+<span class="n">PYTHON</span> <span class="o">=</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Frameworks</span><span class="o">/</span><span class="n">Python</span><span class="o">.</span><span class="n">framework</span><span class="o">/</span><span class="n">Versions</span><span class="o">/</span><span class="mf">2.7</span><span class="o">/</span><span class="n">include</span><span class="o">/</span><span class="n">python2</span><span class="mf">.7</span>
+<span class="n">PYTHONLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">lpython2</span><span class="mf">.7</span>
 
 <span class="c1">#</span>
 <span class="c1"># FLTK (an alternative OpenGL GUI)</span>
@@ -162,7 +177,7 @@ The file <em>solfec-1.0/Config.mak</em> needs to be modified in order to set up 
 
 <span class="n">FLTK</span> <span class="o">=</span> <span class="n">no</span>
 <span class="n">FLINC</span> <span class="o">=</span> <span class="o">-</span><span class="n">I</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">include</span>
-<span class="n">FLLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">Wl</span><span class="p">,</span><span class="o">-</span><span class="n">headerpad_max_install_names</span> <span class="o">-</span><span class="n">Wl</span><span class="p">,</span><span class="o">-</span><span class="n">syslibroot</span><span class="p">,</span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="o">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="o">.</span><span class="mf">14.</span><span class="n">sdk</span> <span class="o">-</span><span class="n">lfltk_gl</span> <span class="o">-</span><span class="n">framework</span> <span class="n">OpenGL</span> <span class="o">-</span><span class="n">lfltk</span> <span class="o">-</span><span class="n">lpthread</span> <span class="o">-</span><span class="n">framework</span> <span class="n">Cocoa</span>
+<span class="n">FLLIB</span> <span class="o">=</span> <span class="o">-</span><span class="n">L</span><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">lib</span> <span class="o">-</span><span class="n">Wl</span><span class="p">,</span><span class="o">-</span><span class="n">headerpad_max_install_names</span> <span class="o">-</span><span class="n">Wl</span><span class="p">,</span><span class="o">-</span><span class="n">syslibroot</span><span class="p">,</span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Xcode</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">Platforms</span><span class="o">/</span><span class="n">MacOSX</span><span class="o">.</span><span class="n">platform</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">SDKs</span><span class="o">/</span><span class="n">MacOSX10</span><span class="mf">.14</span><span class="o">.</span><span class="n">sdk</span> <span class="o">-</span><span class="n">lfltk_gl</span> <span class="o">-</span><span class="n">framework</span> <span class="n">OpenGL</span> <span class="o">-</span><span class="n">lfltk</span> <span class="o">-</span><span class="n">lpthread</span> <span class="o">-</span><span class="n">framework</span> <span class="n">Cocoa</span>
 
 <span class="c1">#</span>
 <span class="c1"># OpenGL (yes/no)</span>
@@ -230,18 +245,18 @@ The file <em>solfec-1.0/Config.mak</em> needs to be modified in order to set up 
 </div>
 <p>The above configuration works on Mac OS X. To recap, what you need is:</p>
 <ul class="simple">
-<li>C, C++, FORTRAN 95 compilers</li>
-<li><a class="reference external" href="http://www.hdfgroup.org">HDF5 library</a></li>
-<li>(optional, deprecated) XDR (standard part of RPC on all Unix type systems)</li>
-<li><a class="reference external" href="http://www.netlib.org/lapack/">BLAS and LAPACK</a> libraries (standard on most systems)</li>
-<li>Python together with development files and libraries (versions 2.x have been tested)</li>
-<li>OpenGL libraries and developments files (this enables Solfec-1.0’s viewer)</li>
-<li>(optional) VBO (Vertex Buffer Object extension of OpenGL for faster rendering)</li>
-<li>MPI libraries and development files</li>
-<li>either <a class="reference external" href="http://www.cs.sandia.gov/Zoltan/">Zoltan</a> or <a class="reference external" href="https://github.com/tkoziara/dynlb">dynlb</a> load balancing library</li>
-<li>(optional) <a class="reference internal" href="../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> source path if you wish to use the <a class="reference internal" href="user/solvers.html#solfec-1-0-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>
-and <a class="reference internal" href="examples/hybrid_modeling.html#solfec-1-0-examples-hybrid-modeling"><span class="std std-ref">hybrid modeling</span></a></li>
-<li>(optional) <a class="reference external" href="http://siconos.gforge.inria.fr">Siconos</a> contact solvers library</li>
+<li><p>C, C++, FORTRAN 95 compilers</p></li>
+<li><p><a class="reference external" href="http://www.hdfgroup.org">HDF5 library</a></p></li>
+<li><p>(optional, deprecated) XDR (standard part of RPC on all Unix type systems)</p></li>
+<li><p><a class="reference external" href="http://www.netlib.org/lapack/">BLAS and LAPACK</a> libraries (standard on most systems)</p></li>
+<li><p>Python together with development files and libraries (versions 2.x have been tested)</p></li>
+<li><p>OpenGL libraries and developments files (this enables Solfec-1.0’s viewer)</p></li>
+<li><p>(optional) VBO (Vertex Buffer Object extension of OpenGL for faster rendering)</p></li>
+<li><p>MPI libraries and development files</p></li>
+<li><p>either <a class="reference external" href="http://www.cs.sandia.gov/Zoltan/">Zoltan</a> or <a class="reference external" href="https://github.com/tkoziara/dynlb">dynlb</a> load balancing library</p></li>
+<li><p>(optional) <a class="reference internal" href="../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> source path if you wish to use the <a class="reference internal" href="user/solvers.html#solfec-1-0-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>
+and <a class="reference internal" href="examples/hybrid_modeling.html#solfec-1-0-examples-hybrid-modeling"><span class="std std-ref">hybrid modeling</span></a></p></li>
+<li><p>(optional) <a class="reference external" href="http://siconos.gforge.inria.fr">Siconos</a> contact solvers library</p></li>
 </ul>
 <p>To compile Solfec-1.0, after editing the Config.mak file, the first compilation may look like this</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">solfec</span>
@@ -251,26 +266,26 @@ and <a class="reference internal" href="examples/hybrid_modeling.html#solfec-1-0
 <p>This will create files <em>solfec-1.0/solfec</em> and <em>solec/solfec-mpi</em>, that is, the serial and the parallel versions of the code.
 For every subsequent update and compilation you may like to do the following</p>
 <ul class="simple">
-<li>Back up your Config.mak file. For example</li>
+<li><p>Back up your Config.mak file. For example</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">solfec</span>
 <span class="n">cp</span> <span class="n">Config</span><span class="o">.</span><span class="n">mak</span> <span class="o">..</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li>Now update the sources</li>
+<li><p>Now update the sources</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li>Recover your Config.mak file</li>
+<li><p>Recover your Config.mak file</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">../</span><span class="n">Congig</span><span class="o">.</span><span class="n">mak</span> <span class="o">./</span>
 </pre></div>
 </div>
 <ul class="simple">
-<li>And finally compile again</li>
+<li><p>And finally compile again</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">clean</span>
 <span class="n">make</span> <span class="nb">all</span>
@@ -284,12 +299,11 @@ you will need to create output directories yourself, before running calculations
 this is done automatically). It may be convenient to modify the PATH variable to point to the <em>solfec</em> directory,
 making it easier to run Solfec-1.0 form any location within your filesystem.
 You can ask for help, using the <a class="reference external" href="http://groups.google.com/group/solfec">Solfec-1.0 mailing list</a>.</p>
-</div>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -329,7 +343,6 @@ You can ask for help, using the <a class="reference external" href="http://group
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vbox/index.html">VBOX</a></li>
@@ -351,148 +364,174 @@ You can ask for help, using the <a class="reference external" href="http://group
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -507,10 +546,10 @@ You can ask for help, using the <a class="reference external" href="http://group
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

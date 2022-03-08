@@ -1,101 +1,163 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title type="text">PARMES/blog</title>
-  <id>http://parmes.org/blog/atom.xml</id>
-  <updated>2019-09-09T00:00:00Z</updated>
-  <link href="http://parmes.org" />
-  <link href="http://parmes.org/blog/atom.xml" rel="self" />
-  <generator uri="http://ablog.readthedocs.org" version="0.9.2">ABlog</generator>
-  <entry xml:base="http://parmes.org/blog/atom.xml">
-    <title type="text">Solfec-2.0 update 0</title>
-    <id>http://parmes.org/blog/solfec-2.0-update-0.html</id>
-    <updated>2019-09-09T00:00:00Z</updated>
-    <published>2019-09-09T00:00:00Z</published>
-    <link href="http://parmes.org/blog/solfec-2.0-update-0.html" />
+  <id>http://parmes.org</id>
+  <title>PARMES/blog</title>
+  <updated>2022-03-08T20:18:31.405477+00:00</updated>
+  <link href="http://parmes.org"/>
+  <link href="http://parmes.org/blog/atom.xml" rel="self"/>
+  <generator uri="https://ablog.readthedocs.org/" version="0.10.23">ABlog</generator>
+  <entry>
+    <id>http://parmes.org/blog/parmec_spring_contact.html</id>
+    <title>Parmec spring contact</title>
+    <updated>2018-05-23T00:00:00+02:00</updated>
     <author>
       <name>Tomek</name>
     </author>
-    <content type="html">&lt;p&gt;Just a little note to say that work on &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/parmes/solfec-2.0/&quot;&gt;Solfec-2.0&lt;/a&gt; is underway:)
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;Parmec includes a simple spring contact modeling capability, where a contact plane on one particle can be paired up
+with a contact point on another particle. Both particles can be analytical (need no geometry), while the contact spring
+and dashpot curves are user defined. Friction, including sticking and slip, can also be added. An example test of this
+capability is &lt;a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/tests/spring_contact_plane.py"&gt;tests/spring_contact_plane.py&lt;/a&gt;.
+Parmec &lt;a class="reference internal" href="parmec/input_commands.html#parmec-command-spring"&gt;&lt;span class="std std-ref"&gt;SPRING command&lt;/span&gt;&lt;/a&gt; is used to define the entire contact interactions (parameters
+&lt;em&gt;spring&lt;/em&gt;, &lt;em&gt;dashpot&lt;/em&gt; and &lt;em&gt;friction&lt;/em&gt;). Upon running it generates time history figures &lt;em&gt;tests/spring_contact_plane_{z,f_ff}.png&lt;/em&gt;
+and output files viewable with &lt;a class="reference external" href="https://www.paraview.org/"&gt;ParaView&lt;/a&gt;. An animation and the figures are included below. (…)&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="http://parmes.org/blog/parmec_spring_contact.html" rel="alternate"/>
+    <summary>Parmec includes a simple spring contact modeling capability, where a contact plane on one particle can be paired up
+with a contact point on another particle. Both particles can be analytical (need no geometry), while the contact spring
+and dashpot curves are user defined. Friction, including sticking and slip, can also be added. An example test of this
+capability is tests/spring_contact_plane.py.
+Parmec SPRING command is used to define the entire contact interactions (parameters
+spring, dashpot and friction). Upon running it generates time history figures tests/spring_contact_plane_{z,f_ff}.png
+and output files viewable with ParaView. An animation and the figures are included below. (…)</summary>
+    <category term="parmec" label="parmec"/>
+    <category term="tests" label="tests"/>
+    <category term="contact" label="contact"/>
+    <category term="friction" label="friction"/>
+    <published>2018-05-23T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://parmes.org/blog/parmec_spherical_joint.html</id>
+    <title>Parmec spherical joint</title>
+    <updated>2018-06-13T00:00:00+02:00</updated>
+    <author>
+      <name>Tomek</name>
+    </author>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;Torsion spring has now been added to PARMEC, allowing to model angular hinges with rotational limits and spherical joints.
+&lt;a class="reference internal" href="parmec/input_commands.html#parmec-command-torsion-spring"&gt;&lt;span class="std std-ref"&gt;TORSION_SPRING command&lt;/span&gt;&lt;/a&gt; is used to define an angle–torque relationship for three
+angles of rotation about user specified local coordinate axes (x–roll, y–pitch, z–yaw). The command includes a cone
+constraint which allows to model spherical joints in roll-pitch, roll-yaw, and pitch-yaw planes. Example application application
+of this functionality is included as &lt;a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/tests/spherical_joint.py"&gt;tests/spherical_joint.py&lt;/a&gt;.
+A &lt;a class="reference external" href="https://www.paraview.org/"&gt;ParaView&lt;/a&gt; animation generated by this test is included below. (…)&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="http://parmes.org/blog/parmec_spherical_joint.html" rel="alternate"/>
+    <summary>Torsion spring has now been added to PARMEC, allowing to model angular hinges with rotational limits and spherical joints.
+TORSION_SPRING command is used to define an angle–torque relationship for three
+angles of rotation about user specified local coordinate axes (x–roll, y–pitch, z–yaw). The command includes a cone
+constraint which allows to model spherical joints in roll-pitch, roll-yaw, and pitch-yaw planes. Example application application
+of this functionality is included as tests/spherical_joint.py.
+A ParaView animation generated by this test is included below. (…)</summary>
+    <category term="parmec" label="parmec"/>
+    <category term="tests" label="tests"/>
+    <category term="torsion" label="torsion"/>
+    <category term="joints" label="joints"/>
+    <published>2018-06-13T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://parmes.org/blog/parmec_ball_joint.html</id>
+    <title>Parmec ball joint and articulated pendulum example</title>
+    <updated>2018-07-31T00:00:00+02:00</updated>
+    <author>
+      <name>Tomek</name>
+    </author>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;PARMEC includes its first algebraic joint – a ball joint – which is realised by nullifying relative velocity
+of a coincident point between two particles. &lt;a class="reference internal" href="parmec/input_commands.html#parmec-command-ball-joint"&gt;&lt;span class="std std-ref"&gt;BALL_JOINT command&lt;/span&gt;&lt;/a&gt; is used to define
+a pair of particles and the point. Since joints are realised as algebraic constraints they do not influence the
+stable time step. Instead a linear system is solved at every time step. Any number of joints can be added to the system,
+although linear dependence should be avoided (QR solver can be used in such case, see the &lt;a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/Config.mak"&gt;Config.mak&lt;/a&gt;
+file). The &lt;a class="reference external" href="https://github.com/tkoziara/parmec/blob/master/examples/articulated_pendulum.py"&gt;articulated pendulum example&lt;/a&gt;
+demonstrates performance of the ball joint, also in conjunction with the &lt;a class="reference internal" href="parmec/input_commands.html#parmec-command-torsion-spring"&gt;&lt;span class="std std-ref"&gt;torsional spring&lt;/span&gt;&lt;/a&gt;.
+The example is summarised below. (…)&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="http://parmes.org/blog/parmec_ball_joint.html" rel="alternate"/>
+    <summary>PARMEC includes its first algebraic joint – a ball joint – which is realised by nullifying relative velocity
+of a coincident point between two particles. BALL_JOINT command is used to define
+a pair of particles and the point. Since joints are realised as algebraic constraints they do not influence the
+stable time step. Instead a linear system is solved at every time step. Any number of joints can be added to the system,
+although linear dependence should be avoided (QR solver can be used in such case, see the Config.mak
+file). The articulated pendulum example
+demonstrates performance of the ball joint, also in conjunction with the torsional spring.
+The example is summarised below. (…)</summary>
+    <category term="parmec" label="parmec"/>
+    <category term="joints" label="joints"/>
+    <category term="algebraic" label="algebraic"/>
+    <category term="pendulum" label="pendulum"/>
+    <category term="torsion" label="torsion"/>
+    <published>2018-07-31T00:00:00+02:00</published>
+  </entry>
+  <entry>
+    <id>http://parmes.org/blog/solfec_export_command.html</id>
+    <title>SOLFEC_EXPORT command</title>
+    <updated>2019-01-09T00:00:00+01:00</updated>
+    <author>
+      <name>Tomek</name>
+    </author>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;In analogy to Solfec’s &lt;a class="reference internal" href="solfec-1.0/xdmf.html#solfec-1-0-xdmf"&gt;&lt;span class="std std-ref"&gt;XDMF_EXPORT&lt;/span&gt;&lt;/a&gt; command, a new &lt;a class="reference internal" href="solfec-1.0/user/results.html#solfec-1-0-command-solfec-export"&gt;&lt;span class="std std-ref"&gt;SOLFEC_EXPORT&lt;/span&gt;&lt;/a&gt;
+command has been added. This allows to save a subset of results into a separate directory and view them using Solfec’s
+viewer. Within Solfec sources example &lt;a class="reference external" href="https://github.com/parmes/solfec/blob/master/inp/devel/solfec-export.py"&gt;inp/devel/solfec-export.py&lt;/a&gt;
+depicts an application of this idea. (…)&lt;/p&gt;
+&lt;/div&gt;
+</content>
+    <link href="http://parmes.org/blog/solfec_export_command.html" rel="alternate"/>
+    <summary>In analogy to Solfec’s XDMF_EXPORT command, a new SOLFEC_EXPORT
+command has been added. This allows to save a subset of results into a separate directory and view them using Solfec’s
+viewer. Within Solfec sources example inp/devel/solfec-export.py
+depicts an application of this idea. (…)</summary>
+    <category term="solfec-1.0" label="solfec-1.0"/>
+    <published>2019-01-09T00:00:00+01:00</published>
+  </entry>
+  <entry>
+    <id>http://parmes.org/blog/solfec-2.0-update-0.html</id>
+    <title>Solfec-2.0 update 0</title>
+    <updated>2019-09-09T00:00:00+02:00</updated>
+    <author>
+      <name>Tomek</name>
+    </author>
+    <content type="html">&lt;div class="ablog-post-excerpt docutils container"&gt;
+&lt;p&gt;Just a little note to say that work on &lt;a class="reference external" href="https://github.com/parmes/solfec-2.0/"&gt;Solfec-2.0&lt;/a&gt; is underway:)
 Currently the code cannot do much: I am ironing out a basic parallel data layout. I am using a simple global
 array based approach, utilising MPI-3.0 RDMA (remote direct memory access). It’s based on the implementation
-suggested in the book &lt;a class=&quot;reference external&quot; href=&quot;https://mitpress.mit.edu/books/using-advanced-mpi&quot;&gt;“Using Advanced MPI”&lt;/a&gt;. The current
-version of the array code is here: &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/ga.hpp#L38&quot;&gt;ga.hpp&lt;/a&gt;
-and &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/ga.cpp#L37&quot;&gt;ga.cpp&lt;/a&gt;.
-The way the arrays are used to store computational data can be viewed in &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/compute.hpp#L37&quot;&gt;compute.hpp&lt;/a&gt;.
+suggested in the book &lt;a class="reference external" href="https://mitpress.mit.edu/books/using-advanced-mpi"&gt;“Using Advanced MPI”&lt;/a&gt;. The current
+version of the array code is here: &lt;a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/ga.hpp#L38"&gt;ga.hpp&lt;/a&gt;
+and &lt;a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/ga.cpp#L37"&gt;ga.cpp&lt;/a&gt;.
+The way the arrays are used to store computational data can be viewed in &lt;a class="reference external" href="https://github.com/parmes/solfec-2.0/blob/1fe5e2c2364db1909877192a0c8ed409a631677f/cpp/compute.hpp#L37"&gt;compute.hpp&lt;/a&gt;.
 Since the arrays are of fixed size – there is a little bit of book keeping that needs to be implemented – in
 order to allow for arbitrary sequences of insertions and deletions of computational data. This is the aspect
 of the code, which I am currently implementing and smoothing out. Only MPI rank-0 process is interpreting the
 input Python file – the remaining processes join in during the computation loop – which can be invoked multiple
 times from the input file – with insertions and deletions of computational data in between. (…)&lt;/p&gt;
+&lt;/div&gt;
 </content>
-  </entry>
-  <entry xml:base="http://parmes.org/blog/atom.xml">
-    <title type="text">SOLFEC_EXPORT command</title>
-    <id>http://parmes.org/blog/solfec_export_command.html</id>
-    <updated>2019-01-09T00:00:00Z</updated>
-    <published>2019-01-09T00:00:00Z</published>
-    <link href="http://parmes.org/blog/solfec_export_command.html" />
-    <author>
-      <name>Tomek</name>
-    </author>
-    <content type="html">&lt;p&gt;In analogy to Solfec’s &lt;a class=&quot;reference internal&quot; href=&quot;solfec-1.0/xdmf.html#solfec-1-0-xdmf&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;XDMF_EXPORT&lt;/span&gt;&lt;/a&gt; command, a new &lt;a class=&quot;reference internal&quot; href=&quot;solfec-1.0/user/results.html#solfec-1-0-command-solfec-export&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;SOLFEC_EXPORT&lt;/span&gt;&lt;/a&gt;
-command has been added. This allows to save a subset of results into a separate directory and view them using Solfec’s
-viewer. Within Solfec sources example &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/parmes/solfec/blob/master/inp/devel/solfec-export.py&quot;&gt;inp/devel/solfec-export.py&lt;/a&gt;
-depicts an application of this idea. (…)&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://parmes.org/blog/atom.xml">
-    <title type="text">Parmec ball joint and articulated pendulum example</title>
-    <id>http://parmes.org/blog/parmec_ball_joint.html</id>
-    <updated>2018-07-31T00:00:00Z</updated>
-    <published>2018-07-31T00:00:00Z</published>
-    <link href="http://parmes.org/blog/parmec_ball_joint.html" />
-    <author>
-      <name>Tomek</name>
-    </author>
-    <content type="html">&lt;p&gt;PARMEC includes its first algebraic joint – a ball joint – which is realised by nullifying relative velocity
-of a coincident point between two particles. &lt;a class=&quot;reference internal&quot; href=&quot;parmec/input_commands.html#parmec-command-ball-joint&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;BALL_JOINT command&lt;/span&gt;&lt;/a&gt; is used to define
-a pair of particles and the point. Since joints are realised as algebraic constraints they do not influence the
-stable time step. Instead a linear system is solved at every time step. Any number of joints can be added to the system,
-although linear dependence should be avoided (QR solver can be used in such case, see the &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/tkoziara/parmec/blob/master/Config.mak&quot;&gt;Config.mak&lt;/a&gt;
-file). The &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/tkoziara/parmec/blob/master/examples/articulated_pendulum.py&quot;&gt;articulated pendulum example&lt;/a&gt;
-demonstrates performance of the ball joint, also in conjunction with the &lt;a class=&quot;reference internal&quot; href=&quot;parmec/input_commands.html#parmec-command-torsion-spring&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;torsional spring&lt;/span&gt;&lt;/a&gt;.
-The example is summarised below. (…)&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://parmes.org/blog/atom.xml">
-    <title type="text">Parmec spherical joint</title>
-    <id>http://parmes.org/blog/parmec_spherical_joint.html</id>
-    <updated>2018-06-13T00:00:00Z</updated>
-    <published>2018-06-13T00:00:00Z</published>
-    <link href="http://parmes.org/blog/parmec_spherical_joint.html" />
-    <author>
-      <name>Tomek</name>
-    </author>
-    <content type="html">&lt;p&gt;Torsion spring has now been added to PARMEC, allowing to model angular hinges with rotational limits and spherical joints.
-&lt;a class=&quot;reference internal&quot; href=&quot;parmec/input_commands.html#parmec-command-torsion-spring&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;TORSION_SPRING command&lt;/span&gt;&lt;/a&gt; is used to define an angle–torque relationship for three
-angles of rotation about user specified local coordinate axes (x–roll, y–pitch, z–yaw). The command includes a cone
-constraint which allows to model spherical joints in roll-pitch, roll-yaw, and pitch-yaw planes. Example application application
-of this functionality is included as &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/tkoziara/parmec/blob/master/tests/spherical_joint.py&quot;&gt;tests/spherical_joint.py&lt;/a&gt;.
-A &lt;a class=&quot;reference external&quot; href=&quot;https://www.paraview.org/&quot;&gt;ParaView&lt;/a&gt; animation generated by this test is included below. (…)&lt;/p&gt;
-</content>
-  </entry>
-  <entry xml:base="http://parmes.org/blog/atom.xml">
-    <title type="text">Parmec spring contact</title>
-    <id>http://parmes.org/blog/parmec_spring_contact.html</id>
-    <updated>2018-05-23T00:00:00Z</updated>
-    <published>2018-05-23T00:00:00Z</published>
-    <link href="http://parmes.org/blog/parmec_spring_contact.html" />
-    <author>
-      <name>Tomek</name>
-    </author>
-    <content type="html">&lt;p&gt;Parmec includes a simple spring contact modeling capability, where a contact plane on one particle can be paired up
-with a contact point on another particle. Both particles can be analytical (need no geometry), while the contact spring
-and dashpot curves are user defined. Friction, including sticking and slip, can also be added. An example test of this
-capability is &lt;a class=&quot;reference external&quot; href=&quot;https://github.com/tkoziara/parmec/blob/master/tests/spring_contact_plane.py&quot;&gt;tests/spring_contact_plane.py&lt;/a&gt;.
-Parmec &lt;a class=&quot;reference internal&quot; href=&quot;parmec/input_commands.html#parmec-command-spring&quot;&gt;&lt;span class=&quot;std std-ref&quot;&gt;SPRING command&lt;/span&gt;&lt;/a&gt; is used to define the entire contact interactions (parameters
-&lt;em&gt;spring&lt;/em&gt;, &lt;em&gt;dashpot&lt;/em&gt; and &lt;em&gt;friction&lt;/em&gt;). Upon running it generates time history figures &lt;em&gt;tests/spring_contact_plane_{z,f_ff}.png&lt;/em&gt;
-and output files viewable with &lt;a class=&quot;reference external&quot; href=&quot;https://www.paraview.org/&quot;&gt;ParaView&lt;/a&gt;. An animation and the figures are included below. (…)&lt;/p&gt;
-</content>
+    <link href="http://parmes.org/blog/solfec-2.0-update-0.html" rel="alternate"/>
+    <summary>Just a little note to say that work on Solfec-2.0 is underway:)
+Currently the code cannot do much: I am ironing out a basic parallel data layout. I am using a simple global
+array based approach, utilising MPI-3.0 RDMA (remote direct memory access). It’s based on the implementation
+suggested in the book “Using Advanced MPI”. The current
+version of the array code is here: ga.hpp
+and ga.cpp.
+The way the arrays are used to store computational data can be viewed in compute.hpp.
+Since the arrays are of fixed size – there is a little bit of book keeping that needs to be implemented – in
+order to allow for arbitrary sequences of insertions and deletions of computational data. This is the aspect
+of the code, which I am currently implementing and smoothing out. Only MPI rank-0 process is interpreting the
+input Python file – the remaining processes join in during the computation loop – which can be invoked multiple
+times from the input file – with insertions and deletions of computational data in between. (…)</summary>
+    <category term="solfec-2.0" label="solfec-2.0"/>
+    <published>2019-09-09T00:00:00+02:00</published>
   </entry>
 </feed>

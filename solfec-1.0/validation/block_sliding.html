@@ -1,44 +1,61 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Block sliding on a frictional table &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Masonry arch" href="masonry_arch.html" />
-    <link rel="prev" title="Double pendulum impacting a rigid wall" href="double_pendulum.html" />
-  
+    <link rel="prev" title="Double pendulum impacting a rigid wall" href="double_pendulum.html" /> 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,15 +66,14 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="block-sliding-on-a-frictional-table">
+             <section id="block-sliding-on-a-frictional-table">
 <span id="solfec-1-0-validation-block-sliding"></span><h1>Block sliding on a frictional table<a class="headerlink" href="#block-sliding-on-a-frictional-table" title="Permalink to this headline">¶</a></h1>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Reference:</strong> <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.1582/abstract">Florian A. Potra, Mihai Anitescu, Bogdan Gavrea, Jeff Trinkle. A linearly implicit trapezoidal method for
+<tbody>
+<tr class="row-odd"><td><p><strong>Reference:</strong> <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.1582/abstract">Florian A. Potra, Mihai Anitescu, Bogdan Gavrea, Jeff Trinkle. A linearly implicit trapezoidal method for
 integrating stiff multibody dynamics with contact, joints, and friction. International Journal for Numerical Methods in
 Engineering, vol. 66, pp. 1079-1124, 2006.</a>
 <br />
@@ -66,80 +82,86 @@ Engineering, vol. 66, pp. 1079-1124, 2006.</a>
 <strong>Purpose:</strong> Examine the accuracy of an analysis involving persistent contact and stick-slip transition.
 <br />
 <strong>Summary:</strong> A block subjected to a sinusoidal force slips over a frictional surface. Position and velocity plots are compared
-against those available in the source paper.</td>
+against those available in the source paper.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="figure align-center" id="id4">
+<figure class="align-center" id="id4">
 <span id="block-sliding0"></span><a class="reference internal image-reference" href="../../_images/block-sliding.png"><img alt="../../_images/block-sliding.png" src="../../_images/block-sliding.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Block sliding on top of a frictional surface – initial configuration with four contact points.</span></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Block sliding on top of a frictional surface – initial configuration with four contact points.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The block has been discretised into four hexahedral elements, thus four contact points result from the element to element contact
-model implemented in Solfec-1.0. An equivalent three–dimensional model is used in Solfec-1.0 as the reference <a class="footnote-reference" href="#id3" id="id1">[1]</a> uses a two–dimensional set–up.
+model implemented in Solfec-1.0. An equivalent three–dimensional model is used in Solfec-1.0 as the reference <a class="footnote-reference brackets" href="#id3" id="id1">1</a> uses a two–dimensional set–up.
 The external force acting on the mass centre of the cube reads</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{f}\left(t\right)=\left[8\cos\left(t\right),0,0\right]\]</div>
-<div class="section" id="input-parameters">
+<section id="input-parameters">
 <h2>Input parameters<a class="headerlink" href="#input-parameters" title="Permalink to this headline">¶</a></h2>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="51%" />
-<col width="49%" />
+<col style="width: 51%" />
+<col style="width: 49%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Block density <span class="math notranslate nohighlight">\(\left(kg/m^{3}\right)\)</span></td>
-<td><span class="math notranslate nohighlight">\(\rho=111.1(1)\)</span></td>
+<tbody>
+<tr class="row-odd"><td><p>Block density <span class="math notranslate nohighlight">\(\left(kg/m^{3}\right)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\rho=111.1(1)\)</span></p></td>
 </tr>
-<tr class="row-even"><td>Block dimensions <span class="math notranslate nohighlight">\(\left(m\right)\)</span></td>
-<td><span class="math notranslate nohighlight">\(a\times b\times h=0.3\times0.3\times0.1\)</span></td>
+<tr class="row-even"><td><p>Block dimensions <span class="math notranslate nohighlight">\(\left(m\right)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(a\times b\times h=0.3\times0.3\times0.1\)</span></p></td>
 </tr>
-<tr class="row-odd"><td>Initial velocities <span class="math notranslate nohighlight">\(\left(m/s\right)\)</span></td>
-<td>all zero</td>
+<tr class="row-odd"><td><p>Initial velocities <span class="math notranslate nohighlight">\(\left(m/s\right)\)</span></p></td>
+<td><p>all zero</p></td>
 </tr>
-<tr class="row-even"><td>Gravity acceleration <span class="math notranslate nohighlight">\(\left(m/s^{2}\right)\)</span></td>
-<td><span class="math notranslate nohighlight">\(\mathbf{g}=\left[0,0,-9.81\right]\)</span></td>
+<tr class="row-even"><td><p>Gravity acceleration <span class="math notranslate nohighlight">\(\left(m/s^{2}\right)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\mathbf{g}=\left[0,0,-9.81\right]\)</span></p></td>
 </tr>
-<tr class="row-odd"><td>Velocity restitution</td>
-<td><span class="math notranslate nohighlight">\(\epsilon=0\)</span></td>
+<tr class="row-odd"><td><p>Velocity restitution</p></td>
+<td><p><span class="math notranslate nohighlight">\(\epsilon=0\)</span></p></td>
 </tr>
-<tr class="row-even"><td>Coulomb friction coefficient</td>
-<td><span class="math notranslate nohighlight">\(\mu=0.8\)</span></td>
+<tr class="row-even"><td><p>Coulomb friction coefficient</p></td>
+<td><p><span class="math notranslate nohighlight">\(\mu=0.8\)</span></p></td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="results">
+</section>
+<section id="results">
 <h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
 <p>Simulation over the time interval <span class="math notranslate nohighlight">\(\left[0,10\right]\)</span> was performed with the time step <span class="math notranslate nohighlight">\(h=0.001\)</span>.
-As the reference <a class="footnote-reference" href="#id3" id="id2">[1]</a> does not specify numerical values of the results, a visual comparison of the <span class="math notranslate nohighlight">\(v_{x}\)</span>
+As the reference <a class="footnote-reference brackets" href="#id3" id="id2">1</a> does not specify numerical values of the results, a visual comparison of the <span class="math notranslate nohighlight">\(v_{x}\)</span>
 velocity component and the <span class="math notranslate nohighlight">\(x\)</span>-coordinate histories of the mass centre is provided in <a class="reference internal" href="#block-sliding1"><span class="std std-numref">Fig. 23</span></a>
 and <a class="reference internal" href="#block-sliding2"><span class="std std-numref">Fig. 24</span></a>.</p>
-<div class="figure align-center" id="id5">
+<figure class="align-center" id="id5">
 <span id="block-sliding1"></span><a class="reference internal image-reference" href="../../_images/block-compare-v.png"><img alt="../../_images/block-compare-v.png" src="../../_images/block-compare-v.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Comparison the <span class="math notranslate nohighlight">\(v_{x}\)</span> velocity component plots of the block mass centre.</span></p>
-</div>
-<div class="figure align-center" id="id6">
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Comparison the <span class="math notranslate nohighlight">\(v_{x}\)</span> velocity component plots of the block mass centre.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id6">
 <span id="block-sliding2"></span><a class="reference internal image-reference" href="../../_images/block-compare-x.png"><img alt="../../_images/block-compare-x.png" src="../../_images/block-compare-x.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Comparison of the <span class="math notranslate nohighlight">\(x\)</span>-coordinate plots of the block mass centre.</span></p>
-</div>
-<div class="figure align-center" id="id7">
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Comparison of the <span class="math notranslate nohighlight">\(x\)</span>-coordinate plots of the block mass centre.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id7">
 <span id="block-sliding3"></span><a class="reference internal image-reference" href="../../_images/block-sliding.gif"><img alt="../../_images/block-sliding.gif" src="../../_images/block-sliding.gif" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">Animation of the sliding block motion (reload page or click on image to restart).</span></p>
-</div>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[1]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id2">2</a>)</em> <a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.1582/abstract">Florian A. Potra, Mihai Anitescu Bogdan Gavrea Jeff Trinkle, “A linearly implicit trapezoidal method for integrating stiff
-multibody dynamics with contact, joints, and friction”, International Journal for Numerical Methods in Engineering (2006), 1079–1124.</a></td></tr>
-</tbody>
-</table>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Animation of the sliding block motion (reload page or click on image to restart).</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets">1</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id2">2</a>)</span></dt>
+<dd><p><a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/nme.1582/abstract">Florian A. Potra, Mihai Anitescu Bogdan Gavrea Jeff Trinkle, “A linearly implicit trapezoidal method for integrating stiff
+multibody dynamics with contact, joints, and friction”, International Journal for Numerical Methods in Engineering (2006), 1079–1124.</a></p>
+</dd>
+</dl>
+</section>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -192,7 +214,6 @@ multibody dynamics with contact, joints, and friction”, International Journal 
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
@@ -216,148 +237,174 @@ multibody dynamics with contact, joints, and friction”, International Journal 
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -372,10 +419,10 @@ multibody dynamics with contact, joints, and friction”, International Journal 
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

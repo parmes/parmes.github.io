@@ -1,44 +1,61 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Constraints &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Local dynamics" href="locdyn.html" />
-    <link rel="prev" title="Time integration" href="timeint.html" />
-  
+    <link rel="prev" title="Time integration" href="timeint.html" /> 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,14 +66,13 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="constraints">
+             <section id="constraints">
 <span id="solfec-1-0-theory-constraints"></span><h1>Constraints<a class="headerlink" href="#constraints" title="Permalink to this headline">¶</a></h1>
 <p>Constraints allow to limit kinematic freedom of bodies, e.g. control displacements or prevent interpenetration.
 This is reflected on the level of dynamics via reaction forces, which are used to produce desired kinematic effects.
 Solfec-1.0 includes equality constraints, or joints, and contact constraints applied at individual contact points.
 In this section we briefly demonstrate how constraints are incorporated into the time stepping schemes introduced earlier.</p>
-<div class="section" id="from-global-to-local-velocity">
+<section id="from-global-to-local-velocity">
 <h2>From global to local velocity<a class="headerlink" href="#from-global-to-local-velocity" title="Permalink to this headline">¶</a></h2>
 <p>Velocity <span class="math notranslate nohighlight">\(\mathbf{u}\)</span>, as defined for <a class="reference internal" href="kinematics.html#qurig"><span class="std std-ref">rigid</span></a>, <a class="reference internal" href="kinematics.html#quprb"><span class="std std-ref">pseudo-rigid</span></a>, and <a class="reference internal" href="kinematics.html#qufem"><span class="std std-ref">finite–element</span></a> bodies, can
 be qualified as a global, or generalized, or bodytextendash space
@@ -65,7 +81,7 @@ velocity vector, <span class="math notranslate nohighlight">\(\mathbf{U}\)</span
 of a referential point <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>, we shall use a linear transformation
 of the kind</p>
 <div class="math notranslate nohighlight" id="equation-uhu0">
-<span class="eqno">(41)<a class="headerlink" href="#equation-uhu0" title="Permalink to this equation">¶</a></span>\[\mathbf{U}=\mathbf{H}\left(\mathbf{X}\right)\mathbf{u}\]</div>
+<span class="eqno">(44)<a class="headerlink" href="#equation-uhu0" title="Permalink to this equation">¶</a></span>\[\mathbf{U}=\mathbf{H}\left(\mathbf{X}\right)\mathbf{u}\]</div>
 <p>Most generally the local velocity <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> will be expressed
 in a local coordinate system, made up of three linearly independent
 3–vectors, <span class="math notranslate nohighlight">\(\mathbf{a}_{i}\)</span>, juxtaposed, in a column–wise
@@ -80,11 +96,13 @@ case <span class="math notranslate nohighlight">\(\left\{ \mathbf{a}^{i}\right\}
 so that <span class="math notranslate nohighlight">\(\left\{ \mathbf{a}^{i}\right\} ^{T}=\left\{ \mathbf{a}_{i}\right\} ^{T}\)</span>.
 Consequently, the local frame is functionally equivalent to a rotation
 matrix.</p>
-<div class="figure align-center" id="id1">
+<figure class="align-center" id="id1">
 <span id="localframe"></span><a class="reference internal image-reference" href="../../_images/localframe.png"><img alt="../../_images/localframe.png" src="../../_images/localframe.png" style="width: 40%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">A local frame between two bodies.</span></p>
-</div>
-<p>The linear transformation <a class="reference internal" href="#equation-uhu0">(41)</a> can be most generally derived
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">A local frame between two bodies.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The linear transformation <a class="reference internal" href="#equation-uhu0">(44)</a> can be most generally derived
 as follows. Take any motion</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{x}\left(\mathbf{X},t\right)=\chi\left(\mathbf{X},\mathbf{q}\left(t\right)\right)\]</div>
@@ -96,9 +114,9 @@ as follows. Take any motion</p>
 \[\mathbf{U}=\left\{ \mathbf{a}^{i}\right\} ^{T}\frac{\partial\chi\left(\mathbf{X},\mathbf{q}\left(t\right)\right)}{\partial\mathbf{q}}\mathbf{u}\]</div>
 <p>Thus</p>
 <div class="math notranslate nohighlight" id="equation-h">
-<span class="eqno">(42)<a class="headerlink" href="#equation-h" title="Permalink to this equation">¶</a></span>\[\mathbf{H}\left(\mathbf{X}\right)=\left\{ \mathbf{a}^{i}\right\} ^{T}\frac{\partial\chi\left(\mathbf{X},\mathbf{q}\left(t\right)\right)}{\partial\mathbf{q}}\]</div>
+<span class="eqno">(45)<a class="headerlink" href="#equation-h" title="Permalink to this equation">¶</a></span>\[\mathbf{H}\left(\mathbf{X}\right)=\left\{ \mathbf{a}^{i}\right\} ^{T}\frac{\partial\chi\left(\mathbf{X},\mathbf{q}\left(t\right)\right)}{\partial\mathbf{q}}\]</div>
 <p>Specific forms of this transformation are described in sections below.</p>
-<div class="section" id="rigid-kinematics">
+<section id="rigid-kinematics">
 <h3>Rigid kinematics<a class="headerlink" href="#rigid-kinematics" title="Permalink to this headline">¶</a></h3>
 <p>For rigid bodies, there holds</p>
 <div class="math notranslate nohighlight">
@@ -110,12 +128,12 @@ as follows. Take any motion</p>
 \end{array}\right]\end{split}\]</div>
 <p>and hence</p>
 <div class="math notranslate nohighlight" id="equation-hrig">
-<span class="eqno">(43)<a class="headerlink" href="#equation-hrig" title="Permalink to this equation">¶</a></span>\[\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\left[\begin{array}{ccc}
+<span class="eqno">(46)<a class="headerlink" href="#equation-hrig" title="Permalink to this equation">¶</a></span>\[\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\left[\begin{array}{ccc}
 \mathbf{\Lambda}\left(\hat{\bar{\mathbf{X}}}-\hat{\mathbf{X}}\right) &amp;  &amp; \mathbf{I}\end{array}\right]\]</div>
 <p>where the <a class="reference internal" href="kinematics.html#hat"><span class="std std-ref">hat operator</span></a> makes an anti–symmetric matrix out of a 3–vector,
 and <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is a <span class="math notranslate nohighlight">\(3\times3\)</span> identity matrix.</p>
-</div>
-<div class="section" id="pseudo-rigid-kinematics">
+</section>
+<section id="pseudo-rigid-kinematics">
 <h3>Pseudo–rigid kinematics<a class="headerlink" href="#pseudo-rigid-kinematics" title="Permalink to this headline">¶</a></h3>
 <p>For pseudo-rigid bodies, there holds</p>
 <div class="math notranslate nohighlight">
@@ -129,23 +147,23 @@ and <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> is a <span 
 \end{array}\right]\end{split}\]</div>
 <p>and hence</p>
 <div class="math notranslate nohighlight" id="equation-hprb">
-<span class="eqno">(44)<a class="headerlink" href="#equation-hprb" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\left[\begin{array}{cccccc}
+<span class="eqno">(47)<a class="headerlink" href="#equation-hprb" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\left[\begin{array}{cccccc}
 \mathbf{X}^{T}-\bar{\mathbf{X}}^{T} &amp;  &amp;  &amp; 1\\
  &amp; \mathbf{X}^{T}-\bar{\mathbf{X}}^{T} &amp;  &amp;  &amp; 1\\
   &amp;  &amp; \mathbf{X}^{T}-\bar{\mathbf{X}}^{T} &amp;  &amp;  &amp; 1
   \end{array}\right]\end{split}\]</div>
-</div>
-<div class="section" id="finite-element-kinematics">
+</section>
+<section id="finite-element-kinematics">
 <h3>Finite–element kinematics<a class="headerlink" href="#finite-element-kinematics" title="Permalink to this headline">¶</a></h3>
 <p>For finite–element bodies, there holds</p>
 <div class="math notranslate nohighlight">
 \[\dot{\mathbf{x}}\left(\mathbf{X},t\right)=\mathbf{N}\left(\mathbf{X}\right)\mathbf{u}\]</div>
 <p>and hence</p>
 <div class="math notranslate nohighlight" id="equation-hfem">
-<span class="eqno">(45)<a class="headerlink" href="#equation-hfem" title="Permalink to this equation">¶</a></span>\[\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\mathbf{N}\left(\mathbf{X}\right)\]</div>
-</div>
-</div>
-<div class="section" id="time-stepping-with-constraints">
+<span class="eqno">(48)<a class="headerlink" href="#equation-hfem" title="Permalink to this equation">¶</a></span>\[\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\mathbf{N}\left(\mathbf{X}\right)\]</div>
+</section>
+</section>
+<section id="time-stepping-with-constraints">
 <h2>Time stepping with constraints<a class="headerlink" href="#time-stepping-with-constraints" title="Permalink to this headline">¶</a></h2>
 <p>If we wish to control components of a local velocity <span class="math notranslate nohighlight">\(\mathbf{U}\)</span>
 at a point <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, we can do this by applying a force <span class="math notranslate nohighlight">\(\mathbf{R}\)</span>
@@ -199,32 +217,32 @@ all associated individual bodies or constraints. For example</p>
 <p>With such understanding in mind, we can incorporate any set of constraints
 into a multi–body system, by saying</p>
 <div class="math notranslate nohighlight" id="equation-muf1">
-<span class="eqno">(46)<a class="headerlink" href="#equation-muf1" title="Permalink to this equation">¶</a></span>\[\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}+\mathbf{H}^{T}\mathbf{R}\]</div>
+<span class="eqno">(49)<a class="headerlink" href="#equation-muf1" title="Permalink to this equation">¶</a></span>\[\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}+\mathbf{H}^{T}\mathbf{R}\]</div>
 <div class="math notranslate nohighlight" id="equation-uhu1">
-<span class="eqno">(47)<a class="headerlink" href="#equation-uhu1" title="Permalink to this equation">¶</a></span>\[\mathbf{U}=\mathbf{H}\mathbf{u}\]</div>
+<span class="eqno">(50)<a class="headerlink" href="#equation-uhu1" title="Permalink to this equation">¶</a></span>\[\mathbf{U}=\mathbf{H}\mathbf{u}\]</div>
 <div class="math notranslate nohighlight" id="equation-cur1">
-<span class="eqno">(48)<a class="headerlink" href="#equation-cur1" title="Permalink to this equation">¶</a></span>\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\]</div>
+<span class="eqno">(51)<a class="headerlink" href="#equation-cur1" title="Permalink to this equation">¶</a></span>\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\]</div>
 <p>where the relation <span class="math notranslate nohighlight">\(\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\)</span>
 implicitly expresses a control over local velocities <span class="math notranslate nohighlight">\(\mathbf{U}_{\alpha}\)</span>,
 exerted using reaction forces <span class="math notranslate nohighlight">\(\mathbf{R}_{\alpha}\)</span>. Now, including
 constraints, we can modify the <a class="reference internal" href="timeint.html#solfec-1-0-theory-timeint"><span class="std std-ref">previously introduced time stepping</span></a> as follows</p>
 <div class="math notranslate nohighlight" id="equation-q1">
-<span id="timestepping1"></span><span class="eqno">(49)<a class="headerlink" href="#equation-q1" title="Permalink to this equation">¶</a></span>\[\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\]</div>
+<span id="timestepping1"></span><span class="eqno">(52)<a class="headerlink" href="#equation-q1" title="Permalink to this equation">¶</a></span>\[\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\]</div>
 <div class="math notranslate nohighlight" id="equation-u2">
-<span class="eqno">(50)<a class="headerlink" href="#equation-u2" title="Permalink to this equation">¶</a></span>\[\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\left(\mathbf{q}^{t+\frac{h}{2}},\mathbf{u}^{t}\right)+
+<span class="eqno">(53)<a class="headerlink" href="#equation-u2" title="Permalink to this equation">¶</a></span>\[\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\left(\mathbf{q}^{t+\frac{h}{2}},\mathbf{u}^{t}\right)+
 \mathbf{A}^{-1}h\mathbf{H}^{T}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{R}\]</div>
 <div class="math notranslate nohighlight" id="equation-uhu2">
-<span class="eqno">(51)<a class="headerlink" href="#equation-uhu2" title="Permalink to this equation">¶</a></span>\[\mathbf{U}=\mathbf{H}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{u}\]</div>
+<span class="eqno">(54)<a class="headerlink" href="#equation-uhu2" title="Permalink to this equation">¶</a></span>\[\mathbf{U}=\mathbf{H}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{u}\]</div>
 <div class="math notranslate nohighlight" id="equation-cur2">
-<span class="eqno">(52)<a class="headerlink" href="#equation-cur2" title="Permalink to this equation">¶</a></span>\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\label{eq:CUR2}\]</div>
+<span class="eqno">(55)<a class="headerlink" href="#equation-cur2" title="Permalink to this equation">¶</a></span>\[\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\label{eq:CUR2}\]</div>
 <div class="math notranslate nohighlight" id="equation-q2">
-<span class="eqno">(53)<a class="headerlink" href="#equation-q2" title="Permalink to this equation">¶</a></span>\[\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\]</div>
-<p>The first step <a class="reference internal" href="#equation-q1">(49)</a> is explicit. Equations <a class="reference internal" href="#equation-u2">(50)</a>,
-<a class="reference internal" href="#equation-uhu2">(51)</a>, <a class="reference internal" href="#equation-cur2">(52)</a> are solved together, implicitly.
-The final step <a class="reference internal" href="#equation-q2">(53)</a> is again explicit. This form of constrained
+<span class="eqno">(56)<a class="headerlink" href="#equation-q2" title="Permalink to this equation">¶</a></span>\[\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\]</div>
+<p>The first step <a class="reference internal" href="locdyn.html#equation-q1">(57)</a> is explicit. Equations <a class="reference internal" href="locdyn.html#equation-u2">(58)</a>,
+<a class="reference internal" href="locdyn.html#equation-uhu2">(59)</a>, <a class="reference internal" href="locdyn.html#equation-cur2">(60)</a> are solved together, implicitly.
+The final step <a class="reference internal" href="locdyn.html#equation-q2">(61)</a> is again explicit. This form of constrained
 time integration is implemented in Solfec-1.0.</p>
-</div>
-<div class="section" id="implementation">
+</section>
+<section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>Calculation of the global to local velocity mapping <span class="math notranslate nohighlight">\(\mathbf{H}\)</span> is implement in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c">bod.c</a> (rigid, pseudo–rigid)
@@ -233,45 +251,33 @@ A constraint data structure, including the local frame <span class="math notrans
 the spatial point <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, the constraint velocity <span class="math notranslate nohighlight">\(\mathbf{U}\)</span>,
 and rection <span class="math notranslate nohighlight">\(\mathbf{R}\)</span>, is declared in
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/dom.h#L63">dom.h</a> as follows:</p>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1">#define VELODIR1(Z)     ((Z)[1])   /* prescribed velocity at (t+h) */</span>
-<span class="c1">#define VELODIR2(Z)     ((Z)[2])   /* prescribed velocity at (t+h) */</span>
-
-<span class="n">enum</span> <span class="n">constraint_state</span>
-     <span class="p">{</span><span class="n">CON_COHESIVE</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">,</span>
-      <span class="n">CON_NEW</span>      <span class="o">=</span> <span class="mh">0x02</span><span class="p">,</span>  <span class="o">/*</span> <span class="n">newly</span> <span class="n">inserted</span> <span class="n">constraint</span> <span class="o">*/</span>
-      <span class="n">CON_IDLOCK</span>   <span class="o">=</span> <span class="mh">0x04</span><span class="p">,</span>  <span class="o">/*</span> <span class="n">locked</span> <span class="n">ID</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">freed</span> <span class="n">to</span> <span class="n">the</span> <span class="n">pool</span> <span class="o">*/</span>
-      <span class="n">CON_EXTERNAL</span> <span class="o">=</span> <span class="mh">0x08</span><span class="p">,</span>  <span class="o">/*</span> <span class="n">a</span> <span class="n">boundary</span> <span class="n">constraint</span> <span class="n">migrated</span> <span class="ow">in</span> <span class="kn">from</span> <span class="nn">another</span> <span class="n">processor</span> <span class="o">*/</span>
-      <span class="n">CON_DONE</span>     <span class="o">=</span> <span class="mh">0x10</span><span class="p">};</span> <span class="o">/*</span> <span class="n">auxiliary</span> <span class="n">flag</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">several</span> <span class="n">places</span> <span class="o">*/</span>
-
-<span class="n">struct</span> <span class="n">constraint</span>
-<span class="p">{</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">67</span><span class="c1">#define VELODIR1(Z)     ((Z)[1])   /* prescribed velocity at (t+h) */</span>
+<span class="linenos">68</span><span class="c1">#define VELODIR2(Z)     ((Z)[2])   /* prescribed velocity at (t+h) */</span>
+<span class="linenos">69</span>
+<span class="linenos">70</span><span class="n">enum</span> <span class="n">constraint_state</span>
+<span class="linenos">71</span>     <span class="p">{</span><span class="n">CON_COHESIVE</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">,</span>
+<span class="linenos">72</span>      <span class="n">CON_NEW</span>      <span class="o">=</span> <span class="mh">0x02</span><span class="p">,</span>  <span class="o">/*</span> <span class="n">newly</span> <span class="n">inserted</span> <span class="n">constraint</span> <span class="o">*/</span>
+<span class="linenos">73</span>      <span class="n">CON_IDLOCK</span>   <span class="o">=</span> <span class="mh">0x04</span><span class="p">,</span>  <span class="o">/*</span> <span class="n">locked</span> <span class="n">ID</span> <span class="n">cannot</span> <span class="n">be</span> <span class="n">freed</span> <span class="n">to</span> <span class="n">the</span> <span class="n">pool</span> <span class="o">*/</span>
+<span class="linenos">74</span>      <span class="n">CON_EXTERNAL</span> <span class="o">=</span> <span class="mh">0x08</span><span class="p">,</span>  <span class="o">/*</span> <span class="n">a</span> <span class="n">boundary</span> <span class="n">constraint</span> <span class="n">migrated</span> <span class="ow">in</span> <span class="kn">from</span> <span class="nn">another</span> <span class="n">processor</span> <span class="o">*/</span>
+<span class="linenos">75</span>      <span class="n">CON_DONE</span>     <span class="o">=</span> <span class="mh">0x10</span><span class="p">};</span> <span class="o">/*</span> <span class="n">auxiliary</span> <span class="n">flag</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">several</span> <span class="n">places</span> <span class="o">*/</span>
+<span class="linenos">76</span>
+<span class="linenos">77</span><span class="n">struct</span> <span class="n">constraint</span>
+<span class="linenos">78</span><span class="p">{</span>
 </pre></div>
-</td></tr></table></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>124</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="o">/*</span> <span class="n">put</span> <span class="n">parallel</span> <span class="n">data</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">structutre</span> <span class="n">so</span> <span class="n">that</span>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">124</span>  <span class="o">/*</span> <span class="n">put</span> <span class="n">parallel</span> <span class="n">data</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">structutre</span> <span class="n">so</span> <span class="n">that</span>
 </pre></div>
-</td></tr></table></div>
-<p>Evaluation of <a class="reference internal" href="#equation-h">(42)</a> in accessed via <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1829">bod.c:BODY_Gen_To_Loc_Operator</a>. <br />
-Assembling of <a class="reference internal" href="#equation-hrig">(43)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L216">bod.c:rig_operator_H</a>. <br />
-Assembling of <a class="reference internal" href="#equation-hprb">(44)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L429">bod.c:prb_operator_H</a>. <br />
-Assembling of <a class="reference internal" href="#equation-hfem">(45)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L3371">fem.c:FEM_Gen_To_Loc_Operator</a>. <br /></p>
 </div>
-</div>
+<p>Evaluation of <a class="reference internal" href="#equation-h">(45)</a> in accessed via <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L1829">bod.c:BODY_Gen_To_Loc_Operator</a>. <br />
+Assembling of <a class="reference internal" href="#equation-hrig">(46)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L216">bod.c:rig_operator_H</a>. <br />
+Assembling of <a class="reference internal" href="#equation-hprb">(47)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bod.c#L429">bod.c:prb_operator_H</a>. <br />
+Assembling of <a class="reference internal" href="#equation-hfem">(48)</a> is in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/fem.c#L3371">fem.c:FEM_Gen_To_Loc_Operator</a>. <br /></p>
+</section>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -334,7 +340,6 @@ Assembling of <a class="reference internal" href="#equation-hfem">(45)</a> is in
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
@@ -358,148 +363,174 @@ Assembling of <a class="reference internal" href="#equation-hfem">(45)</a> is in
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -514,10 +545,10 @@ Assembling of <a class="reference internal" href="#equation-hfem">(45)</a> is in
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

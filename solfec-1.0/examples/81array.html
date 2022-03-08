@@ -1,44 +1,61 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>81 bricks array &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Time series" href="time_series.html" />
-    <link rel="prev" title="Pipe impact" href="reduced_order/ro1.html" />
-  
+    <link rel="prev" title="Pipe impact" href="reduced_order/ro1.html" /> 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,42 +66,45 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="bricks-array">
+             <section id="bricks-array">
 <span id="solfec-1-0-examples-81array"></span><h1>81 bricks array<a class="headerlink" href="#bricks-array" title="Permalink to this headline">¶</a></h1>
 <p>This is example illustrates multiple aspects of Solfec-1.0 functionality and serves as a validation test. It is also included with <a class="reference internal" href="../../trs/index.html#tr1"><span class="std std-ref">TR1</span></a>.
 The input files for this example are located in the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">solfec/examples/81array</a>
 directory. These are:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/README">README</a> – a text based summary of the problem</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81array.py">81array.py</a> – array excitation analysis input file</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81fbi.py">81fbi.py</a> – fuel brick impact test input file</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81postp.py">81postp.py</a> – post–processing script for the 81array.py input deck</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81array.inp">81array[*].inp files</a> – <a class="reference external" href="https://en.wikipedia.org/wiki/Abaqus">ABAQUS</a> input decks used by 81array.py</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81fbi.inp">81fbi[*].inp files</a> – <a class="reference external" href="https://en.wikipedia.org/wiki/Abaqus">ABAQUS</a> input decks used by 81fbi.py</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array">81array[*]base.pikle.gz files</a> – saved reduced
-<a class="reference external" href="https://en.wikipedia.org/wiki/Principal_component_analysis">POD</a> base files used by 81array.py and 81fbi.py</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array">FB[*].csv files</a> – experimental results curves used by 81postp.py</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array">ts81.py.bz2 file</a> – compressed time history of a seisimic excitation signal used by 81array.py</li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/README">README</a> – a text based summary of the problem</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81array.py">81array.py</a> – array excitation analysis input file</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81fbi.py">81fbi.py</a> – fuel brick impact test input file</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81postp.py">81postp.py</a> – post–processing script for the 81array.py input deck</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81array.inp">81array[*].inp files</a> – <a class="reference external" href="https://en.wikipedia.org/wiki/Abaqus">ABAQUS</a> input decks used by 81array.py</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81fbi.inp">81fbi[*].inp files</a> – <a class="reference external" href="https://en.wikipedia.org/wiki/Abaqus">ABAQUS</a> input decks used by 81fbi.py</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array">81array[*]base.pikle.gz files</a> – saved reduced
+<a class="reference external" href="https://en.wikipedia.org/wiki/Principal_component_analysis">POD</a> base files used by 81array.py and 81fbi.py</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array">FB[*].csv files</a> – experimental results curves used by 81postp.py</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array">ts81.py.bz2 file</a> – compressed time history of a seisimic excitation signal used by 81array.py</p></li>
 </ul>
-<div class="figure align-center" id="id12">
+<figure class="align-center" id="id12">
 <span id="array-fig1"></span><a class="reference internal image-reference" href="../../_images/81rig.png"><img alt="../../_images/81rig.png" src="../../_images/81rig.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 71 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: experimental setup of the experiment.</span></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: experimental setup of the experiment.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The experiment behind this example comes from the context of the civil nuclear power generation in the UK.
 A series of dynamic tests were carried out by National Nuclear Corporation in 1985 as part of the seismic
-endorsement of the Heysham II / Torness AGR <a class="footnote-reference" href="#id9" id="id2">[*]</a> core design. These tests used an array of 81 graphite bricks
+endorsement of the Heysham II / Torness AGR <a class="footnote-reference brackets" href="#id9" id="id2">*</a> core design. These tests used an array of 81 graphite bricks
 as shown in <a class="reference internal" href="#array-fig1"><span class="std std-numref">Fig. 71</span></a>, consisting of alternating ‘fuel’ and ‘interstitial’ bricks. The array was
 mounted in a rigid frame on a shaker table. The boundary frame was driven in the horizontal plane with synthesized
 seismic or swept–sine input motions in either one or both axes simultaneously. Measurements were taken of the
 resulting velocities of certain bricks in the array (determined from accelerometer data) and also of the forces
 within the keying system (using load cells built into some components). Some details of the experimental setup
-has been described in <a class="footnote-reference" href="#id10" id="id3">[1]</a> and <a class="footnote-reference" href="#id11" id="id4">[2]</a>. We note, that this example is also called the “81 bricks array”, or simply
+has been described in <a class="footnote-reference brackets" href="#id10" id="id3">1</a> and <a class="footnote-reference brackets" href="#id11" id="id4">2</a>. We note, that this example is also called the “81 bricks array”, or simply
 the “81 array”, because the total number of unconstrained fuel and interstitial bricks is 81.</p>
-<div class="figure align-center" id="id13">
+<figure class="align-center" id="id13">
 <span id="array-fig2"></span><a class="reference internal image-reference" href="../../_images/81mesh.png"><img alt="../../_images/81mesh.png" src="../../_images/81mesh.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 72 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: meshed model (base mesh).</span></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: meshed model (base mesh).</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>In the current demonstration we bypass many of the details of our mechanical model. The ultimate aim is modeling
 the entire AGR core (<span class="math notranslate nohighlight">\(\sim5\text{K}\)</span> fuel bricks), hence we are in the search for the lowest possible resolution
 model. We are going to demonstrate some results for two mesh densities: denoted as a “basic mesh” and a “fine mesh”,
@@ -95,58 +115,60 @@ of the assembly is essentially two dimensional the number of elements along the 
 For fuel brick meshes the error in the lowest eigenmodes corresponding to planar squeezing is below 35% (as compared
 with finer meshes), which we tentatively accept in the quest for a lowest possible resolution model.</p>
 <div class="admonition error">
-<p class="first admonition-title">Error</p>
+<p class="admonition-title">Error</p>
 <p>Unable to execute python code at 81array.rst:68:</p>
-<p class="last">[Errno 2] No such file or directory: ‘solfec/examples/81array/81module_fbi.png’</p>
+<p>[Errno 2] No such file or directory: ‘solfec/examples/81array/81module_fbi.png’</p>
 </div>
-<div class="figure align-center" id="id14">
+<figure class="align-center" id="id14">
 <span id="array-fig3"></span><a class="reference internal image-reference" href="../../_images/81module_fbi.png"><img alt="../../_images/81module_fbi.png" src="../../_images/81module_fbi.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 73 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: array module closeup (left: base mesh) and the binary impact test (right: fine mesh).</span></p>
-</div>
-<span id="array-tab1"></span><table border="1" class="docutils" id="id15">
+<figcaption>
+<p><span class="caption-number">Fig. 73 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: array module closeup (left: base mesh) and the binary impact test (right: fine mesh).</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<span id="array-tab1"></span><table class="docutils align-default" id="id15">
 <caption><span class="caption-number">Table 32 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: base and fine mesh statistics. There are 61 fuel bricks, 60 interstitial bricks, and 100 loose keys in each case.</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="14%" />
-<col width="16%" />
-<col width="7%" />
-<col width="14%" />
-<col width="23%" />
-<col width="13%" />
-<col width="15%" />
+<col style="width: 14%" />
+<col style="width: 16%" />
+<col style="width: 7%" />
+<col style="width: 14%" />
+<col style="width: 23%" />
+<col style="width: 13%" />
+<col style="width: 15%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="3">&#160;</td>
-<td>Fuel brick</td>
-<td>Interstitial brick</td>
-<td>Loose key</td>
-<td>Model total</td>
+<tbody>
+<tr class="row-odd"><td colspan="3"></td>
+<td><p>Fuel brick</p></td>
+<td><p>Interstitial brick</p></td>
+<td><p>Loose key</p></td>
+<td><p>Model total</p></td>
 </tr>
-<tr class="row-even"><td rowspan="2">BC</td>
-<td>base mesh</td>
-<td rowspan="4">DOFs</td>
-<td>432</td>
-<td>456</td>
-<td>24</td>
-<td>56112</td>
+<tr class="row-even"><td rowspan="2"><p>BC</p></td>
+<td><p>base mesh</p></td>
+<td rowspan="4"><p>DOFs</p></td>
+<td><p>432</p></td>
+<td><p>456</p></td>
+<td><p>24</p></td>
+<td><p>56112</p></td>
 </tr>
-<tr class="row-odd"><td>fine mesh</td>
-<td>1512</td>
-<td>456</td>
-<td>24</td>
-<td>121992</td>
+<tr class="row-odd"><td><p>fine mesh</p></td>
+<td><p>1512</p></td>
+<td><p>456</p></td>
+<td><p>24</p></td>
+<td><p>121992</p></td>
 </tr>
-<tr class="row-even"><td rowspan="2">BC–RO</td>
-<td>base mesh</td>
-<td>64</td>
-<td>64</td>
-<td>24</td>
-<td>10144</td>
+<tr class="row-even"><td rowspan="2"><p>BC–RO</p></td>
+<td><p>base mesh</p></td>
+<td><p>64</p></td>
+<td><p>64</p></td>
+<td><p>24</p></td>
+<td><p>10144</p></td>
 </tr>
-<tr class="row-odd"><td>fine mesh</td>
-<td>64</td>
-<td>64</td>
-<td>24</td>
-<td>10144</td>
+<tr class="row-odd"><td><p>fine mesh</p></td>
+<td><p>64</p></td>
+<td><p>64</p></td>
+<td><p>24</p></td>
+<td><p>10144</p></td>
 </tr>
 </tbody>
 </table>
@@ -180,26 +202,34 @@ the displacements are much larger than the clearance and the entire array is swe
 reach the level of the clearance (few mm) the kinetic energy starts being injected into higher modes of the system. This builds up
 a peak in the velocity response. When the input displacements fall below the clearance distance the bricks disengage and there is
 a drop in the velocity response.</p>
-<div class="figure align-center" id="id16">
+<figure class="align-center" id="id16">
 <span id="array-fig4"></span><a class="reference internal image-reference" href="../../_images/81velo_BC.png"><img alt="../../_images/81velo_BC.png" src="../../_images/81velo_BC.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 74 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
-BC–base and BC–fine denote the body co–rotational formulation using respectively the base and the fine mesh.</span></p>
-</div>
-<div class="figure align-center" id="id17">
+<figcaption>
+<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
+BC–base and BC–fine denote the body co–rotational formulation using respectively the base and the fine mesh.</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id17">
 <span id="array-fig5"></span><a class="reference internal image-reference" href="../../_images/81velo_RO.png"><img alt="../../_images/81velo_RO.png" src="../../_images/81velo_RO.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 75 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
-RO–base and RO–fine denote the reduced order formulation using respectively the base and the fine mesh.</span></p>
-</div>
-<div class="figure align-center" id="id18">
+<figcaption>
+<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
+RO–base and RO–fine denote the reduced order formulation using respectively the base and the fine mesh.</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id18">
 <span id="array-fig6"></span><a class="reference internal image-reference" href="../../_images/81velo_BC_RO_base.png"><img alt="../../_images/81velo_BC_RO_base.png" src="../../_images/81velo_BC_RO_base.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 76 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
-BC–base and RO–base are respectively the BC and the BC–RO formulations, both using the base mesh.</span></p>
-</div>
-<div class="figure align-center" id="id19">
+<figcaption>
+<p><span class="caption-number">Fig. 76 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
+BC–base and RO–base are respectively the BC and the BC–RO formulations, both using the base mesh.</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id19">
 <span id="array-fig7"></span><a class="reference internal image-reference" href="../../_images/81velo_BC_RO_fine.png"><img alt="../../_images/81velo_BC_RO_fine.png" src="../../_images/81velo_BC_RO_fine.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 77 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
-BC–fine and RO–fine are respectively the BC and the BC–RO formulations, both using the fine mesh.</span></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
+BC–fine and RO–fine are respectively the BC and the BC–RO formulations, both using the fine mesh.</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p><a class="reference internal" href="#array-fig4"><span class="std std-numref">Fig. 74</span></a> – <a class="reference internal" href="#array-fig7"><span class="std std-numref">Fig. 77</span></a> show time histories of normalized output velocity magnitudes for selected fuel
 and interstitial bricks, compared with those obtained in the experiment. One can see that relatively good agreement is obtained
 for all combinations of base and fine FE meshes combined with the body co–rotational (BC) and reduced order BC–RO (dented as RO
@@ -210,11 +240,13 @@ and RO–fine models. There seems to be some correlation between the ability to 
 from the experiment, and the ability to match most of the experimental curves in <a class="reference internal" href="#array-fig4"><span class="std std-numref">Fig. 74</span></a> – <a class="reference internal" href="#array-fig7"><span class="std std-numref">Fig. 77</span></a>.
 On the other hand, <a class="reference internal" href="#array-fig8"><span class="std std-numref">Fig. 78</span></a> compares the performance of the BC–base approach with that of the purely rigid body model
 (RG). Clearly, the rigid body approach is not able to reproduce the experimentally observed peaks.</p>
-<div class="figure align-center" id="id20">
+<figure class="align-center" id="id20">
 <span id="array-fig8"></span><a class="reference internal image-reference" href="../../_images/81velo_RG_BC.png"><img alt="../../_images/81velo_RG_BC.png" src="../../_images/81velo_RG_BC.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 78 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
-RG and BC–base are respectively the rigid body and the body co–rotational formulations, both using the base mesh.</span></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 78 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: frequency histories of normalized output velocity magnitudes. EXP is the experiment.
+RG and BC–base are respectively the rigid body and the body co–rotational formulations, both using the base mesh.</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Statistics of total runtimes and average time shares of computational stages are included in <a class="reference internal" href="#array-tab2"><span class="std std-numref">Table 33</span></a>. These are
 collected for BC–fine/base, RO–fine/base and the rigid body models, all run using 6 MPI ranks on a single compute node, equipped
 with Intel Xeon E5–2600 processing units. There is some “give and take” happening in terms of the share of the computational time
@@ -226,162 +258,161 @@ the total runtime. This reversed in case of the solely rigid model, where solvin
 E5–2600 CPUs. Maximum speedups are 3.43/2.49 for the BC/RO–base models and 3.99/2.57 for the BC/RO–fine models. We note that currently
 Solfec-1.0 does not exploit shared memory parallelism. The domain decomposition based load balancing may not be a most suitable parallelization
 strategy for a problem of this size, run on a single cluster node. <a class="reference internal" href="#array-tab4"><span class="std std-numref">Table 35</span></a> illustrates the size of the output storage for
-the tested approaches. Naturally, the reduced order models output less, compared to the fully resolved models. Finally, video <a class="reference internal" href="#yt0" id="id5">[YT0]</a> shows
+the tested approaches. Naturally, the reduced order models output less, compared to the fully resolved models. Finally, video <a class="reference internal" href="#yt0" id="id5"><span>[YT0]</span></a> shows
 an animated output.</p>
-<span id="array-tab2"></span><table border="1" class="docutils" id="id21">
+<span id="array-tab2"></span><table class="docutils align-default" id="id21">
 <caption><span class="caption-number">Table 33 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: comparison of runtimes, for various formulations, using 6 MPI ranks on a single Intel
          Xeon E5–2600 CPU based compute node.</span><a class="headerlink" href="#id21" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="7%" />
-<col width="24%" />
-<col width="13%" />
-<col width="14%" />
-<col width="13%" />
-<col width="14%" />
-<col width="15%" />
+<col style="width: 7%" />
+<col style="width: 24%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 15%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td colspan="2">Formulation</td>
-<td>BC–fine</td>
-<td>BC–base</td>
-<td>RO–fine</td>
-<td>RO–base</td>
-<td>Rigid body</td>
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>Formulation</p></td>
+<td><p>BC–fine</p></td>
+<td><p>BC–base</p></td>
+<td><p>RO–fine</p></td>
+<td><p>RO–base</p></td>
+<td><p>Rigid body</p></td>
 </tr>
-<tr class="row-even"><td rowspan="5">Comp.
+<tr class="row-even"><td rowspan="5"><p>Comp.
 stage
-(h)</td>
-<td>Time integration</td>
-<td>4.6</td>
-<td>2.1</td>
-<td>3.4</td>
-<td>1.7</td>
-<td>0.1</td>
+(h)</p></td>
+<td><p>Time integration</p></td>
+<td><p>4.6</p></td>
+<td><p>2.1</p></td>
+<td><p>3.4</p></td>
+<td><p>1.7</p></td>
+<td><p>0.1</p></td>
 </tr>
-<tr class="row-odd"><td>Contact detection</td>
-<td>0.9</td>
-<td>0.5</td>
-<td>0.8</td>
-<td>0.5</td>
-<td>0.4</td>
+<tr class="row-odd"><td><p>Contact detection</p></td>
+<td><p>0.9</p></td>
+<td><p>0.5</p></td>
+<td><p>0.8</p></td>
+<td><p>0.5</p></td>
+<td><p>0.4</p></td>
 </tr>
-<tr class="row-even"><td>Constraints equations</td>
-<td>13.7</td>
-<td>5.7</td>
-<td>4.0</td>
-<td>2.9</td>
-<td>0.2</td>
+<tr class="row-even"><td><p>Constraints equations</p></td>
+<td><p>13.7</p></td>
+<td><p>5.7</p></td>
+<td><p>4.0</p></td>
+<td><p>2.9</p></td>
+<td><p>0.2</p></td>
 </tr>
-<tr class="row-odd"><td>Constraints solution</td>
-<td>0.7</td>
-<td>0.9</td>
-<td>1.2</td>
-<td>1.3</td>
-<td>3.4</td>
+<tr class="row-odd"><td><p>Constraints solution</p></td>
+<td><p>0.7</p></td>
+<td><p>0.9</p></td>
+<td><p>1.2</p></td>
+<td><p>1.3</p></td>
+<td><p>3.4</p></td>
 </tr>
-<tr class="row-even"><td>Load balancing</td>
-<td>1.3</td>
-<td>0.7</td>
-<td>1.0</td>
-<td>0.7</td>
-<td>0.3</td>
+<tr class="row-even"><td><p>Load balancing</p></td>
+<td><p>1.3</p></td>
+<td><p>0.7</p></td>
+<td><p>1.0</p></td>
+<td><p>0.7</p></td>
+<td><p>0.3</p></td>
 </tr>
-<tr class="row-odd"><td colspan="2">Total runtime (h)</td>
-<td>21.18</td>
-<td>9.92</td>
-<td>10.53</td>
-<td>7.15</td>
-<td>4.37</td>
+<tr class="row-odd"><td colspan="2"><p>Total runtime (h)</p></td>
+<td><p>21.18</p></td>
+<td><p>9.92</p></td>
+<td><p>10.53</p></td>
+<td><p>7.15</p></td>
+<td><p>4.37</p></td>
 </tr>
 </tbody>
 </table>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<span id="array-tab3"></span><table border="1" class="docutils" id="id22">
+<span id="array-tab3"></span><table class="docutils align-default" id="id22">
 <caption><span class="caption-number">Table 34 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: comparison of runtime scaling, for various formulations, on a single Intel Xeon
          E5–2600 CPU based compute node. BC–base–72s and RO–base–72s used the base mesh and had 72s duration.
          BC–fine–7.2s and RO–fine–7.2s used the fine mesh and had a 10x shorter duration of 7.2s.</span><a class="headerlink" href="#id22" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="48%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
-<col width="13%" />
+<col style="width: 48%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>MPI ranks</td>
-<td>3</td>
-<td>6</td>
-<td>12</td>
-<td>24</td>
+<tbody>
+<tr class="row-odd"><td><p>MPI ranks</p></td>
+<td><p>3</p></td>
+<td><p>6</p></td>
+<td><p>12</p></td>
+<td><p>24</p></td>
 </tr>
-<tr class="row-even"><td>BC–base–72s runtime (h)</td>
-<td>17.81</td>
-<td>9.92</td>
-<td>6.90</td>
-<td>5.20</td>
+<tr class="row-even"><td><p>BC–base–72s runtime (h)</p></td>
+<td><p>17.81</p></td>
+<td><p>9.92</p></td>
+<td><p>6.90</p></td>
+<td><p>5.20</p></td>
 </tr>
-<tr class="row-odd"><td>RO–base–72s runtime (h)</td>
-<td>11.94</td>
-<td>7.15</td>
-<td>5.56</td>
-<td>4.79</td>
+<tr class="row-odd"><td><p>RO–base–72s runtime (h)</p></td>
+<td><p>11.94</p></td>
+<td><p>7.15</p></td>
+<td><p>5.56</p></td>
+<td><p>4.79</p></td>
 </tr>
-<tr class="row-even"><td>BC–fine–7.2s runtime (h)</td>
-<td>4.31</td>
-<td>2.31</td>
-<td>1.52</td>
-<td>1.08</td>
+<tr class="row-even"><td><p>BC–fine–7.2s runtime (h)</p></td>
+<td><p>4.31</p></td>
+<td><p>2.31</p></td>
+<td><p>1.52</p></td>
+<td><p>1.08</p></td>
 </tr>
-<tr class="row-odd"><td>RO–fine–7.2s runtime (h)</td>
-<td>2.03</td>
-<td>1.19</td>
-<td>0.97</td>
-<td>0.79</td>
+<tr class="row-odd"><td><p>RO–fine–7.2s runtime (h)</p></td>
+<td><p>2.03</p></td>
+<td><p>1.19</p></td>
+<td><p>0.97</p></td>
+<td><p>0.79</p></td>
 </tr>
 </tbody>
 </table>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<span id="array-tab4"></span><table border="1" class="docutils" id="id23">
+<span id="array-tab4"></span><table class="docutils align-default" id="id23">
 <caption><span class="caption-number">Table 35 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: comparison of storage size, for various formulations, for the 72s long runs and using the 50Hz file output frequency.</span><a class="headerlink" href="#id23" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="25%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="14%" />
-<col width="17%" />
+<col style="width: 25%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 17%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Formulation</td>
-<td>BC–fine</td>
-<td>BC–base</td>
-<td>RO–fine</td>
-<td>RO–base</td>
-<td>Rigid body</td>
+<tbody>
+<tr class="row-odd"><td><p>Formulation</p></td>
+<td><p>BC–fine</p></td>
+<td><p>BC–base</p></td>
+<td><p>RO–fine</p></td>
+<td><p>RO–base</p></td>
+<td><p>Rigid body</p></td>
 </tr>
-<tr class="row-even"><td>Storage size</td>
-<td>7.2GB</td>
-<td>3.7GB</td>
-<td>1.2GB</td>
-<td>1.2GB</td>
-<td>0.84GB</td>
+<tr class="row-even"><td><p>Storage size</p></td>
+<td><p>7.2GB</p></td>
+<td><p>3.7GB</p></td>
+<td><p>1.2GB</p></td>
+<td><p>1.2GB</p></td>
+<td><p>0.84GB</p></td>
 </tr>
 </tbody>
 </table>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table class="docutils citation" frame="void" id="yt0" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[YT0]</a></td><td>An animation of the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a> example DX displacement time history.</td></tr>
-</tbody>
-</table>
-<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/oDxQesw2Jco?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><div class="section" id="running-81-array">
+<dl class="citation">
+<dt class="label" id="yt0"><span class="brackets"><a class="fn-backref" href="#id5">YT0</a></span></dt>
+<dd><p>An animation of the <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a> example DX displacement time history.</p>
+</dd>
+</dl>
+<p align="center"><iframe width="648" height="364" src="//www.youtube.com/embed/oDxQesw2Jco?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><section id="running-81-array">
 <h2>Running 81 array<a class="headerlink" href="#running-81-array" title="Permalink to this headline">¶</a></h2>
 <p>The 81 array example input file has several options. You can see them by invoking:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="mi">81</span><span class="n">array</span><span class="o">/</span><span class="mi">81</span><span class="n">array</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">help</span>
@@ -444,7 +475,7 @@ bases, e.g.</p>
 </div>
 <p>The output files are saved inside of <code class="docutils literal notranslate"><span class="pre">out/81array[*]</span></code> directories: what goes after the <code class="docutils literal notranslate"><span class="pre">81array</span></code> string depends on the paramters
 used to run the analysis. E.g. the default parameters result in the following outout directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_BC_s1</span><span class="o">.</span><span class="mf">0e-04</span><span class="n">_d1</span><span class="o">.</span><span class="mf">0e-07</span><span class="n">_r0</span><span class="o">/</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_BC_s1</span><span class="mf">.0e-04</span><span class="n">_d1</span><span class="mf">.0e-07</span><span class="n">_r0</span><span class="o">/</span>
 </pre></div>
 </div>
 <p>meaning a BC–based analysis, 1E-4 time step, 1E-7 damping, and 0 restitution. The restitution coefficient here denotes the instantaneous
@@ -454,7 +485,7 @@ experimenting. If you happened to use an output subdirectory by invoking the <co
 </pre></div>
 </div>
 <p>note that the output files will now be placed inside of</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_BC_s1</span><span class="o">.</span><span class="mf">0e-04</span><span class="n">_d1</span><span class="o">.</span><span class="mf">0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">BC24</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_BC_s1</span><span class="mf">.0e-04</span><span class="n">_d1</span><span class="mf">.0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">BC24</span>
 </pre></div>
 </div>
 <p>and in order to generate the reduced bases you will need to keep informing Solfec-1.0 about this, e.g.</p>
@@ -476,10 +507,10 @@ as follows</p>
 </pre></div>
 </div>
 <p>which results in</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Saved</span> <span class="n">MODAL</span> <span class="n">base</span> <span class="k">as</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_MODAL_FB64_IB64_s1</span><span class="o">.</span><span class="mf">0e-04</span><span class="n">_d1</span><span class="o">.</span><span class="mf">0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">FB1_modalbase</span><span class="o">.</span><span class="n">h5</span>
-<span class="n">Saved</span> <span class="n">MODAL</span> <span class="n">base</span> <span class="k">as</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_MODAL_FB64_IB64_s1</span><span class="o">.</span><span class="mf">0e-04</span><span class="n">_d1</span><span class="o">.</span><span class="mf">0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">FB2_modalbase</span><span class="o">.</span><span class="n">h5</span>
-<span class="n">Saved</span> <span class="n">MODAL</span> <span class="n">base</span> <span class="k">as</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_MODAL_FB64_IB64_s1</span><span class="o">.</span><span class="mf">0e-04</span><span class="n">_d1</span><span class="o">.</span><span class="mf">0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">IB2_modalbase</span><span class="o">.</span><span class="n">h5</span>
-<span class="n">Saved</span> <span class="n">MODAL</span> <span class="n">base</span> <span class="k">as</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_MODAL_FB64_IB64_s1</span><span class="o">.</span><span class="mf">0e-04</span><span class="n">_d1</span><span class="o">.</span><span class="mf">0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">IB1_modalbase</span><span class="o">.</span><span class="n">h5</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Saved</span> <span class="n">MODAL</span> <span class="n">base</span> <span class="k">as</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_MODAL_FB64_IB64_s1</span><span class="mf">.0e-04</span><span class="n">_d1</span><span class="mf">.0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">FB1_modalbase</span><span class="o">.</span><span class="n">h5</span>
+<span class="n">Saved</span> <span class="n">MODAL</span> <span class="n">base</span> <span class="k">as</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_MODAL_FB64_IB64_s1</span><span class="mf">.0e-04</span><span class="n">_d1</span><span class="mf">.0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">FB2_modalbase</span><span class="o">.</span><span class="n">h5</span>
+<span class="n">Saved</span> <span class="n">MODAL</span> <span class="n">base</span> <span class="k">as</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_MODAL_FB64_IB64_s1</span><span class="mf">.0e-04</span><span class="n">_d1</span><span class="mf">.0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">IB2_modalbase</span><span class="o">.</span><span class="n">h5</span>
+<span class="n">Saved</span> <span class="n">MODAL</span> <span class="n">base</span> <span class="k">as</span><span class="p">:</span> <span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_MODAL_FB64_IB64_s1</span><span class="mf">.0e-04</span><span class="n">_d1</span><span class="mf">.0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">IB1_modalbase</span><span class="o">.</span><span class="n">h5</span>
 <span class="n">INFO</span><span class="p">:</span> <span class="o">-</span><span class="n">genbase</span> <span class="n">was</span> <span class="n">used</span> <span class="n">to</span> <span class="n">generate</span> <span class="n">modal</span> <span class="n">bases</span> <span class="o">--&gt;</span> <span class="n">now</span> <span class="n">run</span> <span class="n">without</span> <span class="p">[</span><span class="o">-</span><span class="n">genbase</span><span class="p">];</span> <span class="n">exiting</span><span class="o">...</span>
 </pre></div>
 </div>
@@ -488,8 +519,8 @@ as follows</p>
 </pre></div>
 </div>
 <p>using the modal bases generated in the previous step.</p>
-</div>
-<div class="section" id="post-processing-81-array">
+</section>
+<section id="post-processing-81-array">
 <h2>Post–processing 81 array<a class="headerlink" href="#post-processing-81-array" title="Permalink to this headline">¶</a></h2>
 <p>Once you have run one or several 81 array analyses, you can generate figures, similar to <a class="reference internal" href="#array-fig4"><span class="std std-numref">Fig. 74</span></a> – <a class="reference internal" href="#array-fig8"><span class="std std-numref">Fig. 78</span></a>,
 by a sequence of the following steps. First, post–process individual run results, by “run them again”, <strong>in serial mode</strong>, e.g.</p>
@@ -500,7 +531,7 @@ by a sequence of the following steps. First, post–process individual run resul
 A single <strong>[*].thv file</strong> is generate per–analysis and output in the same directory as the remaing result files. We then use
 the <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/81array/81postp.py">81postp.py</a> script to genere figures similar
 to <a class="reference internal" href="#array-fig4"><span class="std std-numref">Fig. 74</span></a>, e.g.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="mi">81</span><span class="n">array</span><span class="o">/</span><span class="mi">81</span><span class="n">postp</span><span class="o">.</span><span class="n">py</span> <span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_BC_s1</span><span class="o">.</span><span class="mf">0e-04</span><span class="n">_d1</span><span class="o">.</span><span class="mf">0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="mi">81</span><span class="n">array_BC_s1</span><span class="o">.</span><span class="mf">0e-04</span><span class="n">_d1</span><span class="o">.</span><span class="mf">0e-07</span><span class="n">_r0</span><span class="o">.</span><span class="n">thv</span> <span class="n">BC</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="mi">81</span><span class="n">array</span><span class="o">/</span><span class="mi">81</span><span class="n">postp</span><span class="o">.</span><span class="n">py</span> <span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">array_BC_s1</span><span class="mf">.0e-04</span><span class="n">_d1</span><span class="mf">.0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="mi">81</span><span class="n">array_BC_s1</span><span class="mf">.0e-04</span><span class="n">_d1</span><span class="mf">.0e-07</span><span class="n">_r0</span><span class="o">.</span><span class="n">thv</span> <span class="n">BC</span>
 </pre></div>
 </div>
 <p>generates a <code class="docutils literal notranslate"><span class="pre">81velo.png</span></code> file in the current directory. To see other options of the <code class="docutils literal notranslate"><span class="pre">81postp.py</span></code> script run</p>
@@ -522,8 +553,8 @@ read mode to extract the  *.thv file.
 </div>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">-outfig</span></code> parameter to provide an alternative output path and figure format, e.g. <code class="docutils literal notranslate"><span class="pre">-outfig</span> <span class="pre">81velo.eps</span></code> would generate
 a figure in the <a class="reference external" href="https://en.wikipedia.org/wiki/Encapsulated_PostScript">encapsulated postscript format</a>.</p>
-</div>
-<div class="section" id="running-brick-impact-test">
+</section>
+<section id="running-brick-impact-test">
 <h2>Running brick impact test<a class="headerlink" href="#running-brick-impact-test" title="Permalink to this headline">¶</a></h2>
 <p>Run</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="mi">81</span><span class="n">array</span><span class="o">/</span><span class="mi">81</span><span class="n">fbi</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">help</span>
@@ -561,14 +592,16 @@ Then run again to post–process</p>
 of 0.9 would be approximated. To overshoot this value a fine mesh and a small time step are required – then damping can be used to
 bring the macroscopic velocity restitution down to the required level. Post–processing <code class="docutils literal notranslate"><span class="pre">81fbi.py</span></code> results also generates a figure
 in the output directory, e.g.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">fbi_BC_s1</span><span class="o">.</span><span class="mf">0e-04</span><span class="n">_d1</span><span class="o">.</span><span class="mf">0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">Brick_Velocity_Damp1e</span><span class="o">-</span><span class="mf">07.</span><span class="n">png</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">fbi_BC_s1</span><span class="mf">.0e-04</span><span class="n">_d1</span><span class="mf">.0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">Brick_Velocity_Damp1e</span><span class="o">-</span><span class="mf">07.</span><span class="n">png</span>
 </pre></div>
 </div>
 <p>included as <a class="reference internal" href="#array-fig9"><span class="std std-numref">Fig. 79</span></a> below.</p>
-<div class="figure align-center" id="id24">
+<figure class="align-center" id="id24">
 <span id="array-fig9"></span><a class="reference internal image-reference" href="../../_images/Brick_Velocity_Damp1e-07.png"><img alt="../../_images/Brick_Velocity_Damp1e-07.png" src="../../_images/Brick_Velocity_Damp1e-07.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 79 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: example figure generated by post–processing <code class="docutils literal notranslate"><span class="pre">81fbi.py</span></code> results.</span></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 79 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/81array">81array</a>: example figure generated by post–processing <code class="docutils literal notranslate"><span class="pre">81fbi.py</span></code> results.</span><a class="headerlink" href="#id24" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>In this example the modal base is generate “on the fly”, hence you can simply run</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="mi">81</span><span class="n">array</span><span class="o">/</span><span class="mi">81</span><span class="n">fbi</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">form</span> <span class="n">MODAL</span> <span class="o">-</span><span class="n">fbmod</span> <span class="mi">16</span>
 </pre></div>
@@ -579,7 +612,7 @@ If you run</p>
 </pre></div>
 </div>
 <p>it will “tell”</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Reading</span> <span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">fbi_RO_FB24_s1</span><span class="o">.</span><span class="mf">0e-04</span><span class="n">_d1</span><span class="o">.</span><span class="mf">0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">FB1_base</span><span class="o">.</span><span class="n">pickle</span><span class="o">.</span><span class="n">gz</span> <span class="n">failed</span> <span class="o">--&gt;</span> <span class="n">you</span> <span class="n">can</span> <span class="n">run</span> <span class="o">-</span><span class="n">form</span> <span class="n">BC</span> <span class="o">-</span><span class="n">genbase</span> <span class="n">to</span> <span class="n">genrate</span> <span class="n">this</span> <span class="n">file</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Reading</span> <span class="n">out</span><span class="o">/</span><span class="mi">81</span><span class="n">fbi_RO_FB24_s1</span><span class="mf">.0e-04</span><span class="n">_d1</span><span class="mf">.0e-07</span><span class="n">_r0</span><span class="o">/</span><span class="n">FB1_base</span><span class="o">.</span><span class="n">pickle</span><span class="o">.</span><span class="n">gz</span> <span class="n">failed</span> <span class="o">--&gt;</span> <span class="n">you</span> <span class="n">can</span> <span class="n">run</span> <span class="o">-</span><span class="n">form</span> <span class="n">BC</span> <span class="o">-</span><span class="n">genbase</span> <span class="n">to</span> <span class="n">genrate</span> <span class="n">this</span> <span class="n">file</span>
 <span class="n">Now</span> <span class="n">trying</span> <span class="n">to</span> <span class="n">use</span> <span class="n">examples</span><span class="o">/</span><span class="mi">81</span><span class="n">array</span><span class="o">/</span><span class="mi">81</span><span class="n">array_FB1_base</span><span class="o">.</span><span class="n">pickle</span><span class="o">.</span><span class="n">gz</span> <span class="n">instead</span> <span class="o">...</span>
 </pre></div>
 </div>
@@ -603,33 +636,25 @@ the displacement time history is “algebraically poorer” for the impact test.
 </pre></div>
 </div>
 <p>and post–process it (re–run again) to find out the restitution coefficient.</p>
-<table class="docutils footnote" frame="void" id="id9" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[*]</a></td><td>AGR stands for an <a class="reference external" href="https://en.wikipedia.org/wiki/Advanced_gas-cooled_reactor">Advanced Gass-cooled Reactor</a>.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id10" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[1]</a></td><td><a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/eqe.4290150203/abstract">Ahmed, Khalid and Stojko, Stefan, “The non–linear seismic response of AGR core graphite brick slices
-– correlation of experimental and analytical results”, Earthquake Engineering &amp; Structural Dynamics (1987), 159–188.</a></td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id11" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[2]</a></td><td><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/0029549387903037">Ahmed, K. M., “The dynamic response of multi-layers AGR core brick arrays”, Nuclear Engineering and Design (1987),
-1–66.</a></td></tr>
-</tbody>
-</table>
-</div>
-</div>
+<dl class="footnote brackets">
+<dt class="label" id="id9"><span class="brackets"><a class="fn-backref" href="#id2">*</a></span></dt>
+<dd><p>AGR stands for an <a class="reference external" href="https://en.wikipedia.org/wiki/Advanced_gas-cooled_reactor">Advanced Gass-cooled Reactor</a>.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
+<dd><p><a class="reference external" href="http://onlinelibrary.wiley.com/doi/10.1002/eqe.4290150203/abstract">Ahmed, Khalid and Stojko, Stefan, “The non–linear seismic response of AGR core graphite brick slices
+– correlation of experimental and analytical results”, Earthquake Engineering &amp; Structural Dynamics (1987), 159–188.</a></p>
+</dd>
+<dt class="label" id="id11"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
+<dd><p><a class="reference external" href="http://www.sciencedirect.com/science/article/pii/0029549387903037">Ahmed, K. M., “The dynamic response of multi-layers AGR core brick arrays”, Nuclear Engineering and Design (1987),
+1–66.</a></p>
+</dd>
+</dl>
+</section>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -684,7 +709,6 @@ the displacement time history is “algebraically poorer” for the impact test.
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
@@ -710,148 +734,174 @@ the displacement time history is “algebraically poorer” for the impact test.
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -866,10 +916,10 @@ the displacement time history is “algebraically poorer” for the impact test.
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

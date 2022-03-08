@@ -1,44 +1,61 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Constraint solvers &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Bulk materials" href="bulkmat.html" />
-    <link rel="prev" title="Contact formulations" href="conform.html" />
-  
+    <link rel="prev" title="Contact formulations" href="conform.html" /> 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,8 +66,7 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="constraint-solvers">
+             <section id="constraint-solvers">
 <span id="solfec-1-0-theory-solvers"></span><h1>Constraint solvers<a class="headerlink" href="#constraint-solvers" title="Permalink to this headline">¶</a></h1>
 <p>Constraint solvers are used to find approximate a solution to the <a class="reference internal" href="constraints.html#solfec-1-0-theory-constraints"><span class="std std-ref">constraints</span></a> equations</p>
 <div class="math notranslate nohighlight">
@@ -61,7 +77,7 @@ the <a class="reference internal" href="locdyn.html#solfec-1-0-theory-locdyn"><s
 \[\mathbf{U}=\mathbf{B}+\mathbf{WR}\]</div>
 <p>The merit function used as one of the termination conditions by all solvers, and the algorithms of the Solfec-1.0 solvers themselves,
 are described in sections below.</p>
-<div class="section" id="merit-function">
+<section id="merit-function">
 <h2>Merit function<a class="headerlink" href="#merit-function" title="Permalink to this headline">¶</a></h2>
 <p>As discussed on the <a class="reference internal" href="basics.html#solfec-1-0-theory-basics"><span class="std std-ref">basics page</span></a>, at every time step an implicit equation
 <span class="math notranslate nohighlight">\(\mathbf{C}\left(\mathbf{R}\right)=\mathbf{0}\)</span> is solved. This solution is approximate. In order to express its accuracy
@@ -78,8 +94,8 @@ we only use the diagonal blocks, which are always positive definite. To recapitu
 <div class="math notranslate nohighlight">
 \[g\left(\mathbf{R}\right)\simeq\frac{\mbox{&quot;spurious energy due to inaccurate solution&quot;}}{\mbox{&quot;free energy available at the constraints&quot;}}\]</div>
 <p>Such merit function is used as one of the stopping criterions for the solvers described below.</p>
-</div>
-<div class="section" id="gauss-seidel-solver">
+</section>
+<section id="gauss-seidel-solver">
 <span id="solfec-1-0-theory-solvers-gs"></span><h2>Gauss–Seidel solver<a class="headerlink" href="#gauss-seidel-solver" title="Permalink to this headline">¶</a></h2>
 <p>The equations of <a class="reference internal" href="locdyn.html#solfec-1-0-theory-locdyn"><span class="std std-ref">local dynamics</span></a> read</p>
 <div class="math notranslate nohighlight">
@@ -91,8 +107,8 @@ constraint equation can be formulated as</p>
 \[\mathbf{C}_{\alpha}\left(\mathbf{U}_{\alpha},\mathbf{R}_{\alpha}\right)=\mathbf{0}\]</div>
 <p>or in other words</p>
 <div class="math notranslate nohighlight" id="equation-nleq">
-<span class="eqno">(82)<a class="headerlink" href="#equation-nleq" title="Permalink to this equation">¶</a></span>\[\mathbf{C}_{\alpha}\left(\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta},\mathbf{R}_{\alpha}\right)=\mathbf{0}\]</div>
-<p>A series of 3–component non–linear equations <a class="reference internal" href="#equation-nleq">(82)</a> for all constrains can be approximately solved using the below serial Gauss–Seidel paradigm</p>
+<span class="eqno">(91)<a class="headerlink" href="#equation-nleq" title="Permalink to this equation">¶</a></span>\[\mathbf{C}_{\alpha}\left(\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta},\mathbf{R}_{\alpha}\right)=\mathbf{0}\]</div>
+<p>A series of 3–component non–linear equations <a class="reference internal" href="#equation-nleq">(91)</a> for all constrains can be approximately solved using the below serial Gauss–Seidel paradigm</p>
 <p><strong>SERIAL_GS</strong> <span class="math notranslate nohighlight">\(\left(Constraints,\epsilon,\gamma\right)\)</span> <br />
 1 <span class="math notranslate nohighlight">\(\,\,\)</span> do <br />
 2 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\)</span> for each <span class="math notranslate nohighlight">\(\alpha in Constraints\)</span> do <br />
@@ -103,7 +119,7 @@ constraint equation can be formulated as</p>
 <p>Algorithm <strong>SERIAL_GS</strong> is quite simple: diagonal block problems are solved until reaction change is small enough. The Gauss–Seidel paradigm corresponds to the fact,
 that the most recent off–diagonal reactions are used when solving the diagonal problem. Of course, because of that, a perfectly parallel implementation is not possible.
 After all, reactions are updated in a sequence. We can nevertheless relax the need for sequential processing. Perhaps the most scalable Gauss–Seidel approach to date was
-devised by Adams <a class="footnote-reference" href="#id4" id="id1">[1]</a>. Although originally it was used as a multigrid smoother, the core idea can be as well applied in our context. Each processor owes a subset of
+devised by Adams <a class="footnote-reference brackets" href="#id4" id="id1">1</a>. Although originally it was used as a multigrid smoother, the core idea can be as well applied in our context. Each processor owes a subset of
 (internal) constraints <span class="math notranslate nohighlight">\(Q_{i}\)</span>, where <span class="math notranslate nohighlight">\(i=1,2,...,n\)</span> are the processors indices. Therefore the local velocity update can be rewritten as</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{U}_{\alpha}=\mathbf{B}_{\alpha}+\sum_{\beta\in Q_{i}}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}+\sum_{\beta\notin Q_{i}}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}\]</div>
@@ -138,7 +154,7 @@ The middle constraints require communication with either. The inner constraints 
 <div class="math notranslate nohighlight">
 \[Inner_{i}=Inner1_{i}\cup Inner2_{i}so that\]</div>
 <div class="math notranslate nohighlight" id="equation-gsbalcnd">
-<span class="eqno">(83)<a class="headerlink" href="#equation-gsbalcnd" title="Permalink to this equation">¶</a></span>\[\left|Bottom_{i}\right|+\left|Inner2_{i}\right|=\left|Top_{i}\right|+\left|Inner1_{i}\right|\]</div>
+<span class="eqno">(92)<a class="headerlink" href="#equation-gsbalcnd" title="Permalink to this equation">¶</a></span>\[\left|Bottom_{i}\right|+\left|Inner2_{i}\right|=\left|Top_{i}\right|+\left|Inner1_{i}\right|\]</div>
 <p>The parallel Gauss–Seidel scheme is summarized in Algorithm <strong>PARALLEL_GS</strong> below. The presented version is simplified in the respect,
 that alternate forward and backward runs are not accounted for (in terms of constraints ordering).</p>
 <p><strong>SWEEP</strong> <span class="math notranslate nohighlight">\(\left(Set\right)\)</span> <br />
@@ -178,7 +194,7 @@ this ordering while processing constraints. As the top reactions were already se
 higher colors fully updated. These will be processed first in line 5 of LOOP and then sent to lower and higher (by color) processors in line 7. This way some processors
 with lower colors will have their higher color off-diagonal reactions of middle set constraints fully updated and they will proceed next. And so on. At the end (line 8),
 we need to receive all remaining reactions that have been sent in line 7 of <strong>LOOP</strong>. Coming back to <strong>PARALLEL_GS</strong>, after the bottleneck of the LOOP, in lines 9–12 we
-process the <span class="math notranslate nohighlight">\(Bottom_{i}\)</span> and <span class="math notranslate nohighlight">\(Inner1_{i}\)</span> sets in the same way as we did with the <span class="math notranslate nohighlight">\(Top_{i}\)</span> and <span class="math notranslate nohighlight">\(Inner2_{i}\)</span> sets. The condition <a class="reference internal" href="#equation-gsbalcnd">(83)</a>
+process the <span class="math notranslate nohighlight">\(Bottom_{i}\)</span> and <span class="math notranslate nohighlight">\(Inner1_{i}\)</span> sets in the same way as we did with the <span class="math notranslate nohighlight">\(Top_{i}\)</span> and <span class="math notranslate nohighlight">\(Inner2_{i}\)</span> sets. The condition <a class="reference internal" href="#equation-gsbalcnd">(92)</a>
 attempts to balance the amount of computations needed to hide the communication (e.g. the larger the <span class="math notranslate nohighlight">\(Top_{i}\)</span> set is, the larger the <span class="math notranslate nohighlight">\(Inner2_{i}\)</span> set becomes).
 It should be noted that the convergence criterion in line 13 is global across all processors.</p>
 <p>In <a class="reference internal" href="../user/solvers.html#solfec-1-0-user-solvers"><span class="std std-ref">User Manual Solvers Section</span></a> several variants of the parallel Gauss–Seidel algorithm are listed. Algorithm <strong>PARALLEL_GS</strong> corresponds to
@@ -197,17 +213,17 @@ gross inconsistency: something usually called “a processor Gauss-Seidel method
 4 <span class="math notranslate nohighlight">\(\,\,\)</span> send <span class="math notranslate nohighlight">\(\left(All_{i}\right)\)</span> <br />
 5 <span class="math notranslate nohighlight">\(\,\,\)</span> receive <span class="math notranslate nohighlight">\(\left(All_{i}\right)\)</span> <br /></p>
 <p>Although this kind of approach does work as a multigrid smoother, it has little use in our context. Nevertheless, we use it for illustration sake and name the BOUNDARY_JACOBI.</p>
-</div>
-<div class="section" id="projected-newton-solver">
+</section>
+<section id="projected-newton-solver">
 <span id="solfec-1-0-theory-solvers-pqn"></span><h2>Projected Newton solver<a class="headerlink" href="#projected-newton-solver" title="Permalink to this headline">¶</a></h2>
 <p>Using the <a class="reference internal" href="conform.html#solfec-1-0-theory-conform-nsveq"><span class="std std-ref">non–smooth velocity equation formulation</span></a> let us rewrite the frictional contact problem as</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{C}\left(\mathbf{R}\right)=\mathbf{F}\left(\mathbf{R}\right)+\mathbf{m}\left(\mathbf{R}-\mathbf{F}\left(\mathbf{R}\right)\right)=\mathbf{0}\mbox{ and }\mathbf{R}\in K\]</div>
 <p>where <span class="math notranslate nohighlight">\(K\)</span> is the direct sum of friction cones at all contact points. Since <span class="math notranslate nohighlight">\(\mathbf{C}\left(\mathbf{R}\right)\)</span> is not smooth, to compute <span class="math notranslate nohighlight">\(\nabla\mathbf{C}\)</span> we
-generalize the approach from <a class="footnote-reference" href="#id5" id="id2">[2]</a> and <a class="footnote-reference" href="#id6" id="id3">[3]</a> and use a smoothed <span class="math notranslate nohighlight">\(\nabla_{\omega}\mathbf{C}\)</span> with <span class="math notranslate nohighlight">\(\omega&gt;0\)</span> (we skip the details here), where only the self–dual case
+generalize the approach from <a class="footnote-reference brackets" href="#id5" id="id2">2</a> and <a class="footnote-reference brackets" href="#id6" id="id3">3</a> and use a smoothed <span class="math notranslate nohighlight">\(\nabla_{\omega}\mathbf{C}\)</span> with <span class="math notranslate nohighlight">\(\omega&gt;0\)</span> (we skip the details here), where only the self–dual case
 was considered (friction coefficient equal to 1). Our idea is to employ the following projected quasi–Newton step</p>
 <div class="math notranslate nohighlight" id="equation-newton">
-<span class="eqno">(84)<a class="headerlink" href="#equation-newton" title="Permalink to this equation">¶</a></span>\[\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}-\mathbf{A}^{-1}\mathbf{C}\left(\mathbf{R}\right)\right]\]</div>
+<span class="eqno">(93)<a class="headerlink" href="#equation-newton" title="Permalink to this equation">¶</a></span>\[\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}-\mathbf{A}^{-1}\mathbf{C}\left(\mathbf{R}\right)\right]\]</div>
 <p>so that, as required, the iterates remain within the friction cone and where</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{A}\simeq\nabla_{\omega}\mathbf{C}\]</div>
@@ -229,7 +245,7 @@ it directly. Instead, we then two variants of <span class="math notranslate nohi
 \[\theta\in\left[0,1\right]\mbox{.}\]</div>
 <p>We then have two variants of the projected quasi–Newton step:</p>
 <ol class="arabic simple">
-<li>PQN1:</li>
+<li><p>PQN1:</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}-\left(\nabla_{\omega}\mathbf{C}^{k}+\delta\mathbf{I}\right)_{\mbox{GMRES}\left(\epsilon\left\Vert \mathbf{C}^{k}\right\Vert ,m\right)}^{-1}\mathbf{C}^{k}\right]\]</div>
@@ -242,7 +258,7 @@ small values may destabilize convergence for ill–conditioned problems; <span c
 (e.g. find a suitably small <span class="math notranslate nohighlight">\(\delta\)</span> first, then tweak <span class="math notranslate nohighlight">\(\epsilon\)</span>). Since rigorous analysis is still missing for these parameters, please experiment before settling
 on specific values for a specific problem. Use linver = ‘GMRES’ in <a class="reference internal" href="../user/solvers.html#solfec-1-0-command-newton-solver"><span class="std std-ref">NEWTON_SOLVER</span></a> to enable this variant (this is also the default).</p>
 <ol class="arabic simple" start="2">
-<li>PQN2:</li>
+<li><p>PQN2:</p></li>
 </ol>
 <div class="math notranslate nohighlight">
 \[\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\left(1-\theta\right)\triangle\mathbf{R}^{k}-\theta\left(\mbox{diag}_{3\times3}\left[\nabla_{\omega}\mathbf{C}^{k}\right]\right)^{-1}\mathbf{C}^{k}\right]\]</div>
@@ -268,8 +284,8 @@ to enable this variant.</p>
 6 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\)</span> <span class="math notranslate nohighlight">\(\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\triangle\mathbf{R}^{k+1}\right]\)</span> <br />
 7 <span class="math notranslate nohighlight">\(\,\,\,\,\,\,\)</span> <span class="math notranslate nohighlight">\(k=k+1\)</span> <br />
 8 <span class="math notranslate nohighlight">\(\,\,\)</span> while <span class="math notranslate nohighlight">\(g\left(\mathbf{R}^{k}\right)\ge\gamma\)</span> and <span class="math notranslate nohighlight">\(k&lt;n\)</span> <br /></p>
-</div>
-<div class="section" id="penalty-solver">
+</section>
+<section id="penalty-solver">
 <span id="solfec-1-0-theory-solvers-penalty"></span><h2>Penalty Solver<a class="headerlink" href="#penalty-solver" title="Permalink to this headline">¶</a></h2>
 <p>The penalty solver is quite straightforward. On each processor we split the constraints into <span class="math notranslate nohighlight">\(Contacts_{i}\)</span> and <span class="math notranslate nohighlight">\(Others_{i}\)</span>,
 hence we separate contact constraints from bilateral ones. We then update the contacts using the spring–dashpot model and calculate reactions
@@ -284,8 +300,8 @@ Gauss–Seidel approach for non–contacts because in this case it is quite fast
 <p>Algorithm <strong>PENALTY_SOLVER</strong> summarizes the method. First all contact forces are calculated using the <a class="reference internal" href="conform.html#spring-dashpot-contact"><span class="std std-ref">SPRING_DASHPOT_CONTACT algorithm</span></a>.
 In lines 3 and 4 contact domain boundary contact forces are sent to and received on the neighboring processors. Finally, the parallel Gauss–Seidel algorithm is executed
 to calculate the reactions of the bilateral constraints. In the serial mode lines 3 and 4 are skipped, while <strong>SERIAL_GS</strong> is used instead of the parallel one.</p>
-</div>
-<div class="section" id="implementation">
+</section>
+<section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>The Gauss–Seidel solver is implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bgs.c">bgs.c</a> and
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/bgs.h">bgs.h</a>.
@@ -293,34 +309,26 @@ The projected Newton solver is implemented in <a class="reference external" href
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/nts.h">nts.h</a>.
 The penalty solver is implemented in <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/pes.c">pes.c</a> and
 <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/pes.h">pes.h</a>.</p>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Mark F. Adams, A distributed memory unstructured Gauss–Seidel algorithm for multigrid smoothers, In Supercomputing 01:
-Proceedings of the 2001 ACM/IEEE conference on Supercomputing, pages 4-4, New York, USA, 2001.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Masao Fukushima, Zhi-Quan Luo, and Paul Tseng, Smoothing functions for second-order-cone complementarity problems,
-SIAM Journal on Optimization, 12(2):436–460, 2002.</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Shunsuke Hayashi, Nobuo Yamashita, and Masao Fukushima, A Combined Smoothing and Regularization Method for Monotone
-Second–Order Cone Complementarity Problems, SIAM J. Optim., 15(2), 593–615, 2005.</td></tr>
-</tbody>
-</table>
-</div>
-</div>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>Mark F. Adams, A distributed memory unstructured Gauss–Seidel algorithm for multigrid smoothers, In Supercomputing 01:
+Proceedings of the 2001 ACM/IEEE conference on Supercomputing, pages 4-4, New York, USA, 2001.</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>Masao Fukushima, Zhi-Quan Luo, and Paul Tseng, Smoothing functions for second-order-cone complementarity problems,
+SIAM Journal on Optimization, 12(2):436–460, 2002.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p>Shunsuke Hayashi, Nobuo Yamashita, and Masao Fukushima, A Combined Smoothing and Regularization Method for Monotone
+Second–Order Cone Complementarity Problems, SIAM J. Optim., 15(2), 593–615, 2005.</p>
+</dd>
+</dl>
+</section>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -380,7 +388,6 @@ Second–Order Cone Complementarity Problems, SIAM J. Optim., 15(2), 593–615, 
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
@@ -404,148 +411,174 @@ Second–Order Cone Complementarity Problems, SIAM J. Optim., 15(2), 593–615, 
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -560,10 +593,10 @@ Second–Order Cone Complementarity Problems, SIAM J. Optim., 15(2), 593–615, 
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

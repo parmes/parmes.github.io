@@ -1,44 +1,60 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1,2,3–dimensional cube array acceleration dwell &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="3–dimensional cube array parallel scaling" href="hs3_scaling.html" />
-    <link rel="prev" title="A two–body impact problem" href="hs0.html" />
-  
+    <link rel="prev" title="A two–body impact problem" href="hs0.html" /> 
    
   <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,48 +65,51 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="dimensional-cube-array-acceleration-dwell">
+             <section id="dimensional-cube-array-acceleration-dwell">
 <span id="solfec-1-0-examples-hybrid-modeling-hs123"></span><h1>1,2,3–dimensional cube array acceleration dwell<a class="headerlink" href="#dimensional-cube-array-acceleration-dwell" title="Permalink to this headline">¶</a></h1>
 <p>This is a family of 1,2 and 3–dismenional examples demonstrating applications of the <a class="reference internal" href="../../user/solvers.html#solfec-1-0-command-hybrid-solver"><span class="std std-ref">HYBRID_SOLVER</span></a>
 on an array of cubes subject to a constant amplitude and frequency acceleration since dwell signal. The input files for these examples
 are located in:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver1">solfec-1.0/examples/hybrid–solver1</a> for the 1–dimensional array.</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">solfec-1.0/examples/hybrid–solver2</a> for the 2–dimensional array.</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">solfec-1.0/examples/hybrid–solver3</a> for the 3–dimensional array.</li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver1">solfec-1.0/examples/hybrid–solver1</a> for the 1–dimensional array.</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">solfec-1.0/examples/hybrid–solver2</a> for the 2–dimensional array.</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3">solfec-1.0/examples/hybrid–solver3</a> for the 3–dimensional array.</p></li>
 </ul>
 <p>We focus on the 2–dimensional example, leaving the 1– and 3–dimensional cases for self–study. The
 <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">solfec-1.0/examples/hybrid–solver2</a> directory contains:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/README">README</a> – a text based specification of the problem</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec.py">hs2–parmec.py</a> – including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py">hs2–solfec.py</a> – including the <a class="reference internal" href="../../index.html#solfec-1-0-index"><span class="std std-ref">Solfec-1.0</span></a> input code</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec-only.py">hs2–parmec–only.py</a> – including the Parmec-only version of the example</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec-only.py">hs2–solfec–only.py</a> – including the Solfec-1.0-only version of the example</li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2–state–1.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id12" id="id2">[1]</a></li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2–state–2.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference" href="#id15" id="id4">[2]</a></li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-3.pvsm">hs2–state–3.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig3"><span class="std std-numref">Fig. 55</span></a></li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-4.pvsm">hs2–state–4.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig4"><span class="std std-numref">Fig. 56</span></a></li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-5.pvsm">hs2–state–5.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig5"><span class="std std-numref">Fig. 57</span></a></li>
-<li><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-6.pvsm">hs2–state–6.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig6"><span class="std std-numref">Fig. 58</span></a></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/README">README</a> – a text based specification of the problem</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec.py">hs2–parmec.py</a> – including the <a class="reference internal" href="../../../parmec/index.html#parmec-index"><span class="std std-ref">Parmec</span></a> input code</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py">hs2–solfec.py</a> – including the <a class="reference internal" href="../../index.html#solfec-1-0-index"><span class="std std-ref">Solfec-1.0</span></a> input code</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec-only.py">hs2–parmec–only.py</a> – including the Parmec-only version of the example</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec-only.py">hs2–solfec–only.py</a> – including the Solfec-1.0-only version of the example</p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2–state–1.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference brackets" href="#id12" id="id2">1</a></p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2–state–2.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for animation <a class="footnote-reference brackets" href="#id15" id="id4">2</a></p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-3.pvsm">hs2–state–3.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig3"><span class="std std-numref">Fig. 55</span></a></p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-4.pvsm">hs2–state–4.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig4"><span class="std std-numref">Fig. 56</span></a></p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-5.pvsm">hs2–state–5.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig5"><span class="std std-numref">Fig. 57</span></a></p></li>
+<li><p><a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-6.pvsm">hs2–state–6.pvsm</a> – <a class="reference external" href="http://www.paraview.org">ParaView</a> state for <a class="reference internal" href="#hs2-fig6"><span class="std std-numref">Fig. 58</span></a></p></li>
 </ul>
 <p><a class="reference internal" href="#hs2-fig1"><span class="std std-numref">Fig. 53</span></a> states the problem and describes the hybrid model.</p>
-<div class="figure align-center" id="id18">
+<figure class="align-center" id="id18">
 <span id="hs2-fig1"></span><a class="reference internal image-reference" href="../../../_images/hs2.png"><img alt="../../../_images/hs2.png" src="../../../_images/hs2.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 53 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: a 2–dimensional cube array acceleration dwell hybrid model</span></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: a 2–dimensional cube array acceleration dwell hybrid model</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>An actual array geometry is depicted in <a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>, where the color coding is as follows:</p>
 <ul class="simple">
-<li>blue – the outer Parmec bodies where acceleration sweep signal is applied</li>
-<li>yellow – the inner Parmec bodies interacting via spring–dashpot elements</li>
-<li>green – the boundary Parmec–Solfec-1.0 bodies, modeled in both codes</li>
-<li>grey – the inner Solfec-1.0 bodies, interacting via a non–smooth contact law</li>
+<li><p>blue – the outer Parmec bodies where acceleration sweep signal is applied</p></li>
+<li><p>yellow – the inner Parmec bodies interacting via spring–dashpot elements</p></li>
+<li><p>green – the boundary Parmec–Solfec-1.0 bodies, modeled in both codes</p></li>
+<li><p>grey – the inner Solfec-1.0 bodies, interacting via a non–smooth contact law</p></li>
 </ul>
-<div class="figure align-center" id="id19">
+<figure class="align-center" id="id19">
 <span id="hs2-fig2"></span><a class="reference internal image-reference" href="../../../_images/hs2-geometry.png"><img alt="../../../_images/hs2-geometry.png" src="../../../_images/hs2-geometry.png" style="width: 60%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 54 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: initial geometry.</span></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: initial geometry.</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p><a class="reference internal" href="#hs2-lst1"><span class="std std-numref">Listing 4</span></a> includes the Parmec file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec.py">hs2–parmec.py</a>.
 Lines 1–8 define basic parameters of the model. We note, that it is possible to transform the current example into a sine sweep test by changing
 the “hifq” variable to a value greater than “lofq”. Also the size of the problem can be modified by altering the “N” and “M” parameters.
@@ -102,205 +121,107 @@ Finally, between the lines 78 and 98 contact spring–dashpot elements are defin
 step estimation for the model is printed out in line 101.</p>
 <div class="literal-block-wrapper docutils container" id="hs2-lst1">
 <div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">Listing of hs2–parmec.py</span><a class="headerlink" href="#hs2-lst1" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c1"># inherited from SOLFEC: M, N, gap, step, stop</span>
-<span class="n">lofq</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># low excitation frequency</span>
-<span class="n">hifq</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># high excitation freqency</span>
-<span class="n">amag</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># acceleration magnitude</span>
-
-<span class="c1"># find path to parmec source directory in order</span>
-<span class="c1"># to load the acceleration sweep signal script</span>
-<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
-<span class="k">def</span> <span class="nf">where</span><span class="p">(</span><span class="n">program</span><span class="p">):</span>
-  <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PATH&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pathsep</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">program</span><span class="p">)):</span>
-      <span class="k">return</span> <span class="n">path</span>
-  <span class="k">return</span> <span class="kc">None</span>
-<span class="n">path</span> <span class="o">=</span> <span class="n">where</span><span class="p">(</span><span class="s1">&#39;parmec4&#39;</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">path</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-  <span class="nb">print</span> <span class="s1">&#39;ERROR: parmec4 not found in PATH!&#39;</span>
-  <span class="nb">print</span> <span class="s1">&#39;       Download and compile parmec;&#39;</span><span class="p">,</span>
-  <span class="nb">print</span> <span class="s1">&#39;add parmec directory to PATH variable;&#39;</span>
-  <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span> <span class="s1">&#39;(Found parmec4 at:&#39;</span><span class="p">,</span> <span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">))</span>
-
-<span class="c1"># generate acceleration sweep signal;</span>
-<span class="c1"># note that parmec will use the associated</span>
-<span class="c1"># velocity signal, rather than the acceleration itself</span>
-<span class="kn">from</span> <span class="nn">acc_sweep</span> <span class="k">import</span> <span class="o">*</span>
-<span class="p">(</span><span class="n">vt</span><span class="p">,</span> <span class="n">vd</span><span class="p">,</span> <span class="n">vv</span><span class="p">,</span> <span class="n">va</span><span class="p">)</span> <span class="o">=</span> <span class="n">acc_sweep</span> <span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">lofq</span><span class="p">,</span> <span class="n">hifq</span><span class="p">,</span> <span class="n">amag</span><span class="p">)</span>
-<span class="n">tsv</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vt</span><span class="p">)</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">vd</span><span class="p">))</span>
-<span class="n">tsv</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">vt</span>
-<span class="n">tsv</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">vv</span>
-<span class="n">tsv</span> <span class="o">=</span> <span class="n">TSERIES</span> <span class="p">(</span><span class="n">tsv</span><span class="p">)</span> <span class="c1"># velocity time series</span>
-<span class="n">ts0</span> <span class="o">=</span> <span class="n">TSERIES</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">)</span> <span class="c1"># constant, zero &quot;time series&quot;</span>
-<span class="n">linvel</span> <span class="o">=</span> <span class="p">(</span><span class="n">tsv</span><span class="p">,</span> <span class="n">tsv</span><span class="p">,</span> <span class="n">ts0</span><span class="p">)</span> <span class="c1"># linear motion excitation vector</span>
-<span class="n">angvel</span> <span class="o">=</span> <span class="p">(</span><span class="n">ts0</span><span class="p">,</span> <span class="n">ts0</span><span class="p">,</span> <span class="n">ts0</span><span class="p">)</span> <span class="c1"># angular motion excitation vector</span>
-
-<span class="c1"># create material</span>
-<span class="n">matnum</span> <span class="o">=</span> <span class="n">MATERIAL</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">1E6</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
-
-<span class="c1"># cube creation function</span>
-<span class="k">def</span> <span class="nf">cube</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-  <span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
-	   <span class="n">x</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
-	   <span class="n">x</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
-	   <span class="n">x</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
-	   <span class="n">x</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
-	   <span class="n">x</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
-	   <span class="n">x</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
-	   <span class="n">x</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
-  <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">matnum</span><span class="p">]</span>
-  <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-  <span class="n">parnum</span> <span class="o">=</span> <span class="n">MESH</span> <span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">matnum</span><span class="p">,</span> <span class="n">colors</span><span class="p">)</span>
-  <span class="n">RESTRAIN</span> <span class="p">(</span><span class="n">parnum</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
-  <span class="n">ANALYTICAL</span> <span class="p">(</span><span class="n">particle</span><span class="o">=</span><span class="n">parnum</span><span class="p">)</span>
-  <span class="k">return</span> <span class="n">parnum</span>
-
-<span class="c1"># generate cube pattern</span>
-<span class="n">ijmap</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="p">):</span>
-  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="p">):</span>
-    <span class="c1"># skip the inner NxN Solfec block</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">M</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">M</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">M</span><span class="o">+</span><span class="n">N</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">:</span> <span class="k">continue</span>
-    <span class="k">else</span><span class="p">:</span> <span class="c1"># create the outer MxM, NxM, MxN blocks</span>
-      <span class="n">num</span> <span class="o">=</span> <span class="n">cube</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">),</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">))</span>
-      <span class="n">ijmap</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="n">num</span> <span class="c1"># map body numbers to (i,j)-grid</span>
-
-<span class="c1"># prescribe sine dwell motion </span>
-<span class="c1"># of the outer-most shell of bodies</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">ijmap</span><span class="p">:</span>
-  <span class="n">outer</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-  <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">outer</span> <span class="ow">or</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">outer</span><span class="p">:</span>
-    <span class="n">num</span> <span class="o">=</span> <span class="n">ijmap</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span>
-    <span class="n">PRESCRIBE</span> <span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">linvel</span><span class="p">,</span> <span class="n">angvel</span><span class="p">)</span>
-
-<span class="c1"># spring-damper curves</span>
-<span class="n">spring_curve</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">gap</span><span class="p">,</span> <span class="o">-</span><span class="mf">1E3</span><span class="p">,</span> <span class="o">-</span><span class="n">gap</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">damper_curve</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
-
-<span class="c1"># insert contact springs</span>
-<span class="n">ijmax</span> <span class="o">=</span> <span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">ijmap</span><span class="p">:</span>
-  <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ijmax</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">M</span><span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">)):</span>
-    <span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
-    <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
-    <span class="n">n1</span> <span class="o">=</span> <span class="n">ijmap</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span>
-    <span class="n">n2</span> <span class="o">=</span> <span class="n">ijmap</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span>
-    <span class="n">SPRING</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">spring_curve</span><span class="p">,</span>
-            <span class="n">damper_curve</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-  <span class="k">if</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">ijmax</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">M</span><span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">)):</span>
-    <span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
-    <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
-    <span class="n">n1</span> <span class="o">=</span> <span class="n">ijmap</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span>
-    <span class="n">n2</span> <span class="o">=</span> <span class="n">ijmap</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
-    <span class="n">SPRING</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">spring_curve</span><span class="p">,</span>
-            <span class="n">damper_curve</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-
-<span class="c1"># FYI, print out critical time step information </span>
-<span class="nb">print</span> <span class="s1">&#39;PARMEC estimated critical time step:&#39;</span><span class="p">,</span> <span class="n">CRITICAL</span><span class="p">()</span>
-
-<span class="c1">#DEM (stop, step, 0.01)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># inherited from SOLFEC: M, N, gap, step, stop</span>
+<span class="linenos"> 2</span><span class="n">lofq</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># low excitation frequency</span>
+<span class="linenos"> 3</span><span class="n">hifq</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># high excitation freqency</span>
+<span class="linenos"> 4</span><span class="n">amag</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># acceleration magnitude</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c1"># find path to parmec source directory in order</span>
+<span class="linenos"> 7</span><span class="c1"># to load the acceleration sweep signal script</span>
+<span class="linenos"> 8</span><span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="linenos"> 9</span><span class="k">def</span> <span class="nf">where</span><span class="p">(</span><span class="n">program</span><span class="p">):</span>
+<span class="linenos">10</span>  <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;PATH&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">pathsep</span><span class="p">):</span>
+<span class="linenos">11</span>    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">program</span><span class="p">)):</span>
+<span class="linenos">12</span>      <span class="k">return</span> <span class="n">path</span>
+<span class="linenos">13</span>  <span class="k">return</span> <span class="kc">None</span>
+<span class="linenos">14</span><span class="n">path</span> <span class="o">=</span> <span class="n">where</span><span class="p">(</span><span class="s1">&#39;parmec4&#39;</span><span class="p">)</span>
+<span class="linenos">15</span><span class="k">if</span> <span class="n">path</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+<span class="linenos">16</span>  <span class="nb">print</span> <span class="s1">&#39;ERROR: parmec4 not found in PATH!&#39;</span>
+<span class="linenos">17</span>  <span class="nb">print</span> <span class="s1">&#39;       Download and compile parmec;&#39;</span><span class="p">,</span>
+<span class="linenos">18</span>  <span class="nb">print</span> <span class="s1">&#39;add parmec directory to PATH variable;&#39;</span>
+<span class="linenos">19</span>  <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos">20</span><span class="nb">print</span> <span class="s1">&#39;(Found parmec4 at:&#39;</span><span class="p">,</span> <span class="n">path</span> <span class="o">+</span> <span class="s1">&#39;)&#39;</span>
+<span class="linenos">21</span><span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span> <span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;python&#39;</span><span class="p">))</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="c1"># generate acceleration sweep signal;</span>
+<span class="linenos">24</span><span class="c1"># note that parmec will use the associated</span>
+<span class="linenos">25</span><span class="c1"># velocity signal, rather than the acceleration itself</span>
+<span class="linenos">26</span><span class="kn">from</span> <span class="nn">acc_sweep</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="linenos">27</span><span class="p">(</span><span class="n">vt</span><span class="p">,</span> <span class="n">vd</span><span class="p">,</span> <span class="n">vv</span><span class="p">,</span> <span class="n">va</span><span class="p">)</span> <span class="o">=</span> <span class="n">acc_sweep</span> <span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">lofq</span><span class="p">,</span> <span class="n">hifq</span><span class="p">,</span> <span class="n">amag</span><span class="p">)</span>
+<span class="linenos">28</span><span class="n">tsv</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">vt</span><span class="p">)</span><span class="o">+</span><span class="nb">len</span><span class="p">(</span><span class="n">vd</span><span class="p">))</span>
+<span class="linenos">29</span><span class="n">tsv</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">vt</span>
+<span class="linenos">30</span><span class="n">tsv</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">vv</span>
+<span class="linenos">31</span><span class="n">tsv</span> <span class="o">=</span> <span class="n">TSERIES</span> <span class="p">(</span><span class="n">tsv</span><span class="p">)</span> <span class="c1"># velocity time series</span>
+<span class="linenos">32</span><span class="n">ts0</span> <span class="o">=</span> <span class="n">TSERIES</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">)</span> <span class="c1"># constant, zero &quot;time series&quot;</span>
+<span class="linenos">33</span><span class="n">linvel</span> <span class="o">=</span> <span class="p">(</span><span class="n">tsv</span><span class="p">,</span> <span class="n">tsv</span><span class="p">,</span> <span class="n">ts0</span><span class="p">)</span> <span class="c1"># linear motion excitation vector</span>
+<span class="linenos">34</span><span class="n">angvel</span> <span class="o">=</span> <span class="p">(</span><span class="n">ts0</span><span class="p">,</span> <span class="n">ts0</span><span class="p">,</span> <span class="n">ts0</span><span class="p">)</span> <span class="c1"># angular motion excitation vector</span>
+<span class="linenos">35</span>
+<span class="linenos">36</span><span class="c1"># create material</span>
+<span class="linenos">37</span><span class="n">matnum</span> <span class="o">=</span> <span class="n">MATERIAL</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mf">1E6</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span><span class="c1"># cube creation function</span>
+<span class="linenos">40</span><span class="k">def</span> <span class="nf">cube</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="linenos">41</span>  <span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="linenos">42</span>	   <span class="n">x</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="linenos">43</span>	   <span class="n">x</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="linenos">44</span>	   <span class="n">x</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="linenos">45</span>	   <span class="n">x</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
+<span class="linenos">46</span>	   <span class="n">x</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
+<span class="linenos">47</span>	   <span class="n">x</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
+<span class="linenos">48</span>	   <span class="n">x</span><span class="o">+</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+<span class="linenos">49</span>  <span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">matnum</span><span class="p">]</span>
+<span class="linenos">50</span>  <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="linenos">51</span>  <span class="n">parnum</span> <span class="o">=</span> <span class="n">MESH</span> <span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="n">elements</span><span class="p">,</span> <span class="n">matnum</span><span class="p">,</span> <span class="n">colors</span><span class="p">)</span>
+<span class="linenos">52</span>  <span class="n">RESTRAIN</span> <span class="p">(</span><span class="n">parnum</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="linenos">53</span>  <span class="n">ANALYTICAL</span> <span class="p">(</span><span class="n">particle</span><span class="o">=</span><span class="n">parnum</span><span class="p">)</span>
+<span class="linenos">54</span>  <span class="k">return</span> <span class="n">parnum</span>
+<span class="linenos">55</span>
+<span class="linenos">56</span><span class="c1"># generate cube pattern</span>
+<span class="linenos">57</span><span class="n">ijmap</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="linenos">58</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="p">):</span>
+<span class="linenos">59</span>  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="p">):</span>
+<span class="linenos">60</span>    <span class="c1"># skip the inner NxN Solfec block</span>
+<span class="linenos">61</span>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">M</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">M</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">M</span><span class="o">+</span><span class="n">N</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">:</span> <span class="k">continue</span>
+<span class="linenos">62</span>    <span class="k">else</span><span class="p">:</span> <span class="c1"># create the outer MxM, NxM, MxN blocks</span>
+<span class="linenos">63</span>      <span class="n">num</span> <span class="o">=</span> <span class="n">cube</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">),</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">))</span>
+<span class="linenos">64</span>      <span class="n">ijmap</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span> <span class="o">=</span> <span class="n">num</span> <span class="c1"># map body numbers to (i,j)-grid</span>
+<span class="linenos">65</span>
+<span class="linenos">66</span><span class="c1"># prescribe sine dwell motion </span>
+<span class="linenos">67</span><span class="c1"># of the outer-most shell of bodies</span>
+<span class="linenos">68</span><span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">ijmap</span><span class="p">:</span>
+<span class="linenos">69</span>  <span class="n">outer</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="linenos">70</span>  <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">outer</span> <span class="ow">or</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">outer</span><span class="p">:</span>
+<span class="linenos">71</span>    <span class="n">num</span> <span class="o">=</span> <span class="n">ijmap</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span>
+<span class="linenos">72</span>    <span class="n">PRESCRIBE</span> <span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">linvel</span><span class="p">,</span> <span class="n">angvel</span><span class="p">)</span>
+<span class="linenos">73</span>
+<span class="linenos">74</span><span class="c1"># spring-damper curves</span>
+<span class="linenos">75</span><span class="n">spring_curve</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">gap</span><span class="p">,</span> <span class="o">-</span><span class="mf">1E3</span><span class="p">,</span> <span class="o">-</span><span class="n">gap</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="linenos">76</span><span class="n">damper_curve</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="linenos">77</span>
+<span class="linenos">78</span><span class="c1"># insert contact springs</span>
+<span class="linenos">79</span><span class="n">ijmax</span> <span class="o">=</span> <span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span>
+<span class="linenos">80</span><span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="ow">in</span> <span class="n">ijmap</span><span class="p">:</span>
+<span class="linenos">81</span>  <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">ijmax</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="n">M</span><span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">)):</span>
+<span class="linenos">82</span>    <span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="linenos">83</span>    <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="linenos">84</span>    <span class="n">n1</span> <span class="o">=</span> <span class="n">ijmap</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span>
+<span class="linenos">85</span>    <span class="n">n2</span> <span class="o">=</span> <span class="n">ijmap</span><span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span>
+<span class="linenos">86</span>    <span class="n">SPRING</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">spring_curve</span><span class="p">,</span>
+<span class="linenos">87</span>            <span class="n">damper_curve</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="linenos">88</span>  <span class="k">if</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">ijmax</span> <span class="ow">and</span> <span class="ow">not</span> <span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="n">M</span><span class="o">-</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">)):</span>
+<span class="linenos">89</span>    <span class="n">p1</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="linenos">90</span>    <span class="n">p2</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">)</span><span class="o">+</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="linenos">91</span>    <span class="n">n1</span> <span class="o">=</span> <span class="n">ijmap</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)]</span>
+<span class="linenos">92</span>    <span class="n">n2</span> <span class="o">=</span> <span class="n">ijmap</span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+<span class="linenos">93</span>    <span class="n">SPRING</span> <span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="n">n2</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="n">spring_curve</span><span class="p">,</span>
+<span class="linenos">94</span>            <span class="n">damper_curve</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="linenos">95</span>
+<span class="linenos">96</span><span class="c1"># FYI, print out critical time step information </span>
+<span class="linenos">97</span><span class="nb">print</span> <span class="s1">&#39;PARMEC estimated critical time step:&#39;</span><span class="p">,</span> <span class="n">CRITICAL</span><span class="p">()</span>
+<span class="linenos">98</span>
+<span class="linenos">99</span><span class="c1">#DEM (stop, step, 0.01)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 </div>
 <p><a class="reference internal" href="#hs2-lst2"><span class="std std-numref">Listing 5</span></a> includes the Solfec-1.0 file <a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py">hs2–solfec.py</a>.
 Lines 1–5 define the global model parameters. Lines 7–24 set up the <a class="reference internal" href="../../user/solfec.html#solfec-1-0-user-solfec"><span class="std std-ref">SOLFEC object</span></a>,
@@ -321,199 +242,104 @@ to line 67 in <a class="reference internal" href="#hs2-lst1"><span class="std st
 description of <a class="reference internal" href="hs0.html#hs0-lst3"><span class="std std-numref">Listing 3</span></a>, in the context of the <a class="reference internal" href="hs0.html#solfec-1-0-examples-hybrid-modeling-hs0"><span class="std std-ref">two body impact example</span></a>.</p>
 <div class="literal-block-wrapper docutils container" id="hs2-lst2">
 <div class="code-block-caption"><span class="caption-number">Listing 5 </span><span class="caption-text">Listing of hs2–solfec.py</span><a class="headerlink" href="#hs2-lst2" title="Permalink to this code">¶</a></div>
-<div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">M</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># outer layers</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># inner layers</span>
-<span class="n">gap</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># betweeb bodies</span>
-<span class="n">step</span> <span class="o">=</span> <span class="mf">5E-4</span> <span class="c1"># time step</span>
-<span class="n">stop</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># duration</span>
-
-<span class="c1"># create solfec object</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">SOLFEC</span> <span class="p">(</span><span class="s1">&#39;DYNAMIC&#39;</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="s1">&#39;out/hybrid-solver2&#39;</span><span class="p">)</span>
-
-<span class="c1"># bulk and surface materials</span>
-<span class="n">mat</span> <span class="o">=</span> <span class="n">BULK_MATERIAL</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;KIRCHHOFF&#39;</span><span class="p">,</span>
-  <span class="n">young</span> <span class="o">=</span> <span class="mf">1E6</span><span class="p">,</span> <span class="n">poisson</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">density</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">SURFACE_MATERIAL</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span>
-  <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;SIGNORINI_COULOMB&#39;</span><span class="p">,</span> <span class="n">friction</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
-
-<span class="c1"># template cube nodes</span>
-<span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
-         <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
-	 <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
-	 <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
-	 <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
-	 <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
-	 <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
-	 <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
-
-<span class="c1"># create the array of cubes</span>
-<span class="n">iparmec</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># parmec indexing</span>
-<span class="n">parmec2solfec</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># boundary bodies mapping</span>
-<span class="n">isolfec</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># solfec indexing</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="p">):</span>
-  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">M</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">M</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">M</span><span class="o">+</span><span class="n">N</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">:</span>
-      <span class="c1"># inner Solfec bodies</span>
-      <span class="n">msh</span> <span class="o">=</span> <span class="n">HEX</span> <span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-      <span class="n">TRANSLATE</span> <span class="p">(</span><span class="n">msh</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">),</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
-      <span class="n">p1</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-      <span class="n">p2</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-      <span class="n">p3</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-      <span class="n">bod</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">msh</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span>
-      <span class="n">bod</span><span class="o">.</span><span class="n">scheme</span> <span class="o">=</span> <span class="s1">&#39;DEF_LIM&#39;</span> <span class="c1"># semi-implicit time integration</span>
-      <span class="n">bod</span><span class="o">.</span><span class="n">damping</span> <span class="o">=</span> <span class="mf">1E-4</span> <span class="c1"># damping out free vibrations</span>
-      <span class="n">isolfec</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bod</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-      <span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-      <span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-      <span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-    <span class="k">else</span><span class="p">:</span>
-      <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">]</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">))</span> <span class="ow">or</span> \
-	 <span class="p">(</span><span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">]</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">))</span> <span class="ow">or</span> \
-	 <span class="p">(</span><span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">]</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">]):</span>
-	<span class="c1"># Solfec-Parmec boundary</span>
-	<span class="n">msh</span> <span class="o">=</span> <span class="n">HEX</span> <span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
-	<span class="n">TRANSLATE</span> <span class="p">(</span><span class="n">msh</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">),</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
-	<span class="n">p1</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-	<span class="n">p2</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-	<span class="n">p3</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-	<span class="n">bod</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="s1">&#39;RIGID&#39;</span><span class="p">,</span> <span class="n">msh</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span>
-	<span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-	<span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-	<span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="c1"># in parallel bod.id can be None for remote bodies, so</span>
-	<span class="k">if</span> <span class="n">HERE</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span><span class="n">bod</span><span class="p">):</span>
-	  <span class="n">bod</span><span class="o">.</span><span class="n">disable_rotation</span> <span class="o">=</span> <span class="s1">&#39;ON&#39;</span>
-	  <span class="n">parmec2solfec</span><span class="p">[</span><span class="n">iparmec</span><span class="p">]</span> <span class="o">=</span> <span class="n">bod</span><span class="o">.</span><span class="n">id</span>
-      <span class="n">iparmec</span> <span class="o">=</span> <span class="n">iparmec</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># next parmec body</span>
-
-<span class="c1"># create Newton solver</span>
-<span class="n">ns</span> <span class="o">=</span> <span class="n">NEWTON_SOLVER</span> <span class="p">()</span>
-
-<span class="c1"># parmec&#39;s output files are written to the same</span>
-<span class="c1"># location as the input path; for that to be the solfec&#39;s</span>
-<span class="c1"># output directory, we copy parmec&#39;s input file there</span>
-<span class="kn">from</span> <span class="nn">shutil</span> <span class="k">import</span> <span class="n">copyfile</span>
-<span class="n">copyfile</span><span class="p">(</span><span class="s1">&#39;examples/hybrid-solver2/hs2-parmec.py&#39;</span><span class="p">,</span>
-         <span class="s1">&#39;out/hybrid-solver2/hs2-parmec.py&#39;</span><span class="p">)</span>
-
-
-<span class="c1"># create hybrid solver</span>
-<span class="n">hs</span> <span class="o">=</span> <span class="n">HYBRID_SOLVER</span> <span class="p">(</span><span class="s1">&#39;out/hybrid-solver2/hs2-parmec.py&#39;</span><span class="p">,</span>
-                    <span class="mf">1E-4</span><span class="p">,</span> <span class="n">parmec2solfec</span><span class="p">,</span> <span class="n">ns</span><span class="p">)</span>
-
-<span class="c1"># set PARMEC output interval</span>
-<span class="n">hs</span><span class="o">.</span><span class="n">parmec_interval</span> <span class="o">=</span> <span class="mf">0.03</span><span class="p">;</span>
-
-<span class="kn">import</span> <span class="nn">solfec</span> <span class="k">as</span> <span class="nn">solfec</span> <span class="c1"># this is needed since &#39;OUTPUT&#39; in Solfec</span>
-<span class="n">solfec</span><span class="o">.</span><span class="n">OUTPUT</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">)</span> <span class="c1"># collides with &#39;OUTPUT&#39; in Parmec</span>
-
-<span class="c1"># run simulation</span>
-<span class="kn">import</span> <span class="nn">time</span>
-<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">RUN</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">hs</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
-<span class="k">if</span> <span class="n">RANK</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
-
-<span class="c1"># XDMF export</span>
-<span class="k">if</span> <span class="n">sol</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;READ&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">VIEWER</span><span class="p">():</span>
-  <span class="n">XDMF_EXPORT</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">stop</span><span class="p">),</span>
-    <span class="s1">&#39;out/hybrid-solver2/hs2-solfec&#39;</span><span class="p">,</span> <span class="n">isolfec</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">M</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># outer layers</span>
+<span class="linenos"> 2</span><span class="n">N</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># inner layers</span>
+<span class="linenos"> 3</span><span class="n">gap</span> <span class="o">=</span> <span class="mf">0.001</span> <span class="c1"># betweeb bodies</span>
+<span class="linenos"> 4</span><span class="n">step</span> <span class="o">=</span> <span class="mf">5E-4</span> <span class="c1"># time step</span>
+<span class="linenos"> 5</span><span class="n">stop</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># duration</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="c1"># create solfec object</span>
+<span class="linenos"> 8</span><span class="n">sol</span> <span class="o">=</span> <span class="n">SOLFEC</span> <span class="p">(</span><span class="s1">&#39;DYNAMIC&#39;</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="s1">&#39;out/hybrid-solver2&#39;</span><span class="p">)</span>
+<span class="linenos"> 9</span>
+<span class="linenos">10</span><span class="c1"># bulk and surface materials</span>
+<span class="linenos">11</span><span class="n">mat</span> <span class="o">=</span> <span class="n">BULK_MATERIAL</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;KIRCHHOFF&#39;</span><span class="p">,</span>
+<span class="linenos">12</span>  <span class="n">young</span> <span class="o">=</span> <span class="mf">1E6</span><span class="p">,</span> <span class="n">poisson</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">density</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="linenos">13</span><span class="n">SURFACE_MATERIAL</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span>
+<span class="linenos">14</span>  <span class="n">model</span> <span class="o">=</span> <span class="s1">&#39;SIGNORINI_COULOMB&#39;</span><span class="p">,</span> <span class="n">friction</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c1"># template cube nodes</span>
+<span class="linenos">17</span><span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="linenos">18</span>         <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="linenos">19</span>	 <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="linenos">20</span>	 <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span>
+<span class="linenos">21</span>	 <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
+<span class="linenos">22</span>	 <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
+<span class="linenos">23</span>	 <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span>
+<span class="linenos">24</span>	 <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="c1"># create the array of cubes</span>
+<span class="linenos">27</span><span class="n">iparmec</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># parmec indexing</span>
+<span class="linenos">28</span><span class="n">parmec2solfec</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># boundary bodies mapping</span>
+<span class="linenos">29</span><span class="n">isolfec</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># solfec indexing</span>
+<span class="linenos">30</span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="p">):</span>
+<span class="linenos">31</span>  <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="o">+</span><span class="n">M</span><span class="p">):</span>
+<span class="linenos">32</span>    <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">M</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">M</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">M</span><span class="o">+</span><span class="n">N</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">:</span>
+<span class="linenos">33</span>      <span class="c1"># inner Solfec bodies</span>
+<span class="linenos">34</span>      <span class="n">msh</span> <span class="o">=</span> <span class="n">HEX</span> <span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="linenos">35</span>      <span class="n">TRANSLATE</span> <span class="p">(</span><span class="n">msh</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">),</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
+<span class="linenos">36</span>      <span class="n">p1</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">37</span>      <span class="n">p2</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="linenos">38</span>      <span class="n">p3</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="linenos">39</span>      <span class="n">bod</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="s1">&#39;FINITE_ELEMENT&#39;</span><span class="p">,</span> <span class="n">msh</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span>
+<span class="linenos">40</span>      <span class="n">bod</span><span class="o">.</span><span class="n">scheme</span> <span class="o">=</span> <span class="s1">&#39;DEF_LIM&#39;</span> <span class="c1"># semi-implicit time integration</span>
+<span class="linenos">41</span>      <span class="n">bod</span><span class="o">.</span><span class="n">damping</span> <span class="o">=</span> <span class="mf">1E-4</span> <span class="c1"># damping out free vibrations</span>
+<span class="linenos">42</span>      <span class="n">isolfec</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">bod</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+<span class="linenos">43</span>      <span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="linenos">44</span>      <span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="linenos">45</span>      <span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="linenos">46</span>    <span class="k">else</span><span class="p">:</span>
+<span class="linenos">47</span>      <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">]</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">))</span> <span class="ow">or</span> \
+<span class="linenos">48</span>	 <span class="p">(</span><span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">]</span> <span class="ow">and</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">))</span> <span class="ow">or</span> \
+<span class="linenos">49</span>	 <span class="p">(</span><span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">]</span> <span class="ow">and</span> <span class="n">j</span> <span class="ow">in</span> <span class="p">[</span><span class="n">M</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">M</span><span class="o">+</span><span class="n">N</span><span class="p">]):</span>
+<span class="linenos">50</span>	<span class="c1"># Solfec-Parmec boundary</span>
+<span class="linenos">51</span>	<span class="n">msh</span> <span class="o">=</span> <span class="n">HEX</span> <span class="p">(</span><span class="n">nodes</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="linenos">52</span>	<span class="n">TRANSLATE</span> <span class="p">(</span><span class="n">msh</span><span class="p">,</span> <span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">),</span> <span class="n">j</span><span class="o">*</span><span class="p">(</span><span class="mf">0.1</span><span class="o">+</span><span class="n">gap</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
+<span class="linenos">53</span>	<span class="n">p1</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="linenos">54</span>	<span class="n">p2</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos">55</span>	<span class="n">p3</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">node</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="linenos">56</span>	<span class="n">bod</span> <span class="o">=</span> <span class="n">BODY</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="s1">&#39;RIGID&#39;</span><span class="p">,</span> <span class="n">msh</span><span class="p">,</span> <span class="n">mat</span><span class="p">)</span>
+<span class="linenos">57</span>	<span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p1</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="linenos">58</span>	<span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p2</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="linenos">59</span>	<span class="n">FIX_DIRECTION</span> <span class="p">(</span><span class="n">bod</span><span class="p">,</span> <span class="n">p3</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="linenos">60</span>        <span class="c1"># in parallel bod.id can be None for remote bodies, so</span>
+<span class="linenos">61</span>	<span class="k">if</span> <span class="n">HERE</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span><span class="n">bod</span><span class="p">):</span>
+<span class="linenos">62</span>	  <span class="n">bod</span><span class="o">.</span><span class="n">disable_rotation</span> <span class="o">=</span> <span class="s1">&#39;ON&#39;</span>
+<span class="linenos">63</span>	  <span class="n">parmec2solfec</span><span class="p">[</span><span class="n">iparmec</span><span class="p">]</span> <span class="o">=</span> <span class="n">bod</span><span class="o">.</span><span class="n">id</span>
+<span class="linenos">64</span>      <span class="n">iparmec</span> <span class="o">=</span> <span class="n">iparmec</span> <span class="o">+</span> <span class="mi">1</span> <span class="c1"># next parmec body</span>
+<span class="linenos">65</span>
+<span class="linenos">66</span><span class="c1"># create Newton solver</span>
+<span class="linenos">67</span><span class="n">ns</span> <span class="o">=</span> <span class="n">NEWTON_SOLVER</span> <span class="p">()</span>
+<span class="linenos">68</span>
+<span class="linenos">69</span><span class="c1"># parmec&#39;s output files are written to the same</span>
+<span class="linenos">70</span><span class="c1"># location as the input path; for that to be the solfec&#39;s</span>
+<span class="linenos">71</span><span class="c1"># output directory, we copy parmec&#39;s input file there</span>
+<span class="linenos">72</span><span class="kn">from</span> <span class="nn">shutil</span> <span class="kn">import</span> <span class="n">copyfile</span>
+<span class="linenos">73</span><span class="n">copyfile</span><span class="p">(</span><span class="s1">&#39;examples/hybrid-solver2/hs2-parmec.py&#39;</span><span class="p">,</span>
+<span class="linenos">74</span>         <span class="s1">&#39;out/hybrid-solver2/hs2-parmec.py&#39;</span><span class="p">)</span>
+<span class="linenos">75</span>
+<span class="linenos">76</span>
+<span class="linenos">77</span><span class="c1"># create hybrid solver</span>
+<span class="linenos">78</span><span class="n">hs</span> <span class="o">=</span> <span class="n">HYBRID_SOLVER</span> <span class="p">(</span><span class="s1">&#39;out/hybrid-solver2/hs2-parmec.py&#39;</span><span class="p">,</span>
+<span class="linenos">79</span>                    <span class="mf">1E-4</span><span class="p">,</span> <span class="n">parmec2solfec</span><span class="p">,</span> <span class="n">ns</span><span class="p">)</span>
+<span class="linenos">80</span>
+<span class="linenos">81</span><span class="c1"># set PARMEC output interval</span>
+<span class="linenos">82</span><span class="n">hs</span><span class="o">.</span><span class="n">parmec_interval</span> <span class="o">=</span> <span class="mf">0.03</span><span class="p">;</span>
+<span class="linenos">83</span>
+<span class="linenos">84</span><span class="kn">import</span> <span class="nn">solfec</span> <span class="k">as</span> <span class="nn">solfec</span> <span class="c1"># this is needed since &#39;OUTPUT&#39; in Solfec</span>
+<span class="linenos">85</span><span class="n">solfec</span><span class="o">.</span><span class="n">OUTPUT</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">)</span> <span class="c1"># collides with &#39;OUTPUT&#39; in Parmec</span>
+<span class="linenos">86</span>
+<span class="linenos">87</span><span class="c1"># run simulation</span>
+<span class="linenos">88</span><span class="kn">import</span> <span class="nn">time</span>
+<span class="linenos">89</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="linenos">90</span><span class="n">RUN</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">hs</span><span class="p">,</span> <span class="n">stop</span><span class="p">)</span>
+<span class="linenos">91</span><span class="k">if</span> <span class="n">RANK</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+<span class="linenos">92</span>
+<span class="linenos">93</span><span class="c1"># XDMF export</span>
+<span class="linenos">94</span><span class="k">if</span> <span class="n">sol</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;READ&#39;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">VIEWER</span><span class="p">():</span>
+<span class="linenos">95</span>  <span class="n">XDMF_EXPORT</span> <span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">stop</span><span class="p">),</span>
+<span class="linenos">96</span>    <span class="s1">&#39;out/hybrid-solver2/hs2-solfec&#39;</span><span class="p">,</span> <span class="n">isolfec</span><span class="p">)</span>
 </pre></div>
-</td></tr></table></div>
+</div>
 </div>
 <p>The example is run by invoking</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">solfec</span> <span class="n">examples</span><span class="o">/</span><span class="n">hybrid</span><span class="o">-</span><span class="n">solfec2</span><span class="o">/</span><span class="n">hs2</span><span class="o">-</span><span class="n">solfec</span><span class="o">.</span><span class="n">py</span>
@@ -530,31 +356,33 @@ without depending on the exported XDMF files, <a class="reference external" href
 The application of ParaView can be simplified by utilising the two state .pvsm files distributed with the example: by selecting
 “File/Load State…” menu choice in ParaView one can load a pre–set post–processing state. The videos included below depict the
 forced motion of the hybrid system, visualised using the two enclosed states files.</p>
-<table class="docutils footnote" frame="void" id="id12" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td><a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2–state–1.pvsm</a>.</td></tr>
-</tbody>
-</table>
-<p align="center"><iframe width="648" height="432" src="//www.youtube.com/embed/Eg_Qm2tOtIY?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><table class="docutils footnote" frame="void" id="id15" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[2]</a></td><td><a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
-<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2–state–2.pvsm</a>.</td></tr>
-</tbody>
-</table>
+<dl class="footnote brackets">
+<dt class="label" id="id12"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p><a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm">hs2–state–1.pvsm</a>.</p>
+</dd>
+</dl>
+<p align="center"><iframe width="648" height="432" src="//www.youtube.com/embed/Eg_Qm2tOtIY?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><dl class="footnote brackets">
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
+<dd><p><a class="reference external" href="http://www.paraview.org">ParaView</a> animation based on the state file
+<a class="reference external" href="https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm">hs2–state–2.pvsm</a>.</p>
+</dd>
+</dl>
 <p align="center"><iframe width="648" height="432" src="//www.youtube.com/embed/EzyFSkX7lLM?rel=0" frameborder="0" allowfullscreen="1">&nbsp;</iframe></p><p><a class="reference internal" href="#hs2-fig3"><span class="std std-numref">Fig. 55</span></a> and <a class="reference internal" href="#hs2-fig4"><span class="std std-numref">Fig. 56</span></a> respectively show the linear velocity magnitude time history and the displacement magnitude
 time history, at points A (Parmec) and B (Solfec-1.0), marked out in <a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>. These plots were generated using ParaView’s “Plot
 Selection Over Time” feature.</p>
-<div class="figure align-center" id="id20">
+<figure class="align-center" id="id20">
 <span id="hs2-fig3"></span><a class="reference internal image-reference" href="../../../_images/hs2-linvel-mag.png"><img alt="../../../_images/hs2-linvel-mag.png" src="../../../_images/hs2-linvel-mag.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 55 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Linear velocity magnitude history at points A and B (<a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>).</span></p>
-</div>
-<div class="figure align-center" id="id21">
+<figcaption>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Linear velocity magnitude history at points A and B (<a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>).</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id21">
 <span id="hs2-fig4"></span><a class="reference internal image-reference" href="../../../_images/hs2-disp-mag.png"><img alt="../../../_images/hs2-disp-mag.png" src="../../../_images/hs2-disp-mag.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 56 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Displacement magnitude history at points A and B (<a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>).</span></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Displacement magnitude history at points A and B (<a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>).</span><a class="headerlink" href="#id21" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Our current presentation is oriented at demonstrating the capability and performance aspects of the proposed framework. Therefore we
 did not attempt to consistently model a uniform physical system by means of the three approaches: Solfec-1.0-only, Parmec-only and hybrid.
 The physical parameters of the finite element (FE) Solfec-1.0-only model do not match those of the simplified Parmec-only model: the FE
@@ -565,51 +393,54 @@ of the three models, apart from choosing parameters that resulted in stable simu
 the three approaches, recorded at point B of the geometry depicted in <a class="reference internal" href="#hs2-fig2"><span class="std std-numref">Fig. 54</span></a>. It is quite clear that finite element based
 Solfec-1.0-only model has quite different dynamic response when compared with the latter two approaches. The Parmec-only and hybrid approaches
 have similar responses because the softer surrounding material dominates the hybrid model and determines the motion of the stiffer inclusion.</p>
-<div class="figure align-center" id="id22">
+<figure class="align-center" id="id22">
 <span id="hs2-fig5"></span><a class="reference internal image-reference" href="../../../_images/hs2-velo-comp.png"><img alt="../../../_images/hs2-velo-comp.png" src="../../../_images/hs2-velo-comp.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 57 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Velocity magnitude time history, at point B, for the three modeling approaches.</span></p>
-</div>
-<div class="figure align-center" id="id23">
+<figcaption>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Velocity magnitude time history, at point B, for the three modeling approaches.</span><a class="headerlink" href="#id22" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id23">
 <span id="hs2-fig6"></span><a class="reference internal image-reference" href="../../../_images/hs2-disp-comp.png"><img alt="../../../_images/hs2-disp-comp.png" src="../../../_images/hs2-disp-comp.png" style="width: 100%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 58 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Displacement magnitude time history, at point B, for the three modeling approaches.</span></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Example <a class="reference external" href="https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2">hybrid-solver2</a>: Displacement magnitude time history, at point B, for the three modeling approaches.</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Finally, the most basic comparison of the practical advantage of simplified modeling is depicted in <a class="reference internal" href="#hs2-runtimes"><span class="std std-numref">Table 27</span></a>.
 The Solfec-1.0-only approach takes about 18 minutes to complete calculations. The most simplified Parmec-only approach takes only
 10 seconds and is 105 times faster. The hybrid approach, on the other hard, which includes both rigid bodies (modeled in Parmec)
 and finite element bodies (modeled in Solfec-1.0) takes about 5 minutes to complete. This is 3.4 times faster than the Solfec-1.0-only
 case, and 31 times slower than Parmec-only. All Solfec-1.0 calculations were done using 4 MPI processes, while Parmec calculations
 took full advantage of a 4-core 2.3 GHz Intel Core i7 CPU on a MacBook Pro laptop (mid 2012 model).</p>
-<span id="hs2-runtimes"></span><table border="1" class="docutils" id="id24">
+<span id="hs2-runtimes"></span><table class="docutils align-default" id="id24">
 <caption><span class="caption-number">Table 27 </span><span class="caption-text">2D array runtime comparison, between the NSCD (Solfec-1.0), DEM (Parmec) and hybrid approaches.</span><a class="headerlink" href="#id24" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="27%" />
-<col width="2%" />
-<col width="0%" />
-<col width="0%" />
-<col width="0%" />
-<col width="21%" />
-<col width="25%" />
-<col width="25%" />
+<col style="width: 27%" />
+<col style="width: 2%" />
+<col style="width: 0%" />
+<col style="width: 0%" />
+<col style="width: 0%" />
+<col style="width: 21%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td>Approach</td>
-<td colspan="5">Solfec-1.0-only</td>
-<td>Parmec-only</td>
-<td>Hybrid</td>
+<tbody>
+<tr class="row-odd"><td><p>Approach</p></td>
+<td colspan="5"><p>Solfec-1.0-only</p></td>
+<td><p>Parmec-only</p></td>
+<td><p>Hybrid</p></td>
 </tr>
-<tr class="row-even"><td>Runtime [sec]</td>
-<td colspan="5">1053</td>
-<td>10</td>
-<td>308</td>
+<tr class="row-even"><td><p>Runtime [sec]</p></td>
+<td colspan="5"><p>1053</p></td>
+<td><p>10</p></td>
+<td><p>308</p></td>
 </tr>
 </tbody>
 </table>
-</div>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -659,7 +490,6 @@ took full advantage of a 4-core 2.3 GHz Intel Core i7 CPU on a MacBook Pro lapto
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../vbox/index.html">VBOX</a></li>
@@ -685,148 +515,174 @@ took full advantage of a 4-core 2.3 GHz Intel Core i7 CPU on a MacBook Pro lapto
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../../../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../../../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../../../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../../../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../../../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../../../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../../../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../../../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../../../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../../../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../../../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -841,10 +697,10 @@ took full advantage of a 4-core 2.3 GHz Intel Core i7 CPU on a MacBook Pro lapto
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

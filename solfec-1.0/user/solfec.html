@@ -1,44 +1,60 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>SOLFEC object &#8212; PARMES  documentation</title>
-    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/parmes.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BODY object" href="body.html" />
-    <link rel="prev" title="Solfec-1.0 User Manual" href="../user.html" />
-  
+    <link rel="prev" title="Solfec-1.0 User Manual" href="../user.html" /> 
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  
-  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="PARMES/blog">
-  
-  
-  <style type="text/css">
-    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
-    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
-    ul.postlist a {font-style: italic;}
-    ul.postlist-style-disc {list-style-type: disc;}
-    ul.postlist-style-none {list-style-type: none;}
-    ul.postlist-style-circle {list-style-type: circle;}
-  </style>
+ 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../blog/atom.xml"
+  title="PARMES/blog"
+/>
+ 
+<style type="text/css">
+  ul.ablog-archive {
+    list-style: none;
+    overflow: auto;
+    margin-left: 0px;
+  }
+  ul.ablog-archive li {
+    float: left;
+    margin-right: 5px;
+    font-size: 80%;
+  }
+  ul.postlist a {
+    font-style: italic;
+  }
+  ul.postlist-style-disc {
+    list-style-type: disc;
+  }
+  ul.postlist-style-none {
+    list-style-type: none;
+  }
+  ul.postlist-style-circle {
+    list-style-type: circle;
+  }
+</style>
 
   </head><body>
   
@@ -49,68 +65,66 @@
           
 
           <div class="body" role="main">
-            
-  <div class="section" id="solfec-object">
+             <section id="solfec-object">
 <span id="solfec-1-0-user-solfec"></span><h1>SOLFEC object<a class="headerlink" href="#solfec-object" title="Permalink to this headline">¶</a></h1>
 <p>An object of type SOLFEC represents the Solfec-1.0 algorithm. One can use several SOLFEC objects to run several analyses from a single input file.</p>
 <div class="topic">
-<p class="topic-title first">obj = SOLFEC (analysis, step, output)</p>
+<p class="topic-title">obj = SOLFEC (analysis, step, output)</p>
 <p>This routine creates a SOLFEC object.</p>
 <ul class="simple">
-<li>obj – created SOLFEC object</li>
-<li>analysis – ‘DYNAMIC’ or ‘QUASI_STATIC’ analysis kind</li>
-<li>step – initially assumed time step, regarded as an upper bound</li>
-<li>output – defines the output directory path (Important note: if this directory exists
+<li><p>obj – created SOLFEC object</p></li>
+<li><p>analysis – ‘DYNAMIC’ or ‘QUASI_STATIC’ analysis kind</p></li>
+<li><p>step – initially assumed time step, regarded as an upper bound</p></li>
+<li><p>output – defines the output directory path (Important note: if this directory exists
 and contains valid output data SOLFEC is created in ‘READ’ mode,
-otherwise SOLFEC is created in ‘WRITE’ mode)</li>
+otherwise SOLFEC is created in ‘WRITE’ mode)</p></li>
 </ul>
 </div>
 <p>Some parameters can be accessed as members of a SOLFEC object, cf. <a class="reference internal" href="#solfec-1-0-params"><span class="std std-numref">Table 1</span></a>.</p>
-<span id="solfec-1-0-params"></span><table border="1" class="docutils" id="id1">
+<span id="solfec-1-0-params"></span><table class="docutils align-default" id="id1">
 <caption><span class="caption-number">Table 1 </span><span class="caption-text">SOLFEC object parameters.</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
 <colgroup>
-<col width="100%" />
+<col style="width: 100%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><strong>Read only members:</strong></td>
+<tbody>
+<tr class="row-odd"><td><p><strong>Read only members:</strong></p></td>
 </tr>
-<tr class="row-even"><td><em>obj.analysis</em></td>
+<tr class="row-even"><td><p><em>obj.analysis</em></p></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.time</strong> – current time</td>
+<tr class="row-odd"><td><p><strong>obj.time</strong> – current time</p></td>
 </tr>
-<tr class="row-even"><td><strong>obj.mode</strong> – either ‘READ’ or ‘WRITE’ as described above</td>
+<tr class="row-even"><td><p><strong>obj.mode</strong> – either ‘READ’ or ‘WRITE’ as described above</p></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.constraints</strong> – list of constraints (cf. <a class="reference internal" href="constraints.html#solfec-1-0-user-constraints"><span class="std std-ref">Constraints</span></a>)</td>
+<tr class="row-odd"><td><p><strong>obj.constraints</strong> – list of constraints (cf. <a class="reference internal" href="constraints.html#solfec-1-0-user-constraints"><span class="std std-ref">Constraints</span></a>)</p></td>
 </tr>
-<tr class="row-even"><td><strong>obj.ncon</strong> – number of constraints</td>
+<tr class="row-even"><td><p><strong>obj.ncon</strong> – number of constraints</p></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.bodies</strong> – list of bodies (cf. <a class="reference internal" href="body.html#solfec-1-0-user-body"><span class="std std-ref">BODY object</span></a>)</td>
+<tr class="row-odd"><td><p><strong>obj.bodies</strong> – list of bodies (cf. <a class="reference internal" href="body.html#solfec-1-0-user-body"><span class="std std-ref">BODY object</span></a>)</p></td>
 </tr>
-<tr class="row-even"><td><strong>obj.nbod</strong> – number of bodies</td>
+<tr class="row-even"><td><p><strong>obj.nbod</strong> – number of bodies</p></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.outpath</strong> – output path, including the sub-directory if the “-s” command line argument
-has been passed</td>
+<tr class="row-odd"><td><p><strong>obj.outpath</strong> – output path, including the sub-directory if the “-s” command line argument
+has been passed</p></td>
 </tr>
-<tr class="row-even"><td><strong>Read/write members:</strong></td>
+<tr class="row-even"><td><p><strong>Read/write members:</strong></p></td>
 </tr>
-<tr class="row-odd"><td><em>obj.step</em></td>
+<tr class="row-odd"><td><p><em>obj.step</em></p></td>
 </tr>
-<tr class="row-even"><td><strong>obj.verbose</strong> – ‘ON’ or ‘OFF’ enabling or disabling writing to standard output (default: ‘ON’); ‘%’
+<tr class="row-even"><td><p><strong>obj.verbose</strong> – ‘ON’ or ‘OFF’ enabling or disabling writing to standard output (default: ‘ON’); ‘%’
 can also be used to enable plain percentage printout per individual <a class="reference internal" href="simulation.html#solfec-1-0-command-run"><span class="std std-ref">RUN</span></a>;
-‘%n’ can be used for the same purpose with a newline inserted after finished calculations</td>
+‘%n’ can be used for the same purpose with a newline inserted after finished calculations</p></td>
 </tr>
-<tr class="row-odd"><td><strong>obj.cleanup</strong> – either ‘ON’ or ‘OFF’ enabling or disabling removal of the output directory in ‘WRITE’
+<tr class="row-odd"><td><p><strong>obj.cleanup</strong> – either ‘ON’ or ‘OFF’ enabling or disabling removal of the output directory in ‘WRITE’
 mode if none results were saved (default: ‘OFF’ in which case the initial geometry is saved as a
-sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the ‘ON’ functionality to work;</td>
+sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the ‘ON’ functionality to work;</p></td>
 </tr>
 </tbody>
 </table>
-</div>
+</section>
 
-  <div class="section">
-  
-  
-  </div>
+<div class="section">
+   
+</div>
 
           </div>
           
@@ -164,7 +178,6 @@ sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the ‘ON�
 <li class="toctree-l2"><a class="reference external" href="https://groups.google.com/forum/#!forum/solfec-1">Google group</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../solfec-2.0/index.html">SOLFEC-2.0</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../dynlb/index.html">DYNLB</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../parmec/index.html">PARMEC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../vbox/index.html">VBOX</a></li>
@@ -188,148 +201,174 @@ sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the ‘ON�
 </ul>
 </div>
 <div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
+  <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
     </form>
     </div>
 </div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-  <h3><a href="../../blog.html">Recent Posts</a></h3>
-  <ul>
-    
-    
-      <li><a href="../../blog/solfec-2.0-update-0.html">09 September - Solfec-2.0 update 0</a></li>
-    
-      <li><a href="../../blog/solfec_export_command.html">09 January - SOLFEC_EXPORT command</a></li>
-    
-      <li><a href="../../blog/parmec_ball_joint.html">31 July - Parmec ball joint and articulated pendulum example</a></li>
-    
-      <li><a href="../../blog/parmec_spherical_joint.html">13 June - Parmec spherical joint</a></li>
-    
-      <li><a href="../../blog/parmec_spring_contact.html">23 May - Parmec spring contact</a></li>
-    
-  </ul>
+<script>$('#searchbox').show(0);</script>
+<h3>
+  <a href="../../blog.html">Recent Posts</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/solfec-2.0-update-0.html"
+      >09 September - Solfec-2.0 update 0</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/solfec_export_command.html"
+      >09 January - SOLFEC_EXPORT command</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_ball_joint.html"
+      >31 July - Parmec ball joint and articulated pendulum example</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spherical_joint.html"
+      >13 June - Parmec spherical joint</a
+    >
+  </li>
+  
+  <li>
+    <a href="../../blog/parmec_spring_contact.html"
+      >23 May - Parmec spring contact</a
+    >
+  </li>
+  
+</ul>
 
-  <h3><a href="../../blog/tag.html">Tags</a></h3>
-  <style type="text/css">
-    ul.ablog-cloud {list-style: none; overflow: auto;}
-    ul.ablog-cloud li {float: left; height: 20pt; line-height: 18pt; margin-right: 5px;}
-    ul.ablog-cloud a {text-decoration: none; vertical-align: middle;}
-    li.ablog-cloud-1{font-size: 80%;}
-    li.ablog-cloud-2{font-size: 95%;}
-    li.ablog-cloud-3{font-size: 110%;}
-    li.ablog-cloud-4{font-size: 125%;}
-    li.ablog-cloud-5{font-size: 140%;}
-  </style>
-  <ul class="ablog-cloud">
+<h3><a href="../../blog/tag.html">Tags</a></h3>
+<style type="text/css">
+  ul.ablog-cloud {
+    list-style: none;
+    overflow: auto;
+  }
+  ul.ablog-cloud li {
+    float: left;
+    height: 20pt;
+    line-height: 18pt;
+    margin-right: 5px;
+  }
+  ul.ablog-cloud a {
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  li.ablog-cloud-1 {
+    font-size: 80%;
+  }
+  li.ablog-cloud-2 {
+    font-size: 95%;
+  }
+  li.ablog-cloud-3 {
+    font-size: 110%;
+  }
+  li.ablog-cloud-4 {
+    font-size: 125%;
+  }
+  li.ablog-cloud-5 {
+    font-size: 140%;
+  }
+</style>
+<ul class="ablog-cloud">
+   
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/algebraic.html">algebraic</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/algebraic.html">algebraic</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/contact.html">contact</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/contact.html">contact</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/failure.html">failure</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/failure.html">failure</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/friction.html">friction</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/friction.html">friction</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/joints.html">joints</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/joints.html">joints</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/optimization.html">optimization</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/optimization.html">optimization</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-5">
+    <a href="../../blog/tag/parmec.html">parmec</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-5">
-        <a href="../../blog/tag/parmec.html">parmec</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/parmes.html">parmes</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/parmes.html">parmes</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/pendulum.html">pendulum</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/pendulum.html">pendulum</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/performance.html">performance</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/performance.html">performance</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/reports.html">reports</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/reports.html">reports</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-3">
+    <a href="../../blog/tag/solfec-10.html">solfec-1.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-3">
-        <a href="../../blog/tag/solfec-10.html">solfec-1.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/solfec-20.html">solfec-2.0</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/solfec-20.html">solfec-2.0</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/springs.html">springs</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/springs.html">springs</a></li>
-      
+  <li class="ablog-cloud ablog-cloud-2">
+    <a href="../../blog/tag/tests.html">tests</a>
+  </li>
     
-      
-      <li class="ablog-cloud ablog-cloud-2">
-        <a href="../../blog/tag/tests.html">tests</a></li>
-      
-    
-      
-      <li class="ablog-cloud ablog-cloud-1">
-        <a href="../../blog/tag/torsion.html">torsion</a></li>
-      
-    
-  </ul>
+  <li class="ablog-cloud ablog-cloud-1">
+    <a href="../../blog/tag/torsion.html">torsion</a>
+  </li>
+   
+</ul>
 
-  <h3><a href="../../blog/archive.html">Archives</a></h3>
-  <ul>
-  
+<h3>
+  <a href="../../blog/archive.html">Archives</a>
+</h3>
+<ul>
+   
+  <li>
+    <a href="../../blog/2019.html">2019 (2)</a>
+  </li>
     
-    <li><a href="../../blog/2019.html">2019 (2)</a></li>
+  <li>
+    <a href="../../blog/2018.html">2018 (5)</a>
+  </li>
     
-  
+  <li>
+    <a href="../../blog/2017.html">2017 (4)</a>
+  </li>
     
-    <li><a href="../../blog/2018.html">2018 (5)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2017.html">2017 (4)</a></li>
-    
-  
-    
-    <li><a href="../../blog/2016.html">2016 (1)</a></li>
-    
-  
-  </ul>
+  <li>
+    <a href="../../blog/2016.html">2016 (1)</a>
+  </li>
+   
+</ul>
 
 
 
@@ -344,10 +383,10 @@ sole result); <em>Note:</em> POSIX=yes must be set in Config.mak for the ‘ON�
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2019 PARMES team.
+      &copy;2022 PARMES team.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.8.5</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
