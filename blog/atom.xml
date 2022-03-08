@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>http://parmes.org</id>
   <title>PARMES/blog</title>
-  <updated>2022-03-08T20:18:31.405477+00:00</updated>
+  <updated>2022-03-08T20:28:17.065476+00:00</updated>
   <link href="http://parmes.org"/>
   <link href="http://parmes.org/blog/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.org/" version="0.10.23">ABlog</generator>
